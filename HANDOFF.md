@@ -55,6 +55,7 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - Balance là tham số tạm. Mutation/Curse/unlock được quyết định ở milestone tương ứng và ghi vào GAME_BRIEF.md.
 - Waves tối đa 18 enemies, sau Boss tổng cap 7; tối đa 80 projectiles/24 impacts/12 explosions mỗi tick. Swept segment-circle chống đạn xuyên mục tiêu; mỗi melee resolve một lần.
 - Không ECS/custom engine, replay framework, suite E2E/CI phức tạp. Focused tests dùng TypeScript compiler và Node test runner sẵn có.
+- Giữ nguyên AGENTS/handoff mới từ remote commit `b75ef2e`: Source of Truth, kiến trúc source tham chiếu và giới hạn resume theo phạm vi user giao. User đã cho phép hoàn thành toàn M3–M6; task hiện tại chỉ đưa code lên main, không tự refactor kiến trúc ngoài scope.
 - Script playtest/ảnh/mô phỏng tạm ngoài repo. Khi kiểm tra Vite, import đúng URL module trong document (có thể có timestamp) để tránh tạo game thứ hai.
 
 ## RELEVANT FILES
@@ -77,7 +78,7 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - `npm test`: biên dịch logic sang `.test-build/` (gitignored), chạy Node focused tests.
 
 ## NEXT ACTION
-Commit MVP, hợp nhất origin/main, kiểm tra merge rồi push lên main và xác minh remote.
+Hoàn tất push nhánh main và xác minh remote; chỉ xuất bản web khi đã xác định đích hosting với user.
 
 ## BLOCKERS
 Không có blocker hoặc lỗi gameplay nghiêm trọng đã biết. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
@@ -90,4 +91,5 @@ Không có blocker hoặc lỗi gameplay nghiêm trọng đã biết. Vite cản
 - M6 Chromium: PASS corrupt/blocked storage, locale/mute/volume sau reload, audio buffers/phát SFX, bốn unlock/cosmetic persistence, pool mở thêm và không tăng stat vĩnh viễn.
 - Production `npm run preview`: PASS Start/movement/shoot/dash/Pause/settings/vi-en/resize 960×600, 1280×800, 1920×1080; không có runtime/network error.
 - Mô phỏng toàn run bằng input tự động, không sửa HP/damage: đủ ba draft, thắng Boss ở 259.4 giây, còn 26 HP. Lượt chỉ ưu tiên quái gần nhất sống tới deadline nhưng thua khi bỏ qua Boss.
+- Task main: MVP commit `3c24066`; đã đọc và giữ nguyên AGENTS/skill mới từ remote `b75ef2e`, giải quyết HANDOFF theo trạng thái MVP hiện tại. Merge chỉ thay Markdown, không lặp build/tests theo AGENTS; gameplay giữ nguyên bản đã PASS.
 - Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Chưa deploy/publish; chưa playtest thủ công trên thiết bị thật.
