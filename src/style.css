@@ -1,0 +1,68 @@
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #e5eeef;
+  background: #080c15;
+  font-synthesis: none;
+  color-scheme: dark;
+  --accent: #6bf3d0;
+  --muted: #8b9cae;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, select { font: inherit; }
+button, select { cursor: pointer; }
+button:disabled { opacity: .35; cursor: default; }
+button:focus-visible, select:focus-visible { outline: 2px solid #6bf3d0; outline-offset: 5px; }
+button { transition: background .15s, border-color .15s; }
+button:hover:not(:disabled) { filter: brightness(1.12); }
+#app { height: 100dvh; min-height: 520px; display: flex; flex-direction: column; padding: 0 32px; }
+.masthead { display: flex; align-items: center; justify-content: space-between; height: 100px; flex-shrink: 0; }
+.brand, .header-actions { display: flex; align-items: center; gap: 20px; }
+.sigil { color: var(--accent); font-size: 48px; }
+.eyebrow { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .18em; font-weight: 600; }
+h1 { margin: 5px 0 0; font-size: 20px; font-weight: 600; letter-spacing: .16em; }
+.language { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+select { background: #101825; border: 1px solid #2b3a48; padding: 8px; border-radius: 4px; color: #d7e5e6; }
+.secondary { background: transparent; color: #ccdedf; border: 1px solid #3b5157; border-radius: 4px; padding: 10px 18px; font-size: 12px; min-width: 100px; }
+.arena-shell { position: relative; flex: 1; min-height: 0; overflow: hidden; border: 1px solid #2b3b49; border-radius: 8px; background: #090d19; }
+#game { position: absolute; inset: 0; }
+#game canvas { display: block; }
+#game.playing canvas { cursor: crosshair; }
+.arena-top, .arena-bottom { position: absolute; left: 28px; right: 28px; display: flex; justify-content: space-between; pointer-events: none; }
+.arena-top { top: 24px; align-items: flex-start; }
+.arena-top p { margin: 7px 0 0; font-size: 14px; }
+.status { display: flex; gap: 8px; align-items: center; font-size: 10px; letter-spacing: .13em; color: #a5c7bf; background: #0b1420cc; border: 1px solid #274038; border-radius: 20px; padding: 9px 12px; }
+.status i { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+.arena-bottom { bottom: 20px; font-size: 9px; letter-spacing: .12em; color: #6c8192; gap: 20px; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; background: #070c1666; padding: 24px; }
+.overlay[hidden] { display: none; }
+.panel { width: 440px; max-width: 100%; text-align: center; padding: 28px 34px; background: #0c1423f2; border: 1px solid #354f53; border-radius: 8px; box-shadow: 0 24px 80px #0007; }
+.panel-sigil { display: block; color: var(--accent); font-size: 60px; line-height: 1; margin-bottom: 22px; text-shadow: 0 0 28px #6bf3d03d; }
+.panel .eyebrow { color: #91c1b7; }
+h2 { font-size: 29px; margin: 14px 0 12px; font-weight: 500; letter-spacing: -.03em; }
+.panel-body { color: #9eafc0; font-size: 14px; line-height: 1.7; margin: 0; }
+.mini-controls { display: flex; justify-content: center; gap: 24px; margin: 24px 0; }
+.mini-controls > span { display: flex; flex-direction: column; gap: 8px; align-items: center; font-size: 11px; color: var(--muted); }
+kbd { font: 10px "Segoe UI", Arial, sans-serif; letter-spacing: .06em; color: #d1dfdf; border: 1px solid #364450; background: #162130; border-radius: 4px; padding: 5px 8px; white-space: nowrap; }
+.primary { width: 100%; border: 1px solid var(--accent); background: var(--accent); color: #09231f; border-radius: 4px; padding: 13px 20px; font-weight: 600; }
+.scope { margin: 15px 0 0; color: #73879b; font-size: 10px; line-height: 1.5; }
+footer { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.control-bar { display: flex; align-items: center; gap: 24px; font-size: 11px; color: #98aaba; }
+.control-bar > span { display: inline-flex; align-items: center; gap: 8px; }
+.desktop-note { color: #607587; font-size: 10px; }
+@media (max-width: 900px) {
+  #app { padding: 0 14px; }
+  .masthead { height: 84px; }
+  .desktop-note, .control-bar > .eyebrow, .language > span { display: none; }
+  .control-bar { gap: 16px; }
+  .header-actions { gap: 10px; }
+  .arena-top, .arena-bottom { left: 18px; right: 18px; }
+}
+@media (max-height: 650px) {
+  .masthead { height: 72px; }
+  footer { min-height: 54px; }
+  .panel { padding: 18px 28px; }
+  .panel-sigil { font-size: 34px; margin-bottom: 10px; }
+  .mini-controls { margin: 16px 0; }
+  .arena-bottom { bottom: 10px; }
+}
