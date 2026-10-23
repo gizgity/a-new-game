@@ -4,7 +4,7 @@
 Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, chơi được trên desktop browser, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## ACTIVE TASK
-Bootstrap dự án và triển khai MVP theo các milestone. Session bootstrap M0/M1 đã hoàn thành; dừng trước M2 theo yêu cầu user.
+Cập nhật repository instructions và handoff workflow để chuẩn hóa kiến trúc source code — đã hoàn thành, chỉ sửa Markdown và dừng. Session bootstrap M0/M1 đã hoàn thành; M2 chưa được yêu cầu.
 
 ## TASK GOAL
 Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và triển khai tuần tự một bản game playable.
@@ -25,6 +25,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 - UI qua dictionary vi/en, mặc định vi; `npm run dev` và `npm run build` chạy được.
 - Chạy check cần thiết và playtest ngắn, cập nhật handoff; dừng trước M2.
 
+### Điều kiện hoàn thành task cấu hình agent hiện tại
+- AGENTS có cấu trúc source tham chiếu, coding conventions và Source of Truth.
+- Handoff tiếp tục task đang dở sau compact/session mới trong phạm vi được giao; hoàn thành milestone thì cập nhật và dừng.
+- Giữ nguyên goals, scope và quyết định đã xác nhận; không sửa gameplay, Game Brief hoặc dependencies, không tạo tài liệu mới.
+- Kiểm tra diff và tính nhất quán; không chạy build/test cho thay đổi chỉ Markdown.
+
 ## PROGRESS
 - [x] M0 — Agent foundation + Game Brief
 - [x] M1 — Game scaffold + movement + aiming + arena
@@ -35,6 +41,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 - [ ] M6 — Unlocks, localStorage, SFX và polish tối thiểu
 
 ## CURRENT STATUS
+Task cấu hình agent đã hoàn thành: cập nhật `AGENTS.md`, handoff skill và snapshot này; không triển khai gameplay hoặc thay đổi `GAME_BRIEF.md`.
 M0/M1 hoàn thành; goal MVP tổng thể chưa hoàn thành. Bốn file nền tảng được tạo đúng thứ tự trước scaffold/package/gameplay.
 Game chạy được: arena hình học, player WASD, mouse aim, camera follow/resize, Start/Pause/Resume (Esc hoặc nút), tự pause khi mất focus, UI vi/en.
 Chưa có combat, enemies, draft, run timer, save hoặc audio; thuộc M2–M6.
@@ -51,6 +58,8 @@ Chưa có combat, enemies, draft, run timer, save hoặc audio; thuộc M2–M6.
 - Di chuyển fixed timestep 60Hz, normalize hướng chéo, clamp biên arena; giới hạn catch-up 100ms/frame.
 - Logic di chuyển độc lập Phaser; arena/player vẽ bằng Graphics, UI dùng DOM + dictionary có kiểm tra key bằng TypeScript.
 - Không thêm suite E2E/CI; playtest dùng Chromium có sẵn và script tạm ngoài repo.
+- Kiến trúc source tham chiếu nằm trong `AGENTS.md`; chỉ tạo/tách module khi thực sự cần trong phạm vi task được giao. Code M1 vẫn dùng các đường dẫn bên dưới, chưa được di chuyển/refactor trong task tài liệu này.
+- Resume chỉ tiếp tục task đang dở đã được giao; hoàn thành milestone thì dừng, không tự bắt đầu milestone tiếp theo.
 
 ## RELEVANT FILES
 - `AGENTS.md`: quy tắc repository.
@@ -68,12 +77,17 @@ Chưa có combat, enemies, draft, run timer, save hoặc audio; thuộc M2–M6.
 - `npm run preview` để phục vụ bản build.
 
 ## NEXT ACTION
-M2 — triển khai melee, ranged, dash và enemy combat theo GAME_BRIEF.md khi user yêu cầu tiếp tục.
+Dừng và chờ yêu cầu mới của user; chỉ triển khai M2 — melee, ranged, dash và enemy combat theo GAME_BRIEF.md — khi user yêu cầu tiếp tục.
 
 ## BLOCKERS
 Không có blocker M0/M1. Vite cảnh báo bundle lớn vì Phaser (~1.22 MB JS, gzip ~336 KB); chưa tối ưu thêm ở M1.
 
 ## LAST VALIDATION
+### Task cấu hình agent
+- Đã đối chiếu AGENTS, handoff skill, HANDOFF và GAME_BRIEF: quy tắc kiến trúc, Source of Truth, resume và dừng tại milestone nhất quán; goals/scope và quyết định trước đó được giữ nguyên.
+- Đã kiểm tra diff; chỉ thay đổi ba file Markdown, không tạo file mới. Không chạy build/test vì không đổi implementation.
+
+### M0/M1 (kết quả trước task cấu hình agent)
 - Đã kiểm tra repo trống và thứ tự/nội dung bốn file M0; đọc và sử dụng handoff skill.
 - `npm run build`: PASS, gồm `tsc --noEmit`; chỉ có cảnh báo dung lượng nêu trên.
 - `npm run dev`: khởi động thành công.
