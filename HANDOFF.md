@@ -4,7 +4,12 @@
 Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, chơi được trên desktop browser, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## ACTIVE TASK
-Bootstrap dự án và triển khai MVP theo các milestone. Session bootstrap M0/M1 đã hoàn thành; dừng trước M2 theo yêu cầu user.
+Đưa MVP đã kiểm thử lên nhánh main theo yêu cầu user. Giữ commit AGENTS/handoff mới trên remote, hợp nhất an toàn không force-push và xác minh remote main sau push. Repo private chưa có Pages/workflow/hosting; đang làm rõ có cần xuất bản thêm link chơi public.
+
+### Điều kiện hoàn thành task đưa lên main
+- Toàn bộ source/test/docs MVP được commit; bảo toàn thay đổi remote.
+- Hợp nhất vào main, kiểm tra thích hợp sau merge và push không force.
+- Xác nhận commit trên remote main; báo rõ trạng thái hosting và cập nhật handoff.
 
 ## TASK GOAL
 Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và triển khai tuần tự một bản game playable.
@@ -19,64 +24,70 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 - Có save unlock/settings bằng localStorage.
 - Build thành công, không có lỗi gameplay nghiêm trọng đã biết.
 
-### Điều kiện hoàn thành session M0/M1
-- Bốn file nền tảng đầy đủ; game brief giữ đúng scope.
-- Phaser + TypeScript + Vite; arena, player, WASD, mouse aim, camera/viewport và Start/Pause hoạt động.
-- UI qua dictionary vi/en, mặc định vi; `npm run dev` và `npm run build` chạy được.
-- Chạy check cần thiết và playtest ngắn, cập nhật handoff; dừng trước M2.
+Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và playtest Chromium. Chưa thay thế đánh giá combat feel thủ công trên thiết bị thật.
 
 ## PROGRESS
 - [x] M0 — Agent foundation + Game Brief
 - [x] M1 — Game scaffold + movement + aiming + arena
-- [ ] M2 — Melee, ranged, dash và enemy combat
-- [ ] M3 — Rupture, chain reaction, Charged Shots và Surge
-- [ ] M4 — Run timer, waves, Mutation/Curse drafts
-- [ ] M5 — Elite, Boss, victory/death và restart
-- [ ] M6 — Unlocks, localStorage, SFX và polish tối thiểu
+- [x] M2 — Melee, ranged, dash và enemy combat
+- [x] M3 — Rupture, chain reaction, Charged Shots và Surge
+- [x] M4 — Run timer, waves, Mutation/Curse drafts
+- [x] M5 — Elite, Boss, victory/death và restart
+- [x] M6 — Unlocks, localStorage, SFX và polish tối thiểu
 
 ## CURRENT STATUS
-M0/M1 hoàn thành; goal MVP tổng thể chưa hoàn thành. Bốn file nền tảng được tạo đúng thứ tự trước scaffold/package/gameplay.
-Game chạy được: arena hình học, player WASD, mouse aim, camera follow/resize, Start/Pause/Resume (Esc hoặc nút), tự pause khi mất focus, UI vi/en.
-Chưa có combat, enemies, draft, run timer, save hoặc audio; thuộc M2–M6.
+- Arena hình học; WASD/mouse aim, LMB combo L1/L2/L3, Shift Heavy/finisher, RMB Basic Shot, E Charged Shot, Space dash, Q Surge.
+- Rupture max 3; Shot/Heavy kích Detonate, chain budget 12/tick, Volatile nổ lan. Đủ 3 Charge Points đổi 1 Charged Shot, tối đa 3 viên; Surge max 100.
+- Dash hai charges, hồi tuần tự 2.8 giây; Perfect Dodge 0.08 giây đầu khi tránh hit thật. Có knockback/stagger/flash/hitstop/telegraph.
+- Run: Grunt/Archer từ đầu, Volatile sau 0:45; Mutation 1:00, Curse 2:00, Mutation 3:00; mỗi draft heal 10 HP không vượt max. Pause/draft đóng băng timer và combat.
+- Bulwark 2:30; Chain Warden 4:00 với sweep/vòng đạn/slam khóa vị trí; dưới nửa HP tăng nhịp. Boss không bị stun-lock bởi Basic Shot.
+- Victory khi Boss chết trước deadline; mutual kill cùng tick vẫn Victory. Tại tick 18000 (5:00) là deadline/Defeat. Hết HP có Defeat; Play Again reset toàn bộ run/build/resources.
+- Sáu Mutation/bốn Curse đã có hiệu ứng, mô tả vi/en và trade-off; xem bảng trong GAME_BRIEF.md. Draft ba lựa chọn adaptive/synergy/wildcard, không lặp Mutation đã sở hữu.
+- Bốn mục tiêu tích lũy: hạ 1 quái → Guard Breaker; 5 Detonate → Death Echo; 3 Perfect Dodge → Static Riposte; hạ Boss → cosmetic Prism. Ban đầu có bốn Mutation/ba Curse; không có permanent stat upgrades.
+- localStorage lưu locale/mute/volume/cosmetic/totals/unlocks; schema version 1, validate/whitelist, xử lý JSON hỏng/oversized/quota/security errors. Storage bị chặn vẫn chơi trong phiên.
+- Procedural SFX qua Phaser Sound Manager cho Light/Heavy Hit, Gun, Dash, Perfect Dodge, Detonate, Hurt; throttle/dedupe và giới hạn voices. UI/settings/HUD/draft/results vi/en, mặc định vi.
 
 ## KEY DECISIONS
-- Free-first, KISS, tiết kiệm token.
-- Phaser + TypeScript + Vite.
-- Neon Occult geometric pixel art.
-- UI i18n, mặc định tiếng Việt; desktop browser trước.
-- Không backend; localStorage là dữ liệu không đáng tin cậy.
-- Không có permanent stat upgrades.
-- `cursebreak` chỉ là codename nội bộ, không phải thương hiệu public.
-- Phaser 3.90, TypeScript 5.9, Vite 7; chỉ ba dependencies này, có package-lock.
-- Di chuyển fixed timestep 60Hz, normalize hướng chéo, clamp biên arena; giới hạn catch-up 100ms/frame.
-- Logic di chuyển độc lập Phaser; arena/player vẽ bằng Graphics, UI dùng DOM + dictionary có kiểm tra key bằng TypeScript.
-- Không thêm suite E2E/CI; playtest dùng Chromium có sẵn và script tạm ngoài repo.
+- Giữ nguyên Project Goal/scope: free-first, KISS, desktop browser, một arena, không backend/account/multiplayer/leaderboard/monetization.
+- Phaser 3.90 + TypeScript 5.9 + Vite 7, giữ package-lock; không thêm dependency.
+- `cursebreak` chỉ là codename nội bộ, không phải thương hiệu public. Art Neon Occult hình học gốc vẽ bằng Phaser Graphics.
+- Simulation fixed 60Hz, normalize hướng chéo, clamp arena, catch-up tối đa 100ms/frame. Logic gameplay độc lập Phaser; UI DOM + dictionary có kiểm tra key bằng TypeScript.
+- Balance là tham số tạm. Mutation/Curse/unlock được quyết định ở milestone tương ứng và ghi vào GAME_BRIEF.md.
+- Waves tối đa 18 enemies, sau Boss tổng cap 7; tối đa 80 projectiles/24 impacts/12 explosions mỗi tick. Swept segment-circle chống đạn xuyên mục tiêu; mỗi melee resolve một lần.
+- Không ECS/custom engine, replay framework, suite E2E/CI phức tạp. Focused tests dùng TypeScript compiler và Node test runner sẵn có.
+- Script playtest/ảnh/mô phỏng tạm ngoài repo. Khi kiểm tra Vite, import đúng URL module trong document (có thể có timestamp) để tránh tạo game thứ hai.
 
 ## RELEVANT FILES
-- `AGENTS.md`: quy tắc repository.
-- `.agents/skills/handoff/SKILL.md`: workflow handoff.
-- `GAME_BRIEF.md`: specification MVP.
-- `src/game/movement.ts`: tham số arena/player và bước di chuyển.
-- `src/game/ArenaScene.ts`: scene, input, camera, trạng thái ready/playing/paused và hình học.
-- `src/main.ts`, `src/style.css`: khởi tạo Phaser và UI.
-- `src/i18n.ts`: dictionary vi/en và `t(key)`.
-- `package.json`: dev/typecheck/build/preview; môi trường đã dùng Node 24, npm 11.
+- `AGENTS.md`, `.agents/skills/handoff/SKILL.md`: quy tắc/workflow.
+- `GAME_BRIEF.md`: scope/spec, bảng Mutation/Curse/unlock và tham số MVP.
+- `src/game/movement.ts`: arena và di chuyển.
+- `src/game/combat.ts`: combat/resources/collision, ba common enemies/Elite/Boss, feedback và sound cues.
+- `src/game/builds.ts`: IDs và lựa chọn draft.
+- `src/game/run.ts`: timeline/waves/drafts/heal/outcomes/restart.
+- `src/game/progression.ts`: validation/load/save, whitelist và bốn unlock.
+- `src/game/audio.ts`: procedural AudioBuffer qua Phaser Sound Manager, throttle/voice cap.
+- `src/game/ArenaScene.ts`: input, fixed simulation, camera, Graphics/telegraph và phase.
+- `src/main.ts`, `src/style.css`, `src/i18n.ts`: HUD/menu/settings/draft/results, profile lifecycle và vi/en.
+- `tests/combat.test.mjs`, `tests/run.test.mjs`, `tests/progression.test.mjs`: 30 focused tests.
 
 ## RUN
-- Từ root repo: `npm ci` nếu chưa có dependencies.
-- `npm run dev` (port mặc định 5173); `npm run build` gồm typecheck, output `dist/`.
-- `npm run preview` để phục vụ bản build.
+- Từ `/workspace/a-new-game`: `npm ci` nếu chưa có dependencies.
+- `npm run dev`: port 5173. `npm run build`: typecheck + production output `dist/`.
+- `npm run preview`: phục vụ bản production tại port 4173.
+- `npm test`: biên dịch logic sang `.test-build/` (gitignored), chạy Node focused tests.
 
 ## NEXT ACTION
-M2 — triển khai melee, ranged, dash và enemy combat theo GAME_BRIEF.md khi user yêu cầu tiếp tục.
+Commit MVP, hợp nhất origin/main, kiểm tra merge rồi push lên main và xác minh remote.
 
 ## BLOCKERS
-Không có blocker M0/M1. Vite cảnh báo bundle lớn vì Phaser (~1.22 MB JS, gzip ~336 KB); chưa tối ưu thêm ở M1.
+Không có blocker hoặc lỗi gameplay nghiêm trọng đã biết. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
 
 ## LAST VALIDATION
-- Đã kiểm tra repo trống và thứ tự/nội dung bốn file M0; đọc và sử dụng handoff skill.
-- `npm run build`: PASS, gồm `tsc --noEmit`; chỉ có cảnh báo dung lượng nêu trên.
-- `npm run dev`: khởi động thành công.
-- Playtest Chromium headless: PASS cho mặc định vi, Start, WASD, mouse aim, camera follow, Esc/nút Pause/Resume, bất động khi pause/ready, biên arena, pause khi blur, đổi en, viewport 960×600 / 1280×800 / 1920×1080.
-- Đã xem ảnh màn hình Start và đang chơi; không có browser runtime/network error trong lượt playtest đạt.
-- Chưa kiểm tra combat/M2–M6 vì chưa triển khai; chưa playtest thủ công trên thiết bị desktop của người dùng.
+- M3: PASS 16 tests, typecheck/build, Chromium LMB → tích Charge → E Detonate/chain → Q Surge, Pause và i18n.
+- M4: PASS 20 tests, typecheck/build, Chromium cả ba draft/ba lựa chọn/heal đúng một lần, freeze timer khi Pause/draft, locale và viewport 960×600.
+- M5: PASS 26 tests, typecheck/build, Chromium Boss spawn/HUD/telegraph, mutual-kill Victory, slain/deadline Defeat, Play Again reset và i18n.
+- M6/cuối: `npm test` PASS 30 tests; typecheck/build PASS, chỉ cảnh báo bundle nêu trên. Tests gồm build effects, chain budget, Boss cooldown, full timeline/deadline/mutual kill, save validation/fallback/idempotent unlocks.
+- M6 Chromium: PASS corrupt/blocked storage, locale/mute/volume sau reload, audio buffers/phát SFX, bốn unlock/cosmetic persistence, pool mở thêm và không tăng stat vĩnh viễn.
+- Production `npm run preview`: PASS Start/movement/shoot/dash/Pause/settings/vi-en/resize 960×600, 1280×800, 1920×1080; không có runtime/network error.
+- Mô phỏng toàn run bằng input tự động, không sửa HP/damage: đủ ba draft, thắng Boss ở 259.4 giây, còn 26 HP. Lượt chỉ ưu tiên quái gần nhất sống tới deadline nhưng thua khi bỏ qua Boss.
+- Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Chưa deploy/publish; chưa playtest thủ công trên thiết bị thật.
