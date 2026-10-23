@@ -4,12 +4,12 @@
 Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, chơi được trên desktop browser, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## ACTIVE TASK
-Đưa MVP đã kiểm thử lên nhánh main theo yêu cầu user. Giữ commit AGENTS/handoff mới trên remote, hợp nhất an toàn không force-push và xác minh remote main sau push. Repo private chưa có Pages/workflow/hosting; đang làm rõ có cần xuất bản thêm link chơi public.
+Đã đưa toàn bộ MVP lên `origin/main` theo yêu cầu user, không force-push. MVP commit `3c24066`; merge `2724ce0` bảo toàn remote commit `b75ef2e` (AGENTS/handoff mới). Repo private chưa có Pages/workflow/hosting, nên chưa có link chơi public; đã hỏi user có cần xuất bản thêm web.
 
 ### Điều kiện hoàn thành task đưa lên main
-- Toàn bộ source/test/docs MVP được commit; bảo toàn thay đổi remote.
-- Hợp nhất vào main, kiểm tra thích hợp sau merge và push không force.
-- Xác nhận commit trên remote main; báo rõ trạng thái hosting và cập nhật handoff.
+- Source/test/docs MVP được commit và push lên main; đã bảo toàn thay đổi remote.
+- Xác minh source/test sau merge giống bản MVP đã PASS; merge chỉ sửa Markdown nên không lặp build/tests theo AGENTS.
+- Đối chiếu remote main và local main, working tree sạch sau push; public hosting là bước riêng chưa có đích được chọn.
 
 ## TASK GOAL
 Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và triển khai tuần tự một bản game playable.
@@ -78,10 +78,10 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - `npm test`: biên dịch logic sang `.test-build/` (gitignored), chạy Node focused tests.
 
 ## NEXT ACTION
-Hoàn tất push nhánh main và xác minh remote; chỉ xuất bản web khi đã xác định đích hosting với user.
+Chờ user xác định có cần link chơi web public và chọn đích hosting; code MVP đã có trên main.
 
 ## BLOCKERS
-Không có blocker hoặc lỗi gameplay nghiêm trọng đã biết. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
+Không có blocker cho push main hoặc lỗi gameplay nghiêm trọng đã biết. Chưa có đích/cấu hình hosting để xuất bản web; repo private, Pages chưa bật và Actions chưa có workflow. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
 
 ## LAST VALIDATION
 - M3: PASS 16 tests, typecheck/build, Chromium LMB → tích Charge → E Detonate/chain → Q Surge, Pause và i18n.
@@ -91,5 +91,5 @@ Không có blocker hoặc lỗi gameplay nghiêm trọng đã biết. Vite cản
 - M6 Chromium: PASS corrupt/blocked storage, locale/mute/volume sau reload, audio buffers/phát SFX, bốn unlock/cosmetic persistence, pool mở thêm và không tăng stat vĩnh viễn.
 - Production `npm run preview`: PASS Start/movement/shoot/dash/Pause/settings/vi-en/resize 960×600, 1280×800, 1920×1080; không có runtime/network error.
 - Mô phỏng toàn run bằng input tự động, không sửa HP/damage: đủ ba draft, thắng Boss ở 259.4 giây, còn 26 HP. Lượt chỉ ưu tiên quái gần nhất sống tới deadline nhưng thua khi bỏ qua Boss.
-- Task main: MVP commit `3c24066`; đã đọc và giữ nguyên AGENTS/skill mới từ remote `b75ef2e`, giải quyết HANDOFF theo trạng thái MVP hiện tại. Merge chỉ thay Markdown, không lặp build/tests theo AGENTS; gameplay giữ nguyên bản đã PASS.
-- Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Chưa deploy/publish; chưa playtest thủ công trên thiết bị thật.
+- Task main: MVP commit `3c24066`; đã đọc và giữ nguyên AGENTS/skill mới từ remote `b75ef2e`, giải quyết HANDOFF theo trạng thái MVP hiện tại. Merge chỉ thay Markdown, không lặp build/tests theo AGENTS; gameplay giữ nguyên bản đã PASS. `git push -u origin main`: PASS; remote nhận `2724ce0`, bao gồm MVP và commit hướng dẫn mới.
+- Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Đã push main; chưa publish website và chưa playtest thủ công trên thiết bị thật.
