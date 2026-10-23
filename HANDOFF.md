@@ -4,12 +4,12 @@
 Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, chơi được trên desktop browser, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## ACTIVE TASK
-Đã đưa toàn bộ MVP lên `origin/main` theo yêu cầu user, không force-push. MVP commit `3c24066`; merge `2724ce0` bảo toàn remote commit `b75ef2e` (AGENTS/handoff mới). Repo private chưa có Pages/workflow/hosting, nên chưa có link chơi public; đã hỏi user có cần xuất bản thêm web.
+Sửa trang trắng trên `https://gizgity.github.io/a-new-game/` theo yêu cầu user. User đã public repo và bật Pages từ main; workflow Pages mặc định xuất source chưa build. Vite cũng chưa có base `/a-new-game/`.
 
-### Điều kiện hoàn thành task đưa lên main
-- Source/test/docs MVP được commit và push lên main; đã bảo toàn thay đổi remote.
-- Xác minh source/test sau merge giống bản MVP đã PASS; merge chỉ sửa Markdown nên không lặp build/tests theo AGENTS.
-- Đối chiếu remote main và local main, working tree sạch sau push; public hosting là bước riêng chưa có đích được chọn.
+### Điều kiện hoàn thành task sửa Pages
+- Build Vite với base `/a-new-game/`, deploy `dist/` qua GitHub Actions.
+- Typecheck/build PASS; Chromium tải assets, Start và Pause được dưới đúng subpath, không lỗi runtime/network.
+- Push main, xác minh workflow deploy; ghi rõ nếu chưa thể kiểm tra trực tiếp URL public.
 
 ## TASK GOAL
 Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và triển khai tuần tự một bản game playable.
@@ -55,10 +55,11 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - Balance là tham số tạm. Mutation/Curse/unlock được quyết định ở milestone tương ứng và ghi vào GAME_BRIEF.md.
 - Waves tối đa 18 enemies, sau Boss tổng cap 7; tối đa 80 projectiles/24 impacts/12 explosions mỗi tick. Swept segment-circle chống đạn xuyên mục tiêu; mỗi melee resolve một lần.
 - Không ECS/custom engine, replay framework, suite E2E/CI phức tạp. Focused tests dùng TypeScript compiler và Node test runner sẵn có.
-- Giữ nguyên AGENTS/handoff mới từ remote commit `b75ef2e`: Source of Truth, kiến trúc source tham chiếu và giới hạn resume theo phạm vi user giao. User đã cho phép hoàn thành toàn M3–M6; task hiện tại chỉ đưa code lên main, không tự refactor kiến trúc ngoài scope.
+- Giữ nguyên AGENTS/handoff mới từ remote commit `b75ef2e`: Source of Truth, kiến trúc source tham chiếu và giới hạn resume theo phạm vi user giao. User đã cho phép hoàn thành toàn M3–M6; task hiện tại sửa deployment Pages, không tự refactor kiến trúc ngoài scope.
 - Script playtest/ảnh/mô phỏng tạm ngoài repo. Khi kiểm tra Vite, import đúng URL module trong document (có thể có timestamp) để tránh tạo game thứ hai.
 
 ## RELEVANT FILES
+- `vite.config.ts`, `.github/workflows/pages.yml`: base `/a-new-game/`, build và deploy `dist/` lên Pages.
 - `AGENTS.md`, `.agents/skills/handoff/SKILL.md`: quy tắc/workflow.
 - `GAME_BRIEF.md`: scope/spec, bảng Mutation/Curse/unlock và tham số MVP.
 - `src/game/movement.ts`: arena và di chuyển.
@@ -78,12 +79,13 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - `npm test`: biên dịch logic sang `.test-build/` (gitignored), chạy Node focused tests.
 
 ## NEXT ACTION
-Chờ user xác định có cần link chơi web public và chọn đích hosting; code MVP đã có trên main.
+Push bản sửa đã kiểm thử lên main và kiểm tra deployment GitHub Pages.
 
 ## BLOCKERS
-Không có blocker cho push main hoặc lỗi gameplay nghiêm trọng đã biết. Chưa có đích/cấu hình hosting để xuất bản web; repo private, Pages chưa bật và Actions chưa có workflow. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
+Môi trường chặn truy cập trực tiếp `gizgity.github.io` và GitHub Pages settings API; kiểm tra deployment qua GitHub connector và kiểm thử bản build local dưới đúng subpath. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
 
 ## LAST VALIDATION
+- Sửa Pages: `npm run build` (gồm typecheck) PASS; Chromium trên static server tại `/a-new-game/` PASS assets/Start/WASD/shoot/dash/Pause/settings/i18n/resize, không lỗi runtime/network/HTTP. Không lặp gameplay tests vì chỉ sửa cấu hình build/deploy.
 - M3: PASS 16 tests, typecheck/build, Chromium LMB → tích Charge → E Detonate/chain → Q Surge, Pause và i18n.
 - M4: PASS 20 tests, typecheck/build, Chromium cả ba draft/ba lựa chọn/heal đúng một lần, freeze timer khi Pause/draft, locale và viewport 960×600.
 - M5: PASS 26 tests, typecheck/build, Chromium Boss spawn/HUD/telegraph, mutual-kill Victory, slain/deadline Defeat, Play Again reset và i18n.
@@ -92,4 +94,4 @@ Không có blocker cho push main hoặc lỗi gameplay nghiêm trọng đã bi�
 - Production `npm run preview`: PASS Start/movement/shoot/dash/Pause/settings/vi-en/resize 960×600, 1280×800, 1920×1080; không có runtime/network error.
 - Mô phỏng toàn run bằng input tự động, không sửa HP/damage: đủ ba draft, thắng Boss ở 259.4 giây, còn 26 HP. Lượt chỉ ưu tiên quái gần nhất sống tới deadline nhưng thua khi bỏ qua Boss.
 - Task main: MVP commit `3c24066`; đã đọc và giữ nguyên AGENTS/skill mới từ remote `b75ef2e`, giải quyết HANDOFF theo trạng thái MVP hiện tại. Merge chỉ thay Markdown, không lặp build/tests theo AGENTS; gameplay giữ nguyên bản đã PASS. `git push -u origin main`: PASS; remote nhận `2724ce0`, bao gồm MVP và commit hướng dẫn mới.
-- Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Đã push main; chưa publish website và chưa playtest thủ công trên thiết bị thật.
+- Đã xem ảnh draft, Boss telegraph, Victory/settings. `git diff --check`: PASS. Đã push MVP lên main; user sau đó public repo/bật Pages. Chưa playtest thủ công trên thiết bị thật.
