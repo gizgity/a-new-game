@@ -4,7 +4,7 @@
 Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, chơi được trên desktop browser, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## ACTIVE TASK
-Sửa trang trắng trên `https://gizgity.github.io/a-new-game/` theo yêu cầu user. User đã public repo và bật Pages từ main; workflow Pages mặc định xuất source chưa build. Vite cũng chưa có base `/a-new-game/`.
+Sửa trang trắng trên `https://gizgity.github.io/a-new-game/`. Đã push bản sửa `99b6b00`: Vite base `/a-new-game/` và workflow build/deploy `dist/`. Typecheck/build và Chromium subpath PASS; workflow mới deploy thành công. Còn cần đổi Pages Source sang GitHub Actions để workflow mặc định không xuất source chưa build ghi đè.
 
 ### Điều kiện hoàn thành task sửa Pages
 - Build Vite với base `/a-new-game/`, deploy `dist/` qua GitHub Actions.
@@ -79,12 +79,13 @@ Tất cả tiêu chí MVP trên đã đạt qua kiểm tra tự động và play
 - `npm test`: biên dịch logic sang `.test-build/` (gitignored), chạy Node focused tests.
 
 ## NEXT ACTION
-Push bản sửa đã kiểm thử lên main và kiểm tra deployment GitHub Pages.
+Sau khi user đổi Settings → Pages → Source sang GitHub Actions, chạy lại workflow Deploy game to GitHub Pages và xác minh deploy thành công. Đã gửi yêu cầu đổi setting vì connector không hỗ trợ Pages settings API.
 
 ## BLOCKERS
-Môi trường chặn truy cập trực tiếp `gizgity.github.io` và GitHub Pages settings API; kiểm tra deployment qua GitHub connector và kiểm thử bản build local dưới đúng subpath. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
+Pages vẫn chạy workflow mặc định từ main song song; cần user đổi Source sang GitHub Actions. Môi trường chặn truy cập trực tiếp `gizgity.github.io` và GitHub Pages settings API; kiểm tra deployment qua GitHub connector và kiểm thử bản build local dưới đúng subpath. Vite cảnh báo bundle Phaser ~1.25 MB JS/gzip ~347 KB; chưa tối ưu bundle. Chưa đánh giá chủ quan âm thanh/combat feel trên loa và thiết bị desktop của người dùng.
 
 ## LAST VALIDATION
+- GitHub Actions run `39965749122` của commit `99b6b00`: npm ci/build/upload/deploy đều PASS. Workflow mặc định `39965746141` deploy sau đó, cho thấy nguy cơ ghi đè nếu giữ Source cũ.
 - Sửa Pages: `npm run build` (gồm typecheck) PASS; Chromium trên static server tại `/a-new-game/` PASS assets/Start/WASD/shoot/dash/Pause/settings/i18n/resize, không lỗi runtime/network/HTTP. Không lặp gameplay tests vì chỉ sửa cấu hình build/deploy.
 - M3: PASS 16 tests, typecheck/build, Chromium LMB → tích Charge → E Detonate/chain → Q Surge, Pause và i18n.
 - M4: PASS 20 tests, typecheck/build, Chromium cả ba draft/ba lựa chọn/heal đúng một lần, freeze timer khi Pause/draft, locale và viewport 960×600.
