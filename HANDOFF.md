@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Mobile controls follow-up: user thường bấm ra ngoài joystick và bị native selection/zoom khi giữ hoặc bấm liên tục. Đã tăng vùng nhận chạm/visual joystick, chặn native gestures trong vùng chơi đang active; menu/settings/draft vẫn cuộn và desktop hoạt động. Build/typecheck + browser checks PASS, chuẩn bị deploy. Không đổi combat hoặc mở Q3–Q5; **AWAITING DEVICE PLAYTEST**.
+Mobile controls follow-up: user thường bấm ra ngoài joystick và bị native selection/zoom khi giữ hoặc bấm liên tục. Đã tăng vùng nhận chạm/visual joystick, chặn native gestures trong vùng chơi đang active; menu/settings/draft vẫn cuộn và desktop hoạt động. Build/typecheck + browser checks PASS, đã deploy Pages qua Actions success. Không đổi combat hoặc mở Q3–Q5; **AWAITING DEVICE PLAYTEST**.
 
 ## ACCEPTANCE — TOUCH FIX
 - Pad di chuyển tối thiểu 132×132 (trước 80×80); tap ngoài vòng cũ vẫn nhận, kéo ra ngoài pad vẫn giữ capture; không đè nút phải ở 320px/dọc/ngang/tablet.
@@ -91,6 +91,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Touch fix deploy: Actions run `40094746371`, đúng head `b94c45a9de8c3dde972d282413ae81d3432f387f`, completed/success; job `120874535521` npm ci/build/configure/upload/deploy đều PASS. Live: https://gizgity.github.io/a-new-game/. Handoff commit sau deploy chỉ Markdown, không đổi artifact.
 - Touch fix build/typecheck PASS. Browser Chromium touch 320×568,360×640,390×844,844×390,768×1024 PASS: pad tối thiểu132×132, không overlap/cắt; tap ngoài vòng40px cũ, kéo vượt pad, move+shoot hai ngón/nhả riêng/cancel; long press700ms,8 rapid taps,pinch giữ visualViewport.scale=1 và selection rỗng. Synthetic Safari gesture/selection/contextmenu events bị preventDefault khi playing; không thay Safari/iOS thật.
 - Menu/settings touch scroll PASS cả phone nhỏ/ngang; guard gỡ khi pause/draft, chọn option3 bằng tap được. Rotation/draft/pause trong lúc giữ joystick clear input, resume không bị dính. Không thêm unit tests mô phỏng CSS hoặc framework; combat.ts/builds/run không đổi, không chạy lại gameplay suite không liên quan.
 - Touch production `/a-new-game/` PASS ở 320×568,390×844,844×390 và desktop1440×1000: assets HTTP200, move+shoot, melee/dash, pause/resume; không runtime/request errors. Rotation/draft/choice/pause reset khi đang giữ joystick PASS. Đã xem screenshot production320; không overlap hoặc highlight chọn chữ.
@@ -108,7 +109,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User phản hồi Charged hiện tại chưa đủ lực; bản follow-up chờ chơi lại.
 
 ## NEXT ACTION
-Commit/push touch fix đã kiểm tra, theo dõi Actions tới success và cập nhật handoff; dừng chờ user thử trên máy thật.
+Dừng chờ user playtest bản touch fix trên điện thoại thật (đặc biệt Safari/iOS): vùng joystick, giữ/bấm nhanh/đa chạm có còn chọn chữ hoặc zoom. Chỉ sửa tiếp theo phản hồi; không tự mở Q3–Q5.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
