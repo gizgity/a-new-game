@@ -60,6 +60,11 @@ public/assets/
 - Không xuất logs dài nếu không có lỗi; không viết báo cáo dài hoặc tài liệu ngoài yêu cầu.
 - Báo cáo cuối task tối đa vài dòng: thay đổi, kiểm tra, blocker/next step.
 
+## Deployment
+- Người dùng đã cho phép tự deploy sau khi hoàn tất công việc và các kiểm tra phù hợp PASS, không cần chờ xác nhận riêng.
+- Dùng GitHub Actions `.github/workflows/pages.yml` để build `dist/` và deploy lên GitHub Pages đã setup; giữ Vite base `/a-new-game/`. Bảo toàn thay đổi remote, push `main` không force và theo dõi workflow tới trạng thái kết thúc.
+- Visual approval/device playtest còn thiếu phải ghi rõ trong handoff; việc deploy không đồng nghĩa experience acceptance. Không tự mở rộng checkpoint gameplay chưa được giao.
+
 ## Handoff — bắt buộc
 - Trước khi bắt đầu/resume task, đọc `HANDOFF.md`.
 - Nếu task chưa hoàn thành, tiếp tục theo NEXT ACTION trong phạm vi đã được giao sau compact/session mới mà không cần xin phép lại, trừ khi user giao mục tiêu mới.

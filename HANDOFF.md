@@ -65,7 +65,7 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 - CombatWorld/movement/run/builds và balance/timing/hitbox không sửa. Không thêm dependency/engine/QA framework.
 - Evidence mới: [production dọc](docs/mobile/portrait.png), [production ngang](docs/mobile/landscape.png), [move + shoot đa chạm](docs/mobile/move-and-shoot.png), [menu 320px](docs/mobile/small-menu.png), [draft phone](docs/mobile/phone-draft.png), [tablet](docs/mobile/tablet.png), [Boss preview](docs/mobile/boss-preview.png).
 - Evidence Q1 gốc: [cận cảnh](docs/q1/fractured-vessel.png), [động tác](docs/q1/actions.png), [GIF](docs/q1/action-preview.gif). GIF zoom 2×, cảnh kiểm tra riêng; draft/Boss ảnh mobile dùng fixture mở state thật. Các ảnh này không chứng minh full-run combat feel.
-- Source nền commit 09625b9 trên branch work; thay đổi Q1 + mobile còn trong working tree, chưa commit/push.
+- Code Q1 + mobile đã commit `4847aaf`; đang merge remote main `dc3aef5` để giữ `.github/workflows/pages.yml` và `vite.config.ts`. Handoff giữ trạng thái quality/mobile mới, bổ sung thông tin deployment remote. Đã giải quyết handoff conflict, giữ cấu hình Pages của remote; build + Chromium subpath PASS. Chuẩn bị push bản tích hợp.
 
 ## KEY DECISIONS
 - Free-first, KISS, mobile-first + desktop browser, một arena; không backend/account/multiplayer/leaderboard/monetization.
@@ -76,6 +76,7 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 - Deploy sau khi hoàn tất qua GitHub Actions/Pages đã setup, không chờ approval riêng; không dùng Sites/hosting khác. Không ECS/custom art engine, replay/QA framework hoặc dependency mới. Test/playtest scripts tạm ngoài repo; preview evidence cần giữ để review.
 
 ## RELEVANT FILES
+- vite.config.ts, .github/workflows/pages.yml: base `/a-new-game/`, Node 22, npm ci/build, upload dist và deploy Pages trên push main; Markdown-only không kích deploy.
 - AGENTS.md, .agents/skills/handoff/SKILL.md: workflow đã đọc.
 - GAME_BRIEF.md: source of truth, quality bar và ghi nhận lệch concept.
 - src/game/ArenaScene.ts: input/fixed step/render integration; src/game/combat.ts: combat state/timing.
@@ -88,6 +89,8 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 - npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Deployment checkpoint 2026-10-24: merge cấu hình Pages, `npm run build` (typecheck) PASS; Chromium production `/a-new-game/` PASS phone 390×844, ngang 844×390 và desktop 1440×1000: SVG HTTP 200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP error. Không lặp gameplay unit tests vì code combat không đổi so với bản đã PASS.
+- Remote Pages: `99b6b00` thêm workflow/base; `dc3aef5` ghi nhận kiểm thử. Run thủ công mới nhất `39966794448` success; lần trước có workflow dynamic ghi đè trước khi user setup lại Source. Theo dõi run sau push để xác minh bản mới.
 - Build cuối: `npm run build` PASS (gồm typecheck), `npm test` PASS các file combat/run/progression. Vite giữ cảnh báo chunk Phaser >500 kB (~1.27 MB JS, gzip 351 kB); chưa đánh giá hiệu năng trên máy thật.
 - Layout Chromium touch/DPR 2: 320×568, 360×640, 390×844, 844×390, 768×1024 PASS; page đúng viewport, controls ≥44px; tap Start, cả lựa chọn draft thứ ba, settings/mute, resume được. Đã xem screenshots dọc/ngang/menu/draft.
 - Touch CDP: PASS hai ngón move + aim/shoot, nhả độc lập, pointercancel, tap melee, Heavy, Charged, Surge, dash qua hitstop đúng một lần; cancel dash trong hitstop và tap recovery qua frame 100ms không tạo hành động trễ/lặp. Fixture riêng tắt waves, cấp tài nguyên để kiểm nút; không xem là run tự nhiên đầy đủ.
