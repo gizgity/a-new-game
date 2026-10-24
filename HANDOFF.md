@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Q2 đã deploy qua GitHub Actions: game `446b972` + polish touch `d237bf5`; run cuối **40046432042 — success**, đúng head `d237bf5e2f47a82107b3ddc8fa9b34a6371f3ca6`. URL: https://gizgity.github.io/a-new-game/. Workflow: https://github.com/gizgity/a-new-game/actions/runs/40046432042. Đã dừng implementation sau Q2 được giao. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
+Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Q2 đã deploy qua GitHub Actions: game `446b972` + polish touch `d237bf5`; run cuối **40046432042 — success**, đúng head `d237bf5e2f47a82107b3ddc8fa9b34a6371f3ca6`. URL: https://gizgity.github.io/a-new-game/. Workflow: https://github.com/gizgity/a-new-game/actions/runs/40046432042. User vừa xác nhận vấn đề chính là khó chuyển nhanh Chém/Bắn/Lướt: đã chuyển Lướt lên giữa phía trong thành tam giác gọn, Tích lực xuống góc dưới trong để không chồng nút. Build/typecheck, layout 5 kích thước và production smoke PASS; chờ deploy CSS cuối này. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
 
 ## ACCEPTANCE CRITERIA — Q2 + MOBILE
 - Cụm nút phải ưu tiên Chém/Bắn/Lướt theo tầm với ngón cái; đòn phụ phân cấp, Surge tránh bấm nhầm; targets ≥44px, không chồng/cắt ở 320px, dọc/ngang/tablet.
@@ -44,7 +44,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Mutation/Curse | Có 6/4 effects và trade-offs/tests | Nhiều stat-only; lịch sử M0/M1 chưa ghi concept effects gốc; không tự sáng tác concept thiếu |
 
 ## CURRENT STATUS
-- Cụm phải 184×184: Chém 68px dưới phải, Bắn 64px phía trên, Lướt 60px phía trong; Heavy/Tích lực 52px, Surge 48px tách góc trên. Joystick 80px để vừa 320px; portrait dành 204px controls, landscape overlay ở góc. Giữ safe-area/dvh, vi/en và pointer capture.
+- Cụm phải 184×184: Chém 68px dưới phải, Bắn 64px phía trên, Lướt 60px ở giữa phía trong (tam giác có khoảng tâm 78–82px để chuyển nhanh); Heavy/Tích lực 52px, Surge 48px tách góc trên. Joystick 80px để vừa 320px; portrait dành 204px controls, landscape overlay ở góc. Giữ safe-area/dvh, vi/en và pointer capture.
 - CombatWorld giữ một slot offensive buffer; tap mới thay slot, simultaneous ưu tiên Heavy. Dash/Surge có buffer ngắn riêng; capture trước hitstop, tuổi buffer chỉ giảm khi simulation chạy. Adapter consume tap mỗi tick để không lặp ở catch-up; keyboard/mouse cũng giữ được tap giữa hai tick.
 - Dash clear đòn/buffer cũ, không queue khi hết charge. Tap gần cuối dash nối đòn sau khi kết thúc; held inputs vẫn hoạt động. clearInput nối với pause/draft/results/reset/resize/blur/cancel; resize cũng reset keyboard/mouse.
 - Windup light 4/5/6 ticks, tổng đòn giữ nguyên. Aim theo windup và khóa ở contact. Blade/trail bắt đầu sweep trước damage một nửa sweep time, nên contact/hitstop nằm giữa nhát chém; bỏ full-arc flash cũ. Mỗi đòn resolve một lần.
@@ -82,11 +82,11 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - CDP touch PASS: move + aim/shoot, nhả độc lập/cancel; tap cuối recovery nối đúng một lần, tap sớm hết hạn; Light→Heavy, dash cancel, shoot cuối dash, Charged sau Heavy; dash/Surge qua hitstop và cancel dash. Phase pause/draft/defeat/victory/rotation clear input; vi/en PASS. Fixture tắt waves/cấp resource cho các edge cases này.
 - Natural-wave smoke ~20s bằng CDP touch: 90HP, 2 kills, 103 shots, không runtime error; scripted movement/aim, không cấp stats/resources hoặc bất tử. Không coi là human feel/full-run acceptance.
 - Desktop smoke PASS mouse tap, WASD + RMB, Shift/Space, Esc pause/resume không dư hành động.
-- Build/typecheck bản pose cuối và CSS tap-highlight cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
+- Build/typecheck bản pose cuối, CSS tap-highlight và bố cục tam giác cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User chỉ phản hồi bản trước Q2 “khá ổn”.
 
 ## NEXT ACTION
-Chờ user chơi bản Pages Q2 và phản hồi cụm Chém/Bắn/Lướt, nối đòn, dash cancel và impact trên điện thoại. Chỉ sửa tiếp theo phản hồi được giao; không tự triển khai Q3–Q5. Khi hoàn tất sửa đổi được giao và checks PASS, tự deploy như quyền đã cấp.
+Deploy bố cục tam giác đã kiểm tra theo phản hồi mới, cập nhật handoff rồi chờ user chơi lại; không tự triển khai Q3–Q5.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.

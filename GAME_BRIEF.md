@@ -24,7 +24,7 @@
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
 - Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Không đổi world coordinates, hitbox, AI hoặc timing.
 - Kiểm tra touch emulation dọc/ngang/tablet và desktop regression; phân biệt kết quả giả lập với thiết bị thật/Safari. Visual và combat feel trên thiết bị vẫn cần người dùng xác nhận.
-- Giữ giới hạn nội dung MVP. User đã giao Q2 cùng điều chỉnh cụm nút phải: Chém 68px ở góc dưới phải, Bắn 64px phía trên, Lướt 60px phía trong; Heavy/Tích lực/Surge tách khỏi các nút chính (48–52px). Bố cục cần playtest tầm với trên thiết bị thật; Q3–Q5 chưa triển khai.
+- Giữ giới hạn nội dung MVP. User đã giao Q2 cùng điều chỉnh cụm nút phải: Chém 68px ở góc dưới phải, Bắn 64px phía trên, Lướt 60px phía trong ở giữa Chém/Bắn để ba nút thành tam giác (tâm các nút cách nhau ~78–82px); Heavy/Tích lực/Surge tách khỏi các nút chính (48–52px). Bố cục cần playtest tầm với trên thiết bị thật; Q3–Q5 chưa triển khai.
 
 ## Điều khiển desktop
 | Input | Hành động |
