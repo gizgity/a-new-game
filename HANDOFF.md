@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 follow-up theo playtest: Charged Shot chưa đủ lực, gần Basic Shot; user xác nhận phạm vi nổ ổn nhưng visual yếu. Đã nâng feedback khai hỏa/projectile/va chạm/Detonate của Charged; giữ damage/radius/timing/resources/chain và cụm controls đã deploy. Build/typecheck, 44 tests và browser checks PASS, chuẩn bị deploy. Không triển khai Q3–Q5; **AWAITING PLAYTEST APPROVAL**.
+Q2 follow-up theo playtest: Charged Shot chưa đủ lực, gần Basic Shot; user xác nhận phạm vi nổ ổn nhưng visual yếu. Đã nâng feedback khai hỏa/projectile/va chạm/Detonate của Charged; giữ damage/radius/timing/resources/chain và cụm controls đã deploy. Build/typecheck, 44 tests và browser checks PASS. Đã deploy game commit `17ec0bc4a7c5801cf8680b78b27ca1f3656bd00f`; Actions run **40078759766 — success**: https://github.com/gizgity/a-new-game/actions/runs/40078759766. Chơi: https://gizgity.github.io/a-new-game/. Không triển khai Q3–Q5; **AWAITING PLAYTEST APPROVAL**.
 
 ## ACCEPTANCE — CHARGED FEEDBACK
 - Charged khác Basic rõ ở kích thước chơi mobile: recoil/muzzle, silhouette projectile/trail, hit và blast theo pha core → shockwave → shards.
@@ -70,7 +70,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Free/open-source, KISS; Phaser 3.90 + TypeScript 5.9 + Vite 7; fixed 60Hz, catch-up tối đa 100ms; logic độc lập renderer. Không dependency mới.
 - UI vi/en qua t(key). Codename cursebreak không phải public brand; original Neon Occult / Fractured Geometry, không sao chép asset.
 - Quyền tự deploy sau checks PASS đã được user cấp và ghi AGENTS.md. Dùng `.github/workflows/pages.yml`, base `/a-new-game/`, dist qua GitHub Actions; bảo toàn remote, không force, theo dõi run tới kết thúc. Không Sites/hosting khác.
-- Remote main được bảo toàn, push không force. Code Q2 `446b972`, polish `d237bf5`, bố cục tam giác cuối `4f10e2f`; commit handoff sau deploy chỉ Markdown, không đổi artifact.
+- Remote main được bảo toàn, push không force. Q2 + bố cục tam giác `4f10e2f`; Charged feedback mới `17ec0bc`; commit handoff sau deploy chỉ Markdown, không đổi artifact.
 
 ## RELEVANT FILES
 - GAME_BRIEF.md: quality bar, scope và contract Q2; AGENTS.md + .agents/skills/handoff/SKILL.md đã đọc.
@@ -83,6 +83,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Charged deployment: Actions run `40078759766`, đúng head `17ec0bc`, completed/success; job `120827700850` npm ci/build/configure/upload/deploy đều PASS. Commit handoff sau deploy chỉ Markdown, không thay artifact.
 - Charged follow-up: build/typecheck PASS, 44 test definitions PASS (thêm 3 contract tests: không thêm AoE khi không Rupture, damage/radius 105/142 giữ nguyên, chain/VFX bounded và reset/lifetime). Geometry-only tweak cuối đã build lại; không lặp logic tests khi mechanics không đổi.
 - Charged CDP touch/keyboard PASS 320×568, 390×844, 844×390, desktop 1440×1000: đúng 1 shot/ammo, chargedGun/chargedBlast cue, radius105, WebAudio running, pause giữ life/pose, resume hết hiệu ứng. Fixture cấp ammo/marked target, không đánh giá âm thanh trên máy thật.
 - Production `/a-new-game/` cùng 4 kích thước PASS asset HTTP200, shoot/dash/pause/resume, không page/request errors. Charged fixture chạy dev, production smoke dùng input thật không inject resources. Đã xem fire/blast và render chuỗi 72 frames Basic→Charged thành GIF; không tự kết luận feel accepted.
@@ -96,7 +97,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User phản hồi Charged hiện tại chưa đủ lực; bản follow-up chờ chơi lại.
 
 ## NEXT ACTION
-Commit/push Charged feedback đã kiểm tra và theo dõi Actions tới success; cập nhật handoff, dừng chờ user chơi bản mới.
+Chờ user chơi bản Pages và đánh giá lực khai hỏa/vụ nổ Charged; giữ AWAITING PLAYTEST APPROVAL. Chỉ sửa tiếp theo phản hồi được giao, không tự triển khai Q3–Q5; sau checks PASS tự deploy theo quyền đã cấp.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
