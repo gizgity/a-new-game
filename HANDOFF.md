@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Bản sửa tổng hợp theo toàn bộ feedback đang active: Charged giữ-ngắm/thả-bắn; Heavy giới hạn lượt, mạnh hơn Light; quái tăng sức mạnh theo thời gian; cột Charged→Heavy→Dash; Perfect Dodge thực dụng hơn; va chạm thân lính; ranged build có nguồn charge/synergy; Mutation/Curse theo kills. Implementation và checks PASS, đang chốt deploy. **AWAITING PLAYTEST/VISUAL APPROVAL**, không bỏ phần specials/layout khi thêm feedback mới.
+Bản sửa tổng hợp theo toàn bộ feedback đang active: Charged giữ-ngắm/thả-bắn; Heavy giới hạn lượt, mạnh hơn Light; quái tăng sức mạnh theo thời gian; cột Charged→Heavy→Dash; Perfect Dodge thực dụng hơn; va chạm thân lính; ranged build có nguồn charge/synergy; Mutation/Curse theo kills. Implementation và checks PASS, đã deploy Pages qua GitHub Actions success. **AWAITING PLAYTEST/VISUAL APPROVAL**, không bỏ phần specials/layout khi thêm feedback mới.
 
 ## ACCEPTANCE
 - Mobile/desktop giữ Charged/Heavy chỉ ngắm; nhả đúng1lần theo hướng nhả, không tự lặp. Pause/blur/cancel/resize/draft xóa giữ và buffer; hết tài nguyên không queue chờ hồi.
@@ -77,6 +77,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Deployment tổng hợp: Actions `40122478494`, head `066e0428c3abc27821acfcb7fe754a4ff6686b7f`, completed/success; job `120956831956` npm ci/build/configure/upload/deploy đều PASS. Live https://gizgity.github.io/a-new-game/. Commit handoff sau deploy chỉ Markdown.
 - npm test PASS:58definitions/3files. Bao gồm command-once/aim buffer, empty/cancel/regen/reset Heavy; damage/telegraph/scale thực cả projectile/melee; dodge sớm/trễ/trống/đạn đi xa/né ra ngoài; body walk/slide/dash; ranged-only ammo/Catalyst/blast synergies; kill draft pause/heal/overshoot/choose-once/reset; các regression chain/Boss/progression cũ.
 - Build/typecheck PASS sau chỉnh predicate telegraph cuối; bundle warning Phaser>500KB là hiện trạng (~1.28MB/gzip356KB), không mở scope bundling.
 - CDP touch320×568/360×640/390×844/844×390/768×1024 PASS: bounds/no overlaps/order column; giữ1s không tiêu, drag ngoài rồi thả đúng1lần/angle snapshot dù ngón trái đổi hướng; independent release/cancel/pause/rotation; desktop E/Shift giữ/thả và Esc cancel PASS. Không selection/zoom/runtime errors.
@@ -86,7 +87,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Baseline deploy trước: crowd/combo Actions40097407500 headf2b9a80 success; aim/opening40095777323 headf4c19ed success; touch40094746371 headb94c45a success; Charged40078759766 head17ec0bc success.
 
 ## NEXT ACTION
-Commit/push toàn bộ task đã kiểm, theo dõi Actions tới success rồi dừng chờ user playtest.
+Dừng chờ user playtest toàn bộ bản mới: giữ/thả Charged/Heavy, cột nút, physical body/dodge, ranged synergy, scaling và kill drafts. Chỉ sửa theo phản hồi; không tự mở milestone/content khác.
 
 ## BLOCKERS
 Không blocker implementation. Pages URL trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Chưa kiểm máy thật/Safari hoặc full-run; không tự accepted visual/feel.
