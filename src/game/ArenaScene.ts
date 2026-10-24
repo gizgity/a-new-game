@@ -248,8 +248,8 @@ export class ArenaScene extends Phaser.Scene {
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / 0.18;
       if (impact.kind) {
-        const heavy = impact.kind === 'heavy';
-        const spread = (heavy ? 32 : 20) * (1 - fade);
+        const heavy = impact.kind === 'heavy' || impact.kind === 'light3';
+        const spread = (heavy ? 32 : impact.kind === 'light2' ? 26 : 20) * (1 - fade);
         const angle = impact.angle ?? 0;
         // Contact sparks travel along the blow, with a sharp cross-cut on impact.
         g.lineStyle(heavy ? 3 : 2, impact.color, fade);

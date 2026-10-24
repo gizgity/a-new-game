@@ -82,13 +82,16 @@ test('unbuffed opening Grunt dies to two Light hits or Light + Basic detonation'
   if(followup==='shoot')assert.equal(world.detonations,1);
  }
 });
-test('opening ramps gently, then restores standard waves without healing survivors; restart resets opening',()=>{
- const {world,run}=setup();assert.equal(world.enemies.length,3);
- assert.deepEqual(world.enemies.map(e=>e.kind),['grunt','grunt','archer']);
+test('opening spawns bounded Grunt packs, preserves HP ramp and resets cleanly',()=>{
+ const {world,run}=setup();assert.equal(world.enemies.length,7);
+ assert.equal(world.enemies.filter(e=>e.kind==='grunt').length,6);
+ assert.equal(world.enemies.filter(e=>e.kind==='archer').length,1);
+ assert.ok(Math.hypot(world.enemies[0].x-world.enemies[1].x,world.enemies[0].y-world.enemies[1].y)<65);
  const step=()=>{world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);};
- for(let i=0;i<149;i++)step();assert.equal(world.enemies.length,3);
- step();assert.equal(world.enemies.length,4);
- for(let i=150;i<3599;i++)step();assert.equal(world.enemies.length,8);assert.equal(run.draft.length,0);
+ for(let i=0;i<89;i++)step();assert.equal(world.enemies.length,7);
+ step();assert.equal(world.enemies.length,10);
+ for(let i=90;i<3599;i++)step();assert.equal(world.enemies.length,18);
+ assert.ok(world.enemies.filter(e=>e.kind==='archer').length<=3);assert.equal(run.draft.length,0);
  const survivor=world.enemies[0];survivor.hp=9;world.enemies=[survivor];
  step();assert.equal(run.draft.length,3);assert.equal(run.elapsed,60);
  assert.equal(survivor.hp,9);assert.equal(world.enemies[1].maxHp,36);
@@ -97,7 +100,7 @@ test('opening ramps gently, then restores standard waves without healing survivo
  run.ticks=7199;run.spawnTicks=150;world.enemies=[survivor];
  step();assert.equal(world.enemies[1].maxHp,66);assert.equal(run.draftKind,'curse');
  assert.equal(survivor.hp,9);
- run.start();assert.equal(world.enemies.length,3);assert.equal(world.enemies[0].maxHp,36);
+ run.start();assert.equal(world.enemies.length,7);assert.equal(world.enemies[0].maxHp,36);
  assert.equal(world.mutations.length,0);assert.equal(run.elapsed,0);
 });
 test('standard enemy HP follows kind, independent of spawn order; Elite/Boss health unchanged',()=>{

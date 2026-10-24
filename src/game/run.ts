@@ -1,4 +1,4 @@
-import { ENEMY_HP, OPENING } from './config/balance.js';
+import { ENEMY_HP, OPENING, WAVES } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, curseDraft, mutationDraft, type CurseId, type DraftOption, type MutationId } from './builds.js';
 
@@ -13,6 +13,7 @@ export class RunDirector {
   bossDue = false;
   private draftIndex = 0;
   private spawnTicks = 0;
+  private waveIndex = 0;
   mutationPool: readonly MutationId[] = MUTATIONS;
   cursePool: readonly CurseId[] = CURSES;
 
@@ -23,8 +24,11 @@ export class RunDirector {
     this.world.reset();
     this.world.practice = false;
     this.world.enemies = [];
-    this.ticks = this.draftIndex = this.spawnTicks = 0;
-    for (let i = 0; i < OPENING.initialCount; i++) this.spawnCommon(i % 3 === 2 ? 'archer' : 'grunt');
+    this.ticks = this.draftIndex = this.spawnTicks = this.waveIndex = 0;
+    for (let i = 0; i < OPENING.initialCount; i++) {
+      this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt',
+        Math.floor(i / WAVES.packSize) * 2.39996 + (i % WAVES.packSize - 1) * WAVES.packSpread);
+    }
     this.expired = this.bossDue = this.eliteSpawned = false;
     this.result = this.reason = null;
     this.draft = [];
@@ -65,8 +69,15 @@ export class RunDirector {
     const cap = this.bossDue ? 7 : Math.floor(OPENING.enemyCap + (18 - OPENING.enemyCap) * blend);
     if (this.spawnTicks >= interval && this.world.enemies.length < cap) {
       this.spawnTicks = 0;
-      const index = Math.floor(this.elapsed) % 6;
-      this.spawnCommon(this.elapsed > 45 && index === 5 ? 'volatile' : index % 3 === 2 ? 'archer' : 'grunt');
+      const index = this.waveIndex++;
+      const count = Math.min(this.bossDue ? 1 : WAVES.packSize, cap - this.world.enemies.length);
+      for (let i = 0; i < count; i++) {
+        const special = i === count - 1;
+        const archerRoom = this.world.enemies.filter(enemy => enemy.kind === 'archer').length < WAVES.archerCap;
+        const kind = special && this.elapsed > 45 && index % 6 === 5 ? 'volatile'
+          : special && index % 4 === 3 && archerRoom ? 'archer' : 'grunt';
+        this.spawnCommon(kind, index * 2.39996 + (i - (count - 1) / 2) * WAVES.packSpread);
+      }
     }
   }
 
@@ -74,9 +85,9 @@ export class RunDirector {
     return Math.max(0, Math.min(1, (this.ticks - OPENING.durationTicks) / (OPENING.rampEndTicks - OPENING.durationTicks)));
   }
 
-  private spawnCommon(kind: 'grunt' | 'archer' | 'volatile'): void {
+  private spawnCommon(kind: 'grunt' | 'archer' | 'volatile', angle: number): void {
     const hp = Math.round(OPENING.hp[kind] + (ENEMY_HP[kind] - OPENING.hp[kind]) * this.openingBlend);
-    this.world.spawnEnemy(kind, hp);
+    this.world.spawnEnemy(kind, hp, angle);
   }
 
   choose(index: number): boolean {

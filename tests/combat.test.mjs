@@ -28,7 +28,7 @@ test('light combo advances L1/L2/L3 and Heavy rewards the finisher window', () =
     state.step({ ...idle, melee: true }, FIXED_STEP);
     assert.equal(state.attack.combo, combo);
     assert.equal(state.combo, combo);
-    advance(state, 0.4);
+    advance(state, 0.5);
   }
   state.step({ ...idle, heavy: true }, FIXED_STEP);
   assert.equal(state.attack.damage, 72);
@@ -501,9 +501,9 @@ test('Surge tap survives hitstop once, and cancellation discards it', () => {
   }
 });
 
-test('Light combo contact occurs on windup frames 4/5/6, with no early hit', () => {
+test('Light combo contact occurs on windup frames 4/6/10, with no early hit', () => {
   const state = emptyWorld();
-  for (const frames of [4, 5, 6]) {
+  for (const frames of [4, 6, 10]) {
     state.step({ ...idle, melee: true }, FIXED_STEP);
     for (let i = 1; i < frames - 1; i++) state.step(idle, FIXED_STEP);
     assert.equal(state.attack.resolved, false);
@@ -571,4 +571,35 @@ test('dense Charged chains retain one primary blast while effects and chain work
   state.reset();
   assert.equal(state.impacts.length, 0);
   assert.equal(state.soundEvents.length, 0);
+});
+
+
+test('L1/L2/L3 cleave widening groups once, preserve rear blind spot, and escalate contact feedback',()=>{
+ const stops=[];
+ for(const combo of [1,2,3]) {
+  const state=emptyWorld();state.combo=combo-1;state.comboWindow=1;
+  const angles=[-60,60,-95,95,-120,120,180];
+  for(const degrees of angles){state.spawnEnemy('grunt');Object.assign(state.enemies.at(-1),{
+   x:state.player.x+90*Math.cos(degrees*Math.PI/180),y:state.player.y+90*Math.sin(degrees*Math.PI/180),hp:500,maxHp:500,stagger:999});}
+  state.spawnEnemy('grunt');Object.assign(state.enemies.at(-1),{x:state.player.x+160,y:state.player.y,hp:500,stagger:999});
+  const targets=[...state.enemies];state.step({...idle,melee:true},FIXED_STEP);
+  assert.ok(state.soundEvents.includes(combo===1?'swing':`swing${combo}`));
+  while(!state.attack.resolved)state.step(idle,FIXED_STEP);
+  assert.equal(targets.filter(e=>e.hp<500).length,combo*2);
+  assert.equal(targets[6].hp,500);assert.equal(targets[7].hp,500);
+  const damaged=targets.filter(e=>e.hp<500);const hp=500-[18,22,30][combo-1];
+  assert.ok(damaged.every(e=>e.hp===hp&&e.rupture===1));
+  const cue=combo===1?'light':`light${combo}`;
+  assert.ok(state.soundEvents.includes(cue));assert.equal(state.impacts.filter(i=>i.kind===cue).length,combo*2);
+  stops.push(state.hitstop);advance(state,.15);assert.ok(damaged.every(e=>e.hp===hp));
+ }
+ assert.ok(stops[0]<stops[1]&&stops[1]<stops[2]);
+});
+test('held L1 then L2 clears an unbuffed cluster, grants charge per hit, and leaves rear target alive',()=>{
+ const state=emptyWorld();
+ for(const degrees of [-30,0,30,180]){state.spawnEnemy('grunt',36);Object.assign(state.enemies.at(-1),{
+  x:state.player.x+65*Math.cos(degrees*Math.PI/180),y:state.player.y+65*Math.sin(degrees*Math.PI/180),stagger:999});}
+ advance(state,.6,{...idle,melee:true});assert.equal(state.kills,3);assert.equal(state.enemies.length,1);
+ assert.equal(state.enemies[0].hp,36);assert.equal(state.chargedShots,2);
+ assert.equal(state.mutations.length,0);assert.equal(state.curse,null);
 });

@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 import type { SoundCue } from './combat';
 
 const tones: Record<SoundCue, [number, number, number]> = {
+  swing2: [650, 0.095, 0.7], swing3: [230, 0.16, 0.65],
+  light2: [460, 0.09, 0.4], light3: [145, 0.15, 0.5],
   chargedGun: [220, 0.16, 0.45], chargedBlast: [95, 0.26, 0.6],
   swing: [480, 0.075, 0.85], heavySwing: [190, 0.18, 0.8], shotHit: [940, 0.04, 0.45], chargedHit: [180, 0.10, 0.5],
   light: [330, 0.07, 0.35], heavy: [100, 0.14, 0.55], gun: [650, 0.055, 0.25],
@@ -39,7 +41,7 @@ export class ProceduralAudio {
     const now = performance.now();
     let count = 0;
     // Ưu tiên feedback quan trọng; không chồng âm vô hạn trong chain.
-    for (const cue of ['hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing'] as const) {
+    for (const cue of ['hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light3', 'light2', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing3', 'swing2', 'swing'] as const) {
       if (cue === 'detonate' && cues.includes('chargedBlast')) continue;
       if (!cues.includes(cue) || now - (this.last.get(cue) ?? -Infinity) < (cue === 'detonate' ? 140 : 65)) continue;
       if (count >= 3 || this.scene.sound.getAllPlaying().length >= 8) break;

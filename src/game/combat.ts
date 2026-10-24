@@ -1,4 +1,4 @@
-import { ENEMY_HP } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO } from './config/balance.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
@@ -8,7 +8,7 @@ export const COMBAT = {
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
-export type SoundCue = 'light' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
+export type SoundCue = 'light' | 'light2' | 'light3' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'swing2' | 'swing3' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
 
 export type CombatAction = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
 type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
@@ -31,7 +31,7 @@ export interface Attack {
 }
 export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number;
-  kind?: 'light' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast'; angle?: number;
+  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast'; angle?: number;
 }
 interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean }
 
@@ -156,9 +156,9 @@ export class CombatWorld {
     for (let i = 0; i < COMBAT.enemyCount; i++) this.spawnEnemy();
   }
 
-  spawnEnemy(kind?: Enemy['kind'], maxHp?: number): void {
+  spawnEnemy(kind?: Enemy['kind'], maxHp?: number, spawnAngle?: number): void {
     const id = this.nextId++;
-    const angle = id * 2.39996;
+    const angle = spawnAngle ?? id * 2.39996;
     kind ??= id % 6 === 5 ? 'volatile' : id % 3 === 2 ? 'archer' : 'grunt';
     const enemy: Enemy = {
       id, kind,
@@ -260,7 +260,7 @@ export class CombatWorld {
               enemy.rupture = Math.min(3, enemy.rupture + 1);
               this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
             }
-            this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? 54 : 22, attack.heavy ? 0.45 : 0.16, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : 'light');
+            this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? 54 : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? 0.45 : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light');
           }
         }
       }
@@ -280,24 +280,25 @@ export class CombatWorld {
 
   private beginAttack(heavy: boolean): void {
     this.stats.melee++;
-    this.cue(heavy ? 'heavySwing' : 'swing');
     if (this.curse === 'bloodPact' && !heavy) this.hp = Math.max(1, this.hp - 1);
     const finisher = heavy && this.combo === 3 && this.comboWindow > 0;
     if (!heavy) this.combo = this.combo % 3 + 1;
+    const light = LIGHT_COMBO[Math.max(0, this.combo - 1)];
+    this.cue(heavy ? 'heavySwing' : this.combo === 3 ? 'swing3' : this.combo === 2 ? 'swing2' : 'swing');
     this.attack = {
       heavy, combo: this.combo, angle: this.player.angle, age: 0,
-      windup: heavy ? 0.24 : [0, 4 / 60, 5 / 60, 6 / 60][this.combo],
-      duration: heavy ? 0.58 : [0, 0.24, 0.28, 0.36][this.combo],
-      range: (heavy ? 108 : 84) + (this.mutations.includes('phantomEdge') ? 20 : 0),
-      arc: heavy ? Math.PI * 0.95 : Math.PI * 0.8,
-      damage: heavy ? (finisher ? 72 : 48) : [0, 18, 22, 30][this.combo], resolved: false,
+      windup: heavy ? 0.24 : light.windup,
+      duration: heavy ? 0.58 : light.duration,
+      range: (heavy ? 128 : light.range) + (this.mutations.includes('phantomEdge') ? 20 : 0),
+      arc: heavy ? Math.PI * 7 / 6 : light.arc,
+      damage: heavy ? (finisher ? 72 : 48) : light.damage, resolved: false,
     };
     this.attack.damage *= (this.curse === 'bloodPact' ? 1.3 : 1) * (heavy && this.mutations.includes('guardBreaker') ? 1.3 : 1);
     if (heavy) this.combo = 0;
     this.comboWindow = 1.1;
   }
 
-  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' = 'blast'): void {
+  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' = 'blast'): void {
     if (enemy.hp <= 0) return;
     if (this.hp < this.maxHp / 2 && this.mutations.includes('berserker')) damage *= 1.25;
     if (enemy.kind === 'bulwark' && !bypassArmor) damage *= 0.55;
@@ -314,9 +315,9 @@ export class CombatWorld {
     if (enemy.kind !== 'boss') enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     enemy.flash = 0.12;
     this.cue(sound === 'blast' ? 'light' : sound);
-    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : 0xe5fff7,
+    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
       22, sound === 'blast' ? undefined : sound, angle);
-    const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.065 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
+    const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' || sound === 'light3' ? 0.065 : sound === 'light2' ? 0.045 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
     this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0) {
       this.kills++;

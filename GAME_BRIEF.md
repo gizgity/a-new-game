@@ -59,19 +59,31 @@
 - Chain Warden 1500 HP, ba telegraph luân phiên: chain sweep, vòng đạn, slam khóa vị trí. Dưới nửa HP tăng nhịp; không bị stun-lock bởi bắn thường.
 
 ### Q2 — timing, input và impact (chờ experience approval)
-- L1/L2/L3 lấy đà 4/5/6 simulation ticks (~67/83/100ms), tổng đòn 0.24/0.28/0.36s; Heavy giữ 0.24s lấy đà / 0.58s tổng. Hướng chém theo aim trong windup, khóa khi hit; mỗi đòn resolve một lần, recovery vẫn có commitment.
+- L1/L2/L3 lấy đà 4/6/10 simulation ticks (~67/100/167ms), tổng đòn 0.24/0.30/0.44s; Heavy giữ 0.24s lấy đà / 0.58s tổng. Hướng chém theo aim trong windup, khóa khi hit; mỗi đòn resolve một lần, recovery vẫn có commitment.
 - Một slot buffer tấn công, tối đa 120ms simulation time; tap mới thay ý định cũ, giữ qua hitstop. Tap cuối recovery/cooldown nối Light/Heavy/Shot/Charged; tap quá sớm hết hạn. Giữ nút vẫn lặp theo cadence hiện có. Input adapter giữ tap ngắn tới tick, không chạy lại mỗi catch-up tick.
 - Dash ưu tiên hủy đòn và buffer tấn công cũ; buffer ngắn riêng cho dash/Surge để tap qua hitstop không mất. Không xếp dash/Charged/Surge khi thiếu tài nguyên. Pause/draft/result/reset/resize/blur/pointercancel xóa ý định cũ; không queue nhiều đòn.
 - Dash bảo vệ toàn bộ các tick di chuyển, gồm tick cuối; timing Perfect Dodge, số charges, speed và recharge giữ nguyên. Tap cuối dash có thể nối sang tấn công khi dash kết thúc.
 - Miss có whoosh và slash nhưng không có contact spark/hitstop; Light mint, Heavy/Charged amber với recoil/impact mạnh hơn. Impact đặt tại điểm chạm trước knockback; Perfect Dodge dùng dấu gãy bốn hướng và notice hiện có. Sound trúng đạn khác sound chém.
-- Hitstop yêu cầu: Basic Shot 12ms, Light 33ms, Charged 40ms, Heavy 65ms (làm tròn lên tick 60Hz); blast/chain giữ quy tắc cũ. Không đổi damage, range, tài nguyên, AI, build hoặc chain depth ở Q2.
+- Hitstop: Basic Shot12ms, L1/L2/L3 33/45/65ms, Charged40ms, Heavy65ms (làm tròn lên tick60Hz); blast/chain giữ quy tắc cũ. Damage/tài nguyên/AI/build/chain giữ nguyên; user đã giao chỉnh melee range/arc, timing và density theo playtest.
 - Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Trúng không có Rupture chỉ có contact bloom nhỏ (0.24s); Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Không đổi damage/radius/shot speed/cooldown/hitstop hoặc cơ chế chain ở follow-up này.
 - Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
 
+### Crowd và combo — theo playtest mobile
+- L1 chém thuận nhanh, mint; L2 backhand ngược chiều, cyan, rộng hơn; L3 lấy đà/co lõi/bung vai rồi quét lớn với hai cạnh phân mảnh ivory/mint. Pose, độ dài blade, bề rộng/tồn tại trail, âm swing/contact và hitstop phân biệt; không chỉ đổi nhãn HUD.
+
+| Light | Windup / tổng | Range / góc quét | Damage / knockback |
+| --- | --- | --- | --- |
+| L1 | 4 ticks /0.24s | 100px /150° | 18 /18px |
+| L2 | 6 ticks /0.30s | 112px /200° | 22 /24px |
+| L3 | 10 ticks /0.44s | 128px /260° | 30 /38px |
+
+- Tất cả mục tiêu trong vùng đều nhận hit/Rupture/charge đúng một lần mỗi đòn. L3 vẫn chừa100° phía sau; không thêm đòn đánh360° hoặc auto-target. VFX theo đúng range/arc; Heavy range128px/góc210°, damage48/finisher72 và Detonate giữ nguyên. Phantom Edge vẫn +20px.
+- Quái xuất hiện theo cụm3 từ cùng hướng với góc cách0.16rad, khoảng cách spawn360px và tránh spawn trên player. Trước Boss cap18; Archer tối đa3, chỉ bổ sung một ở mỗi cụm thứ4; Volatile sau45s ở mỗi cụm thứ6. Boss vẫn cap7 và chỉ bổ sung từng quái, không mang pack pressure vào precision encounter.
+
 ### Cân bằng mở đầu — theo playtest mobile
-- Player damage/timing/resource giữ nguyên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
-- Trước Mutation đầu tiên (0–60s): Grunt36/Archer28/Volatile36 HP; bắt đầu 2 Grunt + 1 Archer, sinh tối đa một quái mỗi2.5s, cap8. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
-- Từ60–120s, HP quái mới, spawn interval và cap tăng tuyến tính từ mức mở đầu về mức chuẩn. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
+- Player damage/resource giữ nguyên; timing/cleave thay theo bảng combo ở trên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
+- Trước Mutation đầu tiên (0–60s): Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s, cap18. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
+- Từ60–120s, HP quái mới tăng tuyến tính từ mức mở đầu về mức chuẩn; interval từ90ticks tiến dần về cadence chuẩn, cap18 xuyên suốt. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
 - Cấu hình ở `src/game/config/balance.ts`; tests chỉ xác nhận thông số/interaction, độ khó cần user playtest.
 
 ## Run tối đa 5 phút

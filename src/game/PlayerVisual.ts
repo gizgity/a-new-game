@@ -5,6 +5,7 @@ const TEXTURE = 'fractured-vessel';
 const MINT = 0x8affe0;
 const AMBER = 0xffcc80;
 const GHOST_LIFE = 0.22;
+const sweepDuration = (attack: Attack) => attack.heavy ? 0.1 : [0, 0.065, 0.085, 0.14][attack.combo];
 const clamp = (value: number) => Phaser.Math.Clamp(value, 0, 1);
 
 /** Presentation only: authored sprite parts + poses driven by the existing simulation. */
@@ -194,7 +195,7 @@ export class PlayerVisual {
     this.blade.setScale(1).setAlpha(1);
     if (attack) {
       const direction = attack.combo === 2 ? -1 : 1;
-      const sweepTime = attack.heavy ? 0.1 : 0.065;
+      const sweepTime = sweepDuration(attack);
       const releaseStart = attack.windup - sweepTime / 2;
       const preparing = attack.age < releaseStart;
       const prepare = clamp(attack.age / releaseStart);
@@ -204,13 +205,23 @@ export class PlayerVisual {
       const angle = attack.angle + direction * (preparing
         ? -attack.arc / 2 - Math.sin(prepare * Math.PI) * 0.25
         : -attack.arc / 2 + release * attack.arc);
-      const reach = preparing ? 8 : 12 + Math.sin(release * Math.PI) * 6;
+      const finisher = !attack.heavy && attack.combo === 3;
+      const power = attack.heavy ? 0.65 : attack.combo === 3 ? 1.05 : attack.combo === 2 ? 0.65 : 0.4;
+      const reach = preparing ? 8 : 12 + Math.sin(release * Math.PI) * (finisher ? 12 : 6);
       this.blade.setPosition(Math.cos(angle) * reach, Math.sin(angle) * reach)
-        .setRotation(angle).setScale(1 + (attack.heavy ? 0.65 : 0.3) * (1 - recovery), 1);
-      this.rightArm.x += Math.cos(angle) * 3;
-      this.rightArm.y += Math.sin(angle) * 3;
-      this.torso.rotation += direction * (release - 0.5) * 0.22 * (1 - recovery);
-      if (preparing) this.core.setScale(0.72 + prepare * 0.18, 0.8 + prepare * 0.18);
+        .setRotation(angle).setScale(1 + power * (1 - recovery), 1);
+      this.rightArm.x += Math.cos(angle) * (finisher ? 8 : 5);
+      this.rightArm.y += Math.sin(angle) * (finisher ? 8 : 5);
+      this.leftArm.rotation -= direction * power * (1 - recovery);
+      this.torso.rotation += direction * (release - 0.5) * (finisher ? 1.1 : 0.65) * (1 - recovery);
+      const drive = preparing ? -prepare * power * 3 : Math.sin(release * Math.PI) * power * 6 * (1 - recovery);
+      this.torso.x += Math.cos(attack.angle) * drive;
+      this.torso.y += Math.sin(attack.angle) * drive;
+      this.head.x += Math.cos(attack.angle) * drive * 0.6;
+      this.leftFoot.x -= power * 3 * (1 - recovery);
+      this.rightFoot.x += power * 3 * (1 - recovery);
+      if (preparing) this.core.setScale(0.72 + prepare * power * 0.3, finisher ? 0.8 - prepare * 0.3 : 0.8 + prepare * 0.18);
+      else if (finisher) this.core.setScale(1.1 - recovery * 0.35, 1.1 - recovery * 0.3);
     } else {
       this.blade.setPosition(-facing * 10 + tuckX, 5 + bob + tuckY)
         .setRotation(dash ? world.dashAngle + Math.PI : Math.PI / 2 + facing * 0.28).setScale(0.85, 1);
@@ -222,10 +233,11 @@ export class PlayerVisual {
   }
 
   private drawSlash(x: number, y: number, attack: Attack): void {
-    const sweepTime = attack.heavy ? 0.1 : 0.065;
+    const sweepTime = sweepDuration(attack);
     const age = attack.age - (attack.windup - sweepTime / 2);
     if (age < 0) return;
-    const fade = 1 - clamp((age - sweepTime) / 0.09);
+    const finisher = !attack.heavy && attack.combo === 3;
+    const fade = 1 - clamp((age - sweepTime) / (finisher ? 0.15 : 0.09));
     if (fade <= 0) return;
     const progress = clamp(age / sweepTime);
     const direction = attack.combo === 2 ? -1 : 1;
@@ -234,19 +246,31 @@ export class PlayerVisual {
       x: x + Math.cos(start + direction * attack.arc * fraction) * radius,
       y: y + Math.sin(start + direction * attack.arc * fraction) * radius,
     });
-    const color = attack.heavy ? AMBER : MINT;
+    const color = attack.heavy ? AMBER : attack.combo === 2 ? 0x80e8ff : finisher ? 0xe5fff4 : MINT;
+    const width = attack.heavy ? 26 : [0, 14, 22, 34][attack.combo];
     // A moving, tapered cut at real reach; its leading edge follows the blade.
     const head = Math.max(0.12, progress);
-    const tail = Math.max(0, head - 0.65);
-    const outside = Array.from({ length: 6 }, (_, i) => polar(tail + (head - tail) * i / 5, attack.range));
-    const inside = Array.from({ length: 6 }, (_, i) => {
-      const t = i / 5;
-      return polar(head - (head - tail) * t, attack.range - Math.sin(t * Math.PI) * (attack.heavy ? 20 : 13));
+    const tail = Math.max(0, head - (finisher ? 0.85 : 0.65));
+    const segments = finisher ? 10 : 6;
+    const outside = Array.from({ length: segments }, (_, i) => polar(tail + (head - tail) * i / (segments - 1), attack.range));
+    const inside = Array.from({ length: segments }, (_, i) => {
+      const t = i / (segments - 1);
+      return polar(head - (head - tail) * t, attack.range - Math.sin(t * Math.PI) * width);
     });
-    this.slash.fillStyle(color, 0.45 * fade).fillPoints([...outside, ...inside], true);
-    this.slash.lineStyle(2, 0xe5fff4, fade).strokePoints(outside, false);
+    this.slash.fillStyle(color, (finisher ? 0.7 : 0.5) * fade).fillPoints([...outside, ...inside], true);
+    this.slash.lineStyle(finisher ? 4 : attack.combo === 2 ? 3 : 2, 0xe5fff4, fade).strokePoints(outside, false);
+    if (finisher) {
+      // A second broken edge marks the broad finisher, entirely inside its damage envelope.
+      for (let i = 0; i < 4; i++) {
+        const f = head - i * 0.18;
+        if (f < 0.08) continue;
+        this.slash.lineStyle(3, MINT, fade * 0.8).strokePoints([
+          polar(f, attack.range - 28), polar(f - 0.06, attack.range - 36), polar(f - 0.12, attack.range - 30),
+        ], false);
+      }
+    }
     // Detached slivers echo the fractured blade, remaining inside the attack envelope.
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < (finisher ? 5 : 3); i++) {
       const f = head - 0.12 - i * 0.16;
       if (f < 0) continue;
       this.slash.fillStyle(color, (0.65 - i * 0.12) * fade)
