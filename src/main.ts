@@ -3,6 +3,7 @@ import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS
 import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
+import { TouchControls } from './ui/TouchControls';
 import './style.css';
 
 const profile = loadProfile();
@@ -24,6 +25,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </header>
   <section class="arena-shell">
     <div id="game"></div>
+    <div id="touch-controls" class="touch-controls" hidden></div>
     <div class="arena-top"><div><span class="eyebrow" data-i18n="stage"></span><p data-i18n="arena"></p></div>
       <span class="status"><i></i><span id="status"></span></span>
     </div>
@@ -42,6 +44,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <span class="panel-sigil" aria-hidden="true">◇</span>
         <p class="eyebrow" data-i18n="subtitle"></p>
         <h2 id="panel-title"></h2><p id="panel-body" class="panel-body"></p>
+        <p class="touch-hint" data-i18n="touchHint"></p>
         <div class="mini-controls"><span><kbd data-i18n="moveKey"></kbd><span data-i18n="move"></span></span>
           <span><kbd data-i18n="mouse"></kbd><span data-i18n="aim"></span></span></div>
         <button id="primary" class="primary" disabled></button>
@@ -76,6 +79,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 const primary = document.querySelector<HTMLButtonElement>('#primary')!;
 const pause = document.querySelector<HTMLButtonElement>('#pause')!;
 const overlay = document.querySelector<HTMLDivElement>('#overlay')!;
+const touchControls = new TouchControls(document.querySelector<HTMLElement>('#touch-controls')!);
 let currentPhase: Phase = 'ready';
 
 function renderUI(phase: Phase = currentPhase): void {
@@ -86,7 +90,7 @@ function renderUI(phase: Phase = currentPhase): void {
   });
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
-  document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? 'welcomeBody' : 'pauseBody');
+  document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
   primary.textContent = t(phase === 'victory' || phase === 'defeat' ? 'playAgain' : phase === 'ready' ? 'start' : 'resume');
   pause.textContent = t(phase === 'paused' ? 'resume' : 'pause');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
@@ -96,7 +100,9 @@ function renderUI(phase: Phase = currentPhase): void {
   if (phase === 'draft') renderDraft();
   overlay.hidden = phase === 'playing';
   document.querySelector('#game')!.classList.toggle('playing', phase === 'playing');
-  document.querySelector('canvas')?.setAttribute('aria-label', t('arenaLabel'));
+  document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
+  touchControls.translate();
+  touchControls.setActive(phase === 'playing');
 }
 
 function resultBody(): string {
@@ -114,6 +120,7 @@ document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   if (button) arena.chooseDraft(Number(button.dataset.choice));
 });
 renderUI();
+touchControls.onModeChange = () => renderUI();
 document.querySelector<HTMLSelectElement>('#locale')!.value = profile.settings.locale;
 
 function persist(): void {
@@ -144,6 +151,7 @@ const dashValue = document.querySelector('#dash-value')!;
 const dashBar = document.querySelector<HTMLProgressElement>('#dash-recharge')!;
 const combatNotice = document.querySelector('#combat-notice')!;
 function renderCombatHUD(world: CombatWorld): void {
+  if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge);
   if (progression.observe(world, arena.run.result)) {
     applySettings();
     renderSettings();
@@ -184,10 +192,10 @@ export const arena = new ArenaScene((phase) => {
   persist();
 }, () => {
   primary.disabled = false;
-  document.querySelector('canvas')?.setAttribute('aria-label', t('arenaLabel'));
+  document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
   applySettings();
   renderSettings();
-}, renderCombatHUD);
+}, renderCombatHUD, touchControls);
 
 export const game = new Phaser.Game({
   type: Phaser.AUTO,

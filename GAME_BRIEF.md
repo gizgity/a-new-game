@@ -2,11 +2,31 @@
 
 ## Mục tiêu và phạm vi
 - Chưa chốt tên chính thức. `cursebreak` chỉ là codename nội bộ, không dùng làm thương hiệu public.
-- Top-down 2D action roguelike trên desktop browser, một arena duy nhất.
+- Top-down 2D action roguelike trên browser, **mobile-first** (điện thoại dọc/ngang và tablet), vẫn hỗ trợ desktop keyboard/mouse; một arena duy nhất.
 - Hybrid: fast-paced với quái thường, precision combat với Elite/Boss; skill/build khoảng 50/50.
 - Ưu tiên playable, combat feel, hiệu năng; free/open-source first và KISS.
 
-## Điều khiển
+## QUALITY BAR & EXPERIENCE ACCEPTANCE
+- Chức năng chạy được không đồng nghĩa tính năng hoàn thành. Phân biệt **Functional implementation** (logic hoạt động) và **Experience acceptance** (trải nghiệm đạt yêu cầu).
+- Combat phải có animation, timing, feedback và interaction có ý nghĩa; người chơi đọc được chuẩn bị, ra đòn và hồi phục.
+- Art phải thể hiện Neon Occult / Fractured Geometry; hình học debug không phải artwork final. Code-generated art vẫn phải có silhouette, chất liệu, phân lớp và chuyển động có chủ đích.
+- Mutation/Curse phải tạo khác biệt về cách chơi và synergy, không chỉ cộng chỉ số; Curse cần rủi ro ảnh hưởng quyết định khi chơi.
+- Enemy phải có telegraph, pattern và recovery rõ ràng, có thể đọc và phản ứng.
+- Chain Reaction phải là gameplay mechanic có setup, trigger và hệ quả chiến thuật, không chỉ VFX.
+- Mob combat tốc độ cao phải khác rõ Elite/Boss precision combat về nhịp, khoảng trống và quyết định.
+- Build/unit tests chỉ xác nhận phần kỹ thuật. Experience acceptance cần playtest và bằng chứng hình ảnh phù hợp; visual chưa được người dùng xác nhận phải ghi **AWAITING VISUAL APPROVAL**, không tự accepted.
+- Các quality checkpoint giữ nguyên quyết định đã khóa và giới hạn MVP; không thêm nội dung để thay thế việc cải thiện chất lượng.
+
+## Mobile-first — phạm vi mở rộng theo user
+- Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
+- Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; giữ Chém/Bắn và kéo để ngắm; nút Lướt, Đánh nặng, Đạn tích lực và Surge. Nhả giữ hướng ngắm gần nhất; không auto-aim hoặc đổi balance.
+- Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
+- HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
+- Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Không đổi world coordinates, hitbox, AI hoặc timing.
+- Kiểm tra touch emulation dọc/ngang/tablet và desktop regression; phân biệt kết quả giả lập với thiết bị thật/Safari. Visual và combat feel trên thiết bị vẫn cần người dùng xác nhận.
+- Giữ giới hạn nội dung MVP và Q2–Q5 chưa triển khai. Mobile controls/layout/camera là phần mở rộng được user giao sau Q1.
+
+## Điều khiển desktop
 | Input | Hành động |
 | --- | --- |
 | WASD | Di chuyển |
@@ -72,6 +92,10 @@ Mỗi draft có ba lựa chọn:
 - Curse luôn có lợi ích và rủi ro.
 - Hiệu ứng MVP được chọn ở M4; giá trị là tham số cân bằng sau playtest.
 
+**Trạng thái concept:** tên, số lượng và cấu trúc draft ở trên giữ nguyên. Hai bảng dưới mô tả **functional implementation hiện tại**, không phải xác nhận concept/trải nghiệm đã đạt. Phantom Edge, Berserker, Detonation Specialist, Volatile Soul và Ghost Step hiện chủ yếu là thay đổi chỉ số; Catalyst mới tăng tốc tích tài nguyên. Static Riposte, Guard Breaker, Blood Pact và Death Echo có trigger/trade-off tương tác nhưng chiều sâu synergy chưa được kiểm chứng. Cần đối chiếu concept gốc ở Q5, không hợp thức hóa các bản giản lược thành thiết kế final và không đổi hiệu ứng trong Q1.
+
+Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên tắc, chưa ghi hiệu ứng concept gốc chi tiết. Khi làm Q5 cần xác nhận phần nguồn còn thiếu; không tự suy diễn hiệu ứng từ tên. Adaptive Evolution hiện chọn bằng bộ đếm melee/shots/dashes và vài điều kiện synergy; nhãn Adaptive/Synergy chưa chứng minh lựa chọn phù hợp cách chơi.
+
 | Mutation | Hiệu ứng |
 | --- | --- |
 | Phantom Edge | Tầm melee +20 px |
@@ -104,6 +128,12 @@ Mỗi draft có ba lựa chọn:
 - Sprite/SFX có thể tạo bằng code; ưu tiên Phaser Graphics, SVG/PNG, Sharp chỉ nếu cần.
 - Không custom art engine, không sao chép asset từ game khác.
 
+### Fractured Vessel — nền tảng Q1
+- Player có lõi năng lượng trắng mint nằm trong khoảng hở giữa các mảnh giáp tối; mặt cắt jade, cạnh sáng và khe nứt giúp nhận diện ở kích thước chơi. Silhouette gồm đầu/mặt nạ có chóp gãy, vai bất đối xứng, thân rỗng và các chi tách rời.
+- Thân cơ sở 32×32; vũ khí và VFX có thể vượt khung, không thay collider. Idle: lõi thở và giáp lơ lửng; movement: nhịp chi và độ trễ các mảnh; melee: lấy đà, chém, hồi; shoot: giật súng/lõi và lóe nòng; dash: giáp co lại, bung mảnh và afterimages.
+- Slash là vệt cắt đa đoạn sắc cạnh biến đổi theo thời gian, đọc được hướng/tầm. Dash là dấu lưu hình các mảnh giáp ở vị trí đã đi qua. Mint là năng lượng player, amber nhấn Heavy/Charged; tránh che telegraph địch.
+- Repo chưa lưu Art Bible riêng; mục này cụ thể hóa Neon Occult / Fractured Geometry và yêu cầu Fractured Vessel của task Q1, chờ người dùng duyệt hình ảnh, không tuyên bố khôi phục đầy đủ một Art Bible không có trong repo.
+
 ## Audio
 - Procedural SFX đơn giản qua Phaser Sound Manager.
 - Ưu tiên Light/Heavy Hit, Gun, Dash, Perfect Dodge, Detonate, Player Hurt.
@@ -135,4 +165,4 @@ Mỗi draft có ba lựa chọn:
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-Session bootstrap chỉ M0/M1. M1 không triển khai combat nâng cao, Curse, Mutation hoặc Boss; chỉ sang M2 khi user yêu cầu.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2–Q5 chỉ được triển khai khi người dùng giao tiếp.

@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 import { ProceduralAudio } from './audio';
 import { RunDirector } from './run';
 import { CombatWorld } from './combat';
+import { PlayerVisual } from './PlayerVisual';
+import type { TouchControls } from '../ui/TouchControls';
 import { ARENA, FIXED_STEP, type PlayerState } from './movement';
 
 export type Phase = 'ready' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
@@ -16,7 +18,7 @@ export class ArenaScene extends Phaser.Scene {
   cosmetic: 'mint' | 'prism' = 'mint';
   private meleeHeld = false;
   private shootHeld = false;
-  private body!: Phaser.GameObjects.Container;
+  private vessel!: PlayerVisual;
   private reticle!: Phaser.GameObjects.Graphics;
   private keys!: Record<'W' | 'A' | 'S' | 'D' | 'SHIFT' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
   private accumulator = 0;
@@ -27,26 +29,20 @@ export class ArenaScene extends Phaser.Scene {
     private readonly onPhaseChange: (phase: Phase) => void,
     private readonly onReady: () => void,
     private readonly onCombatChange: (combat: CombatWorld) => void,
+    private readonly touch: TouchControls,
   ) {
     super('arena');
+  }
+
+  preload(): void {
+    PlayerVisual.preload(this);
   }
 
   create(): void {
     this.audio = new ProceduralAudio(this);
     this.drawArena();
     this.combatGraphics = this.add.graphics().setDepth(1);
-    const shadow = this.add.graphics().fillStyle(0x000000, 0.4).fillEllipse(0, 9, 36, 16);
-    const shape = this.add.graphics();
-    shape.lineStyle(1, 0x6bf3d0, 0.18).strokeCircle(0, 0, 25);
-    shape.fillStyle(0x173e40).fillPoints([
-      { x: 0, y: -16 }, { x: 16, y: 0 }, { x: 0, y: 16 }, { x: -16, y: 0 },
-    ], true);
-    shape.lineStyle(2, 0x6bf3d0).strokePoints([
-      { x: 0, y: -16 }, { x: 16, y: 0 }, { x: 0, y: 16 }, { x: -16, y: 0 },
-    ], true);
-    shape.fillStyle(0xe5fff7).fillRect(-5, -5, 10, 10);
-    shape.fillStyle(0x6bf3d0).fillTriangle(25, -5, 33, 0, 25, 5);
-    this.body = this.add.container(this.player.x, this.player.y, [shadow, shape]).setDepth(2);
+    this.vessel = new PlayerVisual(this, this.combat);
     this.reticle = this.add.graphics().setDepth(3).setVisible(false);
     this.reticle.lineStyle(1, 0x91ffe0, 0.8).strokeCircle(0, 0, 7);
     for (const sign of [-1, 1]) {
@@ -62,24 +58,27 @@ export class ArenaScene extends Phaser.Scene {
     });
     this.input.keyboard!.addCapture(['SPACE', 'SHIFT']);
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      if (this.phase !== 'playing') return;
+      if (this.phase !== 'playing' || pointer.wasTouch) return;
       this.meleeHeld = pointer.leftButtonDown();
       this.shootHeld = pointer.rightButtonDown();
     });
     this.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
+      if (pointer.wasTouch) return;
       this.meleeHeld = pointer.leftButtonDown();
       this.shootHeld = pointer.rightButtonDown();
     });
     this.input.on('gameout', () => { this.meleeHeld = this.shootHeld = false; });
     this.input.mouse!.disableContextMenu();
     this.cameras.main.setBounds(0, 0, ARENA.width, ARENA.height);
-    this.cameras.main.startFollow(this.body, true, 0.12, 0.12);
+    this.cameras.main.startFollow(this.vessel.body, true, 0.12, 0.12);
     this.resize(this.scale.gameSize);
     this.scale.on(Phaser.Scale.Events.RESIZE, this.resize, this);
     this.game.events.on(Phaser.Core.Events.BLUR, this.handleBlur, this);
+    this.game.events.on(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.scale.off(Phaser.Scale.Events.RESIZE, this.resize, this);
       this.game.events.off(Phaser.Core.Events.BLUR, this.handleBlur, this);
+      this.game.events.off(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
     });
     this.drawCombat();
     this.onCombatChange(this.combat);
@@ -89,10 +88,11 @@ export class ArenaScene extends Phaser.Scene {
   setPhase(phase: Phase): void {
     if (phase === 'playing' && (this.phase === 'ready' || this.phase === 'victory' || this.phase === 'defeat')) {
       this.run.start();
-      this.body.setPosition(this.player.x, this.player.y);
+      this.vessel.reset(this.combat);
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
     this.meleeHeld = this.shootHeld = false;
+    this.touch.reset();
     this.phase = phase;
     this.accumulator = 0;
     this.pendingDash = false;
@@ -109,48 +109,60 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   private resize(size: Phaser.Structs.Size): void {
-    this.cameras.main.setZoom(Math.min(size.width / 1120, size.height / 700));
+    const compact = this.touch.enabled || size.width < 700;
+    this.cameras.main.setZoom(compact
+      ? Phaser.Math.Clamp(Math.min(size.width / 480, size.height / 400), 0.75, 1.3)
+      : Math.min(size.width / 1120, size.height / 700));
+    this.pendingDash = false;
+    this.touch.reset();
   }
 
   update(_time: number, delta: number): void {
-    this.reticle.setVisible(this.phase === 'playing' && this.input.isOver);
+    this.reticle.setVisible(this.phase === 'playing' && (this.touch.enabled || this.input.isOver));
     if (this.phase !== 'playing') return;
 
     const pointer = this.input.activePointer;
-    if (this.input.isOver) {
+    const touch = this.touch.sample();
+    if (this.touch.enabled) {
+      if (touch.aimAngle !== null) this.player.angle = touch.aimAngle;
+      this.reticle.setPosition(this.player.x + Math.cos(this.player.angle) * 100,
+        this.player.y + Math.sin(this.player.angle) * 100);
+    } else if (this.input.isOver && !pointer.wasTouch) {
       this.cameras.main.getWorldPoint(pointer.x, pointer.y, this.aim);
       this.player.angle = Math.atan2(this.aim.y - this.player.y, this.aim.x - this.player.x);
       this.reticle.setPosition(this.aim.x, this.aim.y);
     }
     // Giới hạn catch-up; mọi cooldown và AI dùng cùng simulation 60Hz.
     this.accumulator += Math.min(delta / 1000, 0.1);
-    const input = {
-      dx: Number(this.keys.D.isDown) - Number(this.keys.A.isDown),
-      dy: Number(this.keys.S.isDown) - Number(this.keys.W.isDown),
-      melee: this.meleeHeld && this.input.isOver,
-      shoot: this.shootHeld && this.input.isOver,
-      heavy: this.keys.SHIFT.isDown,
-      charged: this.keys.E.isDown,
-      ultimate: this.keys.Q.isDown,
-      dash: Phaser.Input.Keyboard.JustDown(this.keys.SPACE),
-    };
     // Không mất Space ở frame chưa đủ một simulation tick.
-    this.pendingDash ||= input.dash;
+    const keyboardDash = Phaser.Input.Keyboard.JustDown(this.keys.SPACE);
+    this.pendingDash ||= keyboardDash;
     while (this.accumulator >= FIXED_STEP) {
-      input.dash = this.pendingDash;
+      // Consume taps once per unfrozen tick; re-sample so a short tap cannot repeat
+      // during catch-up, and cancelled touch never survives in the keyboard queue.
+      const touch = this.touch.sample();
+      const input = {
+        dx: touch.dx || Number(this.keys.D.isDown) - Number(this.keys.A.isDown),
+        dy: touch.dy || Number(this.keys.S.isDown) - Number(this.keys.W.isDown),
+        melee: touch.melee || this.meleeHeld && this.input.isOver,
+        shoot: touch.shoot || this.shootHeld && this.input.isOver,
+        heavy: touch.heavy || this.keys.SHIFT.isDown,
+        charged: touch.charged || this.keys.E.isDown,
+        ultimate: touch.ultimate || this.keys.Q.isDown,
+        dash: this.pendingDash || touch.dash,
+      };
       const frozen = this.combat.hitstop > 0;
       this.run.step(input, FIXED_STEP);
+      if (!frozen) this.vessel.step(this.combat, FIXED_STEP);
       this.audio.play(this.combat.soundEvents);
-      if (!frozen) this.pendingDash = false;
+      if (!frozen) { this.pendingDash = false; this.touch.consume(); }
       this.accumulator -= FIXED_STEP;
       if (this.run.result) { this.setPhase(this.run.result); break; }
       if (this.run.draft.length) { this.setPhase('draft'); break; }
     }
     this.drawCombat();
     this.onCombatChange(this.combat);
-    this.body.alpha = this.combat.invulnerable > 0 ? 0.6 + 0.4 * Math.cos(_time * 0.04) : 1;
-    this.body.setPosition(this.player.x, this.player.y);
-    this.body.rotation = this.player.angle;
+    this.vessel.render(this.combat, this.cosmetic);
   }
 
   private drawCombat(): void {
@@ -205,21 +217,6 @@ export class ArenaScene extends Phaser.Scene {
       const speed = Math.hypot(shot.vx, shot.vy) || 1;
       g.lineBetween(shot.x, shot.y, shot.x - shot.vx / speed * 16, shot.y - shot.vy / speed * 16);
       g.fillStyle(color).fillCircle(shot.x, shot.y, shot.hostile || shot.charged ? 5 : 3);
-    }
-    if (this.cosmetic === 'prism') g.lineStyle(1, 0xc399ff, 0.8).strokeRect(this.player.x - 22, this.player.y - 22, 44, 44);
-    const attack = world.attack;
-    if (attack) {
-      const active = attack.age >= attack.windup;
-      const color = attack.heavy ? 0xffcc80 : 0x9dffe2;
-      g.fillStyle(color, active ? 0.22 : 0.07);
-      g.lineStyle(active ? 3 : 1, color, active ? 0.9 : 0.35);
-      this.drawSector(g, this.player.x, this.player.y, attack.range, attack.angle, attack.arc);
-    }
-    if (world.dashTime > 0) {
-      for (let i = 1; i <= 3; i++) {
-        g.lineStyle(2, 0x6bf3d0, 0.5 / i).strokeCircle(this.player.x - Math.cos(world.dashAngle) * i * 18,
-          this.player.y - Math.sin(world.dashAngle) * i * 18, 16);
-      }
     }
     if (world.perfectFlash > 0) {
       g.lineStyle(2, 0x9dffe2, world.perfectFlash / 0.65).strokeCircle(this.player.x, this.player.y,

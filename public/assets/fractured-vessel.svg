@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="32" viewBox="0 0 256 32" shape-rendering="crispEdges">
+  <!-- Original 32px frames: cuirass, mask, left/right pauldrons, greave, core, blade, gun.
+       Dark outlines, jade planes and ivory fracture edges; transparent gaps are intentional. -->
+  <g id="cuirass">
+    <path fill="#060c18" d="M8 7 14 5 16 8 19 5 25 8 23 18 25 23 19 27 16 24 12 27 7 23 9 17Z"/>
+    <path fill="#19303d" d="M9 8 13 7 15 10 13 16 10 18ZM19 7 23 9 21 18 18 16 17 10ZM10 20 14 18 16 21 19 18 22 20 22 23 19 25 16 22 12 25 9 23Z"/>
+    <path fill="#3d716c" d="M9 8 13 7 14 9 10 11ZM19 7 23 9 22 12 19 10ZM10 20 14 18 14 21 10 23ZM18 20 20 19 22 20 19 23Z"/>
+    <path fill="#91dbc0" d="M9 8 13 7 13 8 9 10ZM19 7 23 9 23 10 19 8ZM10 20 14 18 14 19 10 21"/>
+    <path fill="#3b746e" d="M15 12H17V14H15ZM15 17H17V19H15"/>
+  </g>
+  <g id="mask" transform="translate(32)">
+    <path fill="#060c18" d="M8 8 12 11 16 8 20 11 24 6 23 19 19 24 13 24 9 20Z"/>
+    <path fill="#24434b" d="M10 11 13 13 16 10 20 13 22 10 21 19 18 22 14 22 11 19Z"/>
+    <path fill="#609d8b" d="M10 11 13 13 16 10 16 14 13 16 11 15ZM17 11 20 13 22 10 21 16 18 14Z"/>
+    <path fill="#d5f3d9" d="M10 10 12 12 12 14 10 12ZM22 9 23 7 22 13 21 14ZM16 10 17 11 17 14 16 13"/>
+    <path fill="#07121f" d="M11 16 15 17 16 16 20 15 20 18 17 20 14 20 11 18Z"/>
+    <path fill="#91ffe0" d="M12 16 15 17V18L12 17ZM17 17 20 16V17L17 18Z"/>
+    <path fill="#416760" d="M14 21H18L16 23Z"/>
+  </g>
+  <g id="left-pauldron" transform="translate(64)">
+    <path fill="#060c18" d="M8 10 17 8 23 14 21 20 14 24 8 20 10 16 7 15Z"/>
+    <path fill="#315951" d="M9 11 17 10 21 14 18 18 12 17 9 15Z"/>
+    <path fill="#72b29b" d="M9 11 17 10 20 13 15 12 9 14Z"/>
+    <path fill="#c7ecd5" d="M9 11 17 9 18 11 10 12Z"/>
+    <path fill="#182e3a" d="M10 19 13 18 18 20 14 22 10 21Z"/>
+    <path fill="#67b59c" d="M10 19 13 18 14 19 10 20ZM19 17 21 15 20 19 17 21 18 19Z"/>
+  </g>
+  <g id="right-pauldron" transform="translate(96)">
+    <path fill="#060c18" d="M9 10 17 7 24 13 22 18 18 19 18 23 11 22 8 17Z"/>
+    <path fill="#254851" d="M10 11 17 9 22 13 20 16 16 17 11 15Z"/>
+    <path fill="#6b9c8b" d="M10 11 17 9 21 12 16 12 11 14Z"/>
+    <path fill="#c7ecd5" d="M11 10 17 8 20 11 17 10 12 12Z"/>
+    <path fill="#223842" d="M11 18 16 19 16 22 12 21 10 19Z"/>
+    <path fill="#83dab8" d="M18 13H20V15H18ZM11 18 16 19V20L11 19Z"/>
+  </g>
+  <g id="greave" transform="translate(128)">
+    <path fill="#060c18" d="M12 10 19 11 20 17 22 20 20 23 11 22 10 18Z"/>
+    <path fill="#29424c" d="M13 12 18 12 18 18 20 20 18 21 12 20Z"/>
+    <path fill="#699b8a" d="M13 12 18 12 17 15 13 16Z"/>
+    <path fill="#b0dfc7" d="M13 11H18V12H13ZM12 20H18V21H12"/>
+  </g>
+  <g id="core" transform="translate(160)">
+    <path fill="#103e43" d="M16 7 22 14 20 21 16 25 10 19 11 12Z"/>
+    <path fill="#397c75" d="M16 8 20 13 19 19 16 23 12 18 13 12Z"/>
+    <path fill="#67f3c8" d="M16 10 19 14 17 17 19 18 16 22 13 18 15 15 13 14Z"/>
+    <path fill="#e9fff0" d="M16 11 18 14 16 17 14 14ZM16 18 17 19 16 21 15 19Z"/>
+  </g>
+  <g id="blade" transform="translate(192)">
+    <path fill="#060c18" d="M2 14H8V11H11V13H22L24 15 22 19H11V21H8V18H2Z"/>
+    <path fill="#648580" d="M3 15H8V17H3ZM9 12H10V20H9"/>
+    <path fill="#48796e" d="M11 14H21L23 15 20 18H11Z"/>
+    <path fill="#c9ffe3" d="M11 14H21L22 15H11Z"/>
+    <path fill="#75d7b8" d="M24 14 31 12 28 16 24 18Z"/>
+    <path fill="#e9fff0" d="M24 14 31 12 28 14 24 15Z"/>
+    <path fill="#7fffd2" d="M12 16H17V17H12"/>
+  </g>
+  <g id="gun" transform="translate(224)">
+    <path fill="#060c18" d="M5 12 10 10 15 12H28V18H14L12 22H7L8 17H5Z"/>
+    <path fill="#315057" d="M7 13 11 12 15 14H26V16H13L11 20H9L10 16H7Z"/>
+    <path fill="#71958a" d="M8 12 11 11 15 13H25V14H14L11 13Z"/>
+    <path fill="#18353e" d="M16 15H23V18H16Z"/>
+    <path fill="#b7ecd1" d="M24 13H27V17H24Z"/>
+    <path fill="#79ffd1" d="M11 14H15V16H11"/>
+  </g>
+</svg>
