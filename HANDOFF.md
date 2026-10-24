@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Q2 đã deploy qua GitHub Actions: game `446b972` + polish touch `d237bf5`; run cuối **40046432042 — success**, đúng head `d237bf5e2f47a82107b3ddc8fa9b34a6371f3ca6`. URL: https://gizgity.github.io/a-new-game/. Workflow: https://github.com/gizgity/a-new-game/actions/runs/40046432042. User vừa xác nhận vấn đề chính là khó chuyển nhanh Chém/Bắn/Lướt: đã chuyển Lướt lên giữa phía trong thành tam giác gọn, Tích lực xuống góc dưới trong để không chồng nút. Build/typecheck, layout 5 kích thước và production smoke PASS; chờ deploy CSS cuối này. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
+Q2 và cụm nút phải mobile đã triển khai/deploy. User playtest bản trước “khá ổn”, xác nhận khó chuyển nhanh Chém/Bắn/Lướt; bản cuối gom ba nút thành tam giác 78–82px giữa các tâm. Commit game cuối `4f10e2f`, Actions run **40046706621 — success**: https://github.com/gizgity/a-new-game/actions/runs/40046706621. Chơi: https://gizgity.github.io/a-new-game/. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới; chưa coi feedback bản cũ là duyệt visual Q1. Dừng sau Q2, Q3–Q5 chưa giao.
 
 ## ACCEPTANCE CRITERIA — Q2 + MOBILE
 - Cụm nút phải ưu tiên Chém/Bắn/Lướt theo tầm với ngón cái; đòn phụ phân cấp, Surge tránh bấm nhầm; targets ≥44px, không chồng/cắt ở 320px, dọc/ngang/tablet.
@@ -63,7 +63,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Free/open-source, KISS; Phaser 3.90 + TypeScript 5.9 + Vite 7; fixed 60Hz, catch-up tối đa 100ms; logic độc lập renderer. Không dependency mới.
 - UI vi/en qua t(key). Codename cursebreak không phải public brand; original Neon Occult / Fractured Geometry, không sao chép asset.
 - Quyền tự deploy sau checks PASS đã được user cấp và ghi AGENTS.md. Dùng `.github/workflows/pages.yml`, base `/a-new-game/`, dist qua GitHub Actions; bảo toàn remote, không force, theo dõi run tới kết thúc. Không Sites/hosting khác.
-- Remote main được bảo toàn, push không force. Code Q2 `446b972` + CSS polish `d237bf5`; commit handoff sau deploy chỉ Markdown, không đổi artifact.
+- Remote main được bảo toàn, push không force. Code Q2 `446b972`, polish `d237bf5`, bố cục tam giác cuối `4f10e2f`; commit handoff sau deploy chỉ Markdown, không đổi artifact.
 
 ## RELEVANT FILES
 - GAME_BRIEF.md: quality bar, scope và contract Q2; AGENTS.md + .agents/skills/handoff/SKILL.md đã đọc.
@@ -76,7 +76,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- GitHub Actions run `40046432042` completed/success cho head `d237bf5`: npm ci/build/configure/upload/deploy đều PASS; job `120729111358` logs xác nhận environment URL https://gizgity.github.io/a-new-game/. Bản Q2 chính `446b972` cũng deploy PASS (run `40046296553`).
+- GitHub Actions run `40046706621` completed/success cho head `4f10e2fad37d0afb4893ea0a95a4a933f31ec610`: npm ci/build/configure/upload/deploy đều PASS; job `120729989991` success. Các bản Q2/polish trước cũng deploy PASS; bản cuối đã chứa phản hồi chuyển nút của user.
 - Focused suite PASS: 41 test definitions trong 3 files, gồm 11 Q2 tests (buffer expiry/once/latest, Heavy/Charged transitions, hitstop/dash/Surge cancel, reset, windup lock và ticks, miss/contact feedback, i-frame tick cuối). Existing combat/run/progression regression PASS.
 - Chromium touch/DPR2: 320×568, 360×640, 390×844, 844×390, 768×1024 PASS: tất cả nút ≥44px, không chồng/cắt/overflow, không runtime errors; screenshots dọc/ngang đã xem.
 - CDP touch PASS: move + aim/shoot, nhả độc lập/cancel; tap cuối recovery nối đúng một lần, tap sớm hết hạn; Light→Heavy, dash cancel, shoot cuối dash, Charged sau Heavy; dash/Surge qua hitstop và cancel dash. Phase pause/draft/defeat/victory/rotation clear input; vi/en PASS. Fixture tắt waves/cấp resource cho các edge cases này.
@@ -86,7 +86,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User chỉ phản hồi bản trước Q2 “khá ổn”.
 
 ## NEXT ACTION
-Deploy bố cục tam giác đã kiểm tra theo phản hồi mới, cập nhật handoff rồi chờ user chơi lại; không tự triển khai Q3–Q5.
+Chờ user chơi bản Pages Q2, đánh giá chuyển Chém/Bắn/Lướt, nối đòn/dash cancel và impact trên điện thoại. Chỉ sửa tiếp theo phản hồi được giao; không tự triển khai Q3–Q5. Sau sửa đổi được giao và checks PASS, tự deploy theo quyền đã cấp.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
