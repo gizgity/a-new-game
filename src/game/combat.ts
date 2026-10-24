@@ -1,10 +1,10 @@
-import { ENEMY_HP, LIGHT_COMBO } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED } from './config/balance.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
 export const COMBAT = {
   maxHp: 100, dashCharges: 2, dashRecharge: 2.8, dashDuration: 0.18,
-  dashSpeed: 920, perfectWindow: 0.08, shotInterval: 0.18,
+  dashSpeed: 920, perfectWindow: 0.16, shotInterval: 0.18,
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
@@ -16,14 +16,15 @@ type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
 export interface CombatInput {
   dx: number; dy: number; melee: boolean; shoot: boolean; heavy: boolean; dash: boolean; charged?: boolean; ultimate?: boolean;
   pressed?: readonly CombatAction[];
+  specialAim?: Partial<Record<'heavy' | 'charged', number>>;
 }
 export interface Enemy {
   id: number; kind: 'grunt' | 'archer' | 'volatile' | 'bulwark' | 'boss'; x: number; y: number;
-  hp: number; maxHp: number; cooldown: number; windup: number;
+  hp: number; maxHp: number; damageScale: number; speedScale: number; cooldown: number; windup: number;
   angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
 }
 export interface Projectile {
-  x: number; y: number; vx: number; vy: number; hostile: boolean; life: number; charged?: boolean;
+  x: number; y: number; vx: number; vy: number; hostile: boolean; life: number; charged?: boolean; damage?: number;
 }
 export interface Attack {
   heavy: boolean; combo: number; angle: number; age: number;
@@ -33,7 +34,7 @@ export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number;
   kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast'; angle?: number;
 }
-interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean }
+interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number }
 
 function clampPosition(body: { x: number; y: number }, radius = PLAYER_RADIUS): void {
   const edge = ARENA.inset + radius;
@@ -61,6 +62,8 @@ export class CombatWorld {
   practice = true;
   get maxHp(): number { return this.curse === 'ghostStep' ? 80 : this.curse === 'deathEcho' ? 85 : COMBAT.maxHp; }
   get rechargeDuration(): number { return this.curse === 'ghostStep' ? 2.1 : COMBAT.dashRecharge; }
+  heavyCharges: number = HEAVY.charges;
+  heavyRecharge = 0;
   dashCharges: number = COMBAT.dashCharges;
   dashRecharge = 0;
   dashTime = 0;
@@ -92,7 +95,7 @@ export class CombatWorld {
   private perfectAvailable = false;
   private dashProtected = false;
   private previousInput: Partial<Record<CombatAction, boolean>> = {};
-  private buffered: { action: BufferedAction; life: number } | null = null;
+  private buffered: { action: BufferedAction; life: number; angle?: number } | null = null;
   private bufferedDash = 0;
   private bufferedUltimate = 0;
   lastShot = { angle: 0, charged: false };
@@ -117,9 +120,9 @@ export class CombatWorld {
           if (this.dashCharges > 0) this.bufferedDash = COMBAT.inputBuffer;
         } else if (action === 'ultimate') {
           if (this.surge >= 100) this.bufferedUltimate = COMBAT.inputBuffer;
-        } else if (action !== 'charged' || this.chargedShots > 0) {
+        } else if ((action !== 'charged' || this.chargedShots > 0) && (action !== 'heavy' || this.heavyCharges > 0)) {
           // One offensive slot: latest intent wins; simultaneous presses prefer Heavy.
-          this.buffered = { action, life: COMBAT.inputBuffer };
+          this.buffered = { action, life: COMBAT.inputBuffer, angle: action === 'heavy' || action === 'charged' ? input.specialAim?.[action] ?? this.player.angle : undefined };
         }
       }
       this.previousInput[action] = !!input[action];
@@ -137,6 +140,8 @@ export class CombatWorld {
     this.curse = null;
     this.stats = { melee: 0, shots: 0, dashes: 0 };
     this.hp = COMBAT.maxHp;
+    this.heavyCharges = HEAVY.charges;
+    this.heavyRecharge = 0;
     this.dashCharges = COMBAT.dashCharges;
     this.dashRecharge = this.dashTime = this.invulnerable = this.hurtFlash = this.perfectFlash = 0;
     this.kills = this.combo = this.comboWindow = this.shotCooldown = this.hitstop = 0;
@@ -156,14 +161,15 @@ export class CombatWorld {
     for (let i = 0; i < COMBAT.enemyCount; i++) this.spawnEnemy();
   }
 
-  spawnEnemy(kind?: Enemy['kind'], maxHp?: number, spawnAngle?: number): void {
+  spawnEnemy(kind?: Enemy['kind'], maxHp?: number, spawnAngle?: number, growth = 0): void {
     const id = this.nextId++;
     const angle = spawnAngle ?? id * 2.39996;
     kind ??= id % 6 === 5 ? 'volatile' : id % 3 === 2 ? 'archer' : 'grunt';
     const enemy: Enemy = {
       id, kind,
       x: this.player.x + Math.cos(angle) * 360, y: this.player.y + Math.sin(angle) * 360,
-      hp: 0, maxHp: maxHp ?? ENEMY_HP[kind],
+      hp: 0, maxHp: maxHp ?? Math.round(ENEMY_HP[kind] * (1 + growth * (ENEMY_GROWTH.health - 1))),
+      damageScale: 1 + growth * (ENEMY_GROWTH.damage - 1), speedScale: 1 + growth * (ENEMY_GROWTH.speed - 1),
       cooldown: 0.8 + (id % 4) * 0.2, windup: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
@@ -192,6 +198,13 @@ export class CombatWorld {
     this.shotCooldown = Math.max(0, this.shotCooldown - dt);
     this.comboWindow = Math.max(0, this.comboWindow - dt);
     if (this.comboWindow === 0 && !this.attack) this.combo = 0;
+    if (this.heavyCharges < HEAVY.charges) {
+      this.heavyRecharge += dt;
+      if (this.heavyRecharge + 1e-9 >= HEAVY.recharge) {
+        this.heavyCharges++;
+        this.heavyRecharge = this.heavyCharges === HEAVY.charges ? 0 : Math.max(0, this.heavyRecharge - HEAVY.recharge);
+      }
+    }
     if (this.dashCharges < COMBAT.dashCharges) {
       this.dashRecharge += dt;
       if (this.dashRecharge >= this.rechargeDuration) {
@@ -209,6 +222,7 @@ export class CombatWorld {
       this.dashTime = COMBAT.dashDuration;
       this.dashAngle = input.dx || input.dy ? Math.atan2(input.dy, input.dx) : this.player.angle;
       this.perfectAvailable = true;
+      if (this.imminentThreat()) this.rewardPerfectDodge();
       this.attack = null;
     }
     if (this.dashTime > 0) {
@@ -221,9 +235,9 @@ export class CombatWorld {
     } else {
       movePlayer(this.player, input.dx, input.dy, dt * (this.attack?.heavy ? 0.45 : 1));
       const pending = this.buffered?.action;
-      if (!this.attack && (pending === 'heavy' || pending === 'melee' || input.heavy || input.melee)) {
-        const heavy = pending === 'heavy' || (pending !== 'melee' && input.heavy);
-        this.beginAttack(heavy);
+      if (!this.attack && (pending === 'heavy' && this.heavyCharges > 0 || pending === 'melee' || input.melee)) {
+        const heavy = pending === 'heavy' && this.heavyCharges > 0;
+        this.beginAttack(heavy, heavy ? this.buffered?.angle : undefined);
         if (pending === (heavy ? 'heavy' : 'melee')) this.buffered = null;
       }
       if ((input.ultimate || this.bufferedUltimate > 0) && this.surge >= 100) {
@@ -234,10 +248,11 @@ export class CombatWorld {
         this.projectiles = this.projectiles.filter((shot) => !shot.hostile);
         this.explosions.push({ x: this.player.x, y: this.player.y, damage: 100, radius: 280, hostile: false });
       }
-      if ((this.buffered?.action === 'charged' || input.charged) && this.chargedShots > 0 && this.shotCooldown <= 0 && !this.attack?.heavy) {
-        if (this.buffered?.action === 'charged') this.buffered = null;
+      if (this.buffered?.action === 'charged' && this.chargedShots > 0 && this.shotCooldown <= 0 && !this.attack?.heavy) {
+        const angle = this.buffered.angle ?? this.player.angle;
+        this.buffered = null;
         this.chargedShots--;
-        this.fire(this.player.x, this.player.y, this.player.angle, false, true);
+        this.fire(this.player.x, this.player.y, angle, false, true);
         this.shotCooldown = 0.35;
       } else if ((this.buffered?.action === 'shoot' || input.shoot) && this.shotCooldown <= 0 && !this.attack?.heavy) {
         this.fire(this.player.x, this.player.y, this.player.angle, false);
@@ -247,7 +262,7 @@ export class CombatWorld {
     }
     if (this.attack) {
       const attack = this.attack;
-      if (!attack.resolved) attack.angle = this.player.angle;
+      if (!attack.resolved && !attack.heavy) attack.angle = this.player.angle;
       attack.age += dt;
       if (!attack.resolved && attack.age + 1e-9 >= attack.windup) {
         attack.resolved = true;
@@ -260,13 +275,14 @@ export class CombatWorld {
               enemy.rupture = Math.min(3, enemy.rupture + 1);
               this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
             }
-            this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? 54 : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? 0.45 : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light');
+            this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? HEAVY.force : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? HEAVY.stagger : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light');
           }
         }
       }
       if (attack.age >= attack.duration) this.attack = null;
     }
     for (const enemy of this.enemies) this.stepEnemy(enemy, dt);
+    if (!this.dashProtected) this.separateBodies();
     this.stepProjectiles(dt);
     this.resolveExplosions();
     this.enemies = this.enemies.filter((enemy) => enemy.hp > 0);
@@ -278,20 +294,21 @@ export class CombatWorld {
     }
   }
 
-  private beginAttack(heavy: boolean): void {
+  private beginAttack(heavy: boolean, angle = this.player.angle): void {
     this.stats.melee++;
+    if (heavy) this.heavyCharges--;
     if (this.curse === 'bloodPact' && !heavy) this.hp = Math.max(1, this.hp - 1);
     const finisher = heavy && this.combo === 3 && this.comboWindow > 0;
     if (!heavy) this.combo = this.combo % 3 + 1;
     const light = LIGHT_COMBO[Math.max(0, this.combo - 1)];
     this.cue(heavy ? 'heavySwing' : this.combo === 3 ? 'swing3' : this.combo === 2 ? 'swing2' : 'swing');
     this.attack = {
-      heavy, combo: this.combo, angle: this.player.angle, age: 0,
-      windup: heavy ? 0.24 : light.windup,
-      duration: heavy ? 0.58 : light.duration,
-      range: (heavy ? 128 : light.range) + (this.mutations.includes('phantomEdge') ? 20 : 0),
-      arc: heavy ? Math.PI * 7 / 6 : light.arc,
-      damage: heavy ? (finisher ? 72 : 48) : light.damage, resolved: false,
+      heavy, combo: this.combo, angle, age: 0,
+      windup: heavy ? HEAVY.windup : light.windup,
+      duration: heavy ? HEAVY.duration : light.duration,
+      range: (heavy ? HEAVY.range : light.range) + (this.mutations.includes('phantomEdge') ? 20 : 0),
+      arc: heavy ? HEAVY.arc : light.arc,
+      damage: heavy ? (finisher ? HEAVY.finisherDamage : HEAVY.damage) : light.damage, resolved: false,
     };
     this.attack.damage *= (this.curse === 'bloodPact' ? 1.3 : 1) * (heavy && this.mutations.includes('guardBreaker') ? 1.3 : 1);
     if (heavy) this.combo = 0;
@@ -311,34 +328,78 @@ export class CombatWorld {
     enemy.y += Math.sin(angle) * force;
     clampPosition(enemy);
     enemy.stagger = enemy.kind === 'boss' ? 0 : stagger;
-    if (enemy.kind !== 'boss') enemy.windup = 0;
-    if (enemy.kind !== 'boss') enemy.cooldown = Math.max(enemy.cooldown, 0.45);
+    const interrupts = sound === 'heavy' || sound === 'chargedHit' || sound === 'blast';
+    if (enemy.kind !== 'boss' && interrupts) {
+      enemy.windup = 0;
+      enemy.cooldown = Math.max(enemy.cooldown, 0.45);
+    }
     enemy.flash = 0.12;
     this.cue(sound === 'blast' ? 'light' : sound);
     this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
       22, sound === 'blast' ? undefined : sound, angle);
-    const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' || sound === 'light3' ? 0.065 : sound === 'light2' ? 0.045 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
+    const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.085 : sound === 'light3' ? 0.065 : sound === 'light2' ? 0.045 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
     this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0) {
       this.kills++;
       if (enemy.kind === 'boss') this.bossSlain = true;
       this.surge = Math.min(100, this.surge + 8);
       if (this.curse === 'deathEcho') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 20, radius: 80, hostile: false });
-      if (enemy.kind === 'volatile') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true });
+      if (enemy.kind === 'volatile') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
+    }
+  }
+
+  private rewardPerfectDodge(): void {
+    if (!this.perfectAvailable) return;
+    this.perfectAvailable = false;
+    this.perfectFlash = 0.65;
+    this.cue('perfect');
+    this.perfectDodges++;
+    this.gainCharge(3);
+    if (this.mutations.includes('staticRiposte')) this.explosions.push({ x: this.player.x, y: this.player.y, damage: 40, radius: 140, hostile: false });
+    this.surge = Math.min(100, this.surge + 15);
+    this.impact(this.player.x, this.player.y, 0x8affef);
+  }
+
+  private imminentThreat(): boolean {
+    const { x, y } = this.player;
+    if (this.projectiles.some(shot => shot.hostile && shot.life > 0 && segmentHitsCircle(shot.x, shot.y,
+      shot.x + shot.vx * Math.min(shot.life, COMBAT.perfectWindow), shot.y + shot.vy * Math.min(shot.life, COMBAT.perfectWindow), x, y, PLAYER_RADIUS + 4))) return true;
+    return this.enemies.some(enemy => this.isImminentEnemyThreat(enemy));
+  }
+
+  isImminentEnemyThreat(enemy: Enemy): boolean {
+    const { x, y } = this.player;
+    if (enemy.hp <= 0 || enemy.windup <= 0 || enemy.windup + enemy.stagger > COMBAT.perfectWindow) return false;
+    const distance = Math.hypot(x - enemy.x, y - enemy.y);
+    if (enemy.kind === 'volatile') return distance < 110;
+    if (enemy.kind === 'archer' || enemy.kind === 'boss' && enemy.action === 1) return false;
+    if (enemy.kind === 'boss' && enemy.action === 2) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < 110;
+    return distance < (enemy.kind === 'boss' ? 230 : 70) &&
+      Math.abs(angleDifference(Math.atan2(y - enemy.y, x - enemy.x), enemy.angle)) < 0.85;
+  }
+
+  private separateBodies(): void {
+    // Two bounded passes allow sliding around a crowd; dash deliberately phases through bodies.
+    for (let pass = 0; pass < 2; pass++) {
+      for (const enemy of this.enemies) {
+        if (enemy.hp <= 0) continue;
+        const radius = PLAYER_RADIUS + (enemy.kind === 'boss' ? 32 : enemy.kind === 'bulwark' ? 22 : 14);
+        const dx = this.player.x - enemy.x, dy = this.player.y - enemy.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance >= radius) continue;
+        const nx = distance > 0.001 ? dx / distance : -Math.cos(this.player.angle);
+        const ny = distance > 0.001 ? dy / distance : -Math.sin(this.player.angle);
+        this.player.x += nx * (radius - distance);
+        this.player.y += ny * (radius - distance);
+        clampPosition(this.player);
+      }
     }
   }
 
   private hurt(damage: number, angle: number): void {
     if (this.dashProtected || this.dashTime > 0) {
       if (this.perfectAvailable && this.dashTime >= COMBAT.dashDuration - COMBAT.perfectWindow) {
-        this.perfectAvailable = false;
-        this.perfectFlash = 0.65;
-        this.cue('perfect');
-        this.perfectDodges++;
-        this.gainCharge(3);
-        if (this.mutations.includes('staticRiposte')) this.explosions.push({ x: this.player.x, y: this.player.y, damage: 40, radius: 140, hostile: false });
-        this.surge = Math.min(100, this.surge + 15);
-        this.impact(this.player.x, this.player.y, 0x8affef);
+        this.rewardPerfectDodge();
       }
       return;
     }
@@ -368,10 +429,10 @@ export class CombatWorld {
       if (enemy.windup === 0) {
         if (enemy.kind === 'volatile') {
           enemy.hp = 0;
-          this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true });
-        } else if (enemy.kind === 'archer') this.fire(enemy.x, enemy.y, enemy.angle, true);
+          this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
+        } else if (enemy.kind === 'archer') this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
         else if (distance < 70 && Math.abs(angleDifference(Math.atan2(dy, dx), enemy.angle)) < 0.85) {
-          this.hurt(enemy.kind === 'bulwark' ? 22 : 12, enemy.angle);
+          this.hurt(Math.round((enemy.kind === 'bulwark' ? 22 : 12) * enemy.damageScale), enemy.angle);
         }
         enemy.cooldown = enemy.kind === 'grunt' ? 0.85 : 1.5;
       }
@@ -386,8 +447,8 @@ export class CombatWorld {
     const direction = enemy.kind !== 'archer' ? (distance > 40 ? 1 : 0) : (distance > 340 ? 1 : distance < 230 ? -1 : 0);
     if (distance > 0) {
       const speed = enemy.kind === 'grunt' ? 106 : enemy.kind === 'bulwark' ? 66 : 75;
-      enemy.x += dx / distance * direction * speed * dt;
-      enemy.y += dy / distance * direction * speed * dt;
+      enemy.x += dx / distance * direction * speed * enemy.speedScale * dt;
+      enemy.y += dy / distance * direction * speed * enemy.speedScale * dt;
     }
     for (const other of this.enemies) {
       if (other === enemy || other.hp <= 0) continue;
@@ -435,12 +496,12 @@ export class CombatWorld {
     }
   }
 
-  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false): void {
+  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false, damage = 10): void {
     if (this.projectiles.length >= COMBAT.projectileLimit) return;
     if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue(charged ? 'chargedGun' : 'gun'); }
     const speed = hostile ? 310 : 850;
     this.projectiles.push({ x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
-      vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, life: hostile ? 3 : 1.3 });
+      vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, damage, life: hostile ? 3 : 1.3 });
   }
 
   private stepProjectiles(dt: number): void {
@@ -449,7 +510,7 @@ export class CombatWorld {
       shot.x += shot.vx * dt; shot.y += shot.vy * dt; shot.life -= dt;
       if (shot.hostile) {
         if (segmentHitsCircle(x, y, shot.x, shot.y, this.player.x, this.player.y, PLAYER_RADIUS + 4)) {
-          this.hurt(10, Math.atan2(shot.vy, shot.vx)); shot.life = 0;
+          this.hurt(shot.damage ?? 10, Math.atan2(shot.vy, shot.vx)); shot.life = 0;
         }
       } else {
         // Lấy mục tiêu gần đầu segment nhất nếu nhiều collider chồng nhau.
@@ -461,8 +522,10 @@ export class CombatWorld {
           if (distance < nearest) { target = enemy; nearest = distance; }
         }
         if (target) {
+          if (shot.charged) target.rupture = Math.min(3, target.rupture + 1);
+          else this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
           this.detonate(target, shot.charged ? 2 : 1, !!shot.charged);
-          this.hitEnemy(target, shot.charged ? 42 : 14, Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit');
+          this.hitEnemy(target, shot.charged ? RANGED.chargedDamage : RANGED.basicDamage, Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit');
           shot.life = 0;
         }
       }
@@ -508,7 +571,7 @@ export class CombatWorld {
         this.hitEnemy(enemy, explosion.damage, Math.atan2(enemy.y - explosion.y, enemy.x - explosion.x), 12, 0.2, true);
       }
       if (explosion.hostile && Math.hypot(this.player.x - explosion.x, this.player.y - explosion.y) <= explosion.radius) {
-        this.hurt(16, Math.atan2(this.player.y - explosion.y, this.player.x - explosion.x));
+        this.hurt(explosion.playerDamage ?? 16, Math.atan2(this.player.y - explosion.y, this.player.x - explosion.x));
       }
     }
     this.explosions = [];
@@ -517,7 +580,7 @@ export class CombatWorld {
   private impact(x: number, y: number, color: number, radius = 22, kind?: Impact['kind'], angle = 0): void {
     // Keep the primary Charged blast readable when a chain fills the existing VFX budget.
     if (this.impacts.length >= 24) this.impacts.splice(Math.max(0, this.impacts.findIndex(item => item.kind !== 'chargedBlast')), 1);
-    const duration = kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : 0.18;
+    const duration = kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
     this.impacts.push({ x, y, color, radius, kind, angle, duration, life: duration });
   }
 }

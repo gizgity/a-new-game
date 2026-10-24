@@ -108,13 +108,13 @@ footer { display: none; }
 .touch-utility, .touch-primary { display: contents; }
 .touch-button { position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px; min-width: 44px; min-height: 44px; padding: 3px; border: 1px solid #477168; border-radius: 14px; background: #12272aee; color: #c4f3e0; font-size: 10px; }
 .touch-button > span:first-child { font-size: 17px; font-weight: 600; line-height: 1.2; }
-/* Primary thumb arc: Shoot above Melee; Dash between them, inward. Specials sit apart. */
+/* Inner column from top to bottom: Charged, Heavy, Dash. */
 .touch-button[data-action="ultimate"] { left: 0; top: 0; width: 48px; height: 48px; font-size: 9px; border-color: #72638f; background: #211c30ee; }
-.touch-button[data-action="heavy"] { left: 56px; top: 0; width: 52px; height: 52px; border-color: #a38a57; }
-.touch-button[data-action="charged"] { left: 56px; top: 132px; width: 52px; height: 52px; border-color: #a38a57; }
+.touch-button[data-action="heavy"] { left: 56px; top: 64px; width: 52px; height: 52px; border-color: #a38a57; }
+.touch-button[data-action="charged"] { left: 56px; top: 0; width: 52px; height: 52px; border-color: #a38a57; }
 .touch-button.shoot-button { left: 116px; top: 24px; width: 64px; height: 64px; border-radius: 50%; background: #183946ee; border-color: #83bac8; }
 .touch-button.melee-button { left: 116px; top: 100px; width: 68px; height: 68px; border-radius: 50%; background: #234b40f5; border: 2px solid #a4e8cb; }
-.touch-button.dash-button { left: 48px; top: 64px; width: 60px; height: 60px; border-radius: 50%; background: #29223cee; border-color: #ab96dc; }
+.touch-button.dash-button { left: 52px; top: 124px; width: 60px; height: 60px; border-radius: 50%; background: #29223cee; border-color: #ab96dc; }
 /* The held action becomes a joystick; capture keeps it live beyond the button. */
 .aim-stick { display: none; position: absolute; z-index: 4; left: calc(50% - 58px); top: calc(50% - 58px); width: 116px; height: 116px; border: 1px solid #9addc8; border-radius: 50%; background: #152f3280; pointer-events: none; }
 .touch-button.pressed .aim-stick { display: block; }

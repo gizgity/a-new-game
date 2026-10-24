@@ -19,14 +19,15 @@
 
 ## Mobile-first — phạm vi mở rộng theo user
 - Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
-- Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; giữ nút phải để thực hiện hành động, kéo như joystick để ngắm (cả Chém/Bắn/Heavy/Charged/Lướt/Surge). Nút đang giữ hiện vòng116px/núm40px; kéo vượt biên nút vẫn nhận nhờ pointer capture tới khi nhả. Joystick trái hướng player khi chưa kéo ngắm; sau khi ngón phải vượt deadzone8px, aim độc lập với di chuyển tới khi nhả. Không auto-aim; dash đang thực hiện không uốn hướng, Surge vẫn radial.
+- Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; Chém/Bắn giữ để lặp; Heavy/Charged giữ chỉ để ngắm, thả mới tiêu một lượt và ra đòn. Cả6 nút phải kéo như joystick để ngắm. Nút đang giữ hiện vòng116px/núm40px; kéo vượt biên nút vẫn nhận nhờ pointer capture tới khi nhả. Joystick trái hướng player khi chưa kéo ngắm; sau khi ngón phải vượt deadzone8px, aim độc lập với di chuyển tới khi nhả. Không auto-aim; dash đang thực hiện không uốn hướng, Surge vẫn radial.
 - Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Tích lực đặt dưới Lướt để nhường vùng trái trên phone nhỏ, giữ tam giác Chém/Bắn/Lướt.
 - Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/draft/settings gỡ guard để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
 - Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
-- Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Không đổi world coordinates, hitbox, AI hoặc timing.
+- Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Giữ world coordinates; thay đổi va chạm/timing nằm ở phần combat đã được user giao.
 - Kiểm tra touch emulation dọc/ngang/tablet và desktop regression; phân biệt kết quả giả lập với thiết bị thật/Safari. Visual và combat feel trên thiết bị vẫn cần người dùng xác nhận.
-- Giữ giới hạn nội dung MVP. User đã giao Q2 cùng điều chỉnh cụm nút phải: Chém 68px ở góc dưới phải, Bắn 64px phía trên, Lướt 60px phía trong ở giữa Chém/Bắn để ba nút thành tam giác (tâm các nút cách nhau ~78–82px); Heavy/Tích lực/Surge tách khỏi các nút chính (48–52px). Bố cục cần playtest tầm với trên thiết bị thật; Q3–Q5 chưa triển khai.
+- Giữ giới hạn nội dung MVP. Cụm phải184×184: cột trong từ trên xuống Charged y0/Heavy y64/Dash y124; Bắn64px phía trên phải, Chém68px phía dưới phải; Surge48px tách góc trên trái. Theo feedback mới, Dash ở dưới cùng; bố cục cần playtest tầm với trên thiết bị thật.
+
 
 ## Điều khiển desktop
 | Input | Hành động |
@@ -35,8 +36,8 @@
 | Mouse | Ngắm |
 | Left Click | Melee combo |
 | Right Click | Infinite Basic Shot |
-| E | Charged Shot |
-| Shift | Heavy Attack |
+| Giữ/thả E | Ngắm / bắn một Charged Shot |
+| Giữ/thả Shift | Ngắm / dùng một lượt Heavy |
 | Space | Dash |
 | Q | Surge Ultimate |
 | Esc | Pause |
@@ -49,23 +50,24 @@
 - 3 Charge Points tạo 1 Charged Shot, giữ tối đa 3 viên; Charged Shots có damage và Detonate mạnh hơn.
 - Surge tối đa 100, dùng cho Ultimate.
 - Dash có 2 charges, hồi lần lượt, mặc định 2.8 giây/charge.
-- Perfect Dodge yêu cầu timing chính xác; không dùng stamina.
+- Perfect Dodge: cửa sổ160ms, nhận cả né khỏi đòn đang sắp trúng ở vị trí trước dash hoặc đạn đang bay tới; không buộc phải va chạm trong dash. Mỗi dash thưởng tối đa1lần; dash trống/sớm không thưởng. Telegraph gần người và đủ điều kiện lóe vàng, dùng cùng predicate với logic. Mục tiêu mở khóa vẫn3né tích lũy.
+- Đi bộ có body collision với common/Elite/Boss và trượt quanh; dash xuyên thân để thoát vây. Không có contact damage mới; knockback và stun thuộc đòn đánh.
 - Cần hit feedback, knockback, stagger, hitstop ngắn và attack telegraph.
 - Fixed 60Hz simulation là mục tiêu kỹ thuật. Balance là tham số điều chỉnh sau playtest.
-- Tham số MVP M3: Light hit cho 1 Charge Point, Detonate cho 1, Perfect Dodge cho 3; charge không vượt 3 viên/2 điểm dự trữ. Basic Shot 14 damage, Charged Shot 42 và Detonate ×2; Heavy Detonate ×1.4.
+- Tham số MVP M3: Light hoặc Basic Shot hit cho1Charge Point, Detonate cho1, Perfect Dodge cho3; charge không vượt 3 viên/2 điểm dự trữ. Basic Shot20damage; Charged84damage, tự thêm1Rupture (cap3) rồi Detonate×2 kể cả mục tiêu chưa đánh dấu; Heavy Detonate ×1.4.
 - Rupture không tự hết hạn trong MVP. Detonate gốc 12 damage/stack, bán kính 105 px; mỗi mục tiêu kích tối đa một lần/tick, tối đa 12 vụ nổ/tick.
 - Surge nhận từ hit/kill/Perfect Dodge; Q dùng 100 Surge gây 100 damage trong 280 px, xóa đạn địch và cho 0.5 giây bảo vệ.
 - Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện 2:30. Boss 4:00 dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
 - Chain Warden 1500 HP, ba telegraph luân phiên: chain sweep, vòng đạn, slam khóa vị trí. Dưới nửa HP tăng nhịp; không bị stun-lock bởi bắn thường.
 
 ### Q2 — timing, input và impact (chờ experience approval)
-- L1/L2/L3 lấy đà 4/6/10 simulation ticks (~67/100/167ms), tổng đòn 0.24/0.30/0.44s; Heavy giữ 0.24s lấy đà / 0.58s tổng. Hướng chém theo aim trong windup, khóa khi hit; mỗi đòn resolve một lần, recovery vẫn có commitment.
-- Một slot buffer tấn công, tối đa 120ms simulation time; tap mới thay ý định cũ, giữ qua hitstop. Tap cuối recovery/cooldown nối Light/Heavy/Shot/Charged; tap quá sớm hết hạn. Giữ nút vẫn lặp theo cadence hiện có. Input adapter giữ tap ngắn tới tick, không chạy lại mỗi catch-up tick.
+- L1/L2/L3 lấy đà 4/6/10 simulation ticks (~67/100/167ms), tổng đòn 0.24/0.30/0.44s; Heavy0.24s lấy đà/0.72s tổng. Light theo aim trong windup rồi khóa khi hit; Heavy/Charged khóa hướng tại lúc nhả; mỗi đòn resolve một lần, recovery vẫn có commitment.
+- Một slot buffer tấn công, tối đa 120ms simulation time; tap mới thay ý định cũ, giữ qua hitstop. Tap cuối recovery/cooldown nối Light/Heavy/Shot/Charged; tap quá sớm hết hạn. Chém/Bắn giữ vẫn lặp; Heavy/Charged chỉ nhận release pulse, giữ không lặp. Resource hết lúc release không queue để tự ra đòn khi hồi; cancel/pause/resize/blur/draft xóa cả trạng thái đang giữ. Input adapter giữ tap ngắn tới tick, không chạy lại mỗi catch-up tick.
 - Dash ưu tiên hủy đòn và buffer tấn công cũ; buffer ngắn riêng cho dash/Surge để tap qua hitstop không mất. Không xếp dash/Charged/Surge khi thiếu tài nguyên. Pause/draft/result/reset/resize/blur/pointercancel xóa ý định cũ; không queue nhiều đòn.
-- Dash bảo vệ toàn bộ các tick di chuyển, gồm tick cuối; timing Perfect Dodge, số charges, speed và recharge giữ nguyên. Tap cuối dash có thể nối sang tấn công khi dash kết thúc.
+- Dash bảo vệ toàn bộ các tick di chuyển, gồm tick cuối; Perfect Dodge160ms như trên, số charges/speed/recharge dash giữ nguyên. Tap cuối dash có thể nối sang tấn công khi dash kết thúc.
 - Miss có whoosh và slash nhưng không có contact spark/hitstop; Light mint, Heavy/Charged amber với recoil/impact mạnh hơn. Impact đặt tại điểm chạm trước knockback; Perfect Dodge dùng dấu gãy bốn hướng và notice hiện có. Sound trúng đạn khác sound chém.
-- Hitstop: Basic Shot12ms, L1/L2/L3 33/45/65ms, Charged40ms, Heavy65ms (làm tròn lên tick60Hz); blast/chain giữ quy tắc cũ. Damage/tài nguyên/AI/build/chain giữ nguyên; user đã giao chỉnh melee range/arc, timing và density theo playtest.
-- Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Trúng không có Rupture chỉ có contact bloom nhỏ (0.24s); Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Không đổi damage/radius/shot speed/cooldown/hitstop hoặc cơ chế chain ở follow-up này.
+- Hitstop: Basic Shot12ms, L1/L2/L3 33/45/65ms, Charged40ms, Heavy85ms (làm tròn lên tick60Hz); blast/chain giữ quy tắc cũ. User đã giao chỉnh specials/resources/ranged/build support, collision/dodge và scaling/draft; pattern AI và chain budget vẫn giữ.
+- Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Theo feedback ranged mới, Charged tự đặt1Rupture trước Detonate; contact bloom0.24s và Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Radius/shot speed/cooldown/chain budget giữ; direct damage84 và tự tạo Rupture theo feedback mới.
 - Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
 
 ### Crowd và combo — theo playtest mobile
@@ -77,27 +79,28 @@
 | L2 | 6 ticks /0.30s | 112px /200° | 22 /24px |
 | L3 | 10 ticks /0.44s | 128px /260° | 30 /38px |
 
-- Tất cả mục tiêu trong vùng đều nhận hit/Rupture/charge đúng một lần mỗi đòn. L3 vẫn chừa100° phía sau; không thêm đòn đánh360° hoặc auto-target. VFX theo đúng range/arc; Heavy range128px/góc210°, damage48/finisher72 và Detonate giữ nguyên. Phantom Edge vẫn +20px.
+- Tất cả mục tiêu trong vùng đều nhận hit/Rupture/charge đúng một lần mỗi đòn. L3 vẫn chừa100° phía sau; không thêm đòn đánh360° hoặc auto-target. VFX theo đúng range/arc; Heavy có2lượt, hồi từng lượt8s simulation; range164px/góc280°, damage100/finisher140, knockback80/stagger0.6s, Detonate×1.4. Charge trừ khi bắt đầu ra đòn; dash hủy Heavy đã bắt đầu không hoàn lại lượt. Phantom Edge vẫn +20px.
+- Light/Basic chỉ gây khựng ngắn, không xóa telegraph hoặc reset cooldown địch; Heavy/Charged/blast mới ngắt đòn quái thường, Boss không bị stun-lock. Heavy có body windup/burst, blade dài, trail amber44px và hit impact/SFX riêng mạnh hơn L3.
 - Quái xuất hiện theo cụm3 từ cùng hướng với góc cách0.16rad, khoảng cách spawn360px và tránh spawn trên player. Trước Boss cap18; Archer tối đa3, chỉ bổ sung một ở mỗi cụm thứ4; Volatile sau45s ở mỗi cụm thứ6. Boss vẫn cap7 và chỉ bổ sung từng quái, không mang pack pressure vào precision encounter.
 
 ### Cân bằng mở đầu — theo playtest mobile
-- Player damage/resource giữ nguyên; timing/cleave thay theo bảng combo ở trên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
+- Giữ damage Light18/22/30 và HP đầu run. Basic/Charged/Heavy và nguồn tài nguyên thay theo feedback ở trên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
 - Trước Mutation đầu tiên (0–60s): Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s, cap18. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
-- Từ60–120s, HP quái mới tăng tuyến tính từ mức mở đầu về mức chuẩn; interval từ90ticks tiến dần về cadence chuẩn, cap18 xuyên suốt. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
+- Từ60–120s HP cơ sở quái mới tiến tới chuẩn; đồng thời từ60–300s hệ số HP tăng1→1.6, damage1→1.5, speed1→1.2. Chốt chỉ số khi spawn (đạn giữ damage nguồn), không đổi strength giữa telegraph. Elite nhận growth lúc spawn; Boss giữ1500HP/pattern/damage riêng. Interval tiến từ90ticks về cadence chuẩn, cap18. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
 - Cấu hình ở `src/game/config/balance.ts`; tests chỉ xác nhận thông số/interaction, độ khó cần user playtest.
 
 ## Run tối đa 5 phút
 | Mốc | Sự kiện |
 | --- | --- |
 | 0:00 | Start, Grunt + Archer |
-| 1:00 | Mutation Draft #1 + hồi 10 HP |
-| 2:00 | Curse Draft + hồi 10 HP |
-| 3:00 | Mutation Draft #2 + hồi 10 HP |
+| 25 kills | Mutation Draft #1 + hồi 10 HP |
+| 80 kills | Curse Draft + hồi 10 HP |
+| 160 kills | Mutation Draft #2 + hồi 10 HP |
 | 4:00 | Chain Warden Boss xuất hiện |
 | 5:00 | Boss chưa chết thì Defeat |
 
 - HP ban đầu 100; heal không vượt max HP.
-- Timer dừng khi Pause hoặc chọn Draft.
+- Draft dựa tổng kills trong run, không dựa phút; HUD đếm tới mốc kế. Vượt nhiều mốc trong chain vẫn chọn tuần tự, không mất/nhân đôi; đủ3draft thì dừng. Timer dừng khi Pause hoặc chọn Draft.
 - Victory khi hạ Boss trước deadline; mutual kill cùng simulation tick tính là Victory.
 - Có Play Again.
 
@@ -122,14 +125,14 @@ Mỗi draft có ba lựa chọn:
 - Curse luôn có lợi ích và rủi ro.
 - Hiệu ứng MVP được chọn ở M4; giá trị là tham số cân bằng sau playtest.
 
-**Trạng thái concept:** tên, số lượng và cấu trúc draft ở trên giữ nguyên. Hai bảng dưới mô tả **functional implementation hiện tại**, không phải xác nhận concept/trải nghiệm đã đạt. Phantom Edge, Berserker, Detonation Specialist, Volatile Soul và Ghost Step hiện chủ yếu là thay đổi chỉ số; Catalyst mới tăng tốc tích tài nguyên. Static Riposte, Guard Breaker, Blood Pact và Death Echo có trigger/trade-off tương tác nhưng chiều sâu synergy chưa được kiểm chứng. Cần đối chiếu concept gốc ở Q5, không hợp thức hóa các bản giản lược thành thiết kế final và không đổi hiệu ứng trong Q1.
+**Trạng thái concept:** tên, số lượng và cấu trúc draft ở trên giữ nguyên. Hai bảng dưới mô tả **functional implementation hiện tại**, không phải xác nhận concept/trải nghiệm đã đạt. Phantom Edge, Berserker, Detonation Specialist, Volatile Soul và Ghost Step hiện chủ yếu là thay đổi chỉ số; Catalyst theo feedback ranged mới tăng charge cho cả Light và Basic Shot; Basic tự tích ammo, Charged tự seed Detonate giúp lối chơi bắn dùng được Catalyst/Detonation Specialist/Volatile Soul/Death Echo. Đây là cải thiện theo user, chưa chứng nhận toàn bộ Q5. Static Riposte, Guard Breaker, Blood Pact và Death Echo có trigger/trade-off tương tác nhưng chiều sâu synergy chưa được kiểm chứng. Cần đối chiếu concept gốc ở Q5, không hợp thức hóa các bản giản lược thành thiết kế final và không đổi hiệu ứng trong Q1.
 
 Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên tắc, chưa ghi hiệu ứng concept gốc chi tiết. Khi làm Q5 cần xác nhận phần nguồn còn thiếu; không tự suy diễn hiệu ứng từ tên. Adaptive Evolution hiện chọn bằng bộ đếm melee/shots/dashes và vài điều kiện synergy; nhãn Adaptive/Synergy chưa chứng minh lựa chọn phù hợp cách chơi.
 
 | Mutation | Hiệu ứng |
 | --- | --- |
 | Phantom Edge | Tầm melee +20 px |
-| Catalyst | Mỗi melee hit thêm 1 Charge Point |
+| Catalyst | Mỗi Light/Basic Shot hit thêm1Charge Point |
 | Berserker | Dưới 50% max HP: sát thương +25% |
 | Detonation Specialist | Detonate: sát thương +25%, bán kính +35% |
 | Static Riposte | Perfect Dodge gây xung điện 40 damage, bán kính 140 px |

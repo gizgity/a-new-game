@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { ProceduralAudio } from './audio';
 import { RunDirector } from './run';
-import { CombatWorld, type CombatAction } from './combat';
+import { CombatWorld, type CombatAction, type CombatInput } from './combat';
 import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
@@ -24,6 +24,8 @@ export class ArenaScene extends Phaser.Scene {
   private keys!: Record<'W' | 'A' | 'S' | 'D' | 'SHIFT' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
   private accumulator = 0;
   private pressed = new Set<CombatAction>();
+  private armedSpecials = new Set<'heavy' | 'charged'>();
+  private releaseAim: NonNullable<CombatInput['specialAim']> = {};
   private aim = new Phaser.Math.Vector2();
 
   constructor(
@@ -61,7 +63,18 @@ export class ArenaScene extends Phaser.Scene {
     this.input.keyboard!.addCapture(['SPACE', 'SHIFT']);
     for (const [key, action] of [['SPACE', 'dash'], ['SHIFT', 'heavy'], ['E', 'charged'], ['Q', 'ultimate']] as const) {
       this.input.keyboard!.on(`keydown-${key}`, (event: KeyboardEvent) => {
-        if (!event.repeat && this.phase === 'playing') this.pressed.add(action);
+        if (event.repeat || this.phase !== 'playing') return;
+        if (action === 'heavy' || action === 'charged') this.armedSpecials.add(action);
+        else this.pressed.add(action);
+      });
+    }
+    for (const [key, action] of [['SHIFT', 'heavy'], ['E', 'charged']] as const) {
+      this.input.keyboard!.on(`keyup-${key}`, () => {
+        if (!this.armedSpecials.delete(action) || this.phase !== 'playing') return;
+        const pointer = this.input.activePointer;
+        const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
+        this.releaseAim[action] = Math.atan2(point.y - this.player.y, point.x - this.player.x);
+        this.pressed.add(action);
       });
     }
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
@@ -78,7 +91,7 @@ export class ArenaScene extends Phaser.Scene {
     });
     this.input.on('gameout', () => {
       this.meleeHeld = this.shootHeld = false;
-      if (!this.touch.enabled) { this.pressed.clear(); this.combat.clearInput(); }
+      if (!this.touch.enabled) { this.pressed.clear(); this.armedSpecials.clear(); this.releaseAim = {}; this.combat.clearInput(); }
     });
     this.input.mouse!.disableContextMenu();
     this.cameras.main.setBounds(0, 0, ARENA.width, ARENA.height);
@@ -108,6 +121,8 @@ export class ArenaScene extends Phaser.Scene {
     this.phase = phase;
     this.accumulator = 0;
     this.pressed.clear();
+    this.armedSpecials.clear();
+    this.releaseAim = {};
     this.combat.clearInput();
     this.input.keyboard?.resetKeys();
     this.onPhaseChange(phase);
@@ -127,6 +142,8 @@ export class ArenaScene extends Phaser.Scene {
       ? Phaser.Math.Clamp(Math.min(size.width / 480, size.height / 400), 0.75, 1.3)
       : Math.min(size.width / 1120, size.height / 700));
     this.pressed.clear();
+    this.armedSpecials.clear();
+    this.releaseAim = {};
     this.combat.clearInput();
     this.meleeHeld = this.shootHeld = false;
     this.input.keyboard?.resetKeys();
@@ -158,17 +175,19 @@ export class ArenaScene extends Phaser.Scene {
         dy: touch.dy || Number(this.keys.S.isDown) - Number(this.keys.W.isDown),
         melee: touch.melee || this.pressed.has('melee') || this.meleeHeld && this.input.isOver,
         shoot: touch.shoot || this.pressed.has('shoot') || this.shootHeld && this.input.isOver,
-        heavy: touch.heavy || this.pressed.has('heavy') || this.keys.SHIFT.isDown,
-        charged: touch.charged || this.pressed.has('charged') || this.keys.E.isDown,
+        heavy: touch.heavy || this.pressed.has('heavy'),
+        charged: touch.charged || this.pressed.has('charged'),
         ultimate: touch.ultimate || this.pressed.has('ultimate') || this.keys.Q.isDown,
         dash: this.pressed.has('dash') || touch.dash,
         pressed: [...this.pressed, ...touch.pressed ?? []],
+        specialAim: { ...this.releaseAim, ...touch.specialAim },
       };
       const frozen = this.combat.hitstop > 0;
       this.run.step(input, FIXED_STEP);
       if (!frozen) this.vessel.step(this.combat, FIXED_STEP);
       this.audio.play(this.combat.soundEvents);
       this.pressed.clear();
+      this.releaseAim = {};
       this.touch.consume();
       this.accumulator -= FIXED_STEP;
       if (this.run.result) { this.setPhase(this.run.result); break; }
@@ -186,7 +205,8 @@ export class ArenaScene extends Phaser.Scene {
       const color = enemy.kind === 'boss' ? 0xffcc80 : enemy.kind === 'bulwark' ? 0x91b5ff : enemy.kind === 'volatile' ? 0xffb36b : enemy.kind === 'grunt' ? 0xff6f87 : 0xc399ff;
       if (enemy.windup > 0) {
         const progress = Math.max(0, 1 - enemy.windup / (enemy.kind === 'boss' ? 0.95 : enemy.kind === 'grunt' ? 0.42 : 0.7));
-        g.lineStyle(2, color, 0.3 + progress * 0.7);
+        const dodgeReady = world.isImminentEnemyThreat(enemy);
+        g.lineStyle(dodgeReady ? 3 : 2, dodgeReady ? 0xffefaa : color, 0.3 + progress * 0.7);
         if (enemy.kind === 'boss') {
           g.fillStyle(color, 0.16);
           if (enemy.action === 0) this.drawSector(g, enemy.x, enemy.y, 230, enemy.angle, 1.7);
@@ -246,21 +266,21 @@ export class ArenaScene extends Phaser.Scene {
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
     for (const impact of world.impacts) {
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
-      const fade = impact.life / 0.18;
+      const fade = impact.life / (impact.duration ?? 0.18);
       if (impact.kind) {
         const heavy = impact.kind === 'heavy' || impact.kind === 'light3';
-        const spread = (heavy ? 32 : impact.kind === 'light2' ? 26 : 20) * (1 - fade);
+        const spread = (impact.kind === 'heavy' ? 44 : heavy ? 32 : impact.kind === 'light2' ? 26 : 20) * (1 - fade);
         const angle = impact.angle ?? 0;
         // Contact sparks travel along the blow, with a sharp cross-cut on impact.
         g.lineStyle(heavy ? 3 : 2, impact.color, fade);
         for (let i = -2; i <= 2; i++) {
           const a = angle + i * 0.65;
           const start = 3 + spread;
-          const end = start + (heavy ? 14 : 8) * fade;
+          const end = start + (impact.kind === 'heavy' ? 20 : heavy ? 14 : 8) * fade;
           g.lineBetween(impact.x + Math.cos(a) * start, impact.y + Math.sin(a) * start,
             impact.x + Math.cos(a) * end, impact.y + Math.sin(a) * end);
         }
-        const cut = (heavy ? 16 : 9) * fade;
+        const cut = (impact.kind === 'heavy' ? 24 : heavy ? 16 : 9) * fade;
         g.lineStyle(2, 0xffffff, fade).lineBetween(impact.x - Math.sin(angle) * cut, impact.y + Math.cos(angle) * cut,
           impact.x + Math.sin(angle) * cut, impact.y - Math.cos(angle) * cut);
       } else g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, 4 + (1 - fade) * (impact.radius ?? 22));

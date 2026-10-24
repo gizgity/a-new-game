@@ -5,7 +5,7 @@ const TEXTURE = 'fractured-vessel';
 const MINT = 0x8affe0;
 const AMBER = 0xffcc80;
 const GHOST_LIFE = 0.22;
-const sweepDuration = (attack: Attack) => attack.heavy ? 0.1 : [0, 0.065, 0.085, 0.14][attack.combo];
+const sweepDuration = (attack: Attack) => attack.heavy ? 0.16 : [0, 0.065, 0.085, 0.14][attack.combo];
 const clamp = (value: number) => Phaser.Math.Clamp(value, 0, 1);
 
 /** Presentation only: authored sprite parts + poses driven by the existing simulation. */
@@ -205,8 +205,8 @@ export class PlayerVisual {
       const angle = attack.angle + direction * (preparing
         ? -attack.arc / 2 - Math.sin(prepare * Math.PI) * 0.25
         : -attack.arc / 2 + release * attack.arc);
-      const finisher = !attack.heavy && attack.combo === 3;
-      const power = attack.heavy ? 0.65 : attack.combo === 3 ? 1.05 : attack.combo === 2 ? 0.65 : 0.4;
+      const finisher = attack.heavy || attack.combo === 3;
+      const power = attack.heavy ? 1.5 : attack.combo === 3 ? 1.05 : attack.combo === 2 ? 0.65 : 0.4;
       const reach = preparing ? 8 : 12 + Math.sin(release * Math.PI) * (finisher ? 12 : 6);
       this.blade.setPosition(Math.cos(angle) * reach, Math.sin(angle) * reach)
         .setRotation(angle).setScale(1 + power * (1 - recovery), 1);
@@ -236,8 +236,8 @@ export class PlayerVisual {
     const sweepTime = sweepDuration(attack);
     const age = attack.age - (attack.windup - sweepTime / 2);
     if (age < 0) return;
-    const finisher = !attack.heavy && attack.combo === 3;
-    const fade = 1 - clamp((age - sweepTime) / (finisher ? 0.15 : 0.09));
+    const finisher = attack.heavy || attack.combo === 3;
+    const fade = 1 - clamp((age - sweepTime) / (attack.heavy ? 0.18 : finisher ? 0.15 : 0.09));
     if (fade <= 0) return;
     const progress = clamp(age / sweepTime);
     const direction = attack.combo === 2 ? -1 : 1;
@@ -247,7 +247,7 @@ export class PlayerVisual {
       y: y + Math.sin(start + direction * attack.arc * fraction) * radius,
     });
     const color = attack.heavy ? AMBER : attack.combo === 2 ? 0x80e8ff : finisher ? 0xe5fff4 : MINT;
-    const width = attack.heavy ? 26 : [0, 14, 22, 34][attack.combo];
+    const width = attack.heavy ? 44 : [0, 14, 22, 34][attack.combo];
     // A moving, tapered cut at real reach; its leading edge follows the blade.
     const head = Math.max(0.12, progress);
     const tail = Math.max(0, head - (finisher ? 0.85 : 0.65));
@@ -264,7 +264,7 @@ export class PlayerVisual {
       for (let i = 0; i < 4; i++) {
         const f = head - i * 0.18;
         if (f < 0.08) continue;
-        this.slash.lineStyle(3, MINT, fade * 0.8).strokePoints([
+        this.slash.lineStyle(attack.heavy ? 4 : 3, attack.heavy ? 0xffedbf : MINT, fade * 0.8).strokePoints([
           polar(f, attack.range - 28), polar(f - 0.06, attack.range - 36), polar(f - 0.12, attack.range - 30),
         ], false);
       }

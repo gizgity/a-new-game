@@ -31,11 +31,11 @@ test('light combo advances L1/L2/L3 and Heavy rewards the finisher window', () =
     advance(state, 0.5);
   }
   state.step({ ...idle, heavy: true }, FIXED_STEP);
-  assert.equal(state.attack.damage, 72);
+  assert.equal(state.attack.damage, 140);
   assert.equal(state.combo, 0);
-  advance(state, 0.7);
+  advance(state, 0.8);
   state.step({ ...idle, heavy: true }, FIXED_STEP);
-  assert.equal(state.attack.damage, 48);
+  assert.equal(state.attack.damage, 100);
 });
 
 test('melee hits once per attack, excludes targets behind, and applies knockback/stagger', () => {
@@ -44,7 +44,7 @@ test('melee hits once per attack, excludes targets behind, and applies knockback
   const behind = state.enemies[1];
   Object.assign(behind, { x: state.player.x - 50, y: state.player.y, hp: 100 });
   state.step({ ...idle, melee: true }, FIXED_STEP);
-  advance(state, 0.2);
+  advance(state, 0.08);
   assert.equal(front.hp, 482);
   assert.equal(behind.hp, 100);
   assert.ok(front.x > state.player.x + 65);
@@ -61,7 +61,7 @@ test('combo resets after idle and Heavy respects windup', () => {
   advance(state, 0.15);
   assert.equal(enemy.hp, 500);
   advance(state, 0.12);
-  assert.equal(enemy.hp, 452);
+  assert.equal(enemy.hp, 400);
 });
 
 test('Basic Shot is rate limited, has no ammo depletion, and projectiles are bounded', () => {
@@ -86,7 +86,7 @@ test('swept shot collision prevents tunneling and only damages one target', () =
   Object.assign(second, { x: 850, y: 500, hp: 100 });
   state.projectiles.push({ x: 800, y: 500, vx: 6000, vy: 0, hostile: false, life: 1 });
   state.step(idle, FIXED_STEP);
-  assert.equal(first.hp, 486);
+  assert.equal(first.hp, 480);
   assert.equal(second.hp, 100);
   assert.equal(state.projectiles.length, 0);
 });
@@ -136,7 +136,7 @@ test('dash i-frames block damage; Perfect Dodge only rewards the early timing wi
   assert.ok(early.perfectFlash > 0);
   const late = world();
   late.step({ ...idle, dash: true }, FIXED_STEP);
-  advance(late, 0.1);
+  advance(late, 0.14);
   hostileAtNextDashPosition(late);
   late.step(idle, FIXED_STEP);
   assert.equal(late.hp, 100);
@@ -168,12 +168,12 @@ test('Grunt and Archer telegraph before damage or releasing a locked-aim shot', 
   assert.ok(Math.abs(archerWorld.projectiles[0].vy) < 0.001);
 });
 
-test('stagger interrupts attacks; hurt grace prevents burst damage; reset restores practice state', () => {
+test('Heavy stagger interrupts attacks; hurt grace prevents burst damage; reset restores practice state', () => {
   const state = world();
   const enemy = target(state);
   Object.assign(enemy, { stagger: 0, windup: 0.3 });
-  state.step({ ...idle, melee: true }, FIXED_STEP);
-  advance(state, 0.1);
+  state.step({ ...idle, heavy: true }, FIXED_STEP);
+  advance(state, 0.27);
   assert.equal(enemy.windup, 0);
   assert.ok(enemy.stagger > 0);
   state.hitstop = 0;
@@ -288,10 +288,10 @@ test('Bulwark armor mitigates basic shots; Guard Breaker Heavy bypasses it', () 
   const state=world();state.enemies=[];state.spawnEnemy('bulwark');const enemy=state.enemies[0];
   Object.assign(enemy,{x:850,y:500,hp:1000,stagger:100});
   state.projectiles.push({x:820,y:500,vx:2000,vy:0,hostile:false,life:1});
-  state.step(idle,FIXED_STEP);assert.ok(Math.abs(enemy.hp-(1000-14*.55))<1e-8);
+  state.step(idle,FIXED_STEP);assert.ok(Math.abs(enemy.hp-(1000-20*.55))<1e-8);
   advance(state,.15);Object.assign(enemy,{x:850,y:500,stagger:100});state.mutations.push('guardBreaker');
   const hp=enemy.hp;state.step({...idle,heavy:true},FIXED_STEP);advance(state,.3);
-  assert.ok(Math.abs(hp-enemy.hp-48*1.3)<1e-8);
+  assert.ok(Math.abs(hp-enemy.hp-100*1.3)<1e-8);
 });
 test('Boss has three telegraphed attacks, locks slam target and cannot be stun-locked by light hits', () => {
   for(const action of [0,1,2]) {
@@ -318,11 +318,11 @@ test('continuous Basic Shots do not lock the Boss recovery cooldown forever',()=
 test('Berserker, Detonation Specialist and Static Riposte apply their documented effects',()=>{
  const berserker=world();berserker.hp=40;berserker.mutations.push('berserker');const targetA=target(berserker,850);
  berserker.projectiles.push({x:820,y:500,vx:2000,vy:0,hostile:false,life:1});berserker.step(idle,FIXED_STEP);
- assert.equal(targetA.hp,482.5);
+ assert.equal(targetA.hp,475);
  const specialist=world();specialist.mutations.push('detonationSpecialist');const trigger=target(specialist,850);trigger.rupture=1;
  const neighbour=specialist.enemies[1];Object.assign(neighbour,{x:975,y:500,hp:500,stagger:100});
  specialist.projectiles.push({x:820,y:500,vx:2000,vy:0,hostile:false,life:1});specialist.step(idle,FIXED_STEP);
- assert.equal(trigger.hp,471);assert.equal(neighbour.hp,485);
+ assert.equal(trigger.hp,465);assert.equal(neighbour.hp,485);
  const riposte=world();riposte.mutations.push('staticRiposte');const targetB=target(riposte,850);
  hostileAtNextDashPosition(riposte);riposte.step({...idle,dash:true},FIXED_STEP);
  assert.equal(targetB.hp,460);assert.equal(riposte.perfectDodges,1);
@@ -372,7 +372,7 @@ test('short shot tap near cooldown end fires once with latest aim; Charged waits
   assert.equal(state.stats.shots, 2);
   assert.equal(state.lastShot.angle, Math.PI / 2);
   state.step({ ...idle, heavy: true }, FIXED_STEP);
-  advance(state, 0.48);
+  advance(state, 0.62);
   state.chargedShots = 1;
   state.step({ ...idle, charged: true }, FIXED_STEP);
   assert.equal(state.chargedShots, 1);
@@ -428,20 +428,20 @@ test('explicit taps distinguish repeated contacts across adjacent ticks, without
   assert.equal(state.stats.shots, 1);
 });
 
-test('aim tracks windup, locks on hit, and Light/Heavy have separate hit and recovery windows', () => {
+test('Light tracks windup, Heavy locks release aim, and both have recovery', () => {
   for (const heavy of [false, true]) {
     const state = world();
     const enemy = target(state, state.player.x, state.player.y + 65);
-    state.step({ ...idle, melee: !heavy, heavy }, FIXED_STEP);
+    state.step({ ...idle, melee: !heavy, heavy, specialAim: { heavy: Math.PI / 2 } }, FIXED_STEP);
     assert.equal(enemy.hp, 500);
     state.player.angle = Math.PI / 2;
     while (!state.attack.resolved) state.step(idle, FIXED_STEP);
-    assert.equal(enemy.hp, heavy ? 452 : 482);
+    assert.equal(enemy.hp, heavy ? 400 : 482);
     assert.equal(state.attack.angle, Math.PI / 2);
     state.player.angle = Math.PI;
     advance(state, 0.08);
     assert.equal(state.attack.angle, Math.PI / 2);
-    assert.equal(enemy.hp, heavy ? 452 : 482);
+    assert.equal(enemy.hp, heavy ? 400 : 482);
     assert.ok(state.attack.age < state.attack.duration);
   }
 });
@@ -513,7 +513,7 @@ test('Light combo contact occurs on windup frames 4/6/10, with no early hit', ()
   }
 });
 
-test('Charged fire has its own cue, keeps ammo/cadence, and an unmarked hit does not create AoE', () => {
+test('Charged fire has its own cue, keeps ammo/cadence, and an unmarked hit seeds a real AoE', () => {
   const state = world();
   const direct = target(state, 850);
   const neighbour = state.enemies[1];
@@ -523,10 +523,10 @@ test('Charged fire has its own cue, keeps ammo/cadence, and an unmarked hit does
   assert.ok(state.soundEvents.includes('chargedGun') && !state.soundEvents.includes('gun'));
   assert.equal(state.chargedShots, 0);
   assert.equal(state.shotCooldown, 0.35);
-  assert.equal(direct.hp, 458);
-  assert.equal(neighbour.hp, 500);
-  assert.equal(state.detonations, 0);
-  assert.equal(state.impacts.some(i => i.kind === 'chargedBlast'), false);
+  assert.equal(direct.hp, 392);
+  assert.equal(neighbour.hp, 476);
+  assert.equal(state.detonations, 1);
+  assert.equal(state.impacts.some(i => i.kind === 'chargedBlast'), true);
 });
 
 test('Charged Detonate visual uses the unchanged damage radius, including Specialist', () => {
@@ -542,7 +542,7 @@ test('Charged Detonate visual uses the unchanged damage radius, including Specia
     state.chargedShots = 1;
     state.step({ ...idle, charged: true }, FIXED_STEP);
     const damage = 72 * (specialist ? 1.25 : 1);
-    assert.equal(direct.hp, 500 - 42 - damage);
+    assert.equal(direct.hp, 500 - 84 - damage);
     assert.equal(inside.hp, 500 - damage);
     assert.equal(outside.hp, 500);
     const effect = state.impacts.find(i => i.kind === 'chargedBlast');
@@ -602,4 +602,94 @@ test('held L1 then L2 clears an unbuffed cluster, grants charge per hit, and lea
  advance(state,.6,{...idle,melee:true});assert.equal(state.kills,3);assert.equal(state.enemies.length,1);
  assert.equal(state.enemies[0].hp,36);assert.equal(state.chargedShots,2);
  assert.equal(state.mutations.length,0);assert.equal(state.curse,null);
+});
+
+
+test('limited specials consume once per command, keep release aim through buffer, and do not repeat on hold',()=>{
+ const state=emptyWorld();state.chargedShots=3;state.shotCooldown=.08;
+ state.step({...idle,charged:true,specialAim:{charged:Math.PI/2}},FIXED_STEP);
+ state.player.angle=Math.PI;advance(state,.5,{...idle,charged:true});
+ assert.equal(state.stats.shots,1);assert.equal(state.chargedShots,2);assert.equal(state.lastShot.angle,Math.PI/2);
+ advance(state,.1);state.step({...idle,heavy:true,specialAim:{heavy:-Math.PI/2}},FIXED_STEP);
+ assert.equal(state.heavyCharges,1);assert.equal(state.attack.angle,-Math.PI/2);
+ state.player.angle=0;advance(state,1,{...idle,heavy:true});assert.equal(state.stats.melee,1);
+ advance(state,.1);state.step({...idle,heavy:true},FIXED_STEP);assert.equal(state.heavyCharges,0);
+ advance(state,7,{...idle,heavy:true});assert.equal(state.stats.melee,2);assert.equal(state.heavyCharges,1);
+ advance(state,8,{...idle,heavy:true});assert.equal(state.heavyCharges,2);assert.equal(state.heavyRecharge,0);
+ assert.equal(state.stats.melee,2);state.reset();assert.equal(state.heavyCharges,2);assert.equal(state.heavyRecharge,0);
+});
+test('empty or cancelled special commands never fire later when resources arrive',()=>{
+ for(const action of ['heavy','charged']){
+  const state=emptyWorld();state.heavyCharges=state.chargedShots=0;
+  state.step({...idle,[action]:true},FIXED_STEP);state.heavyCharges=2;state.chargedShots=3;
+  advance(state,.5,{...idle,[action]:true});assert.equal(state.stats.melee,0);assert.equal(state.stats.shots,0);
+  state.clearInput();state.hitstop=.08;state.step({...idle,[action]:true},FIXED_STEP);state.clearInput();
+  advance(state,.5);assert.equal(state.stats.melee,0);assert.equal(state.stats.shots,0);
+ }
+});
+test('Light no longer erases a telegraph while Heavy breaks it with a much stronger cleave',()=>{
+ for(const heavy of [false,true]){
+  const state=emptyWorld();state.spawnEnemy('grunt',500);const enemy=state.enemies[0];
+  Object.assign(enemy,{x:state.player.x+55,y:state.player.y,windup:.7,angle:Math.PI});
+  state.step({...idle,melee:!heavy,heavy},FIXED_STEP);while(!state.attack.resolved)state.step(idle,FIXED_STEP);
+  assert.equal(enemy.hp,heavy?400:482);assert.equal(enemy.windup===0,heavy);
+  assert.ok(enemy.stagger>0);if(heavy){assert.ok(state.hitstop>.065);assert.equal(state.heavyCharges,1);}
+ }
+});
+
+test('enemy scaling affects real approach speed, melee hits and projectile damage at spawn strength',()=>{
+ const distances=[];
+ for(const growth of [0,1]){
+  const state=emptyWorld();state.spawnEnemy('grunt',500,0,growth);const enemy=state.enemies[0];
+  Object.assign(enemy,{x:state.player.x+300,y:state.player.y,cooldown:999});const x=enemy.x;
+  state.step(idle,FIXED_STEP);distances.push(x-enemy.x);
+  Object.assign(enemy,{x:state.player.x+50,y:state.player.y,windup:FIXED_STEP,angle:Math.PI});
+  state.step(idle,FIXED_STEP);assert.equal(state.hp,growth?82:88);
+ }
+ assert.ok(distances[1]>distances[0]);
+ const state=emptyWorld();state.spawnEnemy('archer',500,0,1);const archer=state.enemies[0];
+ Object.assign(archer,{x:state.player.x+200,y:state.player.y,windup:FIXED_STEP,angle:Math.PI});
+ state.step(idle,FIXED_STEP);const shot=state.projectiles[0];assert.equal(shot.damage,15);
+ archer.damageScale=1;shot.x=state.player.x+4;shot.y=state.player.y;
+ state.step(idle,FIXED_STEP);assert.equal(state.hp,85);
+});
+
+
+test('dash away from an imminent strike or incoming bullet earns Perfect once; empty/early/away shots do not',()=>{
+ for(const windup of [.12,.4]){
+  const state=emptyWorld();state.spawnEnemy('grunt',500);Object.assign(state.enemies[0],{
+   x:state.player.x+50,y:state.player.y,windup,angle:Math.PI,stagger:0});
+  state.step({...idle,dash:true,dx:-1},FIXED_STEP);
+  assert.equal(state.perfectDodges,windup<.16?1:0);assert.equal(state.hp,100);
+  advance(state,.2);assert.equal(state.perfectDodges,windup<.16?1:0);
+ }
+ for(const velocity of [-310,310]){
+  const state=emptyWorld();state.projectiles=[{x:state.player.x+60,y:state.player.y,vx:velocity,vy:0,hostile:true,life:1}];
+  state.step({...idle,dash:true,dy:1},FIXED_STEP);assert.equal(state.perfectDodges,velocity<0?1:0);
+ }
+ const state=emptyWorld();state.step({...idle,dash:true},FIXED_STEP);assert.equal(state.perfectDodges,0);
+});
+test('walking is body blocked and slides; dash can escape through bodies without contact damage',()=>{
+ for(const kind of ['grunt','bulwark','boss']){
+  const state=emptyWorld();state.spawnEnemy(kind,500);const enemy=state.enemies[0];
+  Object.assign(enemy,{x:state.player.x+50,y:state.player.y,stagger:999,cooldown:999});
+  const start=state.player.x;advance(state,.4,{...idle,dx:1});
+  assert.ok(state.player.x<enemy.x);assert.ok(state.player.x<start+45);assert.equal(state.hp,100);
+  if(kind!=='boss'){const before=state.player.y;advance(state,.25,{...idle,dx:1,dy:-1});assert.ok(state.player.y<before);}
+ }
+ const state=emptyWorld();state.spawnEnemy('grunt');Object.assign(state.enemies[0],{x:850,y:500,stagger:999});
+ state.step({...idle,dash:true,dx:1},FIXED_STEP);advance(state,.18);assert.ok(state.player.x>880);assert.equal(state.hp,100);
+});
+test('ranged-only hits earn Charged ammo, Catalyst speeds it up, and Charged enables blast build synergies',()=>{
+ for(const catalyst of [false,true]){
+  const state=emptyWorld();state.spawnEnemy('grunt',1000);const enemy=state.enemies[0];
+  if(catalyst)state.mutations.push('catalyst');
+  for(let i=0;i<3;i++){
+   Object.assign(enemy,{x:850,y:500,stagger:999});state.step({...idle,shoot:true},FIXED_STEP);advance(state,.22);
+  }
+  assert.equal(state.stats.melee,0);assert.equal(state.chargedShots,catalyst?2:1);
+  assert.equal(enemy.hp,940);state.mutations.push('detonationSpecialist');state.curse='volatileSoul';
+  Object.assign(enemy,{x:850,y:500,stagger:999});state.step({...idle,charged:true},FIXED_STEP);
+  assert.equal(state.detonations,1);assert.equal(enemy.hp,940-84-24*1.25*1.4);
+ }
 });

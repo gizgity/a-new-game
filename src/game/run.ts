@@ -1,4 +1,4 @@
-import { ENEMY_HP, OPENING, WAVES } from './config/balance.js';
+import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_KILLS } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, curseDraft, mutationDraft, type CurseId, type DraftOption, type MutationId } from './builds.js';
 
@@ -19,6 +19,7 @@ export class RunDirector {
 
   constructor(readonly world: CombatWorld) {}
   get elapsed(): number { return this.ticks / 60; }
+  get nextDraftKills(): number | null { return DRAFT_KILLS[this.draftIndex] ?? null; }
 
   start(): void {
     this.world.reset();
@@ -45,7 +46,7 @@ export class RunDirector {
       this.reason = this.ticks >= 18000 ? 'deadline' : 'slain';
     }
     if (this.result) { this.expired = this.ticks >= 18000; return; }
-    if (this.draftIndex < 3 && this.ticks >= [3600, 7200, 10800][this.draftIndex]) {
+    if (this.draftIndex < DRAFT_KILLS.length && this.world.kills >= DRAFT_KILLS[this.draftIndex]) {
       this.draftKind = this.draftIndex === 1 ? 'curse' : 'mutation';
       this.draft = this.draftKind === 'curse' ? curseDraft(this.cursePool) :
         mutationDraft(this.world.mutations, this.world.stats, this.world.detonations, this.mutationPool);
@@ -53,7 +54,7 @@ export class RunDirector {
     }
     if (!this.eliteSpawned && this.ticks >= 9000) {
       this.world.enemies = this.world.enemies.slice(0, 17);
-      this.world.spawnEnemy('bulwark'); this.eliteSpawned = true;
+      this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
     }
     if (!this.bossDue && this.ticks >= 14400) {
       this.world.enemies = this.world.enemies.filter((enemy) => enemy.kind === 'bulwark');
@@ -85,9 +86,14 @@ export class RunDirector {
     return Math.max(0, Math.min(1, (this.ticks - OPENING.durationTicks) / (OPENING.rampEndTicks - OPENING.durationTicks)));
   }
 
+  private get enemyGrowth(): number {
+    return Math.max(0, Math.min(1, (this.elapsed - ENEMY_GROWTH.startSeconds) / (ENEMY_GROWTH.endSeconds - ENEMY_GROWTH.startSeconds)));
+  }
+
   private spawnCommon(kind: 'grunt' | 'archer' | 'volatile', angle: number): void {
-    const hp = Math.round(OPENING.hp[kind] + (ENEMY_HP[kind] - OPENING.hp[kind]) * this.openingBlend);
-    this.world.spawnEnemy(kind, hp, angle);
+    const baseHp = OPENING.hp[kind] + (ENEMY_HP[kind] - OPENING.hp[kind]) * this.openingBlend;
+    const hp = Math.round(baseHp * (1 + this.enemyGrowth * (ENEMY_GROWTH.health - 1)));
+    this.world.spawnEnemy(kind, hp, angle, this.enemyGrowth);
   }
 
   choose(index: number): boolean {

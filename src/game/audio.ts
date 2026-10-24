@@ -5,8 +5,8 @@ const tones: Record<SoundCue, [number, number, number]> = {
   swing2: [650, 0.095, 0.7], swing3: [230, 0.16, 0.65],
   light2: [460, 0.09, 0.4], light3: [145, 0.15, 0.5],
   chargedGun: [220, 0.16, 0.45], chargedBlast: [95, 0.26, 0.6],
-  swing: [480, 0.075, 0.85], heavySwing: [190, 0.18, 0.8], shotHit: [940, 0.04, 0.45], chargedHit: [180, 0.10, 0.5],
-  light: [330, 0.07, 0.35], heavy: [100, 0.14, 0.55], gun: [650, 0.055, 0.25],
+  swing: [480, 0.075, 0.85], heavySwing: [150, 0.24, 0.75], shotHit: [940, 0.04, 0.45], chargedHit: [180, 0.10, 0.5],
+  light: [330, 0.07, 0.35], heavy: [110, 0.22, 0.5], gun: [650, 0.055, 0.25],
   dash: [850, 0.10, 0.2], perfect: [1200, 0.16, 0.05], detonate: [75, 0.20, 0.65], hurt: [150, 0.12, 0.45],
 };
 
@@ -21,7 +21,7 @@ export class ProceduralAudio {
       const samples = buffer.getChannelData(0);
       for (let i = 0; i < samples.length; i++) {
         const t = i / context.sampleRate, progress = i / samples.length;
-        if (cue === 'chargedGun' || cue === 'chargedBlast') {
+        if (cue === 'chargedGun' || cue === 'chargedBlast' || cue === 'heavy') {
           // A short crack plus low body and audible harmonics for small phone speakers.
           const body = Math.sin(2 * Math.PI * frequency * t * (1 - progress * 0.65));
           const crack = (Math.random() * 2 - 1) * Math.exp(-progress * 12);

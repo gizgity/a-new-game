@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { HEAVY } from './game/config/balance';
 import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
 import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
@@ -35,7 +36,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="health"><span id="health-label" data-i18n="health"></span><span id="hp-value"></span><progress aria-labelledby="health-label" id="hp" max="100" value="100"></progress></div>
       <div class="dash-state"><span id="dash-label" data-i18n="dash"></span><span id="dash-value"></span><progress aria-labelledby="dash-label" id="dash-recharge" max="2.8" value="0"></progress></div>
       <div class="resource-state"><span data-i18n="charged"></span><span id="charged-value"></span></div>
+      <div class="resource-state"><span data-i18n="heavy"></span><span id="heavy-value"></span></div>
       <div class="resource-state"><span data-i18n="surge"></span><span id="surge-value"></span></div>
+      <div class="resource-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
       <span id="build-value" class="build-value"></span>
       <span id="combat-notice" aria-live="polite"></span>
     </div>
@@ -151,7 +154,7 @@ const dashValue = document.querySelector('#dash-value')!;
 const dashBar = document.querySelector<HTMLProgressElement>('#dash-recharge')!;
 const combatNotice = document.querySelector('#combat-notice')!;
 function renderCombatHUD(world: CombatWorld): void {
-  if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge);
+  if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge, world.heavyCharges, HEAVY.recharge - world.heavyRecharge);
   if (progression.observe(world, arena.run.result)) {
     applySettings();
     renderSettings();
@@ -171,7 +174,9 @@ function renderCombatHUD(world: CombatWorld): void {
   const seconds = Math.floor(arena.run.elapsed);
   document.querySelector('#run-clock')!.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} / 5:00`;
   document.querySelector('#charged-value')!.textContent = `${world.chargedShots} / 3 · ${world.chargePoints} / 3`;
+  document.querySelector('#heavy-value')!.textContent = `${world.heavyCharges} / ${HEAVY.charges}` + (world.heavyCharges < HEAVY.charges ? ` · ${t('secondsShort').replace('{n}', String(Math.ceil(HEAVY.recharge - world.heavyRecharge)))}` : '');
   document.querySelector('#surge-value')!.textContent = `${Math.floor(world.surge)} / 100`;
+  document.querySelector('#draft-progress')!.textContent = arena.run.nextDraftKills === null ? t('draftsComplete') : `${world.kills} / ${arena.run.nextDraftKills}`;
   document.querySelector('#build-value')!.textContent = [...world.mutations, ...(world.curse ? [world.curse] : [])].map((id) => t(id)).join(' · ');
   const notice = world.hp <= 0 ? t('playAgain') : world.perfectFlash > 0 ? t('perfectDodge') :
     world.attack?.heavy ? t('heavy') : world.combo > 0 ? t('comboValue').replace('{n}', String(world.combo)) : '';

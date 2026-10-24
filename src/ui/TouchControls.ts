@@ -10,6 +10,7 @@ export class TouchControls {
   private readonly media = matchMedia('(pointer: coarse)');
   private readonly contacts = new Map<number, Contact>();
   private readonly pressed = new Set<Action>();
+  private releaseAim: NonNullable<CombatInput['specialAim']> = {};
   private active = false;
   private dx = 0;
   private dy = 0;
@@ -27,7 +28,7 @@ export class TouchControls {
       </button>
       <div class="touch-actions">
         <div class="touch-utility">
-          <button type="button" class="touch-button" data-action="heavy"><span aria-hidden="true">╱</span><span data-i18n="heavy"></span></button>
+          <button type="button" class="touch-button" data-action="heavy"><span data-resource="heavy">2/2</span><span data-i18n="heavy"></span></button>
           <button type="button" class="touch-button" data-action="charged"><span data-resource="charged">0</span><span data-i18n="touchCharged"></span></button>
           <button type="button" class="touch-button" data-action="ultimate"><span data-resource="surge">0%</span><span data-i18n="surge"></span></button>
         </div>
@@ -73,20 +74,21 @@ export class TouchControls {
     const held = (action: Action) => this.pressed.has(action) ||
       [...this.contacts.values()].some(contact => contact.action === action);
     return {
-      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle, pressed: [...this.pressed],
-      melee: held('melee'), shoot: held('shoot'), heavy: held('heavy'),
-      charged: held('charged'), ultimate: held('ultimate'), dash: this.pressed.has('dash'),
+      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle, pressed: [...this.pressed], specialAim: this.releaseAim,
+      melee: held('melee'), shoot: held('shoot'), heavy: this.pressed.has('heavy'),
+      charged: this.pressed.has('charged'), ultimate: held('ultimate'), dash: this.pressed.has('dash'),
     };
   }
 
   // Retain taps until a simulation tick; CombatWorld owns the bounded recovery buffer.
-  consume(): void { this.pressed.clear(); }
+  consume(): void { this.pressed.clear(); this.releaseAim = {}; }
 
   reset(): void {
     this.onCancel();
     const contacts = [...this.contacts.entries()];
     this.contacts.clear();
     this.pressed.clear();
+    this.releaseAim = {};
     this.dx = this.dy = 0;
     this.aimAngle = null;
     for (const [id, contact] of contacts) {
@@ -97,8 +99,9 @@ export class TouchControls {
     }
   }
 
-  updateResources(dashes: number, charged: number, surge: number): void {
+  updateResources(dashes: number, charged: number, surge: number, heavy: number, heavyWait: number): void {
     for (const [key, value, available] of [
+      ['heavy', heavy > 0 ? `${heavy}/2` : t('secondsShort').replace('{n}', String(Math.ceil(heavyWait))), heavy > 0],
       ['dash', String(dashes), dashes > 0], ['charged', String(charged), charged > 0],
       ['surge', `${Math.floor(surge)}%`, surge >= 100],
     ] as const) {
@@ -114,6 +117,8 @@ export class TouchControls {
     this.root.querySelector('#move-stick')!.setAttribute('aria-label', t('touchMove'));
     this.root.querySelector('[data-action="melee"]')!.setAttribute('aria-label', t('touchMelee'));
     this.root.querySelector('[data-action="shoot"]')!.setAttribute('aria-label', t('touchShoot'));
+    this.root.querySelector('[data-action="charged"]')!.setAttribute('aria-label', t('touchChargedAim'));
+    this.root.querySelector('[data-action="heavy"]')!.setAttribute('aria-label', t('touchHeavyAim'));
   }
 
   private bind(element: HTMLElement, action: Contact['action']): void {
@@ -124,7 +129,7 @@ export class TouchControls {
       element.setPointerCapture(event.pointerId);
       element.classList.add('pressed');
       if (action === 'move') this.move(event);
-      else this.pressed.add(action);
+      else if (action !== 'charged' && action !== 'heavy') this.pressed.add(action);
     });
     element.addEventListener('pointermove', event => {
       if (!this.contacts.has(event.pointerId)) return;
@@ -134,15 +139,17 @@ export class TouchControls {
     const release = (event: PointerEvent) => {
       const contact = this.contacts.get(event.pointerId);
       if (!contact) return;
+      if (event.type !== 'pointerup') { this.reset(); return; }
+      if (event.type === 'pointerup' && (contact.action === 'charged' || contact.action === 'heavy')) {
+        this.move(event);
+        this.pressed.add(contact.action);
+        if (this.aimAngle !== null) this.releaseAim[contact.action] = this.aimAngle;
+      }
       this.contacts.delete(event.pointerId);
       contact.element.classList.remove('pressed');
       contact.element.style.removeProperty('--stick-x');
       contact.element.style.removeProperty('--stick-y');
       if (contact.action === 'move') this.dx = this.dy = 0;
-      if (event.type !== 'pointerup') {
-        if (contact.action !== 'move') this.pressed.delete(contact.action);
-        this.onCancel();
-      }
       if (element.hasPointerCapture(event.pointerId)) element.releasePointerCapture(event.pointerId);
     };
     element.addEventListener('pointerup', release);

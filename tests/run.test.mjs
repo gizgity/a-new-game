@@ -12,10 +12,10 @@ test('draft choices are unique, adaptive and never offer an owned Mutation',()=>
  assert.equal(new Set(choices.map(c=>c.id)).size,3);assert.ok(!choices.some(c=>c.id==='phantomEdge'));
  assert.equal(curseDraft().length,3);
 });
-test('1/2/3 minute drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
+test('25/80/160 kill drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
  const {world,run}=setup();
- for(const [tick,kind] of [[3599,'mutation'],[7199,'curse'],[10799,'mutation']]) {
-  world.hp=75;world.enemies.forEach(e=>e.stagger=999);run.ticks=tick;
+ for(const [kills,kind] of [[25,'mutation'],[80,'curse'],[160,'mutation']]) {
+  world.hp=75;world.enemies.forEach(e=>e.stagger=999);world.kills=kills;const tick=run.ticks;
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,3);
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
@@ -93,12 +93,12 @@ test('opening spawns bounded Grunt packs, preserves HP ramp and resets cleanly',
  for(let i=90;i<3599;i++)step();assert.equal(world.enemies.length,18);
  assert.ok(world.enemies.filter(e=>e.kind==='archer').length<=3);assert.equal(run.draft.length,0);
  const survivor=world.enemies[0];survivor.hp=9;world.enemies=[survivor];
- step();assert.equal(run.draft.length,3);assert.equal(run.elapsed,60);
+ step();assert.equal(run.draft.length,0);assert.equal(run.elapsed,60);
  assert.equal(survivor.hp,9);assert.equal(world.enemies[1].maxHp,36);
  run.choose(0);run.ticks=5399;run.spawnTicks=150;world.enemies=[survivor];
- step();assert.equal(world.enemies[1].maxHp,51);assert.equal(survivor.hp,9);
+ step();assert.equal(world.enemies[1].maxHp,55);assert.equal(survivor.hp,9);
  run.ticks=7199;run.spawnTicks=150;world.enemies=[survivor];
- step();assert.equal(world.enemies[1].maxHp,66);assert.equal(run.draftKind,'curse');
+ step();assert.equal(world.enemies[1].maxHp,76);assert.equal(run.draft.length,0);
  assert.equal(survivor.hp,9);
  run.start();assert.equal(world.enemies.length,7);assert.equal(world.enemies[0].maxHp,36);
  assert.equal(world.mutations.length,0);assert.equal(run.elapsed,0);
@@ -108,4 +108,32 @@ test('standard enemy HP follows kind, independent of spawn order; Elite/Boss hea
  for(const [kind,hp] of [['archer',48],['grunt',66],['grunt',66],['volatile',48],['bulwark',220],['boss',1500]]) {
   world.spawnEnemy(kind);assert.equal(world.enemies.at(-1).hp,hp);assert.equal(world.enemies.at(-1).maxHp,hp);
  }
+});
+
+test('new common enemies grow in health, damage and speed over time; survivors and Boss stay stable',()=>{
+ const {world,run}=setup();const old=world.enemies[0];old.hp=9;
+ const samples=[];
+ for(const seconds of [60,120,180,240,299]){
+  world.enemies=[old];old.stagger=999;run.waveIndex=0;run.draftIndex=3;run.ticks=seconds*60-1;run.spawnTicks=200;
+  run.step(idle,1/60);const enemy=world.enemies.find(e=>e!==old&&e.kind==='grunt');
+  assert.ok(enemy);samples.push(enemy);assert.equal(old.hp,9);assert.equal(old.damageScale,1);assert.equal(old.speedScale,1);
+ }
+ for(let i=1;i<samples.length;i++){
+  assert.ok(samples[i].maxHp>samples[i-1].maxHp);assert.ok(samples[i].damageScale>samples[i-1].damageScale);
+  assert.ok(samples[i].speedScale>samples[i-1].speedScale);
+ }
+ assert.equal(samples[0].maxHp,36);assert.ok(samples.at(-1).maxHp<=106);
+ run.start();run.draftIndex=3;run.ticks=14399;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
+ const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
+});
+
+test('time alone never drafts; crossing several kill thresholds yields each choice once',()=>{
+ const {world,run}=setup();world.enemies=[];run.ticks=10800;run.step(idle,1/60);assert.equal(run.draft.length,0);
+ world.kills=200;
+ for(const kind of ['mutation','curse','mutation']){
+  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,3);
+  assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
+ }
+ run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);
+ run.start();assert.equal(world.kills,0);assert.equal(run.nextDraftKills,25);
 });
