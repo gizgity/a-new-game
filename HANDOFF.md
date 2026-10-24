@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Deploy bản Q1 + mobile-first lên GitHub Pages hiện có qua GitHub Actions. User đã cho phép **xong việc thì tự deploy, không cần chờ xác nhận**; dùng workflow `.github/workflows/pages.yml`, không Sites/hosting khác. Đang tích hợp remote main `dc3aef5` (cấu hình Pages + Vite base `/a-new-game/`) với code mobile đã kiểm tra. Q1 vẫn AWAITING VISUAL APPROVAL và mobile chờ device playtest; các trạng thái này không chặn deploy theo yêu cầu mới. Q2–Q5 chưa được giao.
+Đã deploy bản Q1 + mobile-first qua GitHub Actions/Pages theo yêu cầu. Bản game `9f4a3a7` đã push main không force, giữ cấu hình Pages và lịch sử remote. Run `40044060889` của đúng commit đã **success**: https://github.com/gizgity/a-new-game/actions/runs/40044060889. URL: https://gizgity.github.io/a-new-game/. User cho phép tự deploy sau khi hoàn tất, không cần chờ xác nhận riêng; quyền này đã ghi vào AGENTS.md. Q1 vẫn AWAITING VISUAL APPROVAL và mobile chờ device playtest; deployment không đồng nghĩa experience accepted. Q2–Q5 chưa được giao.
 
 ## ACCEPTANCE CRITERIA — DEPLOY
 - Giữ nguyên workflow/base trên remote, bảo toàn thay đổi Q1/mobile và lịch sử; push main không force.
@@ -65,7 +65,7 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 - CombatWorld/movement/run/builds và balance/timing/hitbox không sửa. Không thêm dependency/engine/QA framework.
 - Evidence mới: [production dọc](docs/mobile/portrait.png), [production ngang](docs/mobile/landscape.png), [move + shoot đa chạm](docs/mobile/move-and-shoot.png), [menu 320px](docs/mobile/small-menu.png), [draft phone](docs/mobile/phone-draft.png), [tablet](docs/mobile/tablet.png), [Boss preview](docs/mobile/boss-preview.png).
 - Evidence Q1 gốc: [cận cảnh](docs/q1/fractured-vessel.png), [động tác](docs/q1/actions.png), [GIF](docs/q1/action-preview.gif). GIF zoom 2×, cảnh kiểm tra riêng; draft/Boss ảnh mobile dùng fixture mở state thật. Các ảnh này không chứng minh full-run combat feel.
-- Code Q1 + mobile đã commit `4847aaf`; đang merge remote main `dc3aef5` để giữ `.github/workflows/pages.yml` và `vite.config.ts`. Handoff giữ trạng thái quality/mobile mới, bổ sung thông tin deployment remote. Đã giải quyết handoff conflict, giữ cấu hình Pages của remote; build + Chromium subpath PASS. Chuẩn bị push bản tích hợp.
+- Q1/mobile commit `4847aaf`; merge `9f4a3a7` bảo toàn remote `dc3aef5`, workflow và base. Main đã nhận bản game và Actions deploy success. Commit handoff sau deploy chỉ cập nhật Markdown, không thay build/artifact.
 
 ## KEY DECISIONS
 - Free-first, KISS, mobile-first + desktop browser, một arena; không backend/account/multiplayer/leaderboard/monetization.
@@ -89,6 +89,7 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 - npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- GitHub Actions run `40044060889`, head `9f4a3a751a099353cd345dfb1ebcd2fc26e01929`: completed/success; đúng workflow Pages trên push main, không có dynamic Pages run cho commit này.
 - Deployment checkpoint 2026-10-24: merge cấu hình Pages, `npm run build` (typecheck) PASS; Chromium production `/a-new-game/` PASS phone 390×844, ngang 844×390 và desktop 1440×1000: SVG HTTP 200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP error. Không lặp gameplay unit tests vì code combat không đổi so với bản đã PASS.
 - Remote Pages: `99b6b00` thêm workflow/base; `dc3aef5` ghi nhận kiểm thử. Run thủ công mới nhất `39966794448` success; lần trước có workflow dynamic ghi đè trước khi user setup lại Source. Theo dõi run sau push để xác minh bản mới.
 - Build cuối: `npm run build` PASS (gồm typecheck), `npm test` PASS các file combat/run/progression. Vite giữ cảnh báo chunk Phaser >500 kB (~1.27 MB JS, gzip 351 kB); chưa đánh giá hiệu năng trên máy thật.
@@ -104,7 +105,7 @@ M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/lu�
 Bản desktop trước đó tải được nhưng mobile FAIL: menu 440px/draft ba cột bị cắt, HUD chồng chữ, page ngang cao 520px trên viewport 390px, player dọc ~9–10px và chỉ tap melee được. Các lỗi layout/input này đã được xử lý trong implementation mới và checks bên trên; ảnh cũ ở docs/q1/mobile-*.png chỉ là baseline.
 
 ## NEXT ACTION
-Tích hợp origin/main, kiểm tra build dưới subpath Pages, push main và theo dõi Actions tới deploy thành công. Không triển khai Q2–Q5.
+Chờ người dùng chơi bản Pages trên thiết bị thật và phản hồi Q1/mobile. Khi hoàn tất các sửa đổi được giao và checks phù hợp PASS, tự deploy qua Actions không cần hỏi lại. Không tự accepted hoặc triển khai Q2–Q5.
 
 ## BLOCKERS
-Không blocker kỹ thuật đã biết trong phạm vi kiểm tra. Còn visual approval và device playtest/Safari; Art Bible/concept effect gốc chi tiết chưa có trong repo/history đã kiểm tra. Q2–Q5 vẫn chưa được giao triển khai.
+Không blocker deployment hoặc kỹ thuật đã biết trong phạm vi kiểm tra. URL Pages trực tiếp nằm ngoài allowlist của môi trường; deployment xác minh bằng Actions, browser smoke chạy build local dưới đúng subpath. Còn visual approval và device playtest/Safari; Art Bible/concept effect gốc chi tiết chưa có trong repo/history đã kiểm tra. Q2–Q5 vẫn chưa được giao triển khai.
