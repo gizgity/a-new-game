@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Theo playtest mới: giữ/kéo cụm nút phải phải đổi hướng ngắm; giảm độ khó trước buff đầu tiên. Đã triển khai joystick ngắm khi giữ nút phải (vòng116/núm40), kéo ngoài nút vẫn nhận; joystick trái dẫn hướng khi chưa drag aim. Giảm HP/common spawn pressure phút đầu, ramp tuyến tính về chuẩn trong phút thứ hai. Giữ mốc draft 1/2/3 phút, Elite/Boss và nội dung MVP; không triển khai Q3–Q5.
+Theo playtest mới: giữ/kéo cụm nút phải phải đổi hướng ngắm; giảm độ khó trước buff đầu tiên. Đã triển khai joystick ngắm khi giữ nút phải (vòng116/núm40), kéo ngoài nút vẫn nhận; joystick trái dẫn hướng khi chưa drag aim. Giảm HP/common spawn pressure phút đầu, ramp tuyến tính về chuẩn trong phút thứ hai. Giữ mốc draft 1/2/3 phút, Elite/Boss và nội dung MVP; không triển khai Q3–Q5. Tests/build/browser PASS, đã deploy; **AWAITING PLAYTEST APPROVAL**.
 
 ## ACCEPTANCE — AIM & OPENING BALANCE
 - Kéo giữ nút phải cập nhật reticle/hướng ngắm; Heavy/Charged hoạt động như Chém/Bắn. Joystick trái vẫn hướng player khi ngón phải chưa kéo; sau drag aim, hai ngón độc lập. Capture ngoài nút, nhả/cancel/pause/resize không dính input; desktop giữ nguyên.
@@ -99,6 +99,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Aim/opening deployment: Actions `40095777323`, head `f4c19ed9b9ae70c17744ebf7a54d733cb47644ad`, completed/success; job `120877618562`. Live https://gizgity.github.io/a-new-game/. Handoff commit sau deploy chỉ Markdown.
 - Aim/opening production `/a-new-game/` PASS 320×568/390×844/844×390/1440×1000: SVG200, real-time outside-button drag, touch pause/resume/rotation clear ring, desktop mouse/WASD/dash/Esc; không page/request errors. Đã xem ảnh dọc390/ngang844.
 - Natural opening CDP: điều khiển scripted orbit + aim mục tiêu gần/bắn, chỉ tăng tốc render clock; không sửa HP/resources/enemies/waves. Tới draft đầu đúng60s,48HP,25kills,319shots,2enemies; chọn draft/resume PASS. Đây là smoke mechanics, không thay human balance/aim acceptance hoặc máy thật/Safari.
 - Aim/opening: npm test PASS (3 files,47 test definitions), build/typecheck PASS. Thêm3 regression tests: Grunt không buff hạ bằng2 Light hoặc Light+Shot/Detonate; opening cadence/cap, ramp HP36→51→66 không heal survivor/reset; HP theo loại không phụ thuộc id, Elite/Boss giữ nguyên.
@@ -121,7 +122,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User phản hồi Charged hiện tại chưa đủ lực; bản follow-up chờ chơi lại.
 
 ## NEXT ACTION
-Checks PASS; push và theo dõi Actions deploy, sau đó dừng chờ user playtest aim/balance trên máy thật.
+Dừng chờ user playtest joystick ngắm (giữ/kéo xa ngoài nút) và độ khó trước/sau buff đầu tiên trên điện thoại thật; chỉ sửa theo phản hồi, không tự mở Q3–Q5.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
