@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Implementation Q2, typecheck/build, focused tests và production subpath smoke đã PASS; chuẩn bị push/deploy. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
+Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Q2 commit `446b972` đã deploy thành công qua run `40046296553`. Sau review ảnh production, bỏ tap highlight mặc định của browser trên controls (CSS-only); build/typecheck và production smoke lại PASS, chuẩn bị deploy polish này. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
 
 ## ACCEPTANCE CRITERIA — Q2 + MOBILE
 - Cụm nút phải ưu tiên Chém/Bắn/Lướt theo tầm với ngón cái; đòn phụ phân cấp, Surge tránh bấm nhầm; targets ≥44px, không chồng/cắt ở 320px, dọc/ngang/tablet.
@@ -81,11 +81,11 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - CDP touch PASS: move + aim/shoot, nhả độc lập/cancel; tap cuối recovery nối đúng một lần, tap sớm hết hạn; Light→Heavy, dash cancel, shoot cuối dash, Charged sau Heavy; dash/Surge qua hitstop và cancel dash. Phase pause/draft/defeat/victory/rotation clear input; vi/en PASS. Fixture tắt waves/cấp resource cho các edge cases này.
 - Natural-wave smoke ~20s bằng CDP touch: 90HP, 2 kills, 103 shots, không runtime error; scripted movement/aim, không cấp stats/resources hoặc bất tử. Không coi là human feel/full-run acceptance.
 - Desktop smoke PASS mouse tap, WASD + RMB, Shift/Space, Esc pause/resume không dư hành động.
-- Build/typecheck bản pose cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
+- Build/typecheck bản pose cuối và CSS tap-highlight cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User chỉ phản hồi bản trước Q2 “khá ổn”.
 
 ## NEXT ACTION
-Commit/push bản Q2 đã kiểm tra lên main không force, theo dõi Actions deploy tới success; cập nhật handoff rồi dừng chờ playtest Q2.
+Commit/push polish touch đã kiểm tra lên main không force, theo dõi Actions deploy tới success; cập nhật handoff rồi dừng chờ playtest Q2.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
