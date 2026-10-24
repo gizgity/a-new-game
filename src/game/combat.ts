@@ -4,13 +4,17 @@ import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.j
 export const COMBAT = {
   maxHp: 100, dashCharges: 2, dashRecharge: 2.8, dashDuration: 0.18,
   dashSpeed: 920, perfectWindow: 0.08, shotInterval: 0.18,
-  enemyCount: 6, projectileLimit: 80, chainLimit: 12,
+  enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
-export type SoundCue = 'light' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt';
+export type SoundCue = 'light' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'heavySwing' | 'shotHit' | 'chargedHit';
+
+export type CombatAction = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
+type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
 
 export interface CombatInput {
   dx: number; dy: number; melee: boolean; shoot: boolean; heavy: boolean; dash: boolean; charged?: boolean; ultimate?: boolean;
+  pressed?: readonly CombatAction[];
 }
 export interface Enemy {
   id: number; kind: 'grunt' | 'archer' | 'volatile' | 'bulwark' | 'boss'; x: number; y: number;
@@ -24,7 +28,7 @@ export interface Attack {
   heavy: boolean; combo: number; angle: number; age: number;
   windup: number; duration: number; range: number; arc: number; damage: number; resolved: boolean;
 }
-export interface Impact { x: number; y: number; life: number; color: number; radius?: number }
+export interface Impact { x: number; y: number; life: number; color: number; radius?: number; kind?: 'light' | 'heavy' | 'shotHit' | 'chargedHit'; angle?: number }
 interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean }
 
 function clampPosition(body: { x: number; y: number }, radius = PLAYER_RADIUS): void {
@@ -82,12 +86,49 @@ export class CombatWorld {
   private nextId = 0;
   private replacement = 1.5;
   private perfectAvailable = false;
+  private dashProtected = false;
+  private previousInput: Partial<Record<CombatAction, boolean>> = {};
+  private buffered: { action: BufferedAction; life: number } | null = null;
+  private bufferedDash = 0;
+  private bufferedUltimate = 0;
+  lastShot = { angle: 0, charged: false };
+
+  clearInput(): void {
+    this.buffered = null;
+    this.bufferedDash = this.bufferedUltimate = 0;
+    this.previousInput = {};
+  }
+
+  private captureInput(input: CombatInput, dt: number): void {
+    // Age only in simulation time. Hitstop preserves a deliberate tap, not a held repeat.
+    if (this.hitstop <= 0) {
+      if (this.buffered && (this.buffered.life -= dt) <= 0) this.buffered = null;
+      this.bufferedDash = Math.max(0, this.bufferedDash - dt);
+      this.bufferedUltimate = Math.max(0, this.bufferedUltimate - dt);
+    }
+    for (const action of ['shoot', 'melee', 'charged', 'heavy', 'ultimate', 'dash'] as const) {
+      const pressed = input.pressed?.includes(action) || (input[action] && !this.previousInput[action]);
+      if (pressed) {
+        if (action === 'dash') {
+          if (this.dashCharges > 0) this.bufferedDash = COMBAT.inputBuffer;
+        } else if (action === 'ultimate') {
+          if (this.surge >= 100) this.bufferedUltimate = COMBAT.inputBuffer;
+        } else if (action !== 'charged' || this.chargedShots > 0) {
+          // One offensive slot: latest intent wins; simultaneous presses prefer Heavy.
+          this.buffered = { action, life: COMBAT.inputBuffer };
+        }
+      }
+      this.previousInput[action] = !!input[action];
+    }
+  }
 
   constructor(readonly player: PlayerState) { this.reset(); }
 
   reset(): void {
     Object.assign(this.player, { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 });
     this.soundEvents = [];
+    this.clearInput();
+    this.lastShot = { angle: 0, charged: false };
     this.mutations = [];
     this.curse = null;
     this.stats = { melee: 0, shots: 0, dashes: 0 };
@@ -107,6 +148,7 @@ export class CombatWorld {
     this.nextId = 0;
     this.replacement = 1.5;
     this.perfectAvailable = false;
+    this.dashProtected = false;
     for (let i = 0; i < COMBAT.enemyCount; i++) this.spawnEnemy();
   }
 
@@ -134,8 +176,10 @@ export class CombatWorld {
 
   step(input: CombatInput, dt: number): void {
     this.soundEvents = [];
-    if (this.hp <= 0) return;
+    if (this.hp <= 0) { this.clearInput(); return; }
+    this.captureInput(input, dt);
     if (this.hitstop > 0) { this.hitstop = Math.max(0, this.hitstop - dt); return; }
+    this.dashProtected = false;
     this.chainSeen.clear();
     this.lastChain = 0;
     this.surgeFlash = Math.max(0, this.surgeFlash - dt);
@@ -153,7 +197,9 @@ export class CombatWorld {
         if (this.dashCharges === COMBAT.dashCharges) this.dashRecharge = 0;
       }
     }
-    if (input.dash && this.dashCharges > 0 && this.dashTime <= 0) {
+    if (this.bufferedDash > 0 && this.dashCharges > 0 && this.dashTime <= 0) {
+      this.bufferedDash = this.bufferedUltimate = 0;
+      this.buffered = null;
       this.cue('dash');
       this.dashCharges--;
       this.stats.dashes++;
@@ -163,6 +209,7 @@ export class CombatWorld {
       this.attack = null;
     }
     if (this.dashTime > 0) {
+      this.dashProtected = true;
       const duration = Math.min(dt, this.dashTime);
       this.player.x += Math.cos(this.dashAngle) * COMBAT.dashSpeed * duration;
       this.player.y += Math.sin(this.dashAngle) * COMBAT.dashSpeed * duration;
@@ -170,27 +217,36 @@ export class CombatWorld {
       this.dashTime = Math.max(0, this.dashTime - dt);
     } else {
       movePlayer(this.player, input.dx, input.dy, dt * (this.attack?.heavy ? 0.45 : 1));
-      if (!this.attack && (input.heavy || input.melee)) this.beginAttack(input.heavy);
-      if (input.ultimate && this.surge >= 100) {
+      const pending = this.buffered?.action;
+      if (!this.attack && (pending === 'heavy' || pending === 'melee' || input.heavy || input.melee)) {
+        const heavy = pending === 'heavy' || (pending !== 'melee' && input.heavy);
+        this.beginAttack(heavy);
+        if (pending === (heavy ? 'heavy' : 'melee')) this.buffered = null;
+      }
+      if ((input.ultimate || this.bufferedUltimate > 0) && this.surge >= 100) {
+        this.bufferedUltimate = 0;
         this.surge = 0;
         this.surgeFlash = 0.6;
         this.invulnerable = Math.max(this.invulnerable, 0.5);
         this.projectiles = this.projectiles.filter((shot) => !shot.hostile);
         this.explosions.push({ x: this.player.x, y: this.player.y, damage: 100, radius: 280, hostile: false });
       }
-      if (input.charged && this.chargedShots > 0 && this.shotCooldown <= 0 && !this.attack?.heavy) {
+      if ((this.buffered?.action === 'charged' || input.charged) && this.chargedShots > 0 && this.shotCooldown <= 0 && !this.attack?.heavy) {
+        if (this.buffered?.action === 'charged') this.buffered = null;
         this.chargedShots--;
         this.fire(this.player.x, this.player.y, this.player.angle, false, true);
         this.shotCooldown = 0.35;
-      } else if (input.shoot && this.shotCooldown <= 0 && !this.attack?.heavy) {
+      } else if ((this.buffered?.action === 'shoot' || input.shoot) && this.shotCooldown <= 0 && !this.attack?.heavy) {
         this.fire(this.player.x, this.player.y, this.player.angle, false);
+        if (this.buffered?.action === 'shoot') this.buffered = null;
         this.shotCooldown = COMBAT.shotInterval;
       }
     }
     if (this.attack) {
       const attack = this.attack;
+      if (!attack.resolved) attack.angle = this.player.angle;
       attack.age += dt;
-      if (!attack.resolved && attack.age >= attack.windup) {
+      if (!attack.resolved && attack.age + 1e-9 >= attack.windup) {
         attack.resolved = true;
         for (const enemy of this.enemies) {
           const dx = enemy.x - this.player.x, dy = enemy.y - this.player.y;
@@ -221,12 +277,13 @@ export class CombatWorld {
 
   private beginAttack(heavy: boolean): void {
     this.stats.melee++;
+    this.cue(heavy ? 'heavySwing' : 'swing');
     if (this.curse === 'bloodPact' && !heavy) this.hp = Math.max(1, this.hp - 1);
     const finisher = heavy && this.combo === 3 && this.comboWindow > 0;
     if (!heavy) this.combo = this.combo % 3 + 1;
     this.attack = {
       heavy, combo: this.combo, angle: this.player.angle, age: 0,
-      windup: heavy ? 0.24 : 0.05,
+      windup: heavy ? 0.24 : [0, 4 / 60, 5 / 60, 6 / 60][this.combo],
       duration: heavy ? 0.58 : [0, 0.24, 0.28, 0.36][this.combo],
       range: (heavy ? 108 : 84) + (this.mutations.includes('phantomEdge') ? 20 : 0),
       arc: heavy ? Math.PI * 0.95 : Math.PI * 0.8,
@@ -237,10 +294,11 @@ export class CombatWorld {
     this.comboWindow = 1.1;
   }
 
-  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: SoundCue = 'light'): void {
+  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' = 'blast'): void {
     if (enemy.hp <= 0) return;
     if (this.hp < this.maxHp / 2 && this.mutations.includes('berserker')) damage *= 1.25;
     if (enemy.kind === 'bulwark' && !bypassArmor) damage *= 0.55;
+    const contactX = enemy.x, contactY = enemy.y;
     enemy.hp = Math.max(0, enemy.hp - damage);
     this.surge = Math.min(100, this.surge + 2);
     if (enemy.kind === 'boss') force *= 0.1;
@@ -252,9 +310,11 @@ export class CombatWorld {
     if (enemy.kind !== 'boss') enemy.windup = 0;
     if (enemy.kind !== 'boss') enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     enemy.flash = 0.12;
-    this.cue(sound);
-    this.impact(enemy.x, enemy.y, 0xe5fff7);
-    this.hitstop = Math.max(this.hitstop, damage >= 48 ? 0.05 : 0.025);
+    this.cue(sound === 'blast' ? 'light' : sound);
+    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : 0xe5fff7);
+    if (sound !== 'blast') Object.assign(this.impacts[this.impacts.length - 1], { kind: sound, angle });
+    const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.065 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
+    this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0) {
       this.kills++;
       if (enemy.kind === 'boss') this.bossSlain = true;
@@ -265,7 +325,7 @@ export class CombatWorld {
   }
 
   private hurt(damage: number, angle: number): void {
-    if (this.dashTime > 0) {
+    if (this.dashProtected || this.dashTime > 0) {
       if (this.perfectAvailable && this.dashTime >= COMBAT.dashDuration - COMBAT.perfectWindow) {
         this.perfectAvailable = false;
         this.perfectFlash = 0.65;
@@ -373,7 +433,7 @@ export class CombatWorld {
 
   private fire(x: number, y: number, angle: number, hostile: boolean, charged = false): void {
     if (this.projectiles.length >= COMBAT.projectileLimit) return;
-    if (!hostile) { this.stats.shots++; this.cue('gun'); }
+    if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue('gun'); }
     const speed = hostile ? 310 : 850;
     this.projectiles.push({ x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
       vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, life: hostile ? 3 : 1.3 });
@@ -398,7 +458,7 @@ export class CombatWorld {
         }
         if (target) {
           this.detonate(target, shot.charged ? 2 : 1);
-          this.hitEnemy(target, shot.charged ? 42 : 14, Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged);
+          this.hitEnemy(target, shot.charged ? 42 : 14, Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit');
           shot.life = 0;
         }
       }

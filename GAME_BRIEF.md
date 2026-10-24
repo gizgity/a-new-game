@@ -24,7 +24,7 @@
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
 - Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Không đổi world coordinates, hitbox, AI hoặc timing.
 - Kiểm tra touch emulation dọc/ngang/tablet và desktop regression; phân biệt kết quả giả lập với thiết bị thật/Safari. Visual và combat feel trên thiết bị vẫn cần người dùng xác nhận.
-- Giữ giới hạn nội dung MVP và Q2–Q5 chưa triển khai. Mobile controls/layout/camera là phần mở rộng được user giao sau Q1.
+- Giữ giới hạn nội dung MVP. User đã giao Q2 cùng điều chỉnh cụm nút phải: Chém 68px ở góc dưới phải, Bắn 64px phía trên, Lướt 60px phía trong; Heavy/Tích lực/Surge tách khỏi các nút chính (48–52px). Bố cục cần playtest tầm với trên thiết bị thật; Q3–Q5 chưa triển khai.
 
 ## Điều khiển desktop
 | Input | Hành động |
@@ -55,6 +55,15 @@
 - Surge nhận từ hit/kill/Perfect Dodge; Q dùng 100 Surge gây 100 damage trong 280 px, xóa đạn địch và cho 0.5 giây bảo vệ.
 - Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện 2:30. Boss 4:00 dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
 - Chain Warden 1500 HP, ba telegraph luân phiên: chain sweep, vòng đạn, slam khóa vị trí. Dưới nửa HP tăng nhịp; không bị stun-lock bởi bắn thường.
+
+### Q2 — timing, input và impact (chờ experience approval)
+- L1/L2/L3 lấy đà 4/5/6 simulation ticks (~67/83/100ms), tổng đòn 0.24/0.28/0.36s; Heavy giữ 0.24s lấy đà / 0.58s tổng. Hướng chém theo aim trong windup, khóa khi hit; mỗi đòn resolve một lần, recovery vẫn có commitment.
+- Một slot buffer tấn công, tối đa 120ms simulation time; tap mới thay ý định cũ, giữ qua hitstop. Tap cuối recovery/cooldown nối Light/Heavy/Shot/Charged; tap quá sớm hết hạn. Giữ nút vẫn lặp theo cadence hiện có. Input adapter giữ tap ngắn tới tick, không chạy lại mỗi catch-up tick.
+- Dash ưu tiên hủy đòn và buffer tấn công cũ; buffer ngắn riêng cho dash/Surge để tap qua hitstop không mất. Không xếp dash/Charged/Surge khi thiếu tài nguyên. Pause/draft/result/reset/resize/blur/pointercancel xóa ý định cũ; không queue nhiều đòn.
+- Dash bảo vệ toàn bộ các tick di chuyển, gồm tick cuối; timing Perfect Dodge, số charges, speed và recharge giữ nguyên. Tap cuối dash có thể nối sang tấn công khi dash kết thúc.
+- Miss có whoosh và slash nhưng không có contact spark/hitstop; Light mint, Heavy/Charged amber với recoil/impact mạnh hơn. Impact đặt tại điểm chạm trước knockback; Perfect Dodge dùng dấu gãy bốn hướng và notice hiện có. Sound trúng đạn khác sound chém.
+- Hitstop yêu cầu: Basic Shot 12ms, Light 33ms, Charged 40ms, Heavy 65ms (làm tròn lên tick 60Hz); blast/chain giữ quy tắc cũ. Không đổi damage, range, tài nguyên, AI, build hoặc chain depth ở Q2.
+- Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
 
 ## Run tối đa 5 phút
 | Mốc | Sự kiện |
@@ -165,4 +174,4 @@ Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên t�
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2–Q5 chỉ được triển khai khi người dùng giao tiếp.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 và chỉnh cụm nút phải mobile đã được giao, đang chờ playtest bản mới; Q3–Q5 chỉ triển khai khi người dùng giao tiếp.

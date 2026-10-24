@@ -99,8 +99,8 @@ export class PlayerVisual {
     this.recoil = Math.max(0, this.recoil - dt);
     if (world.stats.shots > this.shots) {
       this.recoil = 0.14;
-      this.charged = world.shotCooldown > 0.2;
-      this.shotAngle = world.player.angle;
+      this.charged = world.lastShot.charged;
+      this.shotAngle = world.lastShot.angle;
     }
     this.shots = world.stats.shots;
     for (const ghost of this.ghosts) {
@@ -156,7 +156,7 @@ export class PlayerVisual {
     const breath = Math.sin(this.clock * 3.5);
     const gait = this.moving ? Math.sin(this.stride) : 0;
     const bob = this.moving ? -Math.abs(gait) * 1.2 + this.moveY * 0.6 : breath * 0.55;
-    const recoil = this.recoil / 0.14;
+    const recoil = this.recoil / 0.14 * (this.charged ? 1.45 : 1);
     const facing = Math.cos(player.angle) >= 0 ? 1 : -1;
     const lean = this.moving ? this.moveX * 1.3 : 0;
     const tuckX = dash ? -Math.cos(world.dashAngle) * 4 : 0;
@@ -170,24 +170,29 @@ export class PlayerVisual {
     this.rightFoot.setPosition(5 + tuckX, 10 - gait * 2.2 + tuckY).setRotation(0.08 + gait * 0.1);
     this.core.setPosition(lean, -1 + bob - recoil * 1.5).setScale(0.72 + breath * 0.035 + recoil * 0.13, 0.8 + breath * 0.04);
     this.core.setAlpha(0.85 + (breath + 1) * 0.075);
-    this.gun.setPosition(Math.cos(player.angle) * (8 - recoil * 4), Math.sin(player.angle) * (8 - recoil * 4) + 3)
-      .setRotation(player.angle - facing * recoil * 0.12).setScale(1, facing).setAlpha(dash ? 0.6 : 1);
+    const gunAngle = this.recoil > 0.075 ? this.shotAngle : player.angle;
+    this.gun.setPosition(Math.cos(gunAngle) * (8 - recoil * 4), Math.sin(gunAngle) * (8 - recoil * 4) + 3)
+      .setRotation(gunAngle - facing * recoil * 0.12).setScale(1, facing).setAlpha(dash ? 0.6 : 1);
     this.blade.setScale(1).setAlpha(1);
     if (attack) {
       const direction = attack.combo === 2 ? -1 : 1;
-      const prepare = clamp(attack.age / attack.windup);
-      const release = clamp((attack.age - attack.windup) / (attack.heavy ? 0.1 : 0.065));
-      const recovery = clamp((attack.age - attack.windup - 0.1) / Math.max(0.01, attack.duration - attack.windup - 0.1));
-      const angle = attack.angle + direction * (attack.age < attack.windup
-        ? -attack.arc / 2 - prepare * 0.25
+      const sweepTime = attack.heavy ? 0.1 : 0.065;
+      const releaseStart = attack.windup - sweepTime / 2;
+      const preparing = attack.age < releaseStart;
+      const prepare = clamp(attack.age / releaseStart);
+      // The blade crosses the aimed direction on the damage tick, not after hitstop.
+      const release = clamp((attack.age - releaseStart) / sweepTime);
+      const recovery = clamp((attack.age - releaseStart - sweepTime) / (attack.duration - releaseStart - sweepTime));
+      const angle = attack.angle + direction * (preparing
+        ? -attack.arc / 2 - Math.sin(prepare * Math.PI) * 0.25
         : -attack.arc / 2 + release * attack.arc);
-      const reach = attack.age < attack.windup ? 8 : 12 + Math.sin(release * Math.PI) * 6;
+      const reach = preparing ? 8 : 12 + Math.sin(release * Math.PI) * 6;
       this.blade.setPosition(Math.cos(angle) * reach, Math.sin(angle) * reach)
         .setRotation(angle).setScale(1 + (attack.heavy ? 0.65 : 0.3) * (1 - recovery), 1);
       this.rightArm.x += Math.cos(angle) * 3;
       this.rightArm.y += Math.sin(angle) * 3;
       this.torso.rotation += direction * (release - 0.5) * 0.22 * (1 - recovery);
-      if (attack.age < attack.windup) this.core.setScale(0.72 + prepare * 0.18, 0.8 + prepare * 0.18);
+      if (preparing) this.core.setScale(0.72 + prepare * 0.18, 0.8 + prepare * 0.18);
     } else {
       this.blade.setPosition(-facing * 10 + tuckX, 5 + bob + tuckY)
         .setRotation(dash ? world.dashAngle + Math.PI : Math.PI / 2 + facing * 0.28).setScale(0.85, 1);
@@ -199,9 +204,9 @@ export class PlayerVisual {
   }
 
   private drawSlash(x: number, y: number, attack: Attack): void {
-    if (attack.age < attack.windup) return; // Anticipation is in the blade/core pose.
-    const age = attack.age - attack.windup;
     const sweepTime = attack.heavy ? 0.1 : 0.065;
+    const age = attack.age - (attack.windup - sweepTime / 2);
+    if (age < 0) return;
     const fade = 1 - clamp((age - sweepTime) / 0.09);
     if (fade <= 0) return;
     const progress = clamp(age / sweepTime);
@@ -212,12 +217,7 @@ export class PlayerVisual {
       y: y + Math.sin(start + direction * attack.arc * fraction) * radius,
     });
     const color = attack.heavy ? AMBER : MINT;
-    // Faceted sweep at the real reach. A thin full cut flashes on the damage tick;
-    // the tapered moving ribbon describes direction, then vanishes before recovery ends.
-    if (age < 0.035) {
-      const cut = Array.from({ length: 7 }, (_, i) => polar(i / 6, attack.range));
-      this.slash.lineStyle(1.5, 0xe9fff0, 0.8).strokePoints(cut, false);
-    }
+    // A moving, tapered cut at real reach; its leading edge follows the blade.
     const head = Math.max(0.12, progress);
     const tail = Math.max(0, head - 0.65);
     const outside = Array.from({ length: 6 }, (_, i) => polar(tail + (head - tail) * i / 5, attack.range));

@@ -10,102 +10,82 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Đã deploy bản Q1 + mobile-first qua GitHub Actions/Pages theo yêu cầu. Bản game `9f4a3a7` đã push main không force, giữ cấu hình Pages và lịch sử remote. Run `40044060889` của đúng commit đã **success**: https://github.com/gizgity/a-new-game/actions/runs/40044060889. URL: https://gizgity.github.io/a-new-game/. User cho phép tự deploy sau khi hoàn tất, không cần chờ xác nhận riêng; quyền này đã ghi vào AGENTS.md. Q1 vẫn AWAITING VISUAL APPROVAL và mobile chờ device playtest; deployment không đồng nghĩa experience accepted. Q2–Q5 chưa được giao.
+Q2 — melee/ranged/dash feel và impact, đồng thời bố trí lại cụm nút phải mobile theo yêu cầu mới. User đã playtest bản Q1/mobile trước và nói “khá ổn”, nhưng muốn chỉnh controls; chưa coi đó là duyệt riêng toàn bộ visual Q1. Implementation Q2, typecheck/build, focused tests và production subpath smoke đã PASS; chuẩn bị push/deploy. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới. Q3–Q5 chưa giao.
 
-## ACCEPTANCE CRITERIA — DEPLOY
-- Giữ nguyên workflow/base trên remote, bảo toàn thay đổi Q1/mobile và lịch sử; push main không force.
-- Build/typecheck PASS với base `/a-new-game/`; kiểm tra touch/asset trong subpath phù hợp.
-- GitHub Actions build/upload/deploy PASS cho đúng commit đã push; báo URL Pages và giới hạn xác minh URL trực tiếp nếu môi trường chặn.
-- Lưu quyền tự deploy sau khi hoàn tất công việc; không tự coi deploy thành visual/experience acceptance.
-
-## ACCEPTANCE CRITERIA — MOBILE
-- Phone 360×640 / 390×844, landscape 844×390 và tablet: menu/HUD/draft/settings/results nằm trong viewport, overlay cuộn được khi cần; controls tối thiểu 44 CSS px.
-- Player đủ lớn để đọc silhouette/animation; touch controls tránh vùng chơi chính, hỗ trợ safe-area.
-- Đa chạm: joystick di chuyển đồng thời giữ Chém/Bắn và kéo ngắm; dùng được dash/Heavy/Charged/Surge; nhả/cancel/pause/draft/resize/blur không giữ input cũ.
-- Desktop keyboard/mouse và combat timing/balance giữ nguyên. Build/typecheck, focused regression và browser touch smoke PASS; có screenshots dọc/ngang.
-- Giả lập không thay thế kiểm tra thiết bị thật/Safari hoặc người dùng duyệt feel/visual.
-
-## ACCEPTANCE CRITERIA — Q1
-- Fractured Vessel: lõi và giáp tách mảnh, silhouette nhận diện được, artwork có chủ đích thay hình học debug của player.
-- Idle/movement/melee/shoot/dash có animation phân biệt; slash sắc cạnh có chuyển động, dash fragmented afterimages.
-- Đồng bộ visuals với combat hiện có; không thay balance/hitbox hay các hệ thống Q2–Q5. Phần mobile được giao sau Q1 bổ sung input adapter, layout và camera.
-- Typecheck/build PASS; focused regression và playtest ngắn không phát hiện gameplay regression.
-- Có screenshot/preview ở kích thước chơi và chi tiết động tác để người dùng đánh giá.
-- Chỉ accepted khi người dùng xác nhận hình ảnh; trước đó **AWAITING VISUAL APPROVAL**. Build/tests không thay thế experience acceptance.
+## ACCEPTANCE CRITERIA — Q2 + MOBILE
+- Cụm nút phải ưu tiên Chém/Bắn/Lướt theo tầm với ngón cái; đòn phụ phân cấp, Surge tránh bấm nhầm; targets ≥44px, không chồng/cắt ở 320px, dọc/ngang/tablet.
+- Tap cuối recovery/cooldown được giữ tối đa 120ms simulation time, thực hiện một lần; không queue dài hoặc hành động ma sau cancel/pause/draft/resize/reset. Giữ nút lặp theo cadence; dash ưu tiên thoát đòn.
+- Light/Heavy có chuẩn bị → hit → recovery, pose/trail đi qua hướng ngắm trên damage tick; recoil/impact phân biệt Basic/Charged; miss/hit/Heavy/Perfect Dodge đọc được.
+- Giữ damage/range/resources/enemy/chain/build/run; thay timing và feedback trong Q2 như Brief. Không triển khai Q3–Q5.
+- Typecheck/build, focused logic tests, browser touch/desktop smoke PASS; có screenshot/preview. Cảm nhận combat/bố cục trên máy thật cần user duyệt, không tự accepted qua tests.
+- Tự deploy bằng workflow Pages hiện có sau checks PASS; không cần hỏi lại. Deploy không đồng nghĩa experience acceptance.
 
 ## PROGRESS
-M0–M6 có functional implementation; các kiểm tra cũ xác nhận logic/luồng chạy, không xác nhận chất lượng trải nghiệm toàn MVP.
+M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
 
-| Checkpoint | Trạng thái | Bằng chứng cần có |
+| Checkpoint | Trạng thái | Bằng chứng / còn thiếu |
 | --- | --- | --- |
-| Mobile-first — layout, input, camera | IN PROGRESS — AWAITING DEVICE PLAYTEST | Functional checks/production emulation PASS, ảnh mới ở docs/mobile; chờ kiểm tra thiết bị và người dùng duyệt feel |
-| Q1 — Player art, animation và combat readability | IN PROGRESS — AWAITING VISUAL APPROVAL | Code/art và kiểm tra kỹ thuật đã có; ảnh/GIF bên dưới. Chờ người dùng duyệt visual |
-| Q2 — Melee, ranged, dash feel và impact feedback | NOT VERIFIED | Playtest timing/buffering/cancel/impact, thao tác nhanh và cảm nhận điều khiển |
-| Q3 — Enemy identity, telegraph và precision encounters | NOT VERIFIED | Đọc pattern/telegraph/recovery trong mob, Elite và Boss encounters |
-| Q4 — Rupture, Detonate và Chain Reaction depth | NOT VERIFIED | Chơi có setup/trigger, chọn vị trí/mục tiêu và hệ quả chain |
-| Q5 — Mutation/Curse gameplay synergies | NOT VERIFIED | Đối chiếu concept gốc, các build tạo hành vi khác nhau và draft phản ánh lối chơi |
+| Mobile-first — layout, input, camera | IN PROGRESS — AWAITING PLAYTEST APPROVAL | User playtest bản cũ “khá ổn”; bố cục phải mới cần thử lại trên máy thật |
+| Q1 — Player art, animation và combat readability | IN PROGRESS — AWAITING VISUAL APPROVAL | Sprite/pose/VFX + ảnh/GIF có; chưa có xác nhận riêng visual |
+| Q2 — Melee, ranged, dash feel và impact feedback | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Implementation + focused tests + touch/desktop browser checks; chờ user duyệt feel |
+| Q3 — Enemy identity, telegraph và precision encounters | NOT VERIFIED | Cần pattern/telegraph/recovery, mob vs Elite/Boss |
+| Q4 — Rupture, Detonate và Chain Reaction depth | NOT VERIFIED | Cần setup/trigger, vị trí/mục tiêu và hệ quả chain |
+| Q5 — Mutation/Curse gameplay synergies | NOT VERIFIED | Cần concept gốc, build thay hành vi và draft theo lối chơi |
 
 ## IMPLEMENTATION AUDIT
 | Phần | Functional implementation | Experience acceptance / khoảng thiếu |
 | --- | --- | --- |
-| ArenaScene.ts trước Q1 | Player hình thoi xoay, sector slash, vòng tròn dash; flash/telegraph có render | Chưa có Fractured Vessel, articulation hay animation phân biệt. Q1 thay phần player/VFX này |
-| combat.ts — melee/input | L1/L2/L3: windup 0.05s, duration 0.24/0.28/0.36s; Heavy 0.24/0.58s; resolve một lần tại windup; giữ nút lặp đòn | Chưa có buffer cho tap melee/shoot/heavy trong recovery. Space chỉ được giữ qua frame thiếu tick/hitstop; không phải action buffer chung. Timing/feel chưa được duyệt (Q2) |
-| combat.ts — dash/feedback | Dash 2 charges, 0.18s, 920px/s, hủy melee; Perfect Dodge 0.08s; knockback/stagger/hitstop/flash/SFX | Có logic nhưng chưa chứng minh độ đọc/cảm giác trúng đòn, tính rõ ràng của cancel và dodge (Q2) |
-| combat.ts — enemies | Grunt/Archer/Volatile/Bulwark, Boss ba pattern; windup/cooldown, Boss cap 7 | Artwork còn primitives, recovery chưa có pose; Elite gần Grunt về pattern. Mob/precision distinction chưa được experience accepted (Q3) |
-| combat.ts — chain | Melee đặt 3 Rupture; Shot/Heavy kích nổ, lan damage/Detonate sang mục tiêu trong radius; Volatile/Death Echo nối queue; budget 12/tick | Là mechanic thật, không chỉ VFX; setup/độ đọc/chiều sâu quyết định chưa verified. Queue vượt budget bị bỏ, cần đánh giá khi làm Q4 |
-| builds.ts — Adaptive Evolution | So số shots/melee/dashes để chọn preferred; synergy dựa detonations/Catalyst/Phantom Edge; fallback ngẫu nhiên nếu thiếu pool | Đếm số hành động có rate khác nhau; không xét chất lượng timing/hiệu quả. Fallback vẫn mang nhãn adaptive/synergy. Chưa chứng minh phù hợp hành vi (Q5) |
-| Mutation/Curse trong Brief | Đủ 6/4, effect và trade-off có code/tests; xem bảng hiện trạng trong Brief | Nhiều effect chỉ tăng stat, lệch yêu cầu thay đổi cách chơi. Bản Brief M0/M1 không ghi concept effect chi tiết; chưa có Art Bible riêng trong repo. Không tự sáng tác concept gốc hay thay effects ở Q1 |
+| ArenaScene / Q1 | Fractured Vessel nhiều mảnh, idle/move/melee/shoot/dash, fragmented echoes; Q2 đồng bộ slash với damage | Player chờ visual approval; enemy/floor vẫn artwork prototype |
+| combat.ts — Q2 | Windup L1/L2/L3 4/5/6 ticks, Heavy 0.24s; total 0.24/0.28/0.36/0.58s. Buffer 120ms, windup tracking rồi khóa aim, dash cancel | Tests/browser chứng minh mechanics; nhịp và cảm giác mới cần user chơi |
+| dash/feedback — Q2 | Dash 2 charges/0.18s/920px/s, Perfect 0.08s; sửa i-frame tick cuối. Contact sparks/SFX/hitstop theo nguồn | Không thay speed/recharge/damage; feel trên touch thật chưa accepted |
+| enemies — Q3 | Grunt/Archer/Volatile/Bulwark/Boss có windup/cooldown; Boss ba pattern và cap 7 | Primitives, recovery poses thiếu; Elite gần Grunt, precision contrast chưa verified |
+| chain — Q4 | Rupture/Detonate gây và lan damage thật; budget 12/tick; Volatile/Death Echo nối queue | Depth chưa verified; queue vượt budget bị bỏ; không chỉnh ở Q2 |
+| builds.ts — Q5 | Adaptive so bộ đếm shots/melee/dashes; synergy theo vài điều kiện; fallback ngẫu nhiên | Khác rate hành động, chưa xét hiệu quả; fallback vẫn nhãn adaptive/synergy |
+| Mutation/Curse | Có 6/4 effects và trade-offs/tests | Nhiều stat-only; lịch sử M0/M1 chưa ghi concept effects gốc; không tự sáng tác concept thiếu |
 
 ## CURRENT STATUS
-- Brief đã có QUALITY BAR & EXPERIENCE ACCEPTANCE; effect Mutation/Curse được ghi là functional implementation, chưa đồng nghĩa concept accepted. User mở rộng nền tảng sang mobile-first; Project Goal đã đổi phần platform theo yêu cầu này, các quyết định nội dung giữ nguyên.
-- Q1: atlas SVG 8 frames, 9 sprite parts; idle/movement/melee/shoot/dash, slash đa đoạn và pool 6 fragmented afterimages; animation đóng băng theo pause/draft/hitstop. Prism dùng tint lõi, giữ unlock/settings. Art vẫn chờ duyệt.
-- Mobile: `TouchControls.ts` dùng Pointer Events/capture theo từng ngón; joystick trái, giữ/kéo Chém/Bắn để ngắm, các nút Lướt/Heavy/Tích lực/Surge và số tài nguyên. Nhả giữ hướng; joystick đổi hướng nhìn khi không giữ nút ngắm. Không auto-aim.
-- Tap chỉ giữ qua frame thiếu tick/hitstop, consume một lần mỗi tick; không buffer qua recovery/cooldown. Cancel dash không lưu trong keyboard queue. Pause/draft/result/resize/blur xóa contacts/queued input; khi đổi tab game pause.
-- UI mobile-first: HUD gọn; draft phone một cột; overlay cuộn nội bộ; safe-area/dvh. Controls ≥44px, chừa vùng dưới khi dọc và hai góc dưới khi ngang. Player phone ~24–27 CSS px; tablet ~42px. Desktop keyboard/mouse còn hỗ trợ.
-- CombatWorld/movement/run/builds và balance/timing/hitbox không sửa. Không thêm dependency/engine/QA framework.
-- Evidence mới: [production dọc](docs/mobile/portrait.png), [production ngang](docs/mobile/landscape.png), [move + shoot đa chạm](docs/mobile/move-and-shoot.png), [menu 320px](docs/mobile/small-menu.png), [draft phone](docs/mobile/phone-draft.png), [tablet](docs/mobile/tablet.png), [Boss preview](docs/mobile/boss-preview.png).
-- Evidence Q1 gốc: [cận cảnh](docs/q1/fractured-vessel.png), [động tác](docs/q1/actions.png), [GIF](docs/q1/action-preview.gif). GIF zoom 2×, cảnh kiểm tra riêng; draft/Boss ảnh mobile dùng fixture mở state thật. Các ảnh này không chứng minh full-run combat feel.
-- Q1/mobile commit `4847aaf`; merge `9f4a3a7` bảo toàn remote `dc3aef5`, workflow và base. Main đã nhận bản game và Actions deploy success. Commit handoff sau deploy chỉ cập nhật Markdown, không thay build/artifact.
+- Cụm phải 184×184: Chém 68px dưới phải, Bắn 64px phía trên, Lướt 60px phía trong; Heavy/Tích lực 52px, Surge 48px tách góc trên. Joystick 80px để vừa 320px; portrait dành 204px controls, landscape overlay ở góc. Giữ safe-area/dvh, vi/en và pointer capture.
+- CombatWorld giữ một slot offensive buffer; tap mới thay slot, simultaneous ưu tiên Heavy. Dash/Surge có buffer ngắn riêng; capture trước hitstop, tuổi buffer chỉ giảm khi simulation chạy. Adapter consume tap mỗi tick để không lặp ở catch-up; keyboard/mouse cũng giữ được tap giữa hai tick.
+- Dash clear đòn/buffer cũ, không queue khi hết charge. Tap gần cuối dash nối đòn sau khi kết thúc; held inputs vẫn hoạt động. clearInput nối với pause/draft/results/reset/resize/blur/cancel; resize cũng reset keyboard/mouse.
+- Windup light 4/5/6 ticks, tổng đòn giữ nguyên. Aim theo windup và khóa ở contact. Blade/trail bắt đầu sweep trước damage một nửa sweep time, nên contact/hitstop nằm giữa nhát chém; bỏ full-arc flash cũ. Mỗi đòn resolve một lần.
+- Miss có whoosh, hit mới có contact sparks và hitstop. Light/Shot mint/ivory, Heavy/Charged amber; Basic Shot hitstop 12ms, Light 33ms, Charged 40ms, Heavy 65ms (ceil fixed tick). Chain/blast giữ hitstop cũ. Perfect Dodge có dấu gãy bốn hướng; SFX phân biệt trúng đạn và chém.
+- Charged recoil mạnh hơn; pose/muzzle dùng lastShot thực tế, không đoán bằng cooldown hoặc hướng ngắm sau bắn. Pose/trails freeze theo simulation như Q1.
+- Giữ damage/range/knockback/resources/AI/run/builds/chain/dependencies. Không thêm engine, feature hoặc QA framework.
+- Q1 atlas SVG 8 frames/9 parts và Prism core tint giữ nguyên. Không có Art Bible riêng trong repo; visual dựa Brief và yêu cầu Fractured Vessel của user.
+
+## EVIDENCE
+- Q2: [Light](docs/q2/light.png), [Heavy](docs/q2/heavy.png), [Shot](docs/q2/shot.png), [Charged](docs/q2/charged.png), [Perfect Dodge](docs/q2/perfect.png), [Dash](docs/q2/dash.png). Ảnh actual renderer ở phone 390×844/DPR2, fixture địch/tài nguyên để thấy feedback; không phải full natural run.
+- Bố cục: [production dọc](docs/q2/portrait.png), [production ngang](docs/q2/landscape.png). Layout 320/360/390/844/768 đã kiểm và xem ảnh dọc/ngang.
+- Q1 cũ: docs/q1/fractured-vessel.png, actions.png, action-preview.gif (zoom2×); docs/mobile/ là bản mobile trước Q2. docs/q1/mobile-* là baseline FAIL trước mở rộng mobile, không phải bản hiện tại.
 
 ## KEY DECISIONS
-- Free-first, KISS, mobile-first + desktop browser, một arena; không backend/account/multiplayer/leaderboard/monetization.
-- Phaser 3.90 + TypeScript 5.9 + Vite 7; fixed 60Hz, catch-up tối đa 100ms; logic độc lập rendering. Giữ package-lock.
-- Codename cursebreak không phải tên public. Art Neon Occult / Fractured Geometry gốc, không asset sao chép. Fractured Vessel bám yêu cầu user và phần Art của Brief; nguồn Art Bible chi tiết chưa có trong repo.
-- UI vi/en qua t(key); UI cảm ứng được user cho phép trong phần mở rộng mobile-first. Save/unlock/cosmetic giữ contract hiện có.
-- Giữ run 5 phút, timeline, mob/Elite/Boss, 6 Mutation/4 Curse; không permanent stat upgrades.
-- Deploy sau khi hoàn tất qua GitHub Actions/Pages đã setup, không chờ approval riêng; không dùng Sites/hosting khác. Không ECS/custom art engine, replay/QA framework hoặc dependency mới. Test/playtest scripts tạm ngoài repo; preview evidence cần giữ để review.
+- Mobile-first + desktop, một arena, run 5 phút, 1 sword/gun, 3 mobs/Elite/Boss, 6 Mutation/4 Curse; không permanent stat upgrades, backend/account/multiplayer/leaderboard/monetization.
+- Free/open-source, KISS; Phaser 3.90 + TypeScript 5.9 + Vite 7; fixed 60Hz, catch-up tối đa 100ms; logic độc lập renderer. Không dependency mới.
+- UI vi/en qua t(key). Codename cursebreak không phải public brand; original Neon Occult / Fractured Geometry, không sao chép asset.
+- Quyền tự deploy sau checks PASS đã được user cấp và ghi AGENTS.md. Dùng `.github/workflows/pages.yml`, base `/a-new-game/`, dist qua GitHub Actions; bảo toàn remote, không force, theo dõi run tới kết thúc. Không Sites/hosting khác.
+- Bản Pages trước Q2: game commit `9f4a3a7`, run `40044060889` success; handoff commit `bc01b7e` Markdown-only. Remote main lúc fetch đầu Q2 vẫn `bc01b7e`.
 
 ## RELEVANT FILES
-- vite.config.ts, .github/workflows/pages.yml: base `/a-new-game/`, Node 22, npm ci/build, upload dist và deploy Pages trên push main; Markdown-only không kích deploy.
-- AGENTS.md, .agents/skills/handoff/SKILL.md: workflow đã đọc.
-- GAME_BRIEF.md: source of truth, quality bar và ghi nhận lệch concept.
-- src/game/ArenaScene.ts: input/fixed step/render integration; src/game/combat.ts: combat state/timing.
-- src/game/PlayerVisual.ts: sprite poses, slash, muzzle flash và pool afterimages; public/assets/fractured-vessel.svg: atlas gốc 8 frames 32×32, sửa trực tiếp không cần generator/dependency.
-- src/game/builds.ts: Adaptive Evolution; src/game/run.ts: run/draft/outcome.
-- src/ui/TouchControls.ts: touch input adapter; src/style.css: mobile-first/responsive UI; src/main.ts và src/i18n.ts: UI/settings/cosmetic + vi/en; tests/*.test.mjs: 30 focused tests hiện có.
-- docs/q1/: Q1 và audit mobile cũ; docs/mobile/: screenshots sau mở rộng mobile-first. Scripts kiểm tra/xuất ảnh ở /tmp/q1-browser, không thêm QA framework vào repo.
+- GAME_BRIEF.md: quality bar, scope và contract Q2; AGENTS.md + .agents/skills/handoff/SKILL.md đã đọc.
+- src/game/combat.ts: buffer/timing/contact/dash; ArenaScene.ts: input/graphics; PlayerVisual.ts: poses/slash/recoil; audio.ts: procedural SFX.
+- src/ui/TouchControls.ts + src/style.css: touch adapter và bố cục; tests/combat.test.mjs: thêm 11 focused Q2 tests, không tạo framework.
+- src/game/builds.ts / run.ts / progression.ts: contracts giữ nguyên; public/assets/fractured-vessel.svg: atlas gốc.
+- vite.config.ts + .github/workflows/pages.yml: workflow/base có sẵn, không sửa.
 
 ## RUN
-- npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
+npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- GitHub Actions run `40044060889`, head `9f4a3a751a099353cd345dfb1ebcd2fc26e01929`: completed/success; đúng workflow Pages trên push main, không có dynamic Pages run cho commit này.
-- Deployment checkpoint 2026-10-24: merge cấu hình Pages, `npm run build` (typecheck) PASS; Chromium production `/a-new-game/` PASS phone 390×844, ngang 844×390 và desktop 1440×1000: SVG HTTP 200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP error. Không lặp gameplay unit tests vì code combat không đổi so với bản đã PASS.
-- Remote Pages: `99b6b00` thêm workflow/base; `dc3aef5` ghi nhận kiểm thử. Run thủ công mới nhất `39966794448` success; lần trước có workflow dynamic ghi đè trước khi user setup lại Source. Theo dõi run sau push để xác minh bản mới.
-- Build cuối: `npm run build` PASS (gồm typecheck), `npm test` PASS các file combat/run/progression. Vite giữ cảnh báo chunk Phaser >500 kB (~1.27 MB JS, gzip 351 kB); chưa đánh giá hiệu năng trên máy thật.
-- Layout Chromium touch/DPR 2: 320×568, 360×640, 390×844, 844×390, 768×1024 PASS; page đúng viewport, controls ≥44px; tap Start, cả lựa chọn draft thứ ba, settings/mute, resume được. Đã xem screenshots dọc/ngang/menu/draft.
-- Touch CDP: PASS hai ngón move + aim/shoot, nhả độc lập, pointercancel, tap melee, Heavy, Charged, Surge, dash qua hitstop đúng một lần; cancel dash trong hitstop và tap recovery qua frame 100ms không tạo hành động trễ/lặp. Fixture riêng tắt waves, cấp tài nguyên để kiểm nút; không xem là run tự nhiên đầy đủ.
-- PASS clear input khi pause/draft/rotation/blur, death/victory và restart. Boss HUD đọc được trong camera mobile. AudioContext unlock bằng tap DOM: running, locked=false; chưa nghe/đánh giá âm thanh trên thiết bị thật.
-- Production mobile 390×844 và 844×390: PASS asset HTTP 200, đa chạm move/shoot, melee/dash, pause, locale vi/en/aria labels và persistence sau reload; page không overflow, không page/request error. Ảnh production dùng keyboard-free touch.
-- Desktop smoke: PASS WASD/mouse/LMB/RMB/Shift/Space, Esc pause/resume, vi/en, resize 960×600 / 1440×1000 / 1920×1080; production PASS asset/actions/pause/resize.
-- Q1 trước mobile: renderer read-only đối với CombatWorld; hitstop thật giữ pose/age, reset xóa ghosts/recoil. Visual chưa được user accepted.
-- `git diff --check` PASS. Chưa Safari/iOS, thiết bị thật, perf/feel thực tế hoặc full run bằng cảm ứng; không tuyên bố mobile experience đã accepted.
-
-## AUDIT MOBILE TRƯỚC KHI MỞ RỘNG
-Bản desktop trước đó tải được nhưng mobile FAIL: menu 440px/draft ba cột bị cắt, HUD chồng chữ, page ngang cao 520px trên viewport 390px, player dọc ~9–10px và chỉ tap melee được. Các lỗi layout/input này đã được xử lý trong implementation mới và checks bên trên; ảnh cũ ở docs/q1/mobile-*.png chỉ là baseline.
+- Focused suite PASS: 41 test definitions trong 3 files, gồm 11 Q2 tests (buffer expiry/once/latest, Heavy/Charged transitions, hitstop/dash/Surge cancel, reset, windup lock và ticks, miss/contact feedback, i-frame tick cuối). Existing combat/run/progression regression PASS.
+- Chromium touch/DPR2: 320×568, 360×640, 390×844, 844×390, 768×1024 PASS: tất cả nút ≥44px, không chồng/cắt/overflow, không runtime errors; screenshots dọc/ngang đã xem.
+- CDP touch PASS: move + aim/shoot, nhả độc lập/cancel; tap cuối recovery nối đúng một lần, tap sớm hết hạn; Light→Heavy, dash cancel, shoot cuối dash, Charged sau Heavy; dash/Surge qua hitstop và cancel dash. Phase pause/draft/defeat/victory/rotation clear input; vi/en PASS. Fixture tắt waves/cấp resource cho các edge cases này.
+- Natural-wave smoke ~20s bằng CDP touch: 90HP, 2 kills, 103 shots, không runtime error; scripted movement/aim, không cấp stats/resources hoặc bất tử. Không coi là human feel/full-run acceptance.
+- Desktop smoke PASS mouse tap, WASD + RMB, Shift/Space, Esc pause/resume không dư hành động.
+- Build/typecheck bản pose cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
+- Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User chỉ phản hồi bản trước Q2 “khá ổn”.
 
 ## NEXT ACTION
-Chờ người dùng chơi bản Pages trên thiết bị thật và phản hồi Q1/mobile. Khi hoàn tất các sửa đổi được giao và checks phù hợp PASS, tự deploy qua Actions không cần hỏi lại. Không tự accepted hoặc triển khai Q2–Q5.
+Commit/push bản Q2 đã kiểm tra lên main không force, theo dõi Actions deploy tới success; cập nhật handoff rồi dừng chờ playtest Q2.
 
 ## BLOCKERS
-Không blocker deployment hoặc kỹ thuật đã biết trong phạm vi kiểm tra. URL Pages trực tiếp nằm ngoài allowlist của môi trường; deployment xác minh bằng Actions, browser smoke chạy build local dưới đúng subpath. Còn visual approval và device playtest/Safari; Art Bible/concept effect gốc chi tiết chưa có trong repo/history đã kiểm tra. Q2–Q5 vẫn chưa được giao triển khai.
+Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.

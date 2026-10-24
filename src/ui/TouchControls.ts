@@ -1,7 +1,7 @@
-import type { CombatInput } from '../game/combat';
+import type { CombatAction, CombatInput } from '../game/combat';
 import { t } from '../i18n';
 
-type Action = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
+type Action = CombatAction;
 interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number }
 
 /** Maps pointer contacts to existing combat inputs. No combat timing or targeting rules. */
@@ -14,6 +14,7 @@ export class TouchControls {
   private dy = 0;
   private aimAngle: number | null = null;
   onModeChange = () => {};
+  onCancel = () => {};
 
   get enabled(): boolean { return this.media.matches; }
 
@@ -59,17 +60,17 @@ export class TouchControls {
     const held = (action: Action) => this.pressed.has(action) ||
       [...this.contacts.values()].some(contact => contact.action === action);
     return {
-      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle,
+      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle, pressed: [...this.pressed],
       melee: held('melee'), shoot: held('shoot'), heavy: held('heavy'),
       charged: held('charged'), ultimate: held('ultimate'), dash: this.pressed.has('dash'),
     };
   }
 
-  // Retain a short tap through a frame with no simulation tick or hitstop, like Space.
-  // This is not a recovery/cooldown action buffer.
+  // Retain taps until a simulation tick; CombatWorld owns the bounded recovery buffer.
   consume(): void { this.pressed.clear(); }
 
   reset(): void {
+    this.onCancel();
     const contacts = [...this.contacts.entries()];
     this.contacts.clear();
     this.pressed.clear();
@@ -125,7 +126,10 @@ export class TouchControls {
       contact.element.style.removeProperty('--stick-x');
       contact.element.style.removeProperty('--stick-y');
       if (contact.action === 'move') this.dx = this.dy = 0;
-      if (event.type !== 'pointerup' && contact.action !== 'move') this.pressed.delete(contact.action);
+      if (event.type !== 'pointerup') {
+        if (contact.action !== 'move') this.pressed.delete(contact.action);
+        this.onCancel();
+      }
       if (element.hasPointerCapture(event.pointerId)) element.releasePointerCapture(event.pointerId);
     };
     element.addEventListener('pointerup', release);

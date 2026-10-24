@@ -91,21 +91,23 @@ footer { display: none; }
 .desktop-note { display: none; }
 
 /* Touch controls occupy their own bottom area in portrait. Pointer capture owns each finger. */
-.touch-enabled .arena-shell { --controls-height: 152px; }
-.touch-controls { position: absolute; z-index: 3; bottom: 10px; left: 10px; right: 10px; height: 130px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; pointer-events: none; }
+.touch-enabled .arena-shell { --controls-height: 204px; }
+.touch-controls { position: absolute; z-index: 3; bottom: 10px; left: 10px; right: 10px; height: 184px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; pointer-events: none; }
 .touch-controls button { pointer-events: auto; touch-action: none; }
-.touch-stick { position: relative; width: 92px; height: 92px; flex-shrink: 0; border: 1px solid #53877b; border-radius: 50%; color: #9addc8; background: radial-gradient(circle, #18312f 0%, #101e28e8 65%); }
+.touch-stick { position: relative; width: 80px; height: 80px; flex-shrink: 0; border: 1px solid #53877b; border-radius: 50%; color: #9addc8; background: radial-gradient(circle, #18312f 0%, #101e28e8 65%); }
 .stick-knob { position: absolute; left: calc(50% - 18px); top: calc(50% - 18px); width: 36px; height: 36px; display: grid; place-items: center; background: #315d54; border: 1px solid #90d7bf; border-radius: 50%; font-size: 24px; transform: translate(var(--stick-x, 0px), var(--stick-y, 0px)); }
 .stick-label { position: absolute; bottom: 8px; left: 0; width: 100%; font-size: 9px; pointer-events: none; }
-.touch-actions { width: 180px; flex-shrink: 0; display: grid; gap: 8px; }
-.touch-utility { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.touch-primary { display: grid; grid-template-columns: 44px 60px 60px; gap: 8px; align-items: end; }
-.touch-button { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px; min-width: 44px; height: 48px; padding: 3px; border: 1px solid #477168; border-radius: 12px; background: #12272aee; color: #c4f3e0; font-size: 9px; }
-.touch-button > span:first-child { font-size: 15px; font-weight: 600; line-height: 1.2; }
-.touch-button.aim-button { height: 64px; border-radius: 50%; border-color: #8cccb4; }
-.melee-button { background: #23423cee; }
-.shoot-button { background: #183946ee; border-color: #83bac8 !important; }
-.dash-button { height: 52px; border-color: #ab96dc; }
+.touch-actions { position: relative; width: 184px; height: 184px; flex-shrink: 0; }
+.touch-utility, .touch-primary { display: contents; }
+.touch-button { position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px; min-width: 44px; min-height: 44px; padding: 3px; border: 1px solid #477168; border-radius: 14px; background: #12272aee; color: #c4f3e0; font-size: 10px; }
+.touch-button > span:first-child { font-size: 17px; font-weight: 600; line-height: 1.2; }
+/* Primary thumb arc: Shoot above Melee; Dash immediately inward. Specials sit apart. */
+.touch-button[data-action="ultimate"] { left: 0; top: 0; width: 48px; height: 48px; font-size: 9px; border-color: #72638f; background: #211c30ee; }
+.touch-button[data-action="heavy"] { left: 56px; top: 0; width: 52px; height: 52px; border-color: #a38a57; }
+.touch-button[data-action="charged"] { left: 0; top: 60px; width: 52px; height: 52px; border-color: #a38a57; }
+.touch-button.shoot-button { left: 116px; top: 24px; width: 64px; height: 64px; border-radius: 50%; background: #183946ee; border-color: #83bac8; }
+.touch-button.melee-button { left: 116px; top: 100px; width: 68px; height: 68px; border-radius: 50%; background: #234b40f5; border: 2px solid #a4e8cb; }
+.touch-button.dash-button { left: 48px; top: 124px; width: 60px; height: 60px; border-radius: 50%; background: #29223cee; border-color: #ab96dc; }
 .aim-dot { transform: translate(var(--stick-x, 0px), var(--stick-y, 0px)); }
 .touch-controls .pressed { background: #34675a; border-color: #d8ffea; box-shadow: 0 0 14px #6bf3d030; }
 .touch-controls .unavailable { opacity: .5; }

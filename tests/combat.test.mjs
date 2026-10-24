@@ -329,3 +329,186 @@ test('Berserker, Detonation Specialist and Static Riposte apply their documented
  const soul=world();soul.curse='volatileSoul';soul.projectiles.push({x:800,y:500,vx:0,vy:0,hostile:true,life:1});soul.step(idle,FIXED_STEP);
  assert.equal(soul.hp,87.5);
 });
+
+// Q2: taps are buffered briefly; holds still repeat at the existing action cadence.
+function emptyWorld() {
+  const state = world();
+  state.practice = false;
+  state.enemies = [];
+  return state;
+}
+
+test('late melee tap chains once; early recovery tap expires instead of becoming a delayed attack', () => {
+  for (const [delay, expected] of [[0.15, 2], [0.02, 1]]) {
+    const state = emptyWorld();
+    state.step({ ...idle, melee: true }, FIXED_STEP);
+    advance(state, delay);
+    state.step({ ...idle, melee: true }, FIXED_STEP);
+    advance(state, 0.6);
+    assert.equal(state.stats.melee, expected);
+  }
+});
+
+test('Heavy replaces buffered Light, and a tap survives hitstop without repeating', () => {
+  const state = emptyWorld();
+  state.step({ ...idle, melee: true }, FIXED_STEP);
+  advance(state, 0.13);
+  state.step({ ...idle, melee: true }, FIXED_STEP);
+  state.hitstop = 0.05;
+  state.step({ ...idle, heavy: true }, FIXED_STEP);
+  advance(state, 0.18);
+  assert.equal(state.attack.heavy, true);
+  advance(state, 0.7);
+  assert.equal(state.stats.melee, 2);
+});
+
+test('short shot tap near cooldown end fires once with latest aim; Charged waits for Heavy recovery', () => {
+  const state = emptyWorld();
+  state.step({ ...idle, shoot: true }, FIXED_STEP);
+  advance(state, 0.08);
+  state.step({ ...idle, shoot: true }, FIXED_STEP);
+  state.player.angle = Math.PI / 2;
+  advance(state, 0.4);
+  assert.equal(state.stats.shots, 2);
+  assert.equal(state.lastShot.angle, Math.PI / 2);
+  state.step({ ...idle, heavy: true }, FIXED_STEP);
+  advance(state, 0.48);
+  state.chargedShots = 1;
+  state.step({ ...idle, charged: true }, FIXED_STEP);
+  assert.equal(state.chargedShots, 1);
+  advance(state, 0.25);
+  assert.equal(state.chargedShots, 0);
+  assert.equal(state.stats.shots, 3);
+  assert.equal(state.lastShot.charged, true);
+});
+
+test('dash cancels windup and queued offense; late dash-end tap resumes attacking once', () => {
+  const state = emptyWorld();
+  state.step({ ...idle, heavy: true }, FIXED_STEP);
+  state.step({ ...idle, melee: true }, FIXED_STEP);
+  state.step({ ...idle, dash: true }, FIXED_STEP);
+  assert.equal(state.attack, null);
+  advance(state, 0.4);
+  assert.equal(state.stats.melee, 1);
+  state.step({ ...idle, dash: true }, FIXED_STEP);
+  advance(state, 0.08);
+  state.step({ ...idle, melee: true }, FIXED_STEP);
+  advance(state, 0.4);
+  assert.equal(state.stats.melee, 2);
+});
+
+test('hitstop dash is consumed once; cancel/reset clear queued actions and unavailable dash never fires later', () => {
+  for (const cancel of [false, true]) {
+    const state = emptyWorld();
+    state.hitstop = 0.05;
+    state.step({ ...idle, dash: true }, FIXED_STEP);
+    if (cancel) state.clearInput();
+    advance(state, 0.5);
+    assert.equal(state.stats.dashes, cancel ? 0 : 1);
+  }
+  const state = emptyWorld();
+  state.dashCharges = 0;
+  state.dashRecharge = COMBAT.dashRecharge - 0.05;
+  state.step({ ...idle, dash: true }, FIXED_STEP);
+  advance(state, 0.2);
+  assert.equal(state.dashCharges, 1);
+  assert.equal(state.stats.dashes, 0);
+  state.hitstop = 0.05;
+  state.step({ ...idle, melee: true }, FIXED_STEP);
+  state.reset();
+  advance(state, 0.5);
+  assert.equal(state.stats.melee, 0);
+});
+
+test('explicit taps distinguish repeated contacts across adjacent ticks, without a deep queue', () => {
+  const state = emptyWorld();
+  state.shotCooldown = 0.1;
+  for (let i = 0; i < 3; i++) state.step({ ...idle, shoot: true, pressed: ['shoot'] }, FIXED_STEP);
+  advance(state, 0.4);
+  assert.equal(state.stats.shots, 1);
+});
+
+test('aim tracks windup, locks on hit, and Light/Heavy have separate hit and recovery windows', () => {
+  for (const heavy of [false, true]) {
+    const state = world();
+    const enemy = target(state, state.player.x, state.player.y + 65);
+    state.step({ ...idle, melee: !heavy, heavy }, FIXED_STEP);
+    assert.equal(enemy.hp, 500);
+    state.player.angle = Math.PI / 2;
+    while (!state.attack.resolved) state.step(idle, FIXED_STEP);
+    assert.equal(enemy.hp, heavy ? 452 : 482);
+    assert.equal(state.attack.angle, Math.PI / 2);
+    state.player.angle = Math.PI;
+    advance(state, 0.08);
+    assert.equal(state.attack.angle, Math.PI / 2);
+    assert.equal(enemy.hp, heavy ? 452 : 482);
+    assert.ok(state.attack.age < state.attack.duration);
+  }
+});
+
+test('miss has swing but no impact/hitstop; melee and ranged contact feedback differ', () => {
+  const miss = emptyWorld();
+  miss.step({ ...idle, melee: true }, FIXED_STEP);
+  assert.ok(miss.soundEvents.includes('swing'));
+  advance(miss, 0.15);
+  assert.equal(miss.hitstop, 0);
+  assert.equal(miss.impacts.length, 0);
+  const stops = {};
+  for (const kind of ['light', 'heavy', 'shotHit', 'chargedHit']) {
+    const state = world();
+    const enemy = target(state, state.player.x + 50);
+    const x = enemy.x;
+    if (kind === 'light' || kind === 'heavy') {
+      state.step({ ...idle, melee: kind === 'light', heavy: kind === 'heavy' }, FIXED_STEP);
+      while (!state.attack.resolved) state.step(idle, FIXED_STEP);
+    } else {
+      state.chargedShots = 1;
+      state.step({ ...idle, shoot: kind === 'shotHit', charged: kind === 'chargedHit' }, FIXED_STEP);
+    }
+    assert.ok(state.soundEvents.includes(kind));
+    assert.equal(state.impacts[0].kind, kind);
+    assert.equal(state.impacts[0].x, x);
+    stops[kind] = state.hitstop;
+  }
+  assert.ok(stops.heavy > stops.light && stops.light > stops.shotHit && stops.chargedHit > stops.shotHit);
+});
+
+test('dash protects its final movement tick and becomes vulnerable on the following tick', () => {
+  const state = emptyWorld();
+  state.step({ ...idle, dash: true }, FIXED_STEP);
+  while (state.dashTime > FIXED_STEP) state.step(idle, FIXED_STEP);
+  state.projectiles.push({ x: state.player.x + state.dashTime * COMBAT.dashSpeed,
+    y: state.player.y, vx: 0, vy: 0, hostile: true, life: 1 });
+  state.step(idle, FIXED_STEP);
+  assert.equal(state.dashTime, 0);
+  assert.equal(state.hp, 100);
+  assert.equal(state.perfectDodges, 0);
+  state.projectiles.push({ x: state.player.x, y: state.player.y, vx: 0, vy: 0, hostile: true, life: 1 });
+  state.step(idle, FIXED_STEP);
+  assert.equal(state.hp, 90);
+});
+
+test('Surge tap survives hitstop once, and cancellation discards it', () => {
+  for (const cancel of [false, true]) {
+    const state = emptyWorld();
+    state.surge = 100;
+    state.hitstop = 0.05;
+    state.step({ ...idle, ultimate: true }, FIXED_STEP);
+    if (cancel) state.clearInput();
+    advance(state, 0.15);
+    assert.equal(state.surge, cancel ? 100 : 0);
+    assert.equal(state.surgeFlash > 0, !cancel);
+  }
+});
+
+test('Light combo contact occurs on windup frames 4/5/6, with no early hit', () => {
+  const state = emptyWorld();
+  for (const frames of [4, 5, 6]) {
+    state.step({ ...idle, melee: true }, FIXED_STEP);
+    for (let i = 1; i < frames - 1; i++) state.step(idle, FIXED_STEP);
+    assert.equal(state.attack.resolved, false);
+    state.step(idle, FIXED_STEP);
+    assert.equal(state.attack.resolved, true);
+    advance(state, 0.4);
+  }
+});
