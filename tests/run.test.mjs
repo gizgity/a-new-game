@@ -66,3 +66,43 @@ test('player death and deadline show distinct defeat reasons; start fully resets
  run.start();run.ticks=17999;run.draftIndex=3;run.step(idle,1/60);assert.equal(run.reason,'deadline');
  run.start();assert.equal(run.result,null);assert.equal(run.reason,null);assert.equal(run.bossDue,false);assert.equal(world.hp,100);assert.equal(world.bossSlain,false);
 });
+
+
+test('unbuffed opening Grunt dies to two Light hits or Light + Basic detonation',()=>{
+ for (const followup of ['melee','shoot']) {
+  const {world}=setup();const enemy=world.enemies.find(e=>e.kind==='grunt');
+  world.enemies=[enemy];Object.assign(enemy,{x:world.player.x+45,y:world.player.y,stagger:999});
+  assert.equal(world.mutations.length,0);assert.equal(world.curse,null);
+  world.step({...idle,melee:true},1/60);
+  for(let i=0;i<25;i++)world.step(idle,1/60);
+  assert.ok(enemy.hp>0);assert.equal(enemy.rupture,1);assert.equal(world.kills,0);
+  world.step({...idle,[followup]:true},1/60);
+  for(let i=0;i<25;i++)world.step(idle,1/60);
+  assert.equal(world.kills,1);assert.equal(world.enemies.length,0);
+  if(followup==='shoot')assert.equal(world.detonations,1);
+ }
+});
+test('opening ramps gently, then restores standard waves without healing survivors; restart resets opening',()=>{
+ const {world,run}=setup();assert.equal(world.enemies.length,3);
+ assert.deepEqual(world.enemies.map(e=>e.kind),['grunt','grunt','archer']);
+ const step=()=>{world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);};
+ for(let i=0;i<149;i++)step();assert.equal(world.enemies.length,3);
+ step();assert.equal(world.enemies.length,4);
+ for(let i=150;i<3599;i++)step();assert.equal(world.enemies.length,8);assert.equal(run.draft.length,0);
+ const survivor=world.enemies[0];survivor.hp=9;world.enemies=[survivor];
+ step();assert.equal(run.draft.length,3);assert.equal(run.elapsed,60);
+ assert.equal(survivor.hp,9);assert.equal(world.enemies[1].maxHp,36);
+ run.choose(0);run.ticks=5399;run.spawnTicks=150;world.enemies=[survivor];
+ step();assert.equal(world.enemies[1].maxHp,51);assert.equal(survivor.hp,9);
+ run.ticks=7199;run.spawnTicks=150;world.enemies=[survivor];
+ step();assert.equal(world.enemies[1].maxHp,66);assert.equal(run.draftKind,'curse');
+ assert.equal(survivor.hp,9);
+ run.start();assert.equal(world.enemies.length,3);assert.equal(world.enemies[0].maxHp,36);
+ assert.equal(world.mutations.length,0);assert.equal(run.elapsed,0);
+});
+test('standard enemy HP follows kind, independent of spawn order; Elite/Boss health unchanged',()=>{
+ const {world}=setup();world.enemies=[];
+ for(const [kind,hp] of [['archer',48],['grunt',66],['grunt',66],['volatile',48],['bulwark',220],['boss',1500]]) {
+  world.spawnEnemy(kind);assert.equal(world.enemies.at(-1).hp,hp);assert.equal(world.enemies.at(-1).maxHp,hp);
+ }
+});

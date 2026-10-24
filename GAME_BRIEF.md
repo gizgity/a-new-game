@@ -19,7 +19,7 @@
 
 ## Mobile-first — phạm vi mở rộng theo user
 - Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
-- Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; giữ Chém/Bắn và kéo để ngắm; nút Lướt, Đánh nặng, Đạn tích lực và Surge. Nhả giữ hướng ngắm gần nhất; không auto-aim hoặc đổi balance.
+- Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; giữ nút phải để thực hiện hành động, kéo như joystick để ngắm (cả Chém/Bắn/Heavy/Charged/Lướt/Surge). Nút đang giữ hiện vòng116px/núm40px; kéo vượt biên nút vẫn nhận nhờ pointer capture tới khi nhả. Joystick trái hướng player khi chưa kéo ngắm; sau khi ngón phải vượt deadzone8px, aim độc lập với di chuyển tới khi nhả. Không auto-aim; dash đang thực hiện không uốn hướng, Surge vẫn radial.
 - Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Tích lực đặt dưới Lướt để nhường vùng trái trên phone nhỏ, giữ tam giác Chém/Bắn/Lướt.
 - Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/draft/settings gỡ guard để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
 - Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
@@ -67,6 +67,12 @@
 - Hitstop yêu cầu: Basic Shot 12ms, Light 33ms, Charged 40ms, Heavy 65ms (làm tròn lên tick 60Hz); blast/chain giữ quy tắc cũ. Không đổi damage, range, tài nguyên, AI, build hoặc chain depth ở Q2.
 - Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Trúng không có Rupture chỉ có contact bloom nhỏ (0.24s); Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Không đổi damage/radius/shot speed/cooldown/hitstop hoặc cơ chế chain ở follow-up này.
 - Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
+
+### Cân bằng mở đầu — theo playtest mobile
+- Player damage/timing/resource giữ nguyên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
+- Trước Mutation đầu tiên (0–60s): Grunt36/Archer28/Volatile36 HP; bắt đầu 2 Grunt + 1 Archer, sinh tối đa một quái mỗi2.5s, cap8. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
+- Từ60–120s, HP quái mới, spawn interval và cap tăng tuyến tính từ mức mở đầu về mức chuẩn. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
+- Cấu hình ở `src/game/config/balance.ts`; tests chỉ xác nhận thông số/interaction, độ khó cần user playtest.
 
 ## Run tối đa 5 phút
 | Mốc | Sự kiện |

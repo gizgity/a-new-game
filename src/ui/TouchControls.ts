@@ -2,7 +2,7 @@ import type { CombatAction, CombatInput } from '../game/combat';
 import { t } from '../i18n';
 
 type Action = CombatAction;
-interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number }
+interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number; aiming: boolean }
 
 /** Maps pointer contacts to existing combat inputs. No combat timing or targeting rules. */
 export class TouchControls {
@@ -33,12 +33,15 @@ export class TouchControls {
         </div>
         <div class="touch-primary">
           <button type="button" class="touch-button dash-button" data-action="dash"><span data-resource="dash">2</span><span data-i18n="dash"></span></button>
-          <button type="button" class="touch-button aim-button melee-button" data-action="melee"><span class="aim-dot" aria-hidden="true">╱</span><span data-i18n="melee"></span></button>
-          <button type="button" class="touch-button aim-button shoot-button" data-action="shoot"><span class="aim-dot" aria-hidden="true">⊕</span><span data-i18n="shoot"></span></button>
+          <button type="button" class="touch-button aim-button melee-button" data-action="melee"><span aria-hidden="true">╱</span><span data-i18n="melee"></span></button>
+          <button type="button" class="touch-button aim-button shoot-button" data-action="shoot"><span aria-hidden="true">⊕</span><span data-i18n="shoot"></span></button>
         </div>
       </div>`;
     this.bind(root.querySelector<HTMLElement>('#move-stick')!, 'move');
-    root.querySelectorAll<HTMLElement>('[data-action]').forEach(element => this.bind(element, element.dataset.action as Action));
+    root.querySelectorAll<HTMLElement>('[data-action]').forEach(element => {
+      element.insertAdjacentHTML('beforeend', '<span class="aim-stick" aria-hidden="true"><span class="aim-knob"></span></span>');
+      this.bind(element, element.dataset.action as Action);
+    });
     document.documentElement.classList.toggle('touch-enabled', this.enabled);
     this.media.addEventListener('change', () => {
       this.reset();
@@ -117,7 +120,7 @@ export class TouchControls {
     element.addEventListener('pointerdown', event => {
       if (!this.active || !this.enabled || [...this.contacts.values()].some(contact => contact.element === element)) return;
       event.preventDefault();
-      this.contacts.set(event.pointerId, { element, action, x: event.clientX, y: event.clientY });
+      this.contacts.set(event.pointerId, { element, action, x: event.clientX, y: event.clientY, aiming: false });
       element.setPointerCapture(event.pointerId);
       element.classList.add('pressed');
       if (action === 'move') this.move(event);
@@ -149,20 +152,22 @@ export class TouchControls {
 
   private move(event: PointerEvent): void {
     const contact = this.contacts.get(event.pointerId)!;
-    if (contact.action !== 'move' && contact.action !== 'melee' && contact.action !== 'shoot') return;
     const rect = contact.element.getBoundingClientRect();
     const dx = event.clientX - (contact.action === 'move' ? rect.x + rect.width / 2 : contact.x);
     const dy = event.clientY - (contact.action === 'move' ? rect.y + rect.height / 2 : contact.y);
     const distance = Math.hypot(dx, dy);
-    const radius = contact.action === 'move' ? Math.min(42, Math.min(rect.width, rect.height) / 2 - 28) : 20;
+    const radius = contact.action === 'move' ? Math.min(42, Math.min(rect.width, rect.height) / 2 - 28) : 38;
     const scale = distance > radius ? radius / distance : 1;
     contact.element.style.setProperty('--stick-x', `${dx * scale}px`);
     contact.element.style.setProperty('--stick-y', `${dy * scale}px`);
     if (contact.action === 'move') {
       this.dx = distance > 8 ? dx / distance : 0;
       this.dy = distance > 8 ? dy / distance : 0;
-      const aiming = [...this.contacts.values()].some(item => item.action === 'melee' || item.action === 'shoot');
+      const aiming = [...this.contacts.values()].some(item => item.action !== 'move' && item.aiming);
       if (distance > 8 && !aiming) this.aimAngle = Math.atan2(dy, dx);
-    } else if (distance > 8) this.aimAngle = Math.atan2(dy, dx);
+    } else if (distance > 8) {
+      contact.aiming = true;
+      this.aimAngle = Math.atan2(dy, dx);
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { ENEMY_HP, OPENING } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, curseDraft, mutationDraft, type CurseId, type DraftOption, type MutationId } from './builds.js';
 
@@ -22,8 +23,8 @@ export class RunDirector {
     this.world.reset();
     this.world.practice = false;
     this.world.enemies = [];
-    for (let i = 0; i < 6; i++) this.world.spawnEnemy(i % 3 === 2 ? 'archer' : 'grunt');
     this.ticks = this.draftIndex = this.spawnTicks = 0;
+    for (let i = 0; i < OPENING.initialCount; i++) this.spawnCommon(i % 3 === 2 ? 'archer' : 'grunt');
     this.expired = this.bossDue = this.eliteSpawned = false;
     this.result = this.reason = null;
     this.draft = [];
@@ -58,12 +59,24 @@ export class RunDirector {
     }
     this.expired = this.ticks >= 18000;
     this.spawnTicks++;
-    const interval = Math.max(35, 95 - Math.floor(this.elapsed / 4));
-    if (this.spawnTicks >= interval && this.world.enemies.length < (this.bossDue ? 7 : 18)) {
+    const blend = this.openingBlend;
+    const standardInterval = Math.max(35, 95 - Math.floor(this.elapsed / 4));
+    const interval = Math.round(OPENING.spawnIntervalTicks + (standardInterval - OPENING.spawnIntervalTicks) * blend);
+    const cap = this.bossDue ? 7 : Math.floor(OPENING.enemyCap + (18 - OPENING.enemyCap) * blend);
+    if (this.spawnTicks >= interval && this.world.enemies.length < cap) {
       this.spawnTicks = 0;
       const index = Math.floor(this.elapsed) % 6;
-      this.world.spawnEnemy(this.elapsed > 45 && index === 5 ? 'volatile' : index % 3 === 2 ? 'archer' : 'grunt');
+      this.spawnCommon(this.elapsed > 45 && index === 5 ? 'volatile' : index % 3 === 2 ? 'archer' : 'grunt');
     }
+  }
+
+  private get openingBlend(): number {
+    return Math.max(0, Math.min(1, (this.ticks - OPENING.durationTicks) / (OPENING.rampEndTicks - OPENING.durationTicks)));
+  }
+
+  private spawnCommon(kind: 'grunt' | 'archer' | 'volatile'): void {
+    const hp = Math.round(OPENING.hp[kind] + (ENEMY_HP[kind] - OPENING.hp[kind]) * this.openingBlend);
+    this.world.spawnEnemy(kind, hp);
   }
 
   choose(index: number): boolean {

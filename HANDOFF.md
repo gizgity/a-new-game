@@ -10,7 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Mobile controls follow-up: user thường bấm ra ngoài joystick và bị native selection/zoom khi giữ hoặc bấm liên tục. Đã tăng vùng nhận chạm/visual joystick, chặn native gestures trong vùng chơi đang active; menu/settings/draft vẫn cuộn và desktop hoạt động. Build/typecheck + browser checks PASS, đã deploy Pages qua Actions success. Không đổi combat hoặc mở Q3–Q5; **AWAITING DEVICE PLAYTEST**.
+Theo playtest mới: giữ/kéo cụm nút phải phải đổi hướng ngắm; giảm độ khó trước buff đầu tiên. Đã triển khai joystick ngắm khi giữ nút phải (vòng116/núm40), kéo ngoài nút vẫn nhận; joystick trái dẫn hướng khi chưa drag aim. Giảm HP/common spawn pressure phút đầu, ramp tuyến tính về chuẩn trong phút thứ hai. Giữ mốc draft 1/2/3 phút, Elite/Boss và nội dung MVP; không triển khai Q3–Q5.
+
+## ACCEPTANCE — AIM & OPENING BALANCE
+- Kéo giữ nút phải cập nhật reticle/hướng ngắm; Heavy/Charged hoạt động như Chém/Bắn. Joystick trái vẫn hướng player khi ngón phải chưa kéo; sau drag aim, hai ngón độc lập. Capture ngoài nút, nhả/cancel/pause/resize không dính input; desktop giữ nguyên.
+- Grunt trước buff đầu hạ sau hai Light trúng liên tiếp không buff; một Light + Basic Shot/Detonate vẫn hữu ích. Opening ít quái/nhịp chậm hơn, sau draft #1 tăng dần về nhịp chuẩn tới2:00; không tăng damage toàn game hoặc nerf Elite/Boss.
+- Focused regression tests, build/typecheck và browser mobile dọc/ngang/desktop PASS; natural opening smoke. Cảm nhận aim/balance vẫn AWAITING PLAYTEST APPROVAL sau deploy.
 
 ## ACCEPTANCE — TOUCH FIX
 - Pad di chuyển tối thiểu 132×132 (trước 80×80); tap ngoài vòng cũ vẫn nhận, kéo ra ngoài pad vẫn giữ capture; không đè nút phải ở 320px/dọc/ngang/tablet.
@@ -55,6 +60,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Mutation/Curse | Có 6/4 effects và trade-offs/tests | Nhiều stat-only; lịch sử M0/M1 chưa ghi concept effects gốc; không tự sáng tác concept thiếu |
 
 ## CURRENT STATUS
+- Aim follow-up: mỗi nút phải hiện joystick116px khi giữ, knob40px dịch tối đa38px; kéo tính từ điểm chạm đầu, deadzone8px. Tất cả6 action đều cập nhật aim, capture vượt nút; chỉ contact đã drag khóa aim khỏi joystick trái. Nhả/reset gỡ ring; dash không đổi quỹ đạo giữa đợt, Surge radial. Menu vi/en có hướng dẫn drag.
+- Balance follow-up: config/balance.ts giữ HP chuẩn theo loại (sửa lỗi HP phụ thuộc spawn id), opening Grunt36/Archer28/Volatile36; 3 quái ban đầu,150ticks/spawn,cap8 tới60s. Ramp HP mới/interval/cap tới chuẩn ở120s, không heal survivor. Player damage/resources/timing, draft1/2/3 phút, Elite/Boss/chain/build giữ nguyên.
 - Touch follow-up: `TouchControls` bật class touch-playing trên arena khi coarse pointer + phase playing. CSS touch-action:none, user-select:none, -webkit-user-select:none/-webkit-touch-callout:none phủ canvas/HUD/gaps/controls. Non-passive touchstart/move/end + gesturestart/change/end/selectstart/contextmenu/dragstart/dblclick guard chỉ active arena, không stopPropagation. Gỡ khi menu/paused/draft/results; không thêm maximum-scale/user-scalable=no.
 - Pad nhận toàn vùng bo góc, lớn hơn vòng cũ80px; knob40px với biên visual38–42px, giữ deadzone8px và movement normalization. Pointer capture/cancel/reset theo contract cũ, không đổi combat logic.
 - Cụm phải 184×184: Chém 68px dưới phải, Bắn 64px phía trên, Lướt 60px ở giữa phía trong (tam giác có khoảng tâm 78–82px để chuyển nhanh); Heavy/Tích lực 52px, Surge 48px tách góc trên. Joystick có pad 132–180px rộng, cao132px ở phone /160px ở tablet/ngang lớn, vòng116–132px; Tích lực dịch sang dưới Lướt để không đè pad ở320px; portrait dành 204px controls, landscape overlay ở góc. Giữ safe-area/dvh, vi/en và pointer capture.
@@ -63,10 +70,11 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Windup light 4/5/6 ticks, tổng đòn giữ nguyên. Aim theo windup và khóa ở contact. Blade/trail bắt đầu sweep trước damage một nửa sweep time, nên contact/hitstop nằm giữa nhát chém; bỏ full-arc flash cũ. Mỗi đòn resolve một lần.
 - Miss có whoosh, hit mới có contact sparks và hitstop. Light/Shot mint/ivory, Heavy/Charged amber; Basic Shot hitstop 12ms, Light 33ms, Charged 40ms, Heavy 65ms (ceil fixed tick). Chain/blast giữ hitstop cũ. Perfect Dodge có dấu gãy bốn hướng; SFX phân biệt trúng đạn và chém.
 - Charged follow-up: recoil 0.22s với kick rõ hơn, muzzle lance/core và fragments, projectile ivory/amber + tail 60px. Contact bloom 0.24s; Detonate chính 0.36s với core → fractured shockwave → shards theo radius thực. Tag presentation riêng trên Explosion/Impact, không lan tag sang các vụ nổ thứ cấp; budget vẫn 24 và giữ blast chính khi đông. SFX chargedGun/chargedBlast riêng, ưu tiên trong mix giới hạn. Pose/VFX freeze theo simulation, không đổi physics/balance/hitstop.
-- Giữ damage/range/knockback/resources/AI/run/builds/chain/dependencies. Không thêm engine, feature hoặc QA framework.
+- Giữ player damage/range/knockback/resources/AI/builds/chain/dependencies; chỉ đổi HP/common wave pacing theo feedback mới. Không thêm engine, feature hoặc QA framework.
 - Q1 atlas SVG 8 frames/9 parts và Prism core tint giữ nguyên. Không có Art Bible riêng trong repo; visual dựa Brief và yêu cầu Fractured Vessel của user.
 
 ## EVIDENCE
+- Joystick aim mới: docs/aim-opening/production-320.png, production-390.png, production-844.png; production renderer khi giữ Bắn và kéo ra ngoài nút.
 - Touch fix: docs/touch-fix/320.png, 360.png, 390.png, 844.png, 768.png (dev gesture fixture); production-320/390/844.png từ production input thật. Pad/controls không chồng và target bounds đã kiểm.
 - Charged mới: [GIF so sánh](docs/charged/comparison.gif) (nửa đầu Basic, nửa sau Charged), [khai hỏa](docs/charged/charged-fire.png), [nổ](docs/charged/charged-blast.png); baseline cùng fixture ở basic-fire/basic-blast. Renderer thật, phone 390×844, 20fps; fixture 3 Rupture/cấp ammo, không phải natural run.
 - Q2: [Light](docs/q2/light.png), [Heavy](docs/q2/heavy.png), [Shot](docs/q2/shot.png), [Charged](docs/q2/charged.png), [Perfect Dodge](docs/q2/perfect.png), [Dash](docs/q2/dash.png). Ảnh actual renderer ở phone 390×844/DPR2, fixture địch/tài nguyên để thấy feedback; không phải full natural run.
@@ -91,6 +99,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Aim/opening production `/a-new-game/` PASS 320×568/390×844/844×390/1440×1000: SVG200, real-time outside-button drag, touch pause/resume/rotation clear ring, desktop mouse/WASD/dash/Esc; không page/request errors. Đã xem ảnh dọc390/ngang844.
+- Natural opening CDP: điều khiển scripted orbit + aim mục tiêu gần/bắn, chỉ tăng tốc render clock; không sửa HP/resources/enemies/waves. Tới draft đầu đúng60s,48HP,25kills,319shots,2enemies; chọn draft/resume PASS. Đây là smoke mechanics, không thay human balance/aim acceptance hoặc máy thật/Safari.
+- Aim/opening: npm test PASS (3 files,47 test definitions), build/typecheck PASS. Thêm3 regression tests: Grunt không buff hạ bằng2 Light hoặc Light+Shot/Detonate; opening cadence/cap, ramp HP36→51→66 không heal survivor/reset; HP theo loại không phụ thuộc id, Elite/Boss giữ nguyên.
+- CDP đa chạm 320×568/390×844/844×390 PASS cả6 nút: drag120px vượt biên, đổi hướng2 lần, player/attack/shot theo aim, movement độc lập; trước drag joystick trái vẫn dẫn aim, nhả riêng/cancel gỡ ring và không kẹt; không selection/zoom/runtime errors. Đây là Chromium emulation, chưa thay máy thật/Safari.
 - Touch fix deploy: Actions run `40094746371`, đúng head `b94c45a9de8c3dde972d282413ae81d3432f387f`, completed/success; job `120874535521` npm ci/build/configure/upload/deploy đều PASS. Live: https://gizgity.github.io/a-new-game/. Handoff commit sau deploy chỉ Markdown, không đổi artifact.
 - Touch fix build/typecheck PASS. Browser Chromium touch 320×568,360×640,390×844,844×390,768×1024 PASS: pad tối thiểu132×132, không overlap/cắt; tap ngoài vòng40px cũ, kéo vượt pad, move+shoot hai ngón/nhả riêng/cancel; long press700ms,8 rapid taps,pinch giữ visualViewport.scale=1 và selection rỗng. Synthetic Safari gesture/selection/contextmenu events bị preventDefault khi playing; không thay Safari/iOS thật.
 - Menu/settings touch scroll PASS cả phone nhỏ/ngang; guard gỡ khi pause/draft, chọn option3 bằng tap được. Rotation/draft/pause trong lúc giữ joystick clear input, resume không bị dính. Không thêm unit tests mô phỏng CSS hoặc framework; combat.ts/builds/run không đổi, không chạy lại gameplay suite không liên quan.
@@ -109,7 +121,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User phản hồi Charged hiện tại chưa đủ lực; bản follow-up chờ chơi lại.
 
 ## NEXT ACTION
-Dừng chờ user playtest bản touch fix trên điện thoại thật (đặc biệt Safari/iOS): vùng joystick, giữ/bấm nhanh/đa chạm có còn chọn chữ hoặc zoom. Chỉ sửa tiếp theo phản hồi; không tự mở Q3–Q5.
+Checks PASS; push và theo dõi Actions deploy, sau đó dừng chờ user playtest aim/balance trên máy thật.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.

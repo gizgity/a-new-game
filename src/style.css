@@ -115,7 +115,10 @@ footer { display: none; }
 .touch-button.shoot-button { left: 116px; top: 24px; width: 64px; height: 64px; border-radius: 50%; background: #183946ee; border-color: #83bac8; }
 .touch-button.melee-button { left: 116px; top: 100px; width: 68px; height: 68px; border-radius: 50%; background: #234b40f5; border: 2px solid #a4e8cb; }
 .touch-button.dash-button { left: 48px; top: 64px; width: 60px; height: 60px; border-radius: 50%; background: #29223cee; border-color: #ab96dc; }
-.aim-dot { transform: translate(var(--stick-x, 0px), var(--stick-y, 0px)); }
+/* The held action becomes a joystick; capture keeps it live beyond the button. */
+.aim-stick { display: none; position: absolute; z-index: 4; left: calc(50% - 58px); top: calc(50% - 58px); width: 116px; height: 116px; border: 1px solid #9addc8; border-radius: 50%; background: #152f3280; pointer-events: none; }
+.touch-button.pressed .aim-stick { display: block; }
+.aim-knob { position: absolute; left: calc(50% - 20px); top: calc(50% - 20px); width: 40px; height: 40px; border: 2px solid #c4f3e0; border-radius: 50%; background: #4c998c9c; transform: translate(var(--stick-x, 0px), var(--stick-y, 0px)); pointer-events: none; }
 .touch-controls .pressed { background: #34675a; border-color: #d8ffea; box-shadow: 0 0 14px #6bf3d030; }
 .touch-controls .unavailable { opacity: .5; }
 

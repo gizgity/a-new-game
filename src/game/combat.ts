@@ -1,3 +1,4 @@
+import { ENEMY_HP } from './config/balance.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
@@ -155,13 +156,14 @@ export class CombatWorld {
     for (let i = 0; i < COMBAT.enemyCount; i++) this.spawnEnemy();
   }
 
-  spawnEnemy(kind?: Enemy['kind']): void {
+  spawnEnemy(kind?: Enemy['kind'], maxHp?: number): void {
     const id = this.nextId++;
     const angle = id * 2.39996;
+    kind ??= id % 6 === 5 ? 'volatile' : id % 3 === 2 ? 'archer' : 'grunt';
     const enemy: Enemy = {
-      id, kind: kind ?? (id % 6 === 5 ? 'volatile' : id % 3 === 2 ? 'archer' : 'grunt'),
+      id, kind,
       x: this.player.x + Math.cos(angle) * 360, y: this.player.y + Math.sin(angle) * 360,
-      hp: 0, maxHp: id % 3 === 2 ? 48 : 66,
+      hp: 0, maxHp: maxHp ?? ENEMY_HP[kind],
       cooldown: 0.8 + (id % 4) * 0.2, windup: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
@@ -171,8 +173,6 @@ export class CombatWorld {
       enemy.y = ARENA.height - this.player.y;
       clampPosition(enemy);
     }
-    if (enemy.kind === 'bulwark') enemy.maxHp = 220;
-    if (enemy.kind === 'boss') enemy.maxHp = 1500;
     enemy.hp = enemy.maxHp;
     this.enemies.push(enemy);
   }
