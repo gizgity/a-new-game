@@ -6,6 +6,7 @@ interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y:
 
 /** Maps pointer contacts to existing combat inputs. No combat timing or targeting rules. */
 export class TouchControls {
+  private readonly surface: HTMLElement;
   private readonly media = matchMedia('(pointer: coarse)');
   private readonly contacts = new Map<number, Contact>();
   private readonly pressed = new Set<Action>();
@@ -19,6 +20,7 @@ export class TouchControls {
   get enabled(): boolean { return this.media.matches; }
 
   constructor(private readonly root: HTMLElement) {
+    this.surface = root.closest<HTMLElement>('.arena-shell')!;
     root.innerHTML = `
       <button id="move-stick" class="touch-stick" type="button" aria-label="${t('touchMove')}">
         <span class="stick-knob" aria-hidden="true">◇</span><span class="stick-label" data-i18n="move"></span>
@@ -47,13 +49,21 @@ export class TouchControls {
     window.addEventListener('blur', () => this.reset());
     window.addEventListener('resize', () => this.reset());
     document.addEventListener('visibilitychange', () => { if (document.hidden) this.reset(); });
-    root.addEventListener('contextmenu', event => event.preventDefault());
+    // Scope native-gesture suppression to active gameplay, including HUD/gaps.
+    // Pointer Events still drive each control; these also cover Safari's touch/gesture defaults.
+    const preventGameGesture = (event: Event) => {
+      if (this.enabled && this.active && event.cancelable) event.preventDefault();
+    };
+    for (const type of ['touchstart', 'touchmove', 'touchend', 'gesturestart', 'gesturechange', 'gestureend', 'selectstart', 'contextmenu', 'dragstart', 'dblclick']) {
+      this.surface.addEventListener(type, preventGameGesture, { passive: false });
+    }
   }
 
   setActive(active: boolean): void {
     if (active !== this.active) this.reset();
     this.active = active;
     this.root.hidden = !this.enabled || !active;
+    this.surface.classList.toggle('touch-playing', this.enabled && active);
   }
 
   sample(): CombatInput & { aimAngle: number | null } {
@@ -144,7 +154,7 @@ export class TouchControls {
     const dx = event.clientX - (contact.action === 'move' ? rect.x + rect.width / 2 : contact.x);
     const dy = event.clientY - (contact.action === 'move' ? rect.y + rect.height / 2 : contact.y);
     const distance = Math.hypot(dx, dy);
-    const radius = contact.action === 'move' ? 30 : 20;
+    const radius = contact.action === 'move' ? Math.min(42, Math.min(rect.width, rect.height) / 2 - 28) : 20;
     const scale = distance > radius ? radius / distance : 1;
     contact.element.style.setProperty('--stick-x', `${dx * scale}px`);
     contact.element.style.setProperty('--stick-y', `${dy * scale}px`);

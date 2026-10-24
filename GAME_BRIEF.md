@@ -20,6 +20,8 @@
 ## Mobile-first — phạm vi mở rộng theo user
 - Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
 - Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; giữ Chém/Bắn và kéo để ngắm; nút Lướt, Đánh nặng, Đạn tích lực và Surge. Nhả giữ hướng ngắm gần nhất; không auto-aim hoặc đổi balance.
+- Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Tích lực đặt dưới Lướt để nhường vùng trái trên phone nhỏ, giữ tam giác Chém/Bắn/Lướt.
+- Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/draft/settings gỡ guard để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
 - Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
 - Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Không đổi world coordinates, hitbox, AI hoặc timing.
