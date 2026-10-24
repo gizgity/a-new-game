@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Theo playtest mới: user chấp nhận hai Light hạ lính đầu run, nhưng mật độ quái quá thấp, AoE chưa thỏa mãn và L1/L2/L3 khó phân biệt. Đã tăng Grunt theo cụm nhỏ, giữ HP; mở rộng vùng quét thực và phân biệt pose/trail/nhịp/SFX ba Light. Checks PASS, chuẩn bị deploy; AWAITING PLAYTEST/VISUAL APPROVAL. Không triển khai enemy art/pattern Q3, chain depth Q4 hoặc builds Q5.
+Theo playtest mới: user chấp nhận hai Light hạ lính đầu run, nhưng mật độ quái quá thấp, AoE chưa thỏa mãn và L1/L2/L3 khó phân biệt. Đã tăng Grunt theo cụm nhỏ, giữ HP; mở rộng vùng quét thực và phân biệt pose/trail/nhịp/SFX ba Light. Checks PASS, đã deploy Pages; AWAITING PLAYTEST/VISUAL APPROVAL. Không triển khai enemy art/pattern Q3, chain depth Q4 hoặc builds Q5.
 
 ## ACCEPTANCE — CROWD & COMBO
 - Giữ Grunt36HP đầu run (L1+L2 hạ), tăng số lính và spawn theo cụm để có mục tiêu cleave; bounded18 trước Boss/7 lúc Boss, không tăng spam ranged.
@@ -105,6 +105,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Crowd/combo deployment: Actions `40097407500`, head `f2b9a80d39103f2c94a6f41f1919a215e8f0278f`, completed/success; job `120882436263`. Live https://gizgity.github.io/a-new-game/. Commit handoff sau deploy chỉ Markdown.
 - Crowd/combo: npm test PASS (3files,49test definitions), typecheck/build PASS. Test mới kiểm cleave2/4/6 mục tiêu theo góc, ngoài tầm/phía sau không trúng, mỗi mục tiêu chỉ nhận1hit/Rupture/charge/đòn; Light+Light hạ3 lính36HP cùng lúc; cue/impact/hitstop tăng dần. Cập nhật windup4/6/10 và pack/cap/HP-ramp tests; buffer/dash/Heavy/draft/Boss/chain/progression regression PASS.
 - CDP giữ Chém nối1→2→3, nhiều contact thật, pause/resume không dính buffer; đã xem ảnh3đòn và ghi GIF renderer. Preview là fixture6quái500HP, freeze AI ban đầu để thấy animation; hitstagger thật tiếp tục sau trúng.
 - Natural crowd CDP (không cấp stats/buff/bất tử hoặc chỉnh waves): scripted di chuyển tiếp cận/vòng quanh + giữ Chém/Bắn, aim mục tiêu gần; tăng tốc render clock. Tới draft60s:100HP,124kills,292shots,3enemies, peak8; chọn draft/resume PASS. Không dùng kết quả robot để accepted độ khó/feel trên người chơi.
@@ -114,7 +115,7 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Bundle warning Phaser>500KB là hiện trạng (~1.27MB JS/gzip354KB), không mở scope bundling. Visual/feel cần user duyệt; test/build không chứng nhận experience acceptance.
 
 ## NEXT ACTION
-Push bản crowd/combo đã kiểm tra, theo dõi Actions deploy; sau đó dừng chờ user chơi lại.
+Dừng chờ user chơi lại density/AoE và L1→L2→L3 trên điện thoại, xem docs/crowd-combo/combo.gif; chỉ sửa theo phản hồi, không tự chuyển Q3–Q5.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.
