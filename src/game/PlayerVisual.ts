@@ -98,8 +98,8 @@ export class PlayerVisual {
     this.lastY = world.player.y;
     this.recoil = Math.max(0, this.recoil - dt);
     if (world.stats.shots > this.shots) {
-      this.recoil = 0.14;
       this.charged = world.lastShot.charged;
+      this.recoil = this.charged ? 0.22 : 0.14;
       this.shotAngle = world.lastShot.angle;
     }
     this.shots = world.stats.shots;
@@ -130,13 +130,16 @@ export class PlayerVisual {
 
   render(world: CombatWorld, cosmetic: 'mint' | 'prism'): void {
     this.pose(world);
-    this.core.setTint(cosmetic === 'prism' ? 0xc9b2ff : 0xffffff);
+    this.core.setTint(this.charged && this.recoil > 0.12 ? AMBER : cosmetic === 'prism' ? 0xc9b2ff : 0xffffff);
     this.slash.clear();
     this.muzzle.clear();
     if (world.attack) this.drawSlash(world.player.x, world.player.y, world.attack);
-    if (this.recoil > 0.075 && world.dashTime <= 0) {
-      const age = (0.14 - this.recoil) / 0.065;
-      const length = (this.charged ? 27 : 17) * (1 - age * 0.65);
+    const flashDuration = this.charged ? 0.1 : 0.065;
+    const shotAge = (this.charged ? 0.22 : 0.14) - this.recoil;
+    if (this.recoil > 0 && shotAge < flashDuration && world.dashTime <= 0) {
+      const age = shotAge / flashDuration;
+      const length = (this.charged ? 52 : 17) * (1 - age * 0.65);
+      const width = this.charged ? 12 : 5;
       const angle = this.shotAngle;
       const x = world.player.x + Math.cos(angle) * 26;
       const y = world.player.y + Math.sin(angle) * 26;
@@ -145,8 +148,19 @@ export class PlayerVisual {
         y: y + Math.sin(angle) * forward + Math.cos(angle) * side,
       });
       this.muzzle.fillStyle(this.charged ? AMBER : MINT, 1 - age * 0.7)
-        .fillPoints([point(-3, 0), point(3, -5), point(length, 0), point(3, 5)], true);
-      this.muzzle.fillStyle(0xf0fff3).fillPoints([point(0, 0), point(4, -2), point(length * 0.7, 0), point(4, 2)], true);
+        .fillPoints([point(-3, 0), point(3, -width), point(length, 0), point(3, width)], true);
+      this.muzzle.fillStyle(0xf0fff3).fillPoints([point(0, 0), point(4, -width * 0.45), point(length * 0.8, 0), point(4, width * 0.45)], true);
+      if (this.charged) {
+        for (const side of [-1, 1]) {
+          const spread = 12 + age * 14;
+          this.muzzle.fillStyle(AMBER, (1 - age) * 0.8).fillPoints([
+            point(-7, side * spread), point(8, side * (spread + 4)), point(18, side * spread),
+          ], true);
+          this.muzzle.lineStyle(2, 0xfff5d6, 1 - age).strokePoints([
+            point(-7, side * spread), point(-12, side * (spread - 6)), point(-7, side * 4),
+          ], false);
+        }
+      }
     }
   }
 
@@ -156,13 +170,17 @@ export class PlayerVisual {
     const breath = Math.sin(this.clock * 3.5);
     const gait = this.moving ? Math.sin(this.stride) : 0;
     const bob = this.moving ? -Math.abs(gait) * 1.2 + this.moveY * 0.6 : breath * 0.55;
-    const recoil = this.recoil / 0.14 * (this.charged ? 1.45 : 1);
+    const recoil = this.charged ? (this.recoil / 0.22) ** 2 * 2.4 : this.recoil / 0.14;
     const facing = Math.cos(player.angle) >= 0 ? 1 : -1;
     const lean = this.moving ? this.moveX * 1.3 : 0;
     const tuckX = dash ? -Math.cos(world.dashAngle) * 4 : 0;
     const tuckY = dash ? -Math.sin(world.dashAngle) * 4 : 0;
     this.body.setPosition(player.x, player.y).setAlpha(world.invulnerable > 0 ? 0.7 + 0.3 * Math.cos(this.clock * 35) : 1);
     this.torso.setPosition(lean + tuckX * 0.3, bob).setRotation(dash ? Math.cos(world.dashAngle) * 0.16 : lean * 0.035);
+    if (this.charged && !dash) {
+      this.torso.x -= Math.cos(this.shotAngle) * recoil * 1.8;
+      this.torso.y -= Math.sin(this.shotAngle) * recoil * 1.8;
+    }
     this.head.setPosition(lean + facing + tuckX * 0.2, -10 + bob - recoil).setScale(facing, 1).setRotation(Math.sin(player.angle) * 0.08);
     this.leftArm.setPosition(-10 - breath * 0.5 + tuckX, -3 + bob + gait + tuckY).setRotation(dash ? -0.35 : -0.12 - gait * 0.04);
     this.rightArm.setPosition(10 + breath * 0.5 + tuckX, -3 + bob - gait + tuckY).setRotation(dash ? 0.35 : 0.12 + gait * 0.04);
@@ -172,7 +190,7 @@ export class PlayerVisual {
     this.core.setAlpha(0.85 + (breath + 1) * 0.075);
     const gunAngle = this.recoil > 0.075 ? this.shotAngle : player.angle;
     this.gun.setPosition(Math.cos(gunAngle) * (8 - recoil * 4), Math.sin(gunAngle) * (8 - recoil * 4) + 3)
-      .setRotation(gunAngle - facing * recoil * 0.12).setScale(1, facing).setAlpha(dash ? 0.6 : 1);
+      .setRotation(gunAngle - facing * recoil * 0.12).setScale(1 + (this.charged ? recoil * 0.12 : 0), facing).setAlpha(dash ? 0.6 : 1);
     this.blade.setScale(1).setAlpha(1);
     if (attack) {
       const direction = attack.combo === 2 ? -1 : 1;

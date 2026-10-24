@@ -10,7 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 và cụm nút phải mobile đã triển khai/deploy. User playtest bản trước “khá ổn”, xác nhận khó chuyển nhanh Chém/Bắn/Lướt; bản cuối gom ba nút thành tam giác 78–82px giữa các tâm. Commit game cuối `4f10e2f`, Actions run **40046706621 — success**: https://github.com/gizgity/a-new-game/actions/runs/40046706621. Chơi: https://gizgity.github.io/a-new-game/. **AWAITING PLAYTEST APPROVAL** cho Q2/bố cục mới; chưa coi feedback bản cũ là duyệt visual Q1. Dừng sau Q2, Q3–Q5 chưa giao.
+Q2 follow-up theo playtest: Charged Shot chưa đủ lực, gần Basic Shot; user xác nhận phạm vi nổ ổn nhưng visual yếu. Đã nâng feedback khai hỏa/projectile/va chạm/Detonate của Charged; giữ damage/radius/timing/resources/chain và cụm controls đã deploy. Build/typecheck, 44 tests và browser checks PASS, chuẩn bị deploy. Không triển khai Q3–Q5; **AWAITING PLAYTEST APPROVAL**.
+
+## ACCEPTANCE — CHARGED FEEDBACK
+- Charged khác Basic rõ ở kích thước chơi mobile: recoil/muzzle, silhouette projectile/trail, hit và blast theo pha core → shockwave → shards.
+- Blast theo đúng radius hiện có, không che kín telegraph; không thêm damage, AoE khi trúng mục tiêu không có Rupture, hitstop hay screen flash toàn màn hình.
+- SFX khai hỏa/nổ riêng, audio đồng thời và VFX vẫn bounded; pause/reset không để hiệu ứng dư.
+- Build/typecheck + focused contract tests + preview/smoke dọc/ngang/desktop PASS. Chỉ ghi AWAITING PLAYTEST APPROVAL sau deploy.
 
 ## ACCEPTANCE CRITERIA — Q2 + MOBILE
 - Cụm nút phải ưu tiên Chém/Bắn/Lướt theo tầm với ngón cái; đòn phụ phân cấp, Surge tránh bấm nhầm; targets ≥44px, không chồng/cắt ở 320px, dọc/ngang/tablet.
@@ -49,11 +55,12 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Dash clear đòn/buffer cũ, không queue khi hết charge. Tap gần cuối dash nối đòn sau khi kết thúc; held inputs vẫn hoạt động. clearInput nối với pause/draft/results/reset/resize/blur/cancel; resize cũng reset keyboard/mouse.
 - Windup light 4/5/6 ticks, tổng đòn giữ nguyên. Aim theo windup và khóa ở contact. Blade/trail bắt đầu sweep trước damage một nửa sweep time, nên contact/hitstop nằm giữa nhát chém; bỏ full-arc flash cũ. Mỗi đòn resolve một lần.
 - Miss có whoosh, hit mới có contact sparks và hitstop. Light/Shot mint/ivory, Heavy/Charged amber; Basic Shot hitstop 12ms, Light 33ms, Charged 40ms, Heavy 65ms (ceil fixed tick). Chain/blast giữ hitstop cũ. Perfect Dodge có dấu gãy bốn hướng; SFX phân biệt trúng đạn và chém.
-- Charged recoil mạnh hơn; pose/muzzle dùng lastShot thực tế, không đoán bằng cooldown hoặc hướng ngắm sau bắn. Pose/trails freeze theo simulation như Q1.
+- Charged follow-up: recoil 0.22s với kick rõ hơn, muzzle lance/core và fragments, projectile ivory/amber + tail 60px. Contact bloom 0.24s; Detonate chính 0.36s với core → fractured shockwave → shards theo radius thực. Tag presentation riêng trên Explosion/Impact, không lan tag sang các vụ nổ thứ cấp; budget vẫn 24 và giữ blast chính khi đông. SFX chargedGun/chargedBlast riêng, ưu tiên trong mix giới hạn. Pose/VFX freeze theo simulation, không đổi physics/balance/hitstop.
 - Giữ damage/range/knockback/resources/AI/run/builds/chain/dependencies. Không thêm engine, feature hoặc QA framework.
 - Q1 atlas SVG 8 frames/9 parts và Prism core tint giữ nguyên. Không có Art Bible riêng trong repo; visual dựa Brief và yêu cầu Fractured Vessel của user.
 
 ## EVIDENCE
+- Charged mới: [GIF so sánh](docs/charged/comparison.gif) (nửa đầu Basic, nửa sau Charged), [khai hỏa](docs/charged/charged-fire.png), [nổ](docs/charged/charged-blast.png); baseline cùng fixture ở basic-fire/basic-blast. Renderer thật, phone 390×844, 20fps; fixture 3 Rupture/cấp ammo, không phải natural run.
 - Q2: [Light](docs/q2/light.png), [Heavy](docs/q2/heavy.png), [Shot](docs/q2/shot.png), [Charged](docs/q2/charged.png), [Perfect Dodge](docs/q2/perfect.png), [Dash](docs/q2/dash.png). Ảnh actual renderer ở phone 390×844/DPR2, fixture địch/tài nguyên để thấy feedback; không phải full natural run.
 - Bố cục: [production dọc](docs/q2/portrait.png), [production ngang](docs/q2/landscape.png). Layout 320/360/390/844/768 đã kiểm và xem ảnh dọc/ngang.
 - Q1 cũ: docs/q1/fractured-vessel.png, actions.png, action-preview.gif (zoom2×); docs/mobile/ là bản mobile trước Q2. docs/q1/mobile-* là baseline FAIL trước mở rộng mobile, không phải bản hiện tại.
@@ -67,7 +74,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 
 ## RELEVANT FILES
 - GAME_BRIEF.md: quality bar, scope và contract Q2; AGENTS.md + .agents/skills/handoff/SKILL.md đã đọc.
-- src/game/combat.ts: buffer/timing/contact/dash; ArenaScene.ts: input/graphics; PlayerVisual.ts: poses/slash/recoil; audio.ts: procedural SFX.
+- src/game/combat.ts: buffer/timing/contact/dash + Charged presentation tags; ArenaScene.ts: input/graphics; PlayerVisual.ts: poses/slash/recoil; chargedVfx.ts: hai helper vẽ projectile/impact, không engine/state riêng; audio.ts: procedural SFX.
 - src/ui/TouchControls.ts + src/style.css: touch adapter và bố cục; tests/combat.test.mjs: thêm 11 focused Q2 tests, không tạo framework.
 - src/game/builds.ts / run.ts / progression.ts: contracts giữ nguyên; public/assets/fractured-vessel.svg: atlas gốc.
 - vite.config.ts + .github/workflows/pages.yml: workflow/base có sẵn, không sửa.
@@ -76,6 +83,9 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Charged follow-up: build/typecheck PASS, 44 test definitions PASS (thêm 3 contract tests: không thêm AoE khi không Rupture, damage/radius 105/142 giữ nguyên, chain/VFX bounded và reset/lifetime). Geometry-only tweak cuối đã build lại; không lặp logic tests khi mechanics không đổi.
+- Charged CDP touch/keyboard PASS 320×568, 390×844, 844×390, desktop 1440×1000: đúng 1 shot/ammo, chargedGun/chargedBlast cue, radius105, WebAudio running, pause giữ life/pose, resume hết hiệu ứng. Fixture cấp ammo/marked target, không đánh giá âm thanh trên máy thật.
+- Production `/a-new-game/` cùng 4 kích thước PASS asset HTTP200, shoot/dash/pause/resume, không page/request errors. Charged fixture chạy dev, production smoke dùng input thật không inject resources. Đã xem fire/blast và render chuỗi 72 frames Basic→Charged thành GIF; không tự kết luận feel accepted.
 - GitHub Actions run `40046706621` completed/success cho head `4f10e2fad37d0afb4893ea0a95a4a933f31ec610`: npm ci/build/configure/upload/deploy đều PASS; job `120729989991` success. Các bản Q2/polish trước cũng deploy PASS; bản cuối đã chứa phản hồi chuyển nút của user.
 - Focused suite PASS: 41 test definitions trong 3 files, gồm 11 Q2 tests (buffer expiry/once/latest, Heavy/Charged transitions, hitstop/dash/Surge cancel, reset, windup lock và ticks, miss/contact feedback, i-frame tick cuối). Existing combat/run/progression regression PASS.
 - Chromium touch/DPR2: 320×568, 360×640, 390×844, 844×390, 768×1024 PASS: tất cả nút ≥44px, không chồng/cắt/overflow, không runtime errors; screenshots dọc/ngang đã xem.
@@ -83,10 +93,10 @@ npm run dev (5173); npm run build (typecheck + dist); npm run preview (4173); np
 - Natural-wave smoke ~20s bằng CDP touch: 90HP, 2 kills, 103 shots, không runtime error; scripted movement/aim, không cấp stats/resources hoặc bất tử. Không coi là human feel/full-run acceptance.
 - Desktop smoke PASS mouse tap, WASD + RMB, Shift/Space, Esc pause/resume không dư hành động.
 - Build/typecheck bản pose cuối, CSS tap-highlight và bố cục tam giác cuối PASS; production `/a-new-game/` PASS 390×844, 844×390 và desktop 1440×1000: SVG HTTP200 đúng base, move/shoot/dash/pause/resume, không runtime/request/HTTP errors. Bundle warning Phaser >500kB là hiện trạng (~1.27MB JS/gzip352KB), không mở scope bundling.
-- Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User chỉ phản hồi bản trước Q2 “khá ổn”.
+- Không xác nhận Safari/iOS, cảm nhận âm thanh/performance/tầm với trên máy thật hay full-run. User phản hồi Charged hiện tại chưa đủ lực; bản follow-up chờ chơi lại.
 
 ## NEXT ACTION
-Chờ user chơi bản Pages Q2, đánh giá chuyển Chém/Bắn/Lướt, nối đòn/dash cancel và impact trên điện thoại. Chỉ sửa tiếp theo phản hồi được giao; không tự triển khai Q3–Q5. Sau sửa đổi được giao và checks PASS, tự deploy theo quyền đã cấp.
+Commit/push Charged feedback đã kiểm tra và theo dõi Actions tới success; cập nhật handoff, dừng chờ user chơi bản mới.
 
 ## BLOCKERS
 Không blocker đã biết. URL Pages trực tiếp ngoài allowlist; xác minh deployment qua Actions và production local đúng subpath. Q2/bố cục mới vẫn chờ user playtest, Q1 vẫn chờ xác nhận visual; Q3–Q5 chưa giao.

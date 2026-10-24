@@ -512,3 +512,63 @@ test('Light combo contact occurs on windup frames 4/5/6, with no early hit', () 
     advance(state, 0.4);
   }
 });
+
+test('Charged fire has its own cue, keeps ammo/cadence, and an unmarked hit does not create AoE', () => {
+  const state = world();
+  const direct = target(state, 850);
+  const neighbour = state.enemies[1];
+  Object.assign(neighbour, { x: 920, y: 500, hp: 500, stagger: 100 });
+  state.chargedShots = 1;
+  state.step({ ...idle, charged: true }, FIXED_STEP);
+  assert.ok(state.soundEvents.includes('chargedGun') && !state.soundEvents.includes('gun'));
+  assert.equal(state.chargedShots, 0);
+  assert.equal(state.shotCooldown, 0.35);
+  assert.equal(direct.hp, 458);
+  assert.equal(neighbour.hp, 500);
+  assert.equal(state.detonations, 0);
+  assert.equal(state.impacts.some(i => i.kind === 'chargedBlast'), false);
+});
+
+test('Charged Detonate visual uses the unchanged damage radius, including Specialist', () => {
+  for (const specialist of [false, true]) {
+    const state = world();
+    const radius = specialist ? 142 : 105;
+    if (specialist) state.mutations.push('detonationSpecialist');
+    const direct = target(state, 850);
+    direct.rupture = 3;
+    const inside = state.enemies[1], outside = state.enemies[2];
+    Object.assign(inside, { x: 850 + radius - 1, y: 500, hp: 500, stagger: 100 });
+    Object.assign(outside, { x: 850 + radius + 1, y: 500, hp: 500, stagger: 100 });
+    state.chargedShots = 1;
+    state.step({ ...idle, charged: true }, FIXED_STEP);
+    const damage = 72 * (specialist ? 1.25 : 1);
+    assert.equal(direct.hp, 500 - 42 - damage);
+    assert.equal(inside.hp, 500 - damage);
+    assert.equal(outside.hp, 500);
+    const effect = state.impacts.find(i => i.kind === 'chargedBlast');
+    assert.equal(effect.radius, radius);
+    assert.equal(effect.x, 850);
+    assert.equal(effect.duration, 0.36);
+    assert.ok(state.soundEvents.includes('chargedBlast'));
+    state.hitstop = 0.05;
+    const life = effect.life;
+    state.step(idle, FIXED_STEP);
+    assert.equal(effect.life, life);
+    advance(state, 0.7);
+    assert.equal(state.impacts.length, 0);
+  }
+});
+
+test('dense Charged chains retain one primary blast while effects and chain work stay bounded', () => {
+  const state = world();
+  const template = state.enemies[0];
+  state.enemies = Array.from({ length: 30 }, (_, id) => ({ ...template, id, x: 850, y: 500, hp: 500, rupture: 3 }));
+  state.chargedShots = 1;
+  state.step({ ...idle, charged: true }, FIXED_STEP);
+  assert.equal(state.lastChain, COMBAT.chainLimit);
+  assert.ok(state.impacts.length <= 24);
+  assert.equal(state.impacts.filter(i => i.kind === 'chargedBlast').length, 1);
+  state.reset();
+  assert.equal(state.impacts.length, 0);
+  assert.equal(state.soundEvents.length, 0);
+});

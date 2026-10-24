@@ -3,6 +3,7 @@ import { ProceduralAudio } from './audio';
 import { RunDirector } from './run';
 import { CombatWorld, type CombatAction } from './combat';
 import { PlayerVisual } from './PlayerVisual';
+import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
 import { ARENA, FIXED_STEP, type PlayerState } from './movement';
 
@@ -225,6 +226,7 @@ export class ArenaScene extends Phaser.Scene {
       g.fillStyle(color).fillRect(enemy.x - 16, enemy.y - 24, 32 * enemy.hp / enemy.maxHp, 3);
     }
     for (const shot of world.projectiles) {
+      if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
       const color = shot.hostile ? 0xc399ff : shot.charged ? 0xffcc80 : 0x9dffe2;
       g.lineStyle(shot.hostile ? 3 : 2, color, 0.65);
       const speed = Math.hypot(shot.vx, shot.vy) || 1;
@@ -243,9 +245,10 @@ export class ArenaScene extends Phaser.Scene {
     if (world.surgeFlash > 0) g.lineStyle(4, 0x9dffe2, world.surgeFlash / 0.6).strokeCircle(this.player.x, this.player.y, 280 * (1 - world.surgeFlash / 0.6));
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
     for (const impact of world.impacts) {
+      if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / 0.18;
       if (impact.kind) {
-        const heavy = impact.kind === 'heavy' || impact.kind === 'chargedHit';
+        const heavy = impact.kind === 'heavy';
         const spread = (heavy ? 32 : 20) * (1 - fade);
         const angle = impact.angle ?? 0;
         // Contact sparks travel along the blow, with a sharp cross-cut on impact.

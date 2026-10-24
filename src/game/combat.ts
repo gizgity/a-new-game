@@ -7,7 +7,7 @@ export const COMBAT = {
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
-export type SoundCue = 'light' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'heavySwing' | 'shotHit' | 'chargedHit';
+export type SoundCue = 'light' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
 
 export type CombatAction = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
 type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
@@ -28,8 +28,11 @@ export interface Attack {
   heavy: boolean; combo: number; angle: number; age: number;
   windup: number; duration: number; range: number; arc: number; damage: number; resolved: boolean;
 }
-export interface Impact { x: number; y: number; life: number; color: number; radius?: number; kind?: 'light' | 'heavy' | 'shotHit' | 'chargedHit'; angle?: number }
-interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean }
+export interface Impact {
+  x: number; y: number; life: number; color: number; radius?: number; duration?: number;
+  kind?: 'light' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast'; angle?: number;
+}
+interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean }
 
 function clampPosition(body: { x: number; y: number }, radius = PLAYER_RADIUS): void {
   const edge = ARENA.inset + radius;
@@ -311,8 +314,8 @@ export class CombatWorld {
     if (enemy.kind !== 'boss') enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     enemy.flash = 0.12;
     this.cue(sound === 'blast' ? 'light' : sound);
-    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : 0xe5fff7);
-    if (sound !== 'blast') Object.assign(this.impacts[this.impacts.length - 1], { kind: sound, angle });
+    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : 0xe5fff7,
+      22, sound === 'blast' ? undefined : sound, angle);
     const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.065 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
     this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0) {
@@ -433,7 +436,7 @@ export class CombatWorld {
 
   private fire(x: number, y: number, angle: number, hostile: boolean, charged = false): void {
     if (this.projectiles.length >= COMBAT.projectileLimit) return;
-    if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue('gun'); }
+    if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue(charged ? 'chargedGun' : 'gun'); }
     const speed = hostile ? 310 : 850;
     this.projectiles.push({ x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
       vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, life: hostile ? 3 : 1.3 });
@@ -457,7 +460,7 @@ export class CombatWorld {
           if (distance < nearest) { target = enemy; nearest = distance; }
         }
         if (target) {
-          this.detonate(target, shot.charged ? 2 : 1);
+          this.detonate(target, shot.charged ? 2 : 1, !!shot.charged);
           this.hitEnemy(target, shot.charged ? 42 : 14, Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit');
           shot.life = 0;
         }
@@ -481,23 +484,23 @@ export class CombatWorld {
     this.chargePoints = Math.min(2, this.chargePoints);
   }
 
-  private detonate(enemy: Enemy, multiplier: number): void {
+  private detonate(enemy: Enemy, multiplier: number, charged = false): void {
     if (enemy.rupture === 0 || this.chainSeen.has(enemy.id)) return;
     this.chainSeen.add(enemy.id);
     const stacks = enemy.rupture;
     enemy.rupture = 0;
     this.detonations++;
     this.gainCharge(1);
-    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * 12 * multiplier * (this.curse === 'volatileSoul' ? 1.4 : 1) * (this.mutations.includes('detonationSpecialist') ? 1.25 : 1), radius: this.mutations.includes('detonationSpecialist') ? 142 : 105, hostile: false });
+    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * 12 * multiplier * (this.curse === 'volatileSoul' ? 1.4 : 1) * (this.mutations.includes('detonationSpecialist') ? 1.25 : 1), radius: this.mutations.includes('detonationSpecialist') ? 142 : 105, hostile: false, charged });
   }
 
   private resolveExplosions(): void {
     // Queue có budget và mỗi enemy chỉ kích Rupture một lần trong tick.
     while (this.explosions.length > 0 && this.lastChain < COMBAT.chainLimit) {
       const explosion = this.explosions.shift()!;
-      this.cue('detonate');
+      this.cue(explosion.charged ? 'chargedBlast' : 'detonate');
       this.lastChain++;
-      this.impact(explosion.x, explosion.y, explosion.hostile ? 0xffb36b : 0x6bf3d0, explosion.radius);
+      this.impact(explosion.x, explosion.y, explosion.hostile ? 0xffb36b : 0x6bf3d0, explosion.radius, explosion.charged ? 'chargedBlast' : undefined);
       for (const enemy of this.enemies) {
         if (enemy.hp <= 0 || Math.hypot(enemy.x - explosion.x, enemy.y - explosion.y) > explosion.radius) continue;
         this.detonate(enemy, 1);
@@ -510,8 +513,10 @@ export class CombatWorld {
     this.explosions = [];
   }
 
-  private impact(x: number, y: number, color: number, radius = 22): void {
-    if (this.impacts.length >= 24) this.impacts.shift();
-    this.impacts.push({ x, y, color, radius, life: 0.18 });
+  private impact(x: number, y: number, color: number, radius = 22, kind?: Impact['kind'], angle = 0): void {
+    // Keep the primary Charged blast readable when a chain fills the existing VFX budget.
+    if (this.impacts.length >= 24) this.impacts.splice(Math.max(0, this.impacts.findIndex(item => item.kind !== 'chargedBlast')), 1);
+    const duration = kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : 0.18;
+    this.impacts.push({ x, y, color, radius, kind, angle, duration, life: duration });
   }
 }

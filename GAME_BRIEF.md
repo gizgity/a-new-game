@@ -63,6 +63,7 @@
 - Dash bảo vệ toàn bộ các tick di chuyển, gồm tick cuối; timing Perfect Dodge, số charges, speed và recharge giữ nguyên. Tap cuối dash có thể nối sang tấn công khi dash kết thúc.
 - Miss có whoosh và slash nhưng không có contact spark/hitstop; Light mint, Heavy/Charged amber với recoil/impact mạnh hơn. Impact đặt tại điểm chạm trước knockback; Perfect Dodge dùng dấu gãy bốn hướng và notice hiện có. Sound trúng đạn khác sound chém.
 - Hitstop yêu cầu: Basic Shot 12ms, Light 33ms, Charged 40ms, Heavy 65ms (làm tròn lên tick 60Hz); blast/chain giữ quy tắc cũ. Không đổi damage, range, tài nguyên, AI, build hoặc chain depth ở Q2.
+- Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Trúng không có Rupture chỉ có contact bloom nhỏ (0.24s); Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Không đổi damage/radius/shot speed/cooldown/hitstop hoặc cơ chế chain ở follow-up này.
 - Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
 
 ## Run tối đa 5 phút
