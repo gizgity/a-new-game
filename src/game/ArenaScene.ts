@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { ProceduralAudio } from './audio';
 import { RunDirector } from './run';
 import { CombatWorld, type CombatAction, type CombatInput } from './combat';
+import { drawEnemyBody, drawEnemyTelegraph } from './EnemyVisual';
 import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
@@ -201,50 +202,8 @@ export class ArenaScene extends Phaser.Scene {
   private drawCombat(): void {
     const g = this.combatGraphics.clear();
     const world = this.combat;
-    for (const enemy of world.enemies) {
-      const color = enemy.kind === 'boss' ? 0xffcc80 : enemy.kind === 'bulwark' ? 0x91b5ff : enemy.kind === 'volatile' ? 0xffb36b : enemy.kind === 'grunt' ? 0xff6f87 : 0xc399ff;
-      if (enemy.windup > 0) {
-        const progress = Math.max(0, 1 - enemy.windup / (enemy.kind === 'boss' ? 0.95 : enemy.kind === 'grunt' ? 0.42 : 0.7));
-        const dodgeReady = world.isImminentEnemyThreat(enemy);
-        g.lineStyle(dodgeReady ? 3 : 2, dodgeReady ? 0xffefaa : color, 0.3 + progress * 0.7);
-        if (enemy.kind === 'boss') {
-          g.fillStyle(color, 0.16);
-          if (enemy.action === 0) this.drawSector(g, enemy.x, enemy.y, 230, enemy.angle, 1.7);
-          else if (enemy.action === 1) g.strokeCircle(enemy.x, enemy.y, 100);
-          else g.fillCircle(enemy.targetX, enemy.targetY, 110).strokeCircle(enemy.targetX, enemy.targetY, 110);
-        } else if (enemy.kind === 'volatile') {
-          g.fillStyle(color, 0.12 + progress * 0.15).fillCircle(enemy.x, enemy.y, 110);
-        } else if (enemy.kind === 'archer') {
-          g.lineBetween(enemy.x, enemy.y, enemy.x + Math.cos(enemy.angle) * 600, enemy.y + Math.sin(enemy.angle) * 600);
-        } else {
-          g.fillStyle(color, 0.12 + progress * 0.18);
-          this.drawSector(g, enemy.x, enemy.y, 70, enemy.angle, 1.7);
-        }
-        g.strokeCircle(enemy.x, enemy.y, 20 + progress * 5);
-      }
-      g.fillStyle(0x000000, 0.35).fillEllipse(enemy.x, enemy.y + 10, 30, 12);
-      g.fillStyle(enemy.flash > 0 ? 0xffffff : enemy.kind === 'grunt' ? 0x612c44 : 0x3f315e);
-      g.lineStyle(2, enemy.flash > 0 ? 0xffffff : color);
-      if (enemy.kind === 'boss' || enemy.kind === 'bulwark') {
-        const radius = enemy.kind === 'boss' ? 32 : 22;
-        const points = Array.from({ length: 6 }, (_, i) => ({ x: enemy.x + Math.cos(i * Math.PI / 3) * radius,
-          y: enemy.y + Math.sin(i * Math.PI / 3) * radius }));
-        g.fillPoints(points, true).strokePoints(points, true);
-        g.lineStyle(1, color).strokeCircle(enemy.x, enemy.y, radius * 0.65);
-      } else if (enemy.kind === 'volatile') {
-        g.fillCircle(enemy.x, enemy.y, 13).strokeCircle(enemy.x, enemy.y, 13);
-      } else if (enemy.kind === 'grunt') {
-        g.fillRect(enemy.x - 12, enemy.y - 12, 24, 24).strokeRect(enemy.x - 12, enemy.y - 12, 24, 24);
-      } else {
-        const points = [{ x: enemy.x, y: enemy.y - 16 }, { x: enemy.x + 14, y: enemy.y },
-          { x: enemy.x, y: enemy.y + 16 }, { x: enemy.x - 14, y: enemy.y }];
-        g.fillPoints(points, true).strokePoints(points, true);
-      }
-      g.fillStyle(color).fillCircle(enemy.x + Math.cos(enemy.angle) * 6, enemy.y + Math.sin(enemy.angle) * 6, 3);
-      for (let i = 0; i < enemy.rupture; i++) g.fillStyle(0x6bf3d0).fillCircle(enemy.x - 8 + i * 8, enemy.y - 31, 2);
-      g.fillStyle(0x18202c).fillRect(enemy.x - 16, enemy.y - 24, 32, 3);
-      g.fillStyle(color).fillRect(enemy.x - 16, enemy.y - 24, 32 * enemy.hp / enemy.maxHp, 3);
-    }
+    for (const enemy of world.enemies) drawEnemyTelegraph(g, enemy, world);
+    for (const enemy of world.enemies) drawEnemyBody(g, enemy, this.time.now / 1000);
     for (const shot of world.projectiles) {
       if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
       const color = shot.hostile ? 0xc399ff : shot.charged ? 0xffcc80 : 0x9dffe2;
@@ -285,10 +244,6 @@ export class ArenaScene extends Phaser.Scene {
           impact.x + Math.sin(angle) * cut, impact.y - Math.cos(angle) * cut);
       } else g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, 4 + (1 - fade) * (impact.radius ?? 22));
     }
-  }
-
-  private drawSector(g: Phaser.GameObjects.Graphics, x: number, y: number, radius: number, angle: number, arc: number): void {
-    g.beginPath().moveTo(x, y).arc(x, y, radius, angle - arc / 2, angle + arc / 2).closePath().fillPath().strokePath();
   }
 
   private drawArena(): void {

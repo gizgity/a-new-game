@@ -33,3 +33,13 @@ export const ENCOUNTERS = {
   elite: { kills: 200, seconds: 150 },
   boss: { kills: 450, seconds: 240 },
 } as const;
+
+// Windup locks aim; recovery is stationary and part of the existing cooldown.
+export const ENEMY_ATTACK = {
+  grunt: { windup: 0.42, recovery: 0.22, cooldown: 0.85, range: 70, arc: 1.7 },
+  archer: { windup: 0.7, recovery: 0.4, cooldown: 1.5, range: 550, arc: 0 },
+  volatile: { windup: 0.7, recovery: 0, cooldown: 1.5, range: 110, arc: Math.PI * 2 },
+  bulwark: { windup: 0.65, recovery: 0.75, cooldown: 1.5, range: 100, arc: 1.7 },
+} as const;
+export const BOSS_ATTACK = { windup: 0.95, enragedWindup: 0.75, recovery: 0.7,
+  enragedRecovery: 0.5, cooldown: 1.15, enragedCooldown: 0.8, range: 230, arc: 1.7, slamRadius: 110 } as const;

@@ -10,13 +10,14 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q2 hoàn thành và được người dùng chấp nhận qua feedback “ok q2 ổn đó” trên bản đang deploy (84fb33a). Đã ghi nhận experience acceptance cho combat feel/impact; giữ nguyên implementation và balance hiện tại. Sáu mốc tiến hóa/encounter đã deploy; không suy rộng xác nhận Q2 thành acceptance toàn bộ Q1/Q3–Q5 hoặc kiểm thử mọi thiết bị.
+Q3 — Enemy identity/precision, được user giao tiếp ngày 2026-10-25. Cải thiện nhận diện/animation của 3 common, Bulwark và Chain Warden theo Fractured Geometry; telegraph khớp hit geometry, khóa hướng/điểm, active feedback và recovery tạo khoảng phản công. Giữ specials/layout/scaling/ranged/kill drafts của bản trước. Q1 chờ visual approval, Q2 đã được user accepted trên84fb33a; không mở Q4/Q5.
 
 ## ACCEPTANCE
-- 6 draft: Mutation25kills/0:30, Curse80/1:00, Mutation160/1:40, Mutation220/2:20, Curse300/3:00, Mutation380/3:40. Mỗi mốc chỉ chạy1lần; vượt nhiều mốc xử lý tuần tự, timer pause khi chọn.
-- Curse sau cho đổi hoặc giữ, luôn chỉ1Curse active; tối đa4Mutation khác nhau, pool ít hơn3 thì hiện đúng số còn; cạn pool không kẹt màn chọn.
-- Elite200kills/2:30; Boss450kills/4:00. Không spawn trùng/Elite muộn sau Boss, giữ Boss1500HP và deadline5:00. Draft đang tới hạn được chọn trước encounter.
-- HUD/hướng dẫn vi/en hiển thị cả kills/thời gian; mobile không tràn; tests/build/browser PASS rồi deploy Actions. AWAITING PLAYTEST APPROVAL.
+- Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
+- Telegraph có tiến trình theo thời gian windup thực, khóa hướng/điểm và khớp damage; active feedback không gây hit lặp.
+- Common giữ nhịp nhanh, Elite/Boss có recovery đứng yên đủ phản công; Bulwark mở giáp khi recovery. Boss giữ ba pattern, phase nhanh hơn dưới nửa HP, không stun-lock.
+- Không đổi số lượng nội dung, controls, charge, chain budget, growth/drafts/deadline; toàn bộ text mới (nếu có) qua vi/en.
+- Focused tests, build/typecheck, browser gameplay và ảnh evidence trước deploy Actions. Visual/feel vẫn AWAITING PLAYTEST/VISUAL APPROVAL tới khi user xác nhận.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -26,11 +27,15 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Bố cục cột mới và giữ/thả trên máy thật |
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
 | Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
-| Q3 — Enemy identity/precision | NOT VERIFIED | Có scaling/body theo feedback, art/pattern/recovery chưa đạt |
+| Q3 — Enemy identity/precision | IN PROGRESS — AWAITING PLAYTEST/VISUAL APPROVAL | Implementation/checks xong; user duyệt art và precision feel |
 | Q4 — Chain depth | NOT VERIFIED | Charged tự seed Detonate hỗ trợ ranged; depth tổng thể chưa duyệt |
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
 
 ## CURRENT STATUS
+- Q3: EnemyVisual.ts tách khỏi Scene, silhouette riêng: Grunt mặt nạ/móc tay, Archer mũ/áo rách/cung, Volatile lõi lò tách5mảnh, Bulwark giáp phiến, Warden vương miện/thân rỗng/3mảnh xích. Windup co/lấy đà, active bật người, recovery mở lõi; không thay collider.
+- Ground cue vẽ trước bodies, outer boundary khớp hit geometry + vòng/quạt tiến độ từ windupDuration snapshot; Archer ray khóa hướng, Boss ring12rays đúng hướng đạn/slam khóa điểm. Active0.18s(common)/0.22s(Boss) giữ đúng pattern cũ, chỉ feedback, không gây hit lặp.
+- Recovery đứng yên nằm trong cooldown hiện có: Grunt0.22s/Archer0.4s/Bulwark0.75s/Boss0.7s hoặc0.5s dưới nửaHP. Boss windup0.95/0.75 và cooldown1.15/0.8 giữ; dưới nửaHP không rút telegraph đang chạy. Volatile fuse0.7s giữ.
+- Bulwark quét100px (trước70), bắt đầu dưới90px, arc1.7rad; cue/Perfect/hit cùng range. Giáp55% damage ngoài recovery, nhận100% khi mở giáp; Guard Breaker vẫn xuyên giáp. Đây là thay đổi balance Q3 cần user thử.
 - Input: TouchControls chỉ phát Heavy/Charged ở pointerup, snapshot aim theo action; core chỉ nhận một command và buffer120ms, không dựa held repeat. E/Shift desktop arm ở keydown, phát ở keyup; reset/gaming focus cancel arm. Heavy khóa angle khi bắt đầu, Charged giữ angle qua recovery buffer; Light vẫn tracking windup.
 - Heavy có2charges, hồi tuần tự8s simulation, pause/draft/hitstop dừng recharge. HUD/nút hiển thị lượng còn và thời gian hồi; L3→Heavy140, thường100, knockback80/stagger0.6, hitstop85ms. Blade/trail amber44px/sweep0.16/fade0.18, impact0.26s và SFX low-body/overtone riêng.
 - Light stagger0.08/0.10/0.14s; Light/Basic giữ telegraph/cooldown đang chạy thay vì stunlock. Knockback Light18/24/38 giữ; Heavy/Charged/blast vẫn interrupt. Boss không bị stagger/reset windup.
@@ -43,7 +48,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10. Không đổi damage/resources/synergy hiện có.
 
 - Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
-- Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy/floor vẫn prototype art; không tự accepted.
+- Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor vẫn prototype art; không tự accepted.
 
 ## IMPLEMENTATION AUDIT / LIMITS
 - Functional tests chứng minh input/timing/geometry/resources/run, không chứng minh combat feel. Safari/iOS, âm thanh/performance/tầm với máy thật và full-run cần user thử.
@@ -52,6 +57,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Chain có damage/lan thật nhưng queue quá budget vẫn bỏ; Q4 depth chưa được review. Không thay giới hạn MVP.
 
 ## EVIDENCE
+- docs/q3/: identity/common telegraphs, ba pattern Boss windup/active, Bulwark mở giáp, viewports, production. Ảnh pattern là fixture; production opening dùng input thật, không grant stats. README ghi giới hạn.
 - docs/milestones/: HUD mobile/desktop, Curse đổi/giữ và Mutation cuối; fixture kiểm ngưỡng và pool, không là natural run. HUD320/390/844/1440 và draft-4/draft-5; fixture pool cố định và kills để kiểm ngưỡng, không là natural run.
 - docs/specials/: layout-320/360/390/844/768.png; heavy.png, charged.png, perfect-dodge.png; production-320/390/844.png; ranged-run.png.
 - Layout/Heavy/Charged/Perfect ảnh từ renderer thật ở phone390×844 (layout có5sizes); fixtures cấp ammo/HP target để kiểm và nhìn VFX, không là natural run. Production ảnh input thật không inject stats. Ranged-run là waves thật, scripted input, không grant tài nguyên.
@@ -59,7 +65,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 
 ## KEY DECISIONS
 - Mobile-first + desktop,1arena,run5phút,1sword/gun,3mobs/Elite/Boss,6Mutation/4Curse; không permanent stat upgrades/backend/account/multiplayer/leaderboard/monetization.
-- User mới nhất mở rộng6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Các phần chưa giao của Q3–Q5 vẫn dừng.
+- User mới nhất mở rộng6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3 được user giao tiếp; Q4/Q5 vẫn dừng.
 - Free/open-source/KISS, Phaser3.90+TS5.9+Vite7, fixed60Hz/catchup100ms; không dependency mới/QA framework/art engine.
 - UI vi/en qua t(key). Codename cursebreak không là public brand; Neon Occult/Fractured Geometry original.
 - Quyền tự deploy sau checks PASS, không hỏi lại. Dùng .github/workflows/pages.yml, base /a-new-game/, giữ remote/main, push không force, theo dõi Actions tới kết thúc. Deploy không là visual/device approval.
@@ -68,6 +74,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - GAME_BRIEF.md, AGENTS.md, .agents/skills/handoff/SKILL.md là source/workflow đã đọc.
 - config/balance.ts: HP/growth/combo/Heavy/ranged/kill thresholds; combat.ts: command/resource/physics/dodge/shot/impact; run.ts: waves/scaling/kill drafts.
 - TouchControls.ts/ArenaScene.ts: release input/reset/aim snapshot; PlayerVisual.ts/audio.ts: Heavy feedback; main.ts/style.css/i18n.ts: layout/HUD/vi-en.
+- EnemyVisual.ts/config/balance.ts/combat.ts: art/cues/recovery/armor Q3; tests/enemies.test.mjs: khóa hướng, recovery, mở giáp, phase/fuse.
 - tests/combat.test.mjs/run.test.mjs/progression.test.mjs: regression contracts; public/assets/fractured-vessel.svg giữ.
 - vite.config.ts/.github/workflows/pages.yml giữ nguyên.
 
@@ -75,13 +82,14 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- Lượt ghi nhận approval chỉ sửa Markdown; diff/nhất quán tài liệu đã kiểm, không chạy lại tests/build hoặc deploy. Các kết quả kỹ thuật dưới thuộc bản implementation84fb33a.
-- npm test PASS:62definitions/3files; thêm6mốc kills/time/both/biên trước ngưỡng, nhiều mốc cùng tick, cạn pool, giữ/đổi Curse, Elite/Boss OR một lần và không Elite muộn. Regression combat/progression cũ PASS.
-- Typecheck/build PASS; Phaser bundle warning>500KB là hiện trạng, không mở scope bundling.
-- Chromium320×568/390×844/844×390/1440×900 PASS: HUD vi/en cả kills/time không tràn,6draft qua UI, Curse có giữ/đổi, pool1option cuối, Boss sớm, pause/resume; production base/a-new-game/ HUD/load/no overflow/runtime errors PASS. Ảnh HUD320 và Curse đã xem trực quan.
-- Natural ranged scripted input, waves thật/no HP-ammo grants:266kills/128.8s,565shots/0melee/71detonations,4draft tại25/80/161/222kills; chết trước draft5. Assertion kỳ vọng full6/Boss của script không đạt do player chết, không phải runtime lỗi; toàn6mốc/Boss chỉ được kiểm bằng core tests+browser fixtures. Kết quả tự động này không chứng minh cân bằng full-run; Q2 được user duyệt riêng sau đó.
-- Q2 experience acceptance: user xác nhận “ok q2 ổn đó”. Chưa có thông tin thiết bị/browser của lượt user thử; không coi đây là xác minh toàn bộ Safari/iOS hoặc balance full-run.
-- Deployment: Actions40147434160, head84fb33ac1fe3c945edb6b42e8dfd60db48eb1f27, completed/success; job121031678697. Build/upload/deploy Pages PASS. Live https://gizgity.github.io/a-new-game/. Commit handoff sau deploy chỉ Markdown.
+- Q3: npm test PASS (66definitions/4files; thêm4focused definitions), typecheck/build PASS; bundle Phaser>500KB vẫn là warning hiện trạng.
+- Chromium mobile390: gallery,3Boss patterns/active/locked target, né slam không mất HP, Boss đứng yên qua recovery, Bulwark mở giáp PASS. Viewports320/390/844/768/1440 không overflow/runtime errors. Đây là fixtures, không phải human playtest/full-run.
+- Production smoke /a-new-game/ PASS320/390/844/1440: assets/base, giữ Bắn opening, pause/resume, vi/en, no overflow/runtime/request errors. Deployment Q3 đang thực hiện.
+- Baseline giữ remote4d98a2e (Q2 user approval), implementation84fb33a/Actions40147434160 success. Sáu draft/encounters và vi/en mới đã ghép trước tests; không quay về bản3draft.
+- Git CLI không có credential hợp lệ; dùng GitHub connector để bảo toàn remote parent/tree và cập nhật main không force. Không xuất token.
 
 ## NEXT ACTION
-Q2 đã accepted; dừng chờ người dùng giao Q3 — Enemy identity, telegraph và precision encounters. Chỉ bắt đầu Q3 khi được giao; các feedback balance mới vẫn xử lý theo phạm vi yêu cầu.
+Hoàn tất production smoke và deploy Q3 qua Actions; sau deploy dừng chờ user playtest/visual approval Q3, không tự mở Q4/Q5.
+
+## BLOCKERS
+Chưa user duyệt Q3 hoặc kiểm máy thật/Safari/full-run; không tự accepted. Git CLI thiếu auth, connector vẫn truy cập repo được.

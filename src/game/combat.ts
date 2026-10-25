@@ -1,4 +1,4 @@
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK } from './config/balance.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
@@ -21,6 +21,7 @@ export interface CombatInput {
 export interface Enemy {
   id: number; kind: 'grunt' | 'archer' | 'volatile' | 'bulwark' | 'boss'; x: number; y: number;
   hp: number; maxHp: number; damageScale: number; speedScale: number; cooldown: number; windup: number;
+  recovery: number; active: number; windupDuration: number; attackAction: number;
   angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
 }
 export interface Projectile {
@@ -170,7 +171,7 @@ export class CombatWorld {
       x: this.player.x + Math.cos(angle) * 360, y: this.player.y + Math.sin(angle) * 360,
       hp: 0, maxHp: maxHp ?? Math.round(ENEMY_HP[kind] * (1 + growth * (ENEMY_GROWTH.health - 1))),
       damageScale: 1 + growth * (ENEMY_GROWTH.damage - 1), speedScale: 1 + growth * (ENEMY_GROWTH.speed - 1),
-      cooldown: 0.8 + (id % 4) * 0.2, windup: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
+      cooldown: 0.8 + (id % 4) * 0.2, windup: 0, recovery: 0, active: 0, windupDuration: 0, attackAction: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
     // Nếu player sát góc, chọn điểm phía đối diện để tránh spawn trên người.
@@ -318,7 +319,7 @@ export class CombatWorld {
   private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' = 'blast'): void {
     if (enemy.hp <= 0) return;
     if (this.hp < this.maxHp / 2 && this.mutations.includes('berserker')) damage *= 1.25;
-    if (enemy.kind === 'bulwark' && !bypassArmor) damage *= 0.55;
+    if (enemy.kind === 'bulwark' && enemy.recovery <= 0 && !bypassArmor) damage *= 0.55;
     const contactX = enemy.x, contactY = enemy.y;
     enemy.hp = Math.max(0, enemy.hp - damage);
     this.surge = Math.min(100, this.surge + 2);
@@ -371,10 +372,10 @@ export class CombatWorld {
     const { x, y } = this.player;
     if (enemy.hp <= 0 || enemy.windup <= 0 || enemy.windup + enemy.stagger > COMBAT.perfectWindow) return false;
     const distance = Math.hypot(x - enemy.x, y - enemy.y);
-    if (enemy.kind === 'volatile') return distance < 110;
+    if (enemy.kind === 'volatile') return distance < ENEMY_ATTACK.volatile.range;
     if (enemy.kind === 'archer' || enemy.kind === 'boss' && enemy.action === 1) return false;
-    if (enemy.kind === 'boss' && enemy.action === 2) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < 110;
-    return distance < (enemy.kind === 'boss' ? 230 : 70) &&
+    if (enemy.kind === 'boss' && enemy.action === 2) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < BOSS_ATTACK.slamRadius;
+    return distance < (enemy.kind === 'boss' ? BOSS_ATTACK.range : ENEMY_ATTACK[enemy.kind].range) &&
       Math.abs(angleDifference(Math.atan2(y - enemy.y, x - enemy.x), enemy.angle)) < 0.85;
   }
 
@@ -420,8 +421,15 @@ export class CombatWorld {
     if (enemy.hp <= 0) return;
     if (enemy.kind === 'boss') { this.stepBoss(enemy, dt); return; }
     enemy.flash = Math.max(0, enemy.flash - dt);
+    enemy.active = Math.max(0, enemy.active - dt);
     enemy.stagger = Math.max(0, enemy.stagger - dt);
     if (enemy.stagger > 0) return;
+    const spec = ENEMY_ATTACK[enemy.kind];
+    if (enemy.recovery > 0) {
+      enemy.recovery = Math.max(0, enemy.recovery - dt);
+      enemy.cooldown = Math.max(0, enemy.cooldown - dt);
+      return;
+    }
     const dx = this.player.x - enemy.x, dy = this.player.y - enemy.y;
     const distance = Math.hypot(dx, dy);
     if (enemy.windup > 0) {
@@ -431,17 +439,19 @@ export class CombatWorld {
           enemy.hp = 0;
           this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
         } else if (enemy.kind === 'archer') this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
-        else if (distance < 70 && Math.abs(angleDifference(Math.atan2(dy, dx), enemy.angle)) < 0.85) {
+        else if (distance < spec.range && Math.abs(angleDifference(Math.atan2(dy, dx), enemy.angle)) < 0.85) {
           this.hurt(Math.round((enemy.kind === 'bulwark' ? 22 : 12) * enemy.damageScale), enemy.angle);
         }
-        enemy.cooldown = enemy.kind === 'grunt' ? 0.85 : 1.5;
+        enemy.cooldown = spec.cooldown;
+        enemy.recovery = spec.recovery;
+        enemy.active = 0.18;
       }
       return;
     }
     enemy.cooldown = Math.max(0, enemy.cooldown - dt);
     enemy.angle = Math.atan2(dy, dx);
-    if (enemy.cooldown === 0 && distance < (enemy.kind === 'archer' ? 550 : enemy.kind === 'volatile' ? 80 : 60)) {
-      enemy.windup = enemy.kind === 'grunt' ? 0.42 : enemy.kind === 'bulwark' ? 0.65 : 0.7;
+    if (enemy.cooldown === 0 && distance < (enemy.kind === 'archer' ? 550 : enemy.kind === 'volatile' ? 80 : enemy.kind === 'bulwark' ? 90 : 60)) {
+      enemy.windup = enemy.windupDuration = spec.windup;
       return;
     }
     const direction = enemy.kind !== 'archer' ? (distance > 40 ? 1 : 0) : (distance > 340 ? 1 : distance < 230 ? -1 : 0);
@@ -464,22 +474,30 @@ export class CombatWorld {
 
   private stepBoss(boss: Enemy, dt: number): void {
     boss.flash = Math.max(0, boss.flash - dt);
+    boss.active = Math.max(0, boss.active - dt);
+    if (boss.recovery > 0) {
+      boss.recovery = Math.max(0, boss.recovery - dt);
+      boss.cooldown = Math.max(0, boss.cooldown - dt);
+      return;
+    }
     if (boss.windup > 0) {
       boss.windup = Math.max(0, boss.windup - dt);
       if (boss.windup === 0) {
         if (boss.action === 0) {
           const dx = this.player.x - boss.x, dy = this.player.y - boss.y;
-          if (Math.hypot(dx, dy) < 230 && Math.abs(angleDifference(Math.atan2(dy, dx), boss.angle)) < 0.85) this.hurt(26, boss.angle);
+          if (Math.hypot(dx, dy) < BOSS_ATTACK.range && Math.abs(angleDifference(Math.atan2(dy, dx), boss.angle)) < 0.85) this.hurt(26, boss.angle);
         } else if (boss.action === 1) {
           for (let i = 0; i < 12; i++) this.fire(boss.x, boss.y, i * Math.PI / 6 + boss.angle, true);
         } else {
           this.impact(boss.targetX, boss.targetY, 0xffcc80, 110);
-          if (Math.hypot(this.player.x - boss.targetX, this.player.y - boss.targetY) < 110) {
+          if (Math.hypot(this.player.x - boss.targetX, this.player.y - boss.targetY) < BOSS_ATTACK.slamRadius) {
             this.hurt(28, Math.atan2(this.player.y - boss.y, this.player.x - boss.x));
           }
         }
         boss.action = (boss.action + 1) % 3;
-        boss.cooldown = boss.hp < boss.maxHp / 2 ? 0.8 : 1.15;
+        boss.cooldown = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedCooldown : BOSS_ATTACK.cooldown;
+        boss.recovery = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedRecovery : BOSS_ATTACK.recovery;
+        boss.active = 0.22;
       }
       return;
     }
@@ -487,7 +505,8 @@ export class CombatWorld {
     const dx = this.player.x - boss.x, dy = this.player.y - boss.y;
     boss.angle = Math.atan2(dy, dx);
     if (boss.cooldown === 0) {
-      boss.windup = boss.hp < boss.maxHp / 2 ? 0.75 : 0.95;
+      boss.windup = boss.windupDuration = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedWindup : BOSS_ATTACK.windup;
+      boss.attackAction = boss.action;
       boss.targetX = this.player.x; boss.targetY = this.player.y;
     } else if (Math.hypot(dx, dy) > 155) {
       boss.x += Math.cos(boss.angle) * 80 * dt;

@@ -117,6 +117,14 @@
 - Bulwark: armored Elite.
 - Chain Warden: final Boss.
 
+### Q3 — nhận diện và precision encounters (chờ user duyệt)
+- Art quái tách trong `EnemyVisual.ts`, dùng các mảnh giáp tối/lõi sáng/cạnh gãy có silhouette riêng: Grunt mặt nạ và móc tay; Archer mũ/áo rách/cung; Volatile lò năng lượng tách mảnh; Bulwark giáp phiến lớn; Chain Warden vương miện, thân rỗng và mảnh xích lơ lửng. Có pose lấy đà, bật khi ra đòn và hồi phục; collider giữ nguyên.
+- Telegraph ground vẽ dưới bodies, có boundary và tiến trình theo windup thực snapshot. Hướng melee/Archer/ring và điểm slam khóa từ đầu windup; ring hiển thị12hướng đạn, slam/Volatile hiển thị vòng bán kính110px. Perfect cue dùng cùng threat predicate. Active flash0.18s(common)/0.22s(Boss) chỉ là feedback sau hit một lần.
+- Recovery đứng yên trong cooldown hiện có: Grunt0.22s, Archer0.4s, Bulwark0.75s; Boss0.7s hoặc0.5s dưới nửaHP. Volatile giữ fuse0.7s rồi nổ tại vị trí đã khóa. Không thêm pattern hoặc enemy mới.
+- Bulwark bắt đầu quét khi dưới90px, range100px/arc1.7rad, windup0.65s/damage22×growth. Ngoài recovery giáp giữ damage×0.55; recovery giáp tách và nhận toàn bộ damage. Guard Breaker vẫn xuyên giáp. Grunt giữ70px/0.42s; Archer giữ0.7s.
+- Boss giữ sweep230px/1.7rad →12đạn radial →slam110px,1500HP. Windup0.95s/cooldown1.15s, dưới nửaHP0.75s/0.8s; không rút windup đang chạy, không bị stun-lock. Khoảng đứng yên mở cơ hội phản công, phase nhanh hơn vẫn có recovery.
+- Tests/browser xác nhận geometry/timing và evidence fixtures; **AWAITING PLAYTEST/VISUAL APPROVAL**, không tự chứng nhận readability/feel trên thiết bị thật.
+
 ## Mutation và Adaptive Evolution
 Sáu Mutation: Phantom Edge, Catalyst, Berserker, Detonation Specialist, Static Riposte, Guard Breaker.
 
@@ -204,4 +212,4 @@ Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên t�
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3–Q5 chỉ triển khai khi người dùng giao tiếp.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được giao và triển khai, chờ playtest/visual approval; Q4/Q5 chỉ triển khai khi người dùng giao tiếp.
