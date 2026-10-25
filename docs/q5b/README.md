@@ -1,6 +1,6 @@
 # Q5B — rework Mutation/Curse
 
-Bản b06bf69f82c3384145556cfed0d453d2ff7be844 đã deploy, Actions40193133738 completed/success.
+Q5B ban đầu b06bf69 đã deploy. Sustain tuning hiện tại f6dd69431cfeee4427bdb8748592a39d8e1bdea1 đã deploy, Actions40207444949 completed/success; hồi2HP/2s, cap riêng6HP/10s. 105tests/typecheck/build/browser PASS; chờ user thử lại frenzy, không là acceptance Q5B.
 
 Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Aegis/Oath và tuning Grunt6b7d7ad. Pool hiện7Mutation/5Curse, chưa Q5C/D. Implementation không là user experience acceptance.
 
