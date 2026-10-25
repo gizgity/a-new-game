@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Feedback Q3: quạt Grunt khó phân biệt chuẩn bị/gây damage, khó canh Perfect Dodge. Đã deploy visual mới (fa55057), AWAITING PLAYTEST APPROVAL: viền đứt chuẩn bị → viền liền/chevrons sát đòn (vàng khi predicate Perfect thật) → strike flash đúng tick hit, bỏ vùng quạt trong recovery. Giữ windup0.42s, window160ms, damage/range/AI/input hiện có; không mở Q4/Q5. Acceptance lượt sửa: ba nhịp đọc khác nhau trên mobile, cue vàng khớp logic; tests/build/browser/evidence trước deploy, user duyệt feel sau.
+Cue Grunt/Perfect Dodge đã được user chấp nhận qua “oki r” sau bản sửa fa55057. ACCEPTED — USER PLAYTEST APPROVAL cho phạm vi viền đứt chuẩn bị → vàng canh Perfect → trắng lúc hit/recovery hết quạt. Không sửa thêm implementation trong lượt xác nhận này. Q3 tổng thể còn chờ duyệt các enemy/encounter khác; Q1 chờ visual approval, Q2 giữ accepted; không tự mở Q4/Q5.
 
 ## ACCEPTANCE
 - Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
@@ -27,7 +27,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Bố cục cột mới và giữ/thả trên máy thật |
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
 | Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
-| Q3 — Enemy identity/precision | IN PROGRESS — AWAITING PLAYTEST/VISUAL APPROVAL | Implementation/checks xong; user duyệt art và precision feel |
+| Q3 — Enemy identity/precision | IN PROGRESS — AWAITING PLAYTEST/VISUAL APPROVAL | Cue Grunt/Perfect đã user duyệt; các art/enemy/encounter Q3 còn lại chờ duyệt |
 | Q4 — Chain depth | NOT VERIFIED | Charged tự seed Detonate hỗ trợ ranged; depth tổng thể chưa duyệt |
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
 
@@ -85,6 +85,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- User xác nhận “oki r” cho cue Grunt/Perfect Dodge trên bảnfa55057. Lượt này chỉ cập nhật Markdown, kiểm diff/nhất quán; không chạy lại tests/build/deploy. Không suy rộng acceptance sang toànQ3 hoặc mọi thiết bị.
 - Grunt cue: 66tests PASS, typecheck/build PASS. Chromium320/390/844 PASS: dashed trước cửa sổ/no damage, solid gold chỉ khi đủ threat160ms, strike flash trùng damage12, recovery không fill; dash sớm0Perfect/dash vàng1Perfect/ngoài threat không vàng. Production320/390/844/1440 PASS assets/input/pause/vi-en/no overflow/runtime errors. Bằng chứng kỹ thuật, chưa là user duyệt readability.
 - Bản sửa Grunt deploy PASS: Actions40154949591 completed/success, job121054223399; headfa55057d3a8ef30f70f4f702bb5ef969b2a43189. Build/upload/deploy đều success. Giữ main5838fd5 làm parent, không force; không đổi core combat.
 - Q3: npm test PASS (66definitions/4files; thêm4focused definitions), typecheck/build PASS; bundle Phaser>500KB vẫn là warning hiện trạng.
@@ -94,9 +95,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Git CLI không có credential hợp lệ; deploy bằng GitHub connector với parent4d98a2e/tree mới và expected SHA, không force. Remote diff chỉ Q3+evidence; mọi blob đã đối chiếu hash với local. Branch local work là snapshot từb55e354, đã ghép source/text remote mới; lịch sử local chưa fetch3commit trướcQ3 và ảnh docs/milestones chỉ có remote. Không push branch work lên main; lần làm tiếp cần đọc remote handoff mới nhất/đồng bộ lịch sử khi CLI auth có lại.
 
 ## NEXT ACTION
-Dừng chờ user thử scope Grunt ở opening trên Pages (tải lại trang để nhận bản mới): lại gần dụ quạt, đợi viền đứt chuyển liền/vàng rồi Lướt (Space desktop). Mong đợi dễ phân biệt chuẩn bị/hit và canh Perfect hơn; trắng là đòn đã ra, recovery không còn vùng quạt.
+Dừng chờ user thử/feedback các phần Q3 còn lại theo hướng dẫn bên dưới; không yêu cầu thử lại cue Grunt đã accepted, không tự mở Q4/Q5.
 
 ## PLAYTEST Q3 — SCOPE / CÁCH THỬ
+Cue Grunt/Perfect Dodge bên dưới đã được user duyệt; giữ làm tham chiếu, không yêu cầu thử lại. Scope còn lại: nhận diện art các quái, Archer/Volatile, recovery/mở giáp Bulwark và ba pattern Boss. Chỉ tiếp tục sửa khi có feedback hoặc yêu cầu mới.
 Bản cue Grunt fa55057 đã live, tải lại trang; lượt sửa mới chỉ cần thử Grunt ở opening: không tấn công để tránh stagger/ngắt đòn, lại gần dụ quạt, quan sát viền đứt hồng → liền/vàng → trắng. Nhấn Lướt/Space khi chuyển vàng, trước lóe trắng; mong đợi thông báo Perfect Dodge và không mất HP. Thử một lần lướt sớm ở viền đứt để đối chiếu (không thưởng Perfect). Ra ngoài quạt thì không có vàng từ Grunt đó. Cho biết có đọc được nhịp mà không đoán không; chưa yêu cầu thử lại Elite/Boss trong lượt này. Hướng dẫn toànQ3 bên dưới được giữ làm tham chiếu.
 Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi trên thiết bị thường dùng; mobile dùng joystick/nút Lướt/Đánh mạnh, desktop WASD/Space và giữ-thả Shift. Mục tiêu lượt này là art/readability, đọc hướng/vùng đòn và né→phản công; Q2 đã accepted, Q4/Q5 chưa giao.
 1. Trong waves, nhìn Grunt (mặt nạ/móc tay), Archer (mũ/cung), Volatile (lõi cam). Thử nhận ra từng loại khi đang di chuyển và có nhiều quái; mong đợi phân biệt được bằng hình/chuyển động, player và dấu báo đòn không bị lẫn.
