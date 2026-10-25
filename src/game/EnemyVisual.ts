@@ -1,6 +1,6 @@
 import type Phaser from 'phaser';
 import { COMBAT, type CombatWorld, type Enemy } from './combat';
-import { BOSS_ATTACK, ENEMY_ATTACK } from './config/balance';
+import { BOSS_ATTACK, ENEMY_ATTACK, GRUNT_LEAP } from './config/balance';
 
 type Graphics = Phaser.GameObjects.Graphics;
 const COLORS = { grunt: 0xff6f87, archer: 0xc399ff, volatile: 0xffb36b, bulwark: 0x91b5ff, boss: 0xffcc80 };
@@ -65,6 +65,14 @@ function drawGruntTelegraph(g: Graphics, e: Enemy, world: CombatWorld): void {
 
 // Draw all ground cues before bodies so another enemy never paints over a silhouette.
 export function drawEnemyTelegraph(g: Graphics, enemy: Enemy, world: CombatWorld): void {
+  if (enemy.kind === 'grunt' && enemy.attackAction === 3 && (enemy.windup > 0 || enemy.active > 0)) {
+    const progress = enemy.windup > 0 ? 1 - enemy.windup / enemy.windupDuration : 1;
+    const color = world.isImminentEnemyThreat(enemy) ? 0xffe599 : COLORS.grunt;
+    g.lineStyle(2, color, 0.8).strokeCircle(enemy.targetX, enemy.targetY, GRUNT_LEAP.radius);
+    g.lineStyle(1, color, 0.4).lineBetween(enemy.leapFromX, enemy.leapFromY, enemy.targetX, enemy.targetY);
+    g.lineStyle(2, color, 0.8).strokeCircle(enemy.targetX, enemy.targetY, GRUNT_LEAP.radius * progress);
+    return;
+  }
   if (enemy.kind === 'grunt') { drawGruntTelegraph(g, enemy, world); return; }
   const active = enemy.active > 0;
   if (enemy.windup <= 0 && !active) return;
@@ -72,10 +80,10 @@ export function drawEnemyTelegraph(g: Graphics, enemy: Enemy, world: CombatWorld
   const progress = active ? 1 : Math.min(1, Math.max(0, 1 - enemy.windup / (enemy.windupDuration || 0.7)));
   const alpha = active ? enemy.active / 0.22 : 0.45 + progress * 0.45;
   g.lineStyle(active ? 3 : 1.5, color, alpha).fillStyle(color, active ? 0.13 : 0.04 + progress * 0.08);
-  if (enemy.kind === 'archer' || enemy.kind === 'boss' && (active ? enemy.attackAction : enemy.action) === 1) {
-    const rays = enemy.kind === 'archer' ? 1 : 12;
-    for (let i = 0; i < rays; i++) {
-      const angle = enemy.angle + i * Math.PI / 6;
+  if (enemy.kind === 'archer' || enemy.kind === 'boss' && enemy.attackAction === 1) {
+    const rays = enemy.kind === 'archer' ? [enemy.angle] : [...Array.from({ length: 12 }, (_, i) => enemy.angle + i * Math.PI / 6), ...[-0.16, 0, 0.16].map(offset => enemy.angle + offset)];
+    for (let i = 0; i < rays.length; i++) {
+      const angle = rays[i];
       const reach = enemy.kind === 'archer' ? 600 : 190;
       g.lineBetween(enemy.x + Math.cos(angle) * 24, enemy.y + Math.sin(angle) * 24,
         enemy.x + Math.cos(angle) * reach, enemy.y + Math.sin(angle) * reach);
@@ -85,7 +93,7 @@ export function drawEnemyTelegraph(g: Graphics, enemy: Enemy, world: CombatWorld
         enemy.x + Math.cos(angle) * (r - 9) - Math.sin(angle) * side * 5,
         enemy.y + Math.sin(angle) * (r - 9) + Math.cos(angle) * side * 5);
     }
-  } else if (enemy.kind === 'volatile' || enemy.kind === 'boss' && (active ? enemy.attackAction : enemy.action) === 2) {
+  } else if (enemy.kind === 'volatile' || enemy.kind === 'boss' && enemy.attackAction === 2) {
     const slam = enemy.kind === 'boss';
     const x = slam ? enemy.targetX : enemy.x, y = slam ? enemy.targetY : enemy.y;
     const r = slam ? BOSS_ATTACK.slamRadius : ENEMY_ATTACK.volatile.range;
@@ -113,8 +121,10 @@ export function drawEnemyBody(g: Graphics, e: Enemy, time: number): void {
   const stride = preparing || open ? 0 : Math.sin(time * (e.kind === 'grunt' ? 14 : 8) + e.id) * 2;
   const stretch = preparing ? 1 - progress * 0.1 : e.active > 0 ? 1.12 : 1;
   const lean = preparing ? -progress * 4 : e.active > 0 ? 5 * e.active / 0.22 : 0;
+  const flight = e.kind === 'grunt' && e.attackAction === 3 ? GRUNT_LEAP.flight : e.kind === 'boss' && e.attackAction === 2 ? BOSS_ATTACK.leapFlight : 0;
+  const height = flight && e.windup > 0 && e.windup < flight ? Math.sin(Math.PI * (1 - e.windup / flight)) * (e.kind === 'boss' ? 46 : 28) : 0;
   const cos = Math.cos(e.angle), sin = Math.sin(e.angle);
-  const point = (x: number, y: number) => ({ x: e.x + cos * (x * stretch + lean) - sin * y, y: e.y + sin * (x * stretch + lean) + cos * y });
+  const point = (x: number, y: number) => ({ x: e.x + cos * (x * stretch + lean) - sin * y, y: e.y - height + sin * (x * stretch + lean) + cos * y });
   const plate = (coords: number[], fill: number, edge = color, alpha = 1) => {
     const points = [];
     for (let i = 0; i < coords.length; i += 2) points.push(point(coords[i], coords[i + 1]));

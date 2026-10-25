@@ -93,7 +93,10 @@ export class RunDirector {
       for (let i = 0; i < count; i++) {
         const special = i === count - 1;
         const archerRoom = this.world.enemies.filter(enemy => enemy.kind === 'archer').length < WAVES.archerCap;
-        const kind = special && this.elapsed > 45 && index % 6 === 5 ? 'volatile'
+        const archerCount = this.world.enemies.filter(enemy => enemy.kind === 'archer').length;
+        const pressureArcher = pressureWave && i < 2 && archerCount < WAVES.pressureArcherCap;
+        const bossArcher = this.bossDue && archerCount < 2;
+        const kind = pressureArcher || bossArcher ? 'archer' : special && this.elapsed > 45 && index % 6 === 5 ? 'volatile'
           : special && index % 4 === 3 && archerRoom ? 'archer' : 'grunt';
         this.spawnCommon(kind, index * 2.39996 + (i - (count - 1) / 2) * WAVES.packSpread);
       }

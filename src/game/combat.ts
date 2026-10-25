@@ -1,4 +1,4 @@
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN, BARRIER } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN, BARRIER, GRUNT_LEAP } from './config/balance.js';
 import { Barrier } from './barrier.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
@@ -22,6 +22,7 @@ export interface CombatInput {
 export interface Enemy {
   id: number; kind: 'grunt' | 'archer' | 'volatile' | 'bulwark' | 'boss'; x: number; y: number;
   hp: number; maxHp: number; damageScale: number; speedScale: number; cooldown: number; windup: number;
+  leapCooldown: number; leapFromX: number; leapFromY: number;
   recovery: number; active: number; windupDuration: number; attackAction: number;
   angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
 }
@@ -95,6 +96,7 @@ export class CombatWorld {
   enemies: Enemy[] = [];
   projectiles: Projectile[] = [];
   impacts: Impact[] = [];
+  private movementIntent = { x: 0, y: 0 };
   private nextId = 0;
   private replacement = 1.5;
   private perfectAvailable = false;
@@ -178,6 +180,7 @@ export class CombatWorld {
       x: this.player.x + Math.cos(angle) * 360, y: this.player.y + Math.sin(angle) * 360,
       hp: 0, maxHp: maxHp ?? Math.round(ENEMY_HP[kind] * (1 + growth * (ENEMY_GROWTH.health - 1))),
       damageScale: 1 + growth * (ENEMY_GROWTH.damage - 1), speedScale: 1 + growth * (ENEMY_GROWTH.speed - 1),
+      leapCooldown: 1 + id % 3 * 0.4, leapFromX: 0, leapFromY: 0,
       cooldown: 0.8 + (id % 4) * 0.2, windup: 0, recovery: 0, active: 0, windupDuration: 0, attackAction: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
@@ -197,6 +200,8 @@ export class CombatWorld {
     this.captureInput(input, dt);
     if (this.hitstop > 0) { this.hitstop = Math.max(0, this.hitstop - dt); return; }
     this.dashProtected = false;
+    const inputLength = Math.hypot(input.dx, input.dy);
+    this.movementIntent = { x: inputLength ? input.dx / inputLength : 0, y: inputLength ? input.dy / inputLength : 0 };
     this.barrier.step(dt);
     this.chainSeen.clear();
     this.lastChain = 0;
@@ -396,9 +401,10 @@ export class CombatWorld {
     const { x, y } = this.player;
     if (enemy.hp <= 0 || enemy.windup <= 0 || enemy.windup + enemy.stagger > COMBAT.perfectWindow) return false;
     const distance = Math.hypot(x - enemy.x, y - enemy.y);
+    if (enemy.kind === 'grunt' && enemy.attackAction === 3) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < GRUNT_LEAP.radius;
     if (enemy.kind === 'volatile') return distance < ENEMY_ATTACK.volatile.range;
-    if (enemy.kind === 'archer' || enemy.kind === 'boss' && enemy.action === 1) return false;
-    if (enemy.kind === 'boss' && enemy.action === 2) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < BOSS_ATTACK.slamRadius;
+    if (enemy.kind === 'archer' || enemy.kind === 'boss' && enemy.attackAction === 1) return false;
+    if (enemy.kind === 'boss' && enemy.attackAction === 2) return Math.hypot(x - enemy.targetX, y - enemy.targetY) < BOSS_ATTACK.slamRadius;
     return distance < (enemy.kind === 'boss' ? BOSS_ATTACK.range : ENEMY_ATTACK[enemy.kind].range) &&
       Math.abs(angleDifference(Math.atan2(y - enemy.y, x - enemy.x), enemy.angle)) < 0.85;
   }
@@ -407,7 +413,7 @@ export class CombatWorld {
     // Two bounded passes allow sliding around a crowd; dash deliberately phases through bodies.
     for (let pass = 0; pass < 2; pass++) {
       for (const enemy of this.enemies) {
-        if (enemy.hp <= 0) continue;
+        if (enemy.hp <= 0 || enemy.windup > 0 && (enemy.kind === 'grunt' && enemy.attackAction === 3 && enemy.windup <= GRUNT_LEAP.flight || enemy.kind === 'boss' && enemy.attackAction === 2 && enemy.windup <= BOSS_ATTACK.leapFlight)) continue;
         const radius = PLAYER_RADIUS + (enemy.kind === 'boss' ? 32 : enemy.kind === 'bulwark' ? 22 : 14);
         const dx = this.player.x - enemy.x, dy = this.player.y - enemy.y;
         const distance = Math.hypot(dx, dy);
@@ -446,6 +452,7 @@ export class CombatWorld {
     if (enemy.kind === 'boss') { this.stepBoss(enemy, dt); return; }
     enemy.flash = Math.max(0, enemy.flash - dt);
     enemy.active = Math.max(0, enemy.active - dt);
+    enemy.leapCooldown = Math.max(0, enemy.leapCooldown - dt);
     enemy.stagger = Math.max(0, enemy.stagger - dt);
     if (enemy.kind === 'archer' && enemy.windup > 0) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
     if (enemy.stagger > 0) return;
@@ -459,8 +466,11 @@ export class CombatWorld {
     const distance = Math.hypot(dx, dy);
     if (enemy.windup > 0) {
       enemy.windup = Math.max(0, enemy.windup - dt);
+      if (enemy.kind === 'grunt' && enemy.attackAction === 3) this.moveLeap(enemy, GRUNT_LEAP.flight);
       if (enemy.windup === 0) {
-        if (enemy.kind === 'volatile') {
+        if (enemy.kind === 'grunt' && enemy.attackAction === 3) {
+          if (Math.hypot(this.player.x - enemy.targetX, this.player.y - enemy.targetY) < GRUNT_LEAP.radius) this.hurt(Math.round(12 * enemy.damageScale), enemy.angle);
+        } else if (enemy.kind === 'volatile') {
           enemy.hp = 0;
           this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
         } else if (enemy.kind === 'archer') this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
@@ -475,7 +485,16 @@ export class CombatWorld {
     }
     enemy.cooldown = Math.max(0, enemy.cooldown - dt);
     enemy.angle = Math.atan2(dy, dx);
+    if (enemy.kind === 'grunt' && enemy.leapCooldown === 0 && distance >= GRUNT_LEAP.minRange && distance <= GRUNT_LEAP.maxRange &&
+        this.enemies.filter(e => e.kind === 'grunt' && e.attackAction === 3 && e.windup > 0).length < GRUNT_LEAP.maxConcurrent) {
+      enemy.attackAction = 3;
+      this.lockLeap(enemy, GRUNT_LEAP.lead, GRUNT_LEAP.distance);
+      enemy.windup = enemy.windupDuration = GRUNT_LEAP.windup;
+      enemy.leapCooldown = GRUNT_LEAP.cooldown + enemy.id % 3 * 0.35;
+      return;
+    }
     if (enemy.cooldown === 0 && distance < (enemy.kind === 'archer' ? 550 : enemy.kind === 'volatile' ? 80 : enemy.kind === 'bulwark' ? 90 : 60)) {
+      enemy.attackAction = 0;
       enemy.windup = enemy.windupDuration = spec.windup;
       return;
     }
@@ -497,6 +516,22 @@ export class CombatWorld {
     clampPosition(enemy);
   }
 
+  private lockLeap(enemy: Enemy, lead: number, maxDistance = Infinity): void {
+    const target = { x: this.player.x + this.movementIntent.x * lead, y: this.player.y + this.movementIntent.y * lead };
+    clampPosition(target, enemy.kind === 'boss' ? 32 : 14);
+    const dx = target.x - enemy.x, dy = target.y - enemy.y, distance = Math.hypot(dx, dy);
+    const ratio = distance ? Math.min(1, maxDistance / distance) : 0;
+    enemy.targetX = enemy.x + dx * ratio; enemy.targetY = enemy.y + dy * ratio;
+    enemy.leapFromX = enemy.x; enemy.leapFromY = enemy.y;
+  }
+
+  private moveLeap(enemy: Enemy, flight: number): void {
+    if (enemy.windup > flight) return;
+    const progress = Math.min(1, 1 - enemy.windup / flight);
+    enemy.x = enemy.leapFromX + (enemy.targetX - enemy.leapFromX) * progress;
+    enemy.y = enemy.leapFromY + (enemy.targetY - enemy.leapFromY) * progress;
+  }
+
   private stepBoss(boss: Enemy, dt: number): void {
     boss.flash = Math.max(0, boss.flash - dt);
     boss.active = Math.max(0, boss.active - dt);
@@ -507,12 +542,14 @@ export class CombatWorld {
     }
     if (boss.windup > 0) {
       boss.windup = Math.max(0, boss.windup - dt);
+      if (boss.attackAction === 2) this.moveLeap(boss, BOSS_ATTACK.leapFlight);
       if (boss.windup === 0) {
-        if (boss.action === 0) {
+        if (boss.attackAction === 0) {
           const dx = this.player.x - boss.x, dy = this.player.y - boss.y;
           if (Math.hypot(dx, dy) < BOSS_ATTACK.range && Math.abs(angleDifference(Math.atan2(dy, dx), boss.angle)) < 0.85) this.hurt(26, boss.angle);
-        } else if (boss.action === 1) {
-          for (let i = 0; i < 12; i++) this.fire(boss.x, boss.y, i * Math.PI / 6 + boss.angle, true);
+        } else if (boss.attackAction === 1) {
+          for (let i = 0; i < 12; i++) this.fire(boss.x, boss.y, i * Math.PI / 6 + boss.angle, true, false, 10, BOSS_ATTACK.projectileSpeed);
+          for (const offset of [-0.16, 0, 0.16]) this.fire(boss.x, boss.y, boss.angle + offset, true, false, 10, BOSS_ATTACK.projectileSpeed);
         } else {
           this.impact(boss.targetX, boss.targetY, 0xffcc80, 110);
           if (Math.hypot(this.player.x - boss.targetX, this.player.y - boss.targetY) < BOSS_ATTACK.slamRadius) {
@@ -531,19 +568,19 @@ export class CombatWorld {
     boss.angle = Math.atan2(dy, dx);
     if (boss.cooldown === 0) {
       boss.windup = boss.windupDuration = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedWindup : BOSS_ATTACK.windup;
-      boss.attackAction = boss.action;
-      boss.targetX = this.player.x; boss.targetY = this.player.y;
+      boss.attackAction = boss.action === 0 && Math.hypot(dx, dy) > BOSS_ATTACK.range ? 2 : boss.action;
+      this.lockLeap(boss, 80, BOSS_ATTACK.maxLeap);
     } else if (Math.hypot(dx, dy) > 155) {
-      boss.x += Math.cos(boss.angle) * 80 * dt;
-      boss.y += Math.sin(boss.angle) * 80 * dt;
+      boss.x += Math.cos(boss.angle) * BOSS_ATTACK.chaseSpeed * dt;
+      boss.y += Math.sin(boss.angle) * BOSS_ATTACK.chaseSpeed * dt;
       clampPosition(boss, 32);
     }
   }
 
-  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false, damage = 10): void {
+  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false, damage = 10, speedOverride?: number): void {
     if (this.projectiles.length >= COMBAT.projectileLimit) return;
     if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue(charged ? 'chargedGun' : 'gun'); }
-    const speed = hostile ? 310 : 850;
+    const speed = speedOverride ?? (hostile ? 310 : 850);
     this.projectiles.push({ x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
       vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, damage, life: hostile ? 3 : 1.3 });
   }

@@ -14,7 +14,7 @@ export const LIGHT_COMBO = [
   { windup: 6 / 60, duration: 0.30, range: 112, arc: Math.PI * 10 / 9, damage: 22, force: 24, stagger: 0.10 },
   { windup: 10 / 60, duration: 0.44, range: 128, arc: Math.PI * 13 / 9, damage: 30, force: 38, stagger: 0.14 },
 ] as const;
-export const WAVES = { packSize: 3, archerCap: 3, packSpread: 0.16, pressureInterval: 6 } as const;
+export const WAVES = { packSize: 3, archerCap: 3, packSpread: 0.16, pressureInterval: 4, pressureArcherCap: 8 } as const;
 
 export const HEAVY = { charges: 2, recharge: 8, damage: 100, finisherDamage: 140,
   windup: 0.24, duration: 0.72, range: 164, arc: Math.PI * 14 / 9, force: 80, stagger: 0.6 } as const;
@@ -41,8 +41,8 @@ export const ENEMY_ATTACK = {
   volatile: { windup: 0.7, recovery: 0, cooldown: 1.5, range: 110, arc: Math.PI * 2 },
   bulwark: { windup: 0.65, recovery: 0.75, cooldown: 1.5, range: 100, arc: 1.7 },
 } as const;
-export const BOSS_ATTACK = { windup: 0.72, enragedWindup: 0.52, recovery: 0.4,
-  enragedRecovery: 0.28, cooldown: 0.72, enragedCooldown: 0.45, range: 230, arc: 1.7, slamRadius: 110 } as const;
+export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.46, recovery: 0.32,
+  enragedRecovery: 0.24, cooldown: 0.55, enragedCooldown: 0.38, range: 230, arc: 1.7, slamRadius: 110, leapFlight: 0.28, chaseSpeed: 300, maxLeap: 560, projectileSpeed: 430 } as const;
 
 // Relay delay uses simulation time; damage/radii retain the M3 tuning.
 export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;
@@ -51,3 +51,5 @@ export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, spec
 export const BARRIER = { cap: 30, guardGain: 10, guardCooldown: 2,
   aegisDamage: 40, aegisGain: 4, aegisRate: 8, aegisWindow: 1,
   oathMultiplier: 1.25, oathHeavyGain: 4, oathDashMultiplier: 1.3 } as const;
+
+export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 3.6, maxConcurrent: 3, lead: 160 } as const;

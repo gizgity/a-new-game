@@ -51,7 +51,7 @@ test('Boss keeps locked active pattern and target through stationary recovery; p
     assert.equal(e.attackAction, action); assert.equal(e.action, (action + 1) % 3);
     assert.ok(e.active > 0); assert.ok(e.recovery > 0);
     step(w, 0.1);
-    assert.deepEqual([e.x, e.y, e.angle, e.targetX, e.targetY], [x, y, angle, targetX, targetY]);
+    assert.deepEqual([e.x, e.y, e.angle, e.targetX, e.targetY], [action === 2 ? targetX : x, action === 2 ? targetY : y, angle, targetX, targetY]);
     step(w, BOSS_ATTACK.enragedCooldown); assert.equal(e.windupDuration, BOSS_ATTACK.enragedWindup);
   }
 });
@@ -80,5 +80,39 @@ test('Boss cadence is faster in both phases while retaining a readable windup an
   w.step(idle,dt);assert.equal(e.windupDuration,enraged?BOSS_ATTACK.enragedWindup:BOSS_ATTACK.windup);
   assert.ok(e.windupDuration>.16);w.player.y+=300;
   step(w,e.windupDuration+dt);assert.ok(e.recovery>0);assert.equal(e.action,1);
+ }
+});
+
+test('Grunt leap locks a landing cue, travels visibly and can be evaded or interrupted',()=>{
+ for(const interrupt of [false,true]){
+  const {w,e}=setup('grunt',250);e.leapCooldown=0;w.step(idle,dt);
+  assert.equal(e.attackAction,3);const target=[e.targetX,e.targetY];const start=e.x;
+  if(interrupt){w.hitEnemy(e,1,0,0,.6,true,'heavy');assert.equal(e.windup,0);continue;}
+  w.player.y+=160;step(w,.5);assert.ok(e.x!==start);assert.deepEqual([e.targetX,e.targetY],target);
+  step(w,.2);assert.equal(e.x,target[0]);assert.equal(w.hp,100);assert.ok(e.recovery>0);
+ }
+});
+test('Grunt landing has Perfect timing, one hit, concurrent limit, and no immunity to AoE',()=>{
+ const {w,e}=setup('grunt',250);e.leapCooldown=0;w.step(idle,dt);e.windup=.1;
+ assert.ok(w.isImminentEnemyThreat(e));w.step({...idle,dash:true,dy:1},dt);assert.equal(w.perfectDodges,1);
+ const crowded=new CombatWorld({x:800,y:500,angle:0});crowded.practice=false;crowded.enemies=[];
+ for(let i=0;i<8;i++){crowded.spawnEnemy('grunt',36);Object.assign(crowded.enemies.at(-1),{x:1000,y:500+i,leapCooldown:0});}
+ crowded.step(idle,dt);assert.equal(crowded.enemies.filter(e=>e.attackAction===3&&e.windup>0).length,3);
+ crowded.surge=100;crowded.step({...idle,ultimate:true},dt);assert.equal(crowded.kills,8);
+});
+test('far Boss closes distance by telegraphed slam and ring has a fast aimed fan',()=>{
+ const {w,e}=setup('boss',500);w.step({...idle,dy:1},dt);assert.equal(e.attackAction,2);
+ const target=[e.targetX,e.targetY];const start=e.x;w.player.y-=200;
+ step(w,e.windupDuration+.01);assert.deepEqual([e.x,e.y],target);assert.notEqual(e.x,start);assert.equal(w.hp,100);
+ e.recovery=e.cooldown=0;e.action=1;w.hitstop=0;w.step(idle,dt);step(w,e.windupDuration+.01);
+ assert.equal(w.projectiles.length,15);assert.ok(w.projectiles.every(s=>Math.abs(Math.hypot(s.vx,s.vy)-430)<1e-6));
+});
+test('Grunt predicts a constant runner, while changing direction escapes the locked landing',()=>{
+ for(const change of [false,true]) {
+  const {w,e}=setup('grunt',250);e.leapCooldown=0;
+  w.step({...idle,dy:1},dt);const target=[e.targetX,e.targetY];
+  for(let i=0;i<43;i++)w.step({...idle,dy:change?-1:1},dt);
+  assert.deepEqual([e.targetX,e.targetY],target);
+  assert.equal(w.hp,change?100:88);
  }
 });

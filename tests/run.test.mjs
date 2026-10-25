@@ -32,7 +32,7 @@ test('waves start with Grunt/Archer, are bounded and include Volatile later; tim
   if(i===3300)world.enemies=[];
   run.step(idle,1/60);if(run.draft.length)run.choose(0);
   if(world.enemies.some(e=>e.kind==='volatile'))sawVolatile=true;
-  assert.ok(world.enemies.length <= (run.bossDue ? 7 : 150));
+  assert.ok(world.enemies.length <= (run.bossDue ? 7 : 210));
  }
  assert.ok(sawVolatile);assert.equal(run.bossDue,true);assert.equal(run.expired,true);
  const tick=run.ticks;run.step(idle,1/60);assert.equal(run.ticks,tick);
@@ -92,8 +92,8 @@ test('opening spawns bounded Grunt packs, preserves HP ramp and resets cleanly',
  for(let i=0;i<89;i++)step();assert.equal(world.enemies.length,7);
  step();assert.equal(world.enemies.length,10);
  for(let i=90;i<3599;i++)step();assert.ok(world.enemies.length>18);
- assert.ok(world.enemies.filter(e=>e.kind==='archer').length<=3);assert.equal(run.draft.length,0);
- const survivor=world.enemies[0];survivor.hp=9;world.enemies=[survivor];
+ assert.ok(world.enemies.filter(e=>e.kind==='archer').length<=8);assert.equal(run.draft.length,0);
+ const survivor=world.enemies[0];survivor.hp=9;world.enemies=[survivor];run.spawnTicks=150;
  step();assert.equal(run.draft.length,0);assert.equal(run.elapsed,60);
  assert.equal(survivor.hp,9);assert.equal(world.enemies[1].maxHp,36);
  run.choose(0);run.ticks=5399;run.spawnTicks=150;world.enemies=[survivor];
@@ -116,7 +116,7 @@ test('new common enemies grow in health, damage and speed over time; survivors a
  const samples=[];
  for(const seconds of [60,120,180,240,299]){
   world.enemies=[old];old.stagger=999;run.waveIndex=0;run.draftIndex=DRAFT_MILESTONES.length;run.ticks=seconds*60-1;run.spawnTicks=200;
-  run.step(idle,1/60);const enemy=world.enemies.find(e=>e!==old&&e.kind==='grunt');
+  run.spawnCommon('grunt',0);const enemy=world.enemies.find(e=>e!==old&&e.kind==='grunt');
   assert.ok(enemy);samples.push(enemy);assert.equal(old.hp,9);assert.equal(old.damageScale,1);assert.equal(old.speedScale,1);
  }
  for(let i=1;i<samples.length;i++){
@@ -192,12 +192,23 @@ test('no-kill pressure continues past the old cap, resets on kills and freezes i
  const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;
  const tick=()=>{world.hp=100;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);};
  for(let i=0;i<30*60;i++)tick();const count=world.enemies.length;assert.ok(count>18);
- for(let i=0;i<12*60;i++)tick();assert.equal(world.enemies.length,count+6);
+ for(let i=0;i<12*60;i++)tick();assert.equal(world.enemies.length,count+9);
  world.kills++;tick();const atKill=world.enemies.length;
- for(let i=0;i<5*60;i++)tick();assert.equal(world.enemies.length,atKill);
+ for(let i=0;i<3*60;i++)tick();assert.equal(world.enemies.length,atKill);
  const clock=run.pressureTime;world.hitstop=.2;tick();assert.equal(run.pressureTime,clock);world.hitstop=0;
  run.draft=[{id:'aegisCore',role:'wildcard'}];for(let i=0;i<60;i++)tick();assert.equal(run.pressureTime,clock);run.draft=[];
  for(let i=0;i<61;i++)tick();assert.equal(world.enemies.length,atKill+3);
  run.ticks=8999;const preElite=world.enemies.length;tick();assert.ok(world.enemies.length>=preElite,'Elite does not delete pressure enemies');
  run.start();assert.equal(run.pressureTime,0);assert.equal(world.enemies.length,7);
+});
+
+test('pressure packs prioritize two Archers until eight, then keep adding cleavable Grunts',()=>{
+ const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;
+ world.enemies=[];for(let i=0;i<18;i++)world.spawnEnemy('grunt');
+ for(let wave=0;wave<6;wave++){
+  world.enemies.forEach(e=>e.stagger=999);run.pressureTime=4;run.spawnTicks=999;
+  const before=world.enemies.length;run.step(idle,1/60);assert.equal(world.enemies.length,before+3);
+  assert.equal(world.enemies.filter(e=>e.kind==='archer').length,Math.min(8,(wave+1)*2));
+ }
+ assert.ok(world.enemies.filter(e=>e.kind==='grunt').length>=28);
 });

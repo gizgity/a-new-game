@@ -10,14 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Sửa feedback sau Q5A, trước Q5B: áp lực spawn khi không kill, Archer theo aim lúc windup, Boss nhanh hơn, hiệu ứng thắng rõ và chặn native/held-click trong draft. User xác nhận “q5a ok” trên fa4045d; Q5A ACCEPTED. Những thay đổi Q3/run dưới đây được user yêu cầu trực tiếp, không tự mở rộng Q5B. Implementation/tests/build/browser/deploy PASS trên f89bfa7; **AWAITING PLAYTEST APPROVAL** cho5fixes.
+Tăng độ khó/anti-kiting theo feedback mới sau f89bfa7: pressure ưu tiên Archer, Grunt nhảy đón đầu, Boss áp sát thật và ring/fan nhanh hơn; vẫn giữ giết đông/AoE thỏa mãn. Q5A accepted, Q5B chưa mở. Implementation/tests/build/browser PASS, chuẩn bị deploy; AWAITING PLAYTEST APPROVAL cho difficulty v2.
 
 ## ACCEPTANCE
-- Không đứng ở trần18 khi không kill: thêm pack3 mỗi6s không kill khi đã đủ18, không trần dân số cố định trước Boss; kill reset timer, pause/draft/hitstop không tăng pressure. Giữ milestones và Boss cap7; Elite không xóa crowd.
-- Archer ray/aim theo player suốt windup (cả stagger), projectile giữ hướng khi đã bắn. Boss windup0.72/0.52, cooldown0.72/0.45, recovery0.4/0.28; giữ damage/pattern/Perfect và không rút windup đang chạy.
-- Hạ Boss có vỡ ấn/chime1.1s rồi dialog CHIẾN THẮNG/ĐÃ HẠ BOSS; chết/deadline có THẤT BẠI khác màu. Mutual kill giữ Victory. Không restart bởi cú bấm đang giữ.
-- Draft chặn context menu/select/drag/auxclick/gesture, chỉ nhận click primary mới hoặc keyboard; vẫn cuộn mobile và reset combat input như trước.
-- Focused regression, build, browser/evidence và deploy; chờ user playtest các fixes. Không mở Q5B trong task này.
+- Pressure4s không kill khi đủ18: pack3 gồm tối đa2Archer tới cap8, phần còn Grunt; không tăng HP quái/damage player hoặc nerf AoE. Boss cap7 có tối thiểu2Archer khi bổ sung.
+- Grunt ở150–380px có jump báo điểm đáp0.68s, bay0.24s cuối, dự đoán hướng chạy160px, tầm560; tối đa3cú đang chuẩn bị/bay, cooldown3.6s+offset ID. Đáp radius48/damage12×growth một lần, đổi hướng/dash tránh được, Heavy/blast ngắt, Light làm chậm bởi stagger. Không miễn AoE.
+- Boss từ xa đổi lượt sweep thành slam có điểm khóa, nhảy tối đa560px ở0.28s cuối windup, chase300; ring12+fan3 ray/đạn430. Windup0.62/0.46, cooldown0.55/0.38, recovery0.32/0.24; HP/damage/Perfect nền giữ.
+- Cue thật theo hình học/Perfect, pose bay+shadow, pause/hitstop/reset đúng. Focused tests/build/browser/deploy rồi chờ user thử áp lực/độ khó; không coi PASS là experience approval.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -37,6 +36,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5E — Diversity/balance | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5D |
 
 ## CURRENT STATUS
+- Difficulty v2: pressure4s ưu tiên2Archer tới8; Grunt jump0.68s/radius48 lead160/max3/concurrent, Heavy/blast interrupt/AoE vẫn trúng. Boss far-sweep→slam leap560, chase300, ring12+fan3 speed430, windup0.62/0.46 cooldown0.55/0.38 recovery0.32/0.24. Xem docs/pressure-v2/README.md.
 - Contract mới là nguồn thiết kế Q5; docs/q5/AUDIT.md thuộc lượt audit trước, không còn là quyết định/next action hiện hành. User đã duyệt concept/contract; không còn blocker thiết kế.
 - Code Q5A có7Mutation/5Curse (chỉ thêm Aegis/Iron Oath), chưa Draft v2; đã deploy fa4045d. Contract đích12/8 giữ4Mutation/run,1Curse active và6draft. Q5A chỉ vertical slice Juggernaut; các nguồn hồi HP mới ở Q5C, Blood Pact rework ở Q5B.
 - Defaults contract đã duyệt, còn tuning qua playtest: Barrier30 không decay; heal chung8HP/10s và cooldown riêng; Soul Anchor không cứu hit chí tử; Catalyst seed tối đa2/root không kích trong cùng root; proc có provenance/cap. Giữ Phantom reach/Catalyst charge/Guard Heavy bonus; các gói rework khác thay hiệu ứng cũ như contract, không ngầm cộng dồn.
@@ -45,13 +45,13 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Grunt cue theo feedback: chuẩn bị là quạt rỗng viền đứt hồng; last160ms (tính cả stagger) viền liền3px + chevrons, vàng chỉ khi isImminentEnemyThreat thật. Tick hit lóe trắng/tô quạt2ticks simulation (hitstop có thể kéo dài thời gian thực); sau đó chỉ vệt slash gãy fade, bỏ fill/radial edges trong recovery. Chỉ sửa EnemyVisual.ts, không đổi core timing/damage/Perfect.
 - Q3: EnemyVisual.ts tách khỏi Scene, silhouette riêng: Grunt mặt nạ/móc tay, Archer mũ/áo rách/cung, Volatile lõi lò tách5mảnh, Bulwark giáp phiến, Warden vương miện/thân rỗng/3mảnh xích. Windup co/lấy đà, active bật người, recovery mở lõi; không thay collider.
 - Ground cue vẽ trước bodies, outer boundary khớp hit geometry + vòng/quạt tiến độ từ windupDuration snapshot; Archer ray theo player lúc windup (feedback mới sau Q5A), Boss ring12rays đúng hướng đạn/slam khóa điểm. Active0.18s(common)/0.22s(Boss) giữ đúng pattern cũ, chỉ feedback, không gây hit lặp.
-- Recovery đứng yên nằm trong cooldown hiện có: Grunt0.22s/Archer0.4s/Bulwark0.75s/Boss0.4s hoặc0.28s dưới nửaHP. Boss windup0.72/0.52 và cooldown0.72/0.45 theo feedback sau Q5A; dưới nửaHP không rút telegraph đang chạy. Volatile fuse0.7s giữ.
+- Recovery đứng yên nằm trong cooldown hiện có: Grunt0.22s/Archer0.4s/Bulwark0.75s/Boss0.32s hoặc0.24s dưới nửaHP. Boss windup0.62/0.46 và cooldown0.55/0.38 theo feedback sau Q5A; dưới nửaHP không rút telegraph đang chạy. Volatile fuse0.7s giữ.
 - Bulwark quét100px (trước70), bắt đầu dưới90px, arc1.7rad; cue/Perfect/hit cùng range. Giáp55% damage ngoài recovery, nhận100% khi mở giáp; Guard Breaker vẫn xuyên giáp. Thay đổi balance thuộc Q3 đã được user duyệt.
 - Input: TouchControls chỉ phát Heavy/Charged ở pointerup, snapshot aim theo action; core chỉ nhận một command và buffer120ms, không dựa held repeat. E/Shift desktop arm ở keydown, phát ở keyup; reset/gaming focus cancel arm. Heavy khóa angle khi bắt đầu, Charged giữ angle qua recovery buffer; Light vẫn tracking windup.
 - Heavy có2charges, hồi tuần tự8s simulation, pause/draft/hitstop dừng recharge. HUD/nút hiển thị lượng còn và thời gian hồi; L3→Heavy140, thường100, knockback80/stagger0.6, hitstop85ms. Blade/trail amber44px/sweep0.16/fade0.18, impact0.26s và SFX low-body/overtone riêng.
 - Light stagger0.08/0.10/0.14s; Light/Basic giữ telegraph/cooldown đang chạy thay vì stunlock. Knockback Light18/24/38 giữ; Heavy/Charged/blast vẫn interrupt. Boss không bị stagger/reset windup.
 - Enemy growth chốt lúc spawn: common HP cơ sở36/28/36→66/48/48 từ60–120s, thêm hệ số HP1→1.6/damage1→1.5/speed1→1.2 từ60–300s; Elite theo growth tại200kills hoặc2:30, Boss giữ preset riêng. Projectiles giữ damage nguồn khi bắn, không scale lại sau đó.
-- Packs3/90ticks đầu run, ban đầu6Grunt+1Archer, soft cap18 + pack3/6s không kill, Archer cap3; Boss450kills hoặc4:00 dọn common/cap7 và spawn từng quái. Spawn radius360px, spread0.16rad, tránh spawn trên player.
+- Packs3/90ticks đầu run, ban đầu6Grunt+1Archer, soft cap18 + pack3/4s không kill, pressure Archer tới8; Boss450kills hoặc4:00 dọn common/cap7 và spawn từng quái. Spawn radius360px, spread0.16rad, tránh spawn trên player.
 - Perfect check tại vị trí trước dash: melee/volatile/slam sắp trúng trong160ms, hoặc segment đạn đang tới; hurt trong cửa sổ dash vẫn xử lý. Cùng predicate làm telegraph đủ điều kiện lóe vàng; không báo vàng Archer/ring từ xa sai thời điểm. Reward1/dash,3Charge Points/+15Surge; unlock vẫn3né tích lũy.
 - Body collision: hai lượt resolve bounded giữa player radius16 và enemy14/22/32, clamp arena; giữ slide, bỏ resolve trong dash. Không engine/physics dependency mới.
 - Basic20damage, mỗi hit gain1ChargePoint (Catalyst2); Charged84 tự tăng1Rupture cap3 rồi Detonate×2. Blast nền24/stack1→72/stack3, radius105 hoặc142 với Specialist; chain budget12, VFX24 giữ. Không đòi melee để cấp ammo/trigger các blast synergies.
@@ -96,6 +96,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Difficulty v2:88definitions/6files PASS, typecheck/build/diff PASS; Chromium390/844 cue/flight/Boss15shots/AoE8kills và dist1440 input thật PASS. docs/pressure-v2/ ghi fixtures/limits; user chưa duyệt difficulty.
 - Fix deploy PASS: f89bfa721d38adb227c92207ef1c79c37d7a5ec6, Actions40170626907 completed/success, job121100546426 build/upload/Deploy success. Parent ee25e6e giữ nguyên, update main không force/expected SHA;20blobs(16text/4PNG) đối chiếu local. Browser là dist/local; Pages trực tiếp bị proxy chặn ở lượt trước, không tự nhận đã smoke live.
 - Fixes sau Q5A: tests83definitions/6files PASS, typecheck/build PASS; Chromium390/1440: held/right click draft guard, keyboard, Boss kill thật trong fixture → vỡ ấn1.1s → Victory, defeat/reset/frozen result/vi-en PASS. Dist844 input/pause PASS. Stress fixture132Grunt: khoảng0.77ms/core tick trên Chromium máy này, không đại diện FPS mobile. Chưa user acceptance cho các fixes.
 - Deploy Q5A PASS: commit fa4045deb8d332fee03cdf01555ced2d4ed29b79, Actions40168884585 completed/success, job121095494287. Main fast-forward từ5caf09d, không force; đã đối chiếu27blob (16text/11PNG) với local. Pages direct smoke bị proxy403; kết quả browser là dist/local, không tự nhận đã kiểm live/Safari.
@@ -108,7 +109,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Chờ user thử5fixes sau Q5A trên f89bfa7; xử lý feedback trong scope này. Không triển khai Q5B trước khi kết thúc lượt sửa và user giao tiếp.
+Deploy difficulty v2 qua Actions, cập nhật SHA/status rồi dừng chờ user thử crowd/Grunt jump/Boss theo docs/pressure-v2/README.md. Không mở Q5B.
+
+## PLAYTEST DIFFICULTY V2 — AWAITING PLAYTEST APPROVAL
+Sau deploy tải lại link thường. Opening: chạy thẳng thấy Grunt nhảy đón, đổi hướng/Dash né, Heavy/blast ngắt. Không kill20–30s thấy pressure ưu tiên Archer; gom dấu→Heavy/Charged/Surge vẫn dọn nhiều. Boss450kills/4:00 áp sát từ xa,15đạn/ring+fan nhanh hơn, còn recovery phản công. Mobile joystick/Lướt, Heavy/Charged giữ-thả; desktop WASD/Space/Shift/E. Ghi đòn/cue gặp vấn đề, cảm giác AoE và thiết bị/browser. Chưa user approval, không suy rộng tests thành độ khó đạt.
 
 ## PLAYTEST FIXES SAU Q5A — AWAITING PLAYTEST APPROVAL
 Bản f89bfa7, link https://gizgity.github.io/a-new-game/ đã deploy, tải lại trang. Scope chỉ5fixes mới, không yêu cầu duyệt lại Juggernaut.
