@@ -64,6 +64,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Evidence trước giữ: docs/crowd-combo/combo.gif (fixture6quái500HP,30fps), docs/charged/comparison.gif, docs/aim-opening/, docs/touch-fix/, docs/q1/, docs/q2/. Không coi ảnh cũ là bản current.
 
 ## KEY DECISIONS
+- User yêu cầu mọi bàn giao playtest phải nói rõ scope, cách thử và kết quả mong đợi; đã lưu quy tắc ở AGENTS.md.
 - Mobile-first + desktop,1arena,run5phút,1sword/gun,3mobs/Elite/Boss,6Mutation/4Curse; không permanent stat upgrades/backend/account/multiplayer/leaderboard/monetization.
 - User mới nhất mở rộng6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3 được user giao tiếp; Q4/Q5 vẫn dừng.
 - Free/open-source/KISS, Phaser3.90+TS5.9+Vite7, fixed60Hz/catchup100ms; không dependency mới/QA framework/art engine.
@@ -90,6 +91,14 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 
 ## NEXT ACTION
 Dừng chờ user playtest/visual approval Q3 tại Pages: nhận diện5quái, đọc telegraph, né→phản công recovery và mở giáp Bulwark. Chỉ sửa theo feedback; không tự mở Q4/Q5.
+
+## PLAYTEST Q3 — SCOPE / CÁCH THỬ
+Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi trên thiết bị thường dùng; mobile dùng joystick/nút Lướt/Đánh mạnh, desktop WASD/Space và giữ-thả Shift. Mục tiêu lượt này là art/readability, đọc hướng/vùng đòn và né→phản công; Q2 đã accepted, Q4/Q5 chưa giao.
+1. Trong waves, nhìn Grunt (mặt nạ/móc tay), Archer (mũ/cung), Volatile (lõi cam). Thử nhận ra từng loại khi đang di chuyển và có nhiều quái; mong đợi phân biệt được bằng hình/chuyển động, player và dấu báo đòn không bị lẫn.
+2. Đến gần Grunt rồi lướt ngang ra khỏi quạt khi nó lấy đà; với Archer đi ngang đường ngắm, với Volatile rời vòng nổ trước khi vòng đầy. Mong đợi hướng/vị trí báo giữ cố định, đòn xảy ra theo vùng/đường đã báo, có đủ dấu hiệu để phản ứng; đạn Archer vẫn phải né khi bay tới.
+3. Bulwark xuất hiện200kills hoặc2:30 (cái nào trước). Lại gần để dụ quét, lướt ra ngoài quạt rồi quay vào đánh lúc giáp tách/lõi sáng. Mong đợi có khoảng đứng yên để phản công; cùng loại đòn gây damage rõ hơn lúc mở giáp (tránh Guard Breaker khi so giáp).
+4. Boss xuất hiện450kills hoặc4:00. Quan sát một vòng quét→vòng đạn→slam: né khỏi quạt, luồn khe đạn, rời vòng slam đã khóa rồi quay lại đánh khi Boss hồi. Mong đợi phân biệt3dấu báo và có khoảng phản công; dưới nửaHP nhịp nhanh hơn nhưng vẫn đọc được. Nếu chưa tới encounter, ghi rõ đã thử tới đâu, không coi là đã duyệt toànQ3.
+Phản hồi cần: phần/quái nào khó đọc hoặc khó né, thao tác đã làm và thực tế xảy ra; kèm thiết bị/browser khi liên quan. Các tests/browser fixtures đã PASS, còn cảm giác/readability trên máy thật và full-run chưa được user xác nhận.
 
 ## BLOCKERS
 Không blocker implementation/deploy. Chưa user duyệt Q3 hoặc kiểm máy thật/Safari/full-run; không tự accepted. Hạn chế đồng bộ lịch sử local nêu ở validation; connector vẫn truy cập remote được.
