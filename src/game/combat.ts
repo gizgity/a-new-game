@@ -97,6 +97,7 @@ export class CombatWorld {
   projectiles: Projectile[] = [];
   impacts: Impact[] = [];
   private movementIntent = { x: 0, y: 0 };
+  private gruntLeapGap = 0;
   private nextId = 0;
   private replacement = 1.5;
   private perfectAvailable = false;
@@ -164,6 +165,7 @@ export class CombatWorld {
     this.projectiles = [];
     this.enemies = [];
     this.impacts = [];
+    this.gruntLeapGap = 0;
     this.nextId = 0;
     this.replacement = 1.5;
     this.perfectAvailable = false;
@@ -180,7 +182,7 @@ export class CombatWorld {
       x: this.player.x + Math.cos(angle) * 360, y: this.player.y + Math.sin(angle) * 360,
       hp: 0, maxHp: maxHp ?? Math.round(ENEMY_HP[kind] * (1 + growth * (ENEMY_GROWTH.health - 1))),
       damageScale: 1 + growth * (ENEMY_GROWTH.damage - 1), speedScale: 1 + growth * (ENEMY_GROWTH.speed - 1),
-      leapCooldown: 1 + id % 3 * 0.4, leapFromX: 0, leapFromY: 0,
+      leapCooldown: GRUNT_LEAP.initialDelay + id % 5 * GRUNT_LEAP.initialSpread, leapFromX: 0, leapFromY: 0,
       cooldown: 0.8 + (id % 4) * 0.2, windup: 0, recovery: 0, active: 0, windupDuration: 0, attackAction: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
@@ -203,6 +205,7 @@ export class CombatWorld {
     const inputLength = Math.hypot(input.dx, input.dy);
     this.movementIntent = { x: inputLength ? input.dx / inputLength : 0, y: inputLength ? input.dy / inputLength : 0 };
     this.barrier.step(dt);
+    this.gruntLeapGap = Math.max(0, this.gruntLeapGap - dt);
     this.chainSeen.clear();
     this.lastChain = 0;
     for (const explosion of this.explosions) explosion.delay = Math.max(0, (explosion.delay ?? 0) - dt);
@@ -469,7 +472,7 @@ export class CombatWorld {
       if (enemy.kind === 'grunt' && enemy.attackAction === 3) this.moveLeap(enemy, GRUNT_LEAP.flight);
       if (enemy.windup === 0) {
         if (enemy.kind === 'grunt' && enemy.attackAction === 3) {
-          if (Math.hypot(this.player.x - enemy.targetX, this.player.y - enemy.targetY) < GRUNT_LEAP.radius) this.hurt(Math.round(12 * enemy.damageScale), enemy.angle);
+          if (Math.hypot(this.player.x - enemy.targetX, this.player.y - enemy.targetY) < GRUNT_LEAP.radius) this.hurt(Math.round(GRUNT_LEAP.damage * enemy.damageScale), enemy.angle);
         } else if (enemy.kind === 'volatile') {
           enemy.hp = 0;
           this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
@@ -485,12 +488,14 @@ export class CombatWorld {
     }
     enemy.cooldown = Math.max(0, enemy.cooldown - dt);
     enemy.angle = Math.atan2(dy, dx);
-    if (enemy.kind === 'grunt' && enemy.leapCooldown === 0 && distance >= GRUNT_LEAP.minRange && distance <= GRUNT_LEAP.maxRange &&
+    if (enemy.kind === 'grunt' && enemy.leapCooldown === 0 && this.gruntLeapGap <= 1e-9 && distance >= GRUNT_LEAP.minRange && distance <= GRUNT_LEAP.maxRange &&
         this.enemies.filter(e => e.kind === 'grunt' && e.attackAction === 3 && e.windup > 0).length < GRUNT_LEAP.maxConcurrent) {
       enemy.attackAction = 3;
       this.lockLeap(enemy, GRUNT_LEAP.lead, GRUNT_LEAP.distance);
       enemy.windup = enemy.windupDuration = GRUNT_LEAP.windup;
-      enemy.leapCooldown = GRUNT_LEAP.cooldown + enemy.id % 3 * 0.35;
+      enemy.leapCooldown = GRUNT_LEAP.cooldown + enemy.id % 3 * 0.7;
+      const gruntCount = this.enemies.filter(e => e.kind === 'grunt' && e.hp > 0).length;
+      this.gruntLeapGap = gruntCount >= GRUNT_LEAP.crowdThreshold ? GRUNT_LEAP.crowdGap : GRUNT_LEAP.sparseGap;
       return;
     }
     if (enemy.cooldown === 0 && distance < (enemy.kind === 'archer' ? 550 : enemy.kind === 'volatile' ? 80 : enemy.kind === 'bulwark' ? 90 : 60)) {

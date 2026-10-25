@@ -52,4 +52,4 @@ export const BARRIER = { cap: 30, guardGain: 10, guardCooldown: 2,
   aegisDamage: 40, aegisGain: 4, aegisRate: 8, aegisWindow: 1,
   oathMultiplier: 1.25, oathHeavyGain: 4, oathDashMultiplier: 1.3 } as const;
 
-export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 3.6, maxConcurrent: 3, lead: 160 } as const;
+export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 7, damage: 6, initialDelay: 4, initialSpread: 0.65, sparseGap: 1.6, crowdGap: 0.7, crowdThreshold: 18, maxConcurrent: 3, lead: 160 } as const;

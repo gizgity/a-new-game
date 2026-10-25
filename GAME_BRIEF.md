@@ -93,8 +93,9 @@
 ### Difficulty pressure v2 — feedback tiếp sau Q5A
 - User yêu cầu tăng áp lực tiếp sau f89bfa7; đây là ngoại lệ Q3/run được giao trực tiếp, không mở Q5B. Không buff HP quái/nerf damage hoặc AoE player.
 - Pressure4s không kill: pack3 ưu tiên2Archer cho tới8Archer, phần còn Grunt. Spawn thường vẫn cap Archer3; Boss bổ sung ưu tiên Archer tới2, tổng cap7. Kill reset clock, pause/draft/hitstop không đếm pressure.
-- Grunt (user gọi “grudge”) có nhảy đón ở150–380px: windup0.68s/bay0.24s cuối, target khóa dự đoán movement160px, tầm560, radius48/damage12×growth. Max3leaps concurrent, cooldown3.6s+ID offset. Vòng đáp/progress/line và body nâng khỏi shadow; Heavy/blast interrupt, Light trì hoãn; Perfect dựa target vòng đáp, không có immunity AoE.
+- Grunt (user gọi “grudge”) có nhảy đón ở150–380px: windup0.68s/bay0.24s cuối, target khóa dự đoán movement160px, tầm560, radius48/damage6×growth (giảm12→6 theo feedback nhảy quá lethal). Grunt mới chờ4s+ID offset0–2.6s trước nhảy; cooldown7s+ID offset0–1.4s. Giãn start toàn nhóm1.6s khi dưới18Grunt sống,0.7s khi từ18Grunt; max3leaps concurrent vẫn giữ. Vòng đáp/progress/line và body nâng khỏi shadow; Heavy/blast interrupt, Light trì hoãn; Perfect dựa target vòng đáp, không có immunity AoE.
 - Boss windup0.62/0.46, cooldown0.55/0.38, recovery0.32/0.24; chase300. Lượt sweep ngoài tầm chuyển slam, jump tối đa560px trong0.28s cuối tới target khóa dự đoán80px; không theo player sau khóa. Ring12+fan3 có15ray đúng geometry, projectile430. Damage/HP/pattern vòng cơ bản/Perfect giữ, recovery còn mở. Body collision tạm bỏ trong phần đang bay, không có contact damage mới.
+- Theo feedback giảm burst Grunt sau e4f0ab1: thêm thời gian thích ứng đầu run, từng cú gây áp lực nhẹ; crowd tích tụ mới gây nguy hiểm. Không sửa Boss/Archer/AoE trong lượt tuning này.
 - Tuning mới cần user playtest sức ép và tính thỏa mãn của AoE; tests/browser không là acceptance.
 
 ## Run tối đa 5 phút

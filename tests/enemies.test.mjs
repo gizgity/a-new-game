@@ -97,7 +97,7 @@ test('Grunt landing has Perfect timing, one hit, concurrent limit, and no immuni
  assert.ok(w.isImminentEnemyThreat(e));w.step({...idle,dash:true,dy:1},dt);assert.equal(w.perfectDodges,1);
  const crowded=new CombatWorld({x:800,y:500,angle:0});crowded.practice=false;crowded.enemies=[];
  for(let i=0;i<8;i++){crowded.spawnEnemy('grunt',36);Object.assign(crowded.enemies.at(-1),{x:1000,y:500+i,leapCooldown:0});}
- crowded.step(idle,dt);assert.equal(crowded.enemies.filter(e=>e.attackAction===3&&e.windup>0).length,3);
+ crowded.step(idle,dt);assert.equal(crowded.enemies.filter(e=>e.attackAction===3&&e.windup>0).length,1);
  crowded.surge=100;crowded.step({...idle,ultimate:true},dt);assert.equal(crowded.kills,8);
 });
 test('far Boss closes distance by telegraphed slam and ring has a fast aimed fan',()=>{
@@ -113,6 +113,27 @@ test('Grunt predicts a constant runner, while changing direction escapes the loc
   w.step({...idle,dy:1},dt);const target=[e.targetX,e.targetY];
   for(let i=0;i<43;i++)w.step({...idle,dy:change?-1:1},dt);
   assert.deepEqual([e.targetX,e.targetY],target);
-  assert.equal(w.hp,change?100:88);
+  assert.equal(w.hp,change?100:94);
  }
+});
+
+test('new Grunts get an adaptation delay and leap damage is half of the previous version',()=>{
+ const {w,e}=setup('grunt',250);e.cooldown=999;
+ assert.ok(e.leapCooldown>=4);step(w,3.9);assert.notEqual(e.attackAction,3);
+ e.x=w.player.x+250;e.y=w.player.y;e.leapCooldown=0;w.step(idle,dt);step(w,.7);assert.equal(w.hp,94);
+ assert.ok(e.leapCooldown>6,'individual leap cannot immediately repeat');
+});
+test('sparse Grunts stagger starts, accumulated crowds pressure faster without a same-tick burst',()=>{
+ const prepare=count=>{const w=new CombatWorld({x:800,y:500,angle:0});w.practice=false;w.enemies=[];
+ for(let i=0;i<count;i++){w.spawnEnemy('grunt',1000);Object.assign(w.enemies.at(-1),{x:1050,y:500+i*.1,leapCooldown:0,cooldown:999});}return w;};
+ const sparse=prepare(8),crowd=prepare(18);
+ sparse.step(idle,dt);crowd.step(idle,dt);
+ assert.equal(sparse.enemies.filter(e=>e.attackAction===3).length,1);assert.equal(crowd.enemies.filter(e=>e.attackAction===3).length,1);
+ assert.equal(sparse.gruntLeapGap,1.6);assert.equal(crowd.gruntLeapGap,.7);
+ // Count new starts while dodging landing hits; sparse group cannot stream all eight at once.
+ for(const w of [sparse,crowd]){w.player.y=300;w.invulnerable=999;step(w,1.5);}
+ assert.equal(sparse.enemies.filter(e=>e.attackAction===3).length,1);
+ assert.ok(crowd.enemies.filter(e=>e.attackAction===3).length>=2);
+ const clock=sparse.gruntLeapGap;sparse.hitstop=.2;sparse.step(idle,dt);assert.equal(sparse.gruntLeapGap,clock);
+ sparse.reset();assert.equal(sparse.gruntLeapGap,0);
 });
