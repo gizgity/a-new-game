@@ -1,5 +1,7 @@
 # Pressure v2 — chống chạy vòng, giữ AoE
 
+Bản e4f0ab1b962a4e99f5172d4229ad59ee70c9e4aa đã deploy; Actions40171971219 completed/success. Chờ user playtest, chưa là experience acceptance. Browser evidence là local/dist; không xác minh trực tiếp live từ môi trường bị chặn Pages.
+
 - Không kill4s khi đủ18: thêm pack3, ưu tiên2Archer tới cap8; sau đó tiếp tục thêm Grunt. Boss phase bổ sung Archer trước tới2, vẫn cap7. Kill reset clock; không tăng HP quái, không nerf damage/resources/cleave/AoE của player.
 - Grunt nhảy khi cách150–380px: cue0.68s, bay0.24s cuối, khóa điểm dự đoán hướng chạy160px, tầm tối đa560, radius48/damage12×growth. Tối đa3cú cùng chuẩn bị/bay, cooldown3.6s+ID offset. Chạy thẳng bị đón, đổi hướng hoặc Dash tránh; Heavy/blast ngắt, Light trì hoãn bằng stagger; quái vẫn bị AoE trúng khi bay.
 - Boss ở xa không sweep hụt mà khóa điểm slam/nhảy tối đa560px. Chase300px/s; windup0.62/0.46, cooldown0.55/0.38, recovery0.32/0.24. Ring12đạn thêm fan3 aimed, speed430; cue đủ15ray. Giữ1500HP/damage/Perfect, target khóa không homing, recovery mở để phản công.

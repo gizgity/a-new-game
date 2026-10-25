@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Tăng độ khó/anti-kiting theo feedback mới sau f89bfa7: pressure ưu tiên Archer, Grunt nhảy đón đầu, Boss áp sát thật và ring/fan nhanh hơn; vẫn giữ giết đông/AoE thỏa mãn. Q5A accepted, Q5B chưa mở. Implementation/tests/build/browser PASS, chuẩn bị deploy; AWAITING PLAYTEST APPROVAL cho difficulty v2.
+Tăng độ khó/anti-kiting theo feedback mới sau f89bfa7: pressure ưu tiên Archer, Grunt nhảy đón đầu, Boss áp sát thật và ring/fan nhanh hơn; vẫn giữ giết đông/AoE thỏa mãn. Q5A accepted, Q5B chưa mở. Implementation/tests/build/browser/deploy PASS trên e4f0ab1; **AWAITING PLAYTEST APPROVAL** cho difficulty v2.
 
 ## ACCEPTANCE
 - Pressure4s không kill khi đủ18: pack3 gồm tối đa2Archer tới cap8, phần còn Grunt; không tăng HP quái/damage player hoặc nerf AoE. Boss cap7 có tối thiểu2Archer khi bổ sung.
@@ -96,6 +96,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Difficulty v2 deploy PASS: e4f0ab1b962a4e99f5172d4229ad59ee70c9e4aa, Actions40171971219 completed/success, job121104520190. Parent bccbd0f giữ nguyên, update main không force/expected SHA;11blob(9text/2PNG) đối chiếu local. Chưa user acceptance; browser dist/local, không tự nhận smoke live/Safari.
 - Difficulty v2:88definitions/6files PASS, typecheck/build/diff PASS; Chromium390/844 cue/flight/Boss15shots/AoE8kills và dist1440 input thật PASS. docs/pressure-v2/ ghi fixtures/limits; user chưa duyệt difficulty.
 - Fix deploy PASS: f89bfa721d38adb227c92207ef1c79c37d7a5ec6, Actions40170626907 completed/success, job121100546426 build/upload/Deploy success. Parent ee25e6e giữ nguyên, update main không force/expected SHA;20blobs(16text/4PNG) đối chiếu local. Browser là dist/local; Pages trực tiếp bị proxy chặn ở lượt trước, không tự nhận đã smoke live.
 - Fixes sau Q5A: tests83definitions/6files PASS, typecheck/build PASS; Chromium390/1440: held/right click draft guard, keyboard, Boss kill thật trong fixture → vỡ ấn1.1s → Victory, defeat/reset/frozen result/vi-en PASS. Dist844 input/pause PASS. Stress fixture132Grunt: khoảng0.77ms/core tick trên Chromium máy này, không đại diện FPS mobile. Chưa user acceptance cho các fixes.
@@ -109,13 +110,13 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Deploy difficulty v2 qua Actions, cập nhật SHA/status rồi dừng chờ user thử crowd/Grunt jump/Boss theo docs/pressure-v2/README.md. Không mở Q5B.
+Chờ user thử difficulty v2 trên e4f0ab1: crowd/Grunt jump/Boss theo docs/pressure-v2/README.md. Chỉ sửa feedback scope difficulty; không mở Q5B.
 
 ## PLAYTEST DIFFICULTY V2 — AWAITING PLAYTEST APPROVAL
-Sau deploy tải lại link thường. Opening: chạy thẳng thấy Grunt nhảy đón, đổi hướng/Dash né, Heavy/blast ngắt. Không kill20–30s thấy pressure ưu tiên Archer; gom dấu→Heavy/Charged/Surge vẫn dọn nhiều. Boss450kills/4:00 áp sát từ xa,15đạn/ring+fan nhanh hơn, còn recovery phản công. Mobile joystick/Lướt, Heavy/Charged giữ-thả; desktop WASD/Space/Shift/E. Ghi đòn/cue gặp vấn đề, cảm giác AoE và thiết bị/browser. Chưa user approval, không suy rộng tests thành độ khó đạt.
+Bản e4f0ab1 đã deploy tại https://gizgity.github.io/a-new-game/, tải lại trang. Opening: chạy thẳng thấy Grunt nhảy đón, đổi hướng/Dash né, Heavy/blast ngắt. Không kill20–30s thấy pressure ưu tiên Archer; gom dấu→Heavy/Charged/Surge vẫn dọn nhiều. Boss450kills/4:00 áp sát từ xa,15đạn/ring+fan nhanh hơn, còn recovery phản công. Mobile joystick/Lướt, Heavy/Charged giữ-thả; desktop WASD/Space/Shift/E. Ghi đòn/cue gặp vấn đề, cảm giác AoE và thiết bị/browser. Chưa user approval, không suy rộng tests thành độ khó đạt.
 
-## PLAYTEST FIXES SAU Q5A — AWAITING PLAYTEST APPROVAL
-Bản f89bfa7, link https://gizgity.github.io/a-new-game/ đã deploy, tải lại trang. Scope chỉ5fixes mới, không yêu cầu duyệt lại Juggernaut.
+## PLAYTEST FIXES SAU Q5A — THAM CHIẾU BẢN f89bfa7
+Checklist lượt trước; difficulty v2 bên trên thay nhịp Boss/pressure. Bản f89bfa7, link https://gizgity.github.io/a-new-game/ đã deploy, tải lại trang. Scope chỉ5fixes mới, không yêu cầu duyệt lại Juggernaut.
 1. Đầu run né/không kill20–30s: sau khi đủ18 vẫn có pack3 thêm mỗi6s không kill; kill reset pressure. Mobile joystick/Lướt, desktop WASD/Space.
 2. Di chuyển ngang trước Archer khi gồng: cung/ray theo player; đạn đã bắn không bẻ lái.
 3. Draft25kills/0:30: giữ chuột trái trước khi mở rồi nhả trên card, hoặc click phải, không tự chọn/menu native; click trái mới/Enter chọn được, mobile còn cuộn.
