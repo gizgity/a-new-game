@@ -329,7 +329,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 1. Barrier cap30 không decay, ngân sách sustain chung8HP/10s, Soul Anchor không cứu hit chí tử; các số là tuning defaults.
 2. Gói rework thay passive cũ có liệt kê; giữ ba bonus Q2 có liên quan, giới hạn Catalyst seed/cùng root, cơ chế Fracture và các trade-off Curse ở trên.
 3. Draft weights/anti-repeat0.4, định nghĩa run trước gồm run bỏ dở, seed kèm snapshot; nội dung Q5 mới eligible mặc định khi checkpoint tương ứng được triển khai, giữ ba unlock Guard/Static/Death Echo hiện có, không thêm mục tiêu meta mới.
-4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đã được user duyệt “q5a ok”; Q5B implementation đang chờ playtest acceptance.
+4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đã được user duyệt “q5a ok”; Q5B đã deploy b06bf69, đang chờ playtest acceptance.
 
 ## Meta progression
 - Hybrid unlocks, mở thêm Mutation, Curse và cosmetic; có 4 unlock mục tiêu.

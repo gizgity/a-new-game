@@ -1,5 +1,7 @@
 # Q5B — rework Mutation/Curse
 
+Bản b06bf69f82c3384145556cfed0d453d2ff7be844 đã deploy, Actions40193133738 completed/success.
+
 Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Aegis/Oath và tuning Grunt6b7d7ad. Pool hiện7Mutation/5Curse, chưa Q5C/D. Implementation không là user experience acceptance.
 
 - Phantom: Perfect→Light trúng→slash trễ18damage/+1dấu; không tự cấp charge/Aegis/Frenzy, không interrupt. Static: Perfect→Charged bonus40 direct, tốn ammo thường, hụt vẫn tiêu.
@@ -15,7 +17,7 @@ Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Ae
 
 `counter-390.png`: fixture Grunt windup hợp lệ và input Dash thật trong core sinh Perfect, có Phantom/Static HUD. `chain-390.png`: fixture ba enemy1000HP, cấp1ammo, input Charged thật, seed/Fracture/hazard từ code thật. `frenzy-390.png`: fixture target1000HP giữ ở tầm mỗi combo, input Light core, HP50 để thấy heal. `echo-390.png`: fixture1HP+hai target khỏe, shot core giết rồi echo/haste. Các fixture freeze RunDirector để chụp state; không là natural run hoặc acquisition/balance evidence.
 
-Browser Chromium390 kiểm4preset/vi-en/Curse swap/không lưu kills/unlocks/runs. Dist320/844/1440 kiểm start/input/pause/layout, run thường có input Bắn+WASD ngắn; không runtime errors/document overflow. Chưa Safari/iOS, thiết bị thật, full-run hoặc user approval. Live deploy sẽ xác nhận qua Actions; không coi local dist là đã smoke live.
+Browser Chromium390 kiểm4preset/vi-en/Curse swap/không lưu kills/unlocks/runs. Dist320/844/1440 kiểm start/input/pause/layout, run thường có input Bắn+WASD ngắn; không runtime errors/document overflow. Chưa Safari/iOS, thiết bị thật, full-run hoặc user approval. Live deploy đã xác nhận qua Actions; không coi local dist là đã smoke live.
 
 ## User playtest — chỉ Q5B
 

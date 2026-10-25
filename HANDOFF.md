@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q5B — Rework5Mutation cũ còn lại +4Curse cũ, user giao “tiếp q5b đi”. Q5A accepted, giữ tuning Grunt6b7d7ad, không tự accepted difficulty. Implementation/tests/build/browser PASS cho Q5B, chuẩn bị deploy; không mở Q5C/D.
+Q5B — Rework5Mutation cũ còn lại +4Curse cũ, user giao “tiếp q5b đi”. Q5A accepted, giữ tuning Grunt6b7d7ad, không tự accepted difficulty. Implementation/tests/build/browser/deploy PASS cho Q5B trên b06bf69; **AWAITING PLAYTEST APPROVAL**; không mở Q5C/D.
 
 ## ACCEPTANCE
 - Phantom Perfect→Light trúng→slash trễ; Catalyst tối đa2seed/root không tự relay cùng root; Frenzy từ3Light trúng; Charged Specialist gốc→Fracture→Heavy/Charged tiêu; Static Perfect→Charged phản công.
@@ -30,7 +30,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q4 — Chain depth | ACCEPTED — USER PLAYTEST/VISUAL APPROVAL | User xác nhận “thấy ok r” trên bản daee80a; phát sinh sau theo issue mới |
 | Q5 Design Contract | APPROVED | User xác nhận “ok làm đi, xong thì deploy để test play luôn” |
 | Q5A — Barrier / Juggernaut | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “q5a ok” trên fa4045d |
-| Q5B — Rework existing pool | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Code/tests/build/browser PASS, chuẩn bị deploy |
+| Q5B — Rework existing pool | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Deploy b06bf69 PASS; chờ user thử5Mutation/4Curse |
 | Q5C — New pool tới12/8 | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5B |
 | Q5D — Weighted Draft | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5C |
 | Q5E — Diversity/balance | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5D |
@@ -57,7 +57,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Body collision: hai lượt resolve bounded giữa player radius16 và enemy14/22/32, clamp arena; giữ slide, bỏ resolve trong dash. Không engine/physics dependency mới.
 - Basic20damage, mỗi hit gain1ChargePoint (Catalyst2); Charged84 tự tăng1Rupture cap3 rồi Detonate×2. Blast nền24/stack1→72/stack3, radius105, chỉ blast Charged gốc142 với Specialist; chain budget12, VFX24 giữ. Không đòi melee để cấp ammo/trigger các blast synergies.
 - RunDirector dùng6mốc OR kills/time trong config; HUD draft kế và Boss hiển thị cả hai điều kiện. Draft ưu tiên trước encounter, vượt nhiều mốc chọn tuần tự; bossDue/eliteSpawned chặn lặp. Elite không spawn muộn sau Boss; nếu đồng thời đủ cả hai thì Boss ưu tiên, giữ Elite đã có.
-- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10. Không đổi damage/resources/synergy hiện có.
+- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10. Milestones/pool/unlocks giữ; effect dùng Q5B đã rework, Draft v2 chưa triển khai.
 
 - Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
 - Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor vẫn prototype art; không tự accepted.
@@ -97,6 +97,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Q5B deploy PASS:b06bf69f82c3384145556cfed0d453d2ff7be844, Actions40193133738 completed/success, job121168217793. Parent51e3acd, update main expected SHA/không force;20blobs(16text/4PNG) đối chiếu local. Browser local/dist, không tự nhận đã smoke live; chưa user acceptance/Safari/full-run.
 - Q5B:103definitions/7files PASS (13focused Q5B), typecheck/build/diff PASS. Chromium390 counter/chain/frenzy/echo fixtures: HUD/Perfect/hazard/Frenzy/haste/vi-en/Curse swap và trial không lưu progress PASS. Dist320/844/1440/input/pause/no-overflow/runtime error PASS. docs/q5b/ ghi rõ fixtures; chưa Safari/device/full-run hoặc user acceptance.
 - Grunt tuning deploy PASS:6b7d7ad910b58d7bc2f524e4373dfab1fe9970cf, Actions40175067250 completed/success, job121113849271. Parent efa67d1, update main không force/expected SHA;5text blobs đối chiếu local. Chưa user acceptance/Safari/full-run; browser evidence local/dist, live deploy xác nhận bởi Actions.
 - Grunt tuning:90definitions/6files PASS, build/typecheck/diff PASS. Chromium390 fixture kiểm first delay≥4s/không nhảy trước3s, damage6/cooldown>6s sau đáp; dist1440 input thật bắn+WASD14.4s ngoài đời: khoảng11s simulation/58HP, không grant stats; pause/no overflow/runtime errors PASS. Không phải natural/full-run balance acceptance hoặc thiết bị thật.
@@ -114,10 +115,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Deploy Q5B qua Actions, cập nhật SHA/status rồi bàn giao checklist ở docs/q5b/README.md; dừng AWAITING PLAYTEST APPROVAL. Không triển khai Q5C/D khi chưa có user acceptance Q5B.
+Chờ user playtest Q5B b06bf69 theo docs/q5b/README.md; chỉ sửa feedback Q5B. Không triển khai Q5C/D khi chưa có user acceptance Q5B.
 
 ## PLAYTEST Q5B — AWAITING PLAYTEST APPROVAL
-Sau deploy, tải lại link thử có build sẵn: ?playtest=counter (Phantom+Static+Ghost), chain (Catalyst+Specialist+Volatile), frenzy (Berserker+Blood Pact), echo (Catalyst+Death Echo). Có nhãn rõ, không lưu progress; không là natural acquisition. Base https://gizgity.github.io/a-new-game/. Checklist thao tác/mong đợi/giới hạn ở docs/q5b/README.md. Run thường giữ milestones/pool7/5/unlock, chưa Draft v2. Chỉ Q5B cần user duyệt; Q5A và difficulty giữ trạng thái cũ.
+Bản b06bf69 đã deploy; tải lại link thử có build sẵn: ?playtest=counter (Phantom+Static+Ghost), chain (Catalyst+Specialist+Volatile), frenzy (Berserker+Blood Pact), echo (Catalyst+Death Echo). Có nhãn rõ, không lưu progress; không là natural acquisition. Base https://gizgity.github.io/a-new-game/. Checklist thao tác/mong đợi/giới hạn ở docs/q5b/README.md. Run thường giữ milestones/pool7/5/unlock, chưa Draft v2. Chỉ Q5B cần user duyệt; Q5A và difficulty giữ trạng thái cũ.
 
 ## PLAYTEST GRUNT TUNING — AWAITING PLAYTEST APPROVAL
 Bản6b7d7ad đã deploy; tải lại https://gizgity.github.io/a-new-game/. Opening20–30s: có ít nhất4s cho Grunt mới trước khi nhảy, từng cú trừ6HP nền thay12, nhảy thưa và lệch nhau khi ít quái. Chạy bằng joystick/WASD; đổi hướng/Dash (Lướt/Space) sau vòng đáp để né, Heavy/Charged giữ-thả để phản công. Không kill cho tới đủ18Grunt: nhịp nhóm dày hơn nhưng từng con vẫn cooldown7s; quay lại gom/nổ AoE giảm nguy cơ. Phản hồi còn chết quá nhanh hay đủ thời gian thích ứng, tình huống và thiết bị/browser. Chưa user acceptance; Boss/Archer không tune thêm trong lượt này.
@@ -138,15 +139,10 @@ Bản Q5A fa4045d đã deploy; dùng link trial https://gizgity.github.io/a-new-
 1. Giữ Chém (mobile)/chuột trái vào quái: Barrier cyan tăng theo damage thật, tối đa30; hụt không tăng. Nhận hit thì Barrier giảm trước, phần dư mấtHP; không đứng im bất tử.
 2. Đợi Grunt lấy đà rồi ngắm/thả Heavy (Đánh mạnh/Shift) để phá đòn; hoặc Heavy giáp đóng Bulwark tại200kills/2:30. Guard +10 (Oath12.5) một lần/Heavy, Aegis có thể cộng thêm; không thưởng Guard khi hụt/đánh recovery/Boss. Heavy bắt đầu có khiên với Oath +4.
 3. Dash (Lướt/Space) thấy hồi3.64s với Oath; draft Curse thứ2 tại300kills/3:00 đổi/giữ. Giữ không nhân thưởng/reset, đổi giữ Barrier đã kiếm nhưng gỡ modifier Oath. Kiểm HUD/vỡ khiên và cảm giác phải đánh trúng/phá thế để tank.
-Checklist đầy đủ + evidence/giới hạn: docs/q5a/README.md. Phản hồi tình huống/thao tác, quan sát và thiết bị/browser. User đã duyệt Q5A, không yêu cầu thử lại; Q5B–Q5E chưa mở, Q1–Q4 giữ approval lịch sử.
+Checklist đầy đủ + evidence/giới hạn: docs/q5a/README.md. Phản hồi tình huống/thao tác, quan sát và thiết bị/browser. User đã duyệt Q5A, không yêu cầu thử lại; Q5B đang chờ playtest; Q5C–Q5E chưa mở, Q1–Q4 giữ approval lịch sử.
 
 ## PLAYTEST Q4 — ĐÃ DUYỆT / THAM CHIẾU
-User đã duyệt Q4 qua “thấy ok r”. Checklist dưới là scope đã bàn giao, không phải yêu cầu thử lại; phát sinh sau user sẽ tạo issue mới.
-Bản Q4 daee80a tại https://gizgity.github.io/a-new-game/; tải lại trang. Chỉ thử setup→trigger→lan, không yêu cầu duyệt lại Q3.
-1. Trong opening, gom2–3Grunt, giữ Chém (mobile) / chuột trái (desktop) để đánh dấu hình thoi. Bắn vào một con bằng nút Bắn / chuột phải, hoặc giữ-thả Đánh mạnh / Shift. Mong đợi Rupture biến mất khi kích, có vòng nổ rồi đường nối/nổ tiếp qua quái đã đánh dấu nằm gần nhau; quái chưa đánh dấu chỉ nhận AoE, không tự truyền.
-2. Thử kéo hai quái đã đánh dấu ra xa rồi bắn một con: mong đợi con ngoài vòng nổ giữ dấu, không có đường nối vượt khoảng trống. Đặt nhiều dấu cho nổ mạnh hơn; quái opening có thể chết trước3stacks, dùng quái sau60s hoặc Bulwark nếu muốn so3stacks.
-3. Giữ Bắn tích đạn rồi giữ-thả Tích lực / E vào quái chưa chém: mong đợi vẫn tự seed và nổ; thêm marked neighbours để so hiệu quả dọn đám. Kiểm cảm giác relay có đủ rõ mà không chậm/ngợp hoặc che telegraph.
-Khi tạo issue mới, ghi tình huống/cách setup, điều quan sát được và thiết bị/browser nếu liên quan. Q4 không còn chờ playtest/visual approval.
+Q4 được user chấp nhận qua “thấy ok r” trên daee80a; phát sinh theo issue mới, không yêu cầu thử lại. Evidence/checklist lịch sử ở docs/q4/ và brief; các thay đổi Q5B trên root/seed là interaction user đã duyệt thiết kế, không thay baseline chain khi không có Mutation/Curse.
 
 ## BLOCKERS
-Không blocker Q5B implementation, còn deploy/user playtest. Remote main51e3acd đã đối chiếu đầu task; update qua connector expected SHA không force vì git local còn snapshot từ base5caf09d. Pages direct smoke từng bị proxy chặn; chỉ xác nhận Actions và browser dist/local. Q5C/D/E chưa mở.
+Không blocker deploy Q5B; còn user playtest approval. Remote main51e3acd đã đối chiếu đầu task; update qua connector expected SHA không force vì git local còn snapshot từ base5caf09d. Pages direct smoke từng bị proxy chặn; chỉ xác nhận Actions và browser dist/local. Q5C/D/E chưa mở.
