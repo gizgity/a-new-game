@@ -55,10 +55,16 @@ public/assets/
 - Không lặp lại test khi không có lý do.
 - Không chạy build/test nếu chỉ sửa Markdown; kiểm tra diff và tính nhất quán của tài liệu.
 
+## Bàn giao playtest
+- Khi cần người dùng playtest/duyệt visual, phải nêu rõ scope của lượt thử: tính năng/quái/tình huống cần kiểm, phiên bản hoặc link chơi; không chỉ nói “chờ playtest”.
+- Cung cấp checklist ngắn có cách vào tình huống (mốc xuất hiện nếu có), thao tác cụ thể trên mobile/desktop và kết quả mong đợi để người dùng biết thế nào là đạt hoặc lỗi.
+- Nói rõ phần đã được kiểm tự động, phần còn cần cảm nhận/thiết bị thật; không coi fixture hoặc build/tests PASS là user acceptance. Ghi scope và cách thử hiện tại trong HANDOFF.md để session sau tiếp tục đúng.
+- Hướng dẫn phản hồi ngắn: tình huống/bước gặp vấn đề, điều quan sát được và thiết bị/browser nếu liên quan. Không biến playtest thành comprehensive QA hoặc yêu cầu user kiểm lại mọi milestone.
+
 ## Token Efficiency
 - Chỉ đọc file cần thiết; không đọc lại toàn repo khi không cần.
 - Không xuất logs dài nếu không có lỗi; không viết báo cáo dài hoặc tài liệu ngoài yêu cầu.
-- Báo cáo cuối task tối đa vài dòng: thay đổi, kiểm tra, blocker/next step.
+- Báo cáo cuối task ngắn gọn: thay đổi, kiểm tra, blocker/next step; khi cần user playtest phải kèm scope/cách thử/kết quả mong đợi đủ thực hiện.
 
 ## Deployment
 - Người dùng đã cho phép tự deploy sau khi hoàn tất công việc và các kiểm tra phù hợp PASS, không cần chờ xác nhận riêng.
