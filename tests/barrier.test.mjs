@@ -93,11 +93,11 @@ test('pause/draft freezes defensive clocks; switching/keeping Curse preserves re
  assert.equal(w.rechargeDuration,COMBAT.dashRecharge);
 });
 
-test('Q5A pool adds only Aegis and Iron Oath, preserving unlock gates and draft ownership',()=>{
+test('Q5C pool retains Aegis and Iron Oath, preserving unlock gates and draft ownership',()=>{
  const p=defaultProfile();assert.ok(mutationPool(p).includes('aegisCore'));assert.ok(cursePool(p).includes('ironOath'));
  assert.ok(!mutationPool(p).includes('guardBreaker'));assert.ok(!mutationPool(p).includes('staticRiposte'));
  assert.ok(!cursePool(p).includes('deathEcho'));
- assert.equal(mutationPool(p).length,5);assert.equal(cursePool(p).length,4);
+ assert.equal(mutationPool(p).length,10);assert.equal(cursePool(p).length,7);
  const w=world(),r=new RunDirector(w);w.mutations=['guardBreaker','aegisCore'];w.kills=25;r.step(idle,1/60);
  assert.ok(r.draft.every(o=>!w.mutations.includes(o.id)));assert.equal(BARRIER.cap,30);
 });

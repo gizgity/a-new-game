@@ -138,7 +138,7 @@
 
 ## Q5 Design Contract — Build diversity & survivability
 
-**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C/D/E chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
+**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C đang triển khai theo yêu cầu trực tiếp của user; Q5D/E chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 
 ### Phạm vi và nguyên tắc khóa
 
@@ -338,7 +338,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - Lưu localStorage; dữ liệu không đáng tin cậy, phải validate và whitelist khi load.
 - MVP không có anti-cheat hoặc backend.
 - Bốn mục tiêu tích lũy M6: hạ 1 quái → Guard Breaker; 5 Detonate → Death Echo; 3 Perfect Dodge → Static Riposte; hạ Chain Warden → cosmetic Lăng kính.
-- Implementation Q5A có pool ban đầu5 Mutation/4 Curse (tổng7/5); thêm Aegis/Iron Oath, còn các hiệu ứng Q5B/C giữ cũ. Đích Q5 sau các checkpoint: pool ban đầu10 Mutation/7 Curse; Guard Breaker, Static Riposte và Death Echo vẫn theo unlock cũ. Nội dung mới eligible mặc định chỉ khi checkpoint của nó đã triển khai; không thêm unlock objective hoặc permanent stats. Quyết định này được duyệt cùng contract; triển khai theo checkpoint.
+- Implementation Q5C có pool ban đầu10 Mutation/7 Curse (tổng12/8); hiệu ứng theo contract và tank trade-off đã duyệt. Đích Q5 sau các checkpoint: pool ban đầu10 Mutation/7 Curse; Guard Breaker, Static Riposte và Death Echo vẫn theo unlock cũ. Nội dung mới eligible mặc định chỉ khi checkpoint của nó đã triển khai; không thêm unlock objective hoặc permanent stats. Quyết định này được duyệt cùng contract; triển khai theo checkpoint.
 - Lưu locale, mute, volume, cosmetic và tiến độ theo schema version 1; validate kiểu, enum, whitelist và giới hạn counter khi load. Save lỗi/bị chặn vẫn chơi trong phiên được.
 
 ## Art
@@ -373,7 +373,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 ## Giới hạn MVP
 - 1 arena, 1 player, 1 sword + 1 gun.
 - 3 common enemies, 1 Elite, 1 Boss.
-- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation Q5A hiện7/5, tăng tiếp chỉ ở checkpoint tương ứng. Mỗi run vẫn tối đa4 Mutation và1 Curse active.
+- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation Q5C hiện12/8; Draft có trọng số chỉ ở Q5D. Mỗi run vẫn tối đa4 Mutation và1 Curse active.
 - Không multiplayer, leaderboard online, procedural dungeon, account system, monetization hoặc tính năng ngoài scope.
 
 ## Milestone

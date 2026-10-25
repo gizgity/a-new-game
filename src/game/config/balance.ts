@@ -61,5 +61,10 @@ export const BUILD = {
   staticDuration: 4, staticCooldown: 4, staticDamage: 40,
   volatileMultiplier: 1.4, hazardDelay: 0.8, hazardDamage: 8, hazardRadius: 70, hazardCooldown: 2, hazardCap: 2,
   ghostRefund: 1, ghostRisk: 1.2, bloodDamageMultiplier: 0.8, bloodHeal: 2, bloodCooldown: 2, bloodBudget: 6, bloodMissCost: 4,
+  reclaimerHeal: 3, reclaimerCooldown: 2, reversalDuration: 4, reversalCooldown: 6, reversalMultiplier: 1.4,
+  anchorThreshold: 0.25, anchorBarrier: 20, anchorRadius: 120, anchorForce: 80,
+  chamberCount: 4, chamberRadius: 160, chamberDuration: 2, chamberCooldown: 5, slowMultiplier: 0.7,
+  kineticDistance: 120, kineticRange: 360, kineticRate: 1, kineticCap: 3, kineticBarrier: 4, kineticCooldown: 3,
+  glassMaxHp: 75, glassMultiplier: 1.3, parasiticHeal: 2, parasiticCooldown: 2, huntedCooldown: 1, huntedSurge: 3, huntedBarrier: 2,
   healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
 } as const;

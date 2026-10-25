@@ -209,6 +209,11 @@ function renderCombatHUD(world: CombatWorld): void {
   document.querySelector('#build-value')!.textContent = [...world.mutations, ...(world.curse ? [world.curse] : [])].map((id) => t(id)).join(' · ');
   const duration = (seconds: number) => t('secondsShort').replace('{n}', seconds.toFixed(1));
   const statuses: string[] = [];
+  if (world.build.reversal > 0) statuses.push(`${t('reversalReady')} ${duration(world.build.reversal)}`);
+  if (world.mutations.includes('soulAnchor')) statuses.push(t(world.build.anchorUsed ? 'anchorSpent' : 'anchorReady'));
+  if (world.mutations.includes('kineticBattery')) statuses.push(`${t('batteryState')} ${world.build.kinetic}/3`);
+  if (world.mutations.includes('bloodReclaimer') && world.build.reclaimerCooldown > 0) statuses.push(`${t('reclaimerState')} ${duration(world.build.reclaimerCooldown)}`);
+  if (world.mutations.includes('echoChamber') && world.build.chamberCooldown > 0) statuses.push(`${t('chamberState')} ${duration(world.build.chamberCooldown)}`);
   if (world.build.phantom > 0) statuses.push(`${t('phantomReady')} ${duration(world.build.phantom)}`);
   if (world.build.staticCharge > 0) statuses.push(`${t('staticReady')} ${duration(world.build.staticCharge)}`);
   if (world.mutations.includes('berserker')) statuses.push(world.build.frenzy > 0 ? `${t('frenzyState')} ${duration(world.build.frenzy)}` : `${t('frenzyState')} ${world.build.comboStage}/3`);

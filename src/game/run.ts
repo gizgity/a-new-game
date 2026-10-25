@@ -122,7 +122,7 @@ export class RunDirector {
     if (!option || !Number.isInteger(index)) return false;
     if (this.draftKind === 'mutation') this.world.mutations.push(option.id as MutationId);
     else this.world.curse = option.id as CurseId;
-    this.world.hp = Math.min(this.world.maxHp, this.world.hp + 10);
+    this.world.hp = Math.min(this.world.maxHp, this.world.hp + (this.world.curse === 'parasiticMark' ? 5 : 10));
     this.draft = [];
     return true;
   }

@@ -1,5 +1,5 @@
-export const MUTATIONS = ['phantomEdge', 'catalyst', 'berserker', 'detonationSpecialist', 'staticRiposte', 'guardBreaker', 'aegisCore'] as const;
-export const CURSES = ['volatileSoul', 'ghostStep', 'bloodPact', 'deathEcho', 'ironOath'] as const;
+export const MUTATIONS = ['phantomEdge', 'catalyst', 'berserker', 'detonationSpecialist', 'staticRiposte', 'guardBreaker', 'aegisCore', 'bloodReclaimer', 'ironReversal', 'soulAnchor', 'echoChamber', 'kineticBattery'] as const;
+export const CURSES = ['volatileSoul', 'ghostStep', 'bloodPact', 'deathEcho', 'ironOath', 'glassSoul', 'parasiticMark', 'huntedVessel'] as const;
 export type MutationId = typeof MUTATIONS[number];
 export type CurseId = typeof CURSES[number];
 export type BuildId = MutationId | CurseId;

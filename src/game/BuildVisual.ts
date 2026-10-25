@@ -11,6 +11,8 @@ export function drawBuildCues(g: Graphics, world: CombatWorld): void {
     for (let i = -2; i <= 2; i++) g.lineBetween(hazard.x - 18 + i * 8, hazard.y + 9, hazard.x - 4 + i * 8, hazard.y - 9);
   }
   for (const enemy of world.enemies) {
+    if (enemy.slow > 0) g.lineStyle(1.5, 0xc399ff, 0.7).strokeEllipse(enemy.x, enemy.y + 20, 36, 10);
+    if (world.curse === 'huntedVessel' && enemy.kind !== 'boss') g.lineStyle(1.5, 0xff6f87, 0.65).strokeCircle(enemy.x, enemy.y + 23, 5);
     if (enemy.fracture > 0) g.lineStyle(2, 0xffcc80, 0.9).strokePoints([
       { x: enemy.x + 22, y: enemy.y - 16 }, { x: enemy.x + 16, y: enemy.y - 7 },
       { x: enemy.x + 24, y: enemy.y - 4 }, { x: enemy.x + 19, y: enemy.y + 5 },
@@ -20,6 +22,12 @@ export function drawBuildCues(g: Graphics, world: CombatWorld): void {
     ], false);
   }
   const { x, y } = world.player;
+  if (world.mutations.includes('kineticBattery')) for (let i = 0; i < 3; i++) {
+    g.lineStyle(1.5, i < world.build.kinetic ? 0x6bf3d0 : 0x50666a, 0.9).strokeRect(x - 14 + i * 10, y + 27, 7, 5);
+  }
+  if (world.build.reversal > 0) g.lineStyle(3, 0xff9b63, 0.85).lineBetween(x + 19, y - 20, x + 27, y + 8);
+  if (world.build.anchorFlash > 0) g.lineStyle(2, 0x80e8ff, world.build.anchorFlash / 0.6).strokeCircle(x, y, BUILD.anchorRadius * (1 - world.build.anchorFlash / 0.6));
+  if (world.curse === 'glassSoul') g.lineStyle(1, 0x80e8ff, 0.75).strokeTriangle(x + 14, y - 9, x + 27, y, x + 14, y + 9);
   if (world.build.frenzy > 0) g.lineStyle(2, 0xffcc80, 0.65).strokePoints([{ x: x - 18, y: y - 18 }, { x, y: y - 25 }, { x: x + 18, y: y - 18 }], false);
   if (world.build.staticCharge > 0) g.lineStyle(2, 0xc399ff, 0.9).strokePoints([{ x: x + 23, y: y - 14 }, { x: x + 17, y: y - 3 }, { x: x + 25, y: y - 4 }, { x: x + 19, y: y + 7 }], false);
   if (world.build.phantom > 0) g.lineStyle(1.5, 0x9dffe2, 0.65).lineBetween(x - 23, y - 10, x - 14, y + 12);
@@ -35,7 +43,11 @@ export function drawBuildCues(g: Graphics, world: CombatWorld): void {
 
 export function drawBuildImpact(g: Graphics, impact: Impact): boolean {
   const fade = impact.life / (impact.duration ?? 0.18);
-  if (impact.kind === 'seed') {
+  if (impact.kind === 'slow') {
+    g.lineStyle(2, 0xc399ff, fade).strokeCircle(impact.x, impact.y, (impact.radius ?? 160) * (1 - fade));
+  } else if (impact.kind === 'heal') {
+    g.lineStyle(1.5, impact.color, fade).lineBetween(impact.x, impact.y, impact.sourceX ?? impact.x, impact.sourceY ?? impact.y);
+  } else if (impact.kind === 'seed') {
     g.lineStyle(1, 0x6bf3d0, fade * 0.7).lineBetween(impact.sourceX ?? impact.x, impact.sourceY ?? impact.y, impact.x, impact.y);
     g.lineStyle(2, 0x6bf3d0, fade).strokePoints([{ x: impact.x, y: impact.y - 7 }, { x: impact.x + 7, y: impact.y }, { x: impact.x, y: impact.y + 7 }, { x: impact.x - 7, y: impact.y }], true);
   } else if (impact.kind === 'echo') {

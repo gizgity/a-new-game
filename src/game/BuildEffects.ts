@@ -1,12 +1,24 @@
 import { BUILD } from './config/balance.js';
 
-export interface ChainRoot { seeded: Set<number>; echoes: number; hazard: boolean }
-export const chainRoot = (): ChainRoot => ({ seeded: new Set(), echoes: 0, hazard: false });
+export interface ChainRoot { seeded: Set<number>; echoes: number; hazard: boolean; marked: Set<number>; detonations: number; pulsed: boolean; healed: boolean }
+export const chainRoot = (): ChainRoot => ({ seeded: new Set(), echoes: 0, hazard: false, marked: new Set(), detonations: 0, pulsed: false, healed: false });
 export interface PhantomSlash { x: number; y: number; angle: number; range: number; arc: number; delay: number; root: ChainRoot }
 export interface SelfHazard { x: number; y: number; time: number }
 
 /** Run-local build clocks/state. Combat owns geometry, damage and the shared explosion budget. */
 export class BuildEffects {
+  reclaimerCooldown = 0;
+  parasiticCooldown = 0;
+  reversal = 0;
+  reversalCooldown = 0;
+  anchorUsed = false;
+  anchorFlash = 0;
+  chamberCooldown = 0;
+  kinetic = 0;
+  kineticDistance = 0;
+  kineticRate = 0;
+  kineticCooldown = 0;
+  huntedCooldown = 0;
   phantom = 0;
   phantomCooldown = 0;
   staticCharge = 0;
@@ -25,19 +37,21 @@ export class BuildEffects {
   costFlash = 0;
 
   reset(): void {
+    this.reclaimerCooldown = this.parasiticCooldown = this.reversal = this.reversalCooldown = this.anchorFlash = this.chamberCooldown = this.kinetic = this.kineticDistance = this.kineticRate = this.kineticCooldown = this.huntedCooldown = 0;
+    this.anchorUsed = false;
     this.phantom = this.phantomCooldown = this.staticCharge = this.staticCooldown = this.frenzy = this.comboStage = 0;
     this.phantoms = []; this.hazards = [];
     this.hazardCooldown = this.bloodCooldown = this.healWindow = this.healed = this.bloodHealed = this.healFlash = this.lastHeal = this.costFlash = 0;
   }
   step(dt: number): void {
-    for (const key of ['phantom', 'phantomCooldown', 'staticCharge', 'staticCooldown', 'frenzy', 'hazardCooldown', 'bloodCooldown', 'healWindow', 'healFlash', 'costFlash'] as const) {
+    for (const key of ['reclaimerCooldown', 'parasiticCooldown', 'reversal', 'reversalCooldown', 'anchorFlash', 'chamberCooldown', 'kineticRate', 'kineticCooldown', 'huntedCooldown', 'phantom', 'phantomCooldown', 'staticCharge', 'staticCooldown', 'frenzy', 'hazardCooldown', 'bloodCooldown', 'healWindow', 'healFlash', 'costFlash'] as const) {
       this[key] = Math.max(0, this[key] - dt);
     }
     if (this.healWindow <= 1e-9) this.healed = this.bloodHealed = 0;
     for (const slash of this.phantoms) slash.delay -= dt;
     for (const hazard of this.hazards) hazard.time -= dt;
   }
-  clearCurse(): void { this.hazards = []; this.hazardCooldown = this.bloodCooldown = this.costFlash = 0; }
+  clearCurse(): void { this.hazards = []; this.hazardCooldown = this.bloodCooldown = this.parasiticCooldown = this.huntedCooldown = this.costFlash = 0; }
   loseHp(): void { this.frenzy = this.comboStage = 0; }
   light(combo: number, hit: boolean): void {
     if (!hit) { this.comboStage = 0; return; }
@@ -48,12 +62,12 @@ export class BuildEffects {
     if (phantom && this.phantomCooldown <= 1e-9) { this.phantom = BUILD.phantomDuration; this.phantomCooldown = BUILD.phantomCooldown; }
     if (riposte && this.staticCooldown <= 1e-9) { this.staticCharge = BUILD.staticDuration; this.staticCooldown = BUILD.staticCooldown; }
   }
-  heal(hp: number, maxHp: number): number {
-    if (hp <= 0 || this.bloodCooldown > 1e-9) return 0;
-    const amount = Math.max(0, Math.min(BUILD.bloodHeal, maxHp - hp, BUILD.healBudget - this.healed, BUILD.bloodBudget - this.bloodHealed));
+  heal(hp: number, maxHp: number, source: 'bloodCooldown' | 'reclaimerCooldown' | 'parasiticCooldown' = 'bloodCooldown', requested: number = BUILD.bloodHeal, cooldown: number = BUILD.bloodCooldown): number {
+    if (hp <= 0 || this[source] > 1e-9) return 0;
+    const amount = Math.max(0, Math.min(requested, maxHp - hp, BUILD.healBudget - this.healed, source === 'bloodCooldown' ? BUILD.bloodBudget - this.bloodHealed : Infinity));
     if (amount > 0) {
       if (this.healWindow <= 1e-9) this.healWindow = BUILD.healWindow;
-      this.healed += amount; this.bloodHealed += amount; this.bloodCooldown = BUILD.bloodCooldown;
+      this.healed += amount; if (source === 'bloodCooldown') this.bloodHealed += amount; this[source] = cooldown;
       this.lastHeal = amount; this.healFlash = 0.5;
     }
     return amount;
