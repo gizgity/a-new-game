@@ -1,6 +1,6 @@
 # Q5D — weighted draft
 
-Q5C b5ba138 đã được user duyệt “oki r, làm tiếp đi”; Q5D chỉ thay draft/signals/history/UI. Giữ pool12/8,4Mutation/run,1Curse và6mốc, mọi tuning gameplay/tank đã duyệt. Chờ playtest Q5D; chưa mở Q5E.
+Bản514063a3f3e563b4e852b64ec10c9a2d22921bac đã deploy, Actions40246492670 completed/success. Q5C b5ba138 đã được user duyệt “oki r, làm tiếp đi”; Q5D chỉ thay draft/signals/history/UI. Giữ pool12/8,4Mutation/run,1Curse và6mốc, mọi tuning gameplay/tank đã duyệt. Chờ playtest Q5D; chưa mở Q5E.
 
 ## Cách thử
 
@@ -27,4 +27,4 @@ Phản hồi: run thiên hướng nào, mốc draft, card/lý do quan sát đư�
 - Typecheck/build PASS; Phaser bundle>500KB là warning cũ. Không dependency/QA framework mới.
 - Chromium390: `ranged/melee/perfect/juggernaut/chain-390.png` dùng core/renderer thật, fixture cấp targets/build/eligible và chọn seed có đủ label để nhìn; chain dùng signal snapshot mẫu. Không là natural acquisition/probability evidence. Kiểm debug copy, offer history, reload→run mới, vi/en không reroll PASS.
 - `curse-320/844/1440.png`: fixture mốcCurse2 với Parasitic, giữ+2alternative, vi/en, input chọn giữ/heal5, no-overflow/runtime errors PASS. Đã xem ảnh trực quan. Dist320/844/1440 kiểm input thật mobile/desktop vài giây, pause/resume/vi-en/save history; không inject stats. Chưa natural full-run, Safari/iOS, thiết bị thật hay experience acceptance. Browser local/dist, chưa tự nhận smoke live.
-- Deploy đang thực hiện qua Pages Actions; SHA/kết quả cập nhật HANDOFF.
+- Deploy PASS:514063a, Actions40246492670 completed/success, job121329057854;24blobs đối chiếu local/remote tree, giữ parent5a84c89, không force. Browser evidence local/dist, chưa smoke live.
