@@ -129,7 +129,7 @@
 
 ## Q5 Design Contract — Build diversity & survivability
 
-**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25, chưa phải implementation hoặc experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Đang triển khai riêng Q5A theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
+**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã triển khai/deploy fa4045d và chờ playtest approval, phần còn lại chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 
 ### Phạm vi và nguyên tắc khóa
 
@@ -320,7 +320,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 1. Barrier cap30 không decay, ngân sách sustain chung8HP/10s, Soul Anchor không cứu hit chí tử; các số là tuning defaults.
 2. Gói rework thay passive cũ có liệt kê; giữ ba bonus Q2 có liên quan, giới hạn Catalyst seed/cùng root, cơ chế Fracture và các trade-off Curse ở trên.
 3. Draft weights/anti-repeat0.4, định nghĩa run trước gồm run bỏ dở, seed kèm snapshot; nội dung Q5 mới eligible mặc định khi checkpoint tương ứng được triển khai, giữ ba unlock Guard/Static/Death Echo hiện có, không thêm mục tiêu meta mới.
-4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đang triển khai, chưa có experience acceptance.
+4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đã deploy fa4045d, chưa có experience acceptance.
 
 ## Meta progression
 - Hybrid unlocks, mở thêm Mutation, Curse và cosmetic; có 4 unlock mục tiêu.
@@ -328,7 +328,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - Lưu localStorage; dữ liệu không đáng tin cậy, phải validate và whitelist khi load.
 - MVP không có anti-cheat hoặc backend.
 - Bốn mục tiêu tích lũy M6: hạ 1 quái → Guard Breaker; 5 Detonate → Death Echo; 3 Perfect Dodge → Static Riposte; hạ Chain Warden → cosmetic Lăng kính.
-- Implementation hiện tại có pool ban đầu4 Mutation/3 Curse. Đích Q5 sau các checkpoint: pool ban đầu10 Mutation/7 Curse; Guard Breaker, Static Riposte và Death Echo vẫn theo unlock cũ. Nội dung mới eligible mặc định chỉ khi checkpoint của nó đã triển khai; không thêm unlock objective hoặc permanent stats. Quyết định này được duyệt cùng contract; triển khai theo checkpoint.
+- Implementation Q5A có pool ban đầu5 Mutation/4 Curse (tổng7/5); thêm Aegis/Iron Oath, còn các hiệu ứng Q5B/C giữ cũ. Đích Q5 sau các checkpoint: pool ban đầu10 Mutation/7 Curse; Guard Breaker, Static Riposte và Death Echo vẫn theo unlock cũ. Nội dung mới eligible mặc định chỉ khi checkpoint của nó đã triển khai; không thêm unlock objective hoặc permanent stats. Quyết định này được duyệt cùng contract; triển khai theo checkpoint.
 - Lưu locale, mute, volume, cosmetic và tiến độ theo schema version 1; validate kiểu, enum, whitelist và giới hạn counter khi load. Save lỗi/bị chặn vẫn chơi trong phiên được.
 
 ## Art
@@ -363,7 +363,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 ## Giới hạn MVP
 - 1 arena, 1 player, 1 sword + 1 gun.
 - 3 common enemies, 1 Elite, 1 Boss.
-- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation trước Q5 vẫn6/4 cho tới checkpoint tương ứng. Mỗi run vẫn tối đa4 Mutation và1 Curse active.
+- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation Q5A hiện7/5, tăng tiếp chỉ ở checkpoint tương ứng. Mỗi run vẫn tối đa4 Mutation và1 Curse active.
 - Không multiplayer, leaderboard online, procedural dungeon, account system, monetization hoặc tính năng ngoài scope.
 
 ## Milestone
@@ -375,4 +375,4 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; đang triển khai riêng Q5A. Q5A–Q5E phải được user playtest/chấp nhận tuần tự, không tự chuyển checkpoint.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã deploy fa4045d và AWAITING PLAYTEST APPROVAL. Q5A–Q5E phải được user playtest/chấp nhận tuần tự, không tự chuyển checkpoint.

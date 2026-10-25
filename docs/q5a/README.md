@@ -1,6 +1,6 @@
 # Q5A — Juggernaut
 
-Implementation Barrier + Guard Breaker + Aegis Core + Iron Oath. Chờ user playtest; không là approval Q5A hoặc quyền mở Q5B.
+Bản fa4045deb8d332fee03cdf01555ced2d4ed29b79: Barrier + Guard Breaker + Aegis Core + Iron Oath. Actions40168884585 completed/success. Chờ user playtest; không là approval Q5A hoặc quyền mở Q5B.
 
 - `juggernaut-{320,390,844,1440}.png`: fixture có sẵn build, Bulwark1000HP đặt gần player, simulation thật resolve một Heavy. Aegis10 + Guard12.5 với Oath =22.5 Barrier; không là natural run.
 - `barrier-break-390.png`: fixture Barrier12 nhận damage20 → HP92/Barrier0, hurt pipeline thật.
@@ -8,7 +8,7 @@ Implementation Barrier + Guard Breaker + Aegis Core + Iron Oath. Chờ user play
 - `boss-{320,390,844,1440}.png`: fixture Boss/Barrier15, kiểm HUD không đè resource/controls; không chứng minh đánh thắng Boss.
 - `production-390.png`: dist local, link trial cấp build Juggernaut rồi giữ Chém bằng input thật8s, waves thật, không inject HP/resource/enemy. Có11kills, HP67 và Barrier5 lúc chụp; không là natural acquisition hoặc full-run. Hình cho thấy giữ vị trí không làm player bất tử.
 
-Validation: npm test PASS (80 test definitions/6files, gồm9 Q5A); typecheck/build PASS; Chromium4viewports, không runtime errors/document overflow; Barrier/HP, draft vi/en, pause, trial không lưu tiến độ và normal run vẫn lưu progression. Tests không thay user acceptance. Bundle Phaser>500KB là warning cũ. Chưa Safari/iOS, full-run hoặc thiết bị thật.
+Validation: npm test PASS (80 test definitions/6files, gồm9 Q5A); typecheck/build PASS; Chromium4viewports, không runtime errors/document overflow; Barrier/HP, draft vi/en, pause, trial không lưu tiến độ và normal run vẫn lưu progression. Tests không thay user acceptance. Bundle Phaser>500KB là warning cũ. Chưa Safari/iOS, full-run hoặc thiết bị thật. HTTP Pages trực tiếp bị proxy403; browser evidence là local/dist, deploy được xác nhận bởi Actions success.
 
 ## Cách thử
 
