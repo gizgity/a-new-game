@@ -138,7 +138,7 @@
 
 ## Q5 Design Contract — Build diversity & survivability
 
-**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C đang triển khai theo yêu cầu trực tiếp của user; Q5D/E chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
+**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C đã triển khai/deploy b5ba138 theo yêu cầu trực tiếp của user, đang chờ playtest; Q5D/E chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 
 ### Phạm vi và nguyên tắc khóa
 
