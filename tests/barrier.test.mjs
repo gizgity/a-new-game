@@ -29,17 +29,17 @@ test('Barrier absorbs after curse damage, preserves hurt immunity/knockback and 
 
 test('Aegis uses actual direct melee damage, excludes overkill, shots, blasts and armor loss',()=>{
  const w=world();w.mutations=['aegisCore'];const e=target(w,'bulwark');
- w.hitEnemy(e,40,0,0,0,false,'light');assert.equal(w.barrier.aegisDamage,22);assert.equal(w.barrier.value,0);
+ w.hitEnemy(e,40,0,0,0,false,'light');assert.equal(w.barrier.aegisDamage,17.6);assert.equal(w.barrier.value,0);
  w.hitEnemy(e,40,0,0,0,false,'shotHit');w.hitEnemy(e,40,0,0,0,true,'blast');
- assert.equal(w.barrier.aegisDamage,22);
- e.hp=5;w.hitEnemy(e,100,0,0,0,true,'heavy');assert.equal(w.barrier.aegisDamage,27);
- e.hp=100;w.hitEnemy(e,13,0,0,0,true,'light2');assert.equal(w.barrier.value,4);assert.equal(w.barrier.aegisDamage,0);
+ assert.equal(w.barrier.aegisDamage,17.6);
+ e.hp=5;w.hitEnemy(e,100,0,0,0,true,'heavy');assert.equal(w.barrier.aegisDamage,22.6);
+ e.hp=100;w.hitEnemy(e,22,0,0,0,true,'light2');assert.equal(w.barrier.value,4);assert.equal(w.barrier.aegisDamage,0);
 });
 
 test('Aegis caps bursts, drops overflow and never banks progress at full Barrier',()=>{
- const b=new Barrier();b.meleeDamage(1000,false);assert.equal(b.value,8);assert.equal(b.aegisDamage,0);
- b.meleeDamage(40,false);assert.equal(b.value,8);b.step(1);assert.equal(b.value,8);
- b.meleeDamage(40,true);assert.equal(b.value,13);
+ const b=new Barrier();b.meleeDamage(1000,false);assert.equal(b.value,4);assert.equal(b.aegisDamage,0);
+ b.meleeDamage(40,false);assert.equal(b.value,4);b.step(1);assert.equal(b.value,4);
+ b.meleeDamage(40,true);assert.equal(b.value,9);
  b.gain(99,false);b.meleeDamage(39,false);assert.equal(b.aegisDamage,0);
  b.absorb(10);b.step(2);assert.equal(b.value,20);b.meleeDamage(1,false);assert.equal(b.value,20);
  b.gain(99,true);assert.equal(b.value,30);assert.equal(b.aegisDamage,0);
@@ -68,8 +68,8 @@ test('Iron Oath multiplies grants once, Heavy requires existing Barrier and spen
  w.barrier.gain(4,true);assert.equal(w.barrier.value,5);w.beginAttack(true);
  assert.equal(w.barrier.value,9);assert.equal(w.heavyCharges,0);
  assert.equal(w.rechargeDuration,COMBAT.dashRecharge*1.3);
- w.mutations=['aegisCore'];const e=target(w);w.hitEnemy(e,80,0,0,0,true,'heavy');assert.equal(w.barrier.value,19);
- w.barrier.guardBreak(true);assert.equal(w.barrier.value,30);
+ w.mutations=['aegisCore'];const e=target(w);w.hitEnemy(e,80,0,0,0,true,'heavy');assert.equal(w.barrier.value,14);
+ w.barrier.guardBreak(true);assert.equal(w.barrier.value,26.5);
  assert.equal(w.attack.damage,100,'does not change baseline damage');
 });
 

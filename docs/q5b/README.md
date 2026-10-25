@@ -8,7 +8,7 @@ Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Ae
 - Catalyst: mỗi root gồm trigger/relay/echo chia sẻ tối đa2seed sống gần blast nhất; dấu mới không tự kích trong cùng root. Budget12/tick và24VFX/overflow giữ.
 - Berserker: L1→L2→L3 đều trúng cấp Frenzy4s cho direct melee+25%; miss/timeout mất tiến độ, HP damage hủy Frenzy, Barrier hấp thụ hết không hủy. Specialist chỉ buff blast Charged gốc +25%/radius142 và Fracture3s, Heavy/Charged tiếp tiêu+20flat.
 - Volatile: +40%Detonate, hazard0.8s/8damage/radius70; không Perfect từ hazard. Ghost: Perfect giảm1s hồiDash, khi0charges enemy damage+20%; bỏ maxHP80/hồi2.1s cũ.
-- Blood Pact: melee+30%, hit heal2/cooldown2s, riêng Blood Pact6HP/10s trong ngân sách chung8HP/10s (tuning nerf theo feedback); bỏ Light cost, Heavy hụt/hủy sau bắt đầu cost4HP sàn1 xuyênBarrier. Death Echo:20damage/radius80, max6echo/root; enemy sống hit echo có movement+15%/3s, Boss miễn; bỏ maxHP85.
+- Blood Pact: mọi damage gây ra×0.8, hit chỉ heal khiBarrier0, heal2/cooldown2s, riêng Blood Pact6HP/10s trong ngân sách chung8HP/10s (tuning nerf theo feedback); bỏ Light cost, Heavy hụt/hủy sau bắt đầu cost4HP sàn1 xuyênBarrier. Death Echo:20damage/radius80, max6echo/root; enemy sống hit echo có movement+15%/3s, Boss miễn; bỏ maxHP85.
 - Đổi Curse xóa hazard/haste/pending echo/queued volatile boost và effect Blood trên attack cũ; giữ Curse không reset cooldown/budget, không cấp Barrier mới. Clock dừng theo simulation/hitstop/draft, reset sạch.
 
 ## Kiểm tra và evidence
@@ -29,3 +29,9 @@ Tải lại trang sau deploy. Các link cấp build để vào đúng tình hu�
 4. [Death Echo](https://gizgity.github.io/a-new-game/?playtest=echo): giết quái yếu sát quái khỏe, thấy echo tím, quái sống chạy nhanh có vệt đỏ3s; kill chain đông không nổ vô hạn. Draft Curse thứ2 tại300kills/3:00 thử giữ/đổi; đổi gỡ haste/hazard cũ, giữ không refresh cooldown hoặc nhân effect.
 
 Run thường: https://gizgity.github.io/a-new-game/. Draft Mutation25kills/0:30, Curse80/1:00, Mutation160/1:40 và220/2:20, Curse300/3:00, Mutation380/3:40; vẫn random cũ, không đảm bảo đủ combo. Feedback: link/build, bước/tình huống, quan sát và thiết bị/browser. Dừng Q5B ở AWAITING PLAYTEST APPROVAL, chưa Q5C/D.
+
+## Tank trade-off theo feedback mới
+
+Aegis Core mọi damage gây ra×0.8, Iron Oath×0.75, Blood Pact×0.8 thay bonus+30% cũ. Cost nhân với nhau, áp dụng một lần sau flat bonus trước armor, kể cả proc/nổ/Surge; environment/enemy không bị nerf. Aegis rate4/s (5vớiOath), Blood Pact không hồiHP khiBarrier>0, kể cả đòn vừa tạo khiên. Heal bị chặn không tiêu cooldown/budget. Các preset counter/chain/echo không bị cost nếu không sở hữu lựa chọn phòng thủ.
+
+Link thử kết hợp: https://gizgity.github.io/a-new-game/?playtest=tank — Guard+Aegis+Berserker+Blood, có nhãn rõ và không lưu progress. Tank này cost36%, Juggernaut40%, Frenzy/Blood20% trước các bonus. Giữ Chém/chuột trái20–40s trong đám; so đứng yên và di chuyển/Dash/Heavy. Mong đợi sống lâu hơn nhưng damage thấp hơn và không vô hạn khiên+máu. Chờ user thử trước khi chốt balance.

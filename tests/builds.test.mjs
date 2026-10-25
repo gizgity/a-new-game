@@ -17,7 +17,7 @@ test('Perfect readies Phantom and Static once per cooldown; Light miss keeps Pha
  light(w,1);assert.ok(w.build.phantom>0);assert.equal(w.build.phantoms.length,0);
  const e=target(w);light(w,1);assert.equal(w.build.phantom,0);assert.equal(w.build.phantoms.length,1);
  const charge=w.chargePoints+w.chargedShots*3,damage=w.barrier.aegisDamage,stage=w.build.comboStage,hp=e.hp;
- w.hitstop=0;ticks(w,9);assert.equal(e.hp,hp-18);assert.equal(e.rupture,2);
+ w.hitstop=0;ticks(w,9);assert.ok(Math.abs(e.hp-(hp-18*.8))<1e-9);assert.equal(e.rupture,2);
  assert.equal(w.chargePoints+w.chargedShots*3,charge);assert.equal(w.barrier.aegisDamage,damage);assert.equal(w.build.comboStage,stage);
  w.perfectAvailable=true;w.rewardPerfectDodge();assert.equal(w.build.phantom,0,'cooldown blocks refresh');
 });
@@ -64,10 +64,10 @@ test('Specialist buffs only primary Charged blast, marks surviving targets Fract
 });
 
 test('Blood Pact heals direct melee under cooldown/shared budget, no Light cost, Heavy miss and dash-cancel cost HP through Barrier',()=>{
- const w=world();w.curse='bloodPact';w.hp=50;w.barrier.gain(30,false);const e=target(w);light(w,1);assert.equal(w.hp,52);assert.equal(w.attack.damage,18*1.3);
+ const w=world();w.curse='bloodPact';w.hp=50;const e=target(w);light(w,1);assert.equal(w.hp,52);assert.equal(w.attack.damage,18);
  w.hitEnemy(e,20,0,0,0,false,'light');assert.equal(w.hp,52);
  for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,56);
- w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,52);assert.equal(w.barrier.value,30);
+ w.barrier.gain(30,false);w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,52);assert.equal(w.barrier.value,30);
  w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,48);
  w.hp=2;w.payBloodMiss();assert.equal(w.hp,1);
  const full=world();full.curse='bloodPact';const t=target(full);full.hitEnemy(t,1,0,0,0,false,'light');assert.equal(full.build.healed,0);assert.equal(full.build.bloodCooldown,0);

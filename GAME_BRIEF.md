@@ -152,8 +152,9 @@
 
 - **Barrier:** một giá trị riêng, khởi đầu0, cap thử nghiệm30. Damage hợp lệ đi qua quy tắc tránh đòn/invulnerability hiện có, áp dụng modifier Curse rồi trừ Barrier trước; phần dư trừ HP. Ví dụ Barrier12/damage20 → Barrier0/HP mất8. Không cộng vào maxHP, không là armor/resistance, không tạo invulnerability khi nhận/vỡ Barrier. Hit được Barrier hấp thụ vẫn dùng phản hồi/cửa sổ chống hit lặp hiện có; không bỏ qua hurt pipeline.
 - Không tự hồi hoặc decay Barrier; mọi nguồn chung cap30, phần dư bỏ, không đổi thành HP/Surge. HUD dải cyan riêng `Barrier x/30`, HP vẫn độc lập; nhận/vỡ có mảnh khiên ngắn, không che telegraph. Reset run xóa toàn bộ Barrier và trạng thái proc. Các nguồn cùng tick không vượt cap.
-- **HP sustain:** mọi heal từ Mutation/Curse dùng cooldown riêng và ngân sách chung mặc định tối đa8HP thực hồi trong cửa sổ10s simulation (cửa sổ bắt đầu ở lần hồi thực đầu tiên). Không vượt maxHP, không hồi sinh; fullHP không tiêu budget/cooldown. Kiểm điều kiện ở trigger, không lưu heal để tự phát sau. Draft heal10 giữ nguyên, nằm ngoài ngân sách này; riêng Parasitic Mark giảm còn5. Không nerf draft heal nền. Riêng Blood Pact tối đa6HP/10s, trong cùng cửa sổ/ngân sách chung8HP/10s; đổi Curse không reset lượng đã hồi trong cửa sổ này.
-- Thứ tự Q5 xác định để tuning/debug: các bonus phần trăm direct damage áp dụng nhân trên damage nền của đòn, sau đó cộng bonus phẳng Fracture/Static, rồi qua giáp hiện có; bonus phẳng không nhận thêm phần trăm. Không nhân bonus direct vào Detonate. Heal cùng tick xử lý theo thứ tự sự kiện simulation; nếu cùng sự kiện: Blood Pact → Blood Reclaimer → Parasitic Mark, nguồn sau chỉ dùng ngân sách còn lại. HUD có thể gộp số nhưng không đổi kết quả.
+- Theo feedback tank sau Q5B: Aegis Core nhân mọi damage player gây ra×0.8, Iron Oath×0.75, Blood Pact×0.8 (thay bonus melee+30% cũ). Các cost nhân với nhau, áp dụng một lần cho direct/Phantom/Static/Fracture/Detonate/relay/echo/Surge; không giảm damage môi trường/enemy. Không thay baseline khi không có các lựa chọn này. HUD/card hiển thị cost.
+- **HP sustain:** mọi heal từ Mutation/Curse dùng cooldown riêng và ngân sách chung mặc định tối đa8HP thực hồi trong cửa sổ10s simulation (cửa sổ bắt đầu ở lần hồi thực đầu tiên). Không vượt maxHP, không hồi sinh; fullHP không tiêu budget/cooldown. Kiểm điều kiện ở trigger, không lưu heal để tự phát sau. Draft heal10 giữ nguyên, nằm ngoài ngân sách này; riêng Parasitic Mark giảm còn5. Không nerf draft heal nền. Riêng Blood Pact chỉ hồi khi Barrier bằng0 (kiểm sau khi đòn đã cấp Barrier), tối đa6HP/10s, trong cùng cửa sổ/ngân sách chung8HP/10s; đổi Curse không reset lượng đã hồi trong cửa sổ này.
+- Thứ tự Q5 xác định để tuning/debug: các bonus phần trăm direct damage áp dụng nhân trên damage nền của đòn, sau đó cộng bonus phẳng Fracture/Static, áp dụng cost chống chịu của build rồi qua giáp hiện có; bonus phẳng không nhận thêm phần trăm. Không nhân bonus direct vào Detonate. Heal cùng tick xử lý theo thứ tự sự kiện simulation; nếu cùng sự kiện: Blood Pact → Blood Reclaimer → Parasitic Mark, nguồn sau chỉ dùng ngân sách còn lại. HUD có thể gộp số nhưng không đổi kết quả.
 - Timer buff/debuff/cooldown/hazard và cửa sổ đo hành vi dùng simulation time, dừng khi pause/draft/hitstop. Snapshot hiệu ứng tại hành động khi cần, không đổi damage giữa một đòn đã bắt đầu. Mọi damage/heal/proc có nguồn và root-chain ID; proc damage không giả làm Light/Heavy/Charged để kích tài nguyên vô hạn.
 - Root chain bắt đầu từ một trigger độc lập và bao gồm relay/kill echo sinh ra từ nó. Proc có giới hạn theo root, không reset khi sang tick. Chain bình thường vẫn truyền qua marked neighbours; Catalyst là ngoại lệ seed có giới hạn, không đổi luật cho build không Catalyst. Không tăng budget thực thi/VFX.
 - Kill được tính đúng một lần. Blood Reclaimer dùng snapshot Rupture **trước khi đòn chí tử/Detonate tiêu dấu**; kill do relay giữ snapshot của mục tiêu đó. Không coi mọi nạn nhân AoE là có dấu. Fracture/slow là trạng thái Q5 riêng, không thay Rupture cap3.
@@ -207,7 +208,7 @@
 #### 7. Aegis Core
 - **Archetype:** Juggernaut/chống chịu chủ động. **Trigger:** direct Light/Heavy gây actual HP damage cho enemy.
 - **Effect:** tích damage thực sau giáp, loại overkill; mỗi40 damage tích lũy →4 Barrier, giữ phần dư dưới40.
-- **Limitation/cap:** tối đa8 Barrier/giây simulation từ Aegis trước modifier Iron Oath (tối đa10 với Oath), cap chung30; bỏ phần quy đổi vượt rate/cap, không tích kho để tự cấp sau. Proc/slash/echo không tính, không thể chém không khí để farm.
+- **Limitation/cap:** mọi damage player gây ra×0.8 khi sở hữu Aegis; tối đa4 Barrier/giây simulation từ Aegis trước modifier Iron Oath (tối đa5 với Oath), cap chung30; bỏ phần quy đổi vượt rate/cap, không tích kho để tự cấp sau. Proc/slash/echo không tính, không thể chém không khí để farm.
 - **VFX/HUD:** icon lõi có vòng tiến độ ngắn và flash khi chuyển thành Barrier. **Synergy:** Guard Breaker, Berserker, Iron Oath.
 - **Acceptance:** melee trúng tích khiên, hụt không tăng; một cleave đông quái không vượt rate; fullBarrier không cất lượng dư rồi tự refill sau khi bị đánh.
 
@@ -261,7 +262,7 @@
 - **Acceptance:** né đúng hồi lượt sớm hơn; dash trống không thưởng; tiêu cả hai rồi bị đánh thấy rủi ro, không đổi cửa sổ i-frame.
 
 #### 3. Blood Pact
-- **Archetype:** melee sustain/Heavy commitment. **Trigger/effect:** direct melee hit hồi2HP, cooldown2s, giới hạn riêng Blood Pact6HP/10s (nerf theo feedback sau Q5B) và ngân sách heal chung; giữ lợi ích melee+30% của gói cũ.
+- **Archetype:** melee sustain/Heavy commitment. **Trigger/effect:** direct melee hit chỉ hồi khi Barrier=0: 2HP, cooldown2s, giới hạn riêng Blood Pact6HP/10s (nerf theo feedback sau Q5B) và ngân sách heal chung; đánh đổi mọi damage gây ra×0.8, bỏ bonus melee+30% cũ theo feedback tank quá mạnh.
 - **Risk/cap:** Heavy không trúng enemy nào khi resolve trừ4HP trực tiếp bỏ qua Barrier, không tự kết liễu (sàn1HP). Heavy bắt đầu rồi bị dash hủy cũng tính hụt; cancel trước khi bắt đầu không tính. Bỏ Light cost1HP cũ; multi-hit không nhân heal.
 - **VFX/HUD:** tia hồi đỏ khi hit, cảnh báo mất HP tại Heavy miss; card nói rõ hủy sau khi ra đòn vẫn mất. **Synergy:** Berserker, Aegis Core, Iron Reversal.
 - **Acceptance:** melee trúng hồi có cadence, Heavy vào khoảng trống/hủy mất4HP dù còn Barrier; không thể hút máu từ proc/đánh không khí.
@@ -274,7 +275,7 @@
 
 #### 5. Iron Oath
 - **Archetype:** Juggernaut/Heavy tanking. **Trigger/effect:** Barrier gain từ Guard Breaker/Aegis và nguồn khác ×1.25 trước cap30; khi Heavy bắt đầu với Barrier>0, cấp thêm4Barrier đúng một lần.
-- **Risk/cap:** Dash recharge duration ×1.3 khi Curse active, không giảm số charges hoặc thay tốc độ/duration dash. Bonus4Heavy không tự nhân1.25; chỉ một lần/Heavy đã tiêu lượt, không thưởng khi buffer bị hủy trước khi bắt đầu. Không là damage reduction.
+- **Risk/cap:** mọi damage player gây ra×0.75; Dash recharge duration ×1.3 khi Curse active, không giảm số charges hoặc thay tốc độ/duration dash. Bonus4Heavy không tự nhân1.25; chỉ một lần/Heavy đã tiêu lượt, không thưởng khi buffer bị hủy trước khi bắt đầu. Không là damage reduction.
 - **VFX/HUD:** khiên có viền sắt, HUD Dash thể hiện cooldown dài hơn; Heavy hiện khiên nhỏ khi điều kiện đủ. **Synergy:** Guard Breaker+Aegis Core là slice Q5A.
 - **Acceptance:** tạo Barrier bằng melee rồi Heavy phá thế giúp giữ vị trí; so cùng tình huống không Curse thấy Dash hồi chậm hơn, Heavy hụt không farm vô hạn vì vẫn mất lượt8s.
 

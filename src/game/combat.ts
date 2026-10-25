@@ -69,7 +69,7 @@ export class CombatWorld {
   set curse(value: CurseId | null) {
     if (value === this.activeCurse) return;
     if (this.activeCurse === 'bloodPact' && this.attack?.bloodPact) {
-      this.attack.damage /= BUILD.bloodMultiplier; this.attack.bloodPact = false;
+      this.attack.bloodPact = false;
     }
     this.activeCurse = value;
     this.build.clearCurse();
@@ -83,6 +83,11 @@ export class CombatWorld {
   practice = true;
   get maxHp(): number { return COMBAT.maxHp; }
   get rechargeDuration(): number { return COMBAT.dashRecharge * (this.curse === 'ironOath' ? BARRIER.oathDashMultiplier : 1); }
+  get outgoingDamageMultiplier(): number {
+    return (this.mutations.includes('aegisCore') ? BARRIER.aegisDamageMultiplier : 1) *
+      (this.curse === 'ironOath' ? BARRIER.oathDamageMultiplier : 1) *
+      (this.curse === 'bloodPact' ? BUILD.bloodDamageMultiplier : 1);
+  }
   heavyCharges: number = HEAVY.charges;
   heavyRecharge = 0;
   dashCharges: number = COMBAT.dashCharges;
@@ -373,14 +378,15 @@ export class CombatWorld {
       arc: heavy ? HEAVY.arc : light.arc,
       damage: heavy ? (finisher ? HEAVY.finisherDamage : HEAVY.damage) : light.damage, resolved: false, root: chainRoot(), bloodPact: this.curse === 'bloodPact',
     };
-    this.attack.damage *= (this.curse === 'bloodPact' ? BUILD.bloodMultiplier : 1) * (this.build.frenzy > 0 && this.mutations.includes('berserker') ? BUILD.frenzyMultiplier : 1) * (heavy && this.mutations.includes('guardBreaker') ? 1.3 : 1);
+    this.attack.damage *= (this.build.frenzy > 0 && this.mutations.includes('berserker') ? BUILD.frenzyMultiplier : 1) * (heavy && this.mutations.includes('guardBreaker') ? 1.3 : 1);
     if (heavy) this.combo = 0;
     this.comboWindow = 1.1;
   }
 
-  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' = 'blast', root: ChainRoot = chainRoot()): void {
+  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' = 'blast', root: ChainRoot = chainRoot(), playerSource = true): void {
     if (enemy.hp <= 0) return;
     if ((sound === 'heavy' || sound === 'chargedHit') && enemy.fracture > 0) { damage += BUILD.fractureDamage; enemy.fracture = 0; }
+    if (playerSource) damage *= this.outgoingDamageMultiplier;
     if (enemy.kind === 'bulwark' && enemy.recovery <= 0 && !bypassArmor) damage *= 0.55;
     const contactX = enemy.x, contactY = enemy.y;
     const actualDamage = Math.min(enemy.hp, damage);
@@ -388,7 +394,7 @@ export class CombatWorld {
     if (this.mutations.includes('aegisCore') && ['light', 'light2', 'light3', 'heavy'].includes(sound)) {
       this.barrier.meleeDamage(actualDamage, this.curse === 'ironOath');
     }
-    if (this.curse === 'bloodPact' && ['light', 'light2', 'light3', 'heavy'].includes(sound)) this.hp += this.build.heal(this.hp, this.maxHp);
+    if (this.curse === 'bloodPact' && this.barrier.value <= 0 && ['light', 'light2', 'light3', 'heavy'].includes(sound)) this.hp += this.build.heal(this.hp, this.maxHp);
     this.surge = Math.min(100, this.surge + 2);
     if (enemy.kind === 'boss') force *= 0.1;
     else if (enemy.kind === 'bulwark') force *= 0.4;
@@ -748,7 +754,7 @@ export class CombatWorld {
       const targets = this.enemies.filter(enemy => enemy.hp > 0).map(enemy => ({ enemy, distance: Math.hypot(enemy.x - explosion.x, enemy.y - explosion.y) })).filter(item => item.distance <= explosion.radius);
       for (const { enemy } of targets) {
         this.detonate(enemy, 1, false, explosion);
-        this.hitEnemy(enemy, explosion.damage, Math.atan2(enemy.y - explosion.y, enemy.x - explosion.x), 12, 0.2, true, 'blast', root);
+        this.hitEnemy(enemy, explosion.damage, Math.atan2(enemy.y - explosion.y, enemy.x - explosion.x), 12, 0.2, true, 'blast', root, !explosion.hostile);
         if (enemy.hp > 0 && explosion.charged && this.mutations.includes('detonationSpecialist')) enemy.fracture = BUILD.fractureDuration;
         if (enemy.hp > 0 && explosion.echo && enemy.kind !== 'boss') enemy.echoHaste = BUILD.hasteDuration;
       }

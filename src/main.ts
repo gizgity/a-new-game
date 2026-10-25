@@ -213,6 +213,8 @@ function renderCombatHUD(world: CombatWorld): void {
   if (world.build.staticCharge > 0) statuses.push(`${t('staticReady')} ${duration(world.build.staticCharge)}`);
   if (world.mutations.includes('berserker')) statuses.push(world.build.frenzy > 0 ? `${t('frenzyState')} ${duration(world.build.frenzy)}` : `${t('frenzyState')} ${world.build.comboStage}/3`);
   if (world.curse === 'ghostStep' && world.dashCharges === 0) statuses.push(t('ghostRisk'));
+  if (world.outgoingDamageMultiplier < 1) statuses.push(t('defenseDamageCost').replace('{n}', String(Math.round((1 - world.outgoingDamageMultiplier) * 100))));
+  if (world.curse === 'bloodPact' && world.barrier.value > 0) statuses.push(t('barrierBlocksHeal'));
   if (world.build.healFlash > 0) statuses.push(`${t('healState')} +${world.build.lastHeal}`);
   if (world.build.costFlash > 0) statuses.push(t('bloodMiss'));
   document.querySelector('#build-status')!.textContent = statuses.join(' · ');

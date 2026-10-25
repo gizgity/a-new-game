@@ -10,12 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Nerf nhẹ sustain Frenzy/Blood Pact theo feedback “hồi máu quá nhiều khi đông quái, giảm độ khó”. Chỉ chỉnh Blood Pact: giữ2HP/lần, cooldown1.5→2s và cap riêng8→6HP/10s; giữ Frenzy/combo/damage và các build còn lại. Tests/build/browser/deploy PASS trên f6dd694; **AWAITING PLAYTEST APPROVAL** cho sustain nerf. Q5B chưa accepted; không mở Q5C/D.
+Cân bằng tank theo feedback mới: “vừa giáp vừa máu, đứng tank không di chuyển; chống chịu phải giảm damage”. User yêu cầu điều chỉnh trade-off nên supersede bonus cũ của3lựa chọn phòng thủ. Aegis×0.8, Oath×0.75, Blood Pact×0.8 damage gây ra; cost nhân nhau và áp dụng một lần cho toàn bộ damage player. Aegis rate4/s (Oath5), Blood Pact không hồi khi có Barrier. Tests/build/browser PASS, chuẩn bị deploy; AWAITING PLAYTEST APPROVAL cho tank trade-off. Q5A approval lịch sử giữ; Q5B/tuning mới chờ user thử, Q5C/D chưa mở.
 
 ## ACCEPTANCE
-- Blood Pact hồi tối đa2HP mỗi2s, riêng6HP/10s dù1hay24mục tiêu; không nhân heal theo cleave, không lách cap khi đổi/giữ Curse. FullHP không tiêu budget, reset run sạch.
-- Ngân sách sustain chung8HP/10s cho scope Q5 giữ, Blood Pact dùng cap riêng thấp hơn. Bonus damage, Heavy miss cost4HP, Frenzy/controls/nhịp đòn và difficulty không đổi.
-- Tests/build/browser/deploy PASS; chờ user thử link frenzy20–40s khi giao chiến đông và phản hồi heal có vừa đủ không. Chưa chuyển Q5C.
+- Mọi damage player chịu cost build, gồm flat/proc/chain/Surge; enemy/environment giữ. Build không phòng thủ giữ damage baseline. HUD/card vi/en hiển thị cost.
+- Blood Pact mất buff melee+30%, đổi sang damage×0.8; heal2HP/2s cap6HP/10s chỉ khi Barrier=0, kể cả hit tạo Barrier không đồng thời heal. Không tiêu budget nếu heal bị chặn.
+- Aegis actual damage sau cost/giáp, rate4/s hoặc5vớiOath, không bank dư; cap30/Guard vẫn giữ. Tank sống lâu hơn baseline trong fixture nhưng không sustain đứng yên vô hạn. Vẫn có AoE/cleave/setup→trigger; không đổi quái/controls.
+- Tests/build/browser/deploy và user thử lại tank/Juggernaut/Frenzy; dừng AWAITING PLAYTEST APPROVAL, không mở Q5C/D.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -35,7 +36,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5E — Diversity/balance | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5D |
 
 ## CURRENT STATUS
-- Sustain tuning: Blood Pact2HP/2s, cap riêng6HP/10s trong budget chung8; counter bloodHealed dùng cùng healWindow, giữ qua đổi Curse, reset khi hết window hoặc run mới. Damage/Frenzy và các build khác giữ.
+- Tank trade-off mới: Aegis−20%, Oath−25%, Blood Pact−20% damage gây ra; Aegis+Oath còn60%, Aegis+Blood còn64% trước Frenzy/Guard bonuses. Blood không heal khiBarrier>0; Aegis rate4/Oath5. Preset ?playtest=tank cấp Guard+Aegis+Berserker+Blood, không lưu progress.
+- Sustain tuning: Blood Pact2HP/2s, cap riêng6HP/10s trong budget chung8; counter bloodHealed dùng cùng healWindow, giữ qua đổi Curse, reset khi hết window hoặc run mới. Frenzy modifier vẫn giữ; các cost damage phòng thủ mới áp dụng theo feedback tank ở trên.
 - Q5B rework xong5Mutation/4Curse theo contract. BuildEffects.ts giữ clocks/Phantom/hazard/heal budget; combat giữ root object qua shot/Heavy/Detonate/relay/echo, cap2seed/6echo/root. BuildVisual.ts vẽ cue bounded; HUD vi/en cho Phantom/Static/Frenzy/heal/cost/Ghost risk. config/playtests.ts có4preset Q5B +Juggernaut, không lưu progress.
 - Difficulty v2: pressure4s ưu tiên2Archer tới8; Grunt jump0.68s/radius48 lead160/max3/concurrent, damage6/cooldown7s/first delay4–6.6s/start gap1.6s hoặc0.7s khi18Grunt, Heavy/blast interrupt/AoE vẫn trúng. Boss far-sweep→slam leap560, chase300, ring12+fan3 speed430, windup0.62/0.46 cooldown0.55/0.38 recovery0.32/0.24. Xem docs/pressure-v2/README.md.
 - Contract mới là nguồn thiết kế Q5; docs/q5/AUDIT.md thuộc lượt audit trước, không còn là quyết định/next action hiện hành. User đã duyệt concept/contract; không còn blocker thiết kế.
@@ -97,6 +99,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Tank trade-off:110definitions/8files PASS (5focused mới); typecheck/build/diff PASS. Chromium320/390/844/1440 kiểm36%/40% damage cost, Barrier chặn heal/Curse swap/vi-en/trial no-progress/no-overflow/runtime error PASS. Dist390 đứng giữ Chém12s input thật:24HP tại~12s; docs/tank-balance/ ghi fixture/limits. Chưa user approval/device/full-run.
 - Sustain nerf deploy PASS:f6dd69431cfeee4427bdb8748592a39d8e1bdea1, Actions40207444949 completed/success, job121211304888. Parent396ed42, update main expected SHA/không force;7blobs đối chiếu local. Browser local/dist; chưa user acceptance/device/full-run.
 - Sustain nerf:105definitions/7files PASS (2test mới kiểm1/24target, cooldown2s, cap6HP/10s, hết cửa sổ/đổi Curse/reset). Typecheck/build/diff PASS. Chromium dist390 input Chém8s/pause/vi-en/trial không lưu progress/no-overflow/runtime error PASS. Chưa user acceptance/thiết bị thật/full-run.
 - Q5B deploy PASS:b06bf69f82c3384145556cfed0d453d2ff7be844, Actions40193133738 completed/success, job121168217793. Parent51e3acd, update main expected SHA/không force;20blobs(16text/4PNG) đối chiếu local. Browser local/dist, không tự nhận đã smoke live; chưa user acceptance/Safari/full-run.
@@ -115,27 +118,19 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Chờ user thử ?playtest=frenzy trên f6dd694, chỉ sửa feedback sustain Q5B. Không triển khai Q5C/D.
+Hoàn tất build/browser cho tank trade-off rồi deploy, ghi SHA/Actions và bàn giao link tank/Juggernaut/Frenzy. Dừng chờ user feedback; không mở Q5C/D.
 
-## PLAYTEST SUSTAIN TUNING — AWAITING PLAYTEST APPROVAL
-Bản f6dd694 đã deploy; tải lại https://gizgity.github.io/a-new-game/?playtest=frenzy (preset không lưu tiến độ). Giao chiến20–40s, giữ Chém/chuột trái vào cụm; khi đã mấtHP, hồi2HP cách≥2s, tối đa6HP/10s kể cả cleave nhiều mục tiêu. L1–L3 trúng vẫn Frenzy4s/damage như trước; phải né và chọn vị trí, không tank chỉ nhờ hút máu. Thử Heavy hụt (Đánh mạnh/Shift giữ-thả) vẫn mất4HP. Ghi cảm giác heal/độ khó, tình huống và thiết bị/browser; không yêu cầu duyệt lại các build khác.
+## PLAYTEST TANK TRADE-OFF — AWAITING PLAYTEST APPROVAL
+Sau deploy, tải lại ?playtest=tank (Guard+Aegis+Berserker+Blood), juggernaut hoặc frenzy tại https://gizgity.github.io/a-new-game/. Trial không lưu progress. Giữ Chém/chuột trái vào cụm20–40s: thấy HUD damage−36% (tank) hoặc−40% (Juggernaut), có Barrier không đồng thời hồiHP; kill chậm hơn build công. Thử đứng yên rồi dùng joystick/WASD, Lướt/Space, Heavy/Shift giữ-thả để so: khiên giúp chịu đòn nhưng vẫn cần di chuyển/phá thế. Frenzy4s chỉ khiL1–L3 trúng, Blood vẫn miss Heavy cost4. Báo build, bước, cảm giác damage/chống chịu/AoE và thiết bị/browser. Fixture kỹ thuật không là balance acceptance.
+
+## THAM CHIẾU SUSTAIN f6dd694
+Lượt giảm Blood2HP/2s cap6 đã deploy; feedback mới supersede damage bonus và cho heal chỉ khi Barrier0. Không yêu cầu thử lại bản cũ.
 
 ## PLAYTEST Q5B — AWAITING PLAYTEST APPROVAL
 Bản b06bf69 đã deploy; tải lại link thử có build sẵn: ?playtest=counter (Phantom+Static+Ghost), chain (Catalyst+Specialist+Volatile), frenzy (Berserker+Blood Pact), echo (Catalyst+Death Echo). Có nhãn rõ, không lưu progress; không là natural acquisition. Base https://gizgity.github.io/a-new-game/. Checklist thao tác/mong đợi/giới hạn ở docs/q5b/README.md. Run thường giữ milestones/pool7/5/unlock, chưa Draft v2. Chỉ Q5B cần user duyệt; Q5A và difficulty giữ trạng thái cũ.
 
-## PLAYTEST GRUNT TUNING — AWAITING PLAYTEST APPROVAL
-Bản6b7d7ad đã deploy; tải lại https://gizgity.github.io/a-new-game/. Opening20–30s: có ít nhất4s cho Grunt mới trước khi nhảy, từng cú trừ6HP nền thay12, nhảy thưa và lệch nhau khi ít quái. Chạy bằng joystick/WASD; đổi hướng/Dash (Lướt/Space) sau vòng đáp để né, Heavy/Charged giữ-thả để phản công. Không kill cho tới đủ18Grunt: nhịp nhóm dày hơn nhưng từng con vẫn cooldown7s; quay lại gom/nổ AoE giảm nguy cơ. Phản hồi còn chết quá nhanh hay đủ thời gian thích ứng, tình huống và thiết bị/browser. Chưa user acceptance; Boss/Archer không tune thêm trong lượt này.
-
-## PLAYTEST DIFFICULTY V2 — AWAITING PLAYTEST APPROVAL
-Bản e4f0ab1 đã deploy tại https://gizgity.github.io/a-new-game/, tải lại trang. Opening: chạy thẳng thấy Grunt nhảy đón, đổi hướng/Dash né, Heavy/blast ngắt. Không kill20–30s thấy pressure ưu tiên Archer; gom dấu→Heavy/Charged/Surge vẫn dọn nhiều. Boss450kills/4:00 áp sát từ xa,15đạn/ring+fan nhanh hơn, còn recovery phản công. Mobile joystick/Lướt, Heavy/Charged giữ-thả; desktop WASD/Space/Shift/E. Ghi đòn/cue gặp vấn đề, cảm giác AoE và thiết bị/browser. Chưa user approval, không suy rộng tests thành độ khó đạt.
-
-## PLAYTEST FIXES SAU Q5A — THAM CHIẾU BẢN f89bfa7
-Checklist lượt trước; difficulty v2 bên trên thay nhịp Boss/pressure. Bản f89bfa7, link https://gizgity.github.io/a-new-game/ đã deploy, tải lại trang. Scope chỉ5fixes mới, không yêu cầu duyệt lại Juggernaut.
-1. Đầu run né/không kill20–30s: sau khi đủ18 vẫn có pack3 thêm mỗi6s không kill; kill reset pressure. Mobile joystick/Lướt, desktop WASD/Space.
-2. Di chuyển ngang trước Archer khi gồng: cung/ray theo player; đạn đã bắn không bẻ lái.
-3. Draft25kills/0:30: giữ chuột trái trước khi mở rồi nhả trên card, hoặc click phải, không tự chọn/menu native; click trái mới/Enter chọn được, mobile còn cuộn.
-4. Boss450kills/4:00 có ba pattern nối nhanh hơn; hạ Boss thấy vỡ ấn/chime1.1s rồi CHIẾN THẮNG vàng, chết/deadline THẤT BẠI hồng. Phản hồi nhịp có đủ khó/đọc được không, cùng thiết bị/browser.
-Evidence/giới hạn và checklist: docs/post-q5a/README.md; fixtures không là natural/full-run. Core stress132enemies trên Chromium máy này không thay kiểm hiệu năng mobile thật.
+## THAM CHIẾU DIFFICULTY / GRUNT / FIXES
+Giữ tuning Grunt6b7d7ad, difficulty e4f0ab1 và fixes f89bfa7 theo yêu cầu trước; không tự accepted experience. Các checklist/evidence ở docs/pressure-v2/, docs/post-q5a/. Lượt này chỉ yêu cầu thử tank trade-off.
 
 ## PLAYTEST Q5A — ĐÃ DUYỆT / THAM CHIẾU
 Bản Q5A fa4045d đã deploy; dùng link trial https://gizgity.github.io/a-new-game/?playtest=juggernaut; tải lại trang. Trial cấp Guard+Aegis+Oath từ đầu, có nhãn rõ và không lưu kills/unlocks/runs; không là natural acquisition. Run thường không query vẫn pool7/5 và luật unlock/draft cũ, không bảo đảm draft ra cả bộ.
