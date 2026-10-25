@@ -43,3 +43,6 @@ export const ENEMY_ATTACK = {
 } as const;
 export const BOSS_ATTACK = { windup: 0.95, enragedWindup: 0.75, recovery: 0.7,
   enragedRecovery: 0.5, cooldown: 1.15, enragedCooldown: 0.8, range: 230, arc: 1.7, slamRadius: 110 } as const;
+
+// Relay delay uses simulation time; damage/radii retain the M3 tuning.
+export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;

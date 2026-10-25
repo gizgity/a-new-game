@@ -10,14 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q3 — Enemy identity/precision đã được người dùng chấp nhận qua “oki q3 r”. ACCEPTED — USER PLAYTEST/VISUAL APPROVAL cho toàn checkpoint Q3 trên bảnfa55057 (nền Q3 a3e9337); cue Grunt/Perfect Dodge đã được duyệt riêng trước đó. Giữ implementation/balance hiện tại; Q2 vẫn accepted, Q1 chờ visual approval. Dừng ở Q3, không tự mở Q4/Q5.
+Q4 — Chain depth, user giao ngày 2026-10-25. Implementation/checks xong: chain lan theo nhịp đọc được, không mất explosion quá budget; chờ deploy và user playtest. Q3 accepted trên fa55057; Q1 vẫn chờ duyệt, Q2 accepted; không mở Q5.
 
 ## ACCEPTANCE
-- Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
-- Telegraph có tiến trình theo thời gian windup thực, khóa hướng/điểm và khớp damage; active feedback không gây hit lặp.
-- Common giữ nhịp nhanh, Elite/Boss có recovery đứng yên đủ phản công; Bulwark mở giáp khi recovery. Boss giữ ba pattern, phase nhanh hơn dưới nửa HP, không stun-lock.
-- Không đổi số lượng nội dung, controls, charge, chain budget, growth/drafts/deadline; toàn bộ text mới (nếu có) qua vi/en.
-- Focused tests, build/typecheck, browser gameplay và ảnh evidence trước deploy Actions. Visual/feel vẫn AWAITING PLAYTEST/VISUAL APPROVAL tới khi user xác nhận.
+- Rupture 1–3 stacks có dấu đọc rõ; Basic/Heavy kích setup, Charged tự seed như hiện tại. Lan qua marked neighbours trong radius thật, không tự đánh dấu mọi quái.
+- Relay có nhịp/đường truyền dễ đọc. Không mất explosion hoặc thưởng khống khi quá 12 vụ/tick; queue tiếp tục ở simulation, pause/hitstop/reset đúng.
+- Giữ damage/radius/resources/controls/enemy/drafts và budget VFX24; không thêm Mutation/Curse.
+- Focused tests, typecheck/build, browser gameplay/evidence và deploy Actions; cảm giác/visual chờ user playtest.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -28,10 +27,11 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
 | Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
 | Q3 — Enemy identity/precision | ACCEPTED — USER PLAYTEST/VISUAL APPROVAL | User xác nhận “oki q3 r” trên bảnfa55057 |
-| Q4 — Chain depth | NOT VERIFIED | Charged tự seed Detonate hỗ trợ ranged; depth tổng thể chưa duyệt |
+| Q4 — Chain depth | IN PROGRESS — AWAITING PLAYTEST/VISUAL APPROVAL | Relay/overflow/markers triển khai xong; chờ user thử |
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
 
 ## CURRENT STATUS
+- Q4: relay chờ4ticks simulation (66.7ms), giữ snapshot vị trí/damage/radius trước knockback; chỉ marked neighbours truyền nổ. Giữ phần queue dư qua tick sau thay vì xóa, tối đa12/tick; Detonate và +1charge tính lúc thực thi. Pending-ID chống trùng relay, chainSeen chống lặp trong tick; reset xóa queue. Pause/draft/hitstop dừng simulation. Rupture3ô hình thoi, nối nguồn→đích khi relay nổ; budget24VFX giữ.
 - Grunt cue theo feedback: chuẩn bị là quạt rỗng viền đứt hồng; last160ms (tính cả stagger) viền liền3px + chevrons, vàng chỉ khi isImminentEnemyThreat thật. Tick hit lóe trắng/tô quạt2ticks simulation (hitstop có thể kéo dài thời gian thực); sau đó chỉ vệt slash gãy fade, bỏ fill/radial edges trong recovery. Chỉ sửa EnemyVisual.ts, không đổi core timing/damage/Perfect.
 - Q3: EnemyVisual.ts tách khỏi Scene, silhouette riêng: Grunt mặt nạ/móc tay, Archer mũ/áo rách/cung, Volatile lõi lò tách5mảnh, Bulwark giáp phiến, Warden vương miện/thân rỗng/3mảnh xích. Windup co/lấy đà, active bật người, recovery mở lõi; không thay collider.
 - Ground cue vẽ trước bodies, outer boundary khớp hit geometry + vòng/quạt tiến độ từ windupDuration snapshot; Archer ray khóa hướng, Boss ring12rays đúng hướng đạn/slam khóa điểm. Active0.18s(common)/0.22s(Boss) giữ đúng pattern cũ, chỉ feedback, không gây hit lặp.
@@ -55,9 +55,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Functional tests chứng minh input/timing/geometry/resources/run, không chứng minh combat feel. Safari/iOS, âm thanh/performance/tầm với máy thật và full-run cần user thử.
 - Adaptive vẫn so bộ đếm hành động, fallback ngẫu nhiên có nhãn adaptive/synergy; Catalyst hiện đã có tác dụng cho ranged được ưu tiên. Không tuyên bố đã giải quyết toàn Q5.
 - Phantom Edge/Berserker/Detonation Specialist/Volatile Soul/Ghost Step còn thiên về chỉ số. Tên/số lượng và nguồn concept thiếu giữ trong Brief; không tự thêm nội dung mới.
-- Chain có damage/lan thật nhưng queue quá budget vẫn bỏ; Q4 depth chưa được review. Không thay giới hạn MVP.
+- Q4 đã sửa bỏ queue quá budget; browser/tests không là human acceptance cho chiều sâu/feel. Không thay giới hạn MVP.
 
 ## EVIDENCE
+- docs/q4/: setup/trigger/relay390 và layout320/844/1440 là fixture core/renderer thật (grant HP/marks), không là natural run. Opening390 dùng input Bắn thật, không grant stats.
 - docs/grunt-cue/: prepare/perfect-window/strike/recovery + prepare320/844 và production390. Fixture core tick thật/renderer thật; production input thật. Ảnh đã xem trực quan.
 - docs/q3/: identity/common telegraphs, ba pattern Boss windup/active, Bulwark mở giáp, viewports, production. Ảnh pattern là fixture; production opening dùng input thật, không grant stats. README ghi giới hạn.
 - docs/milestones/: HUD mobile/desktop, Curse đổi/giữ và Mutation cuối; fixture kiểm ngưỡng và pool, không là natural run. HUD320/390/844/1440 và draft-4/draft-5; fixture pool cố định và kills để kiểm ngưỡng, không là natural run.
@@ -68,7 +69,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 ## KEY DECISIONS
 - User yêu cầu mọi bàn giao playtest phải nói rõ scope, cách thử và kết quả mong đợi; đã lưu quy tắc ở AGENTS.md.
 - Mobile-first + desktop,1arena,run5phút,1sword/gun,3mobs/Elite/Boss,6Mutation/4Curse; không permanent stat upgrades/backend/account/multiplayer/leaderboard/monetization.
-- User mới nhất mở rộng6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3 được user giao tiếp; Q4/Q5 vẫn dừng.
+- User mới nhất mở rộng6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3 đã accepted; user giao Q4 ngày2026-10-25, Q5 vẫn dừng.
 - Free/open-source/KISS, Phaser3.90+TS5.9+Vite7, fixed60Hz/catchup100ms; không dependency mới/QA framework/art engine.
 - UI vi/en qua t(key). Codename cursebreak không là public brand; Neon Occult/Fractured Geometry original.
 - Quyền tự deploy sau checks PASS, không hỏi lại. Dùng .github/workflows/pages.yml, base /a-new-game/, giữ remote/main, push không force, theo dõi Actions tới kết thúc. Deploy không là visual/device approval.
@@ -85,28 +86,21 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- User xác nhận “oki q3 r” cho toànQ3. Đây là experience/visual approval từ user, không phải chứng nhận mọi thiết bị/Safari hoặc đo hiệu năng/full-run. Lượt ghi nhận chỉ sửa Markdown; kiểm diff/nhất quán, không chạy lại tests/build/deploy.
-- User xác nhận “oki r” cho cue Grunt/Perfect Dodge trên bảnfa55057. Lượt này chỉ cập nhật Markdown, kiểm diff/nhất quán; không chạy lại tests/build/deploy. Không suy rộng acceptance sang toànQ3 hoặc mọi thiết bị.
-- Grunt cue: 66tests PASS, typecheck/build PASS. Chromium320/390/844 PASS: dashed trước cửa sổ/no damage, solid gold chỉ khi đủ threat160ms, strike flash trùng damage12, recovery không fill; dash sớm0Perfect/dash vàng1Perfect/ngoài threat không vàng. Production320/390/844/1440 PASS assets/input/pause/vi-en/no overflow/runtime errors. Bằng chứng kỹ thuật, chưa là user duyệt readability.
-- Bản sửa Grunt deploy PASS: Actions40154949591 completed/success, job121054223399; headfa55057d3a8ef30f70f4f702bb5ef969b2a43189. Build/upload/deploy đều success. Giữ main5838fd5 làm parent, không force; không đổi core combat.
-- Q3: npm test PASS (66definitions/4files; thêm4focused definitions), typecheck/build PASS; bundle Phaser>500KB vẫn là warning hiện trạng.
-- Chromium mobile390: gallery,3Boss patterns/active/locked target, né slam không mất HP, Boss đứng yên qua recovery, Bulwark mở giáp PASS. Viewports320/390/844/768/1440 không overflow/runtime errors. Đây là fixtures, không phải human playtest/full-run.
-- Production smoke /a-new-game/ PASS320/390/844/1440: assets/base, giữ Bắn opening, pause/resume, vi/en, no overflow/runtime/request errors. Deployment Q3: Actions40149381888 completed/success, heada3e93379d25b3f7a49f8b2389ff5ba517a2302ac. Live https://gizgity.github.io/a-new-game/.
-- Baseline giữ remote4d98a2e (Q2 user approval), implementation84fb33a/Actions40147434160 success. Sáu draft/encounters và vi/en mới đã ghép trước tests; không quay về bản3draft.
-- Git CLI không có credential hợp lệ; deploy bằng GitHub connector với parent4d98a2e/tree mới và expected SHA, không force. Remote diff chỉ Q3+evidence; mọi blob đã đối chiếu hash với local. Branch local work là snapshot từb55e354, đã ghép source/text remote mới; lịch sử local chưa fetch3commit trướcQ3 và ảnh docs/milestones chỉ có remote. Không push branch work lên main; lần làm tiếp cần đọc remote handoff mới nhất/đồng bộ lịch sử khi CLI auth có lại.
+- Q4: npm test PASS (71definitions/5files), typecheck/build PASS; Phaser bundle>500KB là warning hiện trạng. Focused tests: bridge/gap/unmarked, overflow30thực thiđủ, snapshot khi target chết, hitstop, reset, stack damage/radius; giữ regression Q2/Q3/run/progression.
+- Chromium mobile390: fixture setup→trigger1→relay2 có đường nối, viewport320/390/844/1440 không overflow/runtime errors. Opening390 dùng Bắn thật, pause/resume và vi/en; production dist320/390/844/1440 PASS assets/input/vi-en/no runtime-request errors. Chưa Safari/iOS, human feel hoặc full-run.
+- Q3 đã được user duyệt “oki q3 r” trên fa55057; cue Grunt duyệt riêng. Giữ quạt đứt→vàng→flash trắng và không thay core Q3.
+- Đã đối chiếu remote main e88a9f5, ghép EnemyVisual/Brief/handoff mới trước Q4; giữ nguyên các ảnh remote docs/grunt-cue. Git CLI hiện lỗi kết nối proxy; deploy bằng GitHub connector từ parent main và expected SHA, không push lịch sử local work.
+- Deploy Q4: đang chuẩn bị sau checks; live hiện fa55057 tại https://gizgity.github.io/a-new-game/.
 
 ## NEXT ACTION
-Q3 đã accepted; dừng chờ người dùng giao checkpoint tiếp theo (Q4 — Chain depth) hoặc feedback mới. Không tự triển khai Q4/Q5, không yêu cầu playtest lại Q3 đã duyệt.
+Deploy Q4 bằng Actions sau checks PASS, theo dõi workflow tới kết thúc rồi bàn giao playtest riêng Q4. Không mở Q5.
 
-## PLAYTEST Q3 — SCOPE / CÁCH THỬ
-ToànQ3 đã được user duyệt qua “oki q3 r”. Hướng dẫn dưới đây là tham chiếu lịch sử cho phạm vi đã duyệt, không phải yêu cầu playtest đang chờ. Lượt bàn giao tiếp theo phải có scope/cách thử/kỳ vọng riêng.
-Bản cue Grunt fa55057 đã live, tải lại trang; lượt sửa mới chỉ cần thử Grunt ở opening: không tấn công để tránh stagger/ngắt đòn, lại gần dụ quạt, quan sát viền đứt hồng → liền/vàng → trắng. Nhấn Lướt/Space khi chuyển vàng, trước lóe trắng; mong đợi thông báo Perfect Dodge và không mất HP. Thử một lần lướt sớm ở viền đứt để đối chiếu (không thưởng Perfect). Ra ngoài quạt thì không có vàng từ Grunt đó. Cho biết có đọc được nhịp mà không đoán không; chưa yêu cầu thử lại Elite/Boss trong lượt này. Hướng dẫn toànQ3 bên dưới được giữ làm tham chiếu.
-Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi trên thiết bị thường dùng; mobile dùng joystick/nút Lướt/Đánh mạnh, desktop WASD/Space và giữ-thả Shift. Mục tiêu lượt này là art/readability, đọc hướng/vùng đòn và né→phản công; Q2 đã accepted, Q4/Q5 chưa giao.
-1. Trong waves, nhìn Grunt (mặt nạ/móc tay), Archer (mũ/cung), Volatile (lõi cam). Thử nhận ra từng loại khi đang di chuyển và có nhiều quái; mong đợi phân biệt được bằng hình/chuyển động, player và dấu báo đòn không bị lẫn.
-2. Đến gần Grunt rồi lướt ngang ra khỏi quạt khi nó lấy đà; với Archer đi ngang đường ngắm, với Volatile rời vòng nổ trước khi vòng đầy. Mong đợi hướng/vị trí báo giữ cố định, đòn xảy ra theo vùng/đường đã báo, có đủ dấu hiệu để phản ứng; đạn Archer vẫn phải né khi bay tới.
-3. Bulwark xuất hiện200kills hoặc2:30 (cái nào trước). Lại gần để dụ quét, lướt ra ngoài quạt rồi quay vào đánh lúc giáp tách/lõi sáng. Mong đợi có khoảng đứng yên để phản công; cùng loại đòn gây damage rõ hơn lúc mở giáp (tránh Guard Breaker khi so giáp).
-4. Boss xuất hiện450kills hoặc4:00. Quan sát một vòng quét→vòng đạn→slam: né khỏi quạt, luồn khe đạn, rời vòng slam đã khóa rồi quay lại đánh khi Boss hồi. Mong đợi phân biệt3dấu báo và có khoảng phản công; dưới nửaHP nhịp nhanh hơn nhưng vẫn đọc được. Nếu chưa tới encounter, ghi rõ đã thử tới đâu, không coi là đã duyệt toànQ3.
-Phản hồi cần: phần/quái nào khó đọc hoặc khó né, thao tác đã làm và thực tế xảy ra; kèm thiết bị/browser khi liên quan. Các tests/browser fixtures đã PASS, còn cảm giác/readability trên máy thật và full-run chưa được user xác nhận.
+## PLAYTEST Q4 — SCOPE / CÁCH THỬ
+Bản Q4 sau deploy tại https://gizgity.github.io/a-new-game/; tải lại trang. Chỉ thử setup→trigger→lan, không yêu cầu duyệt lại Q3.
+1. Trong opening, gom2–3Grunt, giữ Chém (mobile) / chuột trái (desktop) để đánh dấu hình thoi. Bắn vào một con bằng nút Bắn / chuột phải, hoặc giữ-thả Đánh mạnh / Shift. Mong đợi Rupture biến mất khi kích, có vòng nổ rồi đường nối/nổ tiếp qua quái đã đánh dấu nằm gần nhau; quái chưa đánh dấu chỉ nhận AoE, không tự truyền.
+2. Thử kéo hai quái đã đánh dấu ra xa rồi bắn một con: mong đợi con ngoài vòng nổ giữ dấu, không có đường nối vượt khoảng trống. Đặt nhiều dấu cho nổ mạnh hơn; quái opening có thể chết trước3stacks, dùng quái sau60s hoặc Bulwark nếu muốn so3stacks.
+3. Giữ Bắn tích đạn rồi giữ-thả Tích lực / E vào quái chưa chém: mong đợi vẫn tự seed và nổ; thêm marked neighbours để so hiệu quả dọn đám. Kiểm cảm giác relay có đủ rõ mà không chậm/ngợp hoặc che telegraph.
+Phản hồi: tình huống/cách setup, điều quan sát được, thiết bị/browser. Tests/browser fixture đã kiểm cơ chế; cảm giác, readability và máy thật vẫn chờ user.
 
 ## BLOCKERS
-Không blocker Q3; user đã duyệt checkpoint. Chưa có thông tin thiết bị/browser của lượt duyệt, không coi là đã xác minh toàn bộ Safari/iOS hoặc full-run. Hạn chế đồng bộ lịch sử local nêu ở validation; connector vẫn truy cập remote được.
+Chưa user duyệt Q4. Git CLI không kết nối proxy; connector GitHub còn dùng được để bảo toàn remote và deploy. Q3 đã accepted; không yêu cầu playtest lại.

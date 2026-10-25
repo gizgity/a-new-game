@@ -55,6 +55,7 @@
 - Cần hit feedback, knockback, stagger, hitstop ngắn và attack telegraph.
 - Fixed 60Hz simulation là mục tiêu kỹ thuật. Balance là tham số điều chỉnh sau playtest.
 - Tham số MVP M3: Light hoặc Basic Shot hit cho1Charge Point, Detonate cho1, Perfect Dodge cho3; charge không vượt 3 viên/2 điểm dự trữ. Basic Shot20damage; Charged84damage, tự thêm1Rupture (cap3) rồi Detonate×2 kể cả mục tiêu chưa đánh dấu; Heavy Detonate ×1.4.
+- Q4: relay qua marked neighbours chờ4ticks simulation (66.7ms); mỗi blast snapshot vị trí/damage/radius trước knockback. Queue quá12/tick tiếp tục ở tick sau, không bỏ; Detonate/charge chỉ tính khi nổ thật. Hitstop/pause đóng băng, reset xóa queue. Không seed quái chưa đánh dấu, giữ damage/radius và24VFX. Dấu3ô Rupture và đường truyền giúp đọc setup→trigger→relay; chờ user playtest Q4.
 - Rupture không tự hết hạn trong MVP. Detonate gốc 12 damage/stack, bán kính 105 px; mỗi mục tiêu kích tối đa một lần/tick, tối đa 12 vụ nổ/tick.
 - Surge nhận từ hit/kill/Perfect Dodge; Q dùng 100 Surge gây 100 damage trong 280 px, xóa đạn địch và cho 0.5 giây bảo vệ.
 - Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện ở200kills hoặc2:30. Boss ở450kills hoặc4:00 (điều kiện nào tới trước) dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
@@ -213,4 +214,4 @@ Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên t�
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4/Q5 chỉ triển khai khi người dùng giao tiếp.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 được user giao, đang triển khai/chờ playtest; Q5 chỉ mở khi người dùng giao tiếp.

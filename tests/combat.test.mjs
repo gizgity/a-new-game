@@ -246,7 +246,16 @@ test('chain reaction hits marked neighbours once and respects explosion budget',
   state.enemies = Array.from({ length: 30 }, (_, id) => ({ ...template, id, x: 860, y: 500, hp: 500, rupture: 3 }));
   state.projectiles.push({ x: 820, y: 500, vx: 2000, vy: 0, hostile: false, life: 1 });
   state.step(idle, FIXED_STEP);
-  assert.equal(state.lastChain, COMBAT.chainLimit);
+  assert.equal(state.lastChain, 1);
+  assert.equal(state.detonations, 1); // Queued relays have not paid out yet.
+  let peak = 0;
+  for (let i = 0; i < 120; i++) {
+    state.step(idle, FIXED_STEP);
+    assert.ok(state.lastChain <= COMBAT.chainLimit);
+    assert.ok(state.impacts.length <= 24);
+    peak = Math.max(peak, state.lastChain);
+  }
+  assert.equal(peak, COMBAT.chainLimit);
   assert.equal(state.detonations, 30);
   assert.ok(state.enemies.every((enemy) => enemy.rupture === 0));
   assert.ok(state.surge <= 100 && state.chargedShots <= 3);
@@ -565,8 +574,12 @@ test('dense Charged chains retain one primary blast while effects and chain work
   state.enemies = Array.from({ length: 30 }, (_, id) => ({ ...template, id, x: 850, y: 500, hp: 500, rupture: 3 }));
   state.chargedShots = 1;
   state.step({ ...idle, charged: true }, FIXED_STEP);
-  assert.equal(state.lastChain, COMBAT.chainLimit);
+  assert.equal(state.lastChain, 1);
   assert.ok(state.impacts.length <= 24);
+  assert.equal(state.impacts.filter(i => i.kind === 'chargedBlast').length, 1);
+  for (let i = 0; i < 30 && state.detonations === 1; i++) state.step(idle, FIXED_STEP);
+  assert.ok(state.detonations > 1);
+  assert.ok(state.lastChain <= COMBAT.chainLimit && state.impacts.length <= 24);
   assert.equal(state.impacts.filter(i => i.kind === 'chargedBlast').length, 1);
   state.reset();
   assert.equal(state.impacts.length, 0);

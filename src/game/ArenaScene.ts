@@ -226,6 +226,13 @@ export class ArenaScene extends Phaser.Scene {
     for (const impact of world.impacts) {
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);
+      if (impact.kind === 'chainBlast') {
+        g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, (impact.radius ?? 105) * (1 - fade));
+        if (impact.sourceX !== undefined && impact.sourceY !== undefined) {
+          g.lineStyle(2, 0xe5fff7, fade).lineBetween(impact.sourceX, impact.sourceY, impact.x, impact.y);
+        }
+        continue;
+      }
       if (impact.kind) {
         const heavy = impact.kind === 'heavy' || impact.kind === 'light3';
         const spread = (impact.kind === 'heavy' ? 44 : heavy ? 32 : impact.kind === 'light2' ? 26 : 20) * (1 - fade);

@@ -190,7 +190,13 @@ export function drawEnemyBody(g: Graphics, e: Enemy, time: number): void {
   if (open && (e.kind === 'bulwark' || e.kind === 'boss')) {
     for (const side of [-1, 1]) line(-4, side * (size + 10), 5, side * (size + 10), 2, 0xe4efff);
   }
-  for (let i = 0; i < e.rupture; i++) g.fillStyle(0x6bf3d0).fillCircle(e.x - 8 + i * 8, e.y - size - 12, 2);
+  // Three fixed slots distinguish setup strength even on the phone camera.
+  if (e.rupture > 0) for (let i = 0; i < 3; i++) {
+    const x = e.x - 10 + i * 10, y = e.y - size - 16;
+    const points = [{ x, y: y - 4 }, { x: x + 4, y }, { x, y: y + 4 }, { x: x - 4, y }];
+    g.lineStyle(1, 0x6bf3d0, i < e.rupture ? 1 : 0.3).strokePoints(points, true);
+    if (i < e.rupture) g.fillStyle(e.rupture === 3 ? 0xe5fff7 : 0x6bf3d0).fillPoints(points, true);
+  }
   g.fillStyle(0x18202c).fillRect(e.x - 16, e.y - size - 7, 32, 3);
   g.fillStyle(color).fillRect(e.x - 16, e.y - size - 7, 32 * e.hp / e.maxHp, 3);
 }

@@ -1,4 +1,4 @@
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN } from './config/balance.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
@@ -33,9 +33,9 @@ export interface Attack {
 }
 export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number;
-  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast'; angle?: number;
+  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast'; angle?: number; sourceX?: number; sourceY?: number;
 }
-interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number }
+interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number; delay?: number; enemyId?: number; sourceX?: number; sourceY?: number }
 
 function clampPosition(body: { x: number; y: number }, radius = PLAYER_RADIUS): void {
   const edge = ARENA.inset + radius;
@@ -83,6 +83,7 @@ export class CombatWorld {
   lastChain = 0;
   private explosions: Explosion[] = [];
   private chainSeen = new Set<number>();
+  private pendingDetonations = new Set<number>();
   combo = 0;
   comboWindow = 0;
   shotCooldown = 0;
@@ -150,6 +151,7 @@ export class CombatWorld {
     this.detonations = this.perfectDodges = this.lastChain = 0;
     this.bossSlain = false;
     this.explosions = [];
+    this.pendingDetonations.clear();
     this.chainSeen.clear();
     this.attack = null;
     this.projectiles = [];
@@ -192,6 +194,7 @@ export class CombatWorld {
     this.dashProtected = false;
     this.chainSeen.clear();
     this.lastChain = 0;
+    for (const explosion of this.explosions) explosion.delay = Math.max(0, (explosion.delay ?? 0) - dt);
     this.surgeFlash = Math.max(0, this.surgeFlash - dt);
     this.invulnerable = Math.max(0, this.invulnerable - dt);
     this.hurtFlash = Math.max(0, this.hurtFlash - dt);
@@ -567,39 +570,48 @@ export class CombatWorld {
     this.chargePoints = Math.min(2, this.chargePoints);
   }
 
-  private detonate(enemy: Enemy, multiplier: number, charged = false): void {
-    if (enemy.rupture === 0 || this.chainSeen.has(enemy.id)) return;
+  private detonate(enemy: Enemy, multiplier: number, charged = false, source?: Explosion): void {
+    if (enemy.rupture === 0 || this.chainSeen.has(enemy.id) || this.pendingDetonations.has(enemy.id)) return;
     this.chainSeen.add(enemy.id);
     const stacks = enemy.rupture;
     enemy.rupture = 0;
-    this.detonations++;
-    this.gainCharge(1);
-    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * 12 * multiplier * (this.curse === 'volatileSoul' ? 1.4 : 1) * (this.mutations.includes('detonationSpecialist') ? 1.25 : 1), radius: this.mutations.includes('detonationSpecialist') ? 142 : 105, hostile: false, charged });
+    this.pendingDetonations.add(enemy.id);
+    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * CHAIN.damagePerStack * multiplier * (this.curse === 'volatileSoul' ? 1.4 : 1) * (this.mutations.includes('detonationSpecialist') ? 1.25 : 1), radius: this.mutations.includes('detonationSpecialist') ? CHAIN.specialistRadius : CHAIN.radius, hostile: false, charged,
+      enemyId: enemy.id, delay: source ? CHAIN.relayDelay : 0, sourceX: source?.x, sourceY: source?.y });
   }
 
   private resolveExplosions(): void {
-    // Queue có budget và mỗi enemy chỉ kích Rupture một lần trong tick.
+    // Retain overflow; relay snapshots survive the marked target dying or moving.
     while (this.explosions.length > 0 && this.lastChain < COMBAT.chainLimit) {
-      const explosion = this.explosions.shift()!;
+      const ready = this.explosions.findIndex(item => (item.delay ?? 0) <= 1e-9);
+      if (ready < 0) break;
+      const [explosion] = this.explosions.splice(ready, 1);
+      if (explosion.enemyId !== undefined) {
+        this.pendingDetonations.delete(explosion.enemyId);
+        this.chainSeen.add(explosion.enemyId);
+        this.detonations++;
+        this.gainCharge(1);
+      }
       this.cue(explosion.charged ? 'chargedBlast' : 'detonate');
       this.lastChain++;
-      this.impact(explosion.x, explosion.y, explosion.hostile ? 0xffb36b : 0x6bf3d0, explosion.radius, explosion.charged ? 'chargedBlast' : undefined);
+      this.impact(explosion.x, explosion.y, explosion.hostile ? 0xffb36b : 0x6bf3d0, explosion.radius, explosion.charged ? 'chargedBlast' : explosion.sourceX !== undefined ? 'chainBlast' : undefined);
+      const blast = this.impacts[this.impacts.length - 1];
+      blast.sourceX = explosion.sourceX; blast.sourceY = explosion.sourceY;
       for (const enemy of this.enemies) {
         if (enemy.hp <= 0 || Math.hypot(enemy.x - explosion.x, enemy.y - explosion.y) > explosion.radius) continue;
-        this.detonate(enemy, 1);
+        this.detonate(enemy, 1, false, explosion);
         this.hitEnemy(enemy, explosion.damage, Math.atan2(enemy.y - explosion.y, enemy.x - explosion.x), 12, 0.2, true);
       }
       if (explosion.hostile && Math.hypot(this.player.x - explosion.x, this.player.y - explosion.y) <= explosion.radius) {
         this.hurt(explosion.playerDamage ?? 16, Math.atan2(this.player.y - explosion.y, this.player.x - explosion.x));
       }
     }
-    this.explosions = [];
   }
 
   private impact(x: number, y: number, color: number, radius = 22, kind?: Impact['kind'], angle = 0): void {
     // Keep the primary Charged blast readable when a chain fills the existing VFX budget.
     if (this.impacts.length >= 24) this.impacts.splice(Math.max(0, this.impacts.findIndex(item => item.kind !== 'chargedBlast')), 1);
-    const duration = kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
+    const duration = kind === 'chainBlast' ? 0.24 : kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
     this.impacts.push({ x, y, color, radius, kind, angle, duration, life: duration });
   }
 }
