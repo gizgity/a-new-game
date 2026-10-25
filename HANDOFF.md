@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Feedback Q3: quạt Grunt khó phân biệt chuẩn bị/gây damage, khó canh Perfect Dodge. Đã tách visual thành viền đứt chuẩn bị → viền liền/chevrons sát đòn (vàng khi predicate Perfect thật) → strike flash đúng tick hit, bỏ vùng quạt trong recovery. Giữ windup0.42s, window160ms, damage/range/AI/input hiện có; không mở Q4/Q5. Acceptance lượt sửa: ba nhịp đọc khác nhau trên mobile, cue vàng khớp logic; tests/build/browser/evidence trước deploy, user duyệt feel sau.
+Feedback Q3: quạt Grunt khó phân biệt chuẩn bị/gây damage, khó canh Perfect Dodge. Đã deploy visual mới (fa55057), AWAITING PLAYTEST APPROVAL: viền đứt chuẩn bị → viền liền/chevrons sát đòn (vàng khi predicate Perfect thật) → strike flash đúng tick hit, bỏ vùng quạt trong recovery. Giữ windup0.42s, window160ms, damage/range/AI/input hiện có; không mở Q4/Q5. Acceptance lượt sửa: ba nhịp đọc khác nhau trên mobile, cue vàng khớp logic; tests/build/browser/evidence trước deploy, user duyệt feel sau.
 
 ## ACCEPTANCE
 - Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
@@ -32,7 +32,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
 
 ## CURRENT STATUS
-- Grunt cue theo feedback: chuẩn bị là quạt rỗng viền đứt hồng; last160ms (tính cả stagger) viền liền3px + chevrons, vàng chỉ khi isImminentEnemyThreat thật. Tick hit lóe trắng/tô quạt2frames; sau đó chỉ vệt slash gãy fade, bỏ fill/radial edges trong recovery. Chỉ sửa EnemyVisual.ts, không đổi core timing/damage/Perfect.
+- Grunt cue theo feedback: chuẩn bị là quạt rỗng viền đứt hồng; last160ms (tính cả stagger) viền liền3px + chevrons, vàng chỉ khi isImminentEnemyThreat thật. Tick hit lóe trắng/tô quạt2ticks simulation (hitstop có thể kéo dài thời gian thực); sau đó chỉ vệt slash gãy fade, bỏ fill/radial edges trong recovery. Chỉ sửa EnemyVisual.ts, không đổi core timing/damage/Perfect.
 - Q3: EnemyVisual.ts tách khỏi Scene, silhouette riêng: Grunt mặt nạ/móc tay, Archer mũ/áo rách/cung, Volatile lõi lò tách5mảnh, Bulwark giáp phiến, Warden vương miện/thân rỗng/3mảnh xích. Windup co/lấy đà, active bật người, recovery mở lõi; không thay collider.
 - Ground cue vẽ trước bodies, outer boundary khớp hit geometry + vòng/quạt tiến độ từ windupDuration snapshot; Archer ray khóa hướng, Boss ring12rays đúng hướng đạn/slam khóa điểm. Active0.18s(common)/0.22s(Boss) giữ đúng pattern cũ, chỉ feedback, không gây hit lặp.
 - Recovery đứng yên nằm trong cooldown hiện có: Grunt0.22s/Archer0.4s/Bulwark0.75s/Boss0.7s hoặc0.5s dưới nửaHP. Boss windup0.95/0.75 và cooldown1.15/0.8 giữ; dưới nửaHP không rút telegraph đang chạy. Volatile fuse0.7s giữ.
@@ -86,7 +86,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 
 ## LAST VALIDATION
 - Grunt cue: 66tests PASS, typecheck/build PASS. Chromium320/390/844 PASS: dashed trước cửa sổ/no damage, solid gold chỉ khi đủ threat160ms, strike flash trùng damage12, recovery không fill; dash sớm0Perfect/dash vàng1Perfect/ngoài threat không vàng. Production320/390/844/1440 PASS assets/input/pause/vi-en/no overflow/runtime errors. Bằng chứng kỹ thuật, chưa là user duyệt readability.
-- Bản sửa Grunt chưa deploy; đang đưa lên main/Actions sau checks PASS.
+- Bản sửa Grunt deploy PASS: Actions40154949591 completed/success, job121054223399; headfa55057d3a8ef30f70f4f702bb5ef969b2a43189. Build/upload/deploy đều success. Giữ main5838fd5 làm parent, không force; không đổi core combat.
 - Q3: npm test PASS (66definitions/4files; thêm4focused definitions), typecheck/build PASS; bundle Phaser>500KB vẫn là warning hiện trạng.
 - Chromium mobile390: gallery,3Boss patterns/active/locked target, né slam không mất HP, Boss đứng yên qua recovery, Bulwark mở giáp PASS. Viewports320/390/844/768/1440 không overflow/runtime errors. Đây là fixtures, không phải human playtest/full-run.
 - Production smoke /a-new-game/ PASS320/390/844/1440: assets/base, giữ Bắn opening, pause/resume, vi/en, no overflow/runtime/request errors. Deployment Q3: Actions40149381888 completed/success, heada3e93379d25b3f7a49f8b2389ff5ba517a2302ac. Live https://gizgity.github.io/a-new-game/.
@@ -94,10 +94,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Git CLI không có credential hợp lệ; deploy bằng GitHub connector với parent4d98a2e/tree mới và expected SHA, không force. Remote diff chỉ Q3+evidence; mọi blob đã đối chiếu hash với local. Branch local work là snapshot từb55e354, đã ghép source/text remote mới; lịch sử local chưa fetch3commit trướcQ3 và ảnh docs/milestones chỉ có remote. Không push branch work lên main; lần làm tiếp cần đọc remote handoff mới nhất/đồng bộ lịch sử khi CLI auth có lại.
 
 ## NEXT ACTION
-Deploy cue Grunt qua Actions; sau đó dừng chờ user thử scope Grunt ở opening: lại gần dụ quạt, đợi viền đứt chuyển liền/vàng rồi Lướt (Space desktop). Mong đợi dễ phân biệt chuẩn bị/hit và canh Perfect hơn; trắng là đòn đã ra, recovery không còn vùng quạt.
+Dừng chờ user thử scope Grunt ở opening trên Pages (tải lại trang để nhận bản mới): lại gần dụ quạt, đợi viền đứt chuyển liền/vàng rồi Lướt (Space desktop). Mong đợi dễ phân biệt chuẩn bị/hit và canh Perfect hơn; trắng là đòn đã ra, recovery không còn vùng quạt.
 
 ## PLAYTEST Q3 — SCOPE / CÁCH THỬ
-Lượt sửa mới chỉ cần thử Grunt ở opening: không tấn công để tránh stagger/ngắt đòn, lại gần dụ quạt, quan sát viền đứt hồng → liền/vàng → trắng. Nhấn Lướt/Space khi chuyển vàng, trước lóe trắng; mong đợi thông báo Perfect Dodge và không mất HP. Thử một lần lướt sớm ở viền đứt để đối chiếu (không thưởng Perfect). Ra ngoài quạt thì không có vàng từ Grunt đó. Cho biết có đọc được nhịp mà không đoán không; chưa yêu cầu thử lại Elite/Boss trong lượt này. Hướng dẫn toànQ3 bên dưới được giữ làm tham chiếu.
+Bản cue Grunt fa55057 đã live, tải lại trang; lượt sửa mới chỉ cần thử Grunt ở opening: không tấn công để tránh stagger/ngắt đòn, lại gần dụ quạt, quan sát viền đứt hồng → liền/vàng → trắng. Nhấn Lướt/Space khi chuyển vàng, trước lóe trắng; mong đợi thông báo Perfect Dodge và không mất HP. Thử một lần lướt sớm ở viền đứt để đối chiếu (không thưởng Perfect). Ra ngoài quạt thì không có vàng từ Grunt đó. Cho biết có đọc được nhịp mà không đoán không; chưa yêu cầu thử lại Elite/Boss trong lượt này. Hướng dẫn toànQ3 bên dưới được giữ làm tham chiếu.
 Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi trên thiết bị thường dùng; mobile dùng joystick/nút Lướt/Đánh mạnh, desktop WASD/Space và giữ-thả Shift. Mục tiêu lượt này là art/readability, đọc hướng/vùng đòn và né→phản công; Q2 đã accepted, Q4/Q5 chưa giao.
 1. Trong waves, nhìn Grunt (mặt nạ/móc tay), Archer (mũ/cung), Volatile (lõi cam). Thử nhận ra từng loại khi đang di chuyển và có nhiều quái; mong đợi phân biệt được bằng hình/chuyển động, player và dấu báo đòn không bị lẫn.
 2. Đến gần Grunt rồi lướt ngang ra khỏi quạt khi nó lấy đà; với Archer đi ngang đường ngắm, với Volatile rời vòng nổ trước khi vòng đầy. Mong đợi hướng/vị trí báo giữ cố định, đòn xảy ra theo vùng/đường đã báo, có đủ dấu hiệu để phản ứng; đạn Archer vẫn phải né khi bay tới.
