@@ -21,7 +21,7 @@
 - Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
 - Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; Chém/Bắn giữ để lặp; Heavy/Charged giữ chỉ để ngắm, thả mới tiêu một lượt và ra đòn. Cả6 nút phải kéo như joystick để ngắm. Nút đang giữ hiện vòng116px/núm40px; kéo vượt biên nút vẫn nhận nhờ pointer capture tới khi nhả. Joystick trái hướng player khi chưa kéo ngắm; sau khi ngón phải vượt deadzone8px, aim độc lập với di chuyển tới khi nhả. Không auto-aim; dash đang thực hiện không uốn hướng, Surge vẫn radial.
 - Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Cột trong theo thứ tự Tích lực → Đánh mạnh → Lướt, nhường vùng trái trên phone nhỏ.
-- Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/draft/settings gỡ guard để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
+- Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/settings gỡ guard; draft dùng guard riêng giữ cuộn và chặn native mouse/selection, để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
 - Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
 - Camera ưu tiên đọc player/VFX trên phone; viewport combat chừa chỗ controls ở dọc, controls đặt hai bên dưới khi ngang. Giữ world coordinates; thay đổi va chạm/timing nằm ở phần combat đã được user giao.
@@ -82,12 +82,12 @@
 
 - Tất cả mục tiêu trong vùng đều nhận hit/Rupture/charge đúng một lần mỗi đòn. L3 vẫn chừa100° phía sau; không thêm đòn đánh360° hoặc auto-target. VFX theo đúng range/arc; Heavy có2lượt, hồi từng lượt8s simulation; range164px/góc280°, damage100/finisher140, knockback80/stagger0.6s, Detonate×1.4. Charge trừ khi bắt đầu ra đòn; dash hủy Heavy đã bắt đầu không hoàn lại lượt. Phantom Edge vẫn +20px.
 - Light/Basic chỉ gây khựng ngắn, không xóa telegraph hoặc reset cooldown địch; Heavy/Charged/blast mới ngắt đòn quái thường, Boss không bị stun-lock. Heavy có body windup/burst, blade dài, trail amber44px và hit impact/SFX riêng mạnh hơn L3.
-- Quái xuất hiện theo cụm3 từ cùng hướng với góc cách0.16rad, khoảng cách spawn360px và tránh spawn trên player. Trước Boss cap18; Archer tối đa3, chỉ bổ sung một ở mỗi cụm thứ4; Volatile sau45s ở mỗi cụm thứ6. Boss vẫn cap7 và chỉ bổ sung từng quái, không mang pack pressure vào precision encounter.
+- Quái xuất hiện theo cụm3 từ cùng hướng với góc cách0.16rad, khoảng cách spawn360px và tránh spawn trên player. Trước Boss soft cap18; sau6s không kill khi đủ18, thêm pack3 và lặp mỗi6s, không trần dân số cố định; Archer tối đa3, chỉ bổ sung một ở mỗi cụm thứ4; Volatile sau45s ở mỗi cụm thứ6. Boss vẫn cap7 và chỉ bổ sung từng quái, không mang pack pressure vào precision encounter.
 
 ### Cân bằng mở đầu — theo playtest mobile
 - Giữ damage Light18/22/30 và HP đầu run. Basic/Charged/Heavy và nguồn tài nguyên thay theo feedback ở trên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
-- Trong60s đầu: Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s, cap18. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
-- Từ60–120s HP cơ sở quái mới tiến tới chuẩn; đồng thời từ60–300s hệ số HP tăng1→1.6, damage1→1.5, speed1→1.2. Chốt chỉ số khi spawn (đạn giữ damage nguồn), không đổi strength giữa telegraph. Elite nhận growth lúc spawn; Boss giữ1500HP/pattern/damage riêng. Interval tiến từ90ticks về cadence chuẩn, cap18. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Draft/Elite/Boss dùng kills hoặc thời gian như bảng dưới; không thêm buff, quái hoặc permanent stats.
+- Trong60s đầu: Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s tới soft cap18, sau đó pack áp lực khi6s không kill. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
+- Từ60–120s HP cơ sở quái mới tiến tới chuẩn; đồng thời từ60–300s hệ số HP tăng1→1.6, damage1→1.5, speed1→1.2. Chốt chỉ số khi spawn (đạn giữ damage nguồn), không đổi strength giữa telegraph. Elite nhận growth lúc spawn; Boss giữ1500HP/pattern/damage riêng. Interval tiến từ90ticks về cadence chuẩn, soft cap18 và pressure pack3/6s không kill. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ cadence và pressure pack, không xóa crowd khi Elite tới; Boss vẫn cap7. Draft/Elite/Boss dùng kills hoặc thời gian như bảng dưới; không thêm buff, quái hoặc permanent stats.
 - Cấu hình ở `src/game/config/balance.ts`; tests chỉ xác nhận thông số/interaction, độ khó cần user playtest.
 
 ## Run tối đa 5 phút
@@ -109,7 +109,8 @@
 - Vượt nhiều mốc trong chain vẫn chọn tuần tự, không mất/nhân đôi. Draft đang tới hạn ưu tiên trước encounter; Boss không bị giữ tới4:00 nếu đủ450kills. Timer dừng khi Pause hoặc chọn Draft.
 - Boss giữ1500HP/pattern riêng, dọn common/projectile khi vào, giữ Elite đã xuất hiện; không spawn Elite mới sau Boss. Nếu nhảy qua cả hai ngưỡng encounter cùng lúc, ưu tiên Boss, bỏ Elite chưa xuất hiện. Deadline vẫn5:00 kể cả Boss tới sớm.
 - Victory khi hạ Boss trước deadline; mutual kill cùng simulation tick tính là Victory.
-- Có Play Again.
+- Có Play Again. Theo feedback sau Q5A: hạ Boss phát vỡ ấn và chime1.1s rồi hiện dialog vàng “CHIẾN THẮNG · ĐÃ HẠ BOSS”; chết/deadline hiện dialog hồng “THẤT BẠI”. Simulation dừng ngay khi kết quả được xác định.
+- Draft chặn contextmenu/selection/drag/auxclick/gesture trên arena, vẫn cuộn được; chỉ nhận primary click mới sau khi mở hoặc keyboard, không nhận cú nhả từ gameplay trước đó.
 
 ## Enemies
 - Grunt: melee swarm.
@@ -121,15 +122,15 @@
 ### Q3 — nhận diện và precision encounters (ACCEPTED — USER PLAYTEST/VISUAL APPROVAL)
 - Feedback readability Grunt: quạt rỗng viền đứt khi lấy đà, chuyển viền liền/chevrons trong160ms cuối (cộng thời gian stagger); vàng chỉ khi predicate Perfect thật. Hit một lần có flash trắng/quạt tô2frames, recovery chỉ giữ vệt chém mờ không còn vùng quạt. Giữ windup0.42s/damage/range/Perfect160ms.
 - Art quái tách trong `EnemyVisual.ts`, dùng các mảnh giáp tối/lõi sáng/cạnh gãy có silhouette riêng: Grunt mặt nạ và móc tay; Archer mũ/áo rách/cung; Volatile lò năng lượng tách mảnh; Bulwark giáp phiến lớn; Chain Warden vương miện, thân rỗng và mảnh xích lơ lửng. Có pose lấy đà, bật khi ra đòn và hồi phục; collider giữ nguyên.
-- Telegraph ground vẽ dưới bodies, có boundary và tiến trình theo windup thực snapshot. Hướng melee/Archer/ring và điểm slam khóa từ đầu windup; ring hiển thị12hướng đạn, slam/Volatile hiển thị vòng bán kính110px. Perfect cue dùng cùng threat predicate. Active flash0.18s(common)/0.22s(Boss) chỉ là feedback sau hit một lần.
-- Recovery đứng yên trong cooldown hiện có: Grunt0.22s, Archer0.4s, Bulwark0.75s; Boss0.7s hoặc0.5s dưới nửaHP. Volatile giữ fuse0.7s rồi nổ tại vị trí đã khóa. Không thêm pattern hoặc enemy mới.
+- Telegraph ground vẽ dưới bodies, có boundary và tiến trình theo windup thực snapshot. Hướng melee/ring và điểm slam khóa từ đầu windup; theo feedback sau Q5A, Archer theo player suốt windup (cả stagger), đạn đã bắn không đổi hướng; ring hiển thị12hướng đạn, slam/Volatile hiển thị vòng bán kính110px. Perfect cue dùng cùng threat predicate. Active flash0.18s(common)/0.22s(Boss) chỉ là feedback sau hit một lần.
+- Recovery đứng yên trong cooldown hiện có: Grunt0.22s, Archer0.4s, Bulwark0.75s; Boss0.4s hoặc0.28s dưới nửaHP (feedback sau Q5A). Volatile giữ fuse0.7s rồi nổ tại vị trí đã khóa. Không thêm pattern hoặc enemy mới.
 - Bulwark bắt đầu quét khi dưới90px, range100px/arc1.7rad, windup0.65s/damage22×growth. Ngoài recovery giáp giữ damage×0.55; recovery giáp tách và nhận toàn bộ damage. Guard Breaker vẫn xuyên giáp. Grunt giữ70px/0.42s; Archer giữ0.7s.
-- Boss giữ sweep230px/1.7rad →12đạn radial →slam110px,1500HP. Windup0.95s/cooldown1.15s, dưới nửaHP0.75s/0.8s; không rút windup đang chạy, không bị stun-lock. Khoảng đứng yên mở cơ hội phản công, phase nhanh hơn vẫn có recovery.
+- Boss giữ sweep230px/1.7rad →12đạn radial →slam110px,1500HP. Theo feedback sau Q5A: windup0.72s/cooldown0.72s, dưới nửaHP0.52s/0.45s; không rút windup đang chạy, không bị stun-lock. Khoảng đứng yên mở cơ hội phản công, phase nhanh hơn vẫn có recovery.
 - **Q3 ACCEPTED:** user xác nhận “oki q3 r” trên bảnfa55057; cue Grunt/Perfect Dodge đã được duyệt riêng trước đó. Tests/browser geometry/timing và evidence là bằng chứng kỹ thuật riêng; approval không đồng nghĩa đã xác minh mọi thiết bị/Safari hoặc full-run.
 
 ## Q5 Design Contract — Build diversity & survivability
 
-**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã triển khai/deploy fa4045d và chờ playtest approval, phần còn lại chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
+**Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d, phần còn lại chưa triển khai. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 
 ### Phạm vi và nguyên tắc khóa
 
@@ -375,4 +376,4 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã deploy fa4045d và AWAITING PLAYTEST APPROVAL. Q5A–Q5E phải được user playtest/chấp nhận tuần tự, không tự chuyển checkpoint.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; đang sửa feedback riêng trước Q5B. Q5A–Q5E phải được user playtest/chấp nhận tuần tự, không tự chuyển checkpoint.

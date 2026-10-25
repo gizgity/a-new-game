@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import type { SoundCue } from './combat';
 
 const tones: Record<SoundCue, [number, number, number]> = {
+  victory: [440, 1.1, 0],
   swing2: [650, 0.095, 0.7], swing3: [230, 0.16, 0.65],
   light2: [460, 0.09, 0.4], light3: [145, 0.15, 0.5],
   chargedGun: [220, 0.16, 0.45], chargedBlast: [95, 0.26, 0.6],
@@ -21,6 +22,11 @@ export class ProceduralAudio {
       const samples = buffer.getChannelData(0);
       for (let i = 0; i < samples.length; i++) {
         const t = i / context.sampleRate, progress = i / samples.length;
+        if (cue === 'victory') {
+          const envelope = Math.min(1, t * 30) * (1 - progress) ** 1.5;
+          samples[i] = [1, 1.25, 1.5, 2].reduce((sum, ratio, index) => sum + (t >= index * 0.09 ? Math.sin(2 * Math.PI * frequency * ratio * t) : 0), 0) * envelope * 0.12;
+          continue;
+        }
         if (cue === 'chargedGun' || cue === 'chargedBlast' || cue === 'heavy') {
           // A short crack plus low body and audible harmonics for small phone speakers.
           const body = Math.sin(2 * Math.PI * frequency * t * (1 - progress * 0.65));
@@ -41,7 +47,7 @@ export class ProceduralAudio {
     const now = performance.now();
     let count = 0;
     // Ưu tiên feedback quan trọng; không chồng âm vô hạn trong chain.
-    for (const cue of ['hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light3', 'light2', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing3', 'swing2', 'swing'] as const) {
+    for (const cue of ['victory', 'hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light3', 'light2', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing3', 'swing2', 'swing'] as const) {
       if (cue === 'detonate' && cues.includes('chargedBlast')) continue;
       if (!cues.includes(cue) || now - (this.last.get(cue) ?? -Infinity) < (cue === 'detonate' ? 140 : 65)) continue;
       if (count >= 3 || this.scene.sound.getAllPlaying().length >= 8) break;

@@ -181,3 +181,16 @@ footer { display: none; }
 #barrier-feedback, #aegis-progress { color: #8cd9e8; font-size: 9px; min-height: 10px; }
 #aegis-progress { text-align: right; }
 .trial-label { grid-column: 1 / -1; color: #ffcc80; font-size: 10px; }
+
+.draft-active, .draft-active * { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; }
+.draft-active .draft-panel { touch-action: pan-y; }
+.result-banner { font-weight: 800; font-size: clamp(17px, 4vw, 24px); letter-spacing: .05em; line-height: 1.4; }
+.overlay[data-result="victory"] { background: #14231b99; }
+.overlay[data-result="victory"] .panel { border: 2px solid #ffd58a; box-shadow: 0 0 50px #e9bc5444; }
+.overlay[data-result="victory"] .result-banner, .overlay[data-result="victory"] .panel-sigil { color: #ffd58a; }
+.overlay[data-result="defeat"] .panel { border: 2px solid #ec7790; }
+.overlay[data-result="defeat"] .result-banner, .overlay[data-result="defeat"] .panel-sigil { color: #ec7790; }
+.overlay[data-result="victory"] .touch-hint, .overlay[data-result="victory"] .mini-controls,
+.overlay[data-result="victory"] .panel > .scope, .overlay[data-result="victory"] .panel > .eyebrow,
+.overlay[data-result="defeat"] .touch-hint, .overlay[data-result="defeat"] .mini-controls,
+.overlay[data-result="defeat"] .panel > .scope, .overlay[data-result="defeat"] .panel > .eyebrow { display: none; }

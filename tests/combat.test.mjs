@@ -147,7 +147,7 @@ test('dash i-frames block damage; Perfect Dodge only rewards the early timing wi
   assert.equal(late.hp, 90);
 });
 
-test('Grunt and Archer telegraph before damage or releasing a locked-aim shot', () => {
+test('Grunt telegraphs before damage; Archer tracks during windup before releasing its shot', () => {
   const gruntWorld = world();
   const grunt = target(gruntWorld, 840);
   Object.assign(grunt, { stagger: 0, cooldown: 0 });
@@ -165,7 +165,8 @@ test('Grunt and Archer telegraph before damage or releasing a locked-aim shot', 
   archerWorld.player.y = 700;
   advance(archerWorld, 0.72);
   assert.equal(archerWorld.projectiles.length, 1);
-  assert.ok(Math.abs(archerWorld.projectiles[0].vy) < 0.001);
+  assert.ok(archerWorld.projectiles[0].vy > 0);
+  assert.ok(Math.abs(Math.atan2(archerWorld.projectiles[0].vy, archerWorld.projectiles[0].vx) - archer.angle) < 1e-9);
 });
 
 test('Heavy stagger interrupts attacks; hurt grace prevents burst damage; reset restores practice state', () => {

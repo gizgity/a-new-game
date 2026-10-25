@@ -92,6 +92,8 @@ const vi = {
   bloodPactDesc: "Melee mạnh hơn 30%; mỗi Light tốn 1 HP, không tự kết liễu.",
   deathEcho: "Death Echo",
   deathEchoDesc: "Quái bị hạ gây nổ 20 sát thương; max HP còn 85.",
+  runComplete: "CHIẾN THẮNG · ĐÃ HẠ BOSS",
+  runFailed: "THẤT BẠI · VÒNG CHƠI KẾT THÚC",
   victory: "CHIẾN THẮNG",
   defeat: "THẤT BẠI",
   bossName: "Chain Warden",
@@ -216,6 +218,8 @@ const en: Record<TranslationKey, string> = {
   deathEcho: "Death Echo",
   deathEchoDesc: "Killed enemies explode for 20 damage; max HP becomes 85.",
 
+  runComplete: "VICTORY · BOSS DEFEATED",
+  runFailed: "DEFEAT · RUN ENDED",
   victory: "VICTORY",
   defeat: "DEFEAT",
   bossName: "Chain Warden",

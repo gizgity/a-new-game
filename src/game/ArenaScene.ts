@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { ProceduralAudio } from './audio';
+import { RunResultVisual } from './RunResultVisual';
 import { RunDirector } from './run';
 import { CombatWorld, type CombatAction, type CombatInput } from './combat';
 import { drawBarrier } from './BarrierVisual';
@@ -18,6 +19,8 @@ export class ArenaScene extends Phaser.Scene {
   readonly run = new RunDirector(this.combat);
   private combatGraphics!: Phaser.GameObjects.Graphics;
   private audio!: ProceduralAudio;
+  private resultVisual!: RunResultVisual;
+  victoryRevealing = false;
   cosmetic: 'mint' | 'prism' = 'mint';
   private meleeHeld = false;
   private shootHeld = false;
@@ -48,6 +51,7 @@ export class ArenaScene extends Phaser.Scene {
     this.drawArena();
     this.combatGraphics = this.add.graphics().setDepth(1);
     this.vessel = new PlayerVisual(this, this.combat);
+    this.resultVisual = new RunResultVisual(this);
     this.reticle = this.add.graphics().setDepth(3).setVisible(false);
     this.reticle.lineStyle(1, 0x91ffe0, 0.8).strokeCircle(0, 0, 7);
     for (const sign of [-1, 1]) {
@@ -114,6 +118,8 @@ export class ArenaScene extends Phaser.Scene {
 
   setPhase(phase: Phase): void {
     if (phase === 'playing' && (this.phase === 'ready' || this.phase === 'victory' || this.phase === 'defeat')) {
+      this.victoryRevealing = false;
+      this.resultVisual.reset();
       this.run.start();
       this.vessel.reset(this.combat);
       this.cameras.main.centerOn(this.player.x, this.player.y);
@@ -121,6 +127,14 @@ export class ArenaScene extends Phaser.Scene {
     this.meleeHeld = this.shootHeld = false;
     this.touch.reset();
     this.phase = phase;
+    if (phase === 'victory') {
+      this.victoryRevealing = true;
+      this.audio.play(['victory']);
+      this.resultVisual.victory(this.combat.bossDeathPosition ?? this.player, () => {
+        this.victoryRevealing = false;
+        if (this.phase === 'victory') this.onPhaseChange('victory');
+      });
+    }
     this.accumulator = 0;
     this.pressed.clear();
     this.armedSpecials.clear();

@@ -9,7 +9,7 @@ export const COMBAT = {
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
-export type SoundCue = 'light' | 'light2' | 'light3' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'swing2' | 'swing3' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
+export type SoundCue = 'victory' | 'light' | 'light2' | 'light3' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'swing2' | 'swing3' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
 
 export type CombatAction = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
 type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
@@ -82,6 +82,7 @@ export class CombatWorld {
   detonations = 0;
   perfectDodges = 0;
   bossSlain = false;
+  bossDeathPosition: { x: number; y: number } | null = null;
   lastChain = 0;
   private explosions: Explosion[] = [];
   private chainSeen = new Set<number>();
@@ -153,6 +154,7 @@ export class CombatWorld {
     this.chargePoints = this.chargedShots = this.surge = this.surgeFlash = 0;
     this.detonations = this.perfectDodges = this.lastChain = 0;
     this.bossSlain = false;
+    this.bossDeathPosition = null;
     this.explosions = [];
     this.pendingDetonations.clear();
     this.chainSeen.clear();
@@ -364,7 +366,7 @@ export class CombatWorld {
     this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0) {
       this.kills++;
-      if (enemy.kind === 'boss') this.bossSlain = true;
+      if (enemy.kind === 'boss') { this.bossSlain = true; this.bossDeathPosition = { x: contactX, y: contactY }; }
       this.surge = Math.min(100, this.surge + 8);
       if (this.curse === 'deathEcho') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 20, radius: 80, hostile: false });
       if (enemy.kind === 'volatile') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
@@ -445,6 +447,7 @@ export class CombatWorld {
     enemy.flash = Math.max(0, enemy.flash - dt);
     enemy.active = Math.max(0, enemy.active - dt);
     enemy.stagger = Math.max(0, enemy.stagger - dt);
+    if (enemy.kind === 'archer' && enemy.windup > 0) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
     if (enemy.stagger > 0) return;
     const spec = ENEMY_ATTACK[enemy.kind];
     if (enemy.recovery > 0) {

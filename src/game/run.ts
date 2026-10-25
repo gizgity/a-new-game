@@ -14,6 +14,8 @@ export class RunDirector {
   private draftIndex = 0;
   private spawnTicks = 0;
   private waveIndex = 0;
+  private pressureTime = 0;
+  private previousKills = 0;
   mutationPool: readonly MutationId[] = MUTATIONS;
   cursePool: readonly CurseId[] = CURSES;
 
@@ -29,6 +31,7 @@ export class RunDirector {
     this.world.reset();
     this.world.practice = false;
     this.world.enemies = [];
+    this.pressureTime = this.previousKills = 0;
     this.ticks = this.draftIndex = this.spawnTicks = this.waveIndex = 0;
     for (let i = 0; i < OPENING.initialCount; i++) {
       this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt',
@@ -41,7 +44,11 @@ export class RunDirector {
 
   step(input: CombatInput, dt: number): void {
     if (this.draft.length || this.result || this.expired) return;
+    const frozen = this.world.hitstop > 0;
     this.world.step(input, dt);
+    if (this.world.kills !== this.previousKills) this.pressureTime = 0;
+    else if (!frozen && !this.bossDue) this.pressureTime += dt;
+    this.previousKills = this.world.kills;
     this.ticks++;
     // Đánh giá sau toàn bộ simulation tick: mutual kill vẫn thắng trước deadline.
     if (this.world.bossSlain && this.ticks < 18000) this.result = 'victory';
@@ -69,7 +76,6 @@ export class RunDirector {
       this.bossDue = true;
       this.eliteSpawned = true; // No late Elite joining an early Boss encounter.
     } else if (!this.bossDue && !this.eliteSpawned && this.reached(ENCOUNTERS.elite)) {
-      this.world.enemies = this.world.enemies.slice(0, 17);
       this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
     }
     this.expired = this.ticks >= 18000;
@@ -78,10 +84,12 @@ export class RunDirector {
     const standardInterval = Math.max(35, 95 - Math.floor(this.elapsed / 4));
     const interval = Math.round(OPENING.spawnIntervalTicks + (standardInterval - OPENING.spawnIntervalTicks) * blend);
     const cap = this.bossDue ? 7 : Math.floor(OPENING.enemyCap + (18 - OPENING.enemyCap) * blend);
-    if (this.spawnTicks >= interval && this.world.enemies.length < cap) {
+    const pressureWave = !this.bossDue && this.world.enemies.length >= cap && this.pressureTime + 1e-9 >= WAVES.pressureInterval;
+    if (this.spawnTicks >= interval && (this.world.enemies.length < cap || pressureWave)) {
+      if (pressureWave) this.pressureTime = 0;
       this.spawnTicks = 0;
       const index = this.waveIndex++;
-      const count = Math.min(this.bossDue ? 1 : WAVES.packSize, cap - this.world.enemies.length);
+      const count = pressureWave ? WAVES.packSize : Math.min(this.bossDue ? 1 : WAVES.packSize, cap - this.world.enemies.length);
       for (let i = 0; i < count; i++) {
         const special = i === count - 1;
         const archerRoom = this.world.enemies.filter(enemy => enemy.kind === 'archer').length < WAVES.archerCap;

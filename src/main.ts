@@ -4,6 +4,7 @@ import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS
 import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
+import { DraftInteractionGuard } from './ui/DraftInteractionGuard';
 import { TouchControls } from './ui/TouchControls';
 import './style.css';
 
@@ -48,6 +49,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div id="overlay" class="overlay">
       <section class="panel" id="menu-panel" aria-labelledby="panel-title">
+        <p id="result-banner" class="result-banner" hidden></p>
         <span class="panel-sigil" aria-hidden="true">◇</span>
         <p class="eyebrow" data-i18n="subtitle"></p>
         <h2 id="panel-title"></h2><p id="panel-body" class="panel-body"></p>
@@ -87,10 +89,16 @@ const primary = document.querySelector<HTMLButtonElement>('#primary')!;
 const pause = document.querySelector<HTMLButtonElement>('#pause')!;
 const overlay = document.querySelector<HTMLDivElement>('#overlay')!;
 const touchControls = new TouchControls(document.querySelector<HTMLElement>('#touch-controls')!);
+const draftGuard = new DraftInteractionGuard(document.querySelector<HTMLElement>('.arena-shell')!);
 let currentPhase: Phase = 'ready';
 
 function renderUI(phase: Phase = currentPhase): void {
   currentPhase = phase;
+  draftGuard.setActive(phase === 'draft');
+  overlay.dataset.result = phase === 'victory' || phase === 'defeat' ? phase : '';
+  const resultBanner = document.querySelector<HTMLElement>('#result-banner')!;
+  resultBanner.hidden = phase !== 'victory' && phase !== 'defeat';
+  resultBanner.textContent = phase === 'victory' ? t('runComplete') : phase === 'defeat' ? t('runFailed') : '';
   document.querySelector<HTMLElement>('#trial-label')!.hidden = !juggernautTrial;
   document.title = t('pageTitle');
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
@@ -106,7 +114,7 @@ function renderUI(phase: Phase = currentPhase): void {
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
   draftPanel.hidden = phase !== 'draft';
   if (phase === 'draft') renderDraft();
-  overlay.hidden = phase === 'playing';
+  overlay.hidden = phase === 'playing' || phase === 'victory' && arena.victoryRevealing;
   document.querySelector('#game')!.classList.toggle('playing', phase === 'playing');
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
   touchControls.translate();
@@ -125,7 +133,7 @@ function renderDraft(): void {
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
-  if (button) arena.chooseDraft(Number(button.dataset.choice));
+  if (button && draftGuard.accepts(event as MouseEvent, button)) arena.chooseDraft(Number(button.dataset.choice));
 });
 renderUI();
 touchControls.onModeChange = () => renderUI();
