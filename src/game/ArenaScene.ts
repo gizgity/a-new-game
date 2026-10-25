@@ -3,6 +3,7 @@ import { ProceduralAudio } from './audio';
 import { RunResultVisual } from './RunResultVisual';
 import { RunDirector } from './run';
 import { CombatWorld, type CombatAction, type CombatInput } from './combat';
+import { drawBuildCues, drawBuildImpact } from './BuildVisual';
 import { drawBarrier } from './BarrierVisual';
 import { drawEnemyBody, drawEnemyTelegraph } from './EnemyVisual';
 import { PlayerVisual } from './PlayerVisual';
@@ -218,6 +219,7 @@ export class ArenaScene extends Phaser.Scene {
     const g = this.combatGraphics.clear();
     const world = this.combat;
     for (const enemy of world.enemies) drawEnemyTelegraph(g, enemy, world);
+    drawBuildCues(g, world);
     for (const enemy of world.enemies) drawEnemyBody(g, enemy, this.time.now / 1000);
     for (const shot of world.projectiles) {
       if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
@@ -240,6 +242,7 @@ export class ArenaScene extends Phaser.Scene {
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
     drawBarrier(g, world);
     for (const impact of world.impacts) {
+      if (drawBuildImpact(g, impact)) continue;
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);
       if (impact.kind === 'guardBreak') {

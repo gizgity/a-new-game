@@ -328,16 +328,16 @@ test('continuous Basic Shots do not lock the Boss recovery cooldown forever',()=
 test('Berserker, Detonation Specialist and Static Riposte apply their documented effects',()=>{
  const berserker=world();berserker.hp=40;berserker.mutations.push('berserker');const targetA=target(berserker,850);
  berserker.projectiles.push({x:820,y:500,vx:2000,vy:0,hostile:false,life:1});berserker.step(idle,FIXED_STEP);
- assert.equal(targetA.hp,475);
+ assert.equal(targetA.hp,480);
  const specialist=world();specialist.mutations.push('detonationSpecialist');const trigger=target(specialist,850);trigger.rupture=1;
  const neighbour=specialist.enemies[1];Object.assign(neighbour,{x:975,y:500,hp:500,stagger:100});
  specialist.projectiles.push({x:820,y:500,vx:2000,vy:0,hostile:false,life:1});specialist.step(idle,FIXED_STEP);
- assert.equal(trigger.hp,465);assert.equal(neighbour.hp,485);
+ assert.equal(trigger.hp,468);assert.equal(neighbour.hp,500);
  const riposte=world();riposte.mutations.push('staticRiposte');const targetB=target(riposte,850);
  hostileAtNextDashPosition(riposte);riposte.step({...idle,dash:true},FIXED_STEP);
- assert.equal(targetB.hp,460);assert.equal(riposte.perfectDodges,1);
+ assert.equal(targetB.hp,500);assert.equal(riposte.perfectDodges,1);assert.ok(riposte.build.staticCharge>0);
  const soul=world();soul.curse='volatileSoul';soul.projectiles.push({x:800,y:500,vx:0,vy:0,hostile:true,life:1});soul.step(idle,FIXED_STEP);
- assert.equal(soul.hp,87.5);
+ assert.equal(soul.hp,90);
 });
 
 // Q2: taps are buffered briefly; holds still repeat at the existing action cadence.

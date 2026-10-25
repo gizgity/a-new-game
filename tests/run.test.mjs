@@ -38,8 +38,8 @@ test('waves start with Grunt/Archer, are bounded and include Volatile later; tim
  const tick=run.ticks;run.step(idle,1/60);assert.equal(run.ticks,tick);
 });
 test('Curse benefits have real costs and build effects reset per run',()=>{
- const {world,run}=setup();world.curse='ghostStep';world.hp=100;assert.equal(world.maxHp,80);assert.equal(world.rechargeDuration,2.1);
- world.curse='bloodPact';world.step({...idle,melee:true},1/60);assert.equal(world.hp,99);assert.equal(world.attack.damage,18*1.3);
+ const {world,run}=setup();world.curse='ghostStep';world.hp=100;assert.equal(world.maxHp,100);assert.equal(world.rechargeDuration,2.8);
+ world.curse='bloodPact';world.step({...idle,melee:true},1/60);assert.equal(world.hp,100);assert.equal(world.attack.damage,18*1.3);
  world.mutations.push('phantomEdge');run.start();assert.equal(world.curse,null);assert.equal(world.mutations.length,0);assert.equal(world.maxHp,100);assert.equal(run.ticks,0);
 });
 
@@ -167,7 +167,7 @@ test('second Curse always allows keeping or replacing; only one effect remains a
  run.choose(run.draft.findIndex(o=>o.id==='bloodPact'));assert.equal(world.curse,'bloodPact');
  run.draftIndex=4;run.cursePool=['ghostStep'];world.hp=100;
  run.step(idle,1/60);run.choose(run.draft.findIndex(o=>o.id==='ghostStep'));
- assert.equal(world.curse,'ghostStep');assert.equal(world.maxHp,80);assert.equal(world.hp,80);
+ assert.equal(world.curse,'ghostStep');assert.equal(world.maxHp,100);assert.equal(world.hp,100);
 });
 test('Elite and Boss use kills OR time, once; no late Elite after an early Boss',()=>{
  for(const mode of ['kills','time','both']) {

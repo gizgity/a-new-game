@@ -5,10 +5,12 @@ import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
 import { DraftInteractionGuard } from './ui/DraftInteractionGuard';
+import { PLAYTEST_BUILDS } from './game/config/playtests';
 import { TouchControls } from './ui/TouchControls';
 import './style.css';
 
-const juggernautTrial = new URLSearchParams(location.search).get('playtest') === 'juggernaut';
+const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
+const buildTrial = Boolean(trialBuild);
 const profile = loadProfile();
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
@@ -44,6 +46,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="resource-state"><span data-i18n="surge"></span><span id="surge-value"></span></div>
       <div class="resource-state milestone-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
       <div id="boss-arrival" class="resource-state milestone-state"></div>
+      <span id="build-status" class="build-status"></span>
       <span id="build-value" class="build-value"></span>
       <span id="combat-notice" aria-live="polite"></span>
     </div>
@@ -99,11 +102,12 @@ function renderUI(phase: Phase = currentPhase): void {
   const resultBanner = document.querySelector<HTMLElement>('#result-banner')!;
   resultBanner.hidden = phase !== 'victory' && phase !== 'defeat';
   resultBanner.textContent = phase === 'victory' ? t('runComplete') : phase === 'defeat' ? t('runFailed') : '';
-  document.querySelector<HTMLElement>('#trial-label')!.hidden = !juggernautTrial;
+  document.querySelector<HTMLElement>('#trial-label')!.hidden = !buildTrial;
   document.title = t('pageTitle');
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
   });
+  if (trialBuild) document.querySelector('#trial-label')!.textContent = t(trialBuild.label);
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
@@ -168,7 +172,7 @@ const dashBar = document.querySelector<HTMLProgressElement>('#dash-recharge')!;
 const combatNotice = document.querySelector('#combat-notice')!;
 function renderCombatHUD(world: CombatWorld): void {
   if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge, world.heavyCharges, HEAVY.recharge - world.heavyRecharge);
-  if (!juggernautTrial && progression.observe(world, arena.run.result)) {
+  if (!buildTrial && progression.observe(world, arena.run.result)) {
     applySettings();
     renderSettings();
     persist();
@@ -203,6 +207,15 @@ function renderCombatHUD(world: CombatWorld): void {
   document.querySelector('#draft-progress')!.textContent = milestone ? progress(milestone) : t('draftsComplete');
   document.querySelector('#boss-arrival')!.textContent = arena.run.bossDue ? '' : `${t('bossArrival')} ${progress(ENCOUNTERS.boss)}`;
   document.querySelector('#build-value')!.textContent = [...world.mutations, ...(world.curse ? [world.curse] : [])].map((id) => t(id)).join(' · ');
+  const duration = (seconds: number) => t('secondsShort').replace('{n}', seconds.toFixed(1));
+  const statuses: string[] = [];
+  if (world.build.phantom > 0) statuses.push(`${t('phantomReady')} ${duration(world.build.phantom)}`);
+  if (world.build.staticCharge > 0) statuses.push(`${t('staticReady')} ${duration(world.build.staticCharge)}`);
+  if (world.mutations.includes('berserker')) statuses.push(world.build.frenzy > 0 ? `${t('frenzyState')} ${duration(world.build.frenzy)}` : `${t('frenzyState')} ${world.build.comboStage}/3`);
+  if (world.curse === 'ghostStep' && world.dashCharges === 0) statuses.push(t('ghostRisk'));
+  if (world.build.healFlash > 0) statuses.push(`${t('healState')} +${world.build.lastHeal}`);
+  if (world.build.costFlash > 0) statuses.push(t('bloodMiss'));
+  document.querySelector('#build-status')!.textContent = statuses.join(' · ');
   const notice = world.hp <= 0 ? t('playAgain') : world.perfectFlash > 0 ? t('perfectDodge') :
     world.attack?.heavy ? t('heavy') : world.combo > 0 ? t('comboValue').replace('{n}', String(world.combo)) : '';
   if (combatNotice.textContent !== notice) combatNotice.textContent = notice;
@@ -210,14 +223,14 @@ function renderCombatHUD(world: CombatWorld): void {
 
 export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
-    if (juggernautTrial) {
-      arena.combat.mutations = ['guardBreaker', 'aegisCore'];
-      arena.combat.curse = 'ironOath';
+    if (buildTrial) {
+      arena.combat.mutations = [...trialBuild!.mutations];
+      arena.combat.curse = trialBuild!.curse;
     } else progression.beginRun();
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
-    if (!juggernautTrial) progression.observe(arena.combat, arena.run.result);
+    if (!buildTrial) progression.observe(arena.combat, arena.run.result);
     applySettings();
     renderSettings();
   }
@@ -267,4 +280,4 @@ for (const id of ['mute', 'volume', 'cosmetic']) {
     applySettings(); renderSettings(); persist();
   });
 }
-window.addEventListener('pagehide', () => { if (!juggernautTrial) progression.observe(arena.combat, arena.run.result); persist(); });
+window.addEventListener('pagehide', () => { if (!buildTrial) progression.observe(arena.combat, arena.run.result); persist(); });

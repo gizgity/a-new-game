@@ -53,3 +53,13 @@ export const BARRIER = { cap: 30, guardGain: 10, guardCooldown: 2,
   oathMultiplier: 1.25, oathHeavyGain: 4, oathDashMultiplier: 1.3 } as const;
 
 export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 7, damage: 6, initialDelay: 4, initialSpread: 0.65, sparseGap: 1.6, crowdGap: 0.7, crowdThreshold: 18, maxConcurrent: 3, lead: 160 } as const;
+
+export const BUILD = {
+  phantomDuration: 3, phantomCooldown: 4, phantomDelay: 0.12, phantomDamage: 18,
+  catalystSeeds: 2, frenzyDuration: 4, frenzyMultiplier: 1.25,
+  specialistMultiplier: 1.25, fractureDuration: 3, fractureDamage: 20,
+  staticDuration: 4, staticCooldown: 4, staticDamage: 40,
+  volatileMultiplier: 1.4, hazardDelay: 0.8, hazardDamage: 8, hazardRadius: 70, hazardCooldown: 2, hazardCap: 2,
+  ghostRefund: 1, ghostRisk: 1.2, bloodMultiplier: 1.3, bloodHeal: 2, bloodCooldown: 1.5, bloodMissCost: 4,
+  healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
+} as const;

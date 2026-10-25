@@ -194,3 +194,6 @@ footer { display: none; }
 .overlay[data-result="victory"] .panel > .scope, .overlay[data-result="victory"] .panel > .eyebrow,
 .overlay[data-result="defeat"] .touch-hint, .overlay[data-result="defeat"] .mini-controls,
 .overlay[data-result="defeat"] .panel > .scope, .overlay[data-result="defeat"] .panel > .eyebrow { display: none; }
+
+.build-status { grid-column: 1 / -1; color: #ffcc80; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.build-status:empty { display: none; }

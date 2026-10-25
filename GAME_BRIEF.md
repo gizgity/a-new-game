@@ -146,7 +146,7 @@
 - Mục tiêu là ít nhất bốn lối chơi có quyết định khác nhau: Juggernaut giữ vị trí/phá thế; sustain chọn mục tiêu có dấu; phản công Perfect/Charged; ranged/chain giữ khoảng cách và quản lý hazard.
 - Q2/Q3/Q4 vẫn ACCEPTED. Không sửa baseline damage, timing, cooldown, resources, input/aim, enemy growth/pattern/telegraph, Perfect predicate, hitstop, collision hoặc nhịp relay. Các bonus/penalty ghi dưới chỉ áp dụng khi sở hữu nội dung Q5 tương ứng, không sửa cấu hình nền. Boss không bị stun/reset windup; giữ chain12/tick và24VFX, overflow queue, relay4ticks.
 - **Mọi con số Q5 dưới đây là tuning defaults đề xuất**, phải playtest trước khi chốt. Tuning Q5 không cho phép tự cân bằng lại Q2–Q4.
-- Các hiệu ứng kế thừa giữ để bảo toàn tương tác đã duyệt: Phantom Edge +20px melee; Catalyst +1 Charge Point mỗi Light/Basic hit; Guard Breaker Heavy +30%/xuyên giáp. Core mới bổ sung hành vi trên nền đó. Berserker thay buff dưới50%HP bằng Frenzy; Specialist thay buff mọi Detonate bằng Charged/Fracture; Static Riposte thay xung tự động bằng phản công Charged. Bốn Curse cũ **thay toàn bộ gói cũ** bằng gói dưới, không ngầm cộng thêm passive/rủi ro cũ. Đây là thay đổi Q5 có chủ đích cần duyệt, không áp dụng khi chưa sở hữu.
+- Các hiệu ứng kế thừa giữ để bảo toàn tương tác đã duyệt: Phantom Edge +20px melee; Catalyst +1 Charge Point mỗi Light/Basic hit; Guard Breaker Heavy +30%/xuyên giáp. Core mới bổ sung hành vi trên nền đó. Berserker thay buff dưới50%HP bằng Frenzy; Specialist thay buff mọi Detonate bằng Charged/Fracture; Static Riposte thay xung tự động bằng phản công Charged. Bốn Curse cũ **thay toàn bộ gói cũ** bằng gói dưới, không ngầm cộng thêm passive/rủi ro cũ. Đây là gói rework Q5B đã được duyệt thiết kế; chỉ áp dụng khi sở hữu, cần user playtest experience trước Q5C.
 
 ### Resource và quy tắc tương tác chung
 
@@ -329,7 +329,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 1. Barrier cap30 không decay, ngân sách sustain chung8HP/10s, Soul Anchor không cứu hit chí tử; các số là tuning defaults.
 2. Gói rework thay passive cũ có liệt kê; giữ ba bonus Q2 có liên quan, giới hạn Catalyst seed/cùng root, cơ chế Fracture và các trade-off Curse ở trên.
 3. Draft weights/anti-repeat0.4, định nghĩa run trước gồm run bỏ dở, seed kèm snapshot; nội dung Q5 mới eligible mặc định khi checkpoint tương ứng được triển khai, giữ ba unlock Guard/Static/Death Echo hiện có, không thêm mục tiêu meta mới.
-4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đã deploy fa4045d, chưa có experience acceptance.
+4. Cổng tuần tự: duyệt contract trước Q5A; Juggernaut Q5A phải được user playtest và chấp nhận trước Q5B, tương tự tới Q5E. User đã duyệt contract; Q5A đã được user duyệt “q5a ok”; Q5B implementation đang chờ playtest acceptance.
 
 ## Meta progression
 - Hybrid unlocks, mở thêm Mutation, Curse và cosmetic; có 4 unlock mục tiêu.

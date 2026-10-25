@@ -22,9 +22,9 @@ test('Barrier absorbs after curse damage, preserves hurt immunity/knockback and 
  assert.equal(w.hp,92);assert.equal(w.barrier.value,0);assert.equal(w.barrier.broken,true);
  assert.equal(w.invulnerable,.65);assert.equal(w.player.x,820);
  w.hurt(20,0);assert.equal(w.hp,92);
- w.invulnerable=0;w.barrier.gain(30,false);w.curse='volatileSoul';w.hurt(20,0);
- assert.equal(w.barrier.value,5);assert.equal(w.hp,92);
- w.invulnerable=0;w.dashTime=.1;w.hurt(20,0);assert.equal(w.barrier.value,5);
+ w.invulnerable=0;w.barrier.gain(30,false);w.curse='ghostStep';w.dashCharges=0;w.hurt(20,0);
+ assert.equal(w.barrier.value,6);assert.equal(w.hp,92);
+ w.invulnerable=0;w.dashTime=.1;w.hurt(20,0);assert.equal(w.barrier.value,6);
 });
 
 test('Aegis uses actual direct melee damage, excludes overkill, shots, blasts and armor loss',()=>{
@@ -87,7 +87,7 @@ test('pause/draft freezes defensive clocks; switching/keeping Curse preserves re
  run.step(idle,1);assert.equal(JSON.stringify(w.barrier),before);
  assert.equal(run.choose(0),true);assert.equal(JSON.stringify(w.barrier),before);
  run.draft=[{id:'ghostStep',role:'curseChoice'}];run.choose(0);
- assert.equal(w.rechargeDuration,2.1);assert.equal(JSON.stringify(w.barrier),before);
+ assert.equal(w.rechargeDuration,2.8);assert.equal(JSON.stringify(w.barrier),before);
  w.barrier.step(3);w.barrier.guardBreak(false);assert.equal(w.barrier.value,27.5);
  run.start();assert.equal(w.barrier.value,0);assert.equal(w.barrier.guardCooldown,0);assert.equal(w.barrier.aegisDamage,0);
  assert.equal(w.rechargeDuration,COMBAT.dashRecharge);
