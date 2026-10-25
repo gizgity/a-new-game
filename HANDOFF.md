@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q3 — Enemy identity/precision, được user giao tiếp ngày 2026-10-25. Cải thiện nhận diện/animation của 3 common, Bulwark và Chain Warden theo Fractured Geometry; telegraph khớp hit geometry, khóa hướng/điểm, active feedback và recovery tạo khoảng phản công. Giữ specials/layout/scaling/ranged/kill drafts của bản trước. Q1 chờ visual approval, Q2 đã được user accepted trên84fb33a; không mở Q4/Q5.
+Q3 — Enemy identity/precision, được user giao tiếp ngày 2026-10-25. Implementation/checks và deploy đã xong; AWAITING PLAYTEST/VISUAL APPROVAL. Cải thiện nhận diện/animation của 3 common, Bulwark và Chain Warden theo Fractured Geometry; telegraph khớp hit geometry, khóa hướng/điểm, active feedback và recovery tạo khoảng phản công. Giữ specials/layout/scaling/ranged/kill drafts của bản trước. Q1 chờ visual approval, Q2 đã được user accepted trên84fb33a; không mở Q4/Q5.
 
 ## ACCEPTANCE
 - Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
@@ -84,12 +84,12 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 ## LAST VALIDATION
 - Q3: npm test PASS (66definitions/4files; thêm4focused definitions), typecheck/build PASS; bundle Phaser>500KB vẫn là warning hiện trạng.
 - Chromium mobile390: gallery,3Boss patterns/active/locked target, né slam không mất HP, Boss đứng yên qua recovery, Bulwark mở giáp PASS. Viewports320/390/844/768/1440 không overflow/runtime errors. Đây là fixtures, không phải human playtest/full-run.
-- Production smoke /a-new-game/ PASS320/390/844/1440: assets/base, giữ Bắn opening, pause/resume, vi/en, no overflow/runtime/request errors. Deployment Q3 đang thực hiện.
+- Production smoke /a-new-game/ PASS320/390/844/1440: assets/base, giữ Bắn opening, pause/resume, vi/en, no overflow/runtime/request errors. Deployment Q3: Actions40149381888 completed/success, heada3e93379d25b3f7a49f8b2389ff5ba517a2302ac. Live https://gizgity.github.io/a-new-game/.
 - Baseline giữ remote4d98a2e (Q2 user approval), implementation84fb33a/Actions40147434160 success. Sáu draft/encounters và vi/en mới đã ghép trước tests; không quay về bản3draft.
-- Git CLI không có credential hợp lệ; dùng GitHub connector để bảo toàn remote parent/tree và cập nhật main không force. Không xuất token.
+- Git CLI không có credential hợp lệ; deploy bằng GitHub connector với parent4d98a2e/tree mới và expected SHA, không force. Remote diff chỉ Q3+evidence; mọi blob đã đối chiếu hash với local. Branch local work là snapshot từb55e354, đã ghép source/text remote mới; lịch sử local chưa fetch3commit trướcQ3 và ảnh docs/milestones chỉ có remote. Không push branch work lên main; lần làm tiếp cần đọc remote handoff mới nhất/đồng bộ lịch sử khi CLI auth có lại.
 
 ## NEXT ACTION
-Hoàn tất production smoke và deploy Q3 qua Actions; sau deploy dừng chờ user playtest/visual approval Q3, không tự mở Q4/Q5.
+Dừng chờ user playtest/visual approval Q3 tại Pages: nhận diện5quái, đọc telegraph, né→phản công recovery và mở giáp Bulwark. Chỉ sửa theo feedback; không tự mở Q4/Q5.
 
 ## BLOCKERS
-Chưa user duyệt Q3 hoặc kiểm máy thật/Safari/full-run; không tự accepted. Git CLI thiếu auth, connector vẫn truy cập repo được.
+Không blocker implementation/deploy. Chưa user duyệt Q3 hoặc kiểm máy thật/Safari/full-run; không tự accepted. Hạn chế đồng bộ lịch sử local nêu ở validation; connector vẫn truy cập remote được.
