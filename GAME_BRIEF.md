@@ -118,6 +118,7 @@
 - Chain Warden: final Boss.
 
 ### Q3 — nhận diện và precision encounters (chờ user duyệt)
+- Feedback readability Grunt: quạt rỗng viền đứt khi lấy đà, chuyển viền liền/chevrons trong160ms cuối (cộng thời gian stagger); vàng chỉ khi predicate Perfect thật. Hit một lần có flash trắng/quạt tô2frames, recovery chỉ giữ vệt chém mờ không còn vùng quạt. Giữ windup0.42s/damage/range/Perfect160ms.
 - Art quái tách trong `EnemyVisual.ts`, dùng các mảnh giáp tối/lõi sáng/cạnh gãy có silhouette riêng: Grunt mặt nạ và móc tay; Archer mũ/áo rách/cung; Volatile lò năng lượng tách mảnh; Bulwark giáp phiến lớn; Chain Warden vương miện, thân rỗng và mảnh xích lơ lửng. Có pose lấy đà, bật khi ra đòn và hồi phục; collider giữ nguyên.
 - Telegraph ground vẽ dưới bodies, có boundary và tiến trình theo windup thực snapshot. Hướng melee/Archer/ring và điểm slam khóa từ đầu windup; ring hiển thị12hướng đạn, slam/Volatile hiển thị vòng bán kính110px. Perfect cue dùng cùng threat predicate. Active flash0.18s(common)/0.22s(Boss) chỉ là feedback sau hit một lần.
 - Recovery đứng yên trong cooldown hiện có: Grunt0.22s, Archer0.4s, Bulwark0.75s; Boss0.7s hoặc0.5s dưới nửaHP. Volatile giữ fuse0.7s rồi nổ tại vị trí đã khóa. Không thêm pattern hoặc enemy mới.

@@ -1,5 +1,5 @@
 import type Phaser from 'phaser';
-import type { CombatWorld, Enemy } from './combat';
+import { COMBAT, type CombatWorld, type Enemy } from './combat';
 import { BOSS_ATTACK, ENEMY_ATTACK } from './config/balance';
 
 type Graphics = Phaser.GameObjects.Graphics;
@@ -9,8 +9,63 @@ function sector(g: Graphics, x: number, y: number, radius: number, angle: number
   g.beginPath().moveTo(x, y).arc(x, y, radius, angle - arc / 2, angle + arc / 2).closePath().fillPath().strokePath();
 }
 
+// Grunt uses shape as well as color: dashed preparation, solid imminent cue,
+// then a brief strike flash. A fading slash never leaves a filled warning in recovery.
+function drawGruntTelegraph(g: Graphics, e: Enemy, world: CombatWorld): void {
+  const { range, arc } = ENEMY_ATTACK.grunt;
+  const start = e.angle - arc / 2;
+  if (e.windup > 0) {
+    const imminent = e.windup + e.stagger <= COMBAT.perfectWindow;
+    const eligible = world.isImminentEnemyThreat(e);
+    const color = eligible ? 0xffe599 : COLORS.grunt;
+    const progress = Math.max(0, Math.min(1, 1 - e.windup / (e.windupDuration || ENEMY_ATTACK.grunt.windup)));
+    g.fillStyle(color, 0).lineStyle(imminent ? 3 : 1.5, color, imminent ? 1 : 0.5);
+    if (imminent) {
+      // Solid boundary and inward chevrons mark the last 160ms, not a hit.
+      sector(g, e.x, e.y, range, e.angle, arc);
+      for (const offset of [-0.48, 0, 0.48]) {
+        const a = e.angle + offset;
+        const x = e.x + Math.cos(a) * (range - 5), y = e.y + Math.sin(a) * (range - 5);
+        for (const side of [-1, 1]) g.lineBetween(x, y,
+          x - Math.cos(a) * 9 - Math.sin(a) * side * 5,
+          y - Math.sin(a) * 9 + Math.cos(a) * side * 5);
+      }
+    } else {
+      // Broken outline stays hollow so it cannot resemble the damaging flash.
+      for (let i = 0; i < 7; i++) {
+        const a = start + arc * i / 7;
+        g.beginPath().arc(e.x, e.y, range, a, a + arc * 0.6 / 7).strokePath();
+      }
+      for (const a of [start, start + arc]) g.lineBetween(
+        e.x + Math.cos(a) * 20, e.y + Math.sin(a) * 20,
+        e.x + Math.cos(a) * range, e.y + Math.sin(a) * range);
+    }
+    // A fixed-radius progress arc closes toward the strike direction.
+    g.lineStyle(2, color, imminent ? 1 : 0.75).beginPath()
+      .arc(e.x, e.y, range - 10, start, start + arc * progress).strokePath();
+    return;
+  }
+  if (e.active <= 0) return;
+  const age = 0.18 - e.active;
+  if (age < 2 / 60) {
+    // Hit resolves once when windup reaches zero; fill exists for only two frames.
+    g.lineStyle(3, 0xffffff, 1).fillStyle(0xffedce, 0.3);
+    sector(g, e.x, e.y, range, e.angle, arc);
+  }
+  // Only a thin fractured slash remains, without the warning's radial edges/fill.
+  g.lineStyle(2, 0xffedce, Math.max(0, e.active / 0.18));
+  g.beginPath();
+  for (let i = 0; i <= 8; i++) {
+    const a = start + arc * i / 8, r = range - (i % 2) * 5;
+    const x = e.x + Math.cos(a) * r, y = e.y + Math.sin(a) * r;
+    if (i === 0) g.moveTo(x, y); else g.lineTo(x, y);
+  }
+  g.strokePath();
+}
+
 // Draw all ground cues before bodies so another enemy never paints over a silhouette.
 export function drawEnemyTelegraph(g: Graphics, enemy: Enemy, world: CombatWorld): void {
+  if (enemy.kind === 'grunt') { drawGruntTelegraph(g, enemy, world); return; }
   const active = enemy.active > 0;
   if (enemy.windup <= 0 && !active) return;
   const color = active ? 0xffedce : world.isImminentEnemyThreat(enemy) ? 0xffe599 : COLORS[enemy.kind];
