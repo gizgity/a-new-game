@@ -1,6 +1,6 @@
 # Q5B — rework Mutation/Curse
 
-Q5B ban đầu b06bf69 đã deploy. Sustain tuning hiện tại f6dd69431cfeee4427bdb8748592a39d8e1bdea1 đã deploy, Actions40207444949 completed/success; hồi2HP/2s, cap riêng6HP/10s. 105tests/typecheck/build/browser PASS; chờ user thử lại frenzy, không là acceptance Q5B.
+Q5B ban đầu b06bf69 đã deploy. Lượt sustain trước f6dd69431cfeee4427bdb8748592a39d8e1bdea1 đã deploy, Actions40207444949 completed/success; hồi2HP/2s, cap riêng6HP/10s. 105tests/typecheck/build/browser PASS; chờ user thử lại frenzy, không là acceptance Q5B.
 
 Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Aegis/Oath và tuning Grunt6b7d7ad. Pool hiện7Mutation/5Curse, chưa Q5C/D. Implementation không là user experience acceptance.
 
@@ -31,6 +31,8 @@ Tải lại trang sau deploy. Các link cấp build để vào đúng tình hu�
 Run thường: https://gizgity.github.io/a-new-game/. Draft Mutation25kills/0:30, Curse80/1:00, Mutation160/1:40 và220/2:20, Curse300/3:00, Mutation380/3:40; vẫn random cũ, không đảm bảo đủ combo. Feedback: link/build, bước/tình huống, quan sát và thiết bị/browser. Dừng Q5B ở AWAITING PLAYTEST APPROVAL, chưa Q5C/D.
 
 ## Tank trade-off theo feedback mới
+
+Bản hiện tại d42cdaf đã deploy (Actions40209412564 success), thay sustain/damage trade-off cũ theo yêu cầu user. Chi tiết và checklist: ../tank-balance/README.md.
 
 Aegis Core mọi damage gây ra×0.8, Iron Oath×0.75, Blood Pact×0.8 thay bonus+30% cũ. Cost nhân với nhau, áp dụng một lần sau flat bonus trước armor, kể cả proc/nổ/Surge; environment/enemy không bị nerf. Aegis rate4/s (5vớiOath), Blood Pact không hồiHP khiBarrier>0, kể cả đòn vừa tạo khiên. Heal bị chặn không tiêu cooldown/budget. Các preset counter/chain/echo không bị cost nếu không sở hữu lựa chọn phòng thủ.
 

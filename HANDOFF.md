@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Cân bằng tank theo feedback mới: “vừa giáp vừa máu, đứng tank không di chuyển; chống chịu phải giảm damage”. User yêu cầu điều chỉnh trade-off nên supersede bonus cũ của3lựa chọn phòng thủ. Aegis×0.8, Oath×0.75, Blood Pact×0.8 damage gây ra; cost nhân nhau và áp dụng một lần cho toàn bộ damage player. Aegis rate4/s (Oath5), Blood Pact không hồi khi có Barrier. Tests/build/browser PASS, chuẩn bị deploy; AWAITING PLAYTEST APPROVAL cho tank trade-off. Q5A approval lịch sử giữ; Q5B/tuning mới chờ user thử, Q5C/D chưa mở.
+Cân bằng tank theo feedback mới: “vừa giáp vừa máu, đứng tank không di chuyển; chống chịu phải giảm damage”. User yêu cầu điều chỉnh trade-off nên supersede bonus cũ của3lựa chọn phòng thủ. Aegis×0.8, Oath×0.75, Blood Pact×0.8 damage gây ra; cost nhân nhau và áp dụng một lần cho toàn bộ damage player. Aegis rate4/s (Oath5), Blood Pact không hồi khi có Barrier. Tests/build/browser/deploy PASS trên d42cdaf; **AWAITING PLAYTEST APPROVAL** cho tank trade-off. Q5A approval lịch sử giữ; Q5B/tuning mới chờ user thử, Q5C/D chưa mở.
 
 ## ACCEPTANCE
 - Mọi damage player chịu cost build, gồm flat/proc/chain/Surge; enemy/environment giữ. Build không phòng thủ giữ damage baseline. HUD/card vi/en hiển thị cost.
@@ -99,6 +99,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Tank trade-off deploy PASS:d42cdaf4b69a2253307c5a194a2b58f022ad3f94, Actions40209412564 completed/success. Parent e1b5a02, update main expected SHA/không force;14blobs(13text/1PNG) đối chiếu local. Chưa user balance acceptance; browser local/dist, không tự nhận smoke live/Safari.
 - Tank trade-off:110definitions/8files PASS (5focused mới); typecheck/build/diff PASS. Chromium320/390/844/1440 kiểm36%/40% damage cost, Barrier chặn heal/Curse swap/vi-en/trial no-progress/no-overflow/runtime error PASS. Dist390 đứng giữ Chém12s input thật:24HP tại~12s; docs/tank-balance/ ghi fixture/limits. Chưa user approval/device/full-run.
 - Sustain nerf deploy PASS:f6dd69431cfeee4427bdb8748592a39d8e1bdea1, Actions40207444949 completed/success, job121211304888. Parent396ed42, update main expected SHA/không force;7blobs đối chiếu local. Browser local/dist; chưa user acceptance/device/full-run.
 - Sustain nerf:105definitions/7files PASS (2test mới kiểm1/24target, cooldown2s, cap6HP/10s, hết cửa sổ/đổi Curse/reset). Typecheck/build/diff PASS. Chromium dist390 input Chém8s/pause/vi-en/trial không lưu progress/no-overflow/runtime error PASS. Chưa user acceptance/thiết bị thật/full-run.
@@ -118,10 +119,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Hoàn tất build/browser cho tank trade-off rồi deploy, ghi SHA/Actions và bàn giao link tank/Juggernaut/Frenzy. Dừng chờ user feedback; không mở Q5C/D.
+Chờ user thử tank trade-off trên d42cdaf bằng các link tank/Juggernaut/Frenzy; chỉ sửa feedback balance, không mở Q5C/D.
 
 ## PLAYTEST TANK TRADE-OFF — AWAITING PLAYTEST APPROVAL
-Sau deploy, tải lại ?playtest=tank (Guard+Aegis+Berserker+Blood), juggernaut hoặc frenzy tại https://gizgity.github.io/a-new-game/. Trial không lưu progress. Giữ Chém/chuột trái vào cụm20–40s: thấy HUD damage−36% (tank) hoặc−40% (Juggernaut), có Barrier không đồng thời hồiHP; kill chậm hơn build công. Thử đứng yên rồi dùng joystick/WASD, Lướt/Space, Heavy/Shift giữ-thả để so: khiên giúp chịu đòn nhưng vẫn cần di chuyển/phá thế. Frenzy4s chỉ khiL1–L3 trúng, Blood vẫn miss Heavy cost4. Báo build, bước, cảm giác damage/chống chịu/AoE và thiết bị/browser. Fixture kỹ thuật không là balance acceptance.
+Bản d42cdaf đã deploy, tải lại ?playtest=tank (Guard+Aegis+Berserker+Blood), juggernaut hoặc frenzy tại https://gizgity.github.io/a-new-game/. Trial không lưu progress. Giữ Chém/chuột trái vào cụm20–40s: thấy HUD damage−36% (tank) hoặc−40% (Juggernaut), có Barrier không đồng thời hồiHP; kill chậm hơn build công. Thử đứng yên rồi dùng joystick/WASD, Lướt/Space, Heavy/Shift giữ-thả để so: khiên giúp chịu đòn nhưng vẫn cần di chuyển/phá thế. Frenzy4s chỉ khiL1–L3 trúng, Blood vẫn miss Heavy cost4. Báo build, bước, cảm giác damage/chống chịu/AoE và thiết bị/browser. Fixture kỹ thuật không là balance acceptance.
 
 ## THAM CHIẾU SUSTAIN f6dd694
 Lượt giảm Blood2HP/2s cap6 đã deploy; feedback mới supersede damage bonus và cho heal chỉ khi Barrier0. Không yêu cầu thử lại bản cũ.

@@ -1,5 +1,7 @@
 # Tank trade-off — feedback sau Q5B
 
+Bản d42cdaf4b69a2253307c5a194a2b58f022ad3f94 đã deploy, Actions40209412564 completed/success. Chờ user playtest balance, Q5C/D chưa mở.
+
 User yêu cầu chống chịu phải đánh đổi damage, tránh vừa Barrier vừa heal vừa damage lớn. Đây là điều chỉnh trực tiếp lên Q5A/Q5B đã có, không mở Q5C/D.
 
 - Aegis Core: mọi damage player gây ra×0.8, trần tạo Barrier4/s thay8 (Oath5 thay10), vẫn4Barrier mỗi40actual melee damage. Damage sau cost/giáp và loại overkill mới tích khiên, phần dư không bank.
