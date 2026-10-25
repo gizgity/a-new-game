@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Tăng từ3 lên6 lượt tiến hóa; draft/Elite/Boss kích hoạt theo kills HOẶC thời gian, điều kiện tới trước. Implementation/tests/build/browser/production PASS, chuẩn bị deploy. AWAITING PLAYTEST APPROVAL. Giữ balance súng/specials và phạm vi nội dung hiện có.
+Tăng từ3 lên6 lượt tiến hóa; draft/Elite/Boss kích hoạt theo kills HOẶC thời gian, điều kiện tới trước. Implementation/tests/build/browser/production PASS; đã deploy Pages qua GitHub Actions success. AWAITING PLAYTEST APPROVAL. Giữ balance súng/specials và phạm vi nội dung hiện có.
 
 ## ACCEPTANCE
 - 6 draft: Mutation25kills/0:30, Curse80/1:00, Mutation160/1:40, Mutation220/2:20, Curse300/3:00, Mutation380/3:40. Mỗi mốc chỉ chạy1lần; vượt nhiều mốc xử lý tuần tự, timer pause khi chọn.
@@ -80,7 +80,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Chromium320×568/390×844/844×390/1440×900 PASS: HUD vi/en cả kills/time không tràn,6draft qua UI, Curse có giữ/đổi, pool1option cuối, Boss sớm, pause/resume; production base/a-new-game/ HUD/load/no overflow/runtime errors PASS. Ảnh HUD320 và Curse đã xem trực quan.
 - Natural ranged scripted input, waves thật/no HP-ammo grants:266kills/128.8s,565shots/0melee/71detonations,4draft tại25/80/161/222kills; chết trước draft5. Assertion kỳ vọng full6/Boss của script không đạt do player chết, không phải runtime lỗi; toàn6mốc/Boss chỉ được kiểm bằng core tests+browser fixtures. Không tuyên bố full-run cân bằng hoặc experience accepted.
 - Safari/iOS/thiết bị thật, tầm với, combat feel và full-run cần user playtest.
-- Bản deploy trước: Actions40122478494, head066e0428c3abc27821acfcb7fe754a4ff6686b7f success. Bản mốc mới chưa deploy.
+- Deployment: Actions40147434160, head84fb33ac1fe3c945edb6b42e8dfd60db48eb1f27, completed/success; job121031678697. Build/upload/deploy Pages PASS. Live https://gizgity.github.io/a-new-game/. Commit handoff sau deploy chỉ Markdown.
 
 ## NEXT ACTION
-Push main/deploy GitHub Actions, theo dõi tới kết thúc, ghi nhận kết quả rồi dừng chờ user playtest nhịp6draft/Boss sớm.
+Dừng chờ user playtest nhịp6draft, đổi/giữ Curse và Boss sớm. Chỉ chỉnh tiếp theo feedback; không tự mở checkpoint/content khác.
