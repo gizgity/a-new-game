@@ -60,6 +60,6 @@ export const BUILD = {
   specialistMultiplier: 1.25, fractureDuration: 3, fractureDamage: 20,
   staticDuration: 4, staticCooldown: 4, staticDamage: 40,
   volatileMultiplier: 1.4, hazardDelay: 0.8, hazardDamage: 8, hazardRadius: 70, hazardCooldown: 2, hazardCap: 2,
-  ghostRefund: 1, ghostRisk: 1.2, bloodMultiplier: 1.3, bloodHeal: 2, bloodCooldown: 1.5, bloodMissCost: 4,
+  ghostRefund: 1, ghostRisk: 1.2, bloodMultiplier: 1.3, bloodHeal: 2, bloodCooldown: 2, bloodBudget: 6, bloodMissCost: 4,
   healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
 } as const;

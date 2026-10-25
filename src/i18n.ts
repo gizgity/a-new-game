@@ -95,7 +95,7 @@ const vi = {
   ghostStep: "Ghost Step",
   ghostStepDesc: "Perfect Dodge giảm 1s hồi Dash. Khi hết lượt Dash, nhận thêm 20% enemy damage.",
   bloodPact: "Blood Pact",
-  bloodPactDesc: "Melee +30%; hit melee hồi 2HP (hồi 1.5s, chung tối đa 8HP/10s). Heavy hụt hoặc hủy sau khi bắt đầu mất 4HP, sàn 1HP.",
+  bloodPactDesc: "Melee +30%; hit melee hồi 2HP (hồi 2s, Blood Pact tối đa 6HP/10s). Heavy hụt hoặc hủy sau khi bắt đầu mất 4HP, sàn 1HP.",
   deathEcho: "Death Echo",
   deathEchoDesc: "Kill nổ 20 damage/radius80, tối đa 6 echo/chain; quái sống trúng echo chạy nhanh +15% trong 3s (Boss miễn).",
   runComplete: "CHIẾN THẮNG · ĐÃ HẠ BOSS",
@@ -226,7 +226,7 @@ const en: Record<TranslationKey, string> = {
   ghostStep: "Ghost Step",
   ghostStepDesc: "Perfect Dodge reduces Dash recharge by 1s. At zero Dash charges, take +20% enemy damage.",
   bloodPact: "Blood Pact",
-  bloodPactDesc: "Melee +30%; melee hit heals 2HP (1.5s cooldown, shared max 8HP/10s). Heavy miss or cancel after starting costs 4HP, minimum 1HP.",
+  bloodPactDesc: "Melee +30%; melee hit heals 2HP (2s cooldown, Blood Pact max 6HP/10s). Heavy miss or cancel after starting costs 4HP, minimum 1HP.",
   deathEcho: "Death Echo",
   deathEchoDesc: "Kills explode for 20 damage/radius80, max 6 echoes/chain; surviving enemies hit move +15% faster for 3s (Boss immune).",
 

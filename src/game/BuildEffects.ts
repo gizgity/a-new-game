@@ -19,6 +19,7 @@ export class BuildEffects {
   bloodCooldown = 0;
   healWindow = 0;
   healed = 0;
+  bloodHealed = 0;
   healFlash = 0;
   lastHeal = 0;
   costFlash = 0;
@@ -26,13 +27,13 @@ export class BuildEffects {
   reset(): void {
     this.phantom = this.phantomCooldown = this.staticCharge = this.staticCooldown = this.frenzy = this.comboStage = 0;
     this.phantoms = []; this.hazards = [];
-    this.hazardCooldown = this.bloodCooldown = this.healWindow = this.healed = this.healFlash = this.lastHeal = this.costFlash = 0;
+    this.hazardCooldown = this.bloodCooldown = this.healWindow = this.healed = this.bloodHealed = this.healFlash = this.lastHeal = this.costFlash = 0;
   }
   step(dt: number): void {
     for (const key of ['phantom', 'phantomCooldown', 'staticCharge', 'staticCooldown', 'frenzy', 'hazardCooldown', 'bloodCooldown', 'healWindow', 'healFlash', 'costFlash'] as const) {
       this[key] = Math.max(0, this[key] - dt);
     }
-    if (this.healWindow <= 1e-9) this.healed = 0;
+    if (this.healWindow <= 1e-9) this.healed = this.bloodHealed = 0;
     for (const slash of this.phantoms) slash.delay -= dt;
     for (const hazard of this.hazards) hazard.time -= dt;
   }
@@ -49,10 +50,10 @@ export class BuildEffects {
   }
   heal(hp: number, maxHp: number): number {
     if (hp <= 0 || this.bloodCooldown > 1e-9) return 0;
-    const amount = Math.max(0, Math.min(BUILD.bloodHeal, maxHp - hp, BUILD.healBudget - this.healed));
+    const amount = Math.max(0, Math.min(BUILD.bloodHeal, maxHp - hp, BUILD.healBudget - this.healed, BUILD.bloodBudget - this.bloodHealed));
     if (amount > 0) {
       if (this.healWindow <= 1e-9) this.healWindow = BUILD.healWindow;
-      this.healed += amount; this.bloodCooldown = BUILD.bloodCooldown;
+      this.healed += amount; this.bloodHealed += amount; this.bloodCooldown = BUILD.bloodCooldown;
       this.lastHeal = amount; this.healFlash = 0.5;
     }
     return amount;

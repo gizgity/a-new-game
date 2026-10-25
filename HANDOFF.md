@@ -10,13 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q5B — Rework5Mutation cũ còn lại +4Curse cũ, user giao “tiếp q5b đi”. Q5A accepted, giữ tuning Grunt6b7d7ad, không tự accepted difficulty. Implementation/tests/build/browser/deploy PASS cho Q5B trên b06bf69; **AWAITING PLAYTEST APPROVAL**; không mở Q5C/D.
+Nerf nhẹ sustain Frenzy/Blood Pact theo feedback “hồi máu quá nhiều khi đông quái, giảm độ khó”. Chỉ chỉnh Blood Pact: giữ2HP/lần, cooldown1.5→2s và cap riêng8→6HP/10s; giữ Frenzy/combo/damage và các build còn lại. Tests/build/browser PASS, chuẩn bị deploy. Q5B chưa accepted; không mở Q5C/D.
 
 ## ACCEPTANCE
-- Phantom Perfect→Light trúng→slash trễ; Catalyst tối đa2seed/root không tự relay cùng root; Frenzy từ3Light trúng; Charged Specialist gốc→Fracture→Heavy/Charged tiêu; Static Perfect→Charged phản công.
-- Curse: Volatile hazard0.8s/8damage, Ghost Perfect refund/zeroDash risk, Blood Pact melee sustain8HP/10s+Heavy hụt/hủy cost4, Death Echo cap6/root+haste enemy sống. Giữ Oath/Aegis/Guard Q5A.
-- Proc không tự cấp charge/Barrier/Frenzy hoặc nhân bonus vô hạn; root giữ qua queue/relay/kill, budget12/tick/24VFX. Pause/hitstop/draft/reset/đổi-giữ Curse đúng, player text vi/en.
-- Focused tests/build/browser/evidence/deploy; gameplay acceptance cần user playtest. Link trial cấp build không lưu tiến độ, không là natural acquisition. Dừng AWAITING PLAYTEST APPROVAL sau Q5B; Q5C/D chưa mở.
+- Blood Pact hồi tối đa2HP mỗi2s, riêng6HP/10s dù1hay24mục tiêu; không nhân heal theo cleave, không lách cap khi đổi/giữ Curse. FullHP không tiêu budget, reset run sạch.
+- Ngân sách sustain chung8HP/10s cho scope Q5 giữ, Blood Pact dùng cap riêng thấp hơn. Bonus damage, Heavy miss cost4HP, Frenzy/controls/nhịp đòn và difficulty không đổi.
+- Tests/build/browser/deploy PASS; chờ user thử link frenzy20–40s khi giao chiến đông và phản hồi heal có vừa đủ không. Chưa chuyển Q5C.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -36,6 +35,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5E — Diversity/balance | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5D |
 
 ## CURRENT STATUS
+- Sustain tuning: Blood Pact2HP/2s, cap riêng6HP/10s trong budget chung8; counter bloodHealed dùng cùng healWindow, giữ qua đổi Curse, reset khi hết window hoặc run mới. Damage/Frenzy và các build khác giữ.
 - Q5B rework xong5Mutation/4Curse theo contract. BuildEffects.ts giữ clocks/Phantom/hazard/heal budget; combat giữ root object qua shot/Heavy/Detonate/relay/echo, cap2seed/6echo/root. BuildVisual.ts vẽ cue bounded; HUD vi/en cho Phantom/Static/Frenzy/heal/cost/Ghost risk. config/playtests.ts có4preset Q5B +Juggernaut, không lưu progress.
 - Difficulty v2: pressure4s ưu tiên2Archer tới8; Grunt jump0.68s/radius48 lead160/max3/concurrent, damage6/cooldown7s/first delay4–6.6s/start gap1.6s hoặc0.7s khi18Grunt, Heavy/blast interrupt/AoE vẫn trúng. Boss far-sweep→slam leap560, chase300, ring12+fan3 speed430, windup0.62/0.46 cooldown0.55/0.38 recovery0.32/0.24. Xem docs/pressure-v2/README.md.
 - Contract mới là nguồn thiết kế Q5; docs/q5/AUDIT.md thuộc lượt audit trước, không còn là quyết định/next action hiện hành. User đã duyệt concept/contract; không còn blocker thiết kế.
@@ -97,6 +97,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Sustain nerf:105definitions/7files PASS (2test mới kiểm1/24target, cooldown2s, cap6HP/10s, hết cửa sổ/đổi Curse/reset). Typecheck/build/diff PASS. Chromium dist390 input Chém8s/pause/vi-en/trial không lưu progress/no-overflow/runtime error PASS. Chưa user acceptance/thiết bị thật/full-run.
 - Q5B deploy PASS:b06bf69f82c3384145556cfed0d453d2ff7be844, Actions40193133738 completed/success, job121168217793. Parent51e3acd, update main expected SHA/không force;20blobs(16text/4PNG) đối chiếu local. Browser local/dist, không tự nhận đã smoke live; chưa user acceptance/Safari/full-run.
 - Q5B:103definitions/7files PASS (13focused Q5B), typecheck/build/diff PASS. Chromium390 counter/chain/frenzy/echo fixtures: HUD/Perfect/hazard/Frenzy/haste/vi-en/Curse swap và trial không lưu progress PASS. Dist320/844/1440/input/pause/no-overflow/runtime error PASS. docs/q5b/ ghi rõ fixtures; chưa Safari/device/full-run hoặc user acceptance.
 - Grunt tuning deploy PASS:6b7d7ad910b58d7bc2f524e4373dfab1fe9970cf, Actions40175067250 completed/success, job121113849271. Parent efa67d1, update main không force/expected SHA;5text blobs đối chiếu local. Chưa user acceptance/Safari/full-run; browser evidence local/dist, live deploy xác nhận bởi Actions.
@@ -115,7 +116,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Chờ user playtest Q5B b06bf69 theo docs/q5b/README.md; chỉ sửa feedback Q5B. Không triển khai Q5C/D khi chưa có user acceptance Q5B.
+Kiểm browser ngắn rồi deploy sustain tuning, ghi SHA/Actions và chờ user thử ?playtest=frenzy. Không triển khai Q5C/D.
+
+## PLAYTEST SUSTAIN TUNING — AWAITING PLAYTEST APPROVAL
+Sau deploy tải lại https://gizgity.github.io/a-new-game/?playtest=frenzy (preset không lưu tiến độ). Giao chiến20–40s, giữ Chém/chuột trái vào cụm; khi đã mấtHP, hồi2HP cách≥2s, tối đa6HP/10s kể cả cleave nhiều mục tiêu. L1–L3 trúng vẫn Frenzy4s/damage như trước; phải né và chọn vị trí, không tank chỉ nhờ hút máu. Thử Heavy hụt (Đánh mạnh/Shift giữ-thả) vẫn mất4HP. Ghi cảm giác heal/độ khó, tình huống và thiết bị/browser; không yêu cầu duyệt lại các build khác.
 
 ## PLAYTEST Q5B — AWAITING PLAYTEST APPROVAL
 Bản b06bf69 đã deploy; tải lại link thử có build sẵn: ?playtest=counter (Phantom+Static+Ghost), chain (Catalyst+Specialist+Volatile), frenzy (Berserker+Blood Pact), echo (Catalyst+Death Echo). Có nhãn rõ, không lưu progress; không là natural acquisition. Base https://gizgity.github.io/a-new-game/. Checklist thao tác/mong đợi/giới hạn ở docs/q5b/README.md. Run thường giữ milestones/pool7/5/unlock, chưa Draft v2. Chỉ Q5B cần user duyệt; Q5A và difficulty giữ trạng thái cũ.

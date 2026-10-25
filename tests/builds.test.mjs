@@ -66,9 +66,9 @@ test('Specialist buffs only primary Charged blast, marks surviving targets Fract
 test('Blood Pact heals direct melee under cooldown/shared budget, no Light cost, Heavy miss and dash-cancel cost HP through Barrier',()=>{
  const w=world();w.curse='bloodPact';w.hp=50;w.barrier.gain(30,false);const e=target(w);light(w,1);assert.equal(w.hp,52);assert.equal(w.attack.damage,18*1.3);
  w.hitEnemy(e,20,0,0,0,false,'light');assert.equal(w.hp,52);
- for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,58);
- w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,54);assert.equal(w.barrier.value,30);
- w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,50);
+ for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,56);
+ w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,52);assert.equal(w.barrier.value,30);
+ w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,48);
  w.hp=2;w.payBloodMiss();assert.equal(w.hp,1);
  const full=world();full.curse='bloodPact';const t=target(full);full.hitEnemy(t,1,0,0,0,false,'light');assert.equal(full.build.healed,0);assert.equal(full.build.bloodCooldown,0);
 });
@@ -121,4 +121,26 @@ test('all build clocks and deferred effects freeze in hitstop/draft and reset re
  const before=JSON.stringify(w.build);w.hitstop=.5;ticks(w,10);assert.equal(JSON.stringify(w.build),before);
  run.draft=[{id:'catalyst',role:'adaptive'}];run.step(idle,1);assert.equal(JSON.stringify(w.build),before);
  run.start();assert.equal(w.build.phantom,0);assert.equal(w.build.staticCharge,0);assert.equal(w.build.phantoms.length,0);assert.equal(w.build.hazards.length,0);
+});
+
+test('Blood Pact sustain is capped at6HP/10s for both single-target hits and crowded cleaves',()=>{
+ for(const count of [1,24]){
+  const w=world();w.curse='bloodPact';w.hp=40;
+  const enemies=Array.from({length:count},(_,i)=>target(w,850+i*.1,10000));
+  for(let frame=0;frame<599;frame++){
+   w.build.step(dt);
+   for(const e of enemies)w.hitEnemy(e,1,0,0,0,false,'light');
+  }
+  assert.equal(w.hp,46);assert.equal(w.build.bloodHealed,6);assert.equal(w.build.healed,6);
+  w.build.step(.1);w.hitEnemy(enemies[0],1,0,0,0,false,'light');assert.equal(w.hp,48,'new window starts with a new real hit');
+ }
+});
+
+test('Blood Pact cannot bypass its cap by switching Curse; cooldown is2s and full HP costs no budget',()=>{
+ const w=world();const e=target(w);w.curse='bloodPact';w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
+ w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,52);
+ w.build.step(.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,54);
+ w.curse='ghostStep';w.curse='bloodPact';w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
+ w.curse='ghostStep';w.curse='bloodPact';w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
+ w.reset();assert.equal(w.build.bloodHealed,0);
 });
