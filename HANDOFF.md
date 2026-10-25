@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Cue Grunt/Perfect Dodge đã được user chấp nhận qua “oki r” sau bản sửa fa55057. ACCEPTED — USER PLAYTEST APPROVAL cho phạm vi viền đứt chuẩn bị → vàng canh Perfect → trắng lúc hit/recovery hết quạt. Không sửa thêm implementation trong lượt xác nhận này. Q3 tổng thể còn chờ duyệt các enemy/encounter khác; Q1 chờ visual approval, Q2 giữ accepted; không tự mở Q4/Q5.
+Q3 — Enemy identity/precision đã được người dùng chấp nhận qua “oki q3 r”. ACCEPTED — USER PLAYTEST/VISUAL APPROVAL cho toàn checkpoint Q3 trên bảnfa55057 (nền Q3 a3e9337); cue Grunt/Perfect Dodge đã được duyệt riêng trước đó. Giữ implementation/balance hiện tại; Q2 vẫn accepted, Q1 chờ visual approval. Dừng ở Q3, không tự mở Q4/Q5.
 
 ## ACCEPTANCE
 - Năm enemy có silhouette/lớp giáp/lõi/chuyển động riêng, đọc được ở mobile; không dùng hình debug đơn làm thân.
@@ -27,7 +27,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Bố cục cột mới và giữ/thả trên máy thật |
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
 | Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
-| Q3 — Enemy identity/precision | IN PROGRESS — AWAITING PLAYTEST/VISUAL APPROVAL | Cue Grunt/Perfect đã user duyệt; các art/enemy/encounter Q3 còn lại chờ duyệt |
+| Q3 — Enemy identity/precision | ACCEPTED — USER PLAYTEST/VISUAL APPROVAL | User xác nhận “oki q3 r” trên bảnfa55057 |
 | Q4 — Chain depth | NOT VERIFIED | Charged tự seed Detonate hỗ trợ ranged; depth tổng thể chưa duyệt |
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
 
@@ -85,6 +85,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- User xác nhận “oki q3 r” cho toànQ3. Đây là experience/visual approval từ user, không phải chứng nhận mọi thiết bị/Safari hoặc đo hiệu năng/full-run. Lượt ghi nhận chỉ sửa Markdown; kiểm diff/nhất quán, không chạy lại tests/build/deploy.
 - User xác nhận “oki r” cho cue Grunt/Perfect Dodge trên bảnfa55057. Lượt này chỉ cập nhật Markdown, kiểm diff/nhất quán; không chạy lại tests/build/deploy. Không suy rộng acceptance sang toànQ3 hoặc mọi thiết bị.
 - Grunt cue: 66tests PASS, typecheck/build PASS. Chromium320/390/844 PASS: dashed trước cửa sổ/no damage, solid gold chỉ khi đủ threat160ms, strike flash trùng damage12, recovery không fill; dash sớm0Perfect/dash vàng1Perfect/ngoài threat không vàng. Production320/390/844/1440 PASS assets/input/pause/vi-en/no overflow/runtime errors. Bằng chứng kỹ thuật, chưa là user duyệt readability.
 - Bản sửa Grunt deploy PASS: Actions40154949591 completed/success, job121054223399; headfa55057d3a8ef30f70f4f702bb5ef969b2a43189. Build/upload/deploy đều success. Giữ main5838fd5 làm parent, không force; không đổi core combat.
@@ -95,10 +96,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Git CLI không có credential hợp lệ; deploy bằng GitHub connector với parent4d98a2e/tree mới và expected SHA, không force. Remote diff chỉ Q3+evidence; mọi blob đã đối chiếu hash với local. Branch local work là snapshot từb55e354, đã ghép source/text remote mới; lịch sử local chưa fetch3commit trướcQ3 và ảnh docs/milestones chỉ có remote. Không push branch work lên main; lần làm tiếp cần đọc remote handoff mới nhất/đồng bộ lịch sử khi CLI auth có lại.
 
 ## NEXT ACTION
-Dừng chờ user thử/feedback các phần Q3 còn lại theo hướng dẫn bên dưới; không yêu cầu thử lại cue Grunt đã accepted, không tự mở Q4/Q5.
+Q3 đã accepted; dừng chờ người dùng giao checkpoint tiếp theo (Q4 — Chain depth) hoặc feedback mới. Không tự triển khai Q4/Q5, không yêu cầu playtest lại Q3 đã duyệt.
 
 ## PLAYTEST Q3 — SCOPE / CÁCH THỬ
-Cue Grunt/Perfect Dodge bên dưới đã được user duyệt; giữ làm tham chiếu, không yêu cầu thử lại. Scope còn lại: nhận diện art các quái, Archer/Volatile, recovery/mở giáp Bulwark và ba pattern Boss. Chỉ tiếp tục sửa khi có feedback hoặc yêu cầu mới.
+ToànQ3 đã được user duyệt qua “oki q3 r”. Hướng dẫn dưới đây là tham chiếu lịch sử cho phạm vi đã duyệt, không phải yêu cầu playtest đang chờ. Lượt bàn giao tiếp theo phải có scope/cách thử/kỳ vọng riêng.
 Bản cue Grunt fa55057 đã live, tải lại trang; lượt sửa mới chỉ cần thử Grunt ở opening: không tấn công để tránh stagger/ngắt đòn, lại gần dụ quạt, quan sát viền đứt hồng → liền/vàng → trắng. Nhấn Lướt/Space khi chuyển vàng, trước lóe trắng; mong đợi thông báo Perfect Dodge và không mất HP. Thử một lần lướt sớm ở viền đứt để đối chiếu (không thưởng Perfect). Ra ngoài quạt thì không có vàng từ Grunt đó. Cho biết có đọc được nhịp mà không đoán không; chưa yêu cầu thử lại Elite/Boss trong lượt này. Hướng dẫn toànQ3 bên dưới được giữ làm tham chiếu.
 Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi trên thiết bị thường dùng; mobile dùng joystick/nút Lướt/Đánh mạnh, desktop WASD/Space và giữ-thả Shift. Mục tiêu lượt này là art/readability, đọc hướng/vùng đòn và né→phản công; Q2 đã accepted, Q4/Q5 chưa giao.
 1. Trong waves, nhìn Grunt (mặt nạ/móc tay), Archer (mũ/cung), Volatile (lõi cam). Thử nhận ra từng loại khi đang di chuyển và có nhiều quái; mong đợi phân biệt được bằng hình/chuyển động, player và dấu báo đòn không bị lẫn.
@@ -108,4 +109,4 @@ Bản live https://gizgity.github.io/a-new-game/ (implementation a3e9337). Chơi
 Phản hồi cần: phần/quái nào khó đọc hoặc khó né, thao tác đã làm và thực tế xảy ra; kèm thiết bị/browser khi liên quan. Các tests/browser fixtures đã PASS, còn cảm giác/readability trên máy thật và full-run chưa được user xác nhận.
 
 ## BLOCKERS
-Không blocker implementation/deploy. Chưa user duyệt Q3 hoặc kiểm máy thật/Safari/full-run; không tự accepted. Hạn chế đồng bộ lịch sử local nêu ở validation; connector vẫn truy cập remote được.
+Không blocker Q3; user đã duyệt checkpoint. Chưa có thông tin thiết bị/browser của lượt duyệt, không coi là đã xác minh toàn bộ Safari/iOS hoặc full-run. Hạn chế đồng bộ lịch sử local nêu ở validation; connector vẫn truy cập remote được.
