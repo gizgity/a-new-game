@@ -20,11 +20,11 @@ test('corrupt, oversized and blocked localStorage fall back safely; valid settin
 });
 test('four lifetime goals unlock choices/cosmetic without adding permanent stats; events count once',()=>{
  const profile=defaultProfile(),progress=new Progression(profile);
- assert.equal(mutationPool(profile).length,4);assert.equal(cursePool(profile).length,3);
+ assert.equal(mutationPool(profile).length,5);assert.equal(cursePool(profile).length,4);
  progress.beginRun();const world={kills:1,detonations:5,perfectDodges:3};
  assert.equal(progress.observe(world,'victory'),true);assert.equal(progress.observe(world,'victory'),false);
  assert.equal(profile.totals.victories,1);assert.equal(profile.totals.kills,1);assert.equal(profile.unlocks.length,4);
- assert.equal(mutationPool(profile).length,6);assert.equal(cursePool(profile).length,4);
+ assert.equal(mutationPool(profile).length,7);assert.equal(cursePool(profile).length,5);
  profile.settings.cosmetic='prism';assert.equal(validateProfile(profile).settings.cosmetic,'prism');
  progress.beginRun();progress.observe({kills:2,detonations:0,perfectDodges:0},'defeat');
  assert.equal(profile.totals.kills,3);assert.equal(profile.totals.victories,1);assert.equal(profile.totals.runs,2);

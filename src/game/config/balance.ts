@@ -46,3 +46,8 @@ export const BOSS_ATTACK = { windup: 0.95, enragedWindup: 0.75, recovery: 0.7,
 
 // Relay delay uses simulation time; damage/radii retain the M3 tuning.
 export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;
+
+// Q5A defaults; baseline combat and the remaining Q5 checkpoints are unchanged.
+export const BARRIER = { cap: 30, guardGain: 10, guardCooldown: 2,
+  aegisDamage: 40, aegisGain: 4, aegisRate: 8, aegisWindow: 1,
+  oathMultiplier: 1.25, oathHeavyGain: 4, oathDashMultiplier: 1.3 } as const;

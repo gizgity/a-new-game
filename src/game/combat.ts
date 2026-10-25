@@ -1,4 +1,5 @@
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN, BARRIER } from './config/balance.js';
+import { Barrier } from './barrier.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
@@ -33,7 +34,7 @@ export interface Attack {
 }
 export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number;
-  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast'; angle?: number; sourceX?: number; sourceY?: number;
+  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast' | 'guardBreak'; angle?: number; sourceX?: number; sourceY?: number;
 }
 interface Explosion { x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number; delay?: number; enemyId?: number; sourceX?: number; sourceY?: number }
 
@@ -57,12 +58,13 @@ export function segmentHitsCircle(
 export class CombatWorld {
   soundEvents: SoundCue[] = [];
   hp: number = COMBAT.maxHp;
+  readonly barrier = new Barrier();
   mutations: MutationId[] = [];
   curse: CurseId | null = null;
   stats: CombatStats = { melee: 0, shots: 0, dashes: 0 };
   practice = true;
   get maxHp(): number { return this.curse === 'ghostStep' ? 80 : this.curse === 'deathEcho' ? 85 : COMBAT.maxHp; }
-  get rechargeDuration(): number { return this.curse === 'ghostStep' ? 2.1 : COMBAT.dashRecharge; }
+  get rechargeDuration(): number { return this.curse === 'ghostStep' ? 2.1 : COMBAT.dashRecharge * (this.curse === 'ironOath' ? BARRIER.oathDashMultiplier : 1); }
   heavyCharges: number = HEAVY.charges;
   heavyRecharge = 0;
   dashCharges: number = COMBAT.dashCharges;
@@ -142,6 +144,7 @@ export class CombatWorld {
     this.curse = null;
     this.stats = { melee: 0, shots: 0, dashes: 0 };
     this.hp = COMBAT.maxHp;
+    this.barrier.reset();
     this.heavyCharges = HEAVY.charges;
     this.heavyRecharge = 0;
     this.dashCharges = COMBAT.dashCharges;
@@ -192,6 +195,7 @@ export class CombatWorld {
     this.captureInput(input, dt);
     if (this.hitstop > 0) { this.hitstop = Math.max(0, this.hitstop - dt); return; }
     this.dashProtected = false;
+    this.barrier.step(dt);
     this.chainSeen.clear();
     this.lastChain = 0;
     for (const explosion of this.explosions) explosion.delay = Math.max(0, (explosion.delay ?? 0) - dt);
@@ -270,10 +274,13 @@ export class CombatWorld {
       attack.age += dt;
       if (!attack.resolved && attack.age + 1e-9 >= attack.windup) {
         attack.resolved = true;
+        let guardPoint: { x: number; y: number } | null = null;
         for (const enemy of this.enemies) {
           const dx = enemy.x - this.player.x, dy = enemy.y - this.player.y;
           if (enemy.hp > 0 && Math.hypot(dx, dy) <= attack.range + (enemy.kind === 'boss' ? 30 : 14) &&
               Math.abs(angleDifference(Math.atan2(dy, dx), attack.angle)) <= attack.arc / 2) {
+            if (attack.heavy && this.mutations.includes('guardBreaker') && enemy.kind !== 'boss' &&
+                (enemy.windup > 0 || enemy.kind === 'bulwark' && enemy.recovery <= 0)) guardPoint ??= { x: enemy.x, y: enemy.y };
             if (attack.heavy) this.detonate(enemy, 1.4);
             else {
               enemy.rupture = Math.min(3, enemy.rupture + 1);
@@ -281,6 +288,11 @@ export class CombatWorld {
             }
             this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? HEAVY.force : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? HEAVY.stagger : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light');
           }
+        }
+        if (guardPoint && this.barrier.guardBreak(this.curse === 'ironOath')) {
+          this.impact(guardPoint.x, guardPoint.y, 0x63d9f5, 22, 'guardBreak');
+          const cue = this.impacts[this.impacts.length - 1];
+          cue.sourceX = this.player.x; cue.sourceY = this.player.y;
         }
       }
       if (attack.age >= attack.duration) this.attack = null;
@@ -300,7 +312,10 @@ export class CombatWorld {
 
   private beginAttack(heavy: boolean, angle = this.player.angle): void {
     this.stats.melee++;
-    if (heavy) this.heavyCharges--;
+    if (heavy) {
+      this.heavyCharges--;
+      if (this.curse === 'ironOath' && this.barrier.value > 0) this.barrier.gain(BARRIER.oathHeavyGain, false);
+    }
     if (this.curse === 'bloodPact' && !heavy) this.hp = Math.max(1, this.hp - 1);
     const finisher = heavy && this.combo === 3 && this.comboWindow > 0;
     if (!heavy) this.combo = this.combo % 3 + 1;
@@ -324,7 +339,11 @@ export class CombatWorld {
     if (this.hp < this.maxHp / 2 && this.mutations.includes('berserker')) damage *= 1.25;
     if (enemy.kind === 'bulwark' && enemy.recovery <= 0 && !bypassArmor) damage *= 0.55;
     const contactX = enemy.x, contactY = enemy.y;
+    const actualDamage = Math.min(enemy.hp, damage);
     enemy.hp = Math.max(0, enemy.hp - damage);
+    if (this.mutations.includes('aegisCore') && ['light', 'light2', 'light3', 'heavy'].includes(sound)) {
+      this.barrier.meleeDamage(actualDamage, this.curse === 'ironOath');
+    }
     this.surge = Math.min(100, this.surge + 2);
     if (enemy.kind === 'boss') force *= 0.1;
     else if (enemy.kind === 'bulwark') force *= 0.4;
@@ -409,7 +428,7 @@ export class CombatWorld {
     }
     if (this.invulnerable > 0 || this.hp <= 0) return;
     if (this.curse === 'volatileSoul') damage *= 1.25;
-    this.hp = Math.max(0, this.hp - damage);
+    this.hp = Math.max(0, this.hp - this.barrier.absorb(damage));
     this.invulnerable = 0.65;
     this.cue('hurt');
     this.hurtFlash = 0.18;
@@ -611,7 +630,7 @@ export class CombatWorld {
   private impact(x: number, y: number, color: number, radius = 22, kind?: Impact['kind'], angle = 0): void {
     // Keep the primary Charged blast readable when a chain fills the existing VFX budget.
     if (this.impacts.length >= 24) this.impacts.splice(Math.max(0, this.impacts.findIndex(item => item.kind !== 'chargedBlast')), 1);
-    const duration = kind === 'chainBlast' ? 0.24 : kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
+    const duration = kind === 'guardBreak' ? 0.35 : kind === 'chainBlast' ? 0.24 : kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
     this.impacts.push({ x, y, color, radius, kind, angle, duration, life: duration });
   }
 }

@@ -38,7 +38,7 @@ select { max-width: 100%; background: #101825; border: 1px solid #2b3a48; paddin
 .run-clock { position: absolute; top: 14px; left: 12px; font-size: 13px; font-variant-numeric: tabular-nums; color: #e1eeeb; pointer-events: none; }
 .arena-bottom { display: none; }
 .combat-hud { position: absolute; left: 12px; right: 12px; top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; pointer-events: none; }
-.health, .dash-state { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; min-width: 0; font-size: 11px; color: #cbdcdd; }
+.health, .dash-state, .barrier-state { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; min-width: 0; font-size: 11px; color: #cbdcdd; }
 progress { grid-column: 1 / -1; width: 100%; height: 5px; border: 0; border-radius: 3px; background: #26313d; appearance: none; }
 progress::-webkit-progress-bar { background: #26313d; border-radius: 3px; }
 progress::-webkit-progress-value { background: var(--accent); border-radius: 3px; }
@@ -51,7 +51,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 3px; }
 .build-value { grid-column: 1 / -1; color: #a4b5c4; font-size: 9px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 #combat-notice { grid-column: 1 / -1; font-size: 10px; color: #9dffe2; }
 .build-value:empty, #combat-notice:empty { display: none; }
-.boss-hud { position: absolute; left: 50%; transform: translateX(-50%); top: 154px; width: min(340px, 75%); display: grid; gap: 5px; font-size: 11px; text-align: center; color: #ffcc80; pointer-events: none; }
+.boss-hud { position: absolute; left: 50%; transform: translateX(-50%); top: auto; bottom: calc(var(--controls-height, 0px) + 12px); width: min(340px, 75%); display: grid; gap: 5px; font-size: 11px; text-align: center; color: #ffcc80; pointer-events: none; }
 .boss-hud progress { height: 6px; }
 .boss-hud progress::-webkit-progress-value { background: #ffcc80; }
 .boss-hud progress::-moz-progress-bar { background: #ffcc80; }
@@ -141,7 +141,7 @@ footer { display: none; }
   .combat-hud { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 600px; top: 40px; gap: 6px 18px; }
   .build-value { grid-column: 1 / 4; }
   #combat-notice { grid-column: 4; }
-  .boss-hud { top: 88px; width: 240px; }
+  .boss-hud { top: auto; bottom: 12px; width: 240px; }
   .panel { padding: 16px 24px; }
   .panel-sigil { font-size: 28px; margin-bottom: 8px; }
   h2 { font-size: 23px; margin: 8px 0; }
@@ -161,12 +161,12 @@ footer { display: none; }
   .status { font-size: 10px; letter-spacing: .13em; padding: 9px 12px; }
   .run-clock { left: 50%; transform: translateX(-50%); top: 28px; font-size: 16px; }
   .combat-hud { left: 28px; right: auto; top: 85px; display: flex; flex-direction: column; gap: 12px; max-width: 200px; }
-  .health, .dash-state { width: 145px; }
+  .health, .dash-state, .barrier-state { width: 145px; }
   .resource-state { width: 160px; font-size: 11px; }
   .milestone-state { width: 240px; }
   .build-value { white-space: normal; font-size: 10px; }
   #combat-notice { font-size: 11px; }
-  .boss-hud { top: 62px; width: min(340px, 35%); }
+  .boss-hud { top: 62px; bottom: auto; width: min(340px, 35%); }
   .arena-bottom { position: absolute; left: 28px; right: 28px; bottom: 20px; display: flex; justify-content: space-between; gap: 20px; font-size: 9px; letter-spacing: .12em; color: #6c8192; pointer-events: none; }
   .overlay { padding: 24px; }
   .panel-body { font-size: 14px; }
@@ -175,3 +175,9 @@ footer { display: none; }
   .control-bar > span { display: inline-flex; align-items: center; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+
+.barrier-state progress::-webkit-progress-value { background: #63d9f5; }
+.barrier-state progress::-moz-progress-bar { background: #63d9f5; }
+#barrier-feedback, #aegis-progress { color: #8cd9e8; font-size: 9px; min-height: 10px; }
+#aegis-progress { text-align: right; }
+.trial-label { grid-column: 1 / -1; color: #ffcc80; font-size: 10px; }

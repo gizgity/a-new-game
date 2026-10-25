@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { HEAVY, ENCOUNTERS } from './game/config/balance';
+import { HEAVY, ENCOUNTERS, BARRIER } from './game/config/balance';
 import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
 import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
@@ -7,6 +7,7 @@ import { setLocale, t, type Locale, type TranslationKey } from './i18n';
 import { TouchControls } from './ui/TouchControls';
 import './style.css';
 
+const juggernautTrial = new URLSearchParams(location.search).get('playtest') === 'juggernaut';
 const profile = loadProfile();
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
@@ -33,7 +34,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div id="boss-hud" class="boss-hud" hidden><span id="boss-label" data-i18n="bossName"></span><progress aria-labelledby="boss-label" id="boss-health" max="1500" value="1500"></progress></div>
     <span id="run-clock" class="run-clock"></span>
     <div class="combat-hud">
+      <span id="trial-label" class="trial-label" hidden data-i18n="juggernautTest"></span>
       <div class="health"><span id="health-label" data-i18n="health"></span><span id="hp-value"></span><progress aria-labelledby="health-label" id="hp" max="100" value="100"></progress></div>
+      <div class="barrier-state"><span id="barrier-label" data-i18n="barrier"></span><span id="barrier-value"></span><progress aria-labelledby="barrier-label" id="barrier" max="30" value="0"></progress><span id="barrier-feedback"></span><span id="aegis-progress"></span></div>
       <div class="dash-state"><span id="dash-label" data-i18n="dash"></span><span id="dash-value"></span><progress aria-labelledby="dash-label" id="dash-recharge" max="2.8" value="0"></progress></div>
       <div class="resource-state"><span data-i18n="charged"></span><span id="charged-value"></span></div>
       <div class="resource-state"><span data-i18n="heavy"></span><span id="heavy-value"></span></div>
@@ -88,6 +91,7 @@ let currentPhase: Phase = 'ready';
 
 function renderUI(phase: Phase = currentPhase): void {
   currentPhase = phase;
+  document.querySelector<HTMLElement>('#trial-label')!.hidden = !juggernautTrial;
   document.title = t('pageTitle');
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
@@ -156,7 +160,7 @@ const dashBar = document.querySelector<HTMLProgressElement>('#dash-recharge')!;
 const combatNotice = document.querySelector('#combat-notice')!;
 function renderCombatHUD(world: CombatWorld): void {
   if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge, world.heavyCharges, HEAVY.recharge - world.heavyRecharge);
-  if (progression.observe(world, arena.run.result)) {
+  if (!juggernautTrial && progression.observe(world, arena.run.result)) {
     applySettings();
     renderSettings();
     persist();
@@ -168,7 +172,14 @@ function renderCombatHUD(world: CombatWorld): void {
   if (hpValue.textContent !== health) hpValue.textContent = health;
   hpBar.max = world.maxHp;
   hpBar.value = world.hp;
-  const dash = `${world.dashCharges} / ${COMBAT.dashCharges}`;
+  document.querySelector('#barrier-value')!.textContent = `${Number(world.barrier.value.toFixed(1))} / ${BARRIER.cap}`;
+  document.querySelector<HTMLProgressElement>('#barrier')!.value = world.barrier.value;
+  document.querySelector('#barrier-feedback')!.textContent = world.barrier.flash > 0
+    ? world.barrier.broken ? t('barrierBroken') : world.barrier.lastGain > 0 ? `+${Number(world.barrier.lastGain.toFixed(1))}` : '' : '';
+  document.querySelector('#aegis-progress')!.textContent = world.mutations.includes('aegisCore')
+    ? `${t('aegisProgress')} ${Math.floor(world.barrier.aegisDamage)}/${BARRIER.aegisDamage}` : '';
+  const dash = `${world.dashCharges} / ${COMBAT.dashCharges}` + (world.dashCharges < COMBAT.dashCharges
+    ? ` · ${t('secondsShort').replace('{n}', (Math.max(0, world.rechargeDuration - world.dashRecharge)).toFixed(1))}` : '');
   if (dashValue.textContent !== dash) dashValue.textContent = dash;
   dashBar.max = world.rechargeDuration;
   dashBar.value = world.dashCharges === COMBAT.dashCharges ? world.rechargeDuration : world.dashRecharge;
@@ -191,11 +202,14 @@ function renderCombatHUD(world: CombatWorld): void {
 
 export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
-    progression.beginRun();
+    if (juggernautTrial) {
+      arena.combat.mutations = ['guardBreaker', 'aegisCore'];
+      arena.combat.curse = 'ironOath';
+    } else progression.beginRun();
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
-    progression.observe(arena.combat, arena.run.result);
+    if (!juggernautTrial) progression.observe(arena.combat, arena.run.result);
     applySettings();
     renderSettings();
   }
@@ -245,4 +259,4 @@ for (const id of ['mute', 'volume', 'cosmetic']) {
     applySettings(); renderSettings(); persist();
   });
 }
-window.addEventListener('pagehide', () => { progression.observe(arena.combat, arena.run.result); persist(); });
+window.addEventListener('pagehide', () => { if (!juggernautTrial) progression.observe(arena.combat, arena.run.result); persist(); });

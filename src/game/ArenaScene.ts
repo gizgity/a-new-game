@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { ProceduralAudio } from './audio';
 import { RunDirector } from './run';
 import { CombatWorld, type CombatAction, type CombatInput } from './combat';
+import { drawBarrier } from './BarrierVisual';
 import { drawEnemyBody, drawEnemyTelegraph } from './EnemyVisual';
 import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
@@ -223,9 +224,16 @@ export class ArenaScene extends Phaser.Scene {
     }
     if (world.surgeFlash > 0) g.lineStyle(4, 0x9dffe2, world.surgeFlash / 0.6).strokeCircle(this.player.x, this.player.y, 280 * (1 - world.surgeFlash / 0.6));
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
+    drawBarrier(g, world);
     for (const impact of world.impacts) {
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);
+      if (impact.kind === 'guardBreak') {
+        const x = impact.x + ((impact.sourceX ?? impact.x) - impact.x) * (1 - fade);
+        const y = impact.y + ((impact.sourceY ?? impact.y) - impact.y) * (1 - fade);
+        g.lineStyle(2, impact.color, fade).strokePoints([{ x: x - 5, y }, { x, y: y + 7 }, { x: x + 5, y }], false);
+        continue;
+      }
       if (impact.kind === 'chainBlast') {
         g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, (impact.radius ?? 105) * (1 - fade));
         if (impact.sourceX !== undefined && impact.sourceY !== undefined) {
