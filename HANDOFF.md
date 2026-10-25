@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q4 — Chain depth, user giao ngày 2026-10-25. Implementation/checks xong: chain lan theo nhịp đọc được, không mất explosion quá budget; chờ deploy và user playtest. Q3 accepted trên fa55057; Q1 vẫn chờ duyệt, Q2 accepted; không mở Q5.
+Q4 — Chain depth, user giao ngày 2026-10-25. Implementation/checks xong: chain lan theo nhịp đọc được, không mất explosion quá budget; đã deploy; AWAITING PLAYTEST/VISUAL APPROVAL. Q3 accepted trên fa55057; Q1 vẫn chờ duyệt, Q2 accepted; không mở Q5.
 
 ## ACCEPTANCE
 - Rupture 1–3 stacks có dấu đọc rõ; Basic/Heavy kích setup, Charged tự seed như hiện tại. Lan qua marked neighbours trong radius thật, không tự đánh dấu mọi quái.
@@ -90,13 +90,13 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Chromium mobile390: fixture setup→trigger1→relay2 có đường nối, viewport320/390/844/1440 không overflow/runtime errors. Opening390 dùng Bắn thật, pause/resume và vi/en; production dist320/390/844/1440 PASS assets/input/vi-en/no runtime-request errors. Chưa Safari/iOS, human feel hoặc full-run.
 - Q3 đã được user duyệt “oki q3 r” trên fa55057; cue Grunt duyệt riêng. Giữ quạt đứt→vàng→flash trắng và không thay core Q3.
 - Đã đối chiếu remote main e88a9f5, ghép EnemyVisual/Brief/handoff mới trước Q4; giữ nguyên các ảnh remote docs/grunt-cue. Git CLI hiện lỗi kết nối proxy; deploy bằng GitHub connector từ parent main và expected SHA, không push lịch sử local work.
-- Deploy Q4: đang chuẩn bị sau checks; live hiện fa55057 tại https://gizgity.github.io/a-new-game/.
+- Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Deploy Q4 bằng Actions sau checks PASS, theo dõi workflow tới kết thúc rồi bàn giao playtest riêng Q4. Không mở Q5.
+Chờ user playtest riêng Q4 trên bản daee80a; sửa theo feedback trong phạm vi chain. Không mở Q5.
 
 ## PLAYTEST Q4 — SCOPE / CÁCH THỬ
-Bản Q4 sau deploy tại https://gizgity.github.io/a-new-game/; tải lại trang. Chỉ thử setup→trigger→lan, không yêu cầu duyệt lại Q3.
+Bản Q4 daee80a tại https://gizgity.github.io/a-new-game/; tải lại trang. Chỉ thử setup→trigger→lan, không yêu cầu duyệt lại Q3.
 1. Trong opening, gom2–3Grunt, giữ Chém (mobile) / chuột trái (desktop) để đánh dấu hình thoi. Bắn vào một con bằng nút Bắn / chuột phải, hoặc giữ-thả Đánh mạnh / Shift. Mong đợi Rupture biến mất khi kích, có vòng nổ rồi đường nối/nổ tiếp qua quái đã đánh dấu nằm gần nhau; quái chưa đánh dấu chỉ nhận AoE, không tự truyền.
 2. Thử kéo hai quái đã đánh dấu ra xa rồi bắn một con: mong đợi con ngoài vòng nổ giữ dấu, không có đường nối vượt khoảng trống. Đặt nhiều dấu cho nổ mạnh hơn; quái opening có thể chết trước3stacks, dùng quái sau60s hoặc Bulwark nếu muốn so3stacks.
 3. Giữ Bắn tích đạn rồi giữ-thả Tích lực / E vào quái chưa chém: mong đợi vẫn tự seed và nổ; thêm marked neighbours để so hiệu quả dọn đám. Kiểm cảm giác relay có đủ rõ mà không chậm/ngợp hoặc che telegraph.
