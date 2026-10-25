@@ -46,10 +46,12 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 3px; }
 .dash-state progress::-webkit-progress-value { background: #c399ff; }
 .dash-state progress::-moz-progress-bar { background: #c399ff; }
 .resource-state { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; color: #cbdcdd; }
+.milestone-state { grid-column: 1 / -1; }
+#boss-arrival:empty { display: none; }
 .build-value { grid-column: 1 / -1; color: #a4b5c4; font-size: 9px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 #combat-notice { grid-column: 1 / -1; font-size: 10px; color: #9dffe2; }
 .build-value:empty, #combat-notice:empty { display: none; }
-.boss-hud { position: absolute; left: 50%; transform: translateX(-50%); top: 126px; width: min(340px, 75%); display: grid; gap: 5px; font-size: 11px; text-align: center; color: #ffcc80; pointer-events: none; }
+.boss-hud { position: absolute; left: 50%; transform: translateX(-50%); top: 154px; width: min(340px, 75%); display: grid; gap: 5px; font-size: 11px; text-align: center; color: #ffcc80; pointer-events: none; }
 .boss-hud progress { height: 6px; }
 .boss-hud progress::-webkit-progress-value { background: #ffcc80; }
 .boss-hud progress::-moz-progress-bar { background: #ffcc80; }
@@ -161,6 +163,7 @@ footer { display: none; }
   .combat-hud { left: 28px; right: auto; top: 85px; display: flex; flex-direction: column; gap: 12px; max-width: 200px; }
   .health, .dash-state { width: 145px; }
   .resource-state { width: 160px; font-size: 11px; }
+  .milestone-state { width: 240px; }
   .build-value { white-space: normal; font-size: 10px; }
   #combat-notice { font-size: 11px; }
   .boss-hud { top: 62px; width: min(340px, 35%); }

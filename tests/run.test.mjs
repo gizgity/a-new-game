@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { CombatWorld } from '../.test-build/combat.js';
 import { RunDirector } from '../.test-build/run.js';
 import { mutationDraft, curseDraft, MUTATIONS } from '../.test-build/builds.js';
+import { DRAFT_MILESTONES, ENCOUNTERS } from '../.test-build/config/balance.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false};
 function setup() { const world=new CombatWorld({x:800,y:500,angle:0});const run=new RunDirector(world);run.start();return {world,run}; }
 
@@ -12,16 +13,16 @@ test('draft choices are unique, adaptive and never offer an owned Mutation',()=>
  assert.equal(new Set(choices.map(c=>c.id)).size,3);assert.ok(!choices.some(c=>c.id==='phantomEdge'));
  assert.equal(curseDraft().length,3);
 });
-test('25/80/160 kill drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
+test('six kill drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
  const {world,run}=setup();
- for(const [kills,kind] of [[25,'mutation'],[80,'curse'],[160,'mutation']]) {
+ for(const {kills,kind} of DRAFT_MILESTONES) {
   world.hp=75;world.enemies.forEach(e=>e.stagger=999);world.kills=kills;const tick=run.ticks;
-  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,3);
+  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,Math.min(3,kind==='mutation'?6-world.mutations.length:3));
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
   assert.equal(world.hp,Math.min(world.maxHp,85));
  }
- assert.equal(world.mutations.length,2);assert.ok(world.curse);assert.equal(new Set(world.mutations).size,2);
+ assert.equal(world.mutations.length,4);assert.ok(world.curse);assert.equal(new Set(world.mutations).size,4);
 });
 test('waves start with Grunt/Archer, are bounded and include Volatile later; timer ends at five minutes',()=>{
  const {world,run}=setup();assert.ok(world.enemies.every(e=>e.kind==='grunt'||e.kind==='archer'));
@@ -44,9 +45,9 @@ test('Curse benefits have real costs and build effects reset per run',()=>{
 
 test('Elite and Boss spawn once; boss arrival clears excess common enemies and hostile shots',()=>{
  const {world,run}=setup();
- run.ticks=8999;run.draftIndex=2;world.enemies.forEach(e=>e.stagger=999);
+ run.ticks=8999;run.draftIndex=DRAFT_MILESTONES.length;world.enemies.forEach(e=>e.stagger=999);
  run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='bulwark').length,1);
- run.draftIndex=3;run.ticks=14399;
+ run.draftIndex=DRAFT_MILESTONES.length;run.ticks=14399;
  world.projectiles.push({x:100,y:100,vx:0,vy:0,hostile:true,life:2});
  run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='boss').length,1);assert.equal(world.projectiles.length,0);
  run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='boss').length,1);
@@ -56,14 +57,14 @@ test('mutual kill in the same tick is Victory before deadline; at deadline it is
   const {world,run}=setup();world.enemies=[];world.spawnEnemy('boss');
   const boss=world.enemies[0];Object.assign(boss,{x:890,y:500,hp:14,cooldown:999});
   world.hp=10;world.projectiles=[{x:800,y:500,vx:0,vy:0,hostile:true,life:1},{x:875,y:500,vx:850,vy:0,hostile:false,life:1}];
-  run.ticks=tick;run.draftIndex=3;run.step(idle,1/60);
+  run.ticks=tick;run.draftIndex=DRAFT_MILESTONES.length;run.step(idle,1/60);
   assert.equal(world.hp,0);assert.equal(world.bossSlain,true);assert.equal(run.result,result);
   const stopped=run.ticks;run.step(idle,1/60);assert.equal(run.ticks,stopped);
  }
 });
 test('player death and deadline show distinct defeat reasons; start fully resets a completed run',()=>{
  const {world,run}=setup();world.hp=0;run.step(idle,1/60);assert.equal(run.result,'defeat');assert.equal(run.reason,'slain');
- run.start();run.ticks=17999;run.draftIndex=3;run.step(idle,1/60);assert.equal(run.reason,'deadline');
+ run.start();run.ticks=17999;run.draftIndex=DRAFT_MILESTONES.length;run.step(idle,1/60);assert.equal(run.reason,'deadline');
  run.start();assert.equal(run.result,null);assert.equal(run.reason,null);assert.equal(run.bossDue,false);assert.equal(world.hp,100);assert.equal(world.bossSlain,false);
 });
 
@@ -83,7 +84,7 @@ test('unbuffed opening Grunt dies to two Light hits or Light + Basic detonation'
  }
 });
 test('opening spawns bounded Grunt packs, preserves HP ramp and resets cleanly',()=>{
- const {world,run}=setup();assert.equal(world.enemies.length,7);
+ const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;assert.equal(world.enemies.length,7);
  assert.equal(world.enemies.filter(e=>e.kind==='grunt').length,6);
  assert.equal(world.enemies.filter(e=>e.kind==='archer').length,1);
  assert.ok(Math.hypot(world.enemies[0].x-world.enemies[1].x,world.enemies[0].y-world.enemies[1].y)<65);
@@ -114,7 +115,7 @@ test('new common enemies grow in health, damage and speed over time; survivors a
  const {world,run}=setup();const old=world.enemies[0];old.hp=9;
  const samples=[];
  for(const seconds of [60,120,180,240,299]){
-  world.enemies=[old];old.stagger=999;run.waveIndex=0;run.draftIndex=3;run.ticks=seconds*60-1;run.spawnTicks=200;
+  world.enemies=[old];old.stagger=999;run.waveIndex=0;run.draftIndex=DRAFT_MILESTONES.length;run.ticks=seconds*60-1;run.spawnTicks=200;
   run.step(idle,1/60);const enemy=world.enemies.find(e=>e!==old&&e.kind==='grunt');
   assert.ok(enemy);samples.push(enemy);assert.equal(old.hp,9);assert.equal(old.damageScale,1);assert.equal(old.speedScale,1);
  }
@@ -123,17 +124,66 @@ test('new common enemies grow in health, damage and speed over time; survivors a
   assert.ok(samples[i].speedScale>samples[i-1].speedScale);
  }
  assert.equal(samples[0].maxHp,36);assert.ok(samples.at(-1).maxHp<=106);
- run.start();run.draftIndex=3;run.ticks=14399;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
+ run.start();run.draftIndex=DRAFT_MILESTONES.length;run.ticks=14399;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
  const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
 });
 
-test('time alone never drafts; crossing several kill thresholds yields each choice once',()=>{
- const {world,run}=setup();world.enemies=[];run.ticks=10800;run.step(idle,1/60);assert.equal(run.draft.length,0);
- world.kills=200;
- for(const kind of ['mutation','curse','mutation']){
-  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,3);
-  assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
+test('each milestone triggers on either kills or time, once, including simultaneous thresholds',()=>{
+ for(const mode of ['kills','time','both']) {
+  const {world,run}=setup();world.enemies=[];
+  for(const target of DRAFT_MILESTONES) {
+   world.enemies=[];world.projectiles=[];
+   world.kills=mode==='time'?0:target.kills-1;
+   run.ticks=mode==='kills'?0:target.seconds*60-2;
+   run.step(idle,1/60);assert.equal(run.draft.length,0);
+   if(mode!=='time')world.kills++;
+   run.step(idle,1/60);assert.ok(run.draft.length);assert.equal(run.draftKind,target.kind);
+   assert.ok(run.choose(0));assert.equal(run.choose(0),false);
+  }
+  run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);
  }
- run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);
- run.start();assert.equal(world.kills,0);assert.equal(run.nextDraftKills,25);
+});
+test('crossing all thresholds resolves six choices before Boss; reset restores milestones',()=>{
+ const {world,run}=setup();world.enemies=[];world.kills=500;
+ for(const {kind} of DRAFT_MILESTONES){
+  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.ok(run.draft.length);
+  assert.equal(run.bossDue,false);assert.equal(run.choose(0),true);
+ }
+ run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);assert.equal(run.bossDue,true);
+ run.start();assert.equal(world.kills,0);assert.equal(run.nextDraftKills,25);assert.equal(run.bossDue,false);
+});
+test('small and exhausted Mutation pools never produce invalid options or block the run',()=>{
+ for(let count=0;count<=3;count++) {
+  const choices=mutationDraft([], {melee:0,shots:10,dashes:0},0,MUTATIONS.slice(0,count));
+  assert.equal(choices.length,count);assert.equal(new Set(choices.map(o=>o.id)).size,count);
+  assert.ok(choices.every(o=>MUTATIONS.includes(o.id)));
+ }
+ const {world,run}=setup();run.mutationPool=[];run.cursePool=[];world.kills=500;world.enemies=[];
+ run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);assert.equal(run.bossDue,true);
+});
+test('second Curse always allows keeping or replacing; only one effect remains and HP is clamped',()=>{
+ const {world,run}=setup();world.enemies=[];world.curse='bloodPact';run.draftIndex=4;world.kills=300;
+ run.step(idle,1/60);assert.ok(run.draft.some(o=>o.id==='bloodPact'));
+ run.choose(run.draft.findIndex(o=>o.id==='bloodPact'));assert.equal(world.curse,'bloodPact');
+ run.draftIndex=4;run.cursePool=['ghostStep'];world.hp=100;
+ run.step(idle,1/60);run.choose(run.draft.findIndex(o=>o.id==='ghostStep'));
+ assert.equal(world.curse,'ghostStep');assert.equal(world.maxHp,80);assert.equal(world.hp,80);
+});
+test('Elite and Boss use kills OR time, once; no late Elite after an early Boss',()=>{
+ for(const mode of ['kills','time','both']) {
+  const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;
+  for(const [kind,target] of [['bulwark',ENCOUNTERS.elite],['boss',ENCOUNTERS.boss]]) {
+   world.enemies=[];world.projectiles=[];
+   world.kills=mode==='time'?0:target.kills-1;run.ticks=mode==='kills'?0:target.seconds*60-2;
+   run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,0);
+   if(mode!=='time')world.kills++;
+   run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
+   run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
+  }
+ }
+ const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;world.enemies=[];world.kills=450;
+ run.step(idle,1/60);assert.equal(run.bossDue,true);assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
+ run.ticks=9000;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
+ assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
+ assert.equal(world.enemies.find(e=>e.kind==='boss').maxHp,1500);
 });

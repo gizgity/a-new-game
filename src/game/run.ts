@@ -1,4 +1,4 @@
-import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_KILLS } from './config/balance.js';
+import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, curseDraft, mutationDraft, type CurseId, type DraftOption, type MutationId } from './builds.js';
 
@@ -19,7 +19,11 @@ export class RunDirector {
 
   constructor(readonly world: CombatWorld) {}
   get elapsed(): number { return this.ticks / 60; }
-  get nextDraftKills(): number | null { return DRAFT_KILLS[this.draftIndex] ?? null; }
+  get nextDraft() { return DRAFT_MILESTONES[this.draftIndex] ?? null; }
+  get nextDraftKills(): number | null { return this.nextDraft?.kills ?? null; }
+  private reached(milestone: { kills: number; seconds: number }): boolean {
+    return this.world.kills >= milestone.kills || this.ticks >= milestone.seconds * 60;
+  }
 
   start(): void {
     this.world.reset();
@@ -46,21 +50,27 @@ export class RunDirector {
       this.reason = this.ticks >= 18000 ? 'deadline' : 'slain';
     }
     if (this.result) { this.expired = this.ticks >= 18000; return; }
-    if (this.draftIndex < DRAFT_KILLS.length && this.world.kills >= DRAFT_KILLS[this.draftIndex]) {
-      this.draftKind = this.draftIndex === 1 ? 'curse' : 'mutation';
+    // Resolve earned choices before an encounter, even when one chain crosses several milestones.
+    while (this.nextDraft && this.reached(this.nextDraft)) {
+      this.draftKind = this.nextDraft.kind;
       this.draft = this.draftKind === 'curse' ? curseDraft(this.cursePool) :
         mutationDraft(this.world.mutations, this.world.stats, this.world.detonations, this.mutationPool);
+      // Always offer keeping the current Curse; alternatives replace it, never stack.
+      if (this.draftKind === 'curse' && this.world.curse && !this.draft.some(option => option.id === this.world.curse)) {
+        this.draft = [{ id: this.world.curse, role: 'curseChoice' }, ...this.draft.slice(0, 2)];
+      }
       this.draftIndex++;
+      if (this.draft.length) return;
     }
-    if (!this.eliteSpawned && this.ticks >= 9000) {
-      this.world.enemies = this.world.enemies.slice(0, 17);
-      this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
-    }
-    if (!this.bossDue && this.ticks >= 14400) {
+    if (!this.bossDue && this.reached(ENCOUNTERS.boss)) {
       this.world.enemies = this.world.enemies.filter((enemy) => enemy.kind === 'bulwark');
       this.world.projectiles = [];
       this.world.spawnEnemy('boss');
       this.bossDue = true;
+      this.eliteSpawned = true; // No late Elite joining an early Boss encounter.
+    } else if (!this.bossDue && !this.eliteSpawned && this.reached(ENCOUNTERS.elite)) {
+      this.world.enemies = this.world.enemies.slice(0, 17);
+      this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
     }
     this.expired = this.ticks >= 18000;
     this.spawnTicks++;

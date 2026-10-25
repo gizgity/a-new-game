@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { HEAVY } from './game/config/balance';
+import { HEAVY, ENCOUNTERS } from './game/config/balance';
 import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
 import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
@@ -38,7 +38,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="resource-state"><span data-i18n="charged"></span><span id="charged-value"></span></div>
       <div class="resource-state"><span data-i18n="heavy"></span><span id="heavy-value"></span></div>
       <div class="resource-state"><span data-i18n="surge"></span><span id="surge-value"></span></div>
-      <div class="resource-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
+      <div class="resource-state milestone-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
+      <div id="boss-arrival" class="resource-state milestone-state"></div>
       <span id="build-value" class="build-value"></span>
       <span id="combat-notice" aria-live="polite"></span>
     </div>
@@ -115,8 +116,8 @@ function resultBody(): string {
 
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
-  panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
-    `<button class="draft-card" data-choice="${index}"><small>${t(option.role)}</small><strong>${t(option.id)}</strong><span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
+  panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draftKind === 'curse' && arena.combat.curse ? ' ' + t('curseSwapHint') : ''}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
+    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : option.role)}</small><strong>${t(option.id)}</strong><span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
@@ -176,7 +177,12 @@ function renderCombatHUD(world: CombatWorld): void {
   document.querySelector('#charged-value')!.textContent = `${world.chargedShots} / 3 · ${world.chargePoints} / 3`;
   document.querySelector('#heavy-value')!.textContent = `${world.heavyCharges} / ${HEAVY.charges}` + (world.heavyCharges < HEAVY.charges ? ` · ${t('secondsShort').replace('{n}', String(Math.ceil(HEAVY.recharge - world.heavyRecharge)))}` : '');
   document.querySelector('#surge-value')!.textContent = `${Math.floor(world.surge)} / 100`;
-  document.querySelector('#draft-progress')!.textContent = arena.run.nextDraftKills === null ? t('draftsComplete') : `${world.kills} / ${arena.run.nextDraftKills}`;
+  const milestone = arena.run.nextDraft;
+  const formatTime = (value: number) => `${Math.floor(value / 60)}:${String(value % 60).padStart(2, '0')}`;
+  const progress = (target: { kills: number; seconds: number }) => t('milestoneProgress')
+    .replace('{kills}', String(world.kills)).replace('{target}', String(target.kills)).replace('{time}', formatTime(target.seconds));
+  document.querySelector('#draft-progress')!.textContent = milestone ? progress(milestone) : t('draftsComplete');
+  document.querySelector('#boss-arrival')!.textContent = arena.run.bossDue ? '' : `${t('bossArrival')} ${progress(ENCOUNTERS.boss)}`;
   document.querySelector('#build-value')!.textContent = [...world.mutations, ...(world.curse ? [world.curse] : [])].map((id) => t(id)).join(' · ');
   const notice = world.hp <= 0 ? t('playAgain') : world.perfectFlash > 0 ? t('perfectDodge') :
     world.attack?.heavy ? t('heavy') : world.combo > 0 ? t('comboValue').replace('{n}', String(world.combo)) : '';

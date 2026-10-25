@@ -17,8 +17,11 @@ export function mutationDraft(
     const index = available.includes(desired) ? available.indexOf(desired) : Math.floor(random() * available.length);
     return available.splice(index, 1)[0];
   };
-  const adaptive = pick(preferred), partner = pick(synergy), wildcard = pick(available[Math.floor(random() * available.length)]);
-  return [{ id: adaptive, role: 'adaptive' }, { id: partner, role: 'synergy' }, { id: wildcard, role: 'wildcard' }];
+  const choices: DraftOption[] = [];
+  if (available.length) choices.push({ id: pick(preferred), role: 'adaptive' });
+  if (available.length) choices.push({ id: pick(synergy), role: 'synergy' });
+  if (available.length) choices.push({ id: pick(available[Math.floor(random() * available.length)]), role: 'wildcard' });
+  return choices;
 }
 
 export function curseDraft(pool: readonly CurseId[] = CURSES, random: () => number = Math.random): DraftOption[] {

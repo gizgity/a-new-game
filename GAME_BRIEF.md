@@ -20,7 +20,7 @@
 ## Mobile-first — phạm vi mở rộng theo user
 - Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
 - Có thể chơi các hành động hiện có bằng cảm ứng: joystick trái di chuyển; Chém/Bắn giữ để lặp; Heavy/Charged giữ chỉ để ngắm, thả mới tiêu một lượt và ra đòn. Cả6 nút phải kéo như joystick để ngắm. Nút đang giữ hiện vòng116px/núm40px; kéo vượt biên nút vẫn nhận nhờ pointer capture tới khi nhả. Joystick trái hướng player khi chưa kéo ngắm; sau khi ngón phải vượt deadzone8px, aim độc lập với di chuyển tới khi nhả. Không auto-aim; dash đang thực hiện không uốn hướng, Surge vẫn radial.
-- Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Tích lực đặt dưới Lướt để nhường vùng trái trên phone nhỏ, giữ tam giác Chém/Bắn/Lướt.
+- Pad di chuyển tối thiểu 132×132px, rộng theo viewport tới 180px (160px cao trên tablet/ngang lớn); vòng joystick 116–132px, cả vùng pad nhận chạm. Pointer capture giữ di chuyển khi ngón ra ngoài. Cột trong theo thứ tự Tích lực → Đánh mạnh → Lướt, nhường vùng trái trên phone nhỏ.
 - Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/draft/settings gỡ guard để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
 - Hỗ trợ đa điểm chạm (di chuyển + ngắm/tấn công), pointer capture/cancel, reset input khi pause/draft/kết thúc run/đổi kích thước/mất focus.
 - HUD/menu/draft/settings/results không tràn hoặc cắt lựa chọn trên phone; overlay có thể cuộn khi cần. Nút cảm ứng tối thiểu 44 CSS px, tôn trọng safe-area và viewport động.
@@ -57,7 +57,7 @@
 - Tham số MVP M3: Light hoặc Basic Shot hit cho1Charge Point, Detonate cho1, Perfect Dodge cho3; charge không vượt 3 viên/2 điểm dự trữ. Basic Shot20damage; Charged84damage, tự thêm1Rupture (cap3) rồi Detonate×2 kể cả mục tiêu chưa đánh dấu; Heavy Detonate ×1.4.
 - Rupture không tự hết hạn trong MVP. Detonate gốc 12 damage/stack, bán kính 105 px; mỗi mục tiêu kích tối đa một lần/tick, tối đa 12 vụ nổ/tick.
 - Surge nhận từ hit/kill/Perfect Dodge; Q dùng 100 Surge gây 100 damage trong 280 px, xóa đạn địch và cho 0.5 giây bảo vệ.
-- Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện 2:30. Boss 4:00 dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
+- Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện ở200kills hoặc2:30. Boss ở450kills hoặc4:00 (điều kiện nào tới trước) dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
 - Chain Warden 1500 HP, ba telegraph luân phiên: chain sweep, vòng đạn, slam khóa vị trí. Dưới nửa HP tăng nhịp; không bị stun-lock bởi bắn thường.
 
 ### Q2 — timing, input và impact (chờ experience approval)
@@ -85,22 +85,28 @@
 
 ### Cân bằng mở đầu — theo playtest mobile
 - Giữ damage Light18/22/30 và HP đầu run. Basic/Charged/Heavy và nguồn tài nguyên thay theo feedback ở trên. HP gắn theo loại quái, không theo thứ tự spawn; HP chuẩn Grunt66/Archer48/Volatile48, Elite220/Boss1500.
-- Trước Mutation đầu tiên (0–60s): Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s, cap18. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
-- Từ60–120s HP cơ sở quái mới tiến tới chuẩn; đồng thời từ60–300s hệ số HP tăng1→1.6, damage1→1.5, speed1→1.2. Chốt chỉ số khi spawn (đạn giữ damage nguồn), không đổi strength giữa telegraph. Elite nhận growth lúc spawn; Boss giữ1500HP/pattern/damage riêng. Interval tiến từ90ticks về cadence chuẩn, cap18. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Mốc draft/Elite/Boss giữ nguyên; không thêm buff, quái hoặc permanent stats.
+- Trong60s đầu: Grunt36/Archer28/Volatile36 HP; bắt đầu 6 Grunt + 1 Archer, sinh cụm tối đa3 quái mỗi1.5s, cap18. Grunt cần hai Light liên tiếp (18+22); Light → Basic Shot/Detonate cũng hạ được, không cần buff.
+- Từ60–120s HP cơ sở quái mới tiến tới chuẩn; đồng thời từ60–300s hệ số HP tăng1→1.6, damage1→1.5, speed1→1.2. Chốt chỉ số khi spawn (đạn giữ damage nguồn), không đổi strength giữa telegraph. Elite nhận growth lúc spawn; Boss giữ1500HP/pattern/damage riêng. Interval tiến từ90ticks về cadence chuẩn, cap18. Không hồi HP hoặc tăng HP quái đang sống. Sau120s giữ waves cũ, cap18; Boss vẫn cap7. Draft/Elite/Boss dùng kills hoặc thời gian như bảng dưới; không thêm buff, quái hoặc permanent stats.
 - Cấu hình ở `src/game/config/balance.ts`; tests chỉ xác nhận thông số/interaction, độ khó cần user playtest.
 
 ## Run tối đa 5 phút
 | Mốc | Sự kiện |
 | --- | --- |
 | 0:00 | Start, Grunt + Archer |
-| 25 kills | Mutation Draft #1 + hồi 10 HP |
-| 80 kills | Curse Draft + hồi 10 HP |
-| 160 kills | Mutation Draft #2 + hồi 10 HP |
-| 4:00 | Chain Warden Boss xuất hiện |
+| 25 kills hoặc0:30 | Mutation Draft #1 + hồi10HP |
+| 80 kills hoặc1:00 | Curse Draft #1 + hồi10HP |
+| 160 kills hoặc1:40 | Mutation Draft #2 + hồi10HP |
+| 200 kills hoặc2:30 | Bulwark Elite xuất hiện |
+| 220 kills hoặc2:20 | Mutation Draft #3 + hồi10HP |
+| 300 kills hoặc3:00 | Curse Draft #2: đổi hoặc giữ Curse, hồi10HP |
+| 380 kills hoặc3:40 | Mutation Draft #4 + hồi10HP |
+| 450 kills hoặc4:00 | Chain Warden Boss xuất hiện |
 | 5:00 | Boss chưa chết thì Defeat |
 
-- HP ban đầu 100; heal không vượt max HP.
-- Draft dựa tổng kills trong run, không dựa phút; HUD đếm tới mốc kế. Vượt nhiều mốc trong chain vẫn chọn tuần tự, không mất/nhân đôi; đủ3draft thì dừng. Timer dừng khi Pause hoặc chọn Draft.
+- Mỗi mốc dùng điều kiện OR: kills hoặc elapsed simulation time, cái nào tới trước. Mỗi mốc chỉ kích hoạt1lần; thứ tự Elite và Mutation#3 có thể khác tùy tốc độ hạ quái. HUD hiển thị cả hai ngưỡng draft kế và Boss.
+- HP ban đầu100; mỗi lượt chọn heal10 không vượt max HP. Có6lượt chọn (4Mutation khác nhau,2lượt Curse); không tăng số loại nội dung MVP hoặc stack buff trùng.
+- Vượt nhiều mốc trong chain vẫn chọn tuần tự, không mất/nhân đôi. Draft đang tới hạn ưu tiên trước encounter; Boss không bị giữ tới4:00 nếu đủ450kills. Timer dừng khi Pause hoặc chọn Draft.
+- Boss giữ1500HP/pattern riêng, dọn common/projectile khi vào, giữ Elite đã xuất hiện; không spawn Elite mới sau Boss. Nếu nhảy qua cả hai ngưỡng encounter cùng lúc, ưu tiên Boss, bỏ Elite chưa xuất hiện. Deadline vẫn5:00 kể cả Boss tới sớm.
 - Victory khi hạ Boss trước deadline; mutual kill cùng simulation tick tính là Victory.
 - Có Play Again.
 
@@ -114,14 +120,14 @@
 ## Mutation và Adaptive Evolution
 Sáu Mutation: Phantom Edge, Catalyst, Berserker, Detonation Specialist, Static Riposte, Guard Breaker.
 
-Mỗi draft có ba lựa chọn:
+Mỗi Mutation draft có tối đa ba lựa chọn, loại bỏ Mutation đã sở hữu. Nếu pool chỉ còn1–2 thì hiện đúng số còn, không có option undefined/trùng; pool cạn bỏ qua mốc không heal và không kẹt run:
 1. Adaptive theo hành vi người chơi.
 2. Synergy với build hiện tại.
 3. Wildcard.
 
 ## Curse
 - Bốn Curse: Volatile Soul, Ghost Step, Blood Pact, Death Echo.
-- Mỗi run có một Curse, chọn từ ba lựa chọn.
+- Luôn chỉ một Curse active; có hai lượt chọn, mỗi lượt tối đa ba lựa chọn. Lượt sau luôn có lựa chọn giữ Curse đang dùng; chọn Curse khác thay toàn bộ hiệu ứng/rủi ro cũ, không cộng dồn. HP clamp theo maxHP mới sau heal10.
 - Curse luôn có lợi ích và rủi ro.
 - Hiệu ứng MVP được chọn ở M4; giá trị là tham số cân bằng sau playtest.
 

@@ -21,4 +21,15 @@ export const HEAVY = { charges: 2, recharge: 8, damage: 100, finisherDamage: 140
 export const ENEMY_GROWTH = { startSeconds: 60, endSeconds: 300, health: 1.6, damage: 1.5, speed: 1.2 } as const;
 
 export const RANGED = { basicDamage: 20, chargedDamage: 84 } as const;
-export const DRAFT_KILLS = [25, 80, 160] as const;
+export const DRAFT_MILESTONES = [
+  { kills: 25, seconds: 30, kind: 'mutation' },
+  { kills: 80, seconds: 60, kind: 'curse' },
+  { kills: 160, seconds: 100, kind: 'mutation' },
+  { kills: 220, seconds: 140, kind: 'mutation' },
+  { kills: 300, seconds: 180, kind: 'curse' },
+  { kills: 380, seconds: 220, kind: 'mutation' },
+] as const;
+export const ENCOUNTERS = {
+  elite: { kills: 200, seconds: 150 },
+  boss: { kills: 450, seconds: 240 },
+} as const;
