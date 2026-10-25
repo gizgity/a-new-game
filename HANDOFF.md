@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Sửa feedback sau Q5A, trước Q5B: áp lực spawn khi không kill, Archer theo aim lúc windup, Boss nhanh hơn, hiệu ứng thắng rõ và chặn native/held-click trong draft. User xác nhận “q5a ok” trên fa4045d; Q5A ACCEPTED. Những thay đổi Q3/run dưới đây được user yêu cầu trực tiếp, không tự mở rộng Q5B. Implementation/tests/build/browser PASS; chuẩn bị deploy để user kiểm fixes.
+Sửa feedback sau Q5A, trước Q5B: áp lực spawn khi không kill, Archer theo aim lúc windup, Boss nhanh hơn, hiệu ứng thắng rõ và chặn native/held-click trong draft. User xác nhận “q5a ok” trên fa4045d; Q5A ACCEPTED. Những thay đổi Q3/run dưới đây được user yêu cầu trực tiếp, không tự mở rộng Q5B. Implementation/tests/build/browser/deploy PASS trên f89bfa7; **AWAITING PLAYTEST APPROVAL** cho5fixes.
 
 ## ACCEPTANCE
 - Không đứng ở trần18 khi không kill: thêm pack3 mỗi6s không kill khi đã đủ18, không trần dân số cố định trước Boss; kill reset timer, pause/draft/hitstop không tăng pressure. Giữ milestones và Boss cap7; Elite không xóa crowd.
@@ -96,6 +96,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Fix deploy PASS: f89bfa721d38adb227c92207ef1c79c37d7a5ec6, Actions40170626907 completed/success, job121100546426 build/upload/Deploy success. Parent ee25e6e giữ nguyên, update main không force/expected SHA;20blobs(16text/4PNG) đối chiếu local. Browser là dist/local; Pages trực tiếp bị proxy chặn ở lượt trước, không tự nhận đã smoke live.
 - Fixes sau Q5A: tests83definitions/6files PASS, typecheck/build PASS; Chromium390/1440: held/right click draft guard, keyboard, Boss kill thật trong fixture → vỡ ấn1.1s → Victory, defeat/reset/frozen result/vi-en PASS. Dist844 input/pause PASS. Stress fixture132Grunt: khoảng0.77ms/core tick trên Chromium máy này, không đại diện FPS mobile. Chưa user acceptance cho các fixes.
 - Deploy Q5A PASS: commit fa4045deb8d332fee03cdf01555ced2d4ed29b79, Actions40168884585 completed/success, job121095494287. Main fast-forward từ5caf09d, không force; đã đối chiếu27blob (16text/11PNG) với local. Pages direct smoke bị proxy403; kết quả browser là dist/local, không tự nhận đã kiểm live/Safari.
 - Q5A: npm test PASS80definitions/6files (9Q5A), typecheck/build/diff PASS. Chromium320/390/844/1440: fixture Barrier/HP, draft vi/en, Boss HUD không overlap, normal progression, trial không lưu progress, pause/input/dist PASS. docs/q5a/ ghi rõ fixtures và input thật8s. Q5A đã được user duyệt qua “q5a ok”; chưa Safari/iOS/full-run; Phaser>500KB warning cũ.
@@ -107,7 +108,15 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Hoàn tất validation/browser và deploy các fixes sau Q5A, rồi bàn giao checklist riêng. Không triển khai Q5B trong task sửa feedback này.
+Chờ user thử5fixes sau Q5A trên f89bfa7; xử lý feedback trong scope này. Không triển khai Q5B trước khi kết thúc lượt sửa và user giao tiếp.
+
+## PLAYTEST FIXES SAU Q5A — AWAITING PLAYTEST APPROVAL
+Bản f89bfa7, link https://gizgity.github.io/a-new-game/ đã deploy, tải lại trang. Scope chỉ5fixes mới, không yêu cầu duyệt lại Juggernaut.
+1. Đầu run né/không kill20–30s: sau khi đủ18 vẫn có pack3 thêm mỗi6s không kill; kill reset pressure. Mobile joystick/Lướt, desktop WASD/Space.
+2. Di chuyển ngang trước Archer khi gồng: cung/ray theo player; đạn đã bắn không bẻ lái.
+3. Draft25kills/0:30: giữ chuột trái trước khi mở rồi nhả trên card, hoặc click phải, không tự chọn/menu native; click trái mới/Enter chọn được, mobile còn cuộn.
+4. Boss450kills/4:00 có ba pattern nối nhanh hơn; hạ Boss thấy vỡ ấn/chime1.1s rồi CHIẾN THẮNG vàng, chết/deadline THẤT BẠI hồng. Phản hồi nhịp có đủ khó/đọc được không, cùng thiết bị/browser.
+Evidence/giới hạn và checklist: docs/post-q5a/README.md; fixtures không là natural/full-run. Core stress132enemies trên Chromium máy này không thay kiểm hiệu năng mobile thật.
 
 ## PLAYTEST Q5A — ĐÃ DUYỆT / THAM CHIẾU
 Bản Q5A fa4045d đã deploy; dùng link trial https://gizgity.github.io/a-new-game/?playtest=juggernaut; tải lại trang. Trial cấp Guard+Aegis+Oath từ đầu, có nhãn rõ và không lưu kills/unlocks/runs; không là natural acquisition. Run thường không query vẫn pool7/5 và luật unlock/draft cũ, không bảo đảm draft ra cả bộ.
@@ -125,4 +134,4 @@ Bản Q4 daee80a tại https://gizgity.github.io/a-new-game/; tải lại trang.
 Khi tạo issue mới, ghi tình huống/cách setup, điều quan sát được và thiết bị/browser nếu liên quan. Q4 không còn chờ playtest/visual approval.
 
 ## BLOCKERS
-Không blocker implementation. Cần deploy fixes và user thử nhịp Boss/áp lực crowd; Q5B chưa mở. Git local base5caf09d, snapshot Q5A vẫn working tree; remote main ee25e6e đã được đối chiếu, cập nhật qua connector với expected SHA không force. HTTP Pages trực tiếp từng bị proxy403, chỉ xác nhận deploy qua Actions và browser dist local.
+Không blocker implementation. Deploy fixes PASS; cần user thử nhịp Boss/áp lực crowd; Q5B chưa mở. Git local base5caf09d, snapshot Q5A vẫn working tree; remote main ee25e6e đã được đối chiếu, cập nhật qua connector với expected SHA không force. HTTP Pages trực tiếp từng bị proxy403, chỉ xác nhận deploy qua Actions và browser dist local.

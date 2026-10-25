@@ -1,5 +1,7 @@
 # Fixes sau Q5A
 
+Deploy bản f89bfa721d38adb227c92207ef1c79c37d7a5ec6 PASS qua Actions40170626907; fixes còn chờ user playtest. Pages trực tiếp từ môi trường từng bị proxy chặn, browser evidence là dist/local.
+
 Q5A được user chấp nhận qua “q5a ok”. Task này sửa feedback riêng, chưa mở Q5B.
 
 - Dân số18 là soft cap: nếu6s không kill khi đủ crowd, spawn thêm3 và tiếp tục mỗi6s; không trần cố định trước Boss. Kill reset pressure, pause/draft/hitstop không cộng clock. Elite không xóa crowd; mốc Boss và cap7 trong Boss giữ.
