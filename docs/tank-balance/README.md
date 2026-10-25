@@ -1,6 +1,6 @@
 # Tank trade-off — feedback sau Q5B
 
-Bản d42cdaf4b69a2253307c5a194a2b58f022ad3f94 đã deploy, Actions40209412564 completed/success. Chờ user playtest balance, Q5C/D chưa mở.
+Bản d42cdaf4b69a2253307c5a194a2b58f022ad3f94 đã deploy, Actions40209412564 completed/success. User đã duyệt balance qua “oki, ổn r á” trên d42cdaf. ACCEPTED — USER PLAYTEST APPROVAL cho tank trade-off; Q5C/D chưa mở.
 
 User yêu cầu chống chịu phải đánh đổi damage, tránh vừa Barrier vừa heal vừa damage lớn. Đây là điều chỉnh trực tiếp lên Q5A/Q5B đã có, không mở Q5C/D.
 
@@ -22,4 +22,4 @@ Typecheck/build/diff PASS. Chromium320/390/844/1440 kiểm HUD36%/40%, Barrier14
 - [Juggernaut](https://gizgity.github.io/a-new-game/?playtest=juggernaut): Guard+Aegis+Oath; cost40%. Heavy đúng windup/giáp đóng vẫn nhận Barrier, Dash hồi chậm như trước; giết quái chậm hơn để đổi độ chịu đòn.
 - [Frenzy/Blood](https://gizgity.github.io/a-new-game/?playtest=frenzy): cost20%, chưa có Aegis nên heal theo cap khiHP thấp. So damage với combo offensive, Heavy hụt vẫn mất4HP.
 
-Trial có nhãn, không lưu kills/unlocks/runs, không đại diện natural acquisition. Tải lại trang trước thử. So đứng yên với di chuyển (joystick/WASD), né (Lướt/Space), phá thế Heavy (Đánh mạnh/Shift giữ-thả), Charged (Tích lực/E giữ-thả). Mong đợi tank chịu lâu hơn nhưng phải dùng kỹ năng/di chuyển, AoE vẫn dọn được quái với damage thấp hơn. Ghi build, tình huống, điều quan sát, thiết bị/browser; chờ user approval trước checkpoint mới.
+Trial có nhãn, không lưu kills/unlocks/runs, không đại diện natural acquisition. Tải lại trang trước thử. So đứng yên với di chuyển (joystick/WASD), né (Lướt/Space), phá thế Heavy (Đánh mạnh/Shift giữ-thả), Charged (Tích lực/E giữ-thả). Mong đợi tank chịu lâu hơn nhưng phải dùng kỹ năng/di chuyển, AoE vẫn dọn được quái với damage thấp hơn. Ghi build, tình huống, điều quan sát, thiết bị/browser; Tank trade-off đã được user duyệt; không suy rộng thành approval mọi vòng Q5B hoặc tự mở checkpoint mới.
