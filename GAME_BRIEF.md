@@ -60,7 +60,7 @@
 - Waves tăng áp lực theo thời gian, tối đa 18 enemies; Bulwark xuất hiện ở200kills hoặc2:30. Boss ở450kills hoặc4:00 (điều kiện nào tới trước) dọn quái thường cũ, giữ Elite còn sống, giảm tổng enemy cap còn 7 để ưu tiên precision combat.
 - Chain Warden 1500 HP, ba telegraph luân phiên: chain sweep, vòng đạn, slam khóa vị trí. Dưới nửa HP tăng nhịp; không bị stun-lock bởi bắn thường.
 
-### Q2 — timing, input và impact (chờ experience approval)
+### Q2 — timing, input và impact (ACCEPTED — USER PLAYTEST APPROVAL)
 - L1/L2/L3 lấy đà 4/6/10 simulation ticks (~67/100/167ms), tổng đòn 0.24/0.30/0.44s; Heavy0.24s lấy đà/0.72s tổng. Light theo aim trong windup rồi khóa khi hit; Heavy/Charged khóa hướng tại lúc nhả; mỗi đòn resolve một lần, recovery vẫn có commitment.
 - Một slot buffer tấn công, tối đa 120ms simulation time; tap mới thay ý định cũ, giữ qua hitstop. Tap cuối recovery/cooldown nối Light/Heavy/Shot/Charged; tap quá sớm hết hạn. Chém/Bắn giữ vẫn lặp; Heavy/Charged chỉ nhận release pulse, giữ không lặp. Resource hết lúc release không queue để tự ra đòn khi hồi; cancel/pause/resize/blur/draft xóa cả trạng thái đang giữ. Input adapter giữ tap ngắn tới tick, không chạy lại mỗi catch-up tick.
 - Dash ưu tiên hủy đòn và buffer tấn công cũ; buffer ngắn riêng cho dash/Surge để tap qua hitstop không mất. Không xếp dash/Charged/Surge khi thiếu tài nguyên. Pause/draft/result/reset/resize/blur/pointercancel xóa ý định cũ; không queue nhiều đòn.
@@ -68,7 +68,7 @@
 - Miss có whoosh và slash nhưng không có contact spark/hitstop; Light mint, Heavy/Charged amber với recoil/impact mạnh hơn. Impact đặt tại điểm chạm trước knockback; Perfect Dodge dùng dấu gãy bốn hướng và notice hiện có. Sound trúng đạn khác sound chém.
 - Hitstop: Basic Shot12ms, L1/L2/L3 33/45/65ms, Charged40ms, Heavy85ms (làm tròn lên tick60Hz); blast/chain giữ quy tắc cũ. User đã giao chỉnh specials/resources/ranged/build support, collision/dodge và scaling/draft; pattern AI và chain budget vẫn giữ.
 - Charged feedback theo playtest: recoil 0.22s, lóe nòng dạng lance và projectile lõi ivory/amber với đuôi mảnh vỡ; khai hỏa có tiếng crack/body riêng. Theo feedback ranged mới, Charged tự đặt1Rupture trước Detonate; contact bloom0.24s và Charged Detonate có lõi sáng → sóng xung kích phân mảnh → shards (0.36s), theo đúng radius thực, SFX blast riêng. VFX giữ budget 24 và ưu tiên giữ blast chính khi chain đông; nổ lan giữ style thường để không phủ kín màn hình. Radius/shot speed/cooldown/chain budget giữ; direct damage84 và tự tạo Rupture theo feedback mới.
-- Build/tests và browser automation xác nhận timing/input/rendering; cảm nhận combat và bố cục ngón cái vẫn **AWAITING PLAYTEST APPROVAL**, không tự accepted.
+- **Q2 ACCEPTED:** người dùng xác nhận “ok q2 ổn đó” trên bản84fb33a. Đây là experience approval từ user cho combat feel/impact; build/tests/browser automation là bằng chứng kỹ thuật riêng. Không suy rộng sang visual Q1, Q3–Q5 hoặc xác minh mọi thiết bị mobile.
 
 ### Crowd và combo — theo playtest mobile
 - L1 chém thuận nhanh, mint; L2 backhand ngược chiều, cyan, rộng hơn; L3 lấy đà/co lõi/bung vai rồi quét lớn với hai cạnh phân mảnh ivory/mint. Pose, độ dài blade, bề rộng/tồn tại trail, âm swing/contact và hitstop phân biệt; không chỉ đổi nhãn HUD.
@@ -204,4 +204,4 @@ Lịch sử Game Brief được lưu từ M0/M1 chỉ chốt tên và nguyên t�
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 và chỉnh cụm nút phải mobile đã được giao, đang chờ playtest bản mới; Q3–Q5 chỉ triển khai khi người dùng giao tiếp.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3–Q5 chỉ triển khai khi người dùng giao tiếp.

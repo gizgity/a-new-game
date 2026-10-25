@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Tăng từ3 lên6 lượt tiến hóa; draft/Elite/Boss kích hoạt theo kills HOẶC thời gian, điều kiện tới trước. Implementation/tests/build/browser/production PASS; đã deploy Pages qua GitHub Actions success. AWAITING PLAYTEST APPROVAL. Giữ balance súng/specials và phạm vi nội dung hiện có.
+Q2 hoàn thành và được người dùng chấp nhận qua feedback “ok q2 ổn đó” trên bản đang deploy (84fb33a). Đã ghi nhận experience acceptance cho combat feel/impact; giữ nguyên implementation và balance hiện tại. Sáu mốc tiến hóa/encounter đã deploy; không suy rộng xác nhận Q2 thành acceptance toàn bộ Q1/Q3–Q5 hoặc kiểm thử mọi thiết bị.
 
 ## ACCEPTANCE
 - 6 draft: Mutation25kills/0:30, Curse80/1:00, Mutation160/1:40, Mutation220/2:20, Curse300/3:00, Mutation380/3:40. Mỗi mốc chỉ chạy1lần; vượt nhiều mốc xử lý tuần tự, timer pause khi chọn.
@@ -25,7 +25,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | --- | --- | --- |
 | Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Bố cục cột mới và giữ/thả trên máy thật |
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
-| Q2 — Combat feel/impact | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Duyệt balance/specials/dodge/body/ranged bản mới |
+| Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
 | Q3 — Enemy identity/precision | NOT VERIFIED | Có scaling/body theo feedback, art/pattern/recovery chưa đạt |
 | Q4 — Chain depth | NOT VERIFIED | Charged tự seed Detonate hỗ trợ ranged; depth tổng thể chưa duyệt |
 | Q5 — Mutation/Curse synergies | NOT VERIFIED | Catalyst/ranged và kill drafts đã cải thiện theo user; các concept còn lại chưa đối chiếu |
@@ -75,12 +75,13 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Lượt ghi nhận approval chỉ sửa Markdown; diff/nhất quán tài liệu đã kiểm, không chạy lại tests/build hoặc deploy. Các kết quả kỹ thuật dưới thuộc bản implementation84fb33a.
 - npm test PASS:62definitions/3files; thêm6mốc kills/time/both/biên trước ngưỡng, nhiều mốc cùng tick, cạn pool, giữ/đổi Curse, Elite/Boss OR một lần và không Elite muộn. Regression combat/progression cũ PASS.
 - Typecheck/build PASS; Phaser bundle warning>500KB là hiện trạng, không mở scope bundling.
 - Chromium320×568/390×844/844×390/1440×900 PASS: HUD vi/en cả kills/time không tràn,6draft qua UI, Curse có giữ/đổi, pool1option cuối, Boss sớm, pause/resume; production base/a-new-game/ HUD/load/no overflow/runtime errors PASS. Ảnh HUD320 và Curse đã xem trực quan.
-- Natural ranged scripted input, waves thật/no HP-ammo grants:266kills/128.8s,565shots/0melee/71detonations,4draft tại25/80/161/222kills; chết trước draft5. Assertion kỳ vọng full6/Boss của script không đạt do player chết, không phải runtime lỗi; toàn6mốc/Boss chỉ được kiểm bằng core tests+browser fixtures. Không tuyên bố full-run cân bằng hoặc experience accepted.
-- Safari/iOS/thiết bị thật, tầm với, combat feel và full-run cần user playtest.
+- Natural ranged scripted input, waves thật/no HP-ammo grants:266kills/128.8s,565shots/0melee/71detonations,4draft tại25/80/161/222kills; chết trước draft5. Assertion kỳ vọng full6/Boss của script không đạt do player chết, không phải runtime lỗi; toàn6mốc/Boss chỉ được kiểm bằng core tests+browser fixtures. Kết quả tự động này không chứng minh cân bằng full-run; Q2 được user duyệt riêng sau đó.
+- Q2 experience acceptance: user xác nhận “ok q2 ổn đó”. Chưa có thông tin thiết bị/browser của lượt user thử; không coi đây là xác minh toàn bộ Safari/iOS hoặc balance full-run.
 - Deployment: Actions40147434160, head84fb33ac1fe3c945edb6b42e8dfd60db48eb1f27, completed/success; job121031678697. Build/upload/deploy Pages PASS. Live https://gizgity.github.io/a-new-game/. Commit handoff sau deploy chỉ Markdown.
 
 ## NEXT ACTION
-Dừng chờ user playtest nhịp6draft, đổi/giữ Curse và Boss sớm. Chỉ chỉnh tiếp theo feedback; không tự mở checkpoint/content khác.
+Q2 đã accepted; dừng chờ người dùng giao Q3 — Enemy identity, telegraph và precision encounters. Chỉ bắt đầu Q3 khi được giao; các feedback balance mới vẫn xử lý theo phạm vi yêu cầu.
