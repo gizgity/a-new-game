@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Giảm burst Grunt jump theo feedback “chết quá nhanh, không đủ thời gian thích ứng”. Q5A accepted, Q5B chưa mở. Đã giảm damage12→6, cooldown3.6→7s, thêm delay đầu và giãn start theo mật độ; tests/build/browser PASS, chuẩn bị deploy. Chờ user xác nhận feel mới.
+Giảm burst Grunt jump theo feedback “chết quá nhanh, không đủ thời gian thích ứng”. Q5A accepted, Q5B chưa mở. Đã giảm damage12→6, cooldown3.6→7s, thêm delay đầu và giãn start theo mật độ; tests/build/browser/deploy PASS trên6b7d7ad; **AWAITING PLAYTEST APPROVAL** cho tuning Grunt. Chờ user xác nhận feel mới.
 
 ## ACCEPTANCE
 - Chỉ tune Grunt jump: damage6×growth; cooldown7s+ID0–1.4s; Grunt mới chờ4s+ID0–2.6s. Nhóm dưới18Grunt giãn start≥1.6s, từ18Grunt≥0.7s để crowd vẫn nguy hiểm. Max3leap, cue/Perfect/radius/lead/interrupt/AoE giữ.
@@ -95,6 +95,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Grunt tuning deploy PASS:6b7d7ad910b58d7bc2f524e4373dfab1fe9970cf, Actions40175067250 completed/success, job121113849271. Parent efa67d1, update main không force/expected SHA;5text blobs đối chiếu local. Chưa user acceptance/Safari/full-run; browser evidence local/dist, live deploy xác nhận bởi Actions.
 - Grunt tuning:90definitions/6files PASS, build/typecheck/diff PASS. Chromium390 fixture kiểm first delay≥4s/không nhảy trước3s, damage6/cooldown>6s sau đáp; dist1440 input thật bắn+WASD14.4s ngoài đời: khoảng11s simulation/58HP, không grant stats; pause/no overflow/runtime errors PASS. Không phải natural/full-run balance acceptance hoặc thiết bị thật.
 - Difficulty v2 deploy PASS: e4f0ab1b962a4e99f5172d4229ad59ee70c9e4aa, Actions40171971219 completed/success, job121104520190. Parent bccbd0f giữ nguyên, update main không force/expected SHA;11blob(9text/2PNG) đối chiếu local. Chưa user acceptance; browser dist/local, không tự nhận smoke live/Safari.
 - Difficulty v2:88definitions/6files PASS, typecheck/build/diff PASS; Chromium390/844 cue/flight/Boss15shots/AoE8kills và dist1440 input thật PASS. docs/pressure-v2/ ghi fixtures/limits; user chưa duyệt difficulty.
@@ -110,10 +111,10 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Deploy Q4 PASS: Actions40156155683 completed/success, job121057894453; implementation daee80afe9c936b1ef38feb7e945cdbbd11615fc. Build/upload/deploy success; main giữ parent e88a9f5, không force. Live https://gizgity.github.io/a-new-game/. 11ảnh upload đã đối chiếu Git blob SHA với local.
 
 ## NEXT ACTION
-Hoàn tất browser rồi deploy tuning Grunt, cập nhật SHA/Actions; dừng chờ user thử opening20–30s và crowd không kill. Q5B chưa mở.
+Chờ user thử opening20–30s và crowd không kill trên6b7d7ad. Từng cú Grunt phải nhẹ và thưa hơn, số đông vẫn nguy hiểm; chỉ sửa feedback tuning, Q5B chưa mở.
 
 ## PLAYTEST GRUNT TUNING — AWAITING PLAYTEST APPROVAL
-Sau deploy tải lại https://gizgity.github.io/a-new-game/. Opening20–30s: có ít nhất4s cho Grunt mới trước khi nhảy, từng cú trừ6HP nền thay12, nhảy thưa và lệch nhau khi ít quái. Chạy bằng joystick/WASD; đổi hướng/Dash (Lướt/Space) sau vòng đáp để né, Heavy/Charged giữ-thả để phản công. Không kill cho tới đủ18Grunt: nhịp nhóm dày hơn nhưng từng con vẫn cooldown7s; quay lại gom/nổ AoE giảm nguy cơ. Phản hồi còn chết quá nhanh hay đủ thời gian thích ứng, tình huống và thiết bị/browser. Chưa user acceptance; Boss/Archer không tune thêm trong lượt này.
+Bản6b7d7ad đã deploy; tải lại https://gizgity.github.io/a-new-game/. Opening20–30s: có ít nhất4s cho Grunt mới trước khi nhảy, từng cú trừ6HP nền thay12, nhảy thưa và lệch nhau khi ít quái. Chạy bằng joystick/WASD; đổi hướng/Dash (Lướt/Space) sau vòng đáp để né, Heavy/Charged giữ-thả để phản công. Không kill cho tới đủ18Grunt: nhịp nhóm dày hơn nhưng từng con vẫn cooldown7s; quay lại gom/nổ AoE giảm nguy cơ. Phản hồi còn chết quá nhanh hay đủ thời gian thích ứng, tình huống và thiết bị/browser. Chưa user acceptance; Boss/Archer không tune thêm trong lượt này.
 
 ## PLAYTEST DIFFICULTY V2 — AWAITING PLAYTEST APPROVAL
 Bản e4f0ab1 đã deploy tại https://gizgity.github.io/a-new-game/, tải lại trang. Opening: chạy thẳng thấy Grunt nhảy đón, đổi hướng/Dash né, Heavy/blast ngắt. Không kill20–30s thấy pressure ưu tiên Archer; gom dấu→Heavy/Charged/Surge vẫn dọn nhiều. Boss450kills/4:00 áp sát từ xa,15đạn/ring+fan nhanh hơn, còn recovery phản công. Mobile joystick/Lướt, Heavy/Charged giữ-thả; desktop WASD/Space/Shift/E. Ghi đòn/cue gặp vấn đề, cảm giác AoE và thiết bị/browser. Chưa user approval, không suy rộng tests thành độ khó đạt.
