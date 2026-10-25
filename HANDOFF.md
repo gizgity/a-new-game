@@ -10,15 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q5C được user giao trực tiếp “đọc handoff r bắt đầu q5c”. Goal: thêm 5Mutation/3Curse đúng contract, tổng12/8; kiểm shared heal/provenance/control/movement/reset/i18n, build/browser/deploy, dừng chờ playtest Q5C, không mở Q5D. Chỉ dẫn này thay gate NEXT ACTION Q5B cũ; không tự ghi nhận user đã playtest Q5B.
-
-Giữ tank trade-off d42cdaf đã được user duyệt (“oki, ổn r á”); không suy rộng sang approval toàn Q5B. Q5C implementation/checks/deploy PASS trên b5ba138, **AWAITING PLAYTEST APPROVAL**.
+Q5D — Weighted Draft + anti-repetition. User xác nhận Q5C “oki r, làm tiếp đi” trên b5ba138; **Q5C ACCEPTED — USER PLAYTEST APPROVAL**. Giữ toàn bộ gameplay/tank tuning, chỉ làm draft/data/UI/progression liên quan; dừng chờ playtest Q5D, không mở Q5E.
 
 ## ACCEPTANCE
-- Đủ12Mutation/8Curse theo contract Q5C; giữ4Mutation/run,1Curse active,6draft và unlock cũ; chưa làm weighted Draft Q5D.
-- Sustain chung8HP/10s, giữ Blood6HP/10s khi Barrier=0 và damage costs tank đã duyệt. Mark snapshot sống qua queue/relay để Reclaimer không mất trigger khi tiêu dấu; Parasitic một heal/root sau actual damage.
-- Reversal chỉ enemy HP hit, Anchor đúng một lần/run không cứu chí tử; Echo chỉ đếm Rupture đã thực thi, Boss miễn slow; Kinetic chỉ walk/dash thật gần địch, chuyển trước enemy hit.
-- Glass direct base×1.3/HP75, Parasitic draft5, Hunted thưởng/cost chase; đổi/giữ Curse/reset/pause/hitstop đúng, vi/en. Tests/build/browser/deploy và bàn giao scope playtest; dừng AWAITING PLAYTEST APPROVAL Q5C.
+- Weighted sampling không hoàn lại từ eligible canonical, Adaptive/Synergy/Wildcard có lý do thật; Curse2 bảo đảm giữ, kết hợp + Wildcard. Không reroll khi render/pause/vi-en, pool0/1/2 đúng.
+- Tín hiệu actual direct damage/Perfect/marked chain/Heavy phá thế/Barrier/heal theo cửa sổ giữa draft, có sample confidence, không gán hiệu quả từ click/proc/hazard/self-cost. Nhu cầu HP chỉ contribution≤0.25.
+- Draft PRNG xorshift32 riêng, debug seed+snapshot đầy đủ; không thay spawn/combat. Anti-repeat×0.4 offered IDs run trước (kể bỏ dở), whitelist bounded/storage fallback giữ settings/unlocks.
+- Focused tests/phân bố, typecheck/build/browser/deploy; user acceptance riêng, dừng AWAITING PLAYTEST APPROVAL Q5D.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -34,11 +32,13 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5A — Barrier / Juggernaut | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “q5a ok” trên fa4045d |
 | Q5B — Rework existing pool | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Tank/sustain trên d42cdaf đã được duyệt; các vòng counter/chain/echo chưa có xác nhận riêng |
 | Tank trade-off | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki, ổn r á” trên d42cdaf |
-| Q5C — New pool tới12/8 | IN PROGRESS — AWAITING PLAYTEST APPROVAL | User giao trực tiếp; deploy b5ba138 PASS, chờ playtest |
-| Q5D — Weighted Draft | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5C |
+| Q5C — New pool tới12/8 | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên b5ba138 |
+| Q5D — Weighted Draft | IN PROGRESS | Đang triển khai theo contract |
 | Q5E — Diversity/balance | NOT STARTED — AWAITING PLAYTEST APPROVAL | Chỉ mở sau user accepted Q5D |
 
 ## CURRENT STATUS
+- Q5D implementation: DraftSignals actual outcomes/cửa sổ giữa draft, Draft.ts xorshift32 riêng+sampling weighted/canonical/no replacement, config/draft.ts metadata/groups/weights. Adaptive/Synergy/Wildcard có reason khi đủ evidence; Curse2 bảo đảm giữ. Không đổi gameplay tuning.
+- Profile v1 bổ sung drafts.previous/current/active whitelist20IDs; ghi IDs khi thực sự hiện, rotate khi start kể reload/bỏ dở. Storage blocked giữ trong memory. Trial không ghi history. Query draftSeed/draftDebug opt-in; window.cursebreakDraft là snapshot copy. Chưa lưu/khôi phục run đang chơi.
 - Q5C thêm Blood Reclaimer/Iron Reversal/Soul Anchor/Echo Chamber/Kinetic Battery và Glass Soul/Parasitic Mark/Hunted Vessel; pool12/8, mặc định eligible10/7 giữ unlock cũ. Trial sustain/anchor/chamber/glass/hunted cấp build, không lưu progress. HUD/VFX riêng cho heal/slow/pin/Anchor/Reversal/Glass/Hunted.
 - Đã ghép remote c128133 (tank d42cdaf + approval), giữ Aegis×0.8/Oath×0.75/Blood×0.8 và Blood6HP/10s, Barrier chặn Blood heal. Không dùng snapshot local396ed42 để ghi đè remote.
 - Tank trade-off mới: Aegis−20%, Oath−25%, Blood Pact−20% damage gây ra; Aegis+Oath còn60%, Aegis+Blood còn64% trước Frenzy/Guard bonuses. Blood không heal khiBarrier>0; Aegis rate4/Oath5. Preset ?playtest=tank cấp Guard+Aegis+Berserker+Blood, không lưu progress.
@@ -46,9 +46,9 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Q5B rework xong5Mutation/4Curse theo contract. BuildEffects.ts giữ clocks/Phantom/hazard/heal budget; combat giữ root object qua shot/Heavy/Detonate/relay/echo, cap2seed/6echo/root. BuildVisual.ts vẽ cue bounded; HUD vi/en cho Phantom/Static/Frenzy/heal/cost/Ghost risk. config/playtests.ts giữ4preset Q5B +Juggernaut/tank, thêm5preset Q5C, không lưu progress.
 - Difficulty v2: pressure4s ưu tiên2Archer tới8; Grunt jump0.68s/radius48 lead160/max3/concurrent, damage6/cooldown7s/first delay4–6.6s/start gap1.6s hoặc0.7s khi18Grunt, Heavy/blast interrupt/AoE vẫn trúng. Boss far-sweep→slam leap560, chase300, ring12+fan3 speed430, windup0.62/0.46 cooldown0.55/0.38 recovery0.32/0.24. Xem docs/pressure-v2/README.md.
 - Contract mới là nguồn thiết kế Q5; docs/q5/AUDIT.md thuộc lượt audit trước, không còn là quyết định/next action hiện hành. User đã duyệt concept/contract; không còn blocker thiết kế.
-- Code Q5C có12Mutation/8Curse; chưa Draft v2. Contract đích12/8 giữ4Mutation/run,1Curse active và6draft. Q5A chỉ vertical slice Juggernaut; Blood Pact sustain đã ở Q5B; các nguồn heal Q5C hiện dùng chung budget.
+- Code Q5C có12Mutation/8Curse; đã Draft v2 ở Q5D. Contract đích12/8 giữ4Mutation/run,1Curse active và6draft. Q5A chỉ vertical slice Juggernaut; Blood Pact sustain đã ở Q5B; các nguồn heal Q5C hiện dùng chung budget.
 - Defaults contract đã duyệt, còn tuning qua playtest: Barrier30 không decay; heal chung8HP/10s và cooldown riêng; Soul Anchor không cứu hit chí tử; Catalyst seed tối đa2/root không kích trong cùng root; proc có provenance/cap. Giữ Phantom reach/Catalyst charge/Guard Heavy bonus; các gói rework khác thay hiệu ứng cũ như contract, không ngầm cộng dồn.
-- Draft Q5D đã duyệt thiết kế, chưa triển khai: weighted theo damage thực/Perfect/phá thế/chain/phòng thủ, lý do có căn cứ; anti-repeat×0.4 cho offered IDs run trước (kể cả bỏ dở), seed draft riêng kèm snapshot debug; nội dung mới eligible mặc định khi triển khai, giữ unlock Guard/Static/Death Echo.
+- Draft Q5D đã triển khai theo thiết kế: weighted theo damage thực/Perfect/phá thế/chain/phòng thủ, lý do có căn cứ; anti-repeat×0.4 cho offered IDs run trước (kể cả bỏ dở), seed draft riêng kèm snapshot debug; nội dung mới eligible mặc định khi triển khai, giữ unlock Guard/Static/Death Echo.
 - Q4: relay chờ4ticks simulation (66.7ms), giữ snapshot vị trí/damage/radius trước knockback; chỉ marked neighbours truyền nổ. Giữ phần queue dư qua tick sau thay vì xóa, tối đa12/tick; Detonate và +1charge tính lúc thực thi. Pending-ID chống trùng relay, chainSeen chống lặp trong tick; reset xóa queue. Pause/draft/hitstop dừng simulation. Rupture3ô hình thoi, nối nguồn→đích khi relay nổ; budget24VFX giữ.
 - Grunt cue theo feedback: chuẩn bị là quạt rỗng viền đứt hồng; last160ms (tính cả stagger) viền liền3px + chevrons, vàng chỉ khi isImminentEnemyThreat thật. Tick hit lóe trắng/tô quạt2ticks simulation (hitstop có thể kéo dài thời gian thực); sau đó chỉ vệt slash gãy fade, bỏ fill/radial edges trong recovery. Chỉ sửa EnemyVisual.ts, không đổi core timing/damage/Perfect.
 - Q3: EnemyVisual.ts tách khỏi Scene, silhouette riêng: Grunt mặt nạ/móc tay, Archer mũ/áo rách/cung, Volatile lõi lò tách5mảnh, Bulwark giáp phiến, Warden vương miện/thân rỗng/3mảnh xích. Windup co/lấy đà, active bật người, recovery mở lõi; không thay collider.
@@ -64,15 +64,15 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Body collision: hai lượt resolve bounded giữa player radius16 và enemy14/22/32, clamp arena; giữ slide, bỏ resolve trong dash. Không engine/physics dependency mới.
 - Basic20damage, mỗi hit gain1ChargePoint (Catalyst2); Charged84 tự tăng1Rupture cap3 rồi Detonate×2. Blast nền24/stack1→72/stack3, radius105, chỉ blast Charged gốc142 với Specialist; chain budget12, VFX24 giữ. Không đòi melee để cấp ammo/trigger các blast synergies.
 - RunDirector dùng6mốc OR kills/time trong config; HUD draft kế và Boss hiển thị cả hai điều kiện. Draft ưu tiên trước encounter, vượt nhiều mốc chọn tuần tự; bossDue/eliteSpawned chặn lặp. Elite không spawn muộn sau Boss; nếu đồng thời đủ cả hai thì Boss ưu tiên, giữ Elite đã có.
-- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 chưa triển khai.
+- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
 
 - Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
 - Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor vẫn prototype art; không tự accepted.
 
 ## IMPLEMENTATION AUDIT / LIMITS
 - Functional tests chứng minh input/timing/geometry/resources/run, không chứng minh combat feel. Safari/iOS, âm thanh/performance/tầm với máy thật và full-run cần user thử.
-- Adaptive vẫn so bộ đếm hành động, fallback ngẫu nhiên có nhãn adaptive/synergy; Catalyst hiện đã có tác dụng cho ranged được ưu tiên. Không tuyên bố đã giải quyết toàn Q5.
-- Q5C đã triển khai/checks; còn user playtest experience. Q5D/E chưa triển khai. Không lấy fixture/tests làm user acceptance. Không lấy mô tả contract làm bằng chứng tính năng đang chạy.
+- Q5D dùng actual outcomes và weighted sampling, không còn fallback nhãn adaptive/synergy thiếu evidence. Chưa user acceptance Q5D, Q5E chưa triển khai.
+- Q5C đã được user duyệt; Q5D implementation/checks PASS, đang deploy, Q5E chưa triển khai. Không lấy fixture/tests làm user acceptance. Không lấy mô tả contract làm bằng chứng tính năng đang chạy.
 - Q4 đã sửa bỏ queue quá budget; user đã chấp nhận chiều sâu/feel trên daee80a. Browser/tests là bằng chứng kỹ thuật riêng; không suy rộng approval thành kiểm mọi thiết bị/Safari hoặc full-run.
 
 ## EVIDENCE
@@ -104,16 +104,19 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- Q5C:122definitions/9files PASS (12focused mới), typecheck/build PASS. Chromium390 năm preset core/renderer thật: heal/Anchor/Reversal/chain slow/pin/Glass/Hunted/HUD/vi-en/pause/no-progress PASS, ảnh đã xem. Fixtures grant stats, không là natural run.
-- Dist320/844/1440: mobile/desktop input, pause, vi/en, HP75, no-overflow/runtime errors PASS trước deploy; chi tiết docs/q5c/README.md. Chưa Safari/iOS/device/full-run/balance acceptance.
-- Tank trade-off d42cdaf đã được user duyệt “oki, ổn r á”; giữ mọi giá trị. Remote c128133 cũng ghi approval này; chưa suy rộng thành toàn Q5B. Q5B103definitions trước đó PASS; Q5A/Q2/Q3/Q4 giữ user approvals lịch sử.
-- Deploy Q5C PASS: b5ba138461bd8cb502b98ec53ab4a2118909a79d, Actions40211566822 completed/success. Parent c128133, expected SHA/không force qua GitHub connector;20blobs(15text/5PNG) đối chiếu local+remote tree, giữ tank evidence remote. Git CLI proxy lỗi. Vite base/workflow giữ nguyên. Chưa tự nhận smoke live.
+- Q5D:136definitions/10files PASS (14focused mới), phân bố4096seed/điều kiện, replay/eligibility/keep/poolcap/signals/actual damage/windows/profile migration/history/abandon/reload/storage fallback PASS. Typecheck/build PASS, warning Phaser bundle cũ.
+- Chromium390 năm style +320/844/1440Curse2: reason/vi-en/no reroll/debug copy/history/keep/HP5/no-overflow/runtime PASS. Fixture grant build/targets/eligible/seed; chain snapshot mẫu; không là natural run. Dist320/844/1440 input thật/pause/vi-en/history/no-overflow/runtime PASS, không inject stats. Evidence docs/q5d/README.md.
+- Q5C b5ba138 deploy PASS Actions40211566822; user duyệt “oki r, làm tiếp đi”. Tank d42cdaf đã duyệt, giữ tuning; Q5B counter/chain/echo chưa có xác nhận riêng. Q5A/Q2/Q3/Q4 giữ approvals lịch sử.
+- Remote main5a84c89 đã đối chiếu đầu Q5D; git local vẫn396ed42+changes của các lượt trước. Deploy qua connector từ parent remote/expected SHA/không force, không push lịch sử local. Browser evidence local/dist, chưa smoke live.
 
 ## NEXT ACTION
-Chờ user playtest Q5C b5ba138 theo docs/q5c/README.md; chỉ sửa feedback Q5C, không mở Q5D khi chưa được giao.
+Deploy Q5D sau checks PASS, theo dõi Pages Actions tới kết thúc rồi bàn giao playtest; không mở Q5E.
 
-## PLAYTEST Q5C — AWAITING PLAYTEST APPROVAL
+## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.
 
+## PLAYTEST Q5D — AWAITING PLAYTEST APPROVAL
+Checklist scope/cách thử/giới hạn ở docs/q5d/README.md. Game thường không query để kiểm natural acquisition: draft25kills/0:30, Curse80/1:00, Mutation160/1:40 và220/2:20, Curse300/3:00, Mutation380/3:40. Chơi thiên melee/ranged/Perfect/Heavy hoặc defense, xem reason đúng bằng chứng/build; vi/en không đổi IDs; Curse2 có giữ; run kế giảm lặp có xác suất. Mobile joystick/Chém/Bắn/Lướt, specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Chưa yêu cầu thử lại Q5C.
+
 ## BLOCKERS
-Không blocker implementation/deploy Q5C; còn user playtest experience. Pages direct từng bị proxy chặn; browser evidence là local/dist. Q5D/E chưa mở.
+Không blocker implementation Q5D; còn deploy và user playtest experience. Q5E chưa mở. Pages direct từng bị proxy chặn, chưa tự nhận smoke live.

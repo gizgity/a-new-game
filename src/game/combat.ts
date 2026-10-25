@@ -1,5 +1,6 @@
 import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN, BARRIER, GRUNT_LEAP, BUILD } from './config/balance.js';
 import { BuildEffects, chainRoot, type ChainRoot } from './BuildEffects.js';
+import { draftSignals } from './DraftSignals.js';
 import { Barrier } from './barrier.js';
 import type { MutationId, CurseId, CombatStats } from './builds.js';
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
@@ -81,6 +82,7 @@ export class CombatWorld {
       explosion.damage /= BUILD.volatileMultiplier; explosion.volatileBoost = false;
     }
   }
+  draftSignals = draftSignals();
   stats: CombatStats = { melee: 0, shots: 0, dashes: 0 };
   practice = true;
   get maxHp(): number { return this.curse === 'glassSoul' ? BUILD.glassMaxHp : COMBAT.maxHp; }
@@ -170,6 +172,7 @@ export class CombatWorld {
     this.lastShot = { angle: 0, charged: false };
     this.mutations = [];
     this.curse = null;
+    this.draftSignals = draftSignals();
     this.stats = { melee: 0, shots: 0, dashes: 0 };
     this.hp = COMBAT.maxHp;
     this.barrier.reset();
@@ -268,7 +271,7 @@ export class CombatWorld {
       this.buffered = null;
       this.cue('dash');
       this.dashCharges--;
-      this.stats.dashes++;
+      this.stats.dashes++; this.draftSignals.dashes++;
       this.dashTime = COMBAT.dashDuration;
       this.dashAngle = input.dx || input.dy ? Math.atan2(input.dy, input.dx) : this.player.angle;
       this.perfectAvailable = true;
@@ -326,13 +329,14 @@ export class CombatWorld {
       attack.age += dt;
       if (!attack.resolved && attack.age + 1e-9 >= attack.windup) {
         attack.resolved = true;
-        let hits = 0;
+        let hits = 0, effectiveHeavy = false;
         let guardPoint: { x: number; y: number } | null = null;
         for (const enemy of this.enemies) {
           const dx = enemy.x - this.player.x, dy = enemy.y - this.player.y;
           if (enemy.hp > 0 && Math.hypot(dx, dy) <= attack.range + (enemy.kind === 'boss' ? 30 : 14) &&
               Math.abs(angleDifference(Math.atan2(dy, dx), attack.angle)) <= attack.arc / 2) {
             hits++;
+            if (attack.heavy && enemy.kind !== 'boss' && (enemy.windup > 0 || enemy.kind === 'bulwark' && enemy.recovery <= 0)) effectiveHeavy = true;
             if (attack.heavy && this.mutations.includes('guardBreaker') && enemy.kind !== 'boss' &&
                 (enemy.windup > 0 || enemy.kind === 'bulwark' && enemy.recovery <= 0)) guardPoint ??= { x: enemy.x, y: enemy.y };
             if (attack.heavy) this.detonate(enemy, 1.4, false, undefined, attack.root);
@@ -343,6 +347,7 @@ export class CombatWorld {
             this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? HEAVY.force : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? HEAVY.stagger : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light', attack.root);
           }
         }
+        if (effectiveHeavy) this.draftSignals.heavySuccess++;
         if (attack.heavy && hits === 0 && attack.bloodPact) this.payBloodMiss();
         if (!attack.heavy) {
           if (this.mutations.includes('berserker')) this.build.light(attack.combo, hits > 0);
@@ -375,6 +380,7 @@ export class CombatWorld {
   private beginAttack(heavy: boolean, angle = this.player.angle): void {
     this.stats.melee++;
     if (heavy) {
+      this.draftSignals.heavies++;
       this.heavyCharges--;
       if (this.curse === 'ironOath' && this.barrier.value > 0) this.barrier.gain(BARRIER.oathHeavyGain, false);
     }
@@ -396,19 +402,25 @@ export class CombatWorld {
     this.comboWindow = 1.1;
   }
 
-  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' = 'blast', root: ChainRoot = chainRoot(), playerSource = true): void {
+  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' = 'blast', root: ChainRoot = chainRoot(), playerSource = true, procBonus = 0): void {
     if (enemy.hp <= 0) return;
+    const directBase = Math.max(0, damage - procBonus);
     if ((sound === 'heavy' || sound === 'chargedHit') && enemy.fracture > 0) { damage += BUILD.fractureDamage; enemy.fracture = 0; }
+    const directShare = damage > 0 ? directBase / damage : 0;
     if (playerSource) damage *= this.outgoingDamageMultiplier;
     if (enemy.kind === 'bulwark' && enemy.recovery <= 0 && !bypassArmor) damage *= 0.55;
     const marked = enemy.rupture > 0 || root.marked.has(enemy.id);
     const contactX = enemy.x, contactY = enemy.y;
     const actualDamage = Math.min(enemy.hp, damage);
     enemy.hp = Math.max(0, enemy.hp - damage);
+    if (playerSource && actualDamage > 0) {
+      if (['light', 'light2', 'light3', 'heavy'].includes(sound)) { this.draftSignals.meleeDamage += actualDamage * directShare; this.draftSignals.meleeHits++; }
+      else if (sound === 'shotHit' || sound === 'chargedHit') { this.draftSignals.rangedDamage += actualDamage * directShare; this.draftSignals.rangedHits++; }
+    }
     if (this.mutations.includes('aegisCore') && ['light', 'light2', 'light3', 'heavy'].includes(sound)) {
       this.barrier.meleeDamage(actualDamage, this.curse === 'ironOath');
     }
-    if (this.curse === 'bloodPact' && this.barrier.value <= 0 && ['light', 'light2', 'light3', 'heavy'].includes(sound)) this.hp += this.build.heal(this.hp, this.maxHp);
+    if (this.curse === 'bloodPact' && this.barrier.value <= 0 && ['light', 'light2', 'light3', 'heavy'].includes(sound)) this.healPlayer();
     this.surge = Math.min(100, this.surge + 2);
     if (enemy.kind === 'boss') force *= 0.1;
     else if (enemy.kind === 'bulwark') force *= 0.4;
@@ -430,8 +442,7 @@ export class CombatWorld {
     if (enemy.hp === 0) {
       this.kills++;
       if (marked && this.mutations.includes('bloodReclaimer')) {
-        const healed = this.build.heal(this.hp, this.maxHp, 'reclaimerCooldown', BUILD.reclaimerHeal, BUILD.reclaimerCooldown);
-        this.hp += healed;
+        const healed = this.healPlayer('reclaimerCooldown', BUILD.reclaimerHeal, BUILD.reclaimerCooldown);
         if (healed) { this.impact(contactX, contactY, 0xff879a, 16, 'heal'); const cue = this.impacts[this.impacts.length - 1]; cue.sourceX = this.player.x; cue.sourceY = this.player.y; }
       }
       if (this.curse === 'huntedVessel' && this.build.huntedCooldown <= 1e-9) {
@@ -453,7 +464,7 @@ export class CombatWorld {
     this.perfectAvailable = false;
     this.perfectFlash = 0.65;
     this.cue('perfect');
-    this.perfectDodges++;
+    this.perfectDodges++; this.draftSignals.perfects++;
     this.gainCharge(3);
     this.build.perfect(this.mutations.includes('phantomEdge'), this.mutations.includes('staticRiposte'));
     if (this.curse === 'ghostStep' && this.dashCharges < COMBAT.dashCharges) {
@@ -503,6 +514,12 @@ export class CombatWorld {
     }
   }
 
+  private healPlayer(source: 'bloodCooldown' | 'reclaimerCooldown' | 'parasiticCooldown' = 'bloodCooldown', requested: number = BUILD.bloodHeal, cooldown: number = BUILD.bloodCooldown): number {
+    const healed = this.build.heal(this.hp, this.maxHp, source, requested, cooldown);
+    this.hp += healed; this.draftSignals.healed += healed;
+    return healed;
+  }
+
   private payBloodMiss(): void {
     const lost = Math.min(BUILD.bloodMissCost, Math.max(0, this.hp - 1));
     this.hp -= lost;
@@ -546,6 +563,10 @@ export class CombatWorld {
       this.build.kinetic = this.build.kineticDistance = 0; this.build.kineticCooldown = BUILD.kineticCooldown;
     }
     const hpDamage = this.barrier.absorb(damage);
+    if (enemySource) {
+      this.draftSignals.absorbed += damage - hpDamage;
+      this.draftSignals.enemyHpDamage += Math.min(this.hp, hpDamage);
+    }
     this.hp = Math.max(0, this.hp - hpDamage);
     if (hpDamage > 0) this.build.loseHp();
     if (enemySource && this.hp > 0) {
@@ -738,7 +759,7 @@ export class CombatWorld {
           if (shot.charged) target.rupture = Math.min(3, target.rupture + 1);
           else this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
           this.detonate(target, shot.charged ? 2 : 1, !!shot.charged, undefined, shot.root);
-          this.hitEnemy(target, (shot.damage ?? (shot.charged ? RANGED.chargedDamage : RANGED.basicDamage)) + (shot.staticBonus ?? 0), Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit', shot.root);
+          this.hitEnemy(target, (shot.damage ?? (shot.charged ? RANGED.chargedDamage : RANGED.basicDamage)) + (shot.staticBonus ?? 0), Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit', shot.root, true, shot.staticBonus ?? 0);
           shot.life = 0;
         }
       }
@@ -764,6 +785,10 @@ export class CombatWorld {
   private detonate(enemy: Enemy, multiplier: number, charged = false, source?: Explosion, root = source?.root ?? chainRoot()): void {
     if (enemy.rupture === 0 || root.seeded.has(enemy.id) || this.chainSeen.has(enemy.id) || this.pendingDetonations.has(enemy.id)) return;
     this.chainSeen.add(enemy.id);
+    if (!source) {
+      root.triggers++; this.draftSignals.markedTriggers++;
+      if (root.hasRelay) this.draftSignals.relayTriggers++;
+    }
     root.marked.add(enemy.id);
     const stacks = enemy.rupture;
     enemy.rupture = 0;
@@ -784,6 +809,9 @@ export class CombatWorld {
         this.pendingDetonations.delete(explosion.enemyId!);
         this.chainSeen.add(explosion.enemyId!);
         this.detonations++; root.detonations++;
+        if (explosion.sourceX !== undefined && !root.hasRelay) {
+          root.hasRelay = true; this.draftSignals.relayTriggers += root.triggers;
+        }
         this.gainCharge(1);
         if (this.curse === 'volatileSoul' && !root.hazard && this.build.hazardCooldown <= 1e-9 && this.build.hazards.length < BUILD.hazardCap) {
           root.hazard = true; this.build.hazardCooldown = BUILD.hazardCooldown;
@@ -807,13 +835,13 @@ export class CombatWorld {
         const hpBefore = enemy.hp;
         this.hitEnemy(enemy, explosion.damage, Math.atan2(enemy.y - explosion.y, enemy.x - explosion.x), 12, 0.2, true, 'blast', root, !explosion.hostile);
         actualBlastDamage += hpBefore - enemy.hp;
+        if (ruptureBlast && hpBefore > enemy.hp) this.draftSignals.chainTargets++;
         if (enemy.hp > 0 && explosion.charged && this.mutations.includes('detonationSpecialist')) enemy.fracture = BUILD.fractureDuration;
         if (enemy.hp > 0 && explosion.echo && enemy.kind !== 'boss') enemy.echoHaste = BUILD.hasteDuration;
       }
       if (ruptureBlast && actualBlastDamage > 0 && !root.healed && this.curse === 'parasiticMark') {
         root.healed = true;
-        const healed = this.build.heal(this.hp, this.maxHp, 'parasiticCooldown', BUILD.parasiticHeal, BUILD.parasiticCooldown);
-        this.hp += healed;
+        const healed = this.healPlayer('parasiticCooldown', BUILD.parasiticHeal, BUILD.parasiticCooldown);
         if (healed) { this.impact(explosion.x, explosion.y, 0x6bf3d0, 16, 'heal'); const cue = this.impacts[this.impacts.length - 1]; cue.sourceX = this.player.x; cue.sourceY = this.player.y; }
       }
       if (ruptureBlast && this.mutations.includes('catalyst')) {

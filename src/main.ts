@@ -130,10 +130,15 @@ function resultBody(): string {
     ' ' + t('resultStats').replace('{kills}', String(arena.combat.kills)).replace('{time}', String(Math.floor(arena.run.elapsed)));
 }
 
+function draftReason(option: import('./game/builds').DraftOption): string {
+  const reason = option.reason;
+  if (!reason) return '';
+  return reason.kind === 'synergy' ? t('reasonSynergy').replace('{item}', t(reason.id)) : t(`reason_${reason.tag}`);
+}
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
   panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draftKind === 'curse' && arena.combat.curse ? ' ' + t('curseSwapHint') : ''}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
-    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : option.role)}</small><strong>${t(option.id)}</strong><span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
+    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : option.role)}</small><strong>${t(option.id)}</strong>${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
@@ -233,11 +238,17 @@ export const arena = new ArenaScene((phase) => {
     if (buildTrial) {
       arena.combat.mutations = [...trialBuild!.mutations];
       arena.combat.curse = trialBuild!.curse;
-    } else progression.beginRun();
+    } else {
+      progression.beginRun();
+      arena.run.previousOffers = [...profile.drafts.previous];
+    }
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
-    if (!buildTrial) progression.observe(arena.combat, arena.run.result);
+    if (!buildTrial) {
+      progression.observe(arena.combat, arena.run.result);
+      if (phase === 'draft') progression.offerDraft(arena.run.draft.map(o => o.id));
+    }
     applySettings();
     renderSettings();
   }
@@ -250,6 +261,11 @@ export const arena = new ArenaScene((phase) => {
   renderSettings();
 }, renderCombatHUD, touchControls);
 
+const draftSeedText = new URLSearchParams(location.search).get('draftSeed');
+if (draftSeedText !== null && /^\d{1,10}$/.test(draftSeedText) && Number(draftSeedText) <= 0xffffffff) arena.run.seedOverride = Number(draftSeedText);
+if (new URLSearchParams(location.search).get('draftDebug') === '1') Object.defineProperty(window, 'cursebreakDraft', {
+  configurable: true, get: () => structuredClone(arena.run.draftDebug),
+});
 export const game = new Phaser.Game({
   type: Phaser.AUTO,
   parent: 'game',

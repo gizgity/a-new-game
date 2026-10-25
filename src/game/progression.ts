@@ -1,4 +1,4 @@
-import { MUTATIONS, CURSES, type MutationId, type CurseId } from './builds.js';
+import { MUTATIONS, CURSES, type BuildId, type MutationId, type CurseId } from './builds.js';
 
 export const SAVE_KEY = 'cursebreak.save.v1';
 export const UNLOCKS = ['firstBlood', 'chainApprentice', 'dodgeMaster', 'wardenBreaker'] as const;
@@ -8,13 +8,14 @@ export interface Profile {
   settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism' };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
   unlocks: UnlockId[];
+  drafts: { previous: BuildId[]; current: BuildId[]; active: boolean };
 }
 type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
   return { version: 1, settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint' },
-    totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [] };
+    totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
   const raw = object(value), result = defaultProfile();
@@ -25,6 +26,9 @@ export function validateProfile(value: unknown): Profile {
   result.settings.volume = typeof settings.volume === 'number' && Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : 0.4;
   for (const key of Object.keys(result.totals) as (keyof Profile['totals'])[]) result.totals[key] = counter(totals[key]);
   result.unlocks = UNLOCKS.filter((id) => Array.isArray(raw.unlocks) && raw.unlocks.includes(id));
+  const drafts = object(raw.drafts), ids: readonly BuildId[] = [...MUTATIONS, ...CURSES];
+  const offered = (value: unknown) => ids.filter(id => Array.isArray(value) && value.includes(id));
+  result.drafts = { previous: offered(drafts.previous), current: offered(drafts.current), active: drafts.active === true };
   awardUnlocks(result);
   result.settings.cosmetic = settings.cosmetic === 'prism' && result.unlocks.includes('wardenBreaker') ? 'prism' : 'mint';
   return result;
@@ -57,9 +61,15 @@ export class Progression {
   private recorded = false;
   constructor(readonly profile: Profile) {}
   beginRun(): void {
+    if (this.profile.drafts.active) this.profile.drafts.previous = [...this.profile.drafts.current];
+    this.profile.drafts.current = []; this.profile.drafts.active = true;
     this.previous = { kills: 0, detonations: 0, perfectDodges: 0 };
     this.recorded = false;
     this.profile.totals.runs = counter(this.profile.totals.runs + 1);
+  }
+  offerDraft(ids: readonly BuildId[]): void {
+    const offered = new Set([...this.profile.drafts.current, ...ids]);
+    this.profile.drafts.current = [...MUTATIONS, ...CURSES].filter(id => offered.has(id));
   }
   observe(world: { kills: number; detonations: number; perfectDodges: number }, result: 'victory' | 'defeat' | null): boolean {
     for (const key of ['kills', 'detonations', 'perfectDodges'] as const) {

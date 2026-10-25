@@ -1,8 +1,17 @@
 import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
-import { CURSES, MUTATIONS, curseDraft, mutationDraft, type CurseId, type DraftOption, type MutationId } from './builds.js';
+import { CURSES, MUTATIONS, type BuildId, type CurseId, type DraftOption, type MutationId } from './builds.js';
+
+import { buildDraft, DraftRandom, newDraftSeed, type DraftDebug } from './Draft.js';
+import { draftSignals, signalWindow } from './DraftSignals.js';
 
 export class RunDirector {
+  seedOverride: number | undefined;
+  previousOffers: readonly BuildId[] = [];
+  draftDebug: DraftDebug | null = null;
+  private draftRandom = new DraftRandom(1);
+  private lastSignals = draftSignals();
+  private choices: BuildId[] = [];
   ticks = 0;
   draft: DraftOption[] = [];
   draftKind: 'mutation' | 'curse' = 'mutation';
@@ -29,6 +38,8 @@ export class RunDirector {
 
   start(): void {
     this.world.reset();
+    this.draftRandom = new DraftRandom(this.seedOverride ?? newDraftSeed());
+    this.lastSignals = draftSignals(); this.choices = []; this.draftDebug = null;
     this.world.practice = false;
     this.world.enemies = [];
     this.pressureTime = this.previousKills = 0;
@@ -60,14 +71,13 @@ export class RunDirector {
     // Resolve earned choices before an encounter, even when one chain crosses several milestones.
     while (this.nextDraft && this.reached(this.nextDraft)) {
       this.draftKind = this.nextDraft.kind;
-      this.draft = this.draftKind === 'curse' ? curseDraft(this.cursePool) :
-        mutationDraft(this.world.mutations, this.world.stats, this.world.detonations, this.mutationPool);
-      // Always offer keeping the current Curse; alternatives replace it, never stack.
-      if (this.draftKind === 'curse' && this.world.curse && !this.draft.some(option => option.id === this.world.curse)) {
-        this.draft = [{ id: this.world.curse, role: 'curseChoice' }, ...this.draft.slice(0, 2)];
-      }
+      const result = buildDraft({ kind: this.draftKind, owned: this.world.mutations, curse: this.world.curse,
+        pool: this.draftKind === 'curse' ? this.cursePool : this.world.mutations.length < 4 ? this.mutationPool : [],
+        signals: signalWindow(this.world.draftSignals, this.lastSignals), maxHp: this.world.maxHp,
+        previousOffers: this.previousOffers, choices: this.choices }, this.draftRandom);
+      this.draft = result.options; this.draftDebug = result.debug;
       this.draftIndex++;
-      if (this.draft.length) return;
+      if (this.draft.length) { this.lastSignals = { ...this.world.draftSignals }; return; }
     }
     if (!this.bossDue && this.reached(ENCOUNTERS.boss)) {
       this.world.enemies = this.world.enemies.filter((enemy) => enemy.kind === 'bulwark');
@@ -120,6 +130,7 @@ export class RunDirector {
   choose(index: number): boolean {
     const option = this.draft[index];
     if (!option || !Number.isInteger(index)) return false;
+    this.choices.push(option.id);
     if (this.draftKind === 'mutation') this.world.mutations.push(option.id as MutationId);
     else this.world.curse = option.id as CurseId;
     this.world.hp = Math.min(this.world.maxHp, this.world.hp + (this.world.curse === 'parasiticMark' ? 5 : 10));

@@ -28,5 +28,5 @@ test('four lifetime goals unlock choices/cosmetic without adding permanent stats
  profile.settings.cosmetic='prism';assert.equal(validateProfile(profile).settings.cosmetic,'prism');
  progress.beginRun();progress.observe({kills:2,detonations:0,perfectDodges:0},'defeat');
  assert.equal(profile.totals.kills,3);assert.equal(profile.totals.victories,1);assert.equal(profile.totals.runs,2);
- assert.deepEqual(Object.keys(profile).sort(),['settings','totals','unlocks','version']);
+ assert.deepEqual(Object.keys(profile).sort(),['drafts','settings','totals','unlocks','version']);
 });

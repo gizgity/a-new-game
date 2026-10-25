@@ -2,16 +2,19 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CombatWorld } from '../.test-build/combat.js';
 import { RunDirector } from '../.test-build/run.js';
-import { mutationDraft, curseDraft, MUTATIONS } from '../.test-build/builds.js';
+import { MUTATIONS, CURSES } from '../.test-build/builds.js';
+import { buildDraft, DraftRandom } from '../.test-build/Draft.js';
+import { draftSignals } from '../.test-build/DraftSignals.js';
+const offer=(pool,owned=[])=>buildDraft({kind:pool===CURSES?'curse':'mutation',owned,curse:null,pool,signals:{...draftSignals(),rangedDamage:400,rangedHits:20},maxHp:100,previousOffers:[],choices:[]},new DraftRandom(1)).options;
 import { DRAFT_MILESTONES, ENCOUNTERS } from '../.test-build/config/balance.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false};
 function setup() { const world=new CombatWorld({x:800,y:500,angle:0});const run=new RunDirector(world);run.start();return {world,run}; }
 
 test('draft choices are unique, adaptive and never offer an owned Mutation',()=>{
- const choices=mutationDraft(['phantomEdge'],{melee:0,shots:20,dashes:0},5,MUTATIONS,()=>0);
- assert.equal(choices[0].id,'catalyst');assert.equal(choices[1].id,'detonationSpecialist');
+ const choices=offer(MUTATIONS,['phantomEdge']);
+ assert.ok(choices.every(o=>o.role==='wildcard'||o.reason));
  assert.equal(new Set(choices.map(c=>c.id)).size,3);assert.ok(!choices.some(c=>c.id==='phantomEdge'));
- assert.equal(curseDraft().length,3);
+ assert.equal(offer(CURSES).length,3);
 });
 test('six kill drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
  const {world,run}=setup();
@@ -20,7 +23,7 @@ test('six kill drafts pause the timer, heal once, respect max HP, and cannot be 
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,Math.min(3,kind==='mutation'?MUTATIONS.length-world.mutations.length:3));
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
-  assert.equal(world.hp,Math.min(world.maxHp,85));
+  assert.equal(world.hp,Math.min(world.maxHp,world.curse==='parasiticMark'?80:85));
  }
  assert.equal(world.mutations.length,4);assert.ok(world.curse);assert.equal(new Set(world.mutations).size,4);
 });
@@ -154,7 +157,7 @@ test('crossing all thresholds resolves six choices before Boss; reset restores m
 });
 test('small and exhausted Mutation pools never produce invalid options or block the run',()=>{
  for(let count=0;count<=3;count++) {
-  const choices=mutationDraft([], {melee:0,shots:10,dashes:0},0,MUTATIONS.slice(0,count));
+  const choices=offer(MUTATIONS.slice(0,count));
   assert.equal(choices.length,count);assert.equal(new Set(choices.map(o=>o.id)).size,count);
   assert.ok(choices.every(o=>MUTATIONS.includes(o.id)));
  }
