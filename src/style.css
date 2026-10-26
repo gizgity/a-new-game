@@ -202,3 +202,115 @@ footer { display: none; }
 /* Q6: both slots stay readable without expanding the mutation summary. */
 .curse-slots { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 10px; color: #d6afef; line-height: 1.35; }
 .curse-slots span { white-space: nowrap; }
+
+/* Q7B: compact read-only combat presentation. Controls retain their original geometry. */
+.hud-icon, .slot-icon, .slot-frame { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: miter; width: 22px; height: 22px; flex-shrink: 0; }
+.combat-hud { inset: 30px 10px auto; top: 30px; display: grid; grid-template-columns: minmax(0,1fr); gap: 3px; max-width: none; z-index: 2; }
+.vitals-card, .build-summary, .hud-resource { background: #080e19f2; border: 1px solid #3c505c; border-radius: 3px; box-shadow: inset 2px 0 #66817f55; }
+.vitals-card { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 5px 7px; min-width: 0; }
+.vitals-card .health, .vitals-card .barrier-state { position: relative; width: auto; display: grid; grid-template-columns: 18px 1fr auto; gap: 2px 4px; font-size: 10px; line-height: 15px; }
+.vitals-card .hud-icon { width: 18px; height: 18px; grid-row: 1 / 3; align-self: center; color: #9dffe2; }
+.vitals-card strong { font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; color: #edf7f5; }
+.vitals-card progress { grid-column: 2 / -1; height: 4px; }
+.vitals-card .barrier-state .hud-icon { color: #63d9f5; }
+.barrier-state progress { -webkit-mask-image: repeating-linear-gradient(to right,#000 0 calc(100% / 6 - 2px),transparent calc(100% / 6 - 2px) calc(100% / 6)); mask-image: repeating-linear-gradient(to right,#000 0 calc(100% / 6 - 2px),transparent calc(100% / 6 - 2px) calc(100% / 6)); }
+.low-health .health .hud-icon { color: #ff6f87; }
+.low-health .health progress::-webkit-progress-value { background: #ff6f87; }
+.low-health .health progress::-moz-progress-bar { background: #ff6f87; }
+.hud-hurt .vitals-card { border-color: #ff6f87; }
+.hud-heal .health .hud-icon { color: #d5ffea; }
+.hud-heal .health::after { content: '↑'; position: absolute; left: 15px; top: -3px; font-size: 14px; color: #9dffe2; }
+.barrier-broken .barrier-state .hud-icon { stroke-dasharray: 3 3; color: #e0f8ff; }
+.build-summary { min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 5px 7px; pointer-events: auto; color: #d7e7eb; touch-action: manipulation; }
+.build-summary > .hud-icon { width: 18px; height: 18px; }
+#build-count { font-size: 10px; white-space: nowrap; }
+.build-slots { display: flex; gap: 5px; padding-bottom: 3px; }
+.build-slot { position: relative; display: grid; place-items: center; width: 26px; height: 26px; color: #a5e8d7; }
+.build-slot.curse { color: #e2a4db; }
+.build-slot.curse:nth-child(5) { margin-left: 4px; }
+.build-slot .slot-frame { position: absolute; inset: 0; width: 26px; height: 26px; opacity: .55; }
+.build-slot .slot-icon { width: 16px; height: 16px; }
+.build-slot.empty { color: #768a98; }
+.build-slot.empty .slot-frame { stroke-dasharray: 2 3; }
+.build-slot small { position: absolute; bottom: -8px; font-size: 8px; line-height: 10px; padding: 0 2px; background: #080e19; color: #ffe3ad; white-space: nowrap; }
+.build-slot small:empty { display: none; }
+.build-slot.has-proc .slot-frame { opacity: 1; }
+.hud-feedback { display: flex; align-items: center; justify-content: space-between; gap: 6px; height: 17px; padding: 0 5px; background: #080e19e8; border-radius: 2px; color: #ffb7c0; font-size: 9px; line-height: 16px; white-space: nowrap; }
+#hud-warning:empty, #combat-notice:empty { display: none; }
+#combat-notice { font-size: 10px; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: #9dffe2; }
+#combat-notice[data-kind='hit'], #combat-notice[data-kind='risk'], #combat-notice[data-kind='cost'] { color: #ffc1cb; }
+#combat-notice[data-kind='break'] { color: #aeeaff; }
+.hud-milestones { display: none; }
+.hud-resources { display: grid; grid-template-columns: repeat(4,102px); gap: 6px; }
+.touch-enabled .hud-resources { display: none; }
+.hud-resource { padding: 7px; display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 3px; font-size: 9px; color: #b6ccd4; }
+.hud-resource strong { grid-column: 2 / -1; font-size: 16px; color: #eef8f5; font-variant-numeric: tabular-nums; }
+.hud-resource small { grid-column: 1 / -1; font-size: 10px; white-space: nowrap; }
+.hud-resource .hud-icon { grid-row: 1 / 3; }
+.hud-resource progress { grid-column: 1 / -1; height: 3px; }
+.hud-resource[data-state='empty'] { border-style: dashed; }
+.hud-resource[data-state='ready'] .hud-icon { color: #9dffe2; }
+.proc-active { outline: 1px solid #e8c58a; outline-offset: -3px; }
+.arena-top { display: none; }
+.boss-hud { top: 128px; bottom: auto; left: 12px; transform: none; width: calc(100% - 24px); padding: 3px 8px; gap: 2px; background: #080e19ed; border: 1px solid #73634b; font-size: 10px; z-index: 2; }
+.boss-hud progress { height: 4px; }
+.touch-controls .unavailable { opacity: 1; border-style: dashed; background: #101722ee; color: #c7d2dc; }
+.touch-controls [data-state='ready'] { border-style: solid; }
+.touch-controls [data-action='ultimate'][data-state='ready'] { border-width: 2px; border-color: #9dffe2; }
+.touch-controls .resource-note { display: block; font-size: 9px; line-height: 10px; color: #d3e2e5; white-space: nowrap; }
+.touch-controls [data-state='ready'] .resource-note::before { content: '✓ '; }
+.touch-controls .touch-button { gap: 1px; padding: 2px; }
+.touch-controls .touch-button > [data-resource] { font-size: 15px; line-height: 17px; }
+.touch-controls .touch-button > [data-i18n] { font-size: 9px; line-height: 10px; }
+.touch-controls [data-action='heavy'] > [data-i18n] { font-size: 8px; line-height: 9px; }
+.touch-controls [data-action='heavy'] .resource-note, .touch-controls [data-action='charged'] .resource-note, .touch-controls [data-action='ultimate'] .resource-note { font-size: 8px; line-height: 9px; }
+.build-panel { text-align: left; max-width: 650px; padding: 16px; }
+.build-panel h2 { font-size: 22px; margin: 0 0 10px; }
+.build-panel h3 { font-size: 13px; letter-spacing: .08em; margin: 18px 0 8px; color: #b3e3dc; }
+.build-panel p { font-size: 12px; line-height: 1.55; color: #b8cbd5; margin: 6px 0; }
+.build-panel #build-status { color: #ffcf99; }
+.build-detail { display: flex; align-items: flex-start; gap: 10px; background: #14202d; border: 1px solid #30434e; border-radius: 3px; padding: 10px; margin: 6px 0; }
+.build-detail > .hud-icon { color: #9dffe2; }
+#curse-details .hud-icon { color: #e2a4db; }
+.build-detail strong { font-size: 14px; }
+.build-detail small { color: #ffe1a1; }
+.build-panel-actions { position: sticky; bottom: -16px; padding: 12px 0 0; background: #0c1423; display: flex; gap: 10px; }
+.build-panel-actions button { min-height: 44px; }
+.build-panel-actions .primary { flex: 1; }
+#menu-build { margin-top: 10px; width: 100%; }
+@media (orientation: landscape) and (max-height: 600px) {
+  .combat-hud { inset: 7px 10px auto; display: block; height: 82px; }
+  .vitals-card { position: absolute; left: 0; top: 0; width: 240px; }
+  .build-summary { position: absolute; right: 0; top: 0; width: 265px; }
+  .hud-feedback { position: absolute; left: 0; top: 43px; width: 240px; }
+  .run-clock { left: 50%; transform: translateX(-50%); top: 8px; font-size: 11px; }
+  .boss-hud { top: 29px; width: 220px; left: 50%; transform: translateX(-50%); }
+}
+@media (min-width: 900px) and (pointer: fine) {
+  .combat-hud { inset: 20px 24px 14px; display: block; height: auto; max-width: none; }
+  .vitals-card { position: absolute; left: 0; top: 0; width: 260px; min-height: 48px; }
+  .vitals-card strong { font-size: 15px; }
+  .build-summary { position: absolute; right: 0; top: 0; width: 265px; height: 62px; }
+  .hud-feedback { position: absolute; left: 0; top: 54px; width: 260px; height: 22px; }
+  .hud-resources { position: absolute; left: 0; bottom: 0; }
+  .hud-milestones { position: absolute; left: 0; bottom: 88px; display: grid; gap: 3px; color: #b3c5cd; background: #080e19e8; padding: 4px 8px; font-size: 10px; }
+  .run-clock { left: 50%; transform: translateX(-50%); top: 28px; }
+  .boss-hud { top: 62px; left: 50%; transform: translateX(-50%); width: min(340px,35%); }
+  .arena-bottom { display: none; }
+}
+.combat-hud .trial-label { position: absolute; top: -25px; right: 0; max-width: 60%; font-size: 8px; text-align: right; }
+/* Reserve the boss line after the compact HUD without covering its notice. */
+@media (orientation: portrait), (min-height: 601px) {
+  .hud-feedback { height: 15px; line-height: 14px; }
+}
+.boss-hud { display: grid; grid-template-columns: auto minmax(0,1fr); align-items: center; line-height: 14px; gap: 8px; }
+.boss-hud progress { grid-column: 2; margin: 0; }
+@media (max-width: 899px) and (orientation: portrait) { .boss-hud { top: 130px; } }
+.build-slot, .build-slot .slot-frame { width: 24px; height: 24px; }
+.build-slot .slot-icon { width: 15px; height: 15px; }
+.build-slots { gap: 4px; flex-shrink: 0; }
+.build-summary #build-count { flex: 0 0 48px; white-space: normal; font-size: 9px; line-height: 12px; text-align: center; }
+.hud-resource { min-width: 0; }
+.hud-resource small { white-space: normal; font-size: 9px; line-height: 12px; }
+.build-summary #build-count { font-size: 10px; }
+#build-count > span { display: block; white-space: nowrap; }

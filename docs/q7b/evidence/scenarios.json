@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "charges": 0,
+      "dash": "empty",
+      "heavy": "empty",
+      "charged": "empty",
+      "surge": "empty",
+      "chargedNote": "2/3 \u0111i\u1ec3m"
+    },
+    {
+      "charges": 1,
+      "dash": "ready",
+      "heavy": "ready",
+      "charged": "ready",
+      "surge": "empty",
+      "chargedNote": "2/3 \u0111i\u1ec3m"
+    },
+    {
+      "charges": 2,
+      "dash": "ready",
+      "heavy": "ready",
+      "charged": "ready",
+      "surge": "ready",
+      "chargedNote": "2/3 \u0111i\u1ec3m"
+    },
+    {
+      "notice": "Tr\u00fang \u0111\u00f2n",
+      "kind": "hit"
+    },
+    {
+      "notice": "\u2191 +2 HP",
+      "kind": "heal"
+    },
+    {
+      "notice": "Khi\u00ean v\u1ee1",
+      "kind": "break"
+    },
+    {
+      "notice": "N\u00c9 HO\u00c0N H\u1ea2O",
+      "kind": "perfect"
+    },
+    "Opening4cards/card4 selection PASS",
+    "Glass HP75 / two Curses / empty Mutation slots / reset PASS",
+    "Desktop holdHeavy\u2192details\u2192release\u2192resume: no cast, clocks paused PASS",
+    "Touch holdCharged\u2192details second finger\u2192release\u2192resume: no shot PASS"
+  ],
+  "errors": []
+}

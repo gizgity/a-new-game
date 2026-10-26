@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
-import { HEAVY, ENCOUNTERS, BARRIER } from './game/config/balance';
 import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
-import { COMBAT, type CombatWorld } from './game/combat';
+import { type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
 import { DraftInteractionGuard } from './ui/DraftInteractionGuard';
 import { MUTATIONS, CURSES } from './game/builds';
 import { PLAYTEST_BUILDS, DIVERSITY_ROUTES, routeDraft } from './game/config/playtests';
 import { TouchControls } from './ui/TouchControls';
+import { CombatHUD, combatHUDMarkup, buildPanelMarkup } from './ui/CombatHUD';
 import './style.css';
 
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
@@ -38,21 +38,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div id="boss-hud" class="boss-hud" hidden><span id="boss-label" data-i18n="bossName"></span><progress aria-labelledby="boss-label" id="boss-health" max="1500" value="1500"></progress></div>
     <span id="run-clock" class="run-clock"></span>
-    <div class="combat-hud">
-      <span id="trial-label" class="trial-label" hidden data-i18n="juggernautTest"></span>
-      <div class="health"><span id="health-label" data-i18n="health"></span><span id="hp-value"></span><progress aria-labelledby="health-label" id="hp" max="100" value="100"></progress></div>
-      <div class="barrier-state"><span id="barrier-label" data-i18n="barrier"></span><span id="barrier-value"></span><progress aria-labelledby="barrier-label" id="barrier" max="30" value="0"></progress><span id="barrier-feedback"></span><span id="aegis-progress"></span></div>
-      <div class="dash-state"><span id="dash-label" data-i18n="dash"></span><span id="dash-value"></span><progress aria-labelledby="dash-label" id="dash-recharge" max="2.8" value="0"></progress></div>
-      <div class="resource-state"><span data-i18n="charged"></span><span id="charged-value"></span></div>
-      <div class="resource-state"><span data-i18n="heavy"></span><span id="heavy-value"></span></div>
-      <div class="resource-state"><span data-i18n="surge"></span><span id="surge-value"></span></div>
-      <div class="resource-state milestone-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
-      <div id="boss-arrival" class="resource-state milestone-state"></div>
-      <span id="build-status" class="build-status"></span>
-      <span id="build-value" class="build-value"></span><div id="curse-slots" class="curse-slots"></div>
-      <span id="combat-notice" aria-live="polite"></span>
-    </div>
+    ${combatHUDMarkup()}
     <div id="overlay" class="overlay">
+      ${buildPanelMarkup()}
       <section class="panel" id="menu-panel" aria-labelledby="panel-title">
         <p id="result-banner" class="result-banner" hidden></p>
         <span class="panel-sigil" aria-hidden="true">◇</span>
@@ -62,6 +50,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="mini-controls"><span><kbd data-i18n="moveKey"></kbd><span data-i18n="move"></span></span>
           <span><kbd data-i18n="mouse"></kbd><span data-i18n="aim"></span></span></div>
         <button id="primary" class="primary" disabled></button>
+        <button id="menu-build" class="secondary" data-i18n="hudBuildDetails" hidden></button>
         <p class="scope" data-i18n="scope"></p>
         <details id="settings" class="settings"><summary data-i18n="settings"></summary>
           <div class="setting-controls">
@@ -96,9 +85,18 @@ const overlay = document.querySelector<HTMLDivElement>('#overlay')!;
 const touchControls = new TouchControls(document.querySelector<HTMLElement>('#touch-controls')!);
 const draftGuard = new DraftInteractionGuard(document.querySelector<HTMLElement>('.arena-shell')!);
 let currentPhase: Phase = 'ready';
+let buildDetailsOpen = false;
+const hud = new CombatHUD(document.querySelector<HTMLElement>('#combat-hud')!);
 
 function renderUI(phase: Phase = currentPhase): void {
   currentPhase = phase;
+  if (phase !== 'paused' && buildDetailsOpen) {
+    buildDetailsOpen = false;
+    (document.activeElement as HTMLElement | null)?.blur();
+  }
+  document.querySelector<HTMLElement>('#build-panel')!.hidden = !buildDetailsOpen;
+  document.querySelector('#build-summary')!.setAttribute('aria-expanded', String(buildDetailsOpen));
+  document.querySelector<HTMLElement>('#menu-build')!.hidden = phase !== 'paused';
   draftGuard.setActive(phase === 'draft');
   overlay.dataset.result = phase === 'victory' || phase === 'defeat' ? phase : '';
   const resultBanner = document.querySelector<HTMLElement>('#result-banner')!;
@@ -116,7 +114,7 @@ function renderUI(phase: Phase = currentPhase): void {
   primary.textContent = t(phase === 'victory' || phase === 'defeat' ? 'playAgain' : phase === 'ready' ? 'start' : 'resume');
   pause.textContent = t(phase === 'paused' ? 'resume' : 'pause');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
-  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft';
+  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || buildDetailsOpen;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
   draftPanel.hidden = phase !== 'draft';
   if (phase === 'draft') renderDraft();
@@ -172,72 +170,24 @@ function applySettings(): void {
   arena.run.cursePool = trialRoute ? CURSES : cursePool(profile);
 }
 
-const hpValue = document.querySelector('#hp-value')!;
-const hpBar = document.querySelector<HTMLProgressElement>('#hp')!;
-const dashValue = document.querySelector('#dash-value')!;
-const dashBar = document.querySelector<HTMLProgressElement>('#dash-recharge')!;
-const combatNotice = document.querySelector('#combat-notice')!;
 function renderCombatHUD(world: CombatWorld): void {
-  if (touchControls.enabled) touchControls.updateResources(world.dashCharges, world.chargedShots, world.surge, world.heavyCharges, HEAVY.recharge - world.heavyRecharge);
   if (!buildTrial && progression.observe(world, arena.run.result)) {
-    applySettings();
-    renderSettings();
-    persist();
+    applySettings(); renderSettings(); persist();
   }
-  const boss = world.enemies.find((enemy) => enemy.kind === 'boss');
-  document.querySelector<HTMLDivElement>('#boss-hud')!.hidden = !boss;
+  const boss = world.enemies.find(enemy => enemy.kind === 'boss');
+  document.querySelector<HTMLElement>('#boss-hud')!.hidden = !boss;
   if (boss) document.querySelector<HTMLProgressElement>('#boss-health')!.value = boss.hp;
-  const health = `${Math.ceil(world.hp)} / ${world.maxHp}`;
-  if (hpValue.textContent !== health) hpValue.textContent = health;
-  hpBar.max = world.maxHp;
-  hpBar.value = world.hp;
-  document.querySelector('#barrier-value')!.textContent = `${Number(world.barrier.value.toFixed(1))} / ${BARRIER.cap}`;
-  document.querySelector<HTMLProgressElement>('#barrier')!.value = world.barrier.value;
-  document.querySelector('#barrier-feedback')!.textContent = world.barrier.flash > 0
-    ? world.barrier.broken ? t('barrierBroken') : world.barrier.lastGain > 0 ? `+${Number(world.barrier.lastGain.toFixed(1))}` : '' : '';
-  document.querySelector('#aegis-progress')!.textContent = world.mutations.includes('aegisCore')
-    ? `${t('aegisProgress')} ${Math.floor(world.barrier.aegisDamage)}/${BARRIER.aegisDamage}` : '';
-  const dash = `${world.dashCharges} / ${COMBAT.dashCharges}` + (world.dashCharges < COMBAT.dashCharges
-    ? ` · ${t('secondsShort').replace('{n}', (Math.max(0, world.rechargeDuration - world.dashRecharge)).toFixed(1))}` : '');
-  if (dashValue.textContent !== dash) dashValue.textContent = dash;
-  dashBar.max = world.rechargeDuration;
-  dashBar.value = world.dashCharges === COMBAT.dashCharges ? world.rechargeDuration : world.dashRecharge;
   const seconds = Math.floor(arena.run.elapsed);
   document.querySelector('#run-clock')!.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} / 5:00`;
-  document.querySelector('#charged-value')!.textContent = `${world.chargedShots} / 3 · ${world.chargePoints} / 3`;
-  document.querySelector('#heavy-value')!.textContent = `${world.heavyCharges} / ${HEAVY.charges}` + (world.heavyCharges < HEAVY.charges ? ` · ${t('secondsShort').replace('{n}', String(Math.ceil(HEAVY.recharge - world.heavyRecharge)))}` : '');
-  document.querySelector('#surge-value')!.textContent = `${Math.floor(world.surge)} / 100`;
-  const milestone = arena.run.nextDraft;
-  const formatTime = (value: number) => `${Math.floor(value / 60)}:${String(value % 60).padStart(2, '0')}`;
-  const progress = (target: { kills: number; seconds: number }) => t('milestoneProgress')
-    .replace('{kills}', String(world.kills)).replace('{target}', String(target.kills)).replace('{time}', formatTime(target.seconds));
-  document.querySelector('#draft-progress')!.textContent = milestone ? progress(milestone) : t('draftsComplete');
-  document.querySelector('#boss-arrival')!.textContent = arena.run.bossDue ? '' : `${t('bossArrival')} ${progress(ENCOUNTERS.boss)}`;
-  document.querySelector('#build-value')!.textContent = [...world.mutations].map((id) => t(id)).join(' · ');
-  document.querySelector('#curse-slots')!.innerHTML = [0, 1].map(slot => `<span>${t('curseSlot').replace('{slot}', String(slot + 1))}: <b>${world.curses[slot] ? t(world.curses[slot]) : t('emptySlot')}</b></span>`).join('');
-  const duration = (seconds: number) => t('secondsShort').replace('{n}', seconds.toFixed(1));
-  const statuses: string[] = [];
-  if (world.build.reversal > 0) statuses.push(`${t('reversalReady')} ${duration(world.build.reversal)}`);
-  if (world.mutations.includes('soulAnchor')) statuses.push(t(world.build.anchorUsed ? 'anchorSpent' : 'anchorReady'));
-  if (world.mutations.includes('kineticBattery')) statuses.push(`${t('batteryState')} ${world.build.kinetic}/3`);
-  if (world.mutations.includes('bloodReclaimer') && world.build.reclaimerCooldown > 0) statuses.push(`${t('reclaimerState')} ${duration(world.build.reclaimerCooldown)}`);
-  if (world.mutations.includes('echoChamber') && world.build.chamberCooldown > 0) statuses.push(`${t('chamberState')} ${duration(world.build.chamberCooldown)}`);
-  if (world.build.phantom > 0) statuses.push(`${t('phantomReady')} ${duration(world.build.phantom)}`);
-  if (world.build.staticCharge > 0) statuses.push(`${t('staticReady')} ${duration(world.build.staticCharge)}`);
-  if (world.mutations.includes('berserker')) statuses.push(world.build.frenzy > 0 ? `${t('frenzyState')} ${duration(world.build.frenzy)}` : `${t('frenzyState')} ${world.build.comboStage}/3`);
-  if (world.hasCurse('ghostStep') && world.dashCharges === 0) statuses.push(t('ghostRisk'));
-  if (world.outgoingDamageMultiplier < 1) statuses.push(t('defenseDamageCost').replace('{n}', String(Math.round((1 - world.outgoingDamageMultiplier) * 100))));
-  if (world.hasCurse('bloodPact') && world.barrier.value > 0) statuses.push(t('barrierBlocksHeal'));
-  if (world.build.healFlash > 0) statuses.push(`${t('healState')} +${world.build.lastHeal}`);
-  if (world.build.costFlash > 0) statuses.push(t('bloodMiss'));
-  document.querySelector('#build-status')!.textContent = statuses.join(' · ');
-  const notice = world.hp <= 0 ? t('playAgain') : world.perfectFlash > 0 ? t('perfectDodge') :
-    world.attack?.heavy ? t('heavy') : world.combo > 0 ? t('comboValue').replace('{n}', String(world.combo)) : '';
-  if (combatNotice.textContent !== notice) combatNotice.textContent = notice;
+  const dt = currentPhase === 'playing' && world.hitstop <= 0 ? Math.min(game.loop.delta / 1000, 0.1) : 0;
+  const readouts = hud.update(world, arena.run, dt);
+  if (touchControls.enabled) touchControls.updateResources(readouts);
+  if (buildDetailsOpen) hud.renderDetails(world);
 }
 
 export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
+    hud.reset();
     if (trialBuild) {
       arena.combat.mutations = [...trialBuild!.mutations];
       arena.combat.setCurses([trialBuild!.curse]);
@@ -278,6 +228,35 @@ export const game = new Phaser.Game({
   scale: { mode: Phaser.Scale.RESIZE, width: '100%', height: '100%' },
   scene: [arena],
   input: { keyboard: true, mouse: true },
+});
+
+// Opening details uses the existing pause/reset lifecycle, including armed releases.
+function openBuildDetails(): void {
+  if (buildDetailsOpen || (currentPhase !== 'playing' && currentPhase !== 'paused')) return;
+  buildDetailsOpen = true;
+  arena.setPhase('paused');
+  hud.renderDetails(arena.combat);
+  document.querySelector<HTMLButtonElement>('#build-back')!.focus();
+}
+for (const id of ['build-summary', 'menu-build']) {
+  const button = document.querySelector<HTMLButtonElement>(`#${id}`)!;
+  for (const type of ['keydown', 'keyup']) button.addEventListener(type, event => {
+    if ((event as KeyboardEvent).key === ' ' || (event as KeyboardEvent).key === 'Enter') event.stopPropagation();
+  });
+  button.addEventListener('pointerdown', event => event.stopPropagation());
+  button.addEventListener('pointerup', event => {
+    event.stopPropagation();
+    if (event.pointerType === 'touch') { event.preventDefault(); openBuildDetails(); }
+  });
+  button.addEventListener('click', event => { event.stopPropagation(); openBuildDetails(); });
+}
+document.querySelector('#build-back')!.addEventListener('click', () => {
+  buildDetailsOpen = false; renderUI('paused'); primary.focus();
+});
+document.querySelector('#build-resume')!.addEventListener('click', () => {
+  buildDetailsOpen = false;
+  (document.activeElement as HTMLElement | null)?.blur();
+  arena.setPhase('playing');
 });
 
 primary.addEventListener('click', () => {

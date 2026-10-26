@@ -1,5 +1,13 @@
 # Q7B — HUD & Combat Readability
 
+**HIỆN HÀNH: CONCEPT APPROVED** — user “approved làm đi” ngày2026-10-26. HUD đã triển khai/checks PASS, runtime **AWAITING USER PLAYTEST APPROVAL**. Xem [implementation/checks/cách thử](IMPLEMENTATION.md),[renderer trước–sau](index.html),[runtime assets](runtime-assets.json). Gameplay/controls/floor Q7A giữ nguyên.
+
+---
+
+## Snapshot design / visual gate trước approval
+
+Phần dưới giữ audit/concept trên main21f2c55, những câu chờvisual/chưaimplementation phản ánh checkpoint trước và được status hiện hành phía trên supersede.
+
 **AWAITING VISUAL APPROVAL — chưa implementation.** Ngày2026-10-26 (Asia/Saigon). Audit main `21f2c55b847dbf4842215ca25059252eb7d85cad`; Q7B trước đây chỉ là tên task chờ scope, không có contract/implementation khác. Q7A, Q2–Q6 và draft đầu4hướng accepted; Q1 chưa có approval riêng.
 
 [Design Contract](../../GAME_BRIEF.md#q7b-design-contract--hud--combat-readability) · [Review board](index.html) · [Exact prompts](PROMPTS.md) · [Provenance/hash](manifest.json).

@@ -1,6 +1,6 @@
 # Fixes sau Q5A
 
-> Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Pressure6s và nhịp Boss trong note này đã được pressure-v2 rồi tuning hiện hành supersede. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A floor đã ACCEPTED, gameplay giữ nguyên; Q7B HUD đang design/visual gate theo contract riêng.
+> Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Pressure6s và nhịp Boss trong note này đã được pressure-v2 rồi tuning hiện hành supersede. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A floor đã ACCEPTED, gameplay giữ nguyên; Q7B HUD có contract riêng; xem HANDOFF cho trạng thái hiện hành.
 
 Deploy bản f89bfa721d38adb227c92207ef1c79c37d7a5ec6 PASS qua Actions40170626907; fixes còn chờ user playtest. Pages trực tiếp từ môi trường từng bị proxy chặn, browser evidence là dist/local.
 

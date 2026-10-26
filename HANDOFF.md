@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7B — HUD & Combat Readability theo task user2026-10-26: audit → design contract → illustration-first visual gate. **AWAITING VISUAL APPROVAL**, chưa sửa HUD production/gameplay/assets. Q7A floor broken-seal-v2.webp và Q2–Q6/draft đầu4hướng giữ ACCEPTED; Q1 vẫn chưa duyệt riêng.
+Q7B — HUD & Combat Readability theo task user2026-10-26: audit → design contract → illustration-first visual gate. **CONCEPT APPROVED** — user “approved làm đi” ngày2026-10-26, implementation/checks đã PASS; runtime AWAITING USER PLAYTEST APPROVAL. Q7A floor broken-seal-v2.webp và Q2–Q6/draft đầu4hướng giữ ACCEPTED; Q1 vẫn chưa duyệt riêng.
 
 ## ACCEPTANCE
-Checkpoint hiện tại cần audit main/source/docs, Q7B contract,4deliverables (desktop,portrait,crowd,comparison), provenance và next action rõ; user duyệt concept trước implementation. Acceptance runtime8scenario theo GAME_BRIEF chỉ kiểm sau approval; không lấy mockup/fixture làm user acceptance. Không mở Q7C.
+Concept đã user duyệt; runtime HUD/feedback/details đã triển khai. Typecheck/build/test13files(5HUDfocused)/browser5sizes/scenarios/production smoke PASS; core/floor/inputinternals giữ nguyên. Chờ user quality/device playtest theo docs/q7b/IMPLEMENTATION.md, không lấy fixture/tests làm acceptance. Không Q7C.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -35,15 +35,14 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Draft đầu4hướng | ACCEPTED — USER PLAYTEST APPROVAL | User “approve” trên7843b98 ngày2026-10-26 |
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
-| Q7B — HUD & Combat Readability | AWAITING VISUAL APPROVAL | Audit/contract + desktopV1,portraitV2,crowd/comparisonV1; chưa implementation |
+| Q7B — HUD & Combat Readability | AWAITING USER PLAYTEST APPROVAL | Concept user approved; code/tests/build/browser PASS, đang push/deploy; chưa runtime accepted |
 
-## CURRENT STATUS — Q7B DESIGN / VISUAL GATE
-- Audit main21f2c55b847dbf4842215ca25059252eb7d85cad, checkout sạch; tạo nhánh q7b-visual-review. Trước task chỉ có tên Q7B chờ scope, chưa contract/implementation khác. Đã dùng handoff workflow, đọc sourceHUD/main/CSS/i18n/controls/Player/Build/Barrier visuals và docs liên quan.
-- Baseline renderer mới4viewports/4Mutation/2Curse/33enemy; pageerror0/overflowfalse. HUD box390h198.5,320h213.5,desktoph352.5,landscapeh157.5; prose/status/tênbuild khó đọc, thiếu details. State/resources/VFX/input đã có giữ nguyên; không xây lại UI.
-- Contract GAME_BRIEF Q7B: vitalsHP/Barrier riêng,compact build/details qua pause,readiness đúngstate(Charged ammo+points),bounded notice/icon-linked proc. Portrait target128px/landscape104px chưa được đo với UI mới;6nút/hit areas/capture/giữ-thả/camera/floor không đổi.
-- ImageGen đã tạo5PNG thật: desktopV1,portraitV1→V2,crowd-feedbackV1,before-afterV1. V1portrait sai chữ được V2supersede. Board docs/q7b/index.html; audit/limits README,exact PROMPTS,manifest PNG/hash/input. Không third-party reference/paid API/dependency/runtime service.
-- Minh họa không pixel-perfect: iconID/HPkhấc/spacing/actor và nút ởcrowd inset có sai lệch; contract+controls hiện hành ưu tiên. Sheet BEFORE được sinh lại, PNG baseline riêng giữ nguyên mới là evidence. Không đưa artwork mockup vào game.
-- Gói review lưu nhánh q7b-visual-review. src/public/tests/package/workflow nguyên main21f2c55; floor hash71b8d5b2…fea70a giữ nguyên. Chỉ docs/artwork/baseline; chưa Q7B tests/typecheck/build/production renderer/perf vì chưa implementation. Không tự báo DESIGN/ART APPROVED.
+## CURRENT STATUS — Q7B IMPLEMENTATION
+- Concept/design đã user duyệt “approved làm đi”. Remote main21f2c55 đã fetch/đối chiếu, nhánh q7b-visual-review chứa gói concept95c9ffd. Q2–Q7A/opening4hướng giữ accepted, Q1 riêng chưa duyệt.
+- CombatHUD đọc state/resources, render vitals/build6slots/details; HUDFeedback bounded transition queue, không đổi core. Authored SVG glyphsheet, CSS grouping/readiness; TouchControls chỉ updateResources presentation. main giữ progression/run/draft/settings wiring và pause lifecycle cho details.
+- Typecheck/build PASS,test13files PASS gồm5focused HUDFeedback checks. Browser fixture+dist5viewports320/390/844/768/1440 PASS: same canvas/6button geometry,4Mutation/2Curse/details/cuộn/vi-en/Pause/settings/Draft4cards/Victory/Defeat/Glass75/feedback/Boss. No pageerrors/requests/overflow. HoldHeavy(desktop)/holdCharged+summary2ndfinger(touch)→pause→release→resume không cast/consume; timerpause PASS.
+- Portrait HUDbox98px(vs198.5/213.5 trước),128px gồm timer→notice. Performance frozen33enemy:phone16.7ms/desktop33.4ms median không đổi,HUDCPU<0.05ms; không suy ra device FPS. docs/q7b/IMPLEMENTATION.md córenderer/screenshots/scenario/perf/provenance/cách thử; fixture không human approval.
+- Floor Q7A/core/AI/input bind/sample/release giữ nguyên. Đang push/deploy, runtime AWAITING USER PLAYTEST APPROVAL. Không Q7C.
 
 ## CURRENT STATUS — Q7A ĐÃ ACCEPTED
 - User duyệt runtime Q7A sau khi xác nhận scope chỉ artwork sàn; không thay player/enemy/VFX/gameplay. Đã đồng bộ GAME_BRIEF/docs Q7A/board. Q7B nay đã có scope riêng và đang visual gate, chưa triển khai HUD.
@@ -138,6 +137,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Q7Bimplementation: typecheck/build/test13files(5HUDcases) và browserfixture+dist5sizes PASS; samegamecore/inputinternals/floorhash. Benchmarkfrozen HUDCPU0.041msphone/0.0345msdesktop; medianframe16.7/33.4ms không đổi so baseline. Không device/Safari/full-run/human acceptance.
 - Q7Bdesign: baseline renderer4viewports PASS(no pageerror/overflow),10PNG headers/hash + docs links/diff PASS; board390/1440 image-load/grayscale/no-overflow/no-pageerror PASS. Không tests/build game vì chưa implementation. Status AWAITING VISUAL APPROVAL, không suy rộng approval Q7A sang HUD mới.
 - Ngày2026-10-26: ghi nhận user duyệt Q7A floor-only và chờ scope Q7B. Chỉ sửa tài liệu/nhãn board, kiểm diff và liên kết; không sửa runtime, không chạy lại tests/build thủ công. Lịch sử evidence/deploy giữ nguyên.
 - Deploy Q7A0e0a9af: Actions40266665479/job121390460491 completed/success, bước Deploy success. Live curl vẫn bị proxy403; ảnh/checks là local Vite/dist. Sau deploy chỉ đồng bộ docs/board, không sửa code hoặc lặp tests/build.
@@ -159,7 +159,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Chờ user duyệt **Q7B concept** tại docs/q7b/index.html: groupingHP/Barrier,4M/2C summary/details qua pause,resource-state styling và bounded/icon-linked feedback. User ghi tênhình/vùng cần chỉnh hoặc duyệt hướng để triển khai. **AWAITING VISUAL APPROVAL**; không sửa HUD production trước approval, không mở Q7C.
+Bàn giao Q7B sau push/deploy rồi chờ user playtest: HP/Barrier/readiness,summary→details/cuộn/Back/Resume,hold-releasekhôngcastnhầm,crowd+Perfect/proc vàBoss cues; thửphone320/390/dọc-ngang hoặcdesktopnếu có. Scope/checks/limits docs/q7b/IMPLEMENTATION.md. **AWAITING USER PLAYTEST APPROVAL**, chỉ sửa feedbackQ7B, không Q7C.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.

@@ -8,11 +8,20 @@
 </style>
 <main>
 <h1>Q7B · HUD & Combat Readability</h1>
-<p class="status"><strong>AWAITING VISUAL APPROVAL</strong> · Chỉ audit/design/concept. Chưa sửa HUD production, gameplay hoặc sàn Q7A.</p>
+<p class="status"><strong>CONCEPT APPROVED · AWAITING USER PLAYTEST APPROVAL</strong> · HUD đã triển khai; runtime quality chờ user playtest. Gameplay/controls/sàn Q7A giữ nguyên.</p>
 <p>Giữ HUD/controls nền tảng, rút prose trên sân thành grouping và icon có trạng thái. Dữ liệu readiness/cooldown lấy đúng state game; Charged dùng đạn + điểm, không tự hồi theo thời gian.</p>
 <p><a href="README.md">Audit, giới hạn, file dự kiến</a> · <a href="../../GAME_BRIEF.md#q7b-design-contract--hud--combat-readability">Design Contract + acceptance scenarios</a> · <a href="PROMPTS.md">Prompts/inputs</a> · <a href="manifest.json">Provenance</a></p>
 <input id="gray" type="checkbox"><label for="gray">Grayscale cùng ảnh</label>
 <div class="gallery">
+<section><h2>Runtime · trước–sau từ renderer thật</h2>
+<p><a href="IMPLEMENTATION.md">Checks,provenance và cách playtest</a>. Cùng33enemy/4Mutation/2Curse fixture; không natural run hoặc user acceptance.</p>
+<div class="pair">
+<figure><a href="baseline/crowd-full-build-390.png"><img class="phone" src="baseline/crowd-full-build-390.png" alt="HUD trước Q7B từ renderer21f2c55"></a><figcaption>TRƯỚC · baseline thật,HUDbox198.5px trên390.</figcaption></figure>
+<figure><a href="evidence/crowd-390.png"><img class="phone" src="evidence/crowd-390.png" alt="HUD runtime Q7B: cardvitals/build,resource readouts trên6nút"></a><figcaption>SAU · renderer thật,HUDbox98px;128px tính từ đỉnhcanvas qua timer/notice. Không đổi canvas/hit areas.</figcaption></figure>
+</div>
+<details><summary>Desktop renderer trước–sau</summary><div class="pair"><figure><img src="baseline/crowd-full-build-1440.png" alt="Desktop HUD cũ"><figcaption>Trước:cột prose dài.</figcaption></figure><figure><img src="evidence/crowd-1440.png" alt="Desktop HUD Q7B"><figcaption>Sau:các cụm sát rìa.</figcaption></figure></div></details>
+<p><a href="evidence/details-curses-390.png">Details6slots</a> · <a href="evidence/grayscale-390.png">Grayscale toànHUD</a> · <a href="evidence/boss-2-390.png">Boss slam</a> · <a href="evidence/production-320.png">Production320</a></p>
+</section>
 <section><h2>01 · Desktop concept V1</h2>
 <figure><a href="artwork/hud-desktop-v1.png"><img src="artwork/hud-desktop-v1.png" alt="Desktop concept: vitals góc trái, build góc phải, tài nguyên sát rìa dưới"></a><figcaption>ĐỀ XUẤT: HP/Barrier riêng,4Mutation+2Curse,4resource cards. ImageGen làm HP có khấc; contract yêu cầu HP liên tục. Không thay actor/camera/floor theo sai lệch ảnh.</figcaption></figure>
 </section>
@@ -34,9 +43,9 @@
 <figure><img src="baseline/crowd-full-build-844.png" alt="HUD landscape844 renderer hiện hành"><figcaption>Landscape844×390: HUD157.5px/332pxcanvas. Chưa có implementation mới để báo layout PASS.</figcaption></figure>
 </div>
 </details>
-<section><h2>Phạm vi cần duyệt</h2>
+<section><h2>Concept đã duyệt / scope playtest runtime</h2>
 <ol><li>HP/Barrier tách icon/thanh/số; grouping và mức decoration panel.</li><li>Build4M/2C gọn; tap một summary≥44px mở details qua pause, không auto-cast khi nhả.</li><li>Resource readiness bằng count/fill/timer/label; Charged ammo+points; không đổi6nút.</li><li>Damage/heal/break/Perfect và synergy có feedback ngắn trên HUD/icon, không prose/center spam.</li></ol>
-<p class="limits">Chưa có runtime HUD mới, tests/build/performance acceptance. Sau visual approval mới implementation, renderer before/after và kiểm320/390/1440/landscape/tablet. Q2–Q7A giữ accepted, Q1 chưa duyệt riêng; không tự mở Q7C.</p>
+<p class="limits">Các hình concept ở trên giữ làm lịch sử, không là runtime assets. Bản HUD đã có checks/evidence tại đầu trang; user cần thử readability và độ mượt trên thiết bị thật. Q2–Q7A giữ accepted,Q1 riêng chưa duyệt; không mở Q7C.</p>
 </section>
 </div>
 </main>

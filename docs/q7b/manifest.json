@@ -88,5 +88,6 @@
       "sha256": "b02dfdae6bff541073c44a30469d1f3734c98fc37e70f54e06161c0c683dc258",
       "kind": "renderer-fixture-baseline"
     }
-  ]
+  ],
+  "snapshotNote": "Visual gate snapshot before user approved design; status/runtime_changes describe that historical checkpoint. Current runtime: IMPLEMENTATION.md and runtime-assets.json."
 }

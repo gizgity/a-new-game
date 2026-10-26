@@ -2,7 +2,7 @@
 
 **ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved”, sau khi được làm rõ Q7A chỉ thay artwork sàn obsidian; gameplay/camera/controls/player-enemy sprites/combat VFX giữ nguyên. Approval dành cho Q7A đã deploy (code0e0a9af, bản board2e48166), không suy rộng sang Q1 hoặc mọi thiết bị/Safari.
 
-Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. NEXT ACTION lúc kết thúc Q7A là chờ scope. Nay user đã giao [Q7B HUD/readability](../q7b/README.md), đang design/visual gate; không thay lịch sử Q7A.
+Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. NEXT ACTION lúc kết thúc Q7A là chờ scope. Nay user đã giao [Q7B HUD/readability](../q7b/README.md), concept đã user duyệt và triển khai riêng,chờ runtime playtest; không thay lịch sử Q7A.
 
 ## Thay đổi
 

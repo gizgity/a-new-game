@@ -1,0 +1,426 @@
+{
+  "errors": [],
+  "requests": [],
+  "cases": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "vitals": {
+        "x": 19,
+        "y": 91,
+        "width": 352,
+        "height": 33
+      },
+      "build": {
+        "x": 19,
+        "y": 127,
+        "width": 352,
+        "height": 44
+      },
+      "canvas": {
+        "x": 9,
+        "y": 61,
+        "width": 372,
+        "height": 570
+      },
+      "hud": {
+        "x": 19,
+        "y": 91,
+        "width": 352,
+        "height": 98
+      },
+      "notice": {
+        "x": 19,
+        "y": 174,
+        "width": 352,
+        "height": 15
+      },
+      "controls": [
+        {
+          "action": "heavy",
+          "x": 243,
+          "y": 705,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "charged",
+          "x": 243,
+          "y": 641,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "ultimate",
+          "x": 187,
+          "y": 641,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "action": "dash",
+          "x": 239,
+          "y": 765,
+          "width": 60,
+          "height": 60
+        },
+        {
+          "action": "melee",
+          "x": 303,
+          "y": 741,
+          "width": 68,
+          "height": 68
+        },
+        {
+          "action": "shoot",
+          "x": 303,
+          "y": 665,
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "hp": "22 / 100",
+      "dash": "0/2",
+      "slots": 6
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "overflow": false,
+      "vitals": {
+        "x": 19,
+        "y": 91,
+        "width": 282,
+        "height": 33
+      },
+      "build": {
+        "x": 19,
+        "y": 127,
+        "width": 282,
+        "height": 44
+      },
+      "canvas": {
+        "x": 9,
+        "y": 61,
+        "width": 302,
+        "height": 466
+      },
+      "hud": {
+        "x": 19,
+        "y": 91,
+        "width": 282,
+        "height": 98
+      },
+      "notice": {
+        "x": 19,
+        "y": 174,
+        "width": 282,
+        "height": 15
+      },
+      "controls": [
+        {
+          "action": "heavy",
+          "x": 173,
+          "y": 601,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "charged",
+          "x": 173,
+          "y": 537,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "ultimate",
+          "x": 117,
+          "y": 537,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "action": "dash",
+          "x": 169,
+          "y": 661,
+          "width": 60,
+          "height": 60
+        },
+        {
+          "action": "melee",
+          "x": 233,
+          "y": 637,
+          "width": 68,
+          "height": 68
+        },
+        {
+          "action": "shoot",
+          "x": 233,
+          "y": 561,
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "hp": "22 / 100",
+      "dash": "0/2",
+      "slots": 6
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "overflow": false,
+      "vitals": {
+        "x": 19,
+        "y": 56,
+        "width": 240,
+        "height": 33
+      },
+      "build": {
+        "x": 560,
+        "y": 56,
+        "width": 265,
+        "height": 44
+      },
+      "canvas": {
+        "x": 9,
+        "y": 49,
+        "width": 826,
+        "height": 332
+      },
+      "hud": {
+        "x": 19,
+        "y": 56,
+        "width": 806,
+        "height": 82
+      },
+      "notice": {
+        "x": 19,
+        "y": 99,
+        "width": 240,
+        "height": 17
+      },
+      "controls": [
+        {
+          "action": "heavy",
+          "x": 697,
+          "y": 253,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "charged",
+          "x": 697,
+          "y": 189,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "ultimate",
+          "x": 641,
+          "y": 189,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "action": "dash",
+          "x": 693,
+          "y": 313,
+          "width": 60,
+          "height": 60
+        },
+        {
+          "action": "melee",
+          "x": 757,
+          "y": 289,
+          "width": 68,
+          "height": 68
+        },
+        {
+          "action": "shoot",
+          "x": 757,
+          "y": 213,
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "hp": "22 / 100",
+      "dash": "0/2",
+      "slots": 6
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": false,
+      "vitals": {
+        "x": 19,
+        "y": 91,
+        "width": 730,
+        "height": 33
+      },
+      "build": {
+        "x": 19,
+        "y": 127,
+        "width": 730,
+        "height": 44
+      },
+      "canvas": {
+        "x": 9,
+        "y": 61,
+        "width": 750,
+        "height": 750
+      },
+      "hud": {
+        "x": 19,
+        "y": 91,
+        "width": 730,
+        "height": 98
+      },
+      "notice": {
+        "x": 19,
+        "y": 174,
+        "width": 730,
+        "height": 15
+      },
+      "controls": [
+        {
+          "action": "heavy",
+          "x": 621,
+          "y": 885,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "charged",
+          "x": 621,
+          "y": 821,
+          "width": 52,
+          "height": 52
+        },
+        {
+          "action": "ultimate",
+          "x": 565,
+          "y": 821,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "action": "dash",
+          "x": 617,
+          "y": 945,
+          "width": 60,
+          "height": 60
+        },
+        {
+          "action": "melee",
+          "x": 681,
+          "y": 921,
+          "width": 68,
+          "height": 68
+        },
+        {
+          "action": "shoot",
+          "x": 681,
+          "y": 845,
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "hp": "22 / 100",
+      "dash": "0/2",
+      "slots": 6
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      "vitals": {
+        "x": 57,
+        "y": 121,
+        "width": 260,
+        "height": 48
+      },
+      "build": {
+        "x": 1118,
+        "y": 121,
+        "width": 265,
+        "height": 62
+      },
+      "canvas": {
+        "x": 33,
+        "y": 101,
+        "width": 1374,
+        "height": 734
+      },
+      "hud": {
+        "x": 57,
+        "y": 121,
+        "width": 1326,
+        "height": 700
+      },
+      "notice": {
+        "x": 57,
+        "y": 175,
+        "width": 260,
+        "height": 15
+      },
+      "controls": [
+        {
+          "action": "heavy",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "action": "charged",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "action": "ultimate",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "action": "dash",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "action": "melee",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "action": "shoot",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "hp": "22 / 100",
+      "dash": "0/2",
+      "slots": 6
+    }
+  ]
+}

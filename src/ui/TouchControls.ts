@@ -1,5 +1,6 @@
 import type { CombatAction, CombatInput } from '../game/combat';
 import { t } from '../i18n';
+import type { ResourceReadouts } from './CombatHUD';
 
 type Action = CombatAction;
 interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number; aiming: boolean }
@@ -99,17 +100,19 @@ export class TouchControls {
     }
   }
 
-  updateResources(dashes: number, charged: number, surge: number, heavy: number, heavyWait: number): void {
-    for (const [key, value, available] of [
-      ['heavy', heavy > 0 ? `${heavy}/2` : t('secondsShort').replace('{n}', String(Math.ceil(heavyWait))), heavy > 0],
-      ['dash', String(dashes), dashes > 0], ['charged', String(charged), charged > 0],
-      ['surge', `${Math.floor(surge)}%`, surge >= 100],
-    ] as const) {
+  updateResources(resources: ResourceReadouts): void {
+    for (const key of ['heavy', 'dash', 'charged', 'surge'] as const) {
+      const data = resources[key];
       const label = this.root.querySelector<HTMLElement>(`[data-resource="${key}"]`)!;
-      if (label.textContent !== value) label.textContent = value;
-      label.parentElement!.classList.toggle('unavailable', !available);
-      // Keep pointer capture/release working while the resource is consumed.
-      label.parentElement!.setAttribute('aria-disabled', String(!available));
+      if (label.textContent !== data.value) label.textContent = data.value;
+      const button = label.parentElement!;
+      let note = button.querySelector<HTMLElement>('.resource-note');
+      if (!note) { note = document.createElement('small'); note.className = 'resource-note'; label.insertAdjacentElement('afterend', note); }
+      if (note.textContent !== data.note) note.textContent = data.note;
+      button.classList.toggle('unavailable', !data.available);
+      button.classList.toggle('proc-active', data.proc);
+      button.dataset.state = data.available ? 'ready' : 'empty';
+      button.setAttribute('aria-disabled', String(!data.available));
     }
   }
 

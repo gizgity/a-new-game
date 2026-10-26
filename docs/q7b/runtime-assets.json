@@ -1,0 +1,12 @@
+{
+  "name": "Q7B original HUD glyphs",
+  "file": "public/assets/ui/hud-icons.svg",
+  "source": "Hand-authored SVG symbol sheet in this repository, based on approved visual language; no third-party asset or generated screenshot imported",
+  "version": 1,
+  "bytes": 3591,
+  "sha256": "376dd6c4a74e5affeb75d7b84a800098dd006e306539670add77cd08fa9d112b",
+  "viewBox": "0 0 24 24",
+  "usage": "Same-origin SVG use references for health/shield/resources/4Mutation/2Curse/details",
+  "rights": "Original project artwork; no third-party reference/paid API/runtime service or external icon package",
+  "floorUnchanged": "71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a"
+}

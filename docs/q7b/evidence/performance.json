@@ -1,0 +1,45 @@
+{
+  "method": "Same Chromium browser, before21f2c55 vs Q7B, frozen33-enemy fixture with4Mutations/2Curses; HUD callback CPU warm20+200calls,120rAF frame samples. Headless software WebGL, not a device/full-run benchmark.",
+  "samples": [
+    {
+      "mode": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "hudCpuMs": 0.04100000000093132,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182
+    },
+    {
+      "mode": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "hudCpuMs": 0.04100000000093132,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999955
+    },
+    {
+      "mode": "before",
+      "viewport": [
+        1440,
+        900
+      ],
+      "hudCpuMs": 0.027999999998137355,
+      "medianMs": 33.399999999999636,
+      "p95Ms": 66.60000000000036
+    },
+    {
+      "mode": "after",
+      "viewport": [
+        1440,
+        900
+      ],
+      "hudCpuMs": 0.03449999999720603,
+      "medianMs": 33.400000000000546,
+      "p95Ms": 66.70000000000027
+    }
+  ]
+}
