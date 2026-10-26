@@ -87,7 +87,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Evidence trước giữ: docs/crowd-combo/combo.gif (fixture6quái500HP,30fps), docs/charged/comparison.gif, docs/aim-opening/, docs/touch-fix/, docs/q1/, docs/q2/. Không coi ảnh cũ là bản current.
 
 ## KEY DECISIONS
-- Handoff phải commit/push để giữ tiến độ; user đã cho phép đồng bộ HANDOFF/GAME_BRIEF hiện có trên repo public ngày2026-10-26. Quy tắc lưu ở AGENTS.md và handoff skill; không chỉ lưu local.
+- Handoff phải commit/push để giữ tiến độ; user đã cho phép đồng bộ HANDOFF/GAME_BRIEF hiện có trên repo public ngày2026-10-26. Quy tắc được lưu ngay trong HANDOFF.md; không chỉ giữ tiến độ ở local.
 - User yêu cầu mọi bàn giao playtest phải nói rõ scope, cách thử và kết quả mong đợi; đã lưu quy tắc ở AGENTS.md.
 - Mobile-first + desktop,1arena,run5phút,1sword/gun,3mobs/Elite/Boss; scope Q5 mới khóa12Mutation/8Curse (code Q5C12/8); không permanent stat upgrades/backend/account/multiplayer/leaderboard/monetization.
 - Quyết định run còn hiệu lực:6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3/Q4 đã accepted; user đã duyệt contract và yêu cầu triển khai/deploy Q5A ngày2026-10-25. User sẽ tạo issue mới cho phát sinh khi trải nghiệm sau, không giữ Q4 ở trạng thái chờ thử.
