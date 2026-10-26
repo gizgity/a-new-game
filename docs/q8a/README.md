@@ -1,6 +1,6 @@
 # Q8A — Dynamic Spawn
 
-**AWAITING USER PLAYTEST APPROVAL** — chỉ Q8A. Q2–Q7D giữ ACCEPTED; Q8B–D chưa mở. User giao ngày2026-10-26; baseline main `7b01864` đã fetch/đối chiếu trước sửa. Deploy/result sẽ được ghi bên dưới.
+**AWAITING USER PLAYTEST APPROVAL** — chỉ Q8A. Q2–Q7D giữ ACCEPTED; Q8B–D chưa mở. User giao ngày2026-10-26; baseline main `7b01864` đã fetch/đối chiếu trước sửa. Code/deploy `394341c`, Pages SUCCESS; link chơi bên dưới.
 
 ## Audit và specification hiện hành
 
@@ -45,4 +45,6 @@ Mở bản deploy Q8A (link/version bên dưới), reload. Chỉ cần thử den
 
 ## Deploy
 
-Đang chuẩn bị push main khôngforce và theo dõi `.github/workflows/pages.yml`. Chỉ user mới có thể approve Q8A; sau Pages SUCCESS dừng **AWAITING USER PLAYTEST APPROVAL**.
+Code `394341ca66256af72fd8221e4185725c192cf116` đã push main fast-forward, Pages [40338795004](https://github.com/gizgity/a-new-game/actions/runs/40338795004) completed/SUCCESS, job121627451358 gồm bước Deploy SUCCESS. Không đổi runtime sau đó; commit bàn giao chỉ Markdown.
+
+Chơi [run thường Q8A](https://gizgity.github.io/a-new-game/?v=394341c) hoặc [chain fixture Q8A](https://gizgity.github.io/a-new-game/?v=394341c&playtest=chain). Live curl bị proxy CONNECT403; không bypass hoặc coi local/dist là live verification. GitHub CLI Actions cũng bị403, connector đọc kết quả được. Chỉ user mới approve; dừng **AWAITING USER PLAYTEST APPROVAL**, không mở Q8B.
