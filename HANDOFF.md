@@ -10,17 +10,17 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q8B — Run Pacing & Milestone Balance: **AWAITING USER PLAYTEST APPROVAL**. User giao riêng ngày2026-10-26; baseline main46a17ed. Q8A ACCEPTED theo “q8a đạt yêu cầu” trên394341c; giữ Q2–Q7D. Q8C–D chưa mở.
+Q8B — Run Pacing & Milestone Balance: **ACCEPTED — USER PLAYTEST APPROVAL**, user xác nhận “oki duyệt q8b” ngày2026-10-26 trên code/deployeb6fbbe (docs7b2d005), Pages40341327061 SUCCESS. User giao riêng ngày2026-10-26; baseline main46a17ed. Q8A ACCEPTED theo “q8a đạt yêu cầu” trên394341c; giữ Q2–Q7D. Q8C–D chưa mở.
 
 ## ACCEPTANCE
-Chỉ cân bằng6Draft/Elite/Boss kills/time. Boss3:40–4:00 không sớm hơn3:40, Victory4:30–5:00 là mục tiêu mềm theo user “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26; không khóa Victory hoặc chờ sau Boss chết. Deadline5:00. Không thay spawn/HP/damage/effects/pattern. Tests/build/deploy không là user acceptance. Bot thắng sớm được phép theo quyết định này; vẫn chờ user playtest Q8B.
+Chỉ cân bằng6Draft/Elite/Boss kills/time. Boss3:40–4:00 không sớm hơn3:40, Victory4:30–5:00 là mục tiêu mềm theo user “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26; không khóa Victory hoặc chờ sau Boss chết. Deadline5:00. Không thay spawn/HP/damage/effects/pattern. Tests/build/deploy không là user acceptance. Bot thắng sớm được phép theo quyết định này. User đã duyệt Q8B qua “oki duyệt q8b”; đây là approval trực tiếp, không suy ra từ tests/build/deploy. Lượt này chỉ đồng bộ tài liệu, không đổi runtime hoặc chạy lại tests/build.
 
-## CURRENT STATUS — Q8B
+## CURRENT STATUS — Q8B ACCEPTED
 - Code/deployeb6fbbe đã push main fast-forward. Pages40341327061/job121636501339 completed/SUCCESS gồm Deploy; URL https://gizgity.github.io/a-new-game/?v=eb6fbbe . Production dist local390/1440 Start/HUD/errors/overflow PASS; livecurl bịproxy CONNECT403. Browser fixtures1440/390 pause/6Draft/freeze/Boss floor/Victory-Replay/deadline-Replay PASS. [Audit/cách thử4route](docs/q8b/README.md).
 - Công thức: elapsed≥minSeconds AND (kills≥target OR elapsed≥fallback). Draft floors20/50/85/120/155/190s, fallback30/60/100/140/180/205s; kills25/80/160/220/300/380. Elite200kills từ125s/fallback150s. Boss1200kills từ220s/fallback240s. Full build có15–50s trước Boss; clear nhanh không bỏ qua run.
 - Chỉ sửa config milestones, predicate reached và HUD vi/en hiển thị floor/fallback. Giữ spawn Q8A, combat, growth, Boss patterns và assets. Không warning2s/Enraged Q8C.
 - A/B4routes×2styles: combat/HP/resources thật, route offers deterministic, không cấp kills/clock/HP/build. Baseline Boss86.7–89.25s, Victory92.8–100.97s; Q8B Tank/Sustain/Counter Boss220s, Victory225.87–233.02s,1205–1261kills; Ranged chết157.95–178.05s/889–1002kills. Bot đọc predicate Perfect nên không đại diện người chơi.
-- **Giới hạn:** Victory4:30–5:00 chưa đạt trong các lượt bot thắng; Boss chỉ sống5–13s. User đã chọn “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26. Giữ Victory ngay khi hạ Boss trước deadline, không khóa/delay hoặc thay Boss. Quyết định này không là user playtest approval Q8B.
+- **Giới hạn:** Victory4:30–5:00 chưa đạt trong các lượt bot thắng; Boss chỉ sống5–13s. User đã chọn “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26. Giữ Victory ngay khi hạ Boss trước deadline, không khóa/delay hoặc thay Boss. Quyết định mục tiêu mềm riêng biệt; user sau đó đã xác nhận “oki duyệt q8b”. Giữ giới hạn coverage kỹ thuật của evidence.
 - Focused tests16files PASS (thêm floor/banked-chain/draft freeze/replay; sửa fixtures mốc cũ), typecheck/build PASS; warning Phaser bundle có sẵn. Browser lifecycle desktop/mobile fixtures và deploy xem docs/q8b/README.md.
 - Q8B OR cũ được đánh dấu SUPERSEDED trong GAME_BRIEF/docs liên quan, giữ lịch sử approval/evidence.
 
@@ -56,6 +56,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q7C — Character & Enemy Art | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt q7c đạt” trên deploy2ef6d48; visual approved trước đó |
 | Q7D — Full Run Experience Polish | ACCEPTED — USER PLAYTEST APPROVAL | User “đã đạt q7d” ngày2026-10-26 trên66e0799; Pages40311723418 SUCCESS |
 | Q8A — Dynamic Spawn | ACCEPTED — USER PLAYTEST APPROVAL | User “q8a đạt yêu cầu” ngày2026-10-26 trên394341c; Pages40338795004 SUCCESS |
+| Q8B — Run Pacing & Milestone Balance | ACCEPTED — USER PLAYTEST APPROVAL | User “oki duyệt q8b” ngày2026-10-26 trêneb6fbbe; Pages40341327061 SUCCESS; Victory là mục tiêu mềm |
 
 ## PREVIOUS CHECKPOINT — Q7D ACCEPTED
 - User xác nhận “đã đạt q7d” ngày2026-10-26 trên bản66e0799 đã deploy. Các giới hạn coverage kỹ thuật bên dưới giữ nguyên; không yêu cầu duyệt lại Q7D.
@@ -96,4 +97,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng **AWAITING USER PLAYTEST APPROVAL** Q8B. User thử4route theo docs/q8b/README.md, phản hồi nhịp Draft/full build, Boss arrival, Victory/kills (Victory4:30–5:00 là mục tiêu mềm đã được user xác nhận; thắng sớm được phép). Không tự mở Q8C; warning2s/Enraged chưa triển khai.
+Dừng tại Q8B **ACCEPTED — USER PLAYTEST APPROVAL**. Chờ user giao Q8C; không tự mở Q8C–D hoặc yêu cầu duyệt lại Q8B. Warning2s/Enraged Q8C chưa triển khai.

@@ -1,6 +1,6 @@
 # Q8B — Run Pacing & Milestone Balance
 
-**AWAITING USER PLAYTEST APPROVAL**. Baseline main `46a17ed`; Q8A code394341c ACCEPTED bởi user “q8a đạt yêu cầu”. Chỉ Q8B, không mở Q8C/D.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “oki duyệt q8b” ngày2026-10-26 trên code/deployeb6fbbe (docs7b2d005), Pages40341327061 SUCCESS. Đây là approval trực tiếp, không suy ra từ tests/fixture. Baseline main `46a17ed`; Q8A code394341c ACCEPTED bởi user “q8a đạt yêu cầu”. Chỉ Q8B, không mở Q8C/D.
 
 ## Quy tắc hiện hành
 
@@ -34,7 +34,7 @@ Clear nhanh nhận sớm10–25s tại mỗi mốc, Boss tối đa20s. Giữ kil
 
 Baseline Elite46.02–47.92s,452–458kills cuối run. Q8B Elite125s, sáu Draft20/50/85/120/155/190s cho các lượt sống; Ranged chỉ tới Draft5. Clear liên tục không bỏ qua run, nhưng có rủi ro chết thật.
 
-**Giới hạn quan trọng:** Victory mục tiêu4:30–5:00 **chưa được chứng minh đạt**. Bot hiệu quả giết Boss chỉ5–13s, thắng3:46–3:53 dù arrival đúng3:40. Không thể bảo đảm duration này cho build mạnh với Boss tới≤4:00, giữ nguyên Boss/build và Victory lập tức. User đã xác nhận “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26. Victory4:30–5:00 là mục tiêu mềm; giữ Victory ngay khi hạ Boss trước deadline, không khóa thời gian hoặc thêm chờ sau Boss chết. Lượt bot thắng sớm được phép theo quyết định này. Vẫn cần user playtest Q8B; quyết định mục tiêu mềm không là acceptance và không mở Q8C.
+**Giới hạn quan trọng:** Victory mục tiêu4:30–5:00 **chưa được chứng minh đạt**. Bot hiệu quả giết Boss chỉ5–13s, thắng3:46–3:53 dù arrival đúng3:40. Không thể bảo đảm duration này cho build mạnh với Boss tới≤4:00, giữ nguyên Boss/build và Victory lập tức. User đã xác nhận “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26. Victory4:30–5:00 là mục tiêu mềm; giữ Victory ngay khi hạ Boss trước deadline, không khóa thời gian hoặc thêm chờ sau Boss chết. Lượt bot thắng sớm được phép theo quyết định này. Quyết định mục tiêu mềm không tự là acceptance; user sau đó đã xác nhận “oki duyệt q8b”. Giữ evidence/giới hạn kỹ thuật, không mở Q8C.
 
 ## Validation
 
@@ -43,7 +43,7 @@ Baseline Elite46.02–47.92s,452–458kills cuối run. Q8B Elite125s, sáu Draf
 - [Browser script](browser-check.mjs), [results](browser.json): Chromium1440×1000 và390×844, pause freeze,6Draft/fresh click sau grace1s/freeze, Boss≥220s, Victory→Replay, deadline→Replay; không errors/overflow. Đây là fixtures cấp kills/clock/bossSlain để test ranh giới, không natural input run; không chứng minh Safari/iOS/deviceFPS.
 - Không thêm package/dependency/framework. Playwright chỉ cài tạm `/tmp/q8b-tools`. Script A/B cần compile baseline46a17ed vào `/tmp/q8b-baseline`, hiện tại vào `.test-build` qua `npm test`; không là replay framework.
 
-## Playtest Q8B
+## Playtest Q8B — ĐÃ USER ACCEPTED, GIỮ THAM CHIẾU
 
 URL và deploy được ghi bên dưới. Chơi run mới, không dùng fixture cấp sẵn `playtest=tank/chain`. Có thể dùng `playtest=route-tank`, `route-sustain`, `route-counter`, `route-ranged`: chọn card hướng tương ứng ở Draft đầu, các lượt sau chọn gợi ý; route chỉ gợi offer, không cấp build/resources đầu run. Chọn Keep ở Curse2 nếu muốn chỉ một Curse.
 
