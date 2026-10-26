@@ -1,6 +1,30 @@
 # Q7C — Character & Enemy Art Overhaul
 
-**Audit / concept review — chưa tích hợp.** Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
+**AWAITING VISUAL APPROVAL — chưa tích hợp.** Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
+
+## Review hiện hành
+
+- [Board tương tác](index.html): grayscale/1×–2×,6silhouettes,7states,arena mobile/landscape/tablet/desktop,Boss3đòn và Playeractions. Source riêng/ảnh compositing, không renderer Q7C runtime.
+- [Six-character state preview](evidence/states-v1.png), [lineup](evidence/lineup-v1.png), [Boss3patterns](artwork/chain-warden-patterns-v1.png), [PlayeractionsV2](artwork/player-actions-v2.png). Board/state preview V1 hiện dùng PlayerV2; tên ảnh evidence là version của board, không version Player.
+- [Mobile có HUD accepted](evidence/phone-concept-390.png) / [grayscale](evidence/phone-grayscale-390.png); [arena390](evidence/crowd-390.png), [320](evidence/crowd-320.png), [844landscape](evidence/crowd-844.png), [tablet768](evidence/crowd-768.png), [desktop1440](evidence/crowd-1440.png), [Boss/Elite390](evidence/boss-390.png). Canvas/zoom lấy layout Q7B thật:372×356/.775,302×252/.75,490×254/.75,750×536/1.3,1374×542/.85875. 320 viewport là320×740, không844. Desktop floor coverage guard chi phối zoom.
+- Enemy/BossV1 và PlayerV2 hiện hành. PlayerV1 quá tối trong grayscale mobile; ImageGen đã repaint phần giáp mint sáng thànhV2, giữ pose. Giữ V1 như lịch sử, không dùng V1 làm hướng visual hiện hành.
+- [Asset spec](ASSET_SPEC.md), [prompts/provenance/rights/giới hạn](PROMPTS.md), [source hashes](manifest.json), [checks](evidence/checks.json). Source PNG được copy nguyên byte, không crop board hay vẽ body procedural.
+
+Crowd32 là staged stress composition, không natural run/spawn contract. SourceRect để trưng bày lấy từ **dedicated sprite source**; chưa runtime atlas. BEFORE là screenshot Q7B thật, AFTER là composite khác vị trí, không chứng minh improvement pixel-for-pixel. HUD/controls/sàn giữ ảnh accepted; composition bỏ threat/marks/HPbars/VFX để đọc body silhouette, nên chưa chứng minh P0 threat/P2 khi chiến đấu. Baseline thật vẫn có threat/VFX; kiểm đồng thời trong renderer sau visual approval. Không tự kết luận full hierarchy/motion/performance đã đạt.
+
+## Validation / giới hạn hiện tại
+
+Đã xem6sheets,PlayerV2,Boss3patterns,arena/color/grayscale. PNG integrity/hash/relative assets và board Chromium320/390/768/1440 PASS: không pageerror hoặc overflow, ảnh tải đủ. `npm run build` PASS (gồm typecheck), `npm test`159PASS/0fail trên runtime baseline; warning Phaser bundle>500KB đã có. Không diff src/public/package/lockfile/workflow; checks không là art acceptance hoặc kiểm animation mới.
+
+Chưa runtime atlas/direction cleanup/pivots, chưa animation/alpha-clipping/performance Q7C hoặc thiết bị thật/Safari. Một số baked weapontrail/arrow/impact trong pose phải loại khỏi source runtime để giữ VFX accepted. Sau duyệt cần source sạch riêng và test renderer đúng gameplay; không dùng auto-crop7ô này làm production atlas. Q7C overall chưa complete/accepted.
+
+## Cách duyệt lượt này
+
+1. Xem lineup/state preview và Boss3patterns: nhận diện đủ6role; sweep/ring/slam đọc khác nhau bằng pose.
+2. Xem mobile390/crowd320 ở100% và grayscale: Playermint/ivory thấy ngay, Gruntmask/Archerbow/Volatile5shards/Bulwarkshield/Bosscrown khác nhau. Desktop/tablet dùng đúng ảnh1:1 khi đánh giá, không chỉ thumbnail thu nhỏ.
+3. Phản hồi nhân vật/state bị sai hoặc chìm; có thể duyệt hướng kèm điểm sửa. Chưa cần playtest gameQ7C vì chưa tích hợp. **Dừng AWAITING VISUAL APPROVAL theo yêu cầu user**, không Q7D.
+
+Commit audit d747f49 đã push main. Bộ source/review và docs checkpoint được push branch `codex/q7c-visual-review` để không kích Pages deploy game trước visual gate. Sau approval mới đưa implementation qua workflow deploy hiện có.
 
 ## Goal / acceptance hiện tại
 

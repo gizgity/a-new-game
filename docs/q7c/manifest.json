@@ -1,0 +1,153 @@
+{
+  "version": "Q7C V1",
+  "status": "AWAITING VISUAL APPROVAL",
+  "baseline": "78f07e6 / runtime5ee970e",
+  "primaryReference": "../q7a/artwork/contrast-palette-v1.png",
+  "generator": "ImageGen tool; model/seed unavailable",
+  "usage": "review-only dedicated sprite-source candidates; no runtime assets integrated",
+  "processing": "Original bytes copied; Canvas drawImage used only for review composition/sizing. No generated drawing engine.",
+  "files": [
+    {
+      "id": "player",
+      "label": "Player · Fractured Vessel",
+      "color": "#9dffe2",
+      "idleRect": [
+        24,
+        370,
+        190,
+        285
+      ],
+      "displayHeight": 40,
+      "file": "artwork/player-states-v2.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 690867,
+      "sha256": "0b60431f4bf475d0cc6d3936d9b3a56db3a1716043184c66816fa6dd3d4b6a51"
+    },
+    {
+      "id": "grunt",
+      "label": "Grunt · Hooked Mask",
+      "color": "#ff6f87",
+      "idleRect": [
+        12,
+        375,
+        200,
+        270
+      ],
+      "displayHeight": 36,
+      "file": "artwork/grunt-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 592058,
+      "sha256": "4f9e59d3c0f434f9b65c0f1c75a8aea7b3f757d74bd82e206baaa7c0489b1ab8"
+    },
+    {
+      "id": "archer",
+      "label": "Archer · Violet Hood",
+      "color": "#c399ff",
+      "idleRect": [
+        16,
+        380,
+        204,
+        230
+      ],
+      "displayHeight": 38,
+      "file": "artwork/archer-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 520720,
+      "sha256": "244746dfc357c29ca834f54509e4418e1829bf52c7a0ee5005bf62e58166c584"
+    },
+    {
+      "id": "volatile",
+      "label": "Volatile · Five Shard",
+      "color": "#ffcc80",
+      "idleRect": [
+        22,
+        365,
+        195,
+        270
+      ],
+      "displayHeight": 36,
+      "file": "artwork/volatile-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 608991,
+      "sha256": "41df8e7c076d4e7b2cfab93cdfebd05c5eff311c0bb87238518783e73865af6a"
+    },
+    {
+      "id": "bulwark",
+      "label": "Bulwark · Plate",
+      "color": "#63d9f5",
+      "idleRect": [
+        38,
+        407,
+        204,
+        235
+      ],
+      "displayHeight": 50,
+      "file": "artwork/bulwark-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 629144,
+      "sha256": "61e30c60bf58b0ec1dcc29cf6cf404b0e3336e6433c0435f69a409dc5536b0f3"
+    },
+    {
+      "id": "chain-warden",
+      "label": "Chain Warden · Boss",
+      "color": "#ffcc80",
+      "idleRect": [
+        0,
+        335,
+        222,
+        310
+      ],
+      "displayHeight": 76,
+      "file": "artwork/chain-warden-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 783032,
+      "sha256": "674b10b090bbc50434da2ed9cd62a15fa9f0474c12a4779d1b2026a98f502725"
+    }
+  ],
+  "supplementary": [
+    {
+      "file": "artwork/chain-warden-patterns-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1535172,
+      "sha256": "aecd7fa96a7f6d89a6ad413d25aa5601c864a5701da9243c2cb99598495b13c9",
+      "status": "awaiting-visual-approval"
+    },
+    {
+      "file": "artwork/player-actions-v1.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 683166,
+      "sha256": "9eba2f1604df02896dc04eab8f8b1410f519afbc11983daae94f55783248580a",
+      "status": "superseded-player-too-dark"
+    },
+    {
+      "file": "artwork/player-actions-v2.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 833414,
+      "sha256": "25999fa17d2f0c9e274305566010f781e7f6b81ea38db554508b4df66ee6830d",
+      "status": "awaiting-visual-approval"
+    },
+    {
+      "file": "artwork/player-states-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 629294,
+      "sha256": "e62866c03be47ffcd30b082783cd520c78d4df0d89aa91c3aa9150db26f16ef3",
+      "status": "superseded-player-too-dark"
+    }
+  ],
+  "limits": [
+    "Pose candidates only, no runtime atlas integration",
+    "Uneven registration/alpha residue/weapon and effect overlap require clean sources after approval",
+    "No threat/VFX present in staged arena; baseline screenshot retains actual accepted threat/VFX",
+    "No motion/directional readability or new runtime/device performance validation"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "kind": "review-only HTML/canvas composition, not game renderer/animation/performance test",
+  "errors": [],
+  "layouts": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "artwork/chain-warden-patterns-v1.png",
+          "loaded": true
+        },
+        {
+          "src": "artwork/player-actions-v2.png",
+          "loaded": true
+        },
+        {
+          "src": "../q7b/hud-v3/crowd-390.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "artwork/chain-warden-patterns-v1.png",
+          "loaded": true
+        },
+        {
+          "src": "artwork/player-actions-v2.png",
+          "loaded": true
+        },
+        {
+          "src": "../q7b/hud-v3/crowd-390.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "artwork/chain-warden-patterns-v1.png",
+          "loaded": true
+        },
+        {
+          "src": "artwork/player-actions-v2.png",
+          "loaded": true
+        },
+        {
+          "src": "../q7b/hud-v3/crowd-390.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "artwork/chain-warden-patterns-v1.png",
+          "loaded": true
+        },
+        {
+          "src": "artwork/player-actions-v2.png",
+          "loaded": true
+        },
+        {
+          "src": "../q7b/hud-v3/crowd-390.png",
+          "loaded": true
+        }
+      ]
+    }
+  ],
+  "baseline_build": {
+    "command": "npm run build",
+    "result": "PASS",
+    "note": "typecheck+Vite; pre-existing Phaser bundle >500kB warning"
+  },
+  "baseline_tests": {
+    "command": "npm test",
+    "result": "PASS",
+    "tests": 159,
+    "failed": 0
+  },
+  "runtime_changed": false,
+  "device_tested": false,
+  "visual_approval": false
+}
