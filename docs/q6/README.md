@@ -1,6 +1,6 @@
 # Q6 — Curse Stacking
 
-Implementation đã kiểm; **AWAITING USER PLAYTEST APPROVAL**. Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.
+Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages Actions40252934135](https://github.com/gizgity/a-new-game/actions/runs/40252934135) completed/success, gồm Deploy step. Implementation đã kiểm; **AWAITING USER PLAYTEST APPROVAL**. Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.
 
 ## Vào tình huống
 
@@ -24,3 +24,5 @@ Mobile: joystick di chuyển, giữ Chém/Bắn, Heavy/Charged giữ-thả, Lư�
 - Không có README root để cập nhật; Q5 README/audit thêm ghi chú lịch sử superseded, không sửa evidence cũ thành Q6.
 
 Ảnh fixture renderer thật đã xem: [HUD320](hud-320.png), [Draft844](draft-844.png).
+
+Live smoke chưa thực hiện: proxy trả403 cho Pages URL; browser evidence là local Vite. Deploy success không là user gameplay acceptance.
