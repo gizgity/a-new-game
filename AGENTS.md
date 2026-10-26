@@ -96,3 +96,5 @@ public/assets/
 ## Checkpoint hiện hành — Q8C
 - User giao riêng Q8C ngày2026-10-26: triển khai Boss warning/Enraged/combo, test, commit/push/Pages và dừng **AWAITING USER PLAYTEST APPROVAL**. Q8A394341c/Q8Beb6fbbe ACCEPTED; không mở Q8D.
 - Scope này cho phép thêm pose Enraged ImageGen đồng bộ Q7C và tích hợp/deploy theo chỉ dẫn trực tiếp của user; không tự gán visual/playtest approval. Quy tắc gate artwork Q7C phía trên là lịch sử của overhaul, không chặn task Q8C đã giao. Spec hiện hành tại GAME_BRIEF.md và docs/q8c/README.md. Giữ1500HP/5:00/Q8A/Q8B/build/input/art đã duyệt ngoài đúng phần Boss được giao.
+
+- Feedback Q8C sau preset: user cho phép transform1.4s (thay0.8s), animation chậm và freeze timer run/toàn combat trong transform; chỉ presentation Boss tiến. Scope này supersede timing/vulnerability ban đầu; giữ AWAITING USER PLAYTEST APPROVAL.

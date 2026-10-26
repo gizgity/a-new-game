@@ -75,4 +75,4 @@ export const BUILD = {
 } as const;
 
 // Q8C: only chase speed and cooldown scale; damage, reach, shots and windup stay fixed.
-export const BOSS_PHASE = { arrival: 2, transform: 0.8, speedMultiplier: 1.15, followupGap: 0.25, followupWindup: 0.62, comboRecovery: 0.75 } as const;
+export const BOSS_PHASE = { arrival: 2, transform: 1.4, speedMultiplier: 1.15, followupGap: 0.25, followupWindup: 0.62, comboRecovery: 0.75 } as const;

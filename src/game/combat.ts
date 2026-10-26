@@ -243,9 +243,31 @@ export class CombatWorld {
     this.enemies.push(enemy);
   }
 
+  get bossTransforming(): boolean {
+    return this.enemies.some(enemy => enemy.kind === 'boss' && enemy.hp > 0
+      && (enemy.transform > 0 || !enemy.enraged && enemy.hp <= enemy.maxHp / 2));
+  }
+
   step(input: CombatInput, dt: number): void {
     this.soundEvents = [];
     if (this.hp <= 0) { this.clearInput(); return; }
+    if (this.bossTransforming) {
+      const boss = this.enemies.find(enemy => enemy.kind === 'boss' && enemy.hp > 0)!;
+      if (!boss.enraged) {
+        boss.enraged = true;
+        boss.transform = BOSS_PHASE.transform;
+        boss.windup = boss.active = boss.recovery = 0;
+        boss.followup = boss.comboFinish = false;
+        boss.cooldown = BOSS_ATTACK.enragedCooldown;
+      }
+      boss.transform = Math.max(0, boss.transform - dt);
+      if (boss.transform < 1e-9) boss.transform = 0;
+      boss.flash = Math.max(0, boss.flash - dt);
+      this.clearInput();
+      // Consume edges without banking actions or turning a held special into a new press.
+      for (const action of ['shoot', 'melee', 'charged', 'heavy', 'ultimate', 'dash'] as const) this.previousInput[action] = !!input[action];
+      return; // Only transformation presentation advances; the entire combat world is frozen.
+    }
     this.captureInput(input, dt);
     if (this.hitstop > 0) { this.hitstop = Math.max(0, this.hitstop - dt); return; }
     this.dashProtected = false;
@@ -701,17 +723,8 @@ export class CombatWorld {
 
   private stepBoss(boss: Enemy, dt: number): void {
     boss.flash = Math.max(0, boss.flash - dt);
-    if (!boss.enraged && boss.hp <= boss.maxHp / 2) {
-      boss.enraged = true;
-      boss.transform = BOSS_PHASE.transform;
-      boss.windup = boss.active = boss.recovery = 0;
-      boss.followup = boss.comboFinish = false;
-      boss.cooldown = BOSS_ATTACK.enragedCooldown;
-    }
-    if (boss.transform > 0) {
-      boss.transform = Math.max(0, boss.transform - dt);
-      return; // Vulnerable, no heal, no attacks or movement during transformation.
-    }
+    // Damage may cross the threshold earlier in this tick; never release an attack after it.
+    if (!boss.enraged && boss.hp <= boss.maxHp / 2) return;
     boss.active = Math.max(0, boss.active - dt);
     if (boss.recovery > 0) {
       boss.recovery = Math.max(0, boss.recovery - dt);

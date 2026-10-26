@@ -194,11 +194,11 @@ export class ArenaScene extends Phaser.Scene {
 
     const pointer = this.input.activePointer;
     const touch = this.touch.sample();
-    if (this.touch.enabled) {
+    if (this.touch.enabled && !this.combat.bossTransforming) {
       this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
       this.reticle.setPosition(this.player.x + Math.cos(this.player.angle) * 100,
         this.player.y + Math.sin(this.player.angle) * 100);
-    } else if (this.input.isOver && !pointer.wasTouch) {
+    } else if (!this.combat.bossTransforming && this.input.isOver && !pointer.wasTouch) {
       this.cameras.main.getWorldPoint(pointer.x, pointer.y, this.aim);
       this.player.angle = Math.atan2(this.aim.y - this.player.y, this.aim.x - this.player.x);
       this.reticle.setPosition(this.aim.x, this.aim.y);
@@ -208,7 +208,7 @@ export class ArenaScene extends Phaser.Scene {
     while (this.accumulator >= FIXED_STEP) {
       // Capture once per tick, including hitstop; CombatWorld buffers intent for 120ms.
       const touch = this.touch.sample();
-      if (this.touch.enabled) this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
+      if (this.touch.enabled && !this.combat.bossTransforming) this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
       const input = {
         dx: touch.dx || Number(this.keys.D.isDown) - Number(this.keys.A.isDown),
         dy: touch.dy || Number(this.keys.S.isDown) - Number(this.keys.W.isDown),
@@ -221,7 +221,7 @@ export class ArenaScene extends Phaser.Scene {
         pressed: [...this.pressed, ...touch.pressed ?? []],
         specialAim: { ...this.releaseAim, ...touch.specialAim },
       };
-      const frozen = this.combat.hitstop > 0;
+      const frozen = this.combat.hitstop > 0 || this.combat.bossTransforming;
       const bossBefore = this.run.bossDue;
       const eliteBefore = this.combat.enemies.some(enemy => enemy.kind === 'bulwark');
       this.run.step(input, FIXED_STEP);

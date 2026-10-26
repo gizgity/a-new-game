@@ -1,6 +1,6 @@
 import type Phaser from 'phaser';
 import type { CombatWorld, Enemy } from './combat';
-import { BOSS_ATTACK, GRUNT_LEAP } from './config/balance';
+import { BOSS_ATTACK, BOSS_PHASE, GRUNT_LEAP } from './config/balance';
 import { ACTOR_TEXTURE, actorFrame } from './ActorArt';
 import { enemyArtPose } from './ActorPose';
 
@@ -81,10 +81,11 @@ export class EnemySprites {
       const bob = moving ? -Math.abs(Math.sin(body.stride)) * 1.5
         : pose === 'idle' ? Math.sin(this.clock * 3.5 + enemy.id) * 0.45 : 0;
       const lean = pose === 'windup' ? -progress * 2 : 0;
+      const transformPulse = enemy.transform > 0 ? Math.sin(Math.PI * (1 - enemy.transform / BOSS_PHASE.transform)) : 0;
       body.image.setTexture(enemy.transform > 0 ? 'enraged-transform' : ACTOR_TEXTURE,
         enemy.transform > 0 ? undefined : actorFrame(enemy.kind, enemy.angle, pattern))
-        .setPosition(enemy.x + Math.cos(enemy.angle) * lean, enemy.y - height + bob + Math.sin(enemy.angle) * lean)
-        .setScale(1, pose === 'windup' ? 1 - progress * 0.035 : 1)
+        .setPosition(enemy.x + Math.cos(enemy.angle) * lean, enemy.y - height + bob + Math.sin(enemy.angle) * lean - transformPulse * 6)
+        .setScale(1 + transformPulse * 0.14, pose === 'windup' ? 1 - progress * 0.035 : 1 + transformPulse * 0.08)
         .setDepth(1.2 + enemy.y / 100000).setVisible(true).setAlpha(1);
       if (enemy.flash > 0) body.image.setTintFill(0xffffff); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
     }

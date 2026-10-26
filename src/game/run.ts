@@ -71,8 +71,10 @@ export class RunDirector {
 
   step(input: CombatInput, dt: number): void {
     if (this.draft.length || this.result || this.expired) return;
+    const transforming = this.world.hp > 0 && this.world.bossTransforming;
     const frozen = this.world.hitstop > 0;
     this.world.step(input, dt);
+    if (transforming) return; // Transform clock advances, run/spawn/adaptation clocks do not.
     if (!frozen && !this.bossDue) {
       // Exponential decay avoids oscillation after a single chain or banking spawn debt.
       const decay = Math.exp(-dt / WAVES.clearWindow);

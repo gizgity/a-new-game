@@ -61,7 +61,7 @@ test('Elite and Boss spawn once; boss arrival clears excess common enemies and h
 test('mutual kill in the same tick is Victory before deadline; at deadline it is Defeat',()=>{
  for(const [tick,result] of [[15000,'victory'],[17999,'defeat']]) {
   const {world,run}=setup();world.enemies=[];world.spawnEnemy('boss');
-  const boss=world.enemies[0];Object.assign(boss,{x:890,y:500,hp:14,cooldown:999});
+  const boss=world.enemies[0];Object.assign(boss,{x:890,y:500,hp:14,enraged:true,cooldown:999});
   world.hp=10;world.projectiles=[{x:800,y:500,vx:0,vy:0,hostile:true,life:1},{x:875,y:500,vx:850,vy:0,hostile:false,life:1}];
   run.ticks=tick;run.draftIndex=DRAFT_MILESTONES.length;run.step(idle,1/60);
   assert.equal(world.hp,0);assert.equal(world.bossSlain,true);assert.equal(run.result,result);

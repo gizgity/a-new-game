@@ -13,11 +13,18 @@ test('warning lasts 120 simulation steps, keeps movement, suspends regular spawn
  for(let i=0;i<59;i++)r.step(idle,dt);assert.equal(r.bossDue,false);r.step(idle,dt);assert.equal(r.bossDue,true);assert.equal(w.enemies.filter(e=>e.kind==='boss').length,1);
  r.start();assert.equal(r.bossWarning,0);assert.equal(r.bossDue,false);
 });
-test('threshold exactly 50%, one transform, cancels attack safely, vulnerable, no heal, hitstop freezes',()=>{
- const {w,b}=setup();b.hp=751;w.step(idle,dt);assert.equal(b.enraged,false);b.hp=750;w.step(idle,dt);assert.equal(b.enraged,true);assert.equal(b.windup,0);assert.equal(b.hp,750);
- const position=[b.x,b.y],clock=b.transform;w.hitstop=.1;w.step(idle,dt);assert.equal(b.transform,clock);w.hitstop=0;
- w.hitEnemy(b,20,0,0,0,false);assert.equal(b.hp,730);w.hitstop=0;for(let i=0;i<50&&b.transform>0;i++)w.step(idle,dt);assert.equal(b.transform,0);assert.deepEqual([b.x,b.y],position);
- b.hp=749;step(w,2);assert.equal(b.transform,0);assert.equal(b.maxHp,1500);
+test('threshold exactly 50%, one1.4s transformation, cancels attack, no heal, freezes world/timer/input',()=>{
+ const {w,b}=setup();const r=new RunDirector(w);r.bossDue=true;r.ticks=15000;r.draftIndex=6;
+ b.hp=751;w.step(idle,dt);assert.equal(b.enraged,false);b.hp=750;
+ w.spawnEnemy('grunt');const grunt=w.enemies.at(-1);Object.assign(grunt,{x:1000,y:600,windup:.1,slow:2});
+ w.projectiles.push({x:800,y:500,vx:300,vy:0,hostile:true,damage:10,life:3});
+ w.heavyCharges=1;w.heavyRecharge=2;w.surge=100;
+ const snapshot=()=>JSON.stringify({player:w.player,grunt,shots:w.projectiles,hp:w.hp,bhp:b.hp,barrier:w.barrier,heavy:w.heavyCharges,recharge:w.heavyRecharge,stats:w.stats});
+ const before=snapshot(),tick=r.ticks;
+ for(let i=0;i<84;i++){r.step({...idle,dx:1,melee:true,shoot:true,dash:true,heavy:true,ultimate:true},dt);assert.equal(snapshot(),before);assert.equal(r.ticks,tick);}
+ assert.equal(b.transform,0);assert.equal(b.enraged,true);assert.equal(b.windup,0);assert.equal(b.maxHp,1500);
+ w.projectiles=[];r.step({...idle,dx:1,heavy:true,dash:true,ultimate:false},dt);assert.equal(r.ticks,tick+1);assert.ok(w.player.x>800);assert.equal(w.stats.dashes,0);assert.equal(w.heavyCharges,1);assert.equal(w.surge,100);
+ b.hp=749;step(w,2);assert.equal(b.transform,0);
 });
 test('phase2 slam follows with locked sweep; full telegraph and punish recovery, no extra projectiles',()=>{
  const {w,b}=setup();Object.assign(b,{enraged:true,hp:700,action:2});w.step(idle,dt);w.player.y=250;step(w,38);assert.equal(b.followup,true);
@@ -51,4 +58,8 @@ test('Boss shortcut starts at1150 kills/3:40, skips drafts, preserves threshold/
  r.step(idle,dt);assert.equal(r.draft.length,0);assert.equal(r.bossWarning,0);
  w.kills+=50;r.step(idle,dt);assert.equal(r.bossWarning,2);
  r.start();assert.equal(w.kills,0);assert.equal(r.elapsed,0);assert.ok(r.nextDraft);assert.equal(r.bossWarning,0);
+});
+
+test('death at threshold resolves instead of freezing run indefinitely; reset clears transform',()=>{
+ const {w,b}=setup();const r=new RunDirector(w);b.hp=750;w.hp=0;r.step(idle,dt);assert.equal(r.result,'defeat');r.start();assert.equal(w.bossTransforming,false);
 });
