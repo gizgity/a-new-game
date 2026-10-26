@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code/tests/build/browser PASS, chuẩn bị deploy; **AWAITING USER PLAYTEST APPROVAL**. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
+Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code/tests/build/browser/deploy PASS7843b98; **AWAITING USER PLAYTEST APPROVAL**. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
 
 ## ACCEPTANCE
 25kills/0:30 có Aegis Core/Blood Reclaimer/Phantom Edge/Detonation Specialist kèm nhãn vi/en; chọn1, không khóa hướng. Sau đó tối đa3card Adaptive, Curse2slots/4Mutation/timing/heal/unlocks/history/reset không regression. Trial không cắt mất card thứ4; desktop/mobile cuộn và chọn card cuối. Tests/build/browser/deploy rồi push handoff, chờ user playtest.
@@ -117,6 +117,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Feedback draft đầu4hướng: code7843b988e6d0a109cc20994b3c874219b05443bb đã fast-forward push main; Pages Actions40259161783 completed/success. Tests151definitions/12files, typecheck/build/browser4viewport PASS như CURRENT STATUS. URL https://gizgity.github.io/a-new-game/ ; evidence local fixture, chưa smoke live (proxy403 từ lượt trước) hoặc user acceptance.
+
 - Q6 code b534315bb7cb15aa219e6ee8debd1682457a685a, parents c02c30a/f1fb9ea trên main eb49190; fast-forward push không force, giữ toàn bộ Q5 evidence. Pages Actions40252934135 completed/success (job121348532512), Deploy step thành công. Lượt đầu c02c30a Actions40252846937 cũng success.
 - URL https://gizgity.github.io/a-new-game/ ; curl live bị network proxy403 nên chưa smoke live, không bypass policy. Chromium evidence là local Vite, không giả là live. Tài liệu reconciliation sau deploy chỉ Markdown, kiểm diff, không cần chạy lại build/tests.
 
@@ -130,7 +132,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Hoàn tất feedback4hướng ở draft đầu: focused checks/build/browser, deploy/push handoff rồi chờ user thử25kills/0:30 chọn1trong4; không mở Q7.
+Chờ user thử bản7843b98 tại https://gizgity.github.io/a-new-game/ : tới25kills HOẶC0:30, xem4nhãn/card, mobile cuộn chọncard4 hoặc chọn hướng muốn thử; chỉ nhận1Mutation, các lượt Mutation sau vẫn3lựa chọn Adaptive. Gửi hướng đã chọn/lỗi/thiết bị nếu có. Q6 stacking vẫn chờ approval; chỉ sửa feedback, không mở Q7.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.

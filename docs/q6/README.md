@@ -4,6 +4,8 @@ Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages
 
 ## Feedback tiếp theo — Draft đầu chọn4hướng
 
+Code7843b988e6d0a109cc20994b3c874219b05443bb đã push/deploy; [Actions40259161783](https://github.com/gizgity/a-new-game/actions/runs/40259161783) completed/success. **AWAITING USER PLAYTEST APPROVAL**.
+
 User xác nhận hiện4card tại Mutation đầu25kills/0:30: Aegis Core (Juggernaut), Blood Reclaimer (sustain), Phantom Edge (counter), Detonation Specialist (ranged/chain). Chọn1; các Mutation Draft sau vẫn Adaptive tối đa3card. Có nhãn vi/en; không khóa build, không thay effect/tuning/Curse stacking. Tests151definitions/12files, typecheck/build/diff PASS; Chromium local320/390/844/1440 kiểm4card/chọncard4/vi-en/lượt sau3card PASS (fixture kills, chưa user acceptance). Trên mobile cuộn tới card4 rồi chọn; desktop bố cục2×2. Trial Q5E cũng giữ4card đầu, route sustain lấy Reclaimer trước Catalyst; hướng dẫn Q5E cũ là lịch sử.
 
 ## Vào tình huống
