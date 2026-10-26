@@ -1,8 +1,8 @@
 # Q7C — Character & Enemy Art Overhaul
 
-**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Đã triển khai, đang chốt deploy/checks; **AWAITING PLAYTEST APPROVAL**, chưa runtimeACCEPTED. Q7D = Full Run Polish, chưa mở. Q2–Q7B giữ approval lịch sử, không đòi duyệt lại.
+**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Đã triển khai và deploy2ef6d48, Pages40305977315 SUCCESS; **AWAITING PLAYTEST APPROVAL**, chưa runtimeACCEPTED. Q7D = Full Run Polish, chưa mở. Q2–Q7B giữ approval lịch sử, không đòi duyệt lại.
 
-[Implementation/checks/cách playtest](IMPLEMENTATION.md) · [Board before/after](index.html) · [Source production/prompts](source/PROMPTS.md) · [Runtime asset/provenance](runtime-assets.json) · [Research góc nhìn](VIEW_RESEARCH.md) · [Asset specification](ASSET_SPEC.md).
+[Chơi bản Q7C](https://gizgity.github.io/a-new-game/?v=2ef6d48) · [Implementation/checks/cách playtest](IMPLEMENTATION.md) · [Board before/after](index.html) · [Source production/prompts](source/PROMPTS.md) · [Runtime asset/provenance](runtime-assets.json) · [Research góc nhìn](VIEW_RESEARCH.md) · [Asset specification](ASSET_SPEC.md).
 
 Sixroles: Player mint/ivory P0; Grunt hookedmask rose; Archer hood/bow violet; Volatile5shardsamber; Bulwark blueplate/shield; ChainWarden crown/thânrỗng/xích bronze tiết chế. Reference chính là ảnh user Q7A Visual Hierarchy / Contrast StudyV1 và bản gốc `../q7a/artwork/contrast-palette-v1.png`. GiữP0player/threat→P1roles/projectile→P2mark/field→P3floor. Không importconceptboard vào spriteatlas.
 

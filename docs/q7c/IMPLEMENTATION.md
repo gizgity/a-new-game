@@ -1,6 +1,10 @@
 # Q7C — Character & Enemy Art runtime
 
-**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Implementation đã có, đang chốt deploy; **AWAITING PLAYTEST APPROVAL**, chưa runtime ACCEPTED, không mở Q7D.
+**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Implementation và deploy đã hoàn tất; **AWAITING PLAYTEST APPROVAL**, chưa runtime ACCEPTED, không mở Q7D.
+
+## Deployment
+
+Code0041064, bản deploy2ef6d48180b4873198dd666627771296f4b4837b; [Pages40305977315](https://github.com/gizgity/a-new-game/actions/runs/40305977315), job121515051426 completed/success gồm bướcDeploy. URL https://gizgity.github.io/a-new-game/?v=2ef6d48 . Livecurl bịproxy CONNECT403 (HTTP000), không giả local/dist làlive. Không đổi runtime saudeploy; commitbàn giao chỉMarkdown.
 
 ## Thay đổi
 

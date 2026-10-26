@@ -482,7 +482,7 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 
 ## Q7C Design Contract — Character & Enemy Art Overhaul
 
-**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau [research góc nhìn](docs/q7c/VIEW_RESEARCH.md). Implementation đã có, chốtdeploy và **AWAITING PLAYTEST APPROVAL**, chưa runtimeACCEPTED. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mởQ7D. Q7B5ee970e/approval78f07e6 accepted; câu “khôngtựQ7C” tronglịchsử Q7A/Q7B làgate cũ,user đãgiaoQ7C riêng.
+**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau [research góc nhìn](docs/q7c/VIEW_RESEARCH.md). Implementation đã deploy2ef6d48,Pages40305977315 SUCCESS và **AWAITING PLAYTEST APPROVAL**, chưa runtimeACCEPTED. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mởQ7D. Q7B5ee970e/approval78f07e6 accepted; câu “khôngtựQ7C” tronglịchsử Q7A/Q7B làgate cũ,user đãgiaoQ7C riêng.
 
 - Player/Grunt/Archer/Volatile/Bulwark/ChainWarden asset-first/ImageGen,NeonOccult/FracturedGeometry theoảnhuser **Q7A VisualHierarchy/ContrastStudyV1**,giữsilhouette/palette/P0–P3. Top-down¾cáchđiệu nhìn xuốngcao,giữfloor/camera2D; khôngchuyểnisometric hoặcép overhead90°. Khôngvẽbodyprocedural/Graphics,khôngcropconceptboardthànhsprite.
 - Runtime:sourceproduction riêng4facings/idle-move-windup-attack-recovery-hit-death,PlayerL1/L2/L3/Heavy/Basic/Charged/Dash/exit vàBoss sweep/ring/slam.236poseframes,atlasPNG1024square/4MiBdecoded;pose-key animation+transforms đọcstate simulation. Bodykhôngxoayphẳng360°,aim/hit/projectile/VFX vẫnliêntục. Volatilekhôngrecovery sống;deathghostkhônggiữcollider/target/AI/killreward. Boss khônghitstagger.

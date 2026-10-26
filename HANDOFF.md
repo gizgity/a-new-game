@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7C — Character & Enemy Art Overhaul. User “visual approved q7c”2026-10-26 sau research góc nhìn. Đã triển khai asset rendering/animation; chốtchecks/deployPages rồi **AWAITING PLAYTEST APPROVAL**. Q7B accepted; Q7D = Full Run Polish chưa mở.
+Q7C — Character & Enemy Art Overhaul. User “visual approved q7c”2026-10-26 sau research góc nhìn. Đã triển khai asset rendering/animation và deploy2ef6d48/Pages40305977315 SUCCESS; **AWAITING PLAYTEST APPROVAL**. Q7B accepted; Q7D = Full Run Polish chưa mở.
 
 ## ACCEPTANCE
 Giữ artdirection top-down¾nhìnxuốngcao,referenceQ7A,silhouette/palette/P0–P3;6actors/state/Playeractions/Boss3patterns. Giữcollider/AI/damage/timing/telegraph/VFX/controls/HUD vàQ2–Q7B. Uservisualapproval không là runtimeacceptance; không tựQ7D.
@@ -36,10 +36,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
-| Q7C — Character & Enemy Art | VISUAL APPROVED / AWAITING PLAYTEST APPROVAL | User “visual approved q7c”; runtime đã triển khai, đang chốtdeploy |
+| Q7C — Character & Enemy Art | VISUAL APPROVED / AWAITING PLAYTEST APPROVAL | User “visual approved q7c”; runtime đã deploy, chờplaytest |
 | Q7D — Full Run Polish | NOT STARTED | Chỉ mở khi user giao |
 
-## CURRENT STATUS — Q7C IMPLEMENTED
+## CURRENT STATUS — Q7C DEPLOYED / AWAITING PLAYTEST APPROVAL
 - Review7a1db73/research2bb4792; đãmergeorigin/main87c1ca8 trong3c940dd và ghiapproval. Sourceproduction mới riêng bằngImageGen,4facings×7states/6actors +Player8actions/Boss9patternposes/hướng;236frames. Khôngcropconceptboard. AtlasPNG1024square/990873bytes/4MiBdecoded;provenance/sourceprompt/hash tại docs/q7c/runtime-assets.json vàsource/.
 - ActorPose/ActorArt/EnemySprites +PlayerVisual; bodies dùngImages/pooledassets, khôngGraphicsbody. Táchground/body/statusVFX để giữlayering. Telegraph vàdrawSlash bytewise; core/gameplay/config/AI/controls/HUD/style/i18n/floor/workflow khôngdiff. OldSVG giữlịch sử. Khôngnewgamedep/framework.
 - Animationtheosimulation,4bodyfacings khôngxoayphẳng360°; aim/projectile/VFX liên tục theo inputcũ. Walk2pose/bob,windup lấyđà,attack/recovery/shot/dash/hit/deathsourceposes. Enemydeathpool8/0.28s chỉhp≤0,Playerdash6echo/0.22s,cadence0.033s; reset/pause/hitstopfreeze. Khônggiữcollider/target/rewardqua deathvisual. Volatilekhônglivingrecovery; Bosshit khôngstagger.
@@ -47,10 +47,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Browserinput CDPtouchmove+shoot390/844,mouse/WASD1440,Pause/vi-en/resumePASS;20resetdisplaylist29→29,ghost/deathclear. Dist5sizesatlasload/Heavyhold2/2→release1/2/Pause/locale/resume/noerrorPASS. Corner390/1440 xem runtime/corners.json. Fixtures khôngdeviceapproval.
 - PerfCPUdrawmedian0.3–0.4→~0.1ms; rAF39033.3→16.7/32016.7→16.7/84433.3→16.7/76833.3→33.3/144050.1→49.9ms. SoftwareWebGL/sequentialfrozenfixture,timerthô; khôngdeviceFPS/coretickbenchmark. Atlastrim từ16MiB xuống4MiB giữpivot/appearance. Chưa Safari/iOS/máythật/naturalfullrun; chờuser.
 - Chi tiết/evidence/cách thử: docs/q7c/IMPLEMENTATION.md,README/index,source/PROMPTS,runtime-assets vàruntime/*.json/png. BuildwarningPhaser>500KB cósẵn.
-- Deploy: đangchốtpushmain/Pages; khônggọi local/dist làlive. GitHubconnector đọcActions được; ghCLIapi bị403 nên dùngconnector, khôngbypasspolicy.
+- Deploy: Code0041064, bản deploy2ef6d48180b4873198dd666627771296f4b4837b; [Pages40305977315](https://github.com/gizgity/a-new-game/actions/runs/40305977315), job121515051426 completed/success gồm bướcDeploy. URL https://gizgity.github.io/a-new-game/?v=2ef6d48 . Livecurl bịproxy CONNECT403 (HTTP000), không giả local/dist làlive. Không đổi runtime saudeploy; commitbàn giao chỉMarkdown. GitHubconnector đọcActions được; ghCLIapi bị403 nên dùngconnector, khôngbypasspolicy.
 
 ## PLAYTEST SCOPE
-URL sauPages: https://gizgity.github.io/a-new-game/ (reload bảnmới). Chỉart/animationQ7C, khôngđòiduyệtlạibalanceQ2–Q7B.
+URL: https://gizgity.github.io/a-new-game/?v=2ef6d48 (reload bảnmới). Chỉart/animationQ7C, khôngđòiduyệtlạibalanceQ2–Q7B.
 1. Opening:4hướng/Chém+Bắn giữ,Heavy/Charged giữ-thả,Dash; desktopWASD/chuột/Shift/E/Space. Playernổi,khôngcắt/nhầmhướng/giậtpose,inputcũgiữ.
 2. Crowd:maskGrunt/cungArcher/5shardsVolatile phânbiệt;windup/recoveryđọcđượcgiữaRupture/Charged. Volatile nổxongbiếnmất,khôngđứnghồi.
 3. Bulwark200kills HOẶC2:30:lõi mở khácgiápđóng. Boss450kills HOẶC4:00:sweep/ring/slam khácpose/telegraph,giữnhịpcũ.
@@ -68,4 +68,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Chốtpushmain/Pages vàlink/commit/before-after/checklistuser,ghiAWAITING PLAYTEST APPROVAL rồi dừng. Sau đó chỉ nhậnfeedback/playtestQ7C; khôngtựQ7D hoặc runtimeACCEPTED.
+Chờ user playtest/feedback Q7C theo scope ở trên. Nhận lỗi nhân vật/state/hướng/cue/độ mượt kèm thiết bị/browser; chỉ sửa trong Q7C được giao. Không tự Q7D hoặc runtime ACCEPTED, không yêu cầu duyệt visual lại.
