@@ -380,7 +380,9 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 
 ## Q7A Design Contract — Arena Art & Visual Contrast
 
-**CONCEPT APPROVED — user “approved, làm tiếp đi” ngày2026-10-26; asset-based floor đã triển khai/checks PASS, runtime AWAITING USER PLAYTEST APPROVAL.** Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking đã ACCEPTED theo main bc07fd4 (user “aprroved q6 lun nha”); Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
+**ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved” sau khi làm rõ scope chỉ artwork sàn obsidian (code0e0a9af/board2e48166), gameplay/camera/controls/sprites/VFX giữ nguyên. Concept V2 đã được duyệt trước qua “approved, làm tiếp đi”; checks/deploy PASS. Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking đã ACCEPTED theo main bc07fd4 (user “aprroved q6 lun nha”); Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
+
+Q7A đã đóng bằng approval của user; chờ user gửi scope **Q7B**, chưa tự mở milestone mới. Approval không suy rộng sang Q1 hoặc xác minh mọi thiết bị/Safari.
 
 ### Arena / art direction
 - Một arena **1600×1000, inset64**, player radius16 và toàn bộ clamp/collision giữ nguyên. Giữ follow/zoom/resize trong ArenaScene; không fit toàn arena vào phone theo mockup. Không procedural dungeon, tilemap phức tạp hoặc vật cản mới.

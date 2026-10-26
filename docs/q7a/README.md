@@ -1,6 +1,6 @@
 # Q7A — Ấn phong bị vỡ / The Broken Seal
 
-**HIỆN HÀNH:** user duyệt concept V2 qua “approved, làm tiếp đi” ngày2026-10-26. Arena đã triển khai bằng texture WebP; đang bàn giao **AWAITING USER PLAYTEST APPROVAL**. Xem [implementation/checks/cách thử](IMPLEMENTATION.md), [board trước–sau](index.html) và [runtime asset provenance](runtime-asset.json). Q6 cũng đã ACCEPTED theo main bc07fd4.
+**HIỆN HÀNH: ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26. User xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved” sau khi làm rõ scope floor-only; code0e0a9af/board2e48166. Concept V2 đã được duyệt trước đó; gameplay/camera/controls/sprites/VFX giữ nguyên. Chờ scope Q7B từ user, chưa mở task mới. Xem [implementation/checks/cách thử](IMPLEMENTATION.md), [board trước–sau](index.html) và [runtime asset provenance](runtime-asset.json). Q6 cũng đã ACCEPTED theo main bc07fd4.
 
 ---
 

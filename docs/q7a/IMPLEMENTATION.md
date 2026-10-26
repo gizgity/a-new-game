@@ -1,6 +1,8 @@
 # Q7A — runtime / bàn giao playtest
 
-**CONCEPT APPROVED**: user “approved, làm tiếp đi” ngày2026-10-26 cho V2. Runtime **AWAITING USER PLAYTEST APPROVAL**, không tự accepted và không mở Q7B. Q2–Q6 và draft đầu4hướng giữ accepted; Q6 approval mới đã lấy từ main bc07fd4, Q1 vẫn riêng chưa visual approved.
+**ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved”, sau khi được làm rõ Q7A chỉ thay artwork sàn obsidian; gameplay/camera/controls/player-enemy sprites/combat VFX giữ nguyên. Approval dành cho Q7A đã deploy (code0e0a9af, bản board2e48166), không suy rộng sang Q1 hoặc mọi thiết bị/Safari.
+
+Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. **NEXT ACTION: chờ scope Q7B từ user**, chưa mở task mới.
 
 ## Thay đổi
 
@@ -40,9 +42,9 @@
 | 390×844 | 16.7 /50.0–50.1 | 16.7 /16.8 |
 | 1440×900 | 83.3 /100 | 33.4 /66.7 |
 
-Không thấy suy giảm do artwork trong mẫu này; không suy ra mobile FPS hoặc mức cải thiện trên thiết bị. Đây là **frozen render fixture**, không benchmark simulation/animation/full-run. Load asset local khoảng5–8ms trong report, không là thời gian tải mạng live. Cần user thử nhiệt/độ mượt trên máy thật.
+Không thấy suy giảm do artwork trong mẫu này; không suy ra mobile FPS hoặc mức cải thiện trên thiết bị. Đây là **frozen render fixture**, không benchmark simulation/animation/full-run. Load asset local khoảng5–8ms trong report, không là thời gian tải mạng live. Chưa đo nhiệt/độ mượt trên máy thật; approval của user không phải phép đo cho mọi thiết bị.
 
-## Deploy / cách user thử
+## Deploy / checklist playtest đã bàn giao
 
 Code [0e0a9af](https://github.com/gizgity/a-new-game/commit/0e0a9af2b8cd5fc201690b50ae0a420995dcdd82) đã fast-forward push main. [Pages40266665479](https://github.com/gizgity/a-new-game/actions/runs/40266665479) / job121390460491 completed/success, gồm bước Deploy; bản docs/board [2e48166](https://github.com/gizgity/a-new-game/commit/2e48166f11ad149172a1a47a3b100b1ec586531c) cũng [deploy40266875087](https://github.com/gizgity/a-new-game/actions/runs/40266875087) completed/success với runtime code giữ nguyên. Giữ base /a-new-game/. Live curl từ môi trường bị proxy403 nên chưa smoke live; không bypass policy. Ảnh là local Vite/dist, không giả live. Actions success không là visual acceptance.
 
@@ -52,4 +54,4 @@ Code [0e0a9af](https://github.com/gizgity/a-new-game/commit/0e0a9af2b8cd5fc20169
 2. **Crowd / cue**: ở20–45s hoặc khi có nhiều Grunt, quan sát dashed chuẩn bị → solid/chevrons → hit/recovery, né bằng Lướt/Space. Bắn/Chém đặt dấu rồi Heavy/Charged để so Rupture/relay/blast với floor. Mong đợi floor không lấn threat hay che player/VFX; không cần duyệt lại damage/timing/build Q2–Q6.
 3. **Boss nếu tiện**:450kills hoặc4:00, quan sát sweep/ring/slam trên sàn mới. Không yêu cầu chơi cảrun để báo lỗi floor. Thử phone dọc/ngang và desktop nếu có; chú ý độ mượt khi đông quái.
 
-Phản hồi: hình/vùng hoặc tình huống, thứ bị chìm/che/mỏi mắt, thiết bị/browser và cảm giác độ mượt. Q7A dừng **AWAITING USER PLAYTEST APPROVAL**; Q1 và Q7B không tự được duyệt/mở.
+Checklist trên giữ làm lịch sử bàn giao/evidence; user đã duyệt Q7A, không yêu cầu thử lại. Phát sinh sau ghi rõ tình huống/thiết bị/browser. Q1 giữ trạng thái riêng; chờ user gửi scope Q7B trước khi làm tiếp.
