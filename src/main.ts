@@ -5,12 +5,14 @@ import { COMBAT, type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
 import { DraftInteractionGuard } from './ui/DraftInteractionGuard';
-import { PLAYTEST_BUILDS } from './game/config/playtests';
+import { MUTATIONS, CURSES } from './game/builds';
+import { PLAYTEST_BUILDS, DIVERSITY_ROUTES, routeDraft } from './game/config/playtests';
 import { TouchControls } from './ui/TouchControls';
 import './style.css';
 
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
-const buildTrial = Boolean(trialBuild);
+const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchParams(location.search).get('playtest'));
+const buildTrial = Boolean(trialBuild || trialRoute);
 const profile = loadProfile();
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
@@ -107,7 +109,7 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
   });
-  if (trialBuild) document.querySelector('#trial-label')!.textContent = t(trialBuild.label);
+  if (trialBuild || trialRoute) document.querySelector('#trial-label')!.textContent = t((trialRoute ?? trialBuild)!.label);
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
@@ -138,7 +140,7 @@ function draftReason(option: import('./game/builds').DraftOption): string {
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
   panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draftKind === 'curse' && arena.combat.curse ? ' ' + t('curseSwapHint') : ''}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
-    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : option.role)}</small><strong>${t(option.id)}</strong>${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
+    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : trialRoute && (arena.run.draftKind === 'curse' ? trialRoute.curse : trialRoute.mutations.find(id => !arena.combat.mutations.includes(id))) === option.id ? 'routeRecommended' : option.role)}</small><strong>${t(option.id)}</strong>${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
@@ -166,8 +168,8 @@ function applySettings(): void {
   game.sound.mute = profile.settings.muted;
   game.sound.volume = profile.settings.volume;
   arena.cosmetic = profile.settings.cosmetic;
-  arena.run.mutationPool = mutationPool(profile);
-  arena.run.cursePool = cursePool(profile);
+  arena.run.mutationPool = trialRoute ? MUTATIONS : mutationPool(profile);
+  arena.run.cursePool = trialRoute ? CURSES : cursePool(profile);
 }
 
 const hpValue = document.querySelector('#hp-value')!;
@@ -235,16 +237,17 @@ function renderCombatHUD(world: CombatWorld): void {
 
 export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
-    if (buildTrial) {
+    if (trialBuild) {
       arena.combat.mutations = [...trialBuild!.mutations];
       arena.combat.curse = trialBuild!.curse;
-    } else {
+    } else if (!buildTrial) {
       progression.beginRun();
       arena.run.previousOffers = [...profile.drafts.previous];
     }
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
+    if (phase === 'draft' && trialRoute) arena.run.draft = routeDraft(trialRoute, arena.run.draftKind, arena.combat.mutations, arena.combat.curse, arena.run.draft);
     if (!buildTrial) {
       progression.observe(arena.combat, arena.run.result);
       if (phase === 'draft') progression.offerDraft(arena.run.draft.map(o => o.id));
