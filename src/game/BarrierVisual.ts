@@ -8,7 +8,7 @@ export function drawBarrier(g: Phaser.GameObjects.Graphics, world: CombatWorld):
   const flash = barrier.flash / 0.35;
   const radius = barrier.broken ? 23 + (1 - flash) * 18 : 24;
   const alpha = barrier.broken ? flash : 0.22 + flash * 0.5;
-  const color = world.curse === 'ironOath' ? 0xb1dce8 : 0x63d9f5;
+  const color = world.hasCurse('ironOath') ? 0xb1dce8 : 0x63d9f5;
   g.lineStyle(2, color, alpha);
   for (let i = 0; i < 6; i++) {
     const angle = i * Math.PI / 3;

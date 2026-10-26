@@ -49,7 +49,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="resource-state milestone-state"><span data-i18n="nextEvolution"></span><span id="draft-progress"></span></div>
       <div id="boss-arrival" class="resource-state milestone-state"></div>
       <span id="build-status" class="build-status"></span>
-      <span id="build-value" class="build-value"></span>
+      <span id="build-value" class="build-value"></span><div id="curse-slots" class="curse-slots"></div>
       <span id="combat-notice" aria-live="polite"></span>
     </div>
     <div id="overlay" class="overlay">
@@ -139,8 +139,8 @@ function draftReason(option: import('./game/builds').DraftOption): string {
 }
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
-  panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draftKind === 'curse' && arena.combat.curse ? ' ' + t('curseSwapHint') : ''}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
-    `<button class="draft-card" data-choice="${index}"><small>${t(option.id === arena.combat.curse ? 'keepCurse' : trialRoute && (arena.run.draftKind === 'curse' ? trialRoute.curse : trialRoute.mutations.find(id => !arena.combat.mutations.includes(id))) === option.id ? 'routeRecommended' : option.role)}</small><strong>${t(option.id)}</strong>${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
+  panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draftKind === 'curse' && arena.combat.curses.length ? ' ' + t(arena.combat.curses.length === 2 ? 'curseFullHint' : 'curseSwapHint') : ''}</p><div class="draft-options">${arena.run.draft.map((option, index) =>
+    `<button class="draft-card" data-choice="${index}"><small>${t(option.action === 'keep' ? 'keepCurse' : arena.run.draftKind === 'curse' ? option.replaceSlot !== undefined ? 'replaceCurse' : 'addCurse' : trialRoute && trialRoute.mutations.find(id => !arena.combat.mutations.includes(id)) === option.id ? 'routeRecommended' : option.role)}</small><strong>${option.action === 'keep' ? arena.combat.curses.map(id => t(id)).join(' + ') : t(option.id)}</strong>${option.replaceSlot !== undefined ? `<span>${t('replaceCurseSlot').replace('{slot}', String(option.replaceSlot + 1)).replace('{item}', t(arena.combat.curses[option.replaceSlot]))}</span>` : ''}${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${option.action === 'keep' ? t('keepBuildDesc') : t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
@@ -213,7 +213,8 @@ function renderCombatHUD(world: CombatWorld): void {
     .replace('{kills}', String(world.kills)).replace('{target}', String(target.kills)).replace('{time}', formatTime(target.seconds));
   document.querySelector('#draft-progress')!.textContent = milestone ? progress(milestone) : t('draftsComplete');
   document.querySelector('#boss-arrival')!.textContent = arena.run.bossDue ? '' : `${t('bossArrival')} ${progress(ENCOUNTERS.boss)}`;
-  document.querySelector('#build-value')!.textContent = [...world.mutations, ...(world.curse ? [world.curse] : [])].map((id) => t(id)).join(' · ');
+  document.querySelector('#build-value')!.textContent = [...world.mutations].map((id) => t(id)).join(' · ');
+  document.querySelector('#curse-slots')!.innerHTML = [0, 1].map(slot => `<span>${t('curseSlot').replace('{slot}', String(slot + 1))}: <b>${world.curses[slot] ? t(world.curses[slot]) : t('emptySlot')}</b></span>`).join('');
   const duration = (seconds: number) => t('secondsShort').replace('{n}', seconds.toFixed(1));
   const statuses: string[] = [];
   if (world.build.reversal > 0) statuses.push(`${t('reversalReady')} ${duration(world.build.reversal)}`);
@@ -224,9 +225,9 @@ function renderCombatHUD(world: CombatWorld): void {
   if (world.build.phantom > 0) statuses.push(`${t('phantomReady')} ${duration(world.build.phantom)}`);
   if (world.build.staticCharge > 0) statuses.push(`${t('staticReady')} ${duration(world.build.staticCharge)}`);
   if (world.mutations.includes('berserker')) statuses.push(world.build.frenzy > 0 ? `${t('frenzyState')} ${duration(world.build.frenzy)}` : `${t('frenzyState')} ${world.build.comboStage}/3`);
-  if (world.curse === 'ghostStep' && world.dashCharges === 0) statuses.push(t('ghostRisk'));
+  if (world.hasCurse('ghostStep') && world.dashCharges === 0) statuses.push(t('ghostRisk'));
   if (world.outgoingDamageMultiplier < 1) statuses.push(t('defenseDamageCost').replace('{n}', String(Math.round((1 - world.outgoingDamageMultiplier) * 100))));
-  if (world.curse === 'bloodPact' && world.barrier.value > 0) statuses.push(t('barrierBlocksHeal'));
+  if (world.hasCurse('bloodPact') && world.barrier.value > 0) statuses.push(t('barrierBlocksHeal'));
   if (world.build.healFlash > 0) statuses.push(`${t('healState')} +${world.build.lastHeal}`);
   if (world.build.costFlash > 0) statuses.push(t('bloodMiss'));
   document.querySelector('#build-status')!.textContent = statuses.join(' · ');
@@ -239,7 +240,7 @@ export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
     if (trialBuild) {
       arena.combat.mutations = [...trialBuild!.mutations];
-      arena.combat.curse = trialBuild!.curse;
+      arena.combat.setCurses([trialBuild!.curse]);
     } else if (!buildTrial) {
       progression.beginRun();
       arena.run.previousOffers = [...profile.drafts.previous];
@@ -247,7 +248,7 @@ export const arena = new ArenaScene((phase) => {
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
-    if (phase === 'draft' && trialRoute) arena.run.draft = routeDraft(trialRoute, arena.run.draftKind, arena.combat.mutations, arena.combat.curse, arena.run.draft);
+    if (phase === 'draft' && trialRoute) arena.run.draft = routeDraft(trialRoute, arena.run.draftKind, arena.combat.mutations, arena.combat.curses, arena.run.draft);
     if (!buildTrial) {
       progression.observe(arena.combat, arena.run.result);
       if (phase === 'draft') progression.offerDraft(arena.run.draft.map(o => o.id));

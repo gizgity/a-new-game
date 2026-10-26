@@ -1,5 +1,7 @@
 # Q5E — thử độ đa dạng build và cân bằng
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Bản8b1571d719a51c6f0da50a8b4435782c20a444ff đã deploy; Pages Actions40248846311 completed/success. Q5D514063a được user duyệt “oki r, làm tiếp đi” ngày2026-10-26. Lượt này bổ sung route trial theo các mốc draft thật để so bốn hướng chơi; **giữ nguyên toàn bộ tuning**, gồm tank costs đã duyệt. Chưa có feedback mất cân bằng mới để đổi số. Q5E đang chờ human playtest/acceptance; chưa đánh dấu toàn Q5 hoàn thành.
 
 ## Cách vào và thử

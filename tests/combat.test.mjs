@@ -336,7 +336,7 @@ test('Berserker, Detonation Specialist and Static Riposte apply their documented
  const riposte=world();riposte.mutations.push('staticRiposte');const targetB=target(riposte,850);
  hostileAtNextDashPosition(riposte);riposte.step({...idle,dash:true},FIXED_STEP);
  assert.equal(targetB.hp,500);assert.equal(riposte.perfectDodges,1);assert.ok(riposte.build.staticCharge>0);
- const soul=world();soul.curse='volatileSoul';soul.projectiles.push({x:800,y:500,vx:0,vy:0,hostile:true,life:1});soul.step(idle,FIXED_STEP);
+ const soul=world();soul.setCurses(['volatileSoul']);soul.projectiles.push({x:800,y:500,vx:0,vy:0,hostile:true,life:1});soul.step(idle,FIXED_STEP);
  assert.equal(soul.hp,90);
 });
 
@@ -615,7 +615,7 @@ test('held L1 then L2 clears an unbuffed cluster, grants charge per hit, and lea
   x:state.player.x+65*Math.cos(degrees*Math.PI/180),y:state.player.y+65*Math.sin(degrees*Math.PI/180),stagger:999});}
  advance(state,.6,{...idle,melee:true});assert.equal(state.kills,3);assert.equal(state.enemies.length,1);
  assert.equal(state.enemies[0].hp,36);assert.equal(state.chargedShots,2);
- assert.equal(state.mutations.length,0);assert.equal(state.curse,null);
+ assert.equal(state.mutations.length,0);assert.equal(state.curses[0],undefined);
 });
 
 
@@ -702,7 +702,7 @@ test('ranged-only hits earn Charged ammo, Catalyst speeds it up, and Charged ena
    Object.assign(enemy,{x:850,y:500,stagger:999});state.step({...idle,shoot:true},FIXED_STEP);advance(state,.22);
   }
   assert.equal(state.stats.melee,0);assert.equal(state.chargedShots,catalyst?2:1);
-  assert.equal(enemy.hp,940);state.mutations.push('detonationSpecialist');state.curse='volatileSoul';
+  assert.equal(enemy.hp,940);state.mutations.push('detonationSpecialist');state.setCurses(['volatileSoul']);
   Object.assign(enemy,{x:850,y:500,stagger:999});state.step({...idle,charged:true},FIXED_STEP);
   assert.equal(state.detonations,1);assert.equal(enemy.hp,940-84-24*1.25*1.4);
  }

@@ -1,5 +1,7 @@
 # Q5A — Juggernaut
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Bản fa4045deb8d332fee03cdf01555ced2d4ed29b79: Barrier + Guard Breaker + Aegis Core + Iron Oath. Actions40168884585 completed/success. Chờ user playtest; không là approval Q5A hoặc quyền mở Q5B.
 
 - `juggernaut-{320,390,844,1440}.png`: fixture có sẵn build, Bulwark1000HP đặt gần player, simulation thật resolve một Heavy. Aegis10 + Guard12.5 với Oath =22.5 Barrier; không là natural run.

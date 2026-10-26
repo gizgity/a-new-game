@@ -5,6 +5,7 @@ export type CurseId = typeof CURSES[number];
 export type BuildId = MutationId | CurseId;
 export interface DraftOption {
   id: BuildId; role: 'adaptive' | 'synergy' | 'wildcard' | 'curseChoice';
+  action?: 'keep'; replaceSlot?: 0 | 1;
   reason?: { kind: 'behavior'; tag: import('./DraftSignals.js').BehaviorTag } | { kind: 'synergy'; id: BuildId };
 }
 export interface CombatStats { melee: number; shots: number; dashes: number }

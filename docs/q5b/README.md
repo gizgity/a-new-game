@@ -1,5 +1,7 @@
 # Q5B — rework Mutation/Curse
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Q5B ban đầu b06bf69 đã deploy. Lượt sustain trước f6dd69431cfeee4427bdb8748592a39d8e1bdea1 đã deploy, Actions40207444949 completed/success; hồi2HP/2s, cap riêng6HP/10s. 105tests/typecheck/build/browser PASS; chờ user thử lại frenzy, không là acceptance Q5B.
 
 Rework5Mutation còn lại và4Curse cũ theo Q5 Design Contract; giữ Guard/Aegis/Oath và tuning Grunt6b7d7ad. Pool hiện7Mutation/5Curse, chưa Q5C/D. Implementation không là user experience acceptance.

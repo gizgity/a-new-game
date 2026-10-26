@@ -22,7 +22,7 @@ test('Barrier absorbs after curse damage, preserves hurt immunity/knockback and 
  assert.equal(w.hp,92);assert.equal(w.barrier.value,0);assert.equal(w.barrier.broken,true);
  assert.equal(w.invulnerable,.65);assert.equal(w.player.x,820);
  w.hurt(20,0);assert.equal(w.hp,92);
- w.invulnerable=0;w.barrier.gain(30,false);w.curse='ghostStep';w.dashCharges=0;w.hurt(20,0);
+ w.invulnerable=0;w.barrier.gain(30,false);w.setCurses(['ghostStep']);w.dashCharges=0;w.hurt(20,0);
  assert.equal(w.barrier.value,6);assert.equal(w.hp,92);
  w.invulnerable=0;w.dashTime=.1;w.hurt(20,0);assert.equal(w.barrier.value,6);
 });
@@ -64,7 +64,7 @@ test('Guard rewards closed Bulwark armor but not idle, recovery, miss or Boss wi
 });
 
 test('Iron Oath multiplies grants once, Heavy requires existing Barrier and spends its charge',()=>{
- const w=world();w.curse='ironOath';w.beginAttack(true);assert.equal(w.barrier.value,0);assert.equal(w.heavyCharges,1);
+ const w=world();w.setCurses(['ironOath']);w.beginAttack(true);assert.equal(w.barrier.value,0);assert.equal(w.heavyCharges,1);
  w.barrier.gain(4,true);assert.equal(w.barrier.value,5);w.beginAttack(true);
  assert.equal(w.barrier.value,9);assert.equal(w.heavyCharges,0);
  assert.equal(w.rechargeDuration,COMBAT.dashRecharge*1.3);
@@ -74,20 +74,20 @@ test('Iron Oath multiplies grants once, Heavy requires existing Barrier and spen
 });
 
 test('Oath only grants on actual Heavy start, buffered cancellation grants nothing',()=>{
- const w=world();w.curse='ironOath';w.barrier.gain(5,false);w.beginAttack(false);
+ const w=world();w.setCurses(['ironOath']);w.barrier.gain(5,false);w.beginAttack(false);
  w.step({...idle,heavy:true},1/60);assert.equal(w.barrier.value,5);
  w.clearInput();w.step({...idle,dash:true},1/60);assert.equal(w.barrier.value,5);
  assert.equal(w.heavyCharges,2);
 });
 
 test('pause/draft freezes defensive clocks; switching/keeping Curse preserves resource and timers',()=>{
- const w=world(),run=new RunDirector(w);w.curse='ironOath';w.barrier.guardBreak(true);
+ const w=world(),run=new RunDirector(w);w.setCurses(['ironOath']);w.barrier.guardBreak(true);
  w.barrier.meleeDamage(40,true);const before=JSON.stringify(w.barrier);
  run.draftKind='curse';run.draft=[{id:'ironOath',role:'curseChoice'},{id:'ghostStep',role:'curseChoice'}];
  run.step(idle,1);assert.equal(JSON.stringify(w.barrier),before);
  assert.equal(run.choose(0),true);assert.equal(JSON.stringify(w.barrier),before);
  run.draft=[{id:'ghostStep',role:'curseChoice'}];run.choose(0);
- assert.equal(w.rechargeDuration,2.8);assert.equal(JSON.stringify(w.barrier),before);
+ assert.equal(w.rechargeDuration,COMBAT.dashRecharge*BARRIER.oathDashMultiplier);assert.deepEqual(w.curses,['ironOath','ghostStep']);assert.equal(JSON.stringify(w.barrier),before);
  w.barrier.step(3);w.barrier.guardBreak(false);assert.equal(w.barrier.value,27.5);
  run.start();assert.equal(w.barrier.value,0);assert.equal(w.barrier.guardCooldown,0);assert.equal(w.barrier.aegisDamage,0);
  assert.equal(w.rechargeDuration,COMBAT.dashRecharge);

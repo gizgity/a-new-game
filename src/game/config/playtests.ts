@@ -24,13 +24,13 @@ export const DIVERSITY_ROUTES = [
 
 export function routeDraft(
   route: { mutations: readonly MutationId[]; curse: CurseId }, kind: 'mutation' | 'curse',
-  owned: readonly MutationId[], current: CurseId | null, sampled: readonly import('../builds').DraftOption[],
+  owned: readonly MutationId[], current: readonly CurseId[], sampled: readonly import('../builds').DraftOption[],
 ): import('../builds').DraftOption[] {
   const desired = kind === 'curse' ? route.curse : route.mutations.find(id => !owned.includes(id));
   if (!desired || kind === 'mutation' && owned.length >= 4) return [...sampled];
   const choices: import('../builds').DraftOption[] = [];
-  if (kind === 'curse' && current) choices.push({ id: current, role: 'curseChoice' });
-  if (desired !== current) choices.push({ id: desired, role: 'wildcard' });
+  if (kind === 'curse' && current.length) choices.push({ id: current[0], role: 'curseChoice', action: 'keep' });
+  if (!current.includes(desired as CurseId)) choices.push({ id: desired, role: 'wildcard' });
   for (const option of sampled) if (!choices.some(c => c.id === option.id) && !owned.includes(option.id as MutationId)) choices.push(option);
   return choices.slice(0, 3);
 }

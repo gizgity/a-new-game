@@ -12,7 +12,7 @@ export function drawBuildCues(g: Graphics, world: CombatWorld): void {
   }
   for (const enemy of world.enemies) {
     if (enemy.slow > 0) g.lineStyle(1.5, 0xc399ff, 0.7).strokeEllipse(enemy.x, enemy.y + 20, 36, 10);
-    if (world.curse === 'huntedVessel' && enemy.kind !== 'boss') g.lineStyle(1.5, 0xff6f87, 0.65).strokeCircle(enemy.x, enemy.y + 23, 5);
+    if (world.hasCurse('huntedVessel') && enemy.kind !== 'boss') g.lineStyle(1.5, 0xff6f87, 0.65).strokeCircle(enemy.x, enemy.y + 23, 5);
     if (enemy.fracture > 0) g.lineStyle(2, 0xffcc80, 0.9).strokePoints([
       { x: enemy.x + 22, y: enemy.y - 16 }, { x: enemy.x + 16, y: enemy.y - 7 },
       { x: enemy.x + 24, y: enemy.y - 4 }, { x: enemy.x + 19, y: enemy.y + 5 },
@@ -27,7 +27,7 @@ export function drawBuildCues(g: Graphics, world: CombatWorld): void {
   }
   if (world.build.reversal > 0) g.lineStyle(3, 0xff9b63, 0.85).lineBetween(x + 19, y - 20, x + 27, y + 8);
   if (world.build.anchorFlash > 0) g.lineStyle(2, 0x80e8ff, world.build.anchorFlash / 0.6).strokeCircle(x, y, BUILD.anchorRadius * (1 - world.build.anchorFlash / 0.6));
-  if (world.curse === 'glassSoul') g.lineStyle(1, 0x80e8ff, 0.75).strokeTriangle(x + 14, y - 9, x + 27, y, x + 14, y + 9);
+  if (world.hasCurse('glassSoul')) g.lineStyle(1, 0x80e8ff, 0.75).strokeTriangle(x + 14, y - 9, x + 27, y, x + 14, y + 9);
   if (world.build.frenzy > 0) g.lineStyle(2, 0xffcc80, 0.65).strokePoints([{ x: x - 18, y: y - 18 }, { x, y: y - 25 }, { x: x + 18, y: y - 18 }], false);
   if (world.build.staticCharge > 0) g.lineStyle(2, 0xc399ff, 0.9).strokePoints([{ x: x + 23, y: y - 14 }, { x: x + 17, y: y - 3 }, { x: x + 25, y: y - 4 }, { x: x + 19, y: y + 7 }], false);
   if (world.build.phantom > 0) g.lineStyle(1.5, 0x9dffe2, 0.65).lineBetween(x - 23, y - 10, x - 14, y + 12);

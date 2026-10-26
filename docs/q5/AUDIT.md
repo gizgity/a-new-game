@@ -1,5 +1,7 @@
 # Q5 — audit và hướng triển khai
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Q5 được user mở ngày 2026-10-25. Tài liệu này là audit source và đề xuất, chưa là thiết kế được duyệt hoặc bằng chứng gameplay PASS.
 
 ## Nguồn và phạm vi

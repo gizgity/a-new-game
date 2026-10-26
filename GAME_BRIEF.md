@@ -107,13 +107,13 @@
 | 160 kills hoặc1:40 | Mutation Draft #2 + hồi10HP |
 | 200 kills hoặc2:30 | Bulwark Elite xuất hiện |
 | 220 kills hoặc2:20 | Mutation Draft #3 + hồi10HP |
-| 300 kills hoặc3:00 | Curse Draft #2: đổi hoặc giữ Curse, hồi10HP |
+| 300 kills hoặc3:00 | Curse Draft #2: thêm slot2 hoặc Keep build, hồi10HP (Parasitic5) |
 | 380 kills hoặc3:40 | Mutation Draft #4 + hồi10HP |
 | 450 kills hoặc4:00 | Chain Warden Boss xuất hiện |
 | 5:00 | Boss chưa chết thì Defeat |
 
 - Mỗi mốc dùng điều kiện OR: kills hoặc elapsed simulation time, cái nào tới trước. Mỗi mốc chỉ kích hoạt1lần; thứ tự Elite và Mutation#3 có thể khác tùy tốc độ hạ quái. HUD hiển thị cả hai ngưỡng draft kế và Boss.
-- HP ban đầu100; mỗi lượt chọn heal10 không vượt max HP. Có6lượt chọn (4Mutation khác nhau,2lượt Curse); không tăng số loại nội dung MVP hoặc stack buff trùng.
+- HP ban đầu100; mỗi lượt chọn heal10 (Parasitic active:5) không vượt max HP. Có6lượt chọn (4Mutation khác nhau,2lượt Curse); không tăng số loại nội dung MVP hoặc stack buff trùng.
 - Vượt nhiều mốc trong chain vẫn chọn tuần tự, không mất/nhân đôi. Draft đang tới hạn ưu tiên trước encounter; Boss không bị giữ tới4:00 nếu đủ450kills. Timer dừng khi Pause hoặc chọn Draft.
 - Boss giữ1500HP/pattern riêng, dọn common/projectile khi vào, giữ Elite đã xuất hiện; không spawn Elite mới sau Boss. Nếu nhảy qua cả hai ngưỡng encounter cùng lúc, ưu tiên Boss, bỏ Elite chưa xuất hiện. Deadline vẫn5:00 kể cả Boss tới sớm.
 - Victory khi hạ Boss trước deadline; mutual kill cùng simulation tick tính là Victory.
@@ -136,7 +136,23 @@
 - Boss giữ sweep230px/1.7rad →12đạn radial →slam110px,1500HP. Theo feedback sau Q5A: windup0.62s/cooldown0.55s, dưới nửaHP0.46s/0.38s; không rút windup đang chạy, không bị stun-lock. Khoảng đứng yên mở cơ hội phản công, phase nhanh hơn vẫn có recovery.
 - **Q3 ACCEPTED:** user xác nhận “oki q3 r” trên bảnfa55057; cue Grunt/Perfect Dodge đã được duyệt riêng trước đó. Tests/browser geometry/timing và evidence là bằng chứng kỹ thuật riêng; approval không đồng nghĩa đã xác minh mọi thiết bị/Safari hoặc full-run.
 
+## Q6 Design Contract — Curse Stacking
+
+Specification mới theo task user ngày2026-10-26; Q6 chưa từng có specification hoàn chỉnh trong repo. Không trùng Q5E hoặc M6. Q5A–Q5E giữ approval theo xác nhận mới nhất của user; evidence/commit Q5 bên dưới là lịch sử, không viết lại thành Q6.
+
+- Run có tối đa **2 Curse khác nhau**, **4 Mutation**. Active Curse chỉ ở trong run; restart xóa cả hai, không đổi unlock/meta/settings. Không thêm nội dung, dependency, framework hoặc draft mới.
+- Giữ6mốc kills HOẶC thời gian. Curse đầu80kills/1:00: tối đa3 hợp lệ, chọn1 vào slot1. Curse sau300kills/3:00: Keep build hiện tại + tối đa2 Curse mới chưa sở hữu; chọn mới **thêm slot2**, không bắt buộc. Pool nhỏ hiển thị đúng số. Giữ weighted sampling/reasons/anti-repeat Q5D, dùng cả hai Curse làm synergy evidence.
+- Nếu đủ2slot ở draft tương lai: Keep hoặc chọn rõ slot1/2 bị thay; không tự thay random. Q6 không thêm milestone. Heal draft giữ10, nếu Parasitic active sau chọn thì5, clamp maxHP.
+- Cả8Curse hoạt động ở bất kỳ slot nào: Volatile tăng Detonate/hazard; Ghost Perfect hồi Dash/risk zeroDash; Blood melee heal/Heavy cost; Death Echo kill echo/chase haste; Iron Oath Barrier/damage cost/Dash chậm; Glass direct ranged/HP75; Parasitic heal/root/draft5; Hunted kill reward/chase haste. Không thêm synergy độc quyền.
+- Composition: modifier damage đã định nghĩa nhân mỗi nguồn đúng1lần (Aegis×0.8, Oath×0.75, Blood×0.8); Glass chỉ direct ranged×1.3, Volatile chỉ Rupture blast×1.4. HP75 nếu Glass; Oath Dash×1.3, Ghost chỉ giảm1s recharge khi Perfect. Death Echo và Hunted cùng chase haste dùng một hệ số×1.15 (OR như Q5), không nhân hai lần. Không thêm modifier không có trong card.
+- Giữ cap Barrier30, chung heal8HP/10s; Blood riêng6HP/10s,2HP/2s và không heal khi Barrier>0; các cooldown/root caps/chain12 mỗi tick/VFX24/SFX budget Q5 giữ nguyên. Thêm Curse không reset clocks/budget/root/Anchor; gỡ chỉ dọn effect của Curse bị gỡ, không xóa Curse khác; reset run dọn tất cả. Không sửa global HP/damage/enemy difficulty.
+- Giữ thứ tự simulation Q5: clocks/action/enemy/damage/queue theo code hiện có; mỗi kill xử lý một lần, root giữ provenance và cap Echo6/seed2. Healing sources cùng tiêu một budget theo thứ tự event thực thi, không cấp budget riêng cho slot.
+- HUD HTML/CSS vi/en hiện rõ2slot kể cả trống; draft ghi Thêm Curse, Keep giữ cả build; đủslot ghi rõ slot thay. Cards dùng mô tả Benefit/Risk i18n hiện có. Mobile không tăng HUD che combat/controls.
+- Acceptance A–F: hai effects+risks; Keep; Oath+sustain cap/trade-offs; Volatile+Echo bounded; Glass+Ghost HP/Dash/risk; restart/save cũ/unlock/settings/4Mutation/2Curse/draft/timer/mobile-desktop. Focused tests, typecheck/build, browser nếu hỗ trợ; gameplay balance/readability thiết bị thật cần user duyệt. Không tự ACCEPTED hoặc mở Q7.
+
 ## Q5 Design Contract — Build diversity & survivability
+
+> Lịch sử Q5: quy tắc1Curse/replace trong mục này được Q6 supersede; các effect, tuning, milestone và approval vẫn giữ.
 
 **Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C b5ba138 đã được user duyệt “oki r, làm tiếp đi”; Q5D514063a đã được user duyệt “oki r, làm tiếp đi” ngày2026-10-26; Q5E8b1571d đã được user playtest/chấp nhận qua “playtest oki” ngày2026-10-26, giữ tuning. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 
@@ -373,7 +389,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 ## Giới hạn MVP
 - 1 arena, 1 player, 1 sword + 1 gun.
 - 3 common enemies, 1 Elite, 1 Boss.
-- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation Q5C hiện12/8; Draft có trọng số chỉ ở Q5D. Mỗi run vẫn tối đa4 Mutation và1 Curse active.
+- Scope Q5 khóa ở12 Mutations,8 Curses,1 run tối đa5phút; implementation Q5C hiện12/8; Draft có trọng số chỉ ở Q5D. Hiện hành Q6: mỗi run tối đa4 Mutation và2 Curse active.
 - Không multiplayer, leaderboard online, procedural dungeon, account system, monetization hoặc tính năng ngoài scope.
 
 ## Milestone

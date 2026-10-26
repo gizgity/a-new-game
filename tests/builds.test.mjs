@@ -64,46 +64,46 @@ test('Specialist buffs only primary Charged blast, marks surviving targets Fract
 });
 
 test('Blood Pact heals direct melee under cooldown/shared budget, no Light cost, Heavy miss and dash-cancel cost HP through Barrier',()=>{
- const w=world();w.curse='bloodPact';w.hp=50;const e=target(w);light(w,1);assert.equal(w.hp,52);assert.equal(w.attack.damage,18);
+ const w=world();w.setCurses(['bloodPact']);w.hp=50;const e=target(w);light(w,1);assert.equal(w.hp,52);assert.equal(w.attack.damage,18);
  w.hitEnemy(e,20,0,0,0,false,'light');assert.equal(w.hp,52);
  for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,56);
  w.barrier.gain(30,false);w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,52);assert.equal(w.barrier.value,30);
  w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,48);
  w.hp=2;w.payBloodMiss();assert.equal(w.hp,1);
- const full=world();full.curse='bloodPact';const t=target(full);full.hitEnemy(t,1,0,0,0,false,'light');assert.equal(full.build.healed,0);assert.equal(full.build.bloodCooldown,0);
+ const full=world();full.setCurses(['bloodPact']);const t=target(full);full.hitEnemy(t,1,0,0,0,false,'light');assert.equal(full.build.healed,0);assert.equal(full.build.bloodCooldown,0);
 });
 
 test('Ghost Step refunds one second on Perfect and has enemy damage risk only at zero Dash, without old maxHP/recharge passives',()=>{
- const w=world();w.curse='ghostStep';w.dashCharges=1;w.dashRecharge=2;w.perfectAvailable=true;w.rewardPerfectDodge();
+ const w=world();w.setCurses(['ghostStep']);w.dashCharges=1;w.dashRecharge=2;w.perfectAvailable=true;w.rewardPerfectDodge();
  assert.equal(w.dashCharges,2);assert.equal(w.dashRecharge,0);assert.equal(w.maxHp,100);assert.equal(w.rechargeDuration,2.8);
  w.dashCharges=0;w.hurt(10,0);assert.equal(w.hp,88);
  w.invulnerable=0;w.hurt(10,0,false);assert.equal(w.hp,78);
 });
 
 test('Volatile Soul schedules one warned hazard/root, freezes during hitstop, can be escaped, never rewards Perfect',()=>{
- const w=world();w.curse='volatileSoul';const a=target(w,800);a.rupture=1;w.detonate(a,1);w.resolveExplosions();
+ const w=world();w.setCurses(['volatileSoul']);const a=target(w,800);a.rupture=1;w.detonate(a,1);w.resolveExplosions();
  assert.equal(w.build.hazards.length,1);assert.equal(w.build.hazards[0].time,.8);assert.equal(w.hp,100);
  const timer=w.build.hazards[0].time;w.hitstop=1;ticks(w,20);assert.equal(w.build.hazards[0].time,timer);
  w.hitstop=0;w.enemies=[];ticks(w,49);assert.equal(w.hp,92);
- const avoid=world();avoid.curse='volatileSoul';avoid.build.hazards.push({x:800,y:500,time:.01});avoid.player.y=650;avoid.step(idle,dt);assert.equal(avoid.hp,100);
- const dash=world();dash.curse='volatileSoul';dash.build.hazards.push({x:800,y:500,time:.01});dash.dashTime=.1;dash.perfectAvailable=true;dash.step(idle,dt);assert.equal(dash.hp,100);assert.equal(dash.perfectDodges,0);
+ const avoid=world();avoid.setCurses(['volatileSoul']);avoid.build.hazards.push({x:800,y:500,time:.01});avoid.player.y=650;avoid.step(idle,dt);assert.equal(avoid.hp,100);
+ const dash=world();dash.setCurses(['volatileSoul']);dash.build.hazards.push({x:800,y:500,time:.01});dash.dashTime=.1;dash.perfectAvailable=true;dash.step(idle,dt);assert.equal(dash.hp,100);assert.equal(dash.perfectDodges,0);
 });
 
 test('Death Echo max six/root, grants no fake Detonate, surviving common gets only temporary movement haste, Boss immune',()=>{
- const w=world();w.curse='deathEcho';for(let i=0;i<20;i++)target(w,850+i,1);
+ const w=world();w.setCurses(['deathEcho']);for(let i=0;i<20;i++)target(w,850+i,1);
  const root=chainRoot();w.hitEnemy(w.enemies[0],100,0,0,0,true,'heavy',root);w.resolveExplosions();
  assert.equal(w.kills,20);assert.equal(root.echoes,6);assert.equal(w.detonations,0);assert.ok(w.lastChain<=12);
- const s=world();s.curse='deathEcho';const weak=target(s,850,1),strong=target(s,880);s.spawnEnemy('boss',1000);const boss=s.enemies.at(-1);boss.x=890;boss.y=500;boss.cooldown=999;
+ const s=world();s.setCurses(['deathEcho']);const weak=target(s,850,1),strong=target(s,880);s.spawnEnemy('boss',1000);const boss=s.enemies.at(-1);boss.x=890;boss.y=500;boss.cooldown=999;
  s.hitEnemy(weak,100,0,0,0,true,'heavy');s.resolveExplosions();assert.equal(strong.echoHaste,3);assert.equal(boss.echoHaste,0);
  s.enemies.forEach(e=>e.stagger=999);s.hitstop=0;ticks(s,181);assert.equal(strong.echoHaste,0);
 });
 
 test('changing Curse removes hazards/haste/pending echoes/queued Volatile boost; keeping Curse preserves clocks and heal budget',()=>{
- const w=world(),run=new RunDirector(w);w.curse='volatileSoul';const e=target(w);e.rupture=1;w.detonate(e,1);w.build.hazards.push({x:800,y:500,time:.8});
- w.curse='bloodPact';assert.equal(w.build.hazards.length,0);assert.ok(Math.abs(w.explosions[0].damage-12)<1e-9);w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
+ const w=world(),run=new RunDirector(w);w.setCurses(['volatileSoul']);const e=target(w);e.rupture=1;w.detonate(e,1);w.build.hazards.push({x:800,y:500,time:.8});
+ w.setCurses(['bloodPact']);assert.equal(w.build.hazards.length,0);assert.ok(Math.abs(w.explosions[0].damage-12)<1e-9);w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
  const budget=w.build.healed,cd=w.build.bloodCooldown;run.draftKind='curse';run.draft=[{id:'bloodPact',role:'curseChoice'}];run.choose(0);assert.equal(w.build.healed,budget);assert.equal(w.build.bloodCooldown,cd);
- w.curse='deathEcho';w.hitEnemy(e,10000,0,0,0,true,'heavy');assert.ok(w.explosions.some(x=>x.echo));e.echoHaste=3;
- w.curse='ghostStep';assert.ok(w.explosions.every(x=>!x.echo));assert.equal(e.echoHaste,0);
+ w.setCurses(['deathEcho']);w.hitEnemy(e,10000,0,0,0,true,'heavy');assert.ok(w.explosions.some(x=>x.echo));e.echoHaste=3;
+ w.setCurses(['ghostStep']);assert.ok(w.explosions.every(x=>!x.echo));assert.equal(e.echoHaste,0);
  w.reset();assert.equal(w.build.phantoms.length,0);assert.equal(w.build.frenzy,0);assert.equal(w.build.healed,0);assert.equal(w.explosions.length,0);
 });
 
@@ -125,7 +125,7 @@ test('all build clocks and deferred effects freeze in hitstop/draft and reset re
 
 test('Blood Pact sustain is capped at6HP/10s for both single-target hits and crowded cleaves',()=>{
  for(const count of [1,24]){
-  const w=world();w.curse='bloodPact';w.hp=40;
+  const w=world();w.setCurses(['bloodPact']);w.hp=40;
   const enemies=Array.from({length:count},(_,i)=>target(w,850+i*.1,10000));
   for(let frame=0;frame<599;frame++){
    w.build.step(dt);
@@ -137,10 +137,10 @@ test('Blood Pact sustain is capped at6HP/10s for both single-target hits and cro
 });
 
 test('Blood Pact cannot bypass its cap by switching Curse; cooldown is2s and full HP costs no budget',()=>{
- const w=world();const e=target(w);w.curse='bloodPact';w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
+ const w=world();const e=target(w);w.setCurses(['bloodPact']);w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
  w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,52);
  w.build.step(.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,54);
- w.curse='ghostStep';w.curse='bloodPact';w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
- w.curse='ghostStep';w.curse='bloodPact';w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
+ w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
+ w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
  w.reset();assert.equal(w.build.bloodHealed,0);
 });

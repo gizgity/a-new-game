@@ -16,7 +16,7 @@ export function newDraftSeed(): number {
   return globalThis.crypto?.getRandomValues(new Uint32Array(1))[0] || (Date.now() >>> 0) || 1;
 }
 export interface DraftContext {
-  kind: 'mutation' | 'curse'; owned: readonly MutationId[]; curse: CurseId | null;
+  kind: 'mutation' | 'curse'; owned: readonly MutationId[]; curses: readonly CurseId[];
   pool: readonly BuildId[]; signals: DraftSignals; maxHp: number; previousOffers: readonly BuildId[];
   choices: readonly BuildId[];
 }
@@ -38,11 +38,11 @@ export function weightedIndex(weights: readonly number[], random: () => number):
 }
 export function buildDraft(context: DraftContext, random: DraftRandom): { options: DraftOption[]; debug: DraftDebug } {
   // Clone the minimal inputs; render/debug callers cannot mutate the sampling snapshot.
-  const c: DraftContext = { ...context, pool: [...context.pool], owned: [...context.owned], signals: { ...context.signals }, previousOffers: [...context.previousOffers], choices: [...context.choices] };
+  const c: DraftContext = { ...context, curses: [...context.curses], pool: [...context.pool], owned: [...context.owned], signals: { ...context.signals }, previousOffers: [...context.previousOffers], choices: [...context.choices] };
   const debug: DraftDebug = { version: DRAFT_RULES.version, seed: random.seed, stateBefore: random.state, context: c, slots: [], options: [] };
   const canonical = c.kind === 'mutation' ? MUTATIONS : CURSES;
-  const available: BuildId[] = canonical.filter(id => c.pool.includes(id) && !c.owned.includes(id as MutationId) && id !== c.curse);
-  const build: BuildId[] = [...c.owned, ...(c.curse ? [c.curse] : [])];
+  const available: BuildId[] = canonical.filter(id => c.pool.includes(id) && !c.owned.includes(id as MutationId) && !c.curses.includes(id as CurseId));
+  const build: BuildId[] = [...c.owned, ...c.curses];
   const scores = behaviorScores(c.signals, c.maxHp);
   const dominant = (Object.keys(scores) as BehaviorTag[]).filter(t => t !== 'need' && t !== 'movement').sort((a, b) => scores[b] - scores[a])[0];
   const hasDominant = scores[dominant] > 0;
@@ -68,8 +68,8 @@ export function buildDraft(context: DraftContext, random: DraftRandom): { option
     return ((hasDominant ? tag !== dominant : true) ? 0.5 : 0) + (!ownedTags.has(tag) ? 0.5 : 0);
   };
   const options: DraftOption[] = [];
-  if (c.kind === 'curse' && c.curse) options.push({ id: c.curse, role: 'curseChoice' });
-  const slots = c.kind === 'curse' && c.curse ? ['combined', 'wildcard'] : ['adaptive', 'synergy', 'wildcard'];
+  if (c.kind === 'curse' && c.curses.length) options.push({ id: c.curses[0], role: 'curseChoice', action: 'keep' });
+  const slots = c.kind === 'curse' && c.curses.length ? ['combined', 'wildcard'] : ['adaptive', 'synergy', 'wildcard'];
   for (const role of slots) {
     if (!available.length) break;
     const candidates = available.map(id => {
@@ -87,7 +87,10 @@ export function buildDraft(context: DraftContext, random: DraftRandom): { option
     } else if ((role === 'synergy' || role === 'combined') && s.source) {
       option.role = 'synergy'; option.reason = { kind: 'synergy', id: s.source };
     }
-    options.push(option); debug.slots.push({ role, candidates, chosen: id });
+    if (c.kind === 'curse' && c.curses.length === 2) {
+      options.push({ ...option, replaceSlot: 0 }, { ...option, replaceSlot: 1 });
+    } else options.push(option);
+    debug.slots.push({ role, candidates, chosen: id });
   }
   debug.options = options.map(o => ({ ...o, ...(o.reason ? { reason: { ...o.reason } } : {}) }));
   return { options, debug };

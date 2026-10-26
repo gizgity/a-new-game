@@ -71,7 +71,7 @@ export class RunDirector {
     // Resolve earned choices before an encounter, even when one chain crosses several milestones.
     while (this.nextDraft && this.reached(this.nextDraft)) {
       this.draftKind = this.nextDraft.kind;
-      const result = buildDraft({ kind: this.draftKind, owned: this.world.mutations, curse: this.world.curse,
+      const result = buildDraft({ kind: this.draftKind, owned: this.world.mutations, curses: this.world.curses,
         pool: this.draftKind === 'curse' ? this.cursePool : this.world.mutations.length < 4 ? this.mutationPool : [],
         signals: signalWindow(this.world.draftSignals, this.lastSignals), maxHp: this.world.maxHp,
         previousOffers: this.previousOffers, choices: this.choices }, this.draftRandom);
@@ -130,10 +130,14 @@ export class RunDirector {
   choose(index: number): boolean {
     const option = this.draft[index];
     if (!option || !Number.isInteger(index)) return false;
+    if (this.draftKind === 'mutation') {
+      if (this.world.mutations.length >= 4 || this.world.mutations.includes(option.id as MutationId) || !this.mutationPool.includes(option.id as MutationId)) return false;
+      this.world.mutations.push(option.id as MutationId);
+    } else if (option.action !== 'keep' && !this.world.hasCurse(option.id as CurseId)) {
+      if (!this.cursePool.includes(option.id as CurseId) || !this.world.addCurse(option.id as CurseId, option.replaceSlot)) return false;
+    }
     this.choices.push(option.id);
-    if (this.draftKind === 'mutation') this.world.mutations.push(option.id as MutationId);
-    else this.world.curse = option.id as CurseId;
-    this.world.hp = Math.min(this.world.maxHp, this.world.hp + (this.world.curse === 'parasiticMark' ? 5 : 10));
+    this.world.hp = Math.min(this.world.maxHp, this.world.hp + (this.world.hasCurse('parasiticMark') ? 5 : 10));
     this.draft = [];
     return true;
   }

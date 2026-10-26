@@ -51,7 +51,6 @@ export class BuildEffects {
     for (const slash of this.phantoms) slash.delay -= dt;
     for (const hazard of this.hazards) hazard.time -= dt;
   }
-  clearCurse(): void { this.hazards = []; this.hazardCooldown = this.bloodCooldown = this.parasiticCooldown = this.huntedCooldown = this.costFlash = 0; }
   loseHp(): void { this.frenzy = this.comboStage = 0; }
   light(combo: number, hit: boolean): void {
     if (!hit) { this.comboStage = 0; return; }

@@ -8,7 +8,7 @@ import { CombatWorld } from '../.test-build/combat.js';
 import { RunDirector } from '../.test-build/run.js';
 import { defaultProfile, validateProfile, loadProfile, saveProfile, Progression } from '../.test-build/progression.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false},dt=1/60;
-const context=(extra={})=>({kind:'mutation',owned:[],curse:null,pool:MUTATIONS,signals:draftSignals(),maxHp:100,previousOffers:[],choices:[],...extra});
+const context=(extra={})=>({kind:'mutation',owned:[],curses:[],pool:MUTATIONS,signals:draftSignals(),maxHp:100,previousOffers:[],choices:[],...extra});
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-6,`${a} != ${b}`);
 function world(){const w=new CombatWorld({x:800,y:500,angle:0});w.practice=false;w.enemies=[];return w;}
 function target(w,x=860,hp=1000,kind='grunt'){w.spawnEnemy(kind,hp);const e=w.enemies.at(-1);Object.assign(e,{x,y:500,stagger:999,cooldown:999});return e;}
@@ -46,8 +46,8 @@ test('Adaptive/Synergy reasons match the selected candidate; combined Curse uses
  const s={...draftSignals(),rangedDamage:600,rangedHits:12};
  const result=sample(context({owned:['aegisCore'],signals:s}));
  for(const o of result.options){if(o.role==='adaptive')assert.ok(['ranged'].includes(o.reason.tag));if(o.role==='synergy')assert.equal(o.reason.id,'aegisCore');}
- const c=context({kind:'curse',curse:'ironOath',owned:['aegisCore'],pool:CURSES,signals:s,previousOffers:CURSES});const r=sample(c);
- assert.deepEqual(r.options[0],{id:'ironOath',role:'curseChoice'});assert.equal(r.options.length,3);assert.equal(new Set(r.options.map(o=>o.id)).size,3);assert.equal(r.debug.slots[0].role,'combined');
+ const c=context({kind:'curse',curses:['ironOath'],owned:['aegisCore'],pool:CURSES,signals:s,previousOffers:CURSES});const r=sample(c);
+ assert.deepEqual(r.options[0],{id:'ironOath',role:'curseChoice',action:'keep'});assert.equal(r.options.length,3);assert.equal(new Set(r.options.map(o=>o.id)).size,3);assert.equal(r.debug.slots[0].role,'combined');
  assert.ok(r.debug.slots.every(s=>s.candidates.every(c=>c.id!=='ironOath')));
  const noHistory=sample({...c,previousOffers:[]});for(const item of r.debug.slots[0].candidates)near(item.weight,noHistory.debug.slots[0].candidates.find(i=>i.id===item.id).weight*.4);
 });
@@ -56,7 +56,7 @@ test('owned/unlocks/canonical small pools, keep-only Curse and mutation slot cap
   const r=sample(context({pool}));assert.equal(r.options.length,new Set(pool).size);assert.ok(r.options.every(o=>o.id));
  }
  assert.equal(sample(context({owned:['catalyst'],pool:['catalyst']})).options.length,0);
- assert.deepEqual(sample(context({kind:'curse',curse:'glassSoul',pool:[]})).options,[{id:'glassSoul',role:'curseChoice'}]);
+ assert.deepEqual(sample(context({kind:'curse',curses:['glassSoul'],pool:[]})).options,[{id:'glassSoul',role:'curseChoice',action:'keep'}]);
  const w=world(),r=new RunDirector(w);r.start();w.enemies=[];w.hp=50;w.mutations=['catalyst','berserker','aegisCore','soulAnchor'];w.kills=25;r.step(idle,dt);assert.equal(r.draft.length,0);assert.equal(w.hp,50);
 });
 test('invalid weights use exactly one same-stream draw and warn, uniform fallback is finite',()=>{
@@ -81,7 +81,7 @@ test('dash/Perfect and Heavy counters measure started attempts and successful in
 test('enemy absorbed/HP loss and actual sustain exclude self-cost/hazard, invulnerability and draft heals',()=>{
  const w=world();w.hp=60;w.barrier.gain(10,false);w.hurt(20,0);assert.equal(w.draftSignals.absorbed,10);assert.equal(w.draftSignals.enemyHpDamage,10);
  w.invulnerable=0;w.hurt(8,0,false);w.payBloodMiss();assert.equal(w.draftSignals.enemyHpDamage,10);w.hurt(5,0);assert.equal(w.draftSignals.enemyHpDamage,10);
- w.curse='bloodPact';w.hitEnemy(target(w),1,0,0,0,true,'light');assert.equal(w.draftSignals.healed,2);
+ w.setCurses(['bloodPact']);w.hitEnemy(target(w),1,0,0,0,true,'light');assert.equal(w.draftSignals.healed,2);
  const r=new RunDirector(w);r.draftKind='mutation';r.draft=[{id:'catalyst',role:'wildcard'}];r.choose(0);assert.equal(w.draftSignals.healed,2);
 });
 test('chain signals count marked triggers with executed relays/actual targets, never pending VFX/echo-only',()=>{

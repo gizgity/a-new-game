@@ -10,13 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q5E8b1571d — **ACCEPTED — USER PLAYTEST APPROVAL**: user xác nhận “playtest oki” ngày2026-10-26 và yêu cầu tiếp Q6, nói scope đã đưa hôm qua trong brief. Đang tìm lại đúng phần Q6 gốc; chưa bắt đầu implementation hoặc tự thiết kế scope mới.
+Q6 — Curse Stacking theo task user2026-10-26. Audit nguồn remote eb49190/Q5E8b1571d đã accepted; Q6 contract mới trong GAME_BRIEF.md. Implementation/tests/build/browser PASS; chuẩn bị commit/push/deploy, **AWAITING USER PLAYTEST APPROVAL**.
 
 ## ACCEPTANCE
-- Bốn hướng: Juggernaut; Catalyst+Reclaimer/Parasitic sustain; Phantom/Static+Ghost counter; Specialist/Echo+Glass ranged/chain.
-- Route trial chỉ gợi ý card tại6mốc thật, không cấp HP/ammo/kills/build từ đầu; nhãn rõ và không lưu progress. Run thường giữ weighted draft, pools/unlocks/timing/tuning.
-- Ghi route từ draft tới Elite/Boss hoặc lý do chết, phân biệt input script/fixture với user experience; kiểm mobile/desktop/vi-en/pause/reset/no-progress.
-- Chỉ tune defaults Q5 khi có feedback/bằng chứng rõ; giữ tank costs/Q2–Q4 đã duyệt. Tests/build/browser/deploy PASS rồi dừng AWAITING PLAYTEST APPROVAL Q5E.
+A–F theo Q6 contract:2Curse/4Mutation; draft thêm/Keep;8effect/risk/cap/cooldown; reset/save compatibility; desktop/mobile/vi-en. Tests/build rồi push/deploy; dừng AWAITING USER PLAYTEST APPROVAL.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -30,14 +27,21 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q4 — Chain depth | ACCEPTED — USER PLAYTEST/VISUAL APPROVAL | User xác nhận “thấy ok r” trên bản daee80a; phát sinh sau theo issue mới |
 | Q5 Design Contract | APPROVED | User xác nhận “ok làm đi, xong thì deploy để test play luôn” |
 | Q5A — Barrier / Juggernaut | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “q5a ok” trên fa4045d |
-| Q5B — Rework existing pool | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Tank/sustain trên d42cdaf đã được duyệt; các vòng counter/chain/echo chưa có xác nhận riêng |
+| Q5B — Rework existing pool | ACCEPTED — USER PLAYTEST APPROVAL (task Q6 xác nhận tổng thể) | Tank/sustain trên d42cdaf đã được duyệt; các vòng counter/chain/echo chưa có xác nhận riêng |
 | Tank trade-off | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki, ổn r á” trên d42cdaf |
 | Q5C — New pool tới12/8 | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên b5ba138 |
 | Q5D — Weighted Draft | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên514063a |
 | Q5E — Diversity/balance | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “playtest oki” trên8b1571d ngày2026-10-26 |
 
+## Q6 VALIDATION / CONTEXT
+- Audit main eb49190 thay checkout Q5C cũ; Q6 chưa có spec/trùng số, contract mới đặt GAME_BRIEF. Không đổi AGENTS vì đủ quy tắc; repo không có README root. Q5 docs thêm chú thích superseded, giữ nguyên evidence/commit/approval lịch sử.
+- combat.ts: danh sách readonly2slot, hasCurse/setCurses/addCurse, dọn riêng Curse bị gỡ. BuildEffects bỏ clear-all; clocks/budget giữ qua thêm/gỡ. Draft.ts/builds.ts/run.ts:2Curse trong context, Keep/add/explicit replaceSlot, cap4Mutation. BarrierVisual/BuildVisual/main/style/i18n/playtests đồng bộ HUD/cards/fixtures vi/en.
+- Tests fixtures Q5 chuyển sang API setCurses (fixture thay build rõ ràng); test mới curse-stacking.test.mjs gồm11scenario/slot orders. npm test PASS12files (148definitions tổng), typecheck/build/diff PASS. balance.ts/progression.ts/input/timing/boss/chain core không tune.
+- A/B PASS automated: milestone thật,3 rồi Keep+2, unique/cap, giữ effect/cooldown/timer. C/D/E PASS automated cả2thứ tự slot: Oath+Blood, Volatile+Echo, Glass+Ghost; thêm Hunted+Parasitic/hasteOR/replace cleanup. F PASS core/save cũ/untrusted/meta/settings/reset/cap/Adaptive context; browser HUD/draft/add/vi-en/no-overflow/runtime PASS Chromium320/390/844/1440.
+- Browser fixtures cấp build/kills để mở draft, không natural run; chưa user playtest/mobile thật/Safari/full-run browser hoặc đo SFX/performance máy thật. Cần cảm nhận survivability/risk/readability khi2Curse và chain đông; không coi Actions success là gameplay acceptance. Chi tiết docs/q6/README.md.
+
 ## CURRENT STATUS
-- Q5E thêm4route ?playtest=route-tank/route-sustain/route-counter/route-ranged: bắt đầu0build, chỉ đưa card gợi ý tại draft thật, pooltrial đầy đủ, slotcap4/1Curse, có giữ Curse, không grant HP/ammo/kills. Không lưu totals/unlocks/history; settings vẫn lưu. Không sửa tuning hoặc core combat/run/draft.
+- Q5E thêm4route ?playtest=route-tank/route-sustain/route-counter/route-ranged: bắt đầu0build, chỉ đưa card gợi ý tại draft thật, pooltrial đầy đủ, slotcap Q5 lịch sử4/1Curse (Q6 hiện4/2), có giữ Curse, không grant HP/ammo/kills. Không lưu totals/unlocks/history; settings vẫn lưu. Không sửa tuning hoặc core combat/run/draft.
 - Core script seed123456789 cả4route qua6draft và tớiElite/Boss/Victory; input có đọc vị trí/Perfect predicate nên không là human acceptance/natural acquisition. Sustain không mấtHP/heal0, cần user thử khi bị thương. Số liệu/giới hạn và checklist ở docs/q5e/README.md.
 - Q5D implementation: DraftSignals actual outcomes/cửa sổ giữa draft, Draft.ts xorshift32 riêng+sampling weighted/canonical/no replacement, config/draft.ts metadata/groups/weights. Adaptive/Synergy/Wildcard có reason khi đủ evidence; Curse2 bảo đảm giữ. Không đổi gameplay tuning.
 - Profile v1 bổ sung drafts.previous/current/active whitelist20IDs; ghi IDs khi thực sự hiện, rotate khi start kể reload/bỏ dở. Storage blocked giữ trong memory. Trial không ghi history. Query draftSeed/draftDebug opt-in; window.cursebreakDraft là snapshot copy. Chưa lưu/khôi phục run đang chơi.
@@ -48,7 +52,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Q5B rework xong5Mutation/4Curse theo contract. BuildEffects.ts giữ clocks/Phantom/hazard/heal budget; combat giữ root object qua shot/Heavy/Detonate/relay/echo, cap2seed/6echo/root. BuildVisual.ts vẽ cue bounded; HUD vi/en cho Phantom/Static/Frenzy/heal/cost/Ghost risk. config/playtests.ts giữ4preset Q5B +Juggernaut/tank, thêm5preset Q5C, không lưu progress.
 - Difficulty v2: pressure4s ưu tiên2Archer tới8; Grunt jump0.68s/radius48 lead160/max3/concurrent, damage6/cooldown7s/first delay4–6.6s/start gap1.6s hoặc0.7s khi18Grunt, Heavy/blast interrupt/AoE vẫn trúng. Boss far-sweep→slam leap560, chase300, ring12+fan3 speed430, windup0.62/0.46 cooldown0.55/0.38 recovery0.32/0.24. Xem docs/pressure-v2/README.md.
 - Contract mới là nguồn thiết kế Q5; docs/q5/AUDIT.md thuộc lượt audit trước, không còn là quyết định/next action hiện hành. User đã duyệt concept/contract; không còn blocker thiết kế.
-- Code Q5C có12Mutation/8Curse; đã Draft v2 ở Q5D. Contract đích12/8 giữ4Mutation/run,1Curse active và6draft. Q5A chỉ vertical slice Juggernaut; Blood Pact sustain đã ở Q5B; các nguồn heal Q5C hiện dùng chung budget.
+- Code Q5C có12Mutation/8Curse; đã Draft v2 ở Q5D. Contract Q5 lịch sử12/8 giữ4Mutation/run,1Curse; Q6 hiện2Curse và6draft. Q5A chỉ vertical slice Juggernaut; Blood Pact sustain đã ở Q5B; các nguồn heal Q5C hiện dùng chung budget.
 - Defaults contract đã duyệt, còn tuning qua playtest: Barrier30 không decay; heal chung8HP/10s và cooldown riêng; Soul Anchor không cứu hit chí tử; Catalyst seed tối đa2/root không kích trong cùng root; proc có provenance/cap. Giữ Phantom reach/Catalyst charge/Guard Heavy bonus; các gói rework khác thay hiệu ứng cũ như contract, không ngầm cộng dồn.
 - Draft Q5D đã triển khai theo thiết kế: weighted theo damage thực/Perfect/phá thế/chain/phòng thủ, lý do có căn cứ; anti-repeat×0.4 cho offered IDs run trước (kể cả bỏ dở), seed draft riêng kèm snapshot debug; nội dung mới eligible mặc định khi triển khai, giữ unlock Guard/Static/Death Echo.
 - Q4: relay chờ4ticks simulation (66.7ms), giữ snapshot vị trí/damage/radius trước knockback; chỉ marked neighbours truyền nổ. Giữ phần queue dư qua tick sau thay vì xóa, tối đa12/tick; Detonate và +1charge tính lúc thực thi. Pending-ID chống trùng relay, chainSeen chống lặp trong tick; reset xóa queue. Pause/draft/hitstop dừng simulation. Rupture3ô hình thoi, nối nguồn→đích khi relay nổ; budget24VFX giữ.
@@ -66,7 +70,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Body collision: hai lượt resolve bounded giữa player radius16 và enemy14/22/32, clamp arena; giữ slide, bỏ resolve trong dash. Không engine/physics dependency mới.
 - Basic20damage, mỗi hit gain1ChargePoint (Catalyst2); Charged84 tự tăng1Rupture cap3 rồi Detonate×2. Blast nền24/stack1→72/stack3, radius105, chỉ blast Charged gốc142 với Specialist; chain budget12, VFX24 giữ. Không đòi melee để cấp ammo/trigger các blast synergies.
 - RunDirector dùng6mốc OR kills/time trong config; HUD draft kế và Boss hiển thị cả hai điều kiện. Draft ưu tiên trước encounter, vượt nhiều mốc chọn tuần tự; bossDue/eliteSpawned chặn lặp. Elite không spawn muộn sau Boss; nếu đồng thời đủ cả hai thì Boss ưu tiên, giữ Elite đã có.
-- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Curse lượt2 luôn có giữ Curse hiện tại; đổi thay toàn bộ hiệu ứng cũ, clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
+- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Q6 Curse lượt2 Keep hoặc thêm slot2; clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
 
 - Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
 - Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor vẫn prototype art; không tự accepted.
@@ -117,7 +121,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Khôi phục đúng scope Q6 từ brief gốc user nói đã gửi ngày2026-10-25. Đã hỏi user chỉ tên mục/đoạn Q6 vì bản GAME_BRIEF local/main và lịch sử lưu repo chưa có mục Q6. Có nguồn gốc thì ghi Goal/acceptance rồi triển khai và push handoff; không suy diễn Q6 từ M6 hoặc tự mở scope khác.
+Hoàn tất commit/push/deploy Q6 rồi chờ user playtest A–F theo docs/q6/README.md; chỉ sửa feedback Q6, không mở Q7.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.
@@ -129,4 +133,5 @@ Checklist scope/cách thử/giới hạn ở docs/q5d/README.md. Game thường 
 4link route/checklist chi tiết docs/q5e/README.md. Chọn card “Gợi ý” ở Mutation25/0:30,160/1:40,220/2:20,380/3:40; Curse80/1:00 và giữ300/3:00. Đi tớiElite200/2:30, Boss450/4:00 hoặc ghi đòn/mốc chết. Tank so đứng/di chuyển và damagecost; sustain thử khi mấtHP, marked kill/nổ; counter Perfect→Light/Charged vàzeroDash; ranged GlassHP75/Fracture/chain4. Mobile joystick/giữ-kéo Chém/Bắn/Lướt/specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Trial không natural acquisition/không lưu progress. User đã duyệt Q5E qua “playtest oki”; checklist giữ làm tham chiếu, không yêu cầu thử lại. Không suy rộng sang Safari/mọi thiết bị.
 
 ## BLOCKERS
-Thiếu đoạn scope Q6 trong nguồn đang truy cập: GAME_BRIEF.md local và main8db19ba cùng bản389dòng, chỉ có Q5A–Q5E và M0–M6. Tìm Q6 trên Markdown workspace, git history của brief/handoff, GitHub commit/issue search và branch main chưa có kết quả. User nói Q6 nằm trong brief hôm qua; đang chờ tên mục/đoạn gốc để khôi phục, không khẳng định user chưa từng gửi. Quyền đồng bộ HANDOFF/GAME_BRIEF đã được cho phép và phải push; không còn blocker quyền. Q5E đã accepted; chưa smoke live/Safari.
+Git fetch ngoài sandbox đã hoạt động; dùng fast-forward push main, giữ tree remote/evidence. gh API bị Forbidden, theo dõi deploy bằng connector/web GitHub nếu cần. Không còn blocker scope Q6; user đã cung cấp contract. Q5E ACCEPTED; Q5A–Q5E giữ approval theo task mới nhất (Q5B được user xác nhận tổng thể trong task này, giữ nguyên evidence approval hẹp cũ).
+

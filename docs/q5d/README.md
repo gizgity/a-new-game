@@ -1,5 +1,7 @@
 # Q5D — weighted draft
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Bản514063a3f3e563b4e852b64ec10c9a2d22921bac đã deploy, Actions40246492670 completed/success. Q5C b5ba138 đã được user duyệt “oki r, làm tiếp đi”; Q5D chỉ thay draft/signals/history/UI. Giữ pool12/8,4Mutation/run,1Curse và6mốc, mọi tuning gameplay/tank đã duyệt. Chờ playtest Q5D; chưa mở Q5E.
 
 ## Cách thử

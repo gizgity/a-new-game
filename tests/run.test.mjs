@@ -5,7 +5,7 @@ import { RunDirector } from '../.test-build/run.js';
 import { MUTATIONS, CURSES } from '../.test-build/builds.js';
 import { buildDraft, DraftRandom } from '../.test-build/Draft.js';
 import { draftSignals } from '../.test-build/DraftSignals.js';
-const offer=(pool,owned=[])=>buildDraft({kind:pool===CURSES?'curse':'mutation',owned,curse:null,pool,signals:{...draftSignals(),rangedDamage:400,rangedHits:20},maxHp:100,previousOffers:[],choices:[]},new DraftRandom(1)).options;
+const offer=(pool,owned=[])=>buildDraft({kind:pool===CURSES?'curse':'mutation',owned,curses:[],pool,signals:{...draftSignals(),rangedDamage:400,rangedHits:20},maxHp:100,previousOffers:[],choices:[]},new DraftRandom(1)).options;
 import { DRAFT_MILESTONES, ENCOUNTERS } from '../.test-build/config/balance.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false};
 function setup() { const world=new CombatWorld({x:800,y:500,angle:0});const run=new RunDirector(world);run.start();return {world,run}; }
@@ -23,9 +23,9 @@ test('six kill drafts pause the timer, heal once, respect max HP, and cannot be 
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,Math.min(3,kind==='mutation'?MUTATIONS.length-world.mutations.length:3));
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
-  assert.equal(world.hp,Math.min(world.maxHp,world.curse==='parasiticMark'?80:85));
+  assert.equal(world.hp,Math.min(world.maxHp,world.curses[0]==='parasiticMark'?80:85));
  }
- assert.equal(world.mutations.length,4);assert.ok(world.curse);assert.equal(new Set(world.mutations).size,4);
+ assert.equal(world.mutations.length,4);assert.ok(world.curses[0]);assert.equal(new Set(world.mutations).size,4);
 });
 test('waves start with Grunt/Archer, are bounded and include Volatile later; timer ends at five minutes',()=>{
  const {world,run}=setup();assert.ok(world.enemies.every(e=>e.kind==='grunt'||e.kind==='archer'));
@@ -41,9 +41,9 @@ test('waves start with Grunt/Archer, are bounded and include Volatile later; tim
  const tick=run.ticks;run.step(idle,1/60);assert.equal(run.ticks,tick);
 });
 test('Curse benefits have real costs and build effects reset per run',()=>{
- const {world,run}=setup();world.curse='ghostStep';world.hp=100;assert.equal(world.maxHp,100);assert.equal(world.rechargeDuration,2.8);
- world.curse='bloodPact';world.step({...idle,melee:true},1/60);assert.equal(world.hp,100);assert.equal(world.attack.damage,18);
- world.mutations.push('phantomEdge');run.start();assert.equal(world.curse,null);assert.equal(world.mutations.length,0);assert.equal(world.maxHp,100);assert.equal(run.ticks,0);
+ const {world,run}=setup();world.setCurses(['ghostStep']);world.hp=100;assert.equal(world.maxHp,100);assert.equal(world.rechargeDuration,2.8);
+ world.setCurses(['bloodPact']);world.step({...idle,melee:true},1/60);assert.equal(world.hp,100);assert.equal(world.attack.damage,18);
+ world.mutations.push('phantomEdge');run.start();assert.equal(world.curses[0],undefined);assert.equal(world.mutations.length,0);assert.equal(world.maxHp,100);assert.equal(run.ticks,0);
 });
 
 test('Elite and Boss spawn once; boss arrival clears excess common enemies and hostile shots',()=>{
@@ -76,7 +76,7 @@ test('unbuffed opening Grunt dies to two Light hits or Light + Basic detonation'
  for (const followup of ['melee','shoot']) {
   const {world}=setup();const enemy=world.enemies.find(e=>e.kind==='grunt');
   world.enemies=[enemy];Object.assign(enemy,{x:world.player.x+45,y:world.player.y,stagger:999});
-  assert.equal(world.mutations.length,0);assert.equal(world.curse,null);
+  assert.equal(world.mutations.length,0);assert.equal(world.curses[0],undefined);
   world.step({...idle,melee:true},1/60);
   for(let i=0;i<25;i++)world.step(idle,1/60);
   assert.ok(enemy.hp>0);assert.equal(enemy.rupture,1);assert.equal(world.kills,0);
@@ -164,13 +164,13 @@ test('small and exhausted Mutation pools never produce invalid options or block 
  const {world,run}=setup();run.mutationPool=[];run.cursePool=[];world.kills=500;world.enemies=[];
  run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);assert.equal(run.bossDue,true);
 });
-test('second Curse always allows keeping or replacing; only one effect remains and HP is clamped',()=>{
- const {world,run}=setup();world.enemies=[];world.curse='bloodPact';run.draftIndex=4;world.kills=300;
+test('second Curse allows Keep or adding slot2; both effects remain and HP is clamped',()=>{
+ const {world,run}=setup();world.enemies=[];world.setCurses(['bloodPact']);run.draftIndex=4;world.kills=300;
  run.step(idle,1/60);assert.ok(run.draft.some(o=>o.id==='bloodPact'));
- run.choose(run.draft.findIndex(o=>o.id==='bloodPact'));assert.equal(world.curse,'bloodPact');
+ run.choose(run.draft.findIndex(o=>o.id==='bloodPact'));assert.equal(world.curses[0],'bloodPact');
  run.draftIndex=4;run.cursePool=['ghostStep'];world.hp=100;
  run.step(idle,1/60);run.choose(run.draft.findIndex(o=>o.id==='ghostStep'));
- assert.equal(world.curse,'ghostStep');assert.equal(world.maxHp,100);assert.equal(world.hp,100);
+ assert.deepEqual(world.curses,['bloodPact','ghostStep']);assert.equal(world.maxHp,100);assert.equal(world.hp,100);
 });
 test('Elite and Boss use kills OR time, once; no late Elite after an early Boss',()=>{
  for(const mode of ['kills','time','both']) {

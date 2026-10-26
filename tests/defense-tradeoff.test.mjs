@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CombatWorld } from '../.test-build/combat.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false},dt=1/60;
-function setup(mutations=[],curse=null){const w=new CombatWorld({x:800,y:500,angle:0});w.practice=false;w.enemies=[];w.mutations=mutations;w.curse=curse;w.spawnEnemy('grunt',50000);const e=w.enemies[0];Object.assign(e,{x:860,y:500,stagger:999,cooldown:999});return {w,e};}
+function setup(mutations=[],curse=null){const w=new CombatWorld({x:800,y:500,angle:0});w.practice=false;w.enemies=[];w.mutations=mutations;w.setCurses([curse].filter(Boolean));w.spawnEnemy('grunt',50000);const e=w.enemies[0];Object.assign(e,{x:860,y:500,stagger:999,cooldown:999});return {w,e};}
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);
 
 test('defensive choices each have a real damage cost and stack multiplicatively',()=>{

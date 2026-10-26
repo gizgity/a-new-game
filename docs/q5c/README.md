@@ -1,5 +1,7 @@
 # Q5C — pool12/8
 
+> Tham chiếu lịch sử checkpoint trước Q6; evidence và kết quả tại thời điểm đó giữ nguyên. Hiện hành: Q5A–Q5E đã được user duyệt (task Q6 ngày2026-10-26); Q6 hỗ trợ2Curse/4Mutation, lượt Curse thứ hai thêm hoặc Keep. Xem GAME_BRIEF.md và HANDOFF.md cho contract/trạng thái mới.
+
 Bản b5ba138461bd8cb502b98ec53ab4a2118909a79d đã deploy, Actions40211566822 completed/success. Bổ sung5Mutation/3Curse theo GAME_BRIEF. Giữ tank trade-off d42cdaf đã được duyệt; Draft có trọng số/anti-repeat chưa triển khai (Q5D). Chờ user playtest Q5C, không tự chuyển checkpoint.
 
 ## Cách thử
