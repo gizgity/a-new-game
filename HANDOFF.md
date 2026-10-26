@@ -13,7 +13,9 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Q8D — Balance Validation & Final Tuning, user giao riêng ngày2026-10-26 trên main7625fa2. Q8A–Q8C ACCEPTED giữ nguyên; các gate chưa mởQ8D là lịch sử superseded bởi yêu cầu này.
 
 ## ACCEPTANCE / CURRENT STATUS
-**AWAITING USER PLAYTEST APPROVAL**. Đã đo4hướng/build thường và synergy2Curse, hai cadence/policy; không grantsHP/kills/clock/build trong run (offers điều khiển).32ô,20trajectory khác nhau; không suy ra winrate/human balance. Density/killrate/6Draft/Elite/Boss/run/HP/damage/TTK/result/rawtimeline tại [Q8D](docs/q8d/README.md).
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
+
+Đã đo4hướng/build thường và synergy2Curse, hai cadence/policy; không grantsHP/kills/clock/build trong run (offers điều khiển).32ô,20trajectory khác nhau; không suy ra winrate/human balance. Density/killrate/6Draft/Elite/Boss/run/HP/damage/TTK/result/rawtimeline tại [Q8D](docs/q8d/README.md).
 - Không đổi runtime: chưa có evidence tune vượt ảnh hưởngbot. Ranged pursuit thua nhưng orbit thắng; Curse thứ2 không luôn mạnh hơn. Fast role-aware8lượt thắng228–239.82s, Boss5.52–13.45s; moderateCounterthường thuaBoss, thêmParasitic thắng. Mean13–21/peak30, không quá30 trong mẫu; trống chủ yếuopening. Victory4:30–5:00 vẫn mục tiêu mềmQ8B.
 - Giữ Q8A dynamic spawn, Q8B floors/fallbacks, Q8C warning2s/Enraged1.4s world freeze/HP1500/combo, Q2–Q8C builds/input/art và5:00.
 - Tests18files/typecheck/build PASS, warningPhaser>500KB có sẵn. Browser4sizes + freeze390/1440 + Arrival/crowd24 + lifecycle6Draft/deadline/Replay + dist390/1440 PASS; không gọi device/iOS/Safari/thermal/audio acceptance.
@@ -51,8 +53,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8A — Dynamic Spawn | ACCEPTED — USER PLAYTEST APPROVAL | User “q8a đạt yêu cầu” ngày2026-10-26 trên394341c; Pages40338795004 SUCCESS |
 | Q8C — Boss Challenge & Enraged / ArrivalV2 | ACCEPTED — USER PLAYTEST APPROVAL | User “q8c đạt” trên8cbff77; Pages40357489627 SUCCESS; giữ coverage kỹ thuật |
 | Q8B — Run Pacing & Milestone Balance | ACCEPTED — USER PLAYTEST APPROVAL | User “oki duyệt q8b” ngày2026-10-26 trêneb6fbbe; Pages40341327061 SUCCESS; Victory là mục tiêu mềm |
+| Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
-| Q8D — Balance Validation & Final Tuning | AWAITING USER PLAYTEST APPROVAL | Chờ cảm nhận4build/full-run trên thiết bị thật; không Q9 |
+## NEXT ACTION
+Dừng sau Q8D đã được user duyệt. Không còn yêu cầu playtest Q8D đang chờ; checklist/evidence trong docs/q8d giữ để tham chiếu. Chỉ thực hiện task mới khi user giao, không tự mở Q9.
 
-## PLAYTEST SCOPE / NEXT ACTION
-Chờ user chơi Q8D theo [checklist](docs/q8d/README.md#checklist-user-playtest-chỉ-q8d):4route/build thường và synergy, density0:15–3:30,6Draft/Elite, warning3:40–4:00+2s, Boss halfHP/transform/combo, mobile dọc/ngang/desktop/Pause/Replay/deadline. Báo route/build/mốc/HP/kết quả và thiết bị/browser. Presetboss chỉ kiểm cue, không fullrun balance. Sau phản hồi chỉ xử lý Q8D hoặc ghi approval khi user xác nhận; không tự Q9.
+## VALIDATION LƯỢT APPROVAL
+Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.

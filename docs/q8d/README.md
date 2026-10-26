@@ -1,6 +1,8 @@
 # Q8D — Balance Validation & Final Tuning
 
-**AWAITING USER PLAYTEST APPROVAL** — chỉ Q8D, không Q9. Baseline main `7625fa2` (runtime `8cbff77`), Q8A `394341c`, Q8B `eb6fbbe`, Q8C `8cbff77` đã ACCEPTED. Approval Q2–Q8C giữ nguyên.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
+
+Chỉ Q8D, không Q9. Baseline main `7625fa2` (runtime `8cbff77`), Q8A `394341c`, Q8B `eb6fbbe`, Q8C `8cbff77` đã ACCEPTED. Approval Q2–Q8C giữ nguyên.
 
 ## Quyết định trước/sau
 
@@ -63,7 +65,7 @@ Các lượt role-aware đều đủ6Draft20/50/85/120/155/190s, Elite125s; warn
 - CPUdrawp95: Boss/follow-up fixture0.10–1.10ms, crowd24/Arrival0.20–0.50ms trong lần đo này. DisplayList ổn định khi toggle warning20lần; không leak pooling trong fixture.
 - SoftwareWebGL CPUdraw/frozen crowd không là FPS thiết bị thật, không đánh giá iOS/Safari/thermal hay trải nghiệm đọc cue/âm thanh. Không thêm perf optimization khi chưa có evidence runtime regression.
 
-## Checklist user playtest chỉ Q8D
+## Checklist user playtest chỉ Q8D — đã được user duyệt
 
 1. [Chơi run](https://gizgity.github.io/a-new-game/): thử Tank/Sustain/Counter/Ranged qua `?playtest=route-tank|route-sustain|route-counter|route-ranged`. Route chỉ gợi ý offers, không cấp fullbuild; chơi bình thường. Thử giữ Curse và thêm Curse thứ2 (nếu được offer). Ghi run time, HP/kills, thắng/thua; build nào quá an toàn hoặc khó sống?
 2. 0:15–3:30: áp sát/melee-chain rồi đổi giữ khoảng cách bắn. Đạt nếu có mục tiêu liên tục sau opening, vẫn đọc được đòn và tìm đường thoát; báo đoạn trống dài hoặc crowd ngợp. Không cần buộc mọi route cùng DPS.
@@ -71,9 +73,11 @@ Các lượt role-aware đều đủ6Draft20/50/85/120/155/190s, Elite125s; warn
 4. Boss sau warning2s: tiếp tục di chuyển/tấn công, rồi kiểm transform1.4s tại nửaHP dừng thế giới/timer. Né slam→follow-up sector và phản công trong recovery. Đạt nếu Boss có nguy hiểm/cơ hội phản công rõ, build mạnh thắng sớm vẫn được; báo nếu Boss luôn chết trước khi thể hiện đòn hoặc quá khó với build thường. Có thể dùng `?playtest=boss` kiểm nhanh cue nhưng preset cấp build/kills, không dùng đánh giá full-run balance.
 5. Một lượt desktop và điện thoại dọc/ngang: input giữ-thả/Dash, Pause, Replay sau thắng/thua; nếu tới5:00 phải Defeat. Đạt nếu không carry build/clock/cue cũ, không giật/che cue bất thường. Thiết bị thật/iOS/Safari/âm/nhiệt máy cần user, không tự ghi PASS.
 
-Phản hồi: route + Mutation/Curse + mốc thời gian/tình huống + HP/kết quả + điều thấy quá mạnh/yếu + thiết bị/browser. Không yêu cầu duyệt lại Q2–Q8C. **Dừng AWAITING USER PLAYTEST APPROVAL; không mở Q9.**
+Phản hồi: route + Mutation/Curse + mốc thời gian/tình huống + HP/kết quả + điều thấy quá mạnh/yếu + thiết bị/browser. Không yêu cầu duyệt lại Q2–Q8C. **User đã xác nhận “q8d đạt”; dừng sau Q8D ACCEPTED, không mở Q9.**
 
 ## Deploy
 Đã commit/push main fast-forward [`cbdb131`](https://github.com/gizgity/a-new-game/commit/cbdb131c31914e35761e132e16fcbecc888981fe). [Pages40360458461](https://github.com/gizgity/a-new-game/actions/runs/40360458461)/job121704168388 **completed/SUCCESS**, gồm Deploy. [Chơi Q8D](https://gizgity.github.io/a-new-game/?v=cbdb131). Commit bàn giao sau chỉ Markdown, không đổi runtime.
 
-Live HTTP qua proxy: indexHTML, JS`index-CDtu8gf_`, CSS`index-MT4IgVwe`, EnragedPNG và ArrivalPNG đều200, SHA256 khớp byte-for-byte dist đã kiểm; đây là kiểm HTTP artifact, không thay livebrowser/device playtest. Runtime/src/public/package/workflow bytewise giữ baseline, hash cây tại [validation.json](evidence/validation.json). Dừng **AWAITING USER PLAYTEST APPROVAL**; không Q9.
+Live HTTP qua proxy: indexHTML, JS`index-CDtu8gf_`, CSS`index-MT4IgVwe`, EnragedPNG và ArrivalPNG đều200, SHA256 khớp byte-for-byte dist đã kiểm; đây là kiểm HTTP artifact, không thay livebrowser/device playtest. Runtime/src/public/package/workflow bytewise giữ baseline, hash cây tại [validation.json](evidence/validation.json). Q8D đã được user xác nhận “q8d đạt”: **ACCEPTED — USER PLAYTEST APPROVAL**; dừng, không Q9.
+
+Lượt ghi nhận approval chỉ cập nhật Markdown; không thay runtime, không chạy lại tests/build/deploy. Checklist và số đo giữ nguyên làm evidence lịch sử, không yêu cầu user duyệt lại.

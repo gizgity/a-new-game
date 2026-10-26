@@ -108,4 +108,4 @@ public/assets/
 - User giao riêng Q8D ngày2026-10-26, supersede các gate lịch sử “không mở Q8D” ở trên; không thay approval Q2–Q8C.
 - Baseline main7625fa2/runtime8cbff77. Chỉ validation/tune nhỏ có evidence, không ép build cùng DPS/winrate; bot không thay user acceptance. Không thêm content/framework/hệ thống balance.
 - Báo cáo/raw data/regression/cách thử tại [docs/q8d/README.md](docs/q8d/README.md). Hiện không đổi runtime/thông số vì chưa đủ evidence; số cũ đã bị Q8B/Q8C supersede giữ nguyên nhãn lịch sử.
-- Commit/push/Pages rồi dừng **AWAITING USER PLAYTEST APPROVAL**; không tự mở Q9 hoặc gán Q8D ACCEPTED.
+- **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9. Các gate chờ duyệt Q8D trước đây đã hoàn tất; không yêu cầu duyệt lại.
