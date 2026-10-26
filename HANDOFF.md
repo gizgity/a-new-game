@@ -10,7 +10,11 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-CURSEBREAK Legacy V1 — ghi quyết định user đã chốt qua `$design-decision`, chỉ documentation. Acceptance: toàn bộ 7 mục vào DDR với ID tiếp theo, trạng thái Approved — Design Only, nguồn/ngày/Release boundary, Balance Tuning / TBD; kiểm diff và commit/push. Không sửa gameplay, Art Bible, roadmap hoặc triển khai/deploy.
+Q9A — Elemental Legacy Core, user giao ngày 2026-10-26. Triển khai catalog 6 Sigil/12 Branch, combat hooks an toàn, two-offer Sigil-first RNG, chọn trước combat/HUD mobile; giữ progression/unlock gate, Mutation/Curse/Boss/input/art. DDR DD-0001 là chuẩn. Acceptance: focused tests + regression/typecheck/build, tài liệu, commit/push/Pages, dừng chờ nghiệm thu; không Q9B.
+
+## Q9A STATUS
+**IN PROGRESS — BLOCKED ON MECHANICS SPEC**. Phần nền trên nhánh `q9a-elemental-legacy`: catalog 6/12, RNG Sigil-first/two-offer/anti-repeat/fallback, ticket API và profile allowlist. Chưa nối combat/UI; không tự unlock/reward. Chi tiết và coverage tại [docs/q9a/README.md](docs/q9a/README.md).
+DDR DD-0001 chỉ có tên Core/Branch; đã hỏi user cung cấp spec trigger/effect đã duyệt hoặc cho phép lựa chọn implementation theo tên. Chưa có câu trả lời; không tự bịa thiết kế/ghi DDR. Không tạo asset mới. Test toàn bộ19files và build/typecheck PASS; chưa effect/UI/device playtest, chưa hoàn thành acceptance Q9A. Nhánh nền không deploy Pages/main.
 
 ## DEPLOY FOLLOW-UP
 User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -73,7 +77,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Dừng chờ task mới của user sau khi commit/push tài liệu Legacy V1; không tự triển khai Legacy V1, generate art, tích hợp hoặc mở Q9. Thay đổi DDR tiếp theo vẫn cần invocation `$design-decision` và ID mới.
+Chờ user cung cấp spec Core/Branch hoặc cho phép lựa chọn cơ chế theo tên; tiếp tục Q9A trên nhánh nền, hoàn tất combat/UI/tests rồi commit/push main/Pages và dừng nghiệm thu. Không mở Q9B; DDR mới vẫn cần invocation `$design-decision`.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.
