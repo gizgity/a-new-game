@@ -74,4 +74,6 @@ Các lượt role-aware đều đủ6Draft20/50/85/120/155/190s, Elite125s; warn
 Phản hồi: route + Mutation/Curse + mốc thời gian/tình huống + HP/kết quả + điều thấy quá mạnh/yếu + thiết bị/browser. Không yêu cầu duyệt lại Q2–Q8C. **Dừng AWAITING USER PLAYTEST APPROVAL; không mở Q9.**
 
 ## Deploy
-Đang chờ commit/push/Pages; sẽ ghi SHA/run thực tế sau thành công.
+Đã commit/push main fast-forward [`cbdb131`](https://github.com/gizgity/a-new-game/commit/cbdb131c31914e35761e132e16fcbecc888981fe). [Pages40360458461](https://github.com/gizgity/a-new-game/actions/runs/40360458461)/job121704168388 **completed/SUCCESS**, gồm Deploy. [Chơi Q8D](https://gizgity.github.io/a-new-game/?v=cbdb131). Commit bàn giao sau chỉ Markdown, không đổi runtime.
+
+Live HTTP qua proxy: indexHTML, JS`index-CDtu8gf_`, CSS`index-MT4IgVwe`, EnragedPNG và ArrivalPNG đều200, SHA256 khớp byte-for-byte dist đã kiểm; đây là kiểm HTTP artifact, không thay livebrowser/device playtest. Runtime/src/public/package/workflow bytewise giữ baseline, hash cây tại [validation.json](evidence/validation.json). Dừng **AWAITING USER PLAYTEST APPROVAL**; không Q9.

@@ -17,7 +17,7 @@ Q8D — Balance Validation & Final Tuning, user giao riêng ngày2026-10-26 trê
 - Không đổi runtime: chưa có evidence tune vượt ảnh hưởngbot. Ranged pursuit thua nhưng orbit thắng; Curse thứ2 không luôn mạnh hơn. Fast role-aware8lượt thắng228–239.82s, Boss5.52–13.45s; moderateCounterthường thuaBoss, thêmParasitic thắng. Mean13–21/peak30, không quá30 trong mẫu; trống chủ yếuopening. Victory4:30–5:00 vẫn mục tiêu mềmQ8B.
 - Giữ Q8A dynamic spawn, Q8B floors/fallbacks, Q8C warning2s/Enraged1.4s world freeze/HP1500/combo, Q2–Q8C builds/input/art và5:00.
 - Tests18files/typecheck/build PASS, warningPhaser>500KB có sẵn. Browser4sizes + freeze390/1440 + Arrival/crowd24 + lifecycle6Draft/deadline/Replay + dist390/1440 PASS; không gọi device/iOS/Safari/thermal/audio acceptance.
-- Chưa commit/push/Pages; cập nhật bằng SHA/run thực tế trước kết thúc. Không mở Q9.
+- Đã push main fast-forward `cbdb131`; Pages40360458461/job121704168388 completed/SUCCESS gồm Deploy. https://gizgity.github.io/a-new-game/?v=cbdb131 . LiveHTTP5resources200/SHA256 khớp tested dist; không thay deviceplaytest. Commit bàn giao sau chỉMarkdown. Không mở Q9.
 
 ## DECISIONS / APPROVAL CONTEXT
 - Q8A394341c “q8a đạt yêu cầu”; Q8Beb6fbbe “oki duyệt q8b”, user cho thắng sớm; Q8C8cbff77 “q8c đạt”, Pages40357489627 SUCCESS/handoff8e70df3, approval commit7625fa2.
