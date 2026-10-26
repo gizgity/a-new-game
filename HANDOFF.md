@@ -20,7 +20,7 @@ Warning viền4nhịp/2s, pause spawn không pause input; Boss sau warning. Enra
 - `npm test`17files PASS,6focused mới; build/typecheck PASS (warning Phaser bundle có sẵn). Warning/reset/death/deadline/transform/flash/locked combo/recovery/Perfect/speed được kiểm. Browser4sizes1440/390/844/320 và dist390/1440 PASS,0errors/overflow,displayList29. CPUdraw median0–0.1ms/p950.2–1.4ms (softwareWebGL/frozen fixture, không deviceFPS). Chưa có user/device/Safari/iOS acceptance.
 -4route×2styles combat thật: Tank/Sustain/Counter thắng6lượt với phase2; Ranged chết trước Boss như Q8B. Encounter riêng cấp fullbuild cả4vào phase2 và thắng; không grant HP refresh. Bot dùng Perfect predicate; không là human difficulty approval hoặc Q8D.
 - ImageGen production transform pose riêng; giữ atlas/floor Q7C. Combat phase2 dùng4facings/patterns cũ tint ember, pose mới chỉ transform; không Graphics body. Gate artwork lịch sử không chặn user đã giao Q8C triển khai→test→deploy, không tự visual approved.
-- Deploy: đang chuẩn bị commit/push main và theo dõi Pages; cập nhật kết quả sau workflow.
+- Code/deploy `11bedbfbc2b88792ec8c284f311607e2dc9e9992` đã push main fast-forward. [Pages40347916413](https://github.com/gizgity/a-new-game/actions/runs/40347916413) completed/SUCCESS; job121659711323 gồm Deploy SUCCESS. URL https://gizgity.github.io/a-new-game/?v=11bedbf . Live curl bịproxy CONNECT403, không bypass; production dist local đã PASS. Ảnh trước/sau Phase1→transform→follow-up tại docs/q8c/evidence, README có links4sizes. Commit bàn giao sau chỉMarkdown, không đổi runtime.
 - Playtest: dùng run thường hoặc `?playtest=route-tank|route-sustain|route-counter|route-ranged`; trigger3:40 với1200kills/fallback4:00 rồi warning2s. Kiểm input/pause trong warning, halfHP transform một lần, slam→follow-up né sector/Perfect→Heavy phản công; mobile dọc/ngang/desktop, Replay sạch. Báo bước + quan sát + thiết bị/browser. Không yêu cầu duyệt lại Q8A–B/Q7.
 
 ## PREVIOUS CHECKPOINT — Q8B ACCEPTED
@@ -106,4 +106,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Commit/push/deploy Pages Q8C với checks PASS, sau đó dừng **AWAITING USER PLAYTEST APPROVAL**. Không tự ACCEPTED hoặc mở Q8D.
+Dừng **AWAITING USER PLAYTEST APPROVAL** cho Q8C trên11bedbf. User thử warning/input/pause, transform halfHP, slam→follow-up/Perfect/recovery trên4hướng build/mobile/desktop theo docs/q8c/README.md; chỉ xử lý feedback Q8C. Không tự ACCEPTED hoặc mở Q8D.

@@ -1,3 +1,5 @@
+> Boss specification hiện hành: [Q8C warning/Enraged/combo](../q8c/README.md). Spawn tức thì hoặc timing phase2 trong evidence cũ là lịch sử được Q8C thay thế; giữ approval/evidence, Q8A spawn và Q8B floors/fallback không đổi.
+
 > Q8B: thông số milestones OR cũ trong tài liệu này là **SUPERSEDED**; giữ làm lịch sử/evidence/approval. Quy tắc hiện hành: [GAME_BRIEF](../../GAME_BRIEF.md#run-tối-đa-5-phút), [audit Q8B](../q8b/README.md). Spawn Q8A và approvals giữ nguyên.
 
 # Q7A — runtime / bàn giao playtest

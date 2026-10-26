@@ -41,4 +41,4 @@ Cùng scene/position fixture: “trước” = Phase1/Q7C appearance giữ nguy�
 
 ## Deploy
 
-Đang chuẩn bị commit/push main khôngforce và theo dõi Pages. Ghi kết quả cuối trong HANDOFF.md.
+Code/deploy [`11bedbf`](https://github.com/gizgity/a-new-game/commit/11bedbfbc2b88792ec8c284f311607e2dc9e9992), push main fast-forward. [Pages40347916413](https://github.com/gizgity/a-new-game/actions/runs/40347916413) completed/SUCCESS, job121659711323 gồm Deploy SUCCESS. [Chơi Q8C](https://gizgity.github.io/a-new-game/?v=11bedbf). Livecurl qua proxy bị CONNECT403; không bypass hoặc giả local dist là live. Commit bàn giao sau chỉMarkdown; không đổi runtime sau deploy. Dừng AWAITING USER PLAYTEST APPROVAL, không Q8D.
