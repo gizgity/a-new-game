@@ -1,3 +1,6 @@
+> **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8c đạt” ngày2026-10-26 trên code/deploy `8cbff77` (handoff `8e70df3`), Pages40357489627 SUCCESS. Đây là approval trực tiếp cho Q8C gồm Boss/Enraged và ArrivalV2/âm cảnh báo, không suy ra từ tests/build/deploy. Giữ giới hạn coverage kỹ thuật và lịch sử approval Q2–Q8B. Dừng, không mở Q8D.
+> Trạng thái chờ duyệt bên dưới là lịch sử trước approval; evidence/giới hạn coverage giữ nguyên.
+
 > Feedback user sau preset: transform0.8s và vulnerability ở bản11bedbf/eb522df đã SUPERSEDED bởi transform1.4s với world/timer freeze. Ảnh/report cũ giữ lịch sử; bằng chứng mới ở mục dưới.
 
 # Q8C — Boss Challenge & Enraged Phase

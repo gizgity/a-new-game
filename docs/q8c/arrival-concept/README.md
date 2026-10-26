@@ -1,3 +1,5 @@
+> Q8C runtime đã **ACCEPTED — USER PLAYTEST APPROVAL** theo user “q8c đạt” trên8cbff77 ngày2026-10-26; giữ boardV1 superseded, V2/audio approval và evidence lịch sử. Không mở Q8D.
+
 # Boss Arrival Ambient — concept review
 
 **VISUAL / AUDIO PREVIEW APPROVED** — user “ok, làm đi” sau khi xem boardV2 và nghe audio sketch; runtime vẫn chờ playtest. User nhận xét “boss ổn r” trên correction1302474: ghi nhận phần Boss/Enraged ổn, không suy ra toàn Q8C accepted khi warning còn cần sửa. User yêu cầu approve trước khi làm; assistant đề xuất mockup→duyệt→tích hợp, user “ok, ổn” cho hướng này. Lượt này chỉ tạo review artifacts, **không sửa src/public/workflow hoặc deploy gameplay**. Không mở Q8D.

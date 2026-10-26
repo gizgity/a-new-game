@@ -1,3 +1,6 @@
+> **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8c đạt” ngày2026-10-26 trên code/deploy `8cbff77` (handoff `8e70df3`), Pages40357489627 SUCCESS. Đây là approval trực tiếp cho Q8C gồm Boss/Enraged và ArrivalV2/âm cảnh báo, không suy ra từ tests/build/deploy. Giữ giới hạn coverage kỹ thuật và lịch sử approval Q2–Q8B. Dừng, không mở Q8D.
+> Trạng thái chờ duyệt bên dưới là lịch sử trước approval; evidence/giới hạn coverage giữ nguyên.
+
 # Arrival Ambient V2 — implementation
 
 **AWAITING USER PLAYTEST APPROVAL**. User đã duyệt [boardV2 + audio sketch](../arrival-concept/README.md) qua “ok, làm đi”, trước tích hợp. User đã nói phần Boss/Enraged ổn trên1302474; không yêu cầu duyệt lại. Chỉ warning presentation, không Q8D.

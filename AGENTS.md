@@ -100,3 +100,6 @@ public/assets/
 - Feedback Q8C sau preset: user cho phép transform1.4s (thay0.8s), animation chậm và freeze timer run/toàn combat trong transform; chỉ presentation Boss tiến. Scope này supersede timing/vulnerability ban đầu; giữ AWAITING USER PLAYTEST APPROVAL.
 
 - Arrival ambient V2 và audio sketch đã được user duyệt qua “ok, làm đi” trước tích hợp. Cho phép edge asset production riêng/ImageGen +4nhịp xích/trầm; chỉ warning2s, không thay Boss/Enraged đã ổn. Dừng AWAITING USER PLAYTEST APPROVAL sau test/deploy, không Q8D.
+
+## Q8C approval hiện hành
+- **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8c đạt” ngày2026-10-26 trên code/deploy `8cbff77` (handoff `8e70df3`), Pages40357489627 SUCCESS. Đây là approval trực tiếp cho Q8C gồm Boss/Enraged và ArrivalV2/âm cảnh báo, không suy ra từ tests/build/deploy. Giữ giới hạn coverage kỹ thuật và lịch sử approval Q2–Q8B. Dừng, không mở Q8D. Các chỉ dẫn dừng chờ playtest Q8C phía trên là gate lịch sử đã hoàn tất; không yêu cầu duyệt lại hoặc tự triển khai Q8D.
