@@ -40,9 +40,12 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q7D — Full Run Experience Polish | AWAITING USER PLAYTEST APPROVAL | Checks PASS; hoàn tất push/Pages, chờ cảm nhận thiết bị thật |
 
 ## CURRENT STATUS — Q7D
-- Scope3ưu tiên tại GAME_BRIEF/docs/q7d: transitionSFX, resultcleanup, panel/replay. Baselineinputrun đủ6draft/Elite/Boss→Defeat219.82s. Finaldesktop input thật đủ6draft/Elite100.12s/Boss186.32s→Victory199.42s/458kills/39HP→Replay→naturalDefeat9.95s→Replay; khônggrants/timeoverride. Read-onlystatebot, khônghumanacceptance.
-- Build/typecheck vànpmtest15files/163definitions PASS. Fixture5sizes320/390/844/768/1440 pausefreeze/audioSettings/vi-en/draftgrace/victoryfreeze+deathfade/deadline/replay8cycles/nooverflow/noerrorsPASS,displaylist29. Productiondist5sizesassets/base/Start/Pause/vi-en/Resume/nooverflow/errorsPASS. Core/config/run/controls/assets nguyên; CSS chỉ bỏfocusringheading programmatic, controls giữring.
-- WebAudio focused PASS (buffers/cue/stop/mute/volume, chờ audio quantum60ms). Mobile CDP đủ6draft/Elite/Boss → Victory194.12s/458kills/85HP, Replay → naturalDefeat9.95s → Replay PASS; chưa push/deploy. Chỉpresentationdeath tiếp tục sauresult; simulation khôngtick. Khôngnewart/content/dependency/QAinfra. Chi tiết/fixtures/giới hạn/checklist tại docs/q7d/README.md.
+- Ba ưu tiên đã triển khai: cue chuyển mốc, result cleanup, panel/Replay continuity. Code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main fast-forward; không đổi core/config/run/draft/input/AI/effects/balance/assets. Không artwork/content/dependency/QA infrastructure mới.
+- Desktop input thật đủ6draft/Elite/Boss → Victory199.42s,458kills,39HP → Replay → naturalDefeat9.95s → Replay. Mobile390×844 CDP multitouch đủ6draft/Elite/Boss → Victory194.12s,458kills,85HP → Replay → naturalDefeat9.95s → Replay. Bot đọc state/predicate Perfect, không grants/clock overrides, không thay human acceptance.
+- Build/typecheck và npmtest15files/163definitions PASS. Edge fixtures5sizes320/390/844/768/1440: pause freeze, audio settings, vi/en, draft grace, Victory freeze/death fade, deadline/Replay8cycles PASS; display list29, không overflow/errors. Fixture cấp kills/Boss slain/ticks17999 ghi rõ trong evidence, không natural run.
+- Production dist5sizes assets/base/Start/Pause/vi-en/Resume PASS sau CSS cuối. WebAudio buffers/cue/stop/mute/volume PASS; chờ audio quantum60ms khi đọc gain. Không thay audio runtime vì assertion timing của harness. Scripts multitouch ban đầu lỗi phase race/TouchEnd dư đã sửa; chỉ lượt hoàn tất được tính PASS.
+- rAF desktop median16.7ms/p9566.6ms; mobile16.7/16.8ms. Chromium software WebGL, desktop chạy đồng thời checks; không deviceFPS hoặc benchmark A/B. Chưa nghe âm/Safari/iOS/nhiệt máy/tầm với máy thật.
+- Pages run40311723418/job121534293554 completed/SUCCESS, gồm bước Deploy. Live curl bị proxy CONNECT403; không bypass hoặc giả local/dist là live. URL bản code: https://gizgity.github.io/a-new-game/?v=66e0799 . Evidence/checklist tại docs/q7d/README.md.
 
 ## PREVIOUS CHECKPOINT — Q7C ACCEPTED
 - User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture.
@@ -74,4 +77,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Commit/push Q7D main không force, theo dõi Pages đến SUCCESS; bàn giao URL/version và checklist docs/q7d. Sau deploy dừng AWAITING USER PLAYTEST APPROVAL, không tự ACCEPTED/Q8.
+Dừng AWAITING USER PLAYTEST APPROVAL trên bản66e0799 đã deploy. Chờ user thử scope/checklist docs/q7d (cue6draft/Elite/Boss, death/result, Replay; pause/vi-en/audio dọc-ngang/desktop) và phản hồi tình huống + quan sát + thiết bị/browser. Không tự ACCEPTED Q7D hoặc mở Q8.

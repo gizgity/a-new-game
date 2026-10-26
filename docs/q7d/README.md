@@ -42,3 +42,9 @@ Chưa xác minh Safari/iOS, nhiệt máy, độ mượt và tầm với trên th
 4. Mobile dọc/ngang và desktop: đổi vi/en, mute/volume qua Pause; panel cuộn/focus không kẹt. Nghe thử âm lượng và theo dõi độ mượt/nóng máy.
 
 Phản hồi: tình huống/bước gặp vấn đề, quan sát thực tế, thiết bị/browser. Dừng **AWAITING USER PLAYTEST APPROVAL**, không tự ACCEPTED/Q8.
+
+## Bản bàn giao
+
+**AWAITING USER PLAYTEST APPROVAL** — code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main và [Pages40311723418](https://github.com/gizgity/a-new-game/actions/runs/40311723418) completed/SUCCESS, job121534293554 gồm Deploy. [Chơi bản Q7D](https://gizgity.github.io/a-new-game/?v=66e0799). Tài liệu bàn giao sau đó không đổi runtime.
+
+Live smoke từ executor bị proxy CONNECT403; không bypass hoặc lấy local/dist làm bằng chứng live. Deployment được xác minh qua GitHub Actions. Chưa có user approval Q7D; Q2–Q7C giữ nguyên.
