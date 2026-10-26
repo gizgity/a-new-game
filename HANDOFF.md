@@ -10,10 +10,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7D — Full Run Experience Polish: **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đã đạt q7d” ngày2026-10-26 trên bản code/deploy `66e0799` (handoff `bcfbfbe`), Pages40311723418 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ build/tests/fixture. Không mở Q8.
+Q8A — Dynamic Spawn, thuộc roadmap Q8 user giao ngày2026-10-26. Chỉ Q8A; giữ approval Q2–Q7D. Gate Q7D “không mở Q8” là lịch sử, đã superseded bởi chỉ dẫn mới.
 
 ## ACCEPTANCE
-User đã chấp nhận trải nghiệm xuyên suốt run với ba ưu tiên: cue chuyển mốc, cleanup kết thúc, panel/Replay continuity. Giữ mọi approval Q2–Q7C. Lượt này chỉ đồng bộ tài liệu approval, không đổi runtime hoặc chạy lại build/tests.
+Audit spawn main mới nhất → dynamic density theo clear speed có hard cap/khoảng cách an toàn → so build clear nhanh với build thường → focused tests/build/gameplay evidence → commit/push main khôngforce/Pages SUCCESS → **AWAITING USER PLAYTEST APPROVAL**. Không tự accepted hoặc mở Q8B. Roadmap Q8B–D tại GAME_BRIEF, chưa triển khai.
+
+## CURRENT STATUS — Q8A
+- Baseline main7b01864 đã fetch/đối chiếu. RunDirector trước đây pack3/90ticks đầu run, soft cap18; kill reset pressure nên build mạnh thiếu quái, không kill lại không trần.
+- Q8A EMA6s; sau15s bonus=max(0,rate−1), interval cơ sở/(1+bonus) sàn24ticks, soft cap18–30. Pack≤3; pressure4s hard cap48. Không xóa survivors/nerf builds/đổi milestones/Boss/art/input. Hitstop/draft/pause freeze spawn/adaptation; reset sạch.
+- Tests16files PASS (4focused mới); typecheck/build PASS, warning bundle Phaser có sẵn. Safety1080vị trí/góc spawn≥220px PASS, giữ thuật toán hiện có.
+- A/B density fixture60s, cùng pursuit bot, full build cấp đầu run, HP giữ mỗi tick, bỏ draft (không natural run/Q8D). Đo sau15s: baseline→Q8A normal empty16.7→0s, mean1.49→13.84; fast-chain empty26.07→0.13s, mean1.13→12.43. Kills124→284/285; pacing sớm hơn là việc Q8B chưa mở, không đổi milestone tại đây.
+- Browser desktop1440/mobile390: input smoke, pause freeze, crowd fixture48, vi/en/production checks/evidence tại docs/q8a. Software WebGL không chứng minh deviceFPS; user cần đánh giá áp lực/readability/nóng máy. Không yêu cầu duyệt lại Q7.
+- Deploy đang hoàn tất; không tự đánh dấu user acceptance. [Spec/checklist/evidence](docs/q8a/README.md).
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -38,8 +46,9 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
 | Q7C — Character & Enemy Art | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt q7c đạt” trên deploy2ef6d48; visual approved trước đó |
 | Q7D — Full Run Experience Polish | ACCEPTED — USER PLAYTEST APPROVAL | User “đã đạt q7d” ngày2026-10-26 trên66e0799; Pages40311723418 SUCCESS |
+| Q8A — Dynamic Spawn | AWAITING USER PLAYTEST APPROVAL | Tests/build/A-B density; Pages đang hoàn tất; chưa mở Q8B |
 
-## CURRENT STATUS — Q7D ACCEPTED
+## PREVIOUS CHECKPOINT — Q7D ACCEPTED
 - User xác nhận “đã đạt q7d” ngày2026-10-26 trên bản66e0799 đã deploy. Các giới hạn coverage kỹ thuật bên dưới giữ nguyên; không yêu cầu duyệt lại Q7D.
 - Ba ưu tiên đã triển khai: cue chuyển mốc, result cleanup, panel/Replay continuity. Code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main fast-forward; không đổi core/config/run/draft/input/AI/effects/balance/assets. Không artwork/content/dependency/QA infrastructure mới.
 - Desktop input thật đủ6draft/Elite/Boss → Victory199.42s,458kills,39HP → Replay → naturalDefeat9.95s → Replay. Mobile390×844 CDP multitouch đủ6draft/Elite/Boss → Victory194.12s,458kills,85HP → Replay → naturalDefeat9.95s → Replay. Bot đọc state/predicate Perfect, không grants/clock overrides, không thay human acceptance.
@@ -78,4 +87,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng tại Q7D đã ACCEPTED. Chờ user giao task tiếp theo; không tự mở Q8 hoặc yêu cầu duyệt lại Q7D. Phát sinh mới xử lý theo scope/feedback riêng.
+Hoàn tất push/deploy Q8A và ghi Pages kết quả; sau đó **AWAITING USER PLAYTEST APPROVAL**, dừng chờ user thử theo docs/q8a/README.md. Không mở Q8B khi chưa được duyệt. Mọi approval Q2–Q7D giữ nguyên.

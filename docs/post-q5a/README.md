@@ -1,5 +1,7 @@
 # Fixes sau Q5A
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 > Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Pressure6s và nhịp Boss trong note này đã được pressure-v2 rồi tuning hiện hành supersede. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A floor đã ACCEPTED, gameplay giữ nguyên; Q7B HUD có contract riêng; xem HANDOFF cho trạng thái hiện hành.
 
 Deploy bản f89bfa721d38adb227c92207ef1c79c37d7a5ec6 PASS qua Actions40170626907; fixes còn chờ user playtest. Pages trực tiếp từ môi trường từng bị proxy chặn, browser evidence là dist/local.

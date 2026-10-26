@@ -1,0 +1,24 @@
+[
+  {
+    "size": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "canvas": 1,
+    "overlayHidden": true,
+    "overflow": false
+  },
+  {
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "canvas": 1,
+    "overlayHidden": true,
+    "overflow": false
+  }
+]

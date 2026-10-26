@@ -1,5 +1,7 @@
 # Pressure v2 — chống chạy vòng, giữ AoE
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 > Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Damage/cooldown Grunt trong note này đã được feedback sau e4f0ab1 supersede (hiện damage6, cooldown7s+offset); không lấy thông số lịch sử làm tuning mới. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A floor đã ACCEPTED, gameplay giữ nguyên; Q7B HUD có contract riêng; xem HANDOFF cho trạng thái hiện hành.
 
 Bản e4f0ab1b962a4e99f5172d4229ad59ee70c9e4aa đã deploy; Actions40171971219 completed/success. Chờ user playtest, chưa là experience acceptance. Browser evidence là local/dist; không xác minh trực tiếp live từ môi trường bị chặn Pages.

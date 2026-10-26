@@ -1,5 +1,7 @@
 # Q7D — Full Run Experience Polish
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 User giao ngày 2026-10-26, baseline `main@688f331`. Q2–Q7C giữ ACCEPTED; Q7D đã user accepted qua “đã đạt q7d” ngày2026-10-26 trên66e0799, không mở Q8. [Contract](../../GAME_BRIEF.md#q7d-design-contract--full-run-experience-polish).
 
 ## Audit và ba ưu tiên

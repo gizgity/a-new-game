@@ -1,5 +1,7 @@
 # Q7A — Ấn phong bị vỡ / The Broken Seal
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 > Checkpoint hiện hành: Q7B đã user accepted; Q7C cũng đã user accepted; hiện hành [Q7D — Full Run Experience Polish](../q7d/README.md). Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
 
 **HIỆN HÀNH: ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26. User xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved” sau khi làm rõ scope floor-only; code0e0a9af/board2e48166. Concept V2 đã được duyệt trước đó; gameplay/camera/controls/sprites/VFX giữ nguyên. User đã giao Q7B HUD/readability: [contract/review](../q7b/README.md) đã được user ACCEPTED trên5ee970e (“q7b đã đạt”); approval Q7A giữ nguyên. Xem [implementation/checks/cách thử](IMPLEMENTATION.md), [board trước–sau](index.html) và [runtime asset provenance](runtime-asset.json). Q6 cũng đã ACCEPTED theo main bc07fd4.

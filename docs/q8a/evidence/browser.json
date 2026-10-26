@@ -1,0 +1,52 @@
+[
+  {
+    "size": {
+      "width": 1440,
+      "height": 1000
+    },
+    "input": {
+      "elapsed": 0.5333333333333333,
+      "hp": 100,
+      "x": 938.6666666666679,
+      "enemies": 7
+    },
+    "pauseFreeze": true,
+    "crowd": {
+      "count": 48,
+      "minSpawnDistance": 359.9999999999999,
+      "placement": "After spawning, moved to radius90–160 for visible crowd fixture only."
+    },
+    "raf": {
+      "medianMs": 49.900000000001455,
+      "p95Ms": 83.39999999999782
+    },
+    "overflow": false,
+    "errors": [],
+    "fixture": "48 enemies granted/staggered for renderer; software WebGL, not real device FPS. Desktop input smoke has no grants; mobile touch Start/Pause/Resume only."
+  },
+  {
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "input": {
+      "elapsed": 0.03333333333333333,
+      "hp": 100,
+      "x": 800,
+      "enemies": 7
+    },
+    "pauseFreeze": true,
+    "crowd": {
+      "count": 48,
+      "minSpawnDistance": 359.9999999999999,
+      "placement": "After spawning, moved to radius90–160 for visible crowd fixture only."
+    },
+    "raf": {
+      "medianMs": 66.60000000000036,
+      "p95Ms": 83.39999999999964
+    },
+    "overflow": false,
+    "errors": [],
+    "fixture": "48 enemies granted/staggered for renderer; software WebGL, not real device FPS. Desktop input smoke has no grants; mobile touch Start/Pause/Resume only."
+  }
+]

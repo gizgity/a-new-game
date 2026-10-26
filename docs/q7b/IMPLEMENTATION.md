@@ -1,5 +1,7 @@
 # Q7B — HUD runtime / bàn giao playtest
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 > Checkpoint hiện hành: Q7B đã user accepted; Q7C cũng đã user accepted; hiện hành [Q7D — Full Run Experience Polish](../q7d/README.md). Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
 
 **CONCEPT / DESIGN APPROVED:** user “approved làm đi” ngày2026-10-26. Runtime nay **ACCEPTED — USER PLAYTEST APPROVAL**: User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. Xem HUD_V3.md cho bản đã chốt; phần6664ee0 bên dưới giữ snapshot lịch sử. Không mở Q7C. Q2–Q7A và draft đầu4hướng giữ accepted; Q1 vẫn riêng chưa có visual approval.

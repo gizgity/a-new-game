@@ -1,5 +1,7 @@
 # Q7A — runtime / bàn giao playtest
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 **ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved”, sau khi được làm rõ Q7A chỉ thay artwork sàn obsidian; gameplay/camera/controls/player-enemy sprites/combat VFX giữ nguyên. Approval dành cho Q7A đã deploy (code0e0a9af, bản board2e48166), không suy rộng sang Q1 hoặc mọi thiết bị/Safari.
 
 Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. NEXT ACTION lúc kết thúc Q7A là chờ scope. Nay user đã giao [Q7B HUD/readability](../q7b/README.md), concept đã user duyệt và triển khai riêng,chờ runtime playtest; không thay lịch sử Q7A.

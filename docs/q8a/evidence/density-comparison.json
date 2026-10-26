@@ -1,0 +1,58 @@
+[
+  {
+    "version": "baseline",
+    "build": "normal",
+    "seconds": 60,
+    "kills": 124,
+    "spawned": 127,
+    "meanEnemies": 1.4877777777777779,
+    "emptySeconds": 16.7,
+    "sparseSeconds": 29.1,
+    "maxEnemies": 3,
+    "minSpawnDistance": 359.99999999999983,
+    "stepP95ms": 0.03062500000000057,
+    "fixture": "Full builds granted at start, HP restored each tick, drafts bypassed; density only, not natural run or Q8D."
+  },
+  {
+    "version": "baseline",
+    "build": "fast-chain",
+    "seconds": 60,
+    "kills": 124,
+    "spawned": 127,
+    "meanEnemies": 1.1251851851851853,
+    "emptySeconds": 26.066666666666666,
+    "sparseSeconds": 31.033333333333335,
+    "maxEnemies": 3,
+    "minSpawnDistance": 239.5355622168863,
+    "stepP95ms": 0.013370000000008986,
+    "fixture": "Full builds granted at start, HP restored each tick, drafts bypassed; density only, not natural run or Q8D."
+  },
+  {
+    "version": "dynamic",
+    "build": "normal",
+    "seconds": 60,
+    "kills": 284,
+    "spawned": 299,
+    "meanEnemies": 13.838148148148148,
+    "emptySeconds": 0,
+    "sparseSeconds": 0.55,
+    "maxEnemies": 24,
+    "minSpawnDistance": 232.4671316754632,
+    "stepP95ms": 0.04700900000000274,
+    "fixture": "Full builds granted at start, HP restored each tick, drafts bypassed; density only, not natural run or Q8D."
+  },
+  {
+    "version": "dynamic",
+    "build": "fast-chain",
+    "seconds": 60,
+    "kills": 285,
+    "spawned": 308,
+    "meanEnemies": 12.427407407407408,
+    "emptySeconds": 0.13333333333333333,
+    "sparseSeconds": 0.4666666666666667,
+    "maxEnemies": 23,
+    "minSpawnDistance": 247.64756750951375,
+    "stepP95ms": 0.035883000000012544,
+    "fixture": "Full builds granted at start, HP restored each tick, drafts bypassed; density only, not natural run or Q8D."
+  }
+]

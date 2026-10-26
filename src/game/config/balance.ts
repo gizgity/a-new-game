@@ -14,7 +14,11 @@ export const LIGHT_COMBO = [
   { windup: 6 / 60, duration: 0.30, range: 112, arc: Math.PI * 10 / 9, damage: 22, force: 24, stagger: 0.10 },
   { windup: 10 / 60, duration: 0.44, range: 128, arc: Math.PI * 13 / 9, damage: 30, force: 38, stagger: 0.14 },
 ] as const;
-export const WAVES = { packSize: 3, archerCap: 3, packSpread: 0.16, pressureInterval: 4, pressureArcherCap: 8 } as const;
+export const WAVES = { packSize: 3, archerCap: 3, packSpread: 0.16, pressureInterval: 4, pressureArcherCap: 8,
+  // Q8A: bounded response to recent clear speed; preserve the opening/no-kill cadence.
+  clearWindow: 6, clearThreshold: 1, graceSeconds: 15,
+  densityLead: 3, maxDensityBonus: 12, minIntervalTicks: 24, hardCap: 48,
+} as const;
 
 export const HEAVY = { charges: 2, recharge: 8, damage: 100, finisherDamage: 140,
   windup: 0.24, duration: 0.72, range: 164, arc: Math.PI * 14 / 9, force: 80, stagger: 0.6 } as const;

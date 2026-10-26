@@ -1,5 +1,7 @@
 # Tank trade-off — feedback sau Q5B
 
+> Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.
+
 > Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Q5C–Q5E đã accepted; câu chưa mở ở dưới là trạng thái tại checkpoint lịch sử. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A floor đã ACCEPTED, gameplay giữ nguyên; Q7B HUD có contract riêng; xem HANDOFF cho trạng thái hiện hành.
 
 Bản d42cdaf4b69a2253307c5a194a2b58f022ad3f94 đã deploy, Actions40209412564 completed/success. User đã duyệt balance qua “oki, ổn r á” trên d42cdaf. ACCEPTED — USER PLAYTEST APPROVAL cho tank trade-off; Q5C/D chưa mở.

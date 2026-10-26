@@ -25,6 +25,7 @@ export class RunDirector {
   private waveIndex = 0;
   private pressureTime = 0;
   private previousKills = 0;
+  private clearRate = 0;
   mutationPool: readonly MutationId[] = MUTATIONS;
   cursePool: readonly CurseId[] = CURSES;
 
@@ -42,7 +43,7 @@ export class RunDirector {
     this.lastSignals = draftSignals(); this.choices = []; this.draftDebug = null;
     this.world.practice = false;
     this.world.enemies = [];
-    this.pressureTime = this.previousKills = 0;
+    this.pressureTime = this.previousKills = this.clearRate = 0;
     this.ticks = this.draftIndex = this.spawnTicks = this.waveIndex = 0;
     for (let i = 0; i < OPENING.initialCount; i++) {
       this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt',
@@ -57,6 +58,11 @@ export class RunDirector {
     if (this.draft.length || this.result || this.expired) return;
     const frozen = this.world.hitstop > 0;
     this.world.step(input, dt);
+    if (!frozen && !this.bossDue) {
+      // Exponential decay avoids oscillation after a single chain or banking spawn debt.
+      const decay = Math.exp(-dt / WAVES.clearWindow);
+      this.clearRate = this.clearRate * decay + Math.max(0, this.world.kills - this.previousKills) / dt * (1 - decay);
+    }
     if (this.world.kills !== this.previousKills) this.pressureTime = 0;
     else if (!frozen && !this.bossDue) this.pressureTime += dt;
     this.previousKills = this.world.kills;
@@ -89,17 +95,20 @@ export class RunDirector {
       this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
     }
     this.expired = this.ticks >= 18000;
+    if (frozen) return;
     this.spawnTicks++;
     const blend = this.openingBlend;
     const standardInterval = Math.max(35, 95 - Math.floor(this.elapsed / 4));
-    const interval = Math.round(OPENING.spawnIntervalTicks + (standardInterval - OPENING.spawnIntervalTicks) * blend);
-    const cap = this.bossDue ? 7 : Math.floor(OPENING.enemyCap + (18 - OPENING.enemyCap) * blend);
-    const pressureWave = !this.bossDue && this.world.enemies.length >= cap && this.pressureTime + 1e-9 >= WAVES.pressureInterval;
+    const baseInterval = Math.round(OPENING.spawnIntervalTicks + (standardInterval - OPENING.spawnIntervalTicks) * blend);
+    const clearBonus = !this.bossDue && this.elapsed >= WAVES.graceSeconds ? Math.max(0, this.clearRate - WAVES.clearThreshold) : 0;
+    const interval = this.bossDue ? baseInterval : Math.max(WAVES.minIntervalTicks, Math.round(baseInterval / (1 + clearBonus)));
+    const cap = this.bossDue ? 7 : OPENING.enemyCap + Math.min(WAVES.maxDensityBonus, Math.floor(clearBonus * WAVES.densityLead));
+    const pressureWave = !this.bossDue && this.world.enemies.length >= cap && this.world.enemies.length < WAVES.hardCap && this.pressureTime + 1e-9 >= WAVES.pressureInterval;
     if (this.spawnTicks >= interval && (this.world.enemies.length < cap || pressureWave)) {
       if (pressureWave) this.pressureTime = 0;
       this.spawnTicks = 0;
       const index = this.waveIndex++;
-      const count = pressureWave ? WAVES.packSize : Math.min(this.bossDue ? 1 : WAVES.packSize, cap - this.world.enemies.length);
+      const count = pressureWave ? Math.min(WAVES.packSize, WAVES.hardCap - this.world.enemies.length) : Math.min(this.bossDue ? 1 : WAVES.packSize, cap - this.world.enemies.length);
       for (let i = 0; i < count; i++) {
         const special = i === count - 1;
         const archerRoom = this.world.enemies.filter(enemy => enemy.kind === 'archer').length < WAVES.archerCap;
