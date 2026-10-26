@@ -480,6 +480,17 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
   8. Focused tests phù hợp presentation snapshot/reset/priority + typecheck/build, renderer screenshots trước–sau, browser input/overflow/runtime checks và perf so cùng scene. Không comprehensive E2E/framework; fixtures/tests không là user approval.
 - Implementation/checks/push/Pages và bàn giao renderer đã hoàn tất; user đã xác nhận Q7B đạt trên5ee970e. Đồng bộ acceptance và dừng, không tự mở Q7C.
 
+## Q7C Design Contract — Character & Enemy Art Overhaul
+
+**IN PROGRESS — CONCEPT REVIEW**, task user2026-10-26. Q7B đã accepted5ee970e/approval78f07e6. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mở Q7D. Các câu “không tự mở Q7C” trong lịch sử Q7A/Q7B là gate cũ, nay user đã giao Q7C riêng.
+
+- Player/Grunt/Archer/Volatile/Bulwark/Chain Warden: asset-first ImageGen, Neon Occult / Fractured Geometry theo ảnh user **Q7A Visual Hierarchy / Contrast Study V1**, giữ silhouette/palette/P0–P3. Không dùng procedural Graphics thay body artwork; không cắt concept board thành sprite runtime.
+- Tạo source sprites riêng và preview idle/move/windup/attack/recovery/hit/death, Player attack families/dash và Boss sweep/ring/slam phân biệt. Volatile không có recovery sống; pose aftermath=N/A, không thêm phase. Animation chỉ đọc state simulation, không đổi timing/hit/kill/remove để khớp ảnh.
+- Preview arena Q7A đúng gameplay scale trên mobile/desktop, crowd và grayscale; ghi rõ concept/mockup khác renderer thật. Prompt/source/version/provenance/rights/giới hạn giữ docs/q7c; runtime assets chỉ sau approval.
+- **Dừng AWAITING VISUAL APPROVAL trước tích hợp**. User duyệt rồi mới asset rendering/animation, typecheck/build/focused tests, mobile/desktop/crowd/grayscale/performance, commit/push theo giai đoạn và deploy Pages. Bàn giao link/before-after/cách thử, **AWAITING PLAYTEST APPROVAL**; không tự ACCEPTED hoặc chuyển Q7D.
+- Giữ hitbox/AI/damage/timing/telegraph/VFX/controls/HUD và Q2–Q7B. Không gameplay content/framework/dependency mới. Q1 cũ chưa tự accepted; Q7C artwork scope thay hướng pending sau visual approval, giữ lịch sử.
+- [Audit, state contract và review](docs/q7c/README.md). Q7D Full Run Polish chỉ tên checkpoint kế tiếp, chưa có scope triển khai được giao.
+
 ## Audio
 - Procedural SFX đơn giản qua Phaser Sound Manager.
 - Ưu tiên Light/Heavy Hit, Gun, Dash, Perfect Dodge, Detonate, Player Hurt.
@@ -511,4 +522,4 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã ACCEPTED theo user ngày2026-10-26. Q7A arena floor đã được user ACCEPTED sau deploy. User mở Q7B HUD/readability ngày2026-10-26: runtime5ee970e đã user xác nhận “q7b đã đạt” — ACCEPTED; không mở Q7C.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã ACCEPTED theo user ngày2026-10-26. Q7A arena floor đã được user ACCEPTED sau deploy. User mở Q7B HUD/readability ngày2026-10-26: runtime5ee970e đã user xác nhận “q7b đã đạt” — ACCEPTED. User nay giao Q7C Character/Enemy Art riêng; Q7D Full Run Polish chưa mở.

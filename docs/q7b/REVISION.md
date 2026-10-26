@@ -1,5 +1,7 @@
 # Q7B — sửa theo playtest: vùng chơi, cảm ứng và draft
 
+> Checkpoint hiện hành: Q7B đã user accepted; user nay giao [Q7C — Character/Enemy Art](../q7c/README.md). Q7D = Full Run Polish chưa mở. Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
+
 > HIỆN HÀNH: Q7B ACCEPTED, user “q7b đã đạt” trên5ee970e. [Bản đã chốt](HUD_V3.md). Phần dưới giữ snapshotf9d7930 và gate lúc đó, không sửa lịch sử thành thiết kế mới.
 
 **AWAITING USER PLAYTEST APPROVAL.** User báo thanh HUD che arena trên điện thoại, yêu cầu kiểm desktop/góc; giao thêm joystick vùng lớn, combat tỏa tròn quanh vị trí ngón cái Chém/Bắn, mobile auto aim quái gần nhất và draft chờ1giây. Đây là ngoại lệ scope do user giao trực tiếp sau bản6664ee0/docs8a469c0, không phải acceptance runtime Q7B hoặc Q1. Q2–Q7A giữ accepted; không Q7C.

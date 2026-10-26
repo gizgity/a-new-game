@@ -10,10 +10,15 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7B — HUD & Combat Readability: **ACCEPTED — USER PLAYTEST APPROVAL**. User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. Correction theo ảnh, icon-only4attack/2pair+Dash+Surge, HUDframe/lanes/floatingjoystick/autoaim/draft1s đã chốt. Dừng tại Q7B; không tự mở Q7C. Q1 vẫn chờ visual approval riêng.
+Q7C — Character & Enemy Art Overhaul, task user2026-10-26. Audit → sprite concepts riêng6nhân vật → preview arena/crowd/grayscale → đồng bộ docs → **AWAITING VISUAL APPROVAL**. Q7B đã ACCEPTED; Q7D = Full Run Polish chưa mở. Chưa tích hợp runtime hoặc đổi gameplay/HUD.
 
 ## ACCEPTANCE
-User xác nhận chất lượng, không lấy tests/fixture làm approval. Code5ee970ed41802ce75d222b714c74361949d0aae6, Pages40292060536/job121469197980 completed/success gồmDeploy. Typecheck/build/test14files/renderer6sizes/input/dist PASS; giới hạn device/iOS/Safari/full-run kỹ thuật vẫn giữ ở HUD_V3.md. Sau acceptance chỉ đồng bộ docs/board, không đổi runtime hoặc chạy lại tests/build thủ công.
+Reference chính Q7A Visual Hierarchy / Contrast Study V1. Đủ idle/move/windup/attack/recovery/hit/death (Volatile recovery sống=N/A), Player actions và Boss sweep/ring/slam phân biệt. Preview ghi rõ concept và gameplay scale; source riêng, không crop concept board thành runtime sprite. User duyệt visual trước asset rendering/animation/deploy; sau deploy AWAITING PLAYTEST APPROVAL, không tự accepted.
+
+## CURRENT STATUS — Q7C AUDIT
+- Đã đọc source-of-truth/handoff skill, fetch/fast-forward main78f07e6 (approval Q7B5ee970e), không open PR qua connector. Đã kiểm PlayerVisual/EnemyVisual/ArenaScene/combat/balance; audit chi tiết tại docs/q7c/README.md.
+- Có ImageGen; đang sinh6sheet source riêng theo reference Q7A. Chưa sửa src/public runtime/dependencies/workflow. Ground telegraphs/VFX/collider/AI/timing/controls/HUD/Q2–Q7B khóa.
+- Q7C = Character/Enemy Art; Q7D = Full Run Polish, không tự mở. Q1 visual chưa tự accepted; Q7C sẽ thay hướng artwork đang pending sau user duyệt.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -36,6 +41,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
+| Q7C — Character & Enemy Art | IN PROGRESS — CONCEPT GENERATION | Visual approval trước tích hợp |
+| Q7D — Full Run Polish | NOT STARTED | Chỉ mở khi user giao |
 
 ## CURRENT STATUS — Q7B ACCEPTED
 - User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. Code5ee970ed41802ce75d222b714c74361949d0aae6 đã push main/review branch, Pages40292060536/job121469197980 SUCCESS gồmDeploy. URL https://gizgity.github.io/a-new-game/ ; livecurl môi trường vẫn proxy403, evidence là local dev/dist. Không giả fixture là user acceptance; approval là phát biểu user.
@@ -146,10 +153,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 ## RUN
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
-## LAST VALIDATION
+## LAST VALIDATION — Q7B (LỊCH SỬ)
 - Frame/icon-only revision: typecheck/build/test14files PASS; focused browser6sizes/corners/Boss/empty+ready/build6slots/vi-en/grayscale/nooverflow/error PASS. Layout/info button ở667 đã sửa/rerun. Input CDP hold/release/manualwhilemove/autoaim/details2finger/cancel/draft1s/freshpress PASS.
 - Production5sizes Bắn/drag/Heavy1/2/mouse/WASD/details/Pause/settings/vi-en/no stuck/noerrors PASS; finaldist390/667/1440 icon/asset/overflow PASS. SVG XML/provenancehashes/PNG integrity/localdocslinks/diff PASS. Không đổi gameplay/floor/inputinternals; frame/glyphs static khôngbenchmark deviceFPS.
 - User đã accepted Q7B; kỹ thuật chưa iOS/Safari/device/full-run. Pages40292060536 đã SUCCESS; proxy live403 đã kiểm lại lượt này, không bypass/giả local/dist làlive. Snapshotf9d7930/evidence trước giữ ở REVISION.md; core approvals giữ PROGRESS vàdocs từngcheckpoint.
 
 ## NEXT ACTION
-Dừng tại Q7B đã ACCEPTED, chờ user giao scope tiếp theo; không tự mở Q7C hoặc yêu cầu duyệt lại Q7B. Q1 giữ pending riêng, Q2–Q7A/draft approvals giữ nguyên.
+Hoàn tất sheet/preview Q7C và kiểm provenance, tỷ lệ gameplay/crowd/grayscale, đồng bộ docs/commit/push rồi dừng AWAITING VISUAL APPROVAL. Không tích hợp hoặc tự Q7D.
