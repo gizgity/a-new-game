@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q5E — Playtest build diversity & balance. User duyệt Q5D514063a qua “oki r, làm tiếp đi” ngày2026-10-26. Giữ tuning đã accepted; chưa có feedback cân bằng mới nên không tự sửa số. Chuẩn bị4route trial theo draft, kiểm tới Elite/Boss hoặc ghi nguyên nhân chết; dừng chờ user playtest Q5E, không tự mở milestone mới.
+Q5E — Playtest build diversity & balance. User duyệt Q5D514063a qua “oki r, làm tiếp đi” ngày2026-10-26. Giữ tuning đã accepted; chưa có feedback cân bằng mới nên không tự sửa số. Chuẩn bị4route trial theo draft, kiểm tới Elite/Boss hoặc ghi nguyên nhân chết; dừng chờ user playtest Q5E, không tự mở milestone mới. Route/checks/deploy PASS8b1571d, **AWAITING PLAYTEST APPROVAL**.
 
 ## ACCEPTANCE
 - Bốn hướng: Juggernaut; Catalyst+Reclaimer/Parasitic sustain; Phantom/Static+Ghost counter; Specialist/Echo+Glass ranged/chain.
@@ -34,7 +34,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Tank trade-off | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki, ổn r á” trên d42cdaf |
 | Q5C — New pool tới12/8 | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên b5ba138 |
 | Q5D — Weighted Draft | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên514063a |
-| Q5E — Diversity/balance | IN PROGRESS | Chuẩn bị4route và lượt kiểm so sánh |
+| Q5E — Diversity/balance | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Deploy8b1571d PASS; user thử4route, chưa tự chốt balance |
 
 ## CURRENT STATUS
 - Q5E thêm4route ?playtest=route-tank/route-sustain/route-counter/route-ranged: bắt đầu0build, chỉ đưa card gợi ý tại draft thật, pooltrial đầy đủ, slotcap4/1Curse, có giữ Curse, không grant HP/ammo/kills. Không lưu totals/unlocks/history; settings vẫn lưu. Không sửa tuning hoặc core combat/run/draft.
@@ -87,6 +87,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Evidence trước giữ: docs/crowd-combo/combo.gif (fixture6quái500HP,30fps), docs/charged/comparison.gif, docs/aim-opening/, docs/touch-fix/, docs/q1/, docs/q2/. Không coi ảnh cũ là bản current.
 
 ## KEY DECISIONS
+- Handoff phải commit/push để giữ tiến độ; user đã cho phép đồng bộ HANDOFF/GAME_BRIEF hiện có trên repo public ngày2026-10-26. Quy tắc lưu ở AGENTS.md và handoff skill; không chỉ lưu local.
 - User yêu cầu mọi bàn giao playtest phải nói rõ scope, cách thử và kết quả mong đợi; đã lưu quy tắc ở AGENTS.md.
 - Mobile-first + desktop,1arena,run5phút,1sword/gun,3mobs/Elite/Boss; scope Q5 mới khóa12Mutation/8Curse (code Q5C12/8); không permanent stat upgrades/backend/account/multiplayer/leaderboard/monetization.
 - Quyết định run còn hiệu lực:6draft và milestone theo kills HOẶC thời gian (tới trước áp dụng trước), gồm Elite/Boss; các thay đổi ranged synergy/dodge/body/special charges và enemy growth trước vẫn giữ. Q3/Q4 đã accepted; user đã duyệt contract và yêu cầu triển khai/deploy Q5A ngày2026-10-25. User sẽ tạo issue mới cho phát sinh khi trải nghiệm sau, không giữ Q4 ở trạng thái chờ thử.
@@ -106,14 +107,16 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- Lượt đồng bộ tài liệu ngày2026-10-26: lịch sử GitHub xác nhận HANDOFF/GAME_BRIEF đã được push trước đó; user cho phép đồng bộ và yêu cầu handoff bắt buộc push. Ghi quy tắc bắt buộc push tại KEY DECISIONS, gỡ blocker quyền cũ, giữ trạng thái Q5E chờ playtest. Chỉ sửa Markdown, kiểm diff/tính nhất quán; không chạy lại tests/build/deploy gameplay.
 - Q5E:137definitions/11files PASS (1focused4route×6draft), typecheck/build/diff PASS. Giữ nguyên combat.ts/run.ts/balance.ts/Draft.ts. Không thêm effects hoặc tune số Q5.
 - Core offline seed123456789, script biết vị trí/timing/Perfect, không grant HP/ammo/kills/time: tank thắng3:17.2 HP76; sustain3:07.1 HP100; counter3:11.1 HP100; ranged3:10.7 HP36/75. Cả4quaElite/Boss; sustainheal0 nên chưa chứng minh utility, không suy rộng thành user balance acceptance. docs/q5e/scripted-routes.json.
 - Chromium390:4route×6draft/label/reset/vi-en/no initial grant/no-progress PASS, normal unlock/old trial PASS; ảnh là fixture kill thresholds. Dist320/844/1440 real input/pause/vi-en/no-overflow/runtime PASS. Chưa Safari/iOS/device/full-run browser; local/dist chưa smoke live.
 - Q5D514063a user duyệt “oki r, làm tiếp đi” ngày2026-10-26. Q5C b5ba138/Q5A/Q2/Q3/Q4 giữ approvals; tank d42cdaf giữ tuning. Không suy rộng approval Q5D sang toàn Q5B counter/chain/echo.
+- Deploy Q5E PASS:8b1571d719a51c6f0da50a8b4435782c20a444ff, Actions40248846311 completed/success, job121336104379. Parent252b4b2, expected SHA/không force,13blobs(9text/4PNG) đối chiếu local+remote tree; core hash giữ nguyên.
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Deploy route trial Q5E sau checks PASS, theo dõi Pages Actions rồi dừng chờ user thử4hướng theo docs/q5e/README.md.
+Chờ user thử4route Q5E8b1571d theo docs/q5e/README.md; chỉ tune defaults Q5 dựa feedback. Không tự accepted toànQ5 hoặc mở milestone mới.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.
@@ -125,4 +128,4 @@ Checklist scope/cách thử/giới hạn ở docs/q5d/README.md. Game thường 
 4link route/checklist chi tiết docs/q5e/README.md. Chọn card “Gợi ý” ở Mutation25/0:30,160/1:40,220/2:20,380/3:40; Curse80/1:00 và giữ300/3:00. Đi tớiElite200/2:30, Boss450/4:00 hoặc ghi đòn/mốc chết. Tank so đứng/di chuyển và damagecost; sustain thử khi mấtHP, marked kill/nổ; counter Perfect→Light/Charged vàzeroDash; ranged GlassHP75/Fracture/chain4. Mobile joystick/giữ-kéo Chém/Bắn/Lướt/specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Trial không natural acquisition/không lưu progress. Cần user duyệt survivability/risk/build rhythm/readability; chưa tự accepted toànQ5.
 
 ## BLOCKERS
-Không blocker implementation; đang deploy, còn human playtest Q5E. Không có feedback mới để tuning. Không tự mở milestone mới sau Q5E. Pages direct từng bị proxy chặn; chưa smoke live.
+Không còn blocker quyền đồng bộ tài liệu: ngày2026-10-26 user yêu cầu kiểm lịch sử, cho phép nếu đã có và xác nhận “handoff là phải push để giữ tiến độ”. Đã xác minh HANDOFF/GAME_BRIEF tồn tại trên repo public qua các commit8b1571d/252b4b2/514063a; bản trạng thái deploy được đồng bộ theo xác nhận của user. Game deploy8b1571d và README99f012a đã PASS; còn human playtest Q5E, chưa có feedback mới để tuning. Không tự mở milestone mới; chưa smoke live/Safari.
