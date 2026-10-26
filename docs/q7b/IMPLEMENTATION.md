@@ -1,6 +1,6 @@
 # Q7B — HUD runtime / bàn giao playtest
 
-**CONCEPT / DESIGN APPROVED:** user “approved làm đi” ngày2026-10-26. Runtime **AWAITING USER PLAYTEST APPROVAL**; không tự accepted, không mở Q7C. Q2–Q7A và draft đầu4hướng giữ accepted; Q1 vẫn riêng chưa có visual approval.
+**CONCEPT / DESIGN APPROVED:** user “approved làm đi” ngày2026-10-26. Runtime nay **ACCEPTED — USER PLAYTEST APPROVAL**: User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. Xem HUD_V3.md cho bản đã chốt; phần6664ee0 bên dưới giữ snapshot lịch sử. Không mở Q7C. Q2–Q7A và draft đầu4hướng giữ accepted; Q1 vẫn riêng chưa có visual approval.
 
 ## Bản sửa hiện hành theo playtest
 

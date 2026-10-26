@@ -1,6 +1,6 @@
 # Q7B — HUD frame và cụm combat theo nhóm chức năng
 
-**AWAITING USER PLAYTEST APPROVAL.** User yêu cầu bám ảnh HUD bevel/góc gãy trong hội thoại, sửa cụm quạt thành **4attack + Dash + Surge**, rồi chỉ rõ “icon là đủ k cần chữ trong nút”. Đây là correction được giao trực tiếp sau baseline6a851a0/runtimef9d7930, không là acceptance Q7B hoặc mở Q7C. Q2–Q7A/draft đầu4hướng giữ accepted; Q1 chưa riêng được duyệt.
+**ACCEPTED — USER PLAYTEST APPROVAL.** User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. User yêu cầu bám ảnh HUD bevel/góc gãy trong hội thoại, sửa cụm quạt thành **4attack + Dash + Surge**, rồi chỉ rõ “icon là đủ k cần chữ trong nút”. Đây là correction được giao trực tiếp sau baseline6a851a0/runtimef9d7930, scope correction nay đã được user chấp nhận; không tự mở Q7C. Q2–Q7A/draft đầu4hướng giữ accepted; Q1 chưa riêng được duyệt.
 
 ## Thiết kế hiện hành
 
@@ -23,10 +23,10 @@
 - Renderer local6viewports320/390/667/844/768/1440: crowd/fullbuild/HP22/Barrier30, resources empty/ready/partial, vi/en, Boss/4góc/details. Không chồng HUD/control vào canvas, button≥44px/không chồng nhau, đúng2pair/4attack +2utility; nooverflow/pageerror/requesterror. Các ảnh fixture grant state/enemies/position, không natural run.
 - Input CDP thật:4gốc joystick, vừa đi vừa manual aim/auto resume, Charged release đúng hướng, Heavy giữ không trừ/thả1lượt, details2ngón/cancel; draft≥1s/heldtouch/Space rejected/freshclick+Space/card4/locale noreset. Không đổi core để chữa harness; chờ điều kiện tick thay fixed delay khi software renderer chậm.
 - Dist5viewports320/390/844/768/1440 inputthật +Pause/details/settings/vi-en/Heavy1/2/no stuck/noerrors. Finaldist390/667/1440 kiểm6glyph/ARIA+tooltip/khôngwordlabels/assetsnạpthật/buildsummaryfits/Pause-details/vi-en; không dựa vào DOM preview. Buildsummary667 đã được nới để không cắt iconinfo vàBoss giới hạntronggap.
-- `npm test`14files PASS, typecheck/build PASS; warning Phaser bundle>500KB đã có. Không thêm test/visual framework hoặc dependency. Static SVG không thêm animation/particles; chưa benchmark thiết bị thật/iOS/Safari/full-run hoặc tuyên bố visual quality đạt.
+- `npm test`14files PASS, typecheck/build PASS; warning Phaser bundle>500KB đã có. Không thêm test/visual framework hoặc dependency. Static SVG không thêm animation/particles; chưa benchmark thiết bị thật/iOS/Safari/full-run; approval chất lượng đến từ user “q7b đã đạt”, không đến từ tests.
 
-## Deploy / thử
+## Deploy / scope đã bàn giao
 
-[Chơi Q7B](https://gizgity.github.io/a-new-game/) — reload sau deploy; commit/run sẽ ghi khi hoàn tất.
+[Chơi Q7B](https://gizgity.github.io/a-new-game/) — code [5ee970e](https://github.com/gizgity/a-new-game/commit/5ee970ed41802ce75d222b714c74361949d0aae6), [Pages40292060536](https://github.com/gizgity/a-new-game/actions/runs/40292060536)/job121469197980 completed/success gồmDeploy. Livecurl từ môi trường vẫn proxy403; screenshots/checks localdev/dist, không giảlive. User đã xác nhận Q7B đạt sau deploy.
 
-Trên điện thoại dọc/ngang, thử luân phiên **crosshair thường/mạnh**, **blade thường/mạnh**, **Dash**, **Surge** khi100%; kiểm tầm với, không nhầm cặp/nút. Strong giữ-ngắm/thả mới cast; đạn/lượt hết vẫn thấy icon và số/timer. Đi sát góc và mở details để kiểm frame không phủ player; user không cần thử lại toàn bộ Q2–Q7A. Gửi nút/tình huống/thiết bị/browser nếu chưa ổn. **AWAITING USER PLAYTEST APPROVAL**, không tự Q7C.
+Trên điện thoại dọc/ngang, thử luân phiên **crosshair thường/mạnh**, **blade thường/mạnh**, **Dash**, **Surge** khi100%; kiểm tầm với, không nhầm cặp/nút. Strong giữ-ngắm/thả mới cast; đạn/lượt hết vẫn thấy icon và số/timer. Đi sát góc và mở details để kiểm frame không phủ player; user không cần thử lại toàn bộ Q2–Q7A. Gửi nút/tình huống/thiết bị/browser nếu chưa ổn. **Q7B ACCEPTED** theo user, không yêu cầu playtest lại hoặc tự mở Q7C. Checklist trên giữ để tái hiện nếu có issue mới.
