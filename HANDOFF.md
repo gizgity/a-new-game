@@ -10,10 +10,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q8A — Dynamic Spawn: **ACCEPTED — USER PLAYTEST APPROVAL**, user xác nhận “q8a đạt yêu cầu” ngày2026-10-26 trên code/deploy394341c (handoff938acf9), Pages40338795004 SUCCESS. Chỉ Q8A; giữ approval Q2–Q7D. Gate Q7D “không mở Q8” là lịch sử, đã superseded bởi chỉ dẫn mới.
+Q8B — Run Pacing & Milestone Balance: **AWAITING USER PLAYTEST APPROVAL**. User giao riêng ngày2026-10-26; baseline main46a17ed. Q8A ACCEPTED theo “q8a đạt yêu cầu” trên394341c; giữ Q2–Q7D. Q8C–D chưa mở.
 
 ## ACCEPTANCE
-User đã duyệt Q8A qua “q8a đạt yêu cầu” sau deploy394341c. Đây là approval trực tiếp, không suy ra từ tests/fixture. Giữ approval Q2–Q7D và specification spawn Q8A. Lượt này chỉ đồng bộ tài liệu approval; không đổi runtime hoặc chạy lại build/tests. Q8B–D chưa triển khai, chỉ tiếp tục khi user giao.
+Chỉ cân bằng6Draft/Elite/Boss kills/time. Boss3:40–4:00 không sớm hơn3:40, Victory mục tiêu4:30–5:00, deadline5:00. Không thay spawn/HP/damage/effects/pattern. Tests/build/deploy không là user acceptance. Mục tiêu Victory chưa chứng minh đạt với bot hiệu quả, xem giới hạn dưới.
+
+## CURRENT STATUS — Q8B
+- Công thức: elapsed≥minSeconds AND (kills≥target OR elapsed≥fallback). Draft floors20/50/85/120/155/190s, fallback30/60/100/140/180/205s; kills25/80/160/220/300/380. Elite200kills từ125s/fallback150s. Boss1200kills từ220s/fallback240s. Full build có15–50s trước Boss; clear nhanh không bỏ qua run.
+- Chỉ sửa config milestones, predicate reached và HUD vi/en hiển thị floor/fallback. Giữ spawn Q8A, combat, growth, Boss patterns và assets. Không warning2s/Enraged Q8C.
+- A/B4routes×2styles: combat/HP/resources thật, route offers deterministic, không cấp kills/clock/HP/build. Baseline Boss86.7–89.25s, Victory92.8–100.97s; Q8B Tank/Sustain/Counter Boss220s, Victory225.87–233.02s,1205–1261kills; Ranged chết157.95–178.05s/889–1002kills. Bot đọc predicate Perfect nên không đại diện người chơi.
+- **Giới hạn:** Victory4:30–5:00 chưa đạt trong các lượt bot thắng; Boss chỉ sống5–13s. Đã hỏi user về mục tiêu mềm so với khóa Victory4:30; chưa tự thêm khóa/delay hoặc thay Boss ngoài scope. Không tuyên bố đạt mục tiêu duration.
+- Focused tests16files PASS (thêm floor/banked-chain/draft freeze/replay; sửa fixtures mốc cũ), typecheck/build PASS; warning Phaser bundle có sẵn. Browser lifecycle desktop/mobile fixtures và deploy xem docs/q8b/README.md.
+- Q8B OR cũ được đánh dấu SUPERSEDED trong GAME_BRIEF/docs liên quan, giữ lịch sử approval/evidence.
 
 ## CURRENT STATUS — Q8A ACCEPTED
 - Baseline main7b01864 đã fetch/đối chiếu. RunDirector trước đây pack3/90ticks đầu run, soft cap18; kill reset pressure nên build mạnh thiếu quái, không kill lại không trần.
@@ -72,7 +80,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 URL: https://gizgity.github.io/a-new-game/?v=2ef6d48 (reload bảnmới). Chỉart/animationQ7C, khôngđòiduyệtlạibalanceQ2–Q7B.
 1. Opening:4hướng/Chém+Bắn giữ,Heavy/Charged giữ-thả,Dash; desktopWASD/chuột/Shift/E/Space. Playernổi,khôngcắt/nhầmhướng/giậtpose,inputcũgiữ.
 2. Crowd:maskGrunt/cungArcher/5shardsVolatile phânbiệt;windup/recoveryđọcđượcgiữaRupture/Charged. Volatile nổxongbiếnmất,khôngđứnghồi.
-3. Bulwark200kills HOẶC2:30:lõi mở khácgiápđóng. Boss450kills HOẶC4:00:sweep/ring/slam khácpose/telegraph,giữnhịpcũ.
+3. Lịch sử Q7C (milestones OR cũ SUPERSEDED bởi Q8B): Bulwark200kills HOẶC2:30:lõi mở khácgiápđóng. Boss450kills HOẶC4:00:sweep/ring/slam khácpose/telegraph,giữnhịpcũ.
 4. Pause/resume/restart khôngstaleghost;chúýđộmượt/nóngmáy dọc/ngang/desktop. Báonhânvật/state/bướcgặplỗi+thiếtbị/browser.
 
 ## IMPORTANT CONTEXT / APPROVAL HISTORY
@@ -87,4 +95,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng tại Q8A đã ACCEPTED. Chờ user giao Q8B — Run Pacing; không tự mở Q8B–D hoặc yêu cầu duyệt lại Q8A. Mục tiêu dự kiến Boss3:40–4:00/Victory4:30–5:00 thuộc Q8B, chưa triển khai. Giữ approval Q2–Q8A.
+Dừng **AWAITING USER PLAYTEST APPROVAL** Q8B. User thử4route theo docs/q8b/README.md, phản hồi nhịp Draft/full build, Boss arrival, Victory/kills và quyết định mục tiêu Victory mềm nếu vẫn thắng sớm. Không tự mở Q8C; warning2s/Enraged chưa triển khai.

@@ -1,3 +1,4 @@
+import { DRAFT_MILESTONES } from '../.test-build/config/balance.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DIVERSITY_ROUTES, routeDraft } from '../.test-build/config/playtests.js';
@@ -9,7 +10,7 @@ test('Q5E routes progress through actual six drafts without starting resources o
   const w=new CombatWorld({x:800,y:500,angle:0}),r=new RunDirector(w);r.start();w.enemies=[];
   assert.deepEqual(w.mutations,[]);assert.equal(w.curses[0],undefined);assert.equal(w.hp,100);assert.equal(w.chargedShots,0);
   for(const kills of [25,80,160,220,300,380]){
-   w.kills=kills;r.step(idle,1/60);assert.ok(r.draft.length);
+   r.ticks=DRAFT_MILESTONES.find(m=>m.kills===kills).minSeconds*60-1;w.kills=kills;r.step(idle,1/60);assert.ok(r.draft.length);
    r.draft=routeDraft(route,r.draftKind,w.mutations,w.curses,r.draft);
    assert.ok(kills===25?r.draft.length===4:r.draft.length<=3);assert.equal(new Set(r.draft.map(o=>o.id)).size,r.draft.length);
    const expected=kills===25 ? { 'route-tank':'aegisCore','route-sustain':'bloodReclaimer','route-counter':'phantomEdge','route-ranged':'detonationSpecialist' }[route.id] : r.draftKind==='curse'?route.curse:route.mutations.find(id=>!w.mutations.includes(id));

@@ -25,17 +25,18 @@ export const HEAVY = { charges: 2, recharge: 8, damage: 100, finisherDamage: 140
 export const ENEMY_GROWTH = { startSeconds: 60, endSeconds: 300, health: 1.6, damage: 1.5, speed: 1.2 } as const;
 
 export const RANGED = { basicDamage: 20, chargedDamage: 84 } as const;
+// Q8B: kills unlock the early edge of each window; time guarantees a fallback.
 export const DRAFT_MILESTONES = [
-  { kills: 25, seconds: 30, kind: 'mutation' },
-  { kills: 80, seconds: 60, kind: 'curse' },
-  { kills: 160, seconds: 100, kind: 'mutation' },
-  { kills: 220, seconds: 140, kind: 'mutation' },
-  { kills: 300, seconds: 180, kind: 'curse' },
-  { kills: 380, seconds: 220, kind: 'mutation' },
+  { kills: 25, minSeconds: 20, seconds: 30, kind: 'mutation' },
+  { kills: 80, minSeconds: 50, seconds: 60, kind: 'curse' },
+  { kills: 160, minSeconds: 85, seconds: 100, kind: 'mutation' },
+  { kills: 220, minSeconds: 120, seconds: 140, kind: 'mutation' },
+  { kills: 300, minSeconds: 155, seconds: 180, kind: 'curse' },
+  { kills: 380, minSeconds: 190, seconds: 205, kind: 'mutation' },
 ] as const;
 export const ENCOUNTERS = {
-  elite: { kills: 200, seconds: 150 },
-  boss: { kills: 450, seconds: 240 },
+  elite: { kills: 200, minSeconds: 125, seconds: 150 },
+  boss: { kills: 1200, minSeconds: 220, seconds: 240 },
 } as const;
 
 // Windup locks aim; recovery is stationary and part of the existing cooldown.

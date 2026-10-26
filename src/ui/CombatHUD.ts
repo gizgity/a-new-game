@@ -126,7 +126,7 @@ export class CombatHUD {
       node.parentElement!.classList.toggle('has-proc', Boolean(state));
       node.parentElement!.title = id ? `${t(id)}${state ? ` · ${state}` : ''}` : t('emptySlot');
     });
-    const progress = (m: { kills: number; seconds: number }) => t('milestoneProgress').replace('{kills}', String(w.kills)).replace('{target}', String(m.kills)).replace('{time}', time(m.seconds));
+    const progress = (m: { kills: number; minSeconds: number; seconds: number }) => t('milestoneProgress').replace('{kills}', String(w.kills)).replace('{target}', String(m.kills)).replace('{early}', time(m.minSeconds)).replace('{time}', time(m.seconds));
     this.text('draft-progress', `${t('nextEvolution')}: ${run.nextDraft ? progress(run.nextDraft) : t('draftsComplete')}`);
     this.text('boss-arrival', run.bossDue ? '' : `${t('bossArrival')} ${progress(ENCOUNTERS.boss)}`);
     return resources;

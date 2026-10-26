@@ -1,3 +1,4 @@
+import { DRAFT_MILESTONES } from '../.test-build/config/balance.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CombatWorld, COMBAT } from '../.test-build/combat.js';
@@ -17,7 +18,7 @@ test('A/B: actual milestones offer 3 then Keep+2 unowned; add/Keep preserve cloc
  for(const keep of [false,true]){
   const w=world(),r=new RunDirector(w);r.start();w.enemies=[];
   for(const kills of [25,80,160,220,300]){
-   w.kills=kills;r.step(idle,dt);assert.ok(r.draft.length);
+   r.ticks=DRAFT_MILESTONES.find(m=>m.kills===kills).minSeconds*60-1;w.kills=kills;r.step(idle,dt);assert.ok(r.draft.length);
    if(kills===300){const first=w.curses[0],clock=r.ticks;w.build.hazardCooldown=1.2;w.build.healed=4;w.build.healWindow=8;
     assert.equal(r.draft[0].action,'keep');assert.equal(r.draft.length,3);assert.ok(r.draft.slice(1).every(o=>!w.hasCurse(o.id)));
     r.step(idle,dt);assert.equal(r.ticks,clock);r.choose(keep?0:1);

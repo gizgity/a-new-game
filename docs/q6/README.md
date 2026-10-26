@@ -1,3 +1,5 @@
+> Q8B: thông số milestones OR cũ trong tài liệu này là **SUPERSEDED**; giữ làm lịch sử/evidence/approval. Quy tắc hiện hành: [GAME_BRIEF](../../GAME_BRIEF.md#run-tối-đa-5-phút), [audit Q8B](../q8b/README.md). Spawn Q8A và approvals giữ nguyên.
+
 # Q6 — Curse Stacking
 
 Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages Actions40252934135](https://github.com/gizgity/a-new-game/actions/runs/40252934135) completed/success, gồm Deploy step. Implementation đã kiểm; **ACCEPTED — USER PLAYTEST APPROVAL**: user xác nhận “aprroved q6 lun nha” ngày2026-10-26 trên bản7843b98 (gồm stacking b534315). Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.

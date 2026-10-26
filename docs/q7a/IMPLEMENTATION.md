@@ -1,3 +1,5 @@
+> Q8B: thông số milestones OR cũ trong tài liệu này là **SUPERSEDED**; giữ làm lịch sử/evidence/approval. Quy tắc hiện hành: [GAME_BRIEF](../../GAME_BRIEF.md#run-tối-đa-5-phút), [audit Q8B](../q8b/README.md). Spawn Q8A và approvals giữ nguyên.
+
 # Q7A — runtime / bàn giao playtest
 
 > Đồng bộ Q8 (2026-10-26): [Q8A hiện hành](../q8a/README.md) thay thế mô tả spawn/cadence/soft cap và pressure không trần trong note cũ; giữ evidence/approval lịch sử. Milestones/Boss vẫn theo Q7D trong Q8A. Gate cũ dừng trước Q8 đã superseded bởi yêu cầu user; chỉ Q8A mở, Q8B–D chờ duyệt tuần tự.

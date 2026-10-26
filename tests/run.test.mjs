@@ -18,8 +18,8 @@ test('draft choices are unique, adaptive and never offer an owned Mutation',()=>
 });
 test('six kill drafts pause the timer, heal once, respect max HP, and cannot be double-picked',()=>{
  const {world,run}=setup();
- for(const {kills,kind} of DRAFT_MILESTONES) {
-  world.hp=75;world.enemies.forEach(e=>e.stagger=999);world.kills=kills;const tick=run.ticks;
+ for(const {kills,kind,minSeconds} of DRAFT_MILESTONES) {
+  run.ticks=minSeconds*60-1;world.hp=75;world.enemies.forEach(e=>e.stagger=999);world.kills=kills;const tick=run.ticks;
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,kills===25?4:Math.min(3,kind==='mutation'?MUTATIONS.length-world.mutations.length:3));
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
@@ -131,13 +131,13 @@ test('new common enemies grow in health, damage and speed over time; survivors a
  const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
 });
 
-test('each milestone triggers on either kills or time, once, including simultaneous thresholds',()=>{
+test('each milestone triggers on kills after its floor or fallback time, once, including simultaneous thresholds',()=>{
  for(const mode of ['kills','time','both']) {
   const {world,run}=setup();world.enemies=[];
   for(const target of DRAFT_MILESTONES) {
    world.enemies=[];world.projectiles=[];
    world.kills=mode==='time'?0:target.kills-1;
-   run.ticks=mode==='kills'?0:target.seconds*60-2;
+   run.ticks=mode==='kills'?target.minSeconds*60-2:target.seconds*60-2;
    run.step(idle,1/60);assert.equal(run.draft.length,0);
    if(mode!=='time')world.kills++;
    run.step(idle,1/60);assert.ok(run.draft.length);assert.equal(run.draftKind,target.kind);
@@ -147,12 +147,13 @@ test('each milestone triggers on either kills or time, once, including simultane
  }
 });
 test('crossing all thresholds resolves six choices before Boss; reset restores milestones',()=>{
- const {world,run}=setup();world.enemies=[];world.kills=500;
- for(const {kind} of DRAFT_MILESTONES){
+ const {world,run}=setup();world.enemies=[];world.kills=2000;
+ for(const {kind,minSeconds} of DRAFT_MILESTONES){
+  run.ticks=minSeconds*60-1;
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.ok(run.draft.length);
   assert.equal(run.bossDue,false);assert.equal(run.choose(0),true);
  }
- run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);assert.equal(run.bossDue,true);
+ run.ticks=ENCOUNTERS.boss.minSeconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);assert.equal(run.bossDue,true);
  run.start();assert.equal(world.kills,0);assert.equal(run.nextDraftKills,25);assert.equal(run.bossDue,false);
 });
 test('small and exhausted Mutation pools never produce invalid options or block the run',()=>{
@@ -161,32 +162,32 @@ test('small and exhausted Mutation pools never produce invalid options or block 
   assert.equal(choices.length,count);assert.equal(new Set(choices.map(o=>o.id)).size,count);
   assert.ok(choices.every(o=>MUTATIONS.includes(o.id)));
  }
- const {world,run}=setup();run.mutationPool=[];run.cursePool=[];world.kills=500;world.enemies=[];
- run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);assert.equal(run.bossDue,true);
+ const {world,run}=setup();run.mutationPool=[];run.cursePool=[];world.kills=2000;world.enemies=[];
+ run.ticks=ENCOUNTERS.boss.seconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);assert.equal(run.bossDue,true);
 });
 test('second Curse allows Keep or adding slot2; both effects remain and HP is clamped',()=>{
- const {world,run}=setup();world.enemies=[];world.setCurses(['bloodPact']);run.draftIndex=4;world.kills=300;
+ const {world,run}=setup();world.enemies=[];world.setCurses(['bloodPact']);run.draftIndex=4;run.ticks=DRAFT_MILESTONES[4].minSeconds*60-1;world.kills=300;
  run.step(idle,1/60);assert.ok(run.draft.some(o=>o.id==='bloodPact'));
  run.choose(run.draft.findIndex(o=>o.id==='bloodPact'));assert.equal(world.curses[0],'bloodPact');
  run.draftIndex=4;run.cursePool=['ghostStep'];world.hp=100;
  run.step(idle,1/60);run.choose(run.draft.findIndex(o=>o.id==='ghostStep'));
  assert.deepEqual(world.curses,['bloodPact','ghostStep']);assert.equal(world.maxHp,100);assert.equal(world.hp,100);
 });
-test('Elite and Boss use kills OR time, once; no late Elite after an early Boss',()=>{
+test('Elite and Boss use gated kills OR fallback time, once; no late Elite after an early Boss',()=>{
  for(const mode of ['kills','time','both']) {
   const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;
   for(const [kind,target] of [['bulwark',ENCOUNTERS.elite],['boss',ENCOUNTERS.boss]]) {
    world.enemies=[];world.projectiles=[];
-   world.kills=mode==='time'?0:target.kills-1;run.ticks=mode==='kills'?0:target.seconds*60-2;
+   world.kills=mode==='time'?0:target.kills-1;run.ticks=mode==='kills'?target.minSeconds*60-2:target.seconds*60-2;
    run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,0);
    if(mode!=='time')world.kills++;
    run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
    run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
   }
  }
- const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;world.enemies=[];world.kills=450;
+ const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;world.enemies=[];world.kills=ENCOUNTERS.boss.kills;run.ticks=ENCOUNTERS.boss.minSeconds*60-1;
  run.step(idle,1/60);assert.equal(run.bossDue,true);assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
- run.ticks=9000;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
+ run.ticks=13201;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
  assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
  assert.equal(world.enemies.find(e=>e.kind==='boss').maxHp,1500);
 });
@@ -214,4 +215,18 @@ test('pressure packs prioritize two Archers until eight, then keep adding cleava
   assert.equal(world.enemies.filter(e=>e.kind==='archer').length,Math.min(8,(wave+1)*2));
  }
  assert.ok(world.enemies.filter(e=>e.kind==='grunt').length>=28);
+});
+
+test('Q8B banked kills cannot bypass any floor, chain choices stay spaced, and replay resets',()=>{
+ const {world,run}=setup();world.enemies=[];world.kills=9999;
+ for(const target of DRAFT_MILESTONES){
+  run.ticks=target.minSeconds*60-2;run.step(idle,1/60);assert.equal(run.draft.length,0);
+  run.step(idle,1/60);assert.ok(run.draft.length);const clock=run.ticks;
+  for(let i=0;i<120;i++)run.step(idle,1/60);
+  assert.equal(run.ticks,clock);assert.equal(run.choose(0),true);
+ }
+ run.ticks=ENCOUNTERS.boss.minSeconds*60-2;run.step(idle,1/60);assert.equal(run.bossDue,false);
+ run.step(idle,1/60);assert.equal(run.bossDue,true);
+ run.start();assert.equal(run.ticks,0);assert.equal(run.bossDue,false);assert.equal(run.nextDraft,DRAFT_MILESTONES[0]);
+ run.step(idle,1/60);assert.equal(run.draft.length,0);
 });

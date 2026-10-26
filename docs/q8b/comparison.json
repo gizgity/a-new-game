@@ -1,0 +1,692 @@
+[
+  {
+    "version": "baseline",
+    "route": "route-tank",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 10.766666666666667,
+        "kills": 25
+      },
+      {
+        "t": 29.1,
+        "kills": 80
+      },
+      {
+        "t": 42.05,
+        "kills": 170
+      },
+      {
+        "t": 51.166666666666664,
+        "kills": 220
+      },
+      {
+        "t": 63.016666666666666,
+        "kills": 302
+      },
+      {
+        "t": 77,
+        "kills": 380
+      }
+    ],
+    "elite": {
+      "t": 47.916666666666664,
+      "kills": 200
+    },
+    "boss": {
+      "t": 89.25,
+      "kills": 450
+    },
+    "end": 100.96666666666667,
+    "result": "victory",
+    "reason": null,
+    "kills": 454,
+    "hp": 51
+  },
+  {
+    "version": "baseline",
+    "route": "route-tank",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 11.033333333333333,
+        "kills": 25
+      },
+      {
+        "t": 28.783333333333335,
+        "kills": 81
+      },
+      {
+        "t": 41.9,
+        "kills": 160
+      },
+      {
+        "t": 51.016666666666666,
+        "kills": 221
+      },
+      {
+        "t": 64.01666666666667,
+        "kills": 302
+      },
+      {
+        "t": 76.95,
+        "kills": 382
+      }
+    ],
+    "elite": {
+      "t": 47.583333333333336,
+      "kills": 200
+    },
+    "boss": {
+      "t": 89.01666666666667,
+      "kills": 456
+    },
+    "end": 99.75,
+    "result": "victory",
+    "reason": null,
+    "kills": 458,
+    "hp": 22
+  },
+  {
+    "version": "baseline",
+    "route": "route-sustain",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 10.766666666666667,
+        "kills": 25
+      },
+      {
+        "t": 27.016666666666666,
+        "kills": 85
+      },
+      {
+        "t": 40.016666666666666,
+        "kills": 166
+      },
+      {
+        "t": 50.016666666666666,
+        "kills": 221
+      },
+      {
+        "t": 62.016666666666666,
+        "kills": 302
+      },
+      {
+        "t": 75.23333333333333,
+        "kills": 380
+      }
+    ],
+    "elite": {
+      "t": 46.016666666666666,
+      "kills": 202
+    },
+    "boss": {
+      "t": 86.7,
+      "kills": 450
+    },
+    "end": 94.71666666666667,
+    "result": "victory",
+    "reason": null,
+    "kills": 452,
+    "hp": 66
+  },
+  {
+    "version": "baseline",
+    "route": "route-sustain",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 11.033333333333333,
+        "kills": 25
+      },
+      {
+        "t": 27.133333333333333,
+        "kills": 82
+      },
+      {
+        "t": 40.016666666666666,
+        "kills": 160
+      },
+      {
+        "t": 50.016666666666666,
+        "kills": 228
+      },
+      {
+        "t": 63.06666666666667,
+        "kills": 301
+      },
+      {
+        "t": 75.03333333333333,
+        "kills": 380
+      }
+    ],
+    "elite": {
+      "t": 47.35,
+      "kills": 200
+    },
+    "boss": {
+      "t": 86.96666666666667,
+      "kills": 451
+    },
+    "end": 93.58333333333333,
+    "result": "victory",
+    "reason": null,
+    "kills": 454,
+    "hp": 56
+  },
+  {
+    "version": "baseline",
+    "route": "route-counter",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 10.766666666666667,
+        "kills": 25
+      },
+      {
+        "t": 26.85,
+        "kills": 80
+      },
+      {
+        "t": 40.53333333333333,
+        "kills": 160
+      },
+      {
+        "t": 49.63333333333333,
+        "kills": 222
+      },
+      {
+        "t": 62.5,
+        "kills": 300
+      },
+      {
+        "t": 75.01666666666667,
+        "kills": 381
+      }
+    ],
+    "elite": {
+      "t": 46.016666666666666,
+      "kills": 201
+    },
+    "boss": {
+      "t": 88.23333333333333,
+      "kills": 451
+    },
+    "end": 95.5,
+    "result": "victory",
+    "reason": null,
+    "kills": 452,
+    "hp": 98
+  },
+  {
+    "version": "baseline",
+    "route": "route-counter",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 11.033333333333333,
+        "kills": 25
+      },
+      {
+        "t": 27.15,
+        "kills": 81
+      },
+      {
+        "t": 41.016666666666666,
+        "kills": 168
+      },
+      {
+        "t": 50.8,
+        "kills": 220
+      },
+      {
+        "t": 63.3,
+        "kills": 301
+      },
+      {
+        "t": 78.01666666666667,
+        "kills": 393
+      }
+    ],
+    "elite": {
+      "t": 46.71666666666667,
+      "kills": 202
+    },
+    "boss": {
+      "t": 88.01666666666667,
+      "kills": 453
+    },
+    "end": 94.4,
+    "result": "victory",
+    "reason": null,
+    "kills": 454,
+    "hp": 72.8
+  },
+  {
+    "version": "baseline",
+    "route": "route-ranged",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 10.766666666666667,
+        "kills": 25
+      },
+      {
+        "t": 27.033333333333335,
+        "kills": 81
+      },
+      {
+        "t": 39.016666666666666,
+        "kills": 160
+      },
+      {
+        "t": 49.5,
+        "kills": 220
+      },
+      {
+        "t": 62.016666666666666,
+        "kills": 302
+      },
+      {
+        "t": 75.03333333333333,
+        "kills": 380
+      }
+    ],
+    "elite": {
+      "t": 46.63333333333333,
+      "kills": 200
+    },
+    "boss": {
+      "t": 86.96666666666667,
+      "kills": 450
+    },
+    "end": 93.93333333333334,
+    "result": "victory",
+    "reason": null,
+    "kills": 452,
+    "hp": 57
+  },
+  {
+    "version": "baseline",
+    "route": "route-ranged",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 11.033333333333333,
+        "kills": 25
+      },
+      {
+        "t": 26.866666666666667,
+        "kills": 82
+      },
+      {
+        "t": 40.85,
+        "kills": 160
+      },
+      {
+        "t": 49.81666666666667,
+        "kills": 220
+      },
+      {
+        "t": 64.5,
+        "kills": 301
+      },
+      {
+        "t": 77,
+        "kills": 380
+      }
+    ],
+    "elite": {
+      "t": 47.1,
+      "kills": 206
+    },
+    "boss": {
+      "t": 87.83333333333333,
+      "kills": 451
+    },
+    "end": 92.8,
+    "result": "victory",
+    "reason": null,
+    "kills": 452,
+    "hp": 49
+  },
+  {
+    "version": "q8b",
+    "route": "route-tank",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 47
+      },
+      {
+        "t": 50,
+        "kills": 222
+      },
+      {
+        "t": 85,
+        "kills": 431
+      },
+      {
+        "t": 120,
+        "kills": 639
+      },
+      {
+        "t": 155,
+        "kills": 851
+      },
+      {
+        "t": 190,
+        "kills": 1046
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 675
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1217
+    },
+    "end": 233.01666666666668,
+    "result": "victory",
+    "reason": null,
+    "kills": 1224,
+    "hp": 82
+  },
+  {
+    "version": "q8b",
+    "route": "route-tank",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 44
+      },
+      {
+        "t": 50,
+        "kills": 220
+      },
+      {
+        "t": 85,
+        "kills": 430
+      },
+      {
+        "t": 120,
+        "kills": 633
+      },
+      {
+        "t": 155,
+        "kills": 829
+      },
+      {
+        "t": 190,
+        "kills": 1028
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 666
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1201
+    },
+    "end": 230.46666666666667,
+    "result": "victory",
+    "reason": null,
+    "kills": 1205,
+    "hp": 37
+  },
+  {
+    "version": "q8b",
+    "route": "route-sustain",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 47
+      },
+      {
+        "t": 50,
+        "kills": 217
+      },
+      {
+        "t": 85,
+        "kills": 440
+      },
+      {
+        "t": 120,
+        "kills": 639
+      },
+      {
+        "t": 155,
+        "kills": 861
+      },
+      {
+        "t": 190,
+        "kills": 1062
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 679
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1251
+    },
+    "end": 230.75,
+    "result": "victory",
+    "reason": null,
+    "kills": 1261,
+    "hp": 22
+  },
+  {
+    "version": "q8b",
+    "route": "route-sustain",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 44
+      },
+      {
+        "t": 50,
+        "kills": 221
+      },
+      {
+        "t": 85,
+        "kills": 432
+      },
+      {
+        "t": 120,
+        "kills": 641
+      },
+      {
+        "t": 155,
+        "kills": 857
+      },
+      {
+        "t": 190,
+        "kills": 1070
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 682
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1247
+    },
+    "end": 226.15,
+    "result": "victory",
+    "reason": null,
+    "kills": 1252,
+    "hp": 81
+  },
+  {
+    "version": "q8b",
+    "route": "route-counter",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 47
+      },
+      {
+        "t": 50,
+        "kills": 219
+      },
+      {
+        "t": 85,
+        "kills": 436
+      },
+      {
+        "t": 120,
+        "kills": 640
+      },
+      {
+        "t": 155,
+        "kills": 850
+      },
+      {
+        "t": 190,
+        "kills": 1059
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 669
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1236
+    },
+    "end": 226.6,
+    "result": "victory",
+    "reason": null,
+    "kills": 1240,
+    "hp": 8.000000000000002
+  },
+  {
+    "version": "q8b",
+    "route": "route-counter",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 44
+      },
+      {
+        "t": 50,
+        "kills": 220
+      },
+      {
+        "t": 85,
+        "kills": 435
+      },
+      {
+        "t": 120,
+        "kills": 644
+      },
+      {
+        "t": 155,
+        "kills": 853
+      },
+      {
+        "t": 190,
+        "kills": 1067
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 675
+    },
+    "boss": {
+      "t": 220,
+      "kills": 1244
+    },
+    "end": 225.86666666666667,
+    "result": "victory",
+    "reason": null,
+    "kills": 1248,
+    "hp": 91
+  },
+  {
+    "version": "q8b",
+    "route": "route-ranged",
+    "style": "normal",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 47
+      },
+      {
+        "t": 50,
+        "kills": 219
+      },
+      {
+        "t": 85,
+        "kills": 439
+      },
+      {
+        "t": 120,
+        "kills": 650
+      },
+      {
+        "t": 155,
+        "kills": 859
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 679
+    },
+    "boss": null,
+    "end": 178.05,
+    "result": "defeat",
+    "reason": "slain",
+    "kills": 1002,
+    "hp": 0
+  },
+  {
+    "version": "q8b",
+    "route": "route-ranged",
+    "style": "fast",
+    "drafts": [
+      {
+        "t": 20,
+        "kills": 44
+      },
+      {
+        "t": 50,
+        "kills": 225
+      },
+      {
+        "t": 85,
+        "kills": 438
+      },
+      {
+        "t": 120,
+        "kills": 653
+      },
+      {
+        "t": 155,
+        "kills": 867
+      }
+    ],
+    "elite": {
+      "t": 125,
+      "kills": 689
+    },
+    "boss": null,
+    "end": 157.95,
+    "result": "defeat",
+    "reason": "slain",
+    "kills": 889,
+    "hp": 0
+  }
+]

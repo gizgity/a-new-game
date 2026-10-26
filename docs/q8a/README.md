@@ -1,3 +1,5 @@
+> Q8B: thông số milestones OR cũ trong tài liệu này là **SUPERSEDED**; giữ làm lịch sử/evidence/approval. Quy tắc hiện hành: [GAME_BRIEF](../../GAME_BRIEF.md#run-tối-đa-5-phút), [audit Q8B](../q8b/README.md). Spawn Q8A và approvals giữ nguyên.
+
 # Q8A — Dynamic Spawn
 
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8a đạt yêu cầu” ngày2026-10-26 trên code/deploy394341c (handoff938acf9). Đây là approval trực tiếp, không suy ra từ tests/fixture. Chỉ Q8A được duyệt. Q2–Q7D giữ ACCEPTED; Q8B–D chưa mở. User giao ngày2026-10-26; baseline main `7b01864` đã fetch/đối chiếu trước sửa. Code/deploy `394341c`, Pages SUCCESS; link chơi bên dưới.

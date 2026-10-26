@@ -33,8 +33,9 @@ export class RunDirector {
   get elapsed(): number { return this.ticks / 60; }
   get nextDraft() { return DRAFT_MILESTONES[this.draftIndex] ?? null; }
   get nextDraftKills(): number | null { return this.nextDraft?.kills ?? null; }
-  private reached(milestone: { kills: number; seconds: number }): boolean {
-    return this.world.kills >= milestone.kills || this.ticks >= milestone.seconds * 60;
+  private reached(milestone: { kills: number; minSeconds: number; seconds: number }): boolean {
+    return this.ticks >= milestone.minSeconds * 60
+      && (this.world.kills >= milestone.kills || this.ticks >= milestone.seconds * 60);
   }
 
   start(): void {
