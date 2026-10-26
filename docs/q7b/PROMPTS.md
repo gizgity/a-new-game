@@ -1,5 +1,7 @@
 # Q7B — ImageGen prompts
 
+> Snapshot minh họa trước approval. User đã duyệt concept “approved làm đi”; runtime/checks/deploy và trạng thái hiện hành xem IMPLEMENTATION.md. Không sửa lại prompt/ảnh thành như đã là runtime.
+
 Ngày2026-10-26 (Asia/Saigon). Concept-only, AWAITING VISUAL APPROVAL; không là runtime asset. Inputs/provenance/giới hạn tại README.md; model/seed không được tool cung cấp.
 
 ## hud-desktop-v1.png

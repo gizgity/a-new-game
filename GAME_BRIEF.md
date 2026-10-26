@@ -429,7 +429,7 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 
 ## Q7B Design Contract — HUD & Combat Readability
 
-**CONCEPT / DESIGN APPROVED** — user “approved làm đi” ngày2026-10-26; implementation/typecheck/build/focused+browser checks PASS; runtime **AWAITING USER PLAYTEST APPROVAL**. Task user2026-10-26. Audit main `21f2c55`: Q7B trước đây chỉ là tên bước chờ scope, chưa có contract/implementation khác. Q2–Q6, draft đầu4hướng và Q7A giữ ACCEPTED; Q1 chưa có visual approval riêng. Q7B không mở Q7C.
+**CONCEPT / DESIGN APPROVED** — user “approved làm đi” ngày2026-10-26; implementation/typecheck/build/focused+browser checks/deploy PASS (code6664ee0,Pages40275065554); runtime **AWAITING USER PLAYTEST APPROVAL**. Task user2026-10-26. Audit main `21f2c55`: Q7B trước đây chỉ là tên bước chờ scope, chưa có contract/implementation khác. Q2–Q6, draft đầu4hướng và Q7A giữ ACCEPTED; Q1 chưa có visual approval riêng. Q7B không mở Q7C.
 
 ### Phạm vi / nguồn dữ liệu
 - Cải thiện presentation của HUD/feedback hiện có, không xây lại menu/game UI. Giữ floor `broken-seal-v2.webp` nguyên hash, camera/canvas bounds, controls/hit areas, gameplay/balance/effects/draft/AI/Boss/input timing và save/unlocks.

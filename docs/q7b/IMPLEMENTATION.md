@@ -53,7 +53,7 @@ Không thấy suy giảm frame rõ trong mẫu; không khẳng định mượt t
 
 ## Deploy / cách user thử
 
-Commit/workflow cuối cập nhật trong HANDOFF. Dùng Pages workflow/base hiện có; deploy success không thay user acceptance. Evidence là local Vite/dist, không giả live.
+Code [6664ee0](https://github.com/gizgity/a-new-game/commit/6664ee09edf587e235b93112cea0186121cf4f88) đã fast-forward push main. [Pages40275065554](https://github.com/gizgity/a-new-game/actions/runs/40275065554) / job121415959796 completed/success gồmDeploy; giữ workflow/base hiện có. Live curl từ môi trường vẫn proxy403; không bypass policy. Evidence là local Vite/dist, không giả live. Deploy success không thay user acceptance.
 
 [Chơi Q7B](https://gizgity.github.io/a-new-game/) — reload sau deploy.
 
