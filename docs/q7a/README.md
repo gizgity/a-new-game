@@ -1,5 +1,13 @@
 # Q7A — Ấn phong bị vỡ / The Broken Seal
 
+**HIỆN HÀNH:** user duyệt concept V2 qua “approved, làm tiếp đi” ngày2026-10-26. Arena đã triển khai bằng texture WebP; đang bàn giao **AWAITING USER PLAYTEST APPROVAL**. Xem [implementation/checks/cách thử](IMPLEMENTATION.md), [board trước–sau](index.html) và [runtime asset provenance](runtime-asset.json). Q6 cũng đã ACCEPTED theo main bc07fd4.
+
+---
+
+## Snapshot visual gate trước approval
+
+Phần dưới giữ lịch sử audit/minh họa trên main fbc994b6; những câu chờ duyệt/chưa implementation/Q6 pending phản ánh checkpoint lúc đó, được trạng thái hiện hành phía trên supersede. Không dùng ảnh concept thay screenshot runtime.
+
 **AWAITING VISUAL APPROVAL.** Ngày2026-10-26. Gói này chỉ audit, thiết kế và minh họa; chưa sửa artwork trong game, chưa có runtime Q7A, chưa ART APPROVED.
 
 Mở [board review](index.html) để xem baseline cạnh concept và bật grayscale trên cùng ảnh. [Contract hiện hành](../../GAME_BRIEF.md#q7a-design-contract--arena-art--visual-contrast), [prompt đầy đủ](PROMPTS.md).

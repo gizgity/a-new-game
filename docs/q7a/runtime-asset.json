@@ -1,0 +1,27 @@
+{
+  "name": "The Broken Seal V2",
+  "concept_approval": {
+    "date": "2026-10-26",
+    "user": "approved, l\u00e0m ti\u1ebfp \u0111i"
+  },
+  "source": "docs/q7a/artwork/arena-floor-source-v2.png",
+  "source_sha256": "c820cdd494722b70019eb907e1cc71a5ac7ee4c3a88970aefff3756f596081c7",
+  "generator": "ImageGen provided in Codex session; model and seed not supplied",
+  "inputs": [
+    "docs/q7a/artwork/arena-concept-v2.png"
+  ],
+  "runtime": "public/assets/arena/broken-seal-v2.webp",
+  "runtime_sha256": "71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a",
+  "width": 1600,
+  "height": 1000,
+  "bytes": 174334,
+  "processing": "Pillow: RGB, Lanczos resize to1600x1000, WebP quality88/method6. No generated drawing pipeline.",
+  "rendering": {
+    "layers": 1,
+    "depth": 0,
+    "tint": "#7a8791",
+    "updatesPerFrame": 0,
+    "estimatedRGBABytes": 6400000
+  },
+  "rights": "Generated from project concept; use under applicable generation-service output terms. No third-party asset, CC0 or exclusivity asserted. User authorized implementation of this generated concept; no runtime service dependency."
+}

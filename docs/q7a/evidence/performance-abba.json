@@ -1,0 +1,65 @@
+{
+  "method": "Same browser/page, frozen33-enemy fixture, ABBA old/new floor,60rAF samples each, headless Chromium software WebGL. No simulation/drawCombat benchmark claim; no device FPS guarantee.",
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "samples": [
+        {
+          "mode": "old",
+          "medianMs": 16.700000000000045,
+          "p95Ms": 50.100000000000136,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "new",
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "new",
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.800000000000182,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "old",
+          "medianMs": 16.699999999999818,
+          "p95Ms": 50,
+          "newFloorTint": 8030097
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "samples": [
+        {
+          "mode": "old",
+          "medianMs": 83.29999999999973,
+          "p95Ms": 100,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "new",
+          "medianMs": 33.400000000000546,
+          "p95Ms": 66.69999999999982,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "new",
+          "medianMs": 33.399999999999636,
+          "p95Ms": 66.70000000000073,
+          "newFloorTint": 8030097
+        },
+        {
+          "mode": "old",
+          "medianMs": 83.30000000000109,
+          "p95Ms": 100,
+          "newFloorTint": 8030097
+        }
+      ]
+    }
+  ]
+}

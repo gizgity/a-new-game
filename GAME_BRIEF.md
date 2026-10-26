@@ -380,7 +380,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 
 ## Q7A Design Contract — Arena Art & Visual Contrast
 
-**AWAITING VISUAL APPROVAL — chưa ART APPROVED, chưa triển khai.** Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking vẫn chờ playtest riêng; Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
+**CONCEPT APPROVED — user “approved, làm tiếp đi” ngày2026-10-26; asset-based floor đã triển khai/checks PASS, runtime AWAITING USER PLAYTEST APPROVAL.** Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking đã ACCEPTED theo main bc07fd4 (user “aprroved q6 lun nha”); Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
 
 ### Arena / art direction
 - Một arena **1600×1000, inset64**, player radius16 và toàn bộ clamp/collision giữ nguyên. Giữ follow/zoom/resize trong ArenaScene; không fit toàn arena vào phone theo mockup. Không procedural dungeon, tilemap phức tạp hoặc vật cản mới.
@@ -412,6 +412,8 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - Bỏ title/footer khỏi runtime source, cân scale theo world, loại hình dễ hiểu nhầm vật cản, kiểm độ nét/khả năng nạp texture trên mobile trước chốt kích thước. Không đưa nguyên board có actor/HUD vào game.
 - Dự kiến sửa ArenaScene preload/drawArena và thêm assets/metadata; PlayerVisual/EnemyVisual/BuildVisual/chargedVfx/BarrierVisual chỉ làm đối chiếu, không dự kiến sửa trong gói arena.
 - Khóa timing/damage/resources/Mutation/Curse/draft, AI/Boss patterns, input desktop/mobile, bounds/collider/camera. Free/open-source first, KISS.
+
+Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/prompt/provenance và renderer evidence tại [Q7A implementation](docs/q7a/IMPLEMENTATION.md). Các bước gate bên trên là quy trình/điều kiện; concept đã được user duyệt, không còn chờ visual gate.
 
 ### Acceptance sau implementation
 1. Arena có art identity rõ, depth/material hierarchy có chủ đích, vượt nền lưới debug.
@@ -454,4 +456,4 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã implementation/checks, chờ user playtest approval riêng. User mở Q7A visual theo task2026-10-26: contract/minh họa đang AWAITING VISUAL APPROVAL, chưa triển khai artwork và không mở Q7B.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã ACCEPTED theo user ngày2026-10-26. User mở Q7A visual theo task2026-10-26: concept V2 đã được user duyệt, đang triển khai artwork và không mở Q7B.

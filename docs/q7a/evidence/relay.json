@@ -1,0 +1,19 @@
+{
+  "ticks": 7,
+  "detonations": 2,
+  "impacts": [
+    "shotHit",
+    null,
+    null,
+    null,
+    "chainBlast",
+    null,
+    null,
+    null
+  ],
+  "ruptures": [
+    0,
+    0,
+    0
+  ]
+}

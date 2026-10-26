@@ -1,0 +1,88 @@
+{
+  "version": "before",
+  "screenshots": [
+    {
+      "file": "before-identity-390.png",
+      "enemies": 4,
+      "impacts": [],
+      "renderer": 2,
+      "canvas": [
+        372,
+        570
+      ],
+      "zoom": 0.775
+    },
+    {
+      "file": "before-crowd-390.png",
+      "enemies": 33,
+      "impacts": [
+        "chargedHit",
+        "chargedBlast",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "renderer": 2,
+      "canvas": [
+        372,
+        570
+      ],
+      "zoom": 0.775
+    },
+    {
+      "file": "before-identity-1440.png",
+      "enemies": 4,
+      "impacts": [],
+      "renderer": 2,
+      "canvas": [
+        1374,
+        734
+      ],
+      "zoom": 1.0485714285714285
+    },
+    {
+      "file": "before-crowd-1440.png",
+      "enemies": 33,
+      "impacts": [
+        "chargedHit",
+        "chargedBlast",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "renderer": 2,
+      "canvas": [
+        1374,
+        734
+      ],
+      "zoom": 1.0485714285714285
+    }
+  ],
+  "errors": [],
+  "390": {
+    "medianFrameMs": 16.699999999999818,
+    "p95FrameMs": 50,
+    "drawCombatCpuMs": 0.330999999998603,
+    "frames": 120,
+    "renderer": 2
+  },
+  "1440": {
+    "medianFrameMs": 83.30000000000018,
+    "p95FrameMs": 100,
+    "drawCombatCpuMs": 0.27550000000046565,
+    "frames": 120,
+    "renderer": 2
+  }
+}

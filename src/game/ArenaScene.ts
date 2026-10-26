@@ -45,6 +45,7 @@ export class ArenaScene extends Phaser.Scene {
 
   preload(): void {
     PlayerVisual.preload(this);
+    this.load.image('arena-floor', `${import.meta.env.BASE_URL}assets/arena/broken-seal-v2.webp`);
   }
 
   create(): void {
@@ -279,38 +280,8 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   private drawArena(): void {
-    const floor = this.add.graphics();
-    floor.fillStyle(0x090d19).fillRect(0, 0, ARENA.width, ARENA.height);
-    floor.fillStyle(0x0d1421).fillRoundedRect(64, 64, 1472, 872, 32);
-    floor.lineStyle(1, 0x263646, 0.3);
-    for (let x = 96; x < ARENA.width - 64; x += 48) floor.lineBetween(x, 80, x, 920);
-    for (let y = 96; y < ARENA.height - 64; y += 48) floor.lineBetween(80, y, 1520, y);
-    floor.lineStyle(2, 0x548b85, 0.45).strokeRoundedRect(64, 64, 1472, 872, 32);
-    floor.lineStyle(1, 0x293d50).strokeRoundedRect(76, 76, 1448, 848, 24);
-
-    const cx = ARENA.width / 2;
-    const cy = ARENA.height / 2;
-    for (const radius of [110, 118, 252, 260]) {
-      floor.lineStyle(1, 0x4a776e, radius < 120 ? 0.3 : 0.22).strokeCircle(cx, cy, radius);
-    }
-    floor.lineStyle(1, 0x668b85, 0.25);
-    for (let i = 0; i < 8; i++) {
-      const angle = i * Math.PI / 4;
-      floor.lineBetween(cx + Math.cos(angle) * 120, cy + Math.sin(angle) * 120,
-        cx + Math.cos(angle) * 244, cy + Math.sin(angle) * 244);
-      const x = cx + Math.cos(angle) * 260;
-      const y = cy + Math.sin(angle) * 260;
-      floor.fillStyle(0x4c8c80, 0.7).fillCircle(x, y, 3);
-    }
-    floor.lineStyle(1, 0x5d798f, 0.22).strokePoints([
-      { x: cx, y: cy - 180 }, { x: cx + 180, y: cy },
-      { x: cx, y: cy + 180 }, { x: cx - 180, y: cy },
-    ], true);
-    for (const x of [100, ARENA.width - 100]) {
-      for (const y of [100, ARENA.height - 100]) {
-        floor.fillStyle(0x6bf3d0, 0.07).fillCircle(x, y, 30);
-        floor.lineStyle(2, 0x6bf3d0, 0.65).strokeRect(x - 6, y - 6, 12, 12);
-      }
-    }
+    // Authored static floor only; world bounds, camera and combat layers stay unchanged.
+    this.add.image(0, 0, 'arena-floor').setOrigin(0)
+      .setDisplaySize(ARENA.width, ARENA.height).setTint(0x7a8791).setDepth(0);
   }
 }

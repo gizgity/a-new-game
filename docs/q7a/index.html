@@ -8,11 +8,23 @@
 </style>
 <main>
 <h1>Q7A · Ấn phong bị vỡ</h1>
-<p class="status"><strong>AWAITING VISUAL APPROVAL</strong> · Chỉ concept, chưa thay artwork trong game. V2 là hướng đề xuất, không phải ART APPROVED.</p>
+<p class="status"><strong>CONCEPT APPROVED · AWAITING USER PLAYTEST APPROVAL</strong> · User duyệt V2; đã triển khai floor texture, runtime quality chờ playtest.</p>
 <p>Obsidian có mặt cắt lớn, các vòng nghi lễ gãy và ba motif phẳng cố định. Chi tiết sàn chìm dưới player, threat và VFX. So sánh ở kích thước phone; bấm hình để mở bản gốc.</p>
 <p><a href="README.md">Audit, nguồn/quyền dùng và giới hạn</a> · <a href="PROMPTS.md">Prompts</a> · <a href="../../GAME_BRIEF.md">Design contract</a></p>
 <input type="checkbox" id="gray"><label for="gray">Bật grayscale trên cùng ảnh</label>
 <div class="gallery">
+<section><h2>Runtime · cùng fixture trước–sau</h2>
+<p>Ảnh từ renderer thật, không ImageGen. Fixture33quái có Charged blast thật; không natural run, không chứng minh balance. <a href="IMPLEMENTATION.md">Checks, provenance và cách thử</a>.</p>
+<div class="pair">
+<figure><a href="evidence/before-crowd-390.png"><img class="phone" src="evidence/before-crowd-390.png" alt="Trước Q7A: crowd fixture trên sàn lưới"></a><figcaption>TRƯỚC · main bc07fd4, floor cũ.</figcaption></figure>
+<figure><a href="evidence/after-crowd-390.png"><img class="phone" src="evidence/after-crowd-390.png" alt="Sau Q7A: cùng crowd fixture trên obsidian V2"></a><figcaption>SAU · floor asset, camera/actors/VFX giữ nguyên.</figcaption></figure>
+</div>
+<details><summary>Desktop trước–sau</summary><div class="pair">
+<figure><img src="evidence/before-identity-1440.png" alt="Identity desktop trước Q7A"><figcaption>TRƯỚC · cùng4enemy/viewport.</figcaption></figure>
+<figure><img src="evidence/after-identity-1440.png" alt="Identity desktop sau Q7A"><figcaption>SAU · obsidian material.</figcaption></figure>
+</div></details>
+<p><a href="evidence/crowd-grayscale-390.png">Grayscale runtime</a> · <a href="evidence/boss-2-390.png">Boss slam</a> · <a href="evidence/edge-east-390.png">Rìa phía đông</a> · <a href="evidence/production-390.png">Production input</a></p>
+</section>
 <section>
 <h2>01 · Arena concept V2</h2>
 <figure><a href="artwork/arena-concept-v2.png"><img src="artwork/arena-concept-v2.png" alt="Concept V2: obsidian phẳng, vòng khắc gãy và ba dấu ấn bất đối xứng"></a><figcaption>Hướng material/motif chính. Bevel chỉ là relief nông, không vật cản. Caption ngoài sàn sẽ bỏ nếu tạo runtime texture.</figcaption></figure>
@@ -41,7 +53,7 @@
 <section>
 <h2>Phạm vi duyệt</h2>
 <p>Duyệt material obsidian V2, broken ritual geometry/ba motif, mức yên của floor và hierarchy khi đông quái. Nếu cần đổi, ghi tên hình và vùng cần chỉnh. Chưa cần chơi lại Q2–Q6.</p>
-<p class="note">Chưa có runtime Q7A, chưa đổi controls/camera/collision/gameplay. Sau concept approval mới asset/rendering, typecheck/build, screenshot renderer thật và kiểm performance; sau deploy vẫn chờ user playtest.</p>
+<p class="note">Các hình concept phía trên giữ làm lịch sử visual gate. Runtime evidence ở đầu trang; controls/camera/collision/gameplay giữ nguyên. Chất lượng runtime còn chờ user playtest sau deploy.</p>
 </section>
 </div>
 </main>

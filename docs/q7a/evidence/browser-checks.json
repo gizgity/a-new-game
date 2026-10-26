@@ -1,0 +1,80 @@
+{
+  "fixtureChecks": [
+    {
+      "width": 320,
+      "height": 740,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    }
+  ],
+  "production": [
+    {
+      "width": 320,
+      "height": 740,
+      "overflow": false,
+      "locale": "en",
+      "assetStatus": [
+        {
+          "name": "http://127.0.0.1:4173/a-new-game/assets/arena/broken-seal-v2.webp",
+          "bytes": 174634,
+          "duration": 5.900000000372529
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "locale": "en",
+      "assetStatus": [
+        {
+          "name": "http://127.0.0.1:4173/a-new-game/assets/arena/broken-seal-v2.webp",
+          "bytes": 174634,
+          "duration": 5.7000000001862645
+        }
+      ]
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "overflow": false,
+      "locale": "en",
+      "assetStatus": [
+        {
+          "name": "http://127.0.0.1:4173/a-new-game/assets/arena/broken-seal-v2.webp",
+          "bytes": 174634,
+          "duration": 4.600000000093132
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "locale": "en",
+      "assetStatus": [
+        {
+          "name": "http://127.0.0.1:4173/a-new-game/assets/arena/broken-seal-v2.webp",
+          "bytes": 174634,
+          "duration": 7.5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "badResponses": []
+}

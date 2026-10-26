@@ -1,5 +1,11 @@
 # Q7A — prompts ImageGen
 
+## arena-floor-source-v2.png — production cleanup sau concept approval
+
+```text
+Prepare the attached USER-APPROVED Q7A arena concept V2 as a clean production floor texture. Preserve precisely its composition, big dark obsidian facets, two broken etched ritual circles and three asymmetric shallow inlay motifs at northwest/east/south. Original overhead top down pixel-art dark fantasy Neon Occult / Fractured Geometry. Remove the ENTIRE bottom caption/title/footer strip and replace that area with continuation of the same dark floor, so every pixel of the whole rectangular image is playable floor texture. No text, no logo, no borders outside artwork, no actors, no HUD. Keep walkable plane flat, bevels shallow, no tall structures or pits. Large quiet central facets, carved geometry subdued desaturated blue gray, subtle material shading, not bright neon. Do not add or redesign motifs, do not add glow or bright hue. Arena full rectangular image landscape aspect 1600:1000 suitable to scale to 1600x1000 world. The central focus must stay near image center (800,500 world), outer broken circle about250world radius, inner about115. Dim highlights especially in center: focus is on combat sprites later. Keep all art as one finished continuous flat texture.
+```
+
 Ngày 2026-10-26. Artwork đề xuất, chưa approved; không là runtime assets. Giữ nguyên prompt tiếng Anh để tái sử dụng. Xem README.md cho inputs, quyền sử dụng và giới hạn.
 
 ## arena-concept-v1.png
