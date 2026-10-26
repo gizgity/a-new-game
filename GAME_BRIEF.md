@@ -482,9 +482,9 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 
 ## Q7C Design Contract — Character & Enemy Art Overhaul
 
-Feedback research mới: [góc nhìn/nguồn](docs/q7c/VIEW_RESEARCH.md). Đề xuất top-down¾cáchđiệu nhìnxuốngcao, giữfloorQ7A/camera/gameplay; đây là recommendation chưa đượcuserchốt, không thông số elevation chuẩn hoặc visualapproval. Không suy luận “thấy mặt/ngực” tự động sai góc; kiểm6actors/pivot/cue/mobile tại cùngscale trướcchốt.
+Feedback research mới: [góc nhìn/nguồn](docs/q7c/VIEW_RESEARCH.md). Đề xuất top-down¾cáchđiệu nhìnxuốngcao, giữfloorQ7A/camera/gameplay; user đã “visual approved q7c” sau research; đây là art direction được duyệt, không thông số elevation đo từscene. Không suy luận “thấy mặt/ngực” tự động sai góc; kiểm6actors/pivot/cue/mobile tại cùngscale trướcchốt.
 
-**AWAITING VISUAL APPROVAL**, task user2026-10-26. Sprite states6nhân vật,PlayerV2/actions,Boss3patterns và arena/crowd/grayscale đã có tại docs/q7c; chưa tích hợp runtime. Review branch `codex/q7c-visual-review`; không deployQ7C trước gate. Q7B đã accepted5ee970e/approval78f07e6. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mở Q7D. Các câu “không tự mở Q7C” trong lịch sử Q7A/Q7B là gate cũ, nay user đã giao Q7C riêng.
+**VISUAL APPROVED** — user “visual approved q7c” ngày2026-10-26. Runtime đang triển khai, chưaplaytestaccepted. Task user2026-10-26. Sprite states6nhân vật,PlayerV2/actions,Boss3patterns và arena/crowd/grayscale đã có tại docs/q7c; chưa tích hợp runtime. Review branch `codex/q7c-visual-review`; không deployQ7C trước gate. Q7B đã accepted5ee970e/approval78f07e6. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mở Q7D. Các câu “không tự mở Q7C” trong lịch sử Q7A/Q7B là gate cũ, nay user đã giao Q7C riêng.
 
 - Player/Grunt/Archer/Volatile/Bulwark/Chain Warden: asset-first ImageGen, Neon Occult / Fractured Geometry theo ảnh user **Q7A Visual Hierarchy / Contrast Study V1**, giữ silhouette/palette/P0–P3. Không dùng procedural Graphics thay body artwork; không cắt concept board thành sprite runtime.
 - Tạo source sprites riêng và preview idle/move/windup/attack/recovery/hit/death, Player attack families/dash và Boss sweep/ring/slam phân biệt. Volatile không có recovery sống; pose aftermath=N/A, không thêm phase. Animation chỉ đọc state simulation, không đổi timing/hit/kill/remove để khớp ảnh.

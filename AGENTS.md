@@ -50,6 +50,7 @@ public/assets/
 
 ## Artwork và visual gate
 - Checkpoint hiện hành: **Q7C = Character & Enemy Art Overhaul** (Player, Grunt, Archer, Volatile, Bulwark, Chain Warden); **Q7D = Full Run Polish**, chỉ mở khi user giao. Q7B đã user accepted trên5ee970e (approval78f07e6). Q7C dùng Q7A Visual Hierarchy / Contrast Study V1 làm reference chính; giữ P0–P3, silhouette và palette.
+- Q7C visual đã user duyệt “visual approved q7c”2026-10-26 sau research góc nhìn; triển khai top-down¾nhìnxuốngcao, giữfloor/camera/gameplay. Runtime chỉ accepted sau userplaytest.
 - Q7C phải tạo sprite source riêng bằng ImageGen, preview đủ idle/move/windup/attack/recovery/hit/death và Boss3đòn; không crop concept board thành runtime sprite hoặc thay bằng procedural Graphics. State không tồn tại trong simulation (như Volatile recovery sống) phải ghi N/A, không thêm timing/gameplay. Dừng **AWAITING VISUAL APPROVAL** trước tích hợp; sau duyệt mới rendering/animation/deploy và **AWAITING PLAYTEST APPROVAL**. Không tự accepted.
 - Asset-first, illustration-first: audit rendering/approval và tạo concept, mockup gần tỷ lệ chơi, palette/contrast cùng cảnh đông quái trước khi thay artwork arena. Dừng **AWAITING VISUAL APPROVAL**; chỉ user duyệt mới cho triển khai concept. Ảnh sinh thành công không là ART APPROVED.
 - Artwork môi trường chính dùng PNG/WebP hoặc SVG có chủ đích, render bằng Phaser Image/TileSprite/layers tĩnh. Không thay artwork bằng vòng lặp Graphics, procedural art engine, tilemap phức tạp hoặc shader nặng. Graphics dành cho dynamic combat shapes/telegraphs/VFX/debug.

@@ -10,13 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7C — Character & Enemy Art Overhaul, task user2026-10-26. Audit → sprite concepts riêng6nhân vật → preview arena/crowd/grayscale → đồng bộ docs → **AWAITING VISUAL APPROVAL**. Q7B đã ACCEPTED; Q7D = Full Run Polish chưa mở. Chưa tích hợp runtime hoặc đổi gameplay/HUD.
+Q7C — Character & Enemy Art Overhaul, task user2026-10-26. **VISUAL APPROVED** qua user “visual approved q7c”2026-10-26; triển khai source sạch/asset rendering/animation → kiểm → deploy → **AWAITING PLAYTEST APPROVAL**. Q7B đã ACCEPTED; Q7D = Full Run Polish chưa mở. Chưa tích hợp runtime hoặc đổi gameplay/HUD.
 
 ## ACCEPTANCE
 Reference chính Q7A Visual Hierarchy / Contrast Study V1. Đủ idle/move/windup/attack/recovery/hit/death (Volatile recovery sống=N/A), Player actions và Boss sweep/ring/slam phân biệt. Preview ghi rõ concept và gameplay scale; source riêng, không crop concept board thành runtime sprite. User duyệt visual trước asset rendering/animation/deploy; sau deploy AWAITING PLAYTEST APPROVAL, không tự accepted.
 
-## CURRENT STATUS — Q7C AWAITING VISUAL APPROVAL
-- User phản hồi góc arena/character khôngkhớp và yêu cầuresearch. Đãresearch primarysources,ghi docs/q7c/VIEW_RESEARCH.md: đềxuất top-down¾cáchđiệu nhìnxuốngcao,không overhead90°bắtbuộc/isometric; cameraengine khác gócart. Chưauserchốt recommendation,chưa sinhrevision mới hoặc đổi runtime. Bộreview hiệncó chưavisualapproved.
+## CURRENT STATUS — Q7C VISUAL APPROVED / IMPLEMENTATION
+- User “visual approved q7c” sau research góc nhìn: dùng stylized top-down¾ nhìn xuống cao, giữfloor/camera/gameplay. Visual gate đã qua, không hỏi duyệt lại; runtime chưaaccepted. Source production riêng có facing/state sạch, không dùng conceptboardcrops. Đang triển khai.
 - Audit d747f49 đã push main từ baseline78f07e6/Q7B5ee970e accepted. Có6dedicatedsprite sheets7states; PlayerV2 sángmint hơnV1 sau grayscale review; PlayeractionsV2 và Boss3×3patterns riêng. Source/prompt/rights/hashes giữ docs/q7c; không crop concept board thành sprite.
 - Board docs/q7c/index.html + evidence: mobile320/390,landscape844,tablet768,desktop1440 đúng canvas/zoomQ7B; crowd32staged,Boss/Elite,grayscale và mobile giữHUD screenshot. Không renderer runtimeQ7C/naturalrun; threat/P2/VFX chưa cùngcandidate trongarena, phải kiểm saugate.
 - Typecheck/build PASS; npm test159PASS/0fail trên baseline. PNG/hash/board Chromium320/390/768/1440 đủảnh/noerror/nooverflow PASS. Không diff src/public/config/deps/workflow; chưa atlas/directions/motion/runtimeperf/device/Safari mới. Chi tiết/giới hạn/checklist: docs/q7c/README.md,ASSET_SPEC.md,manifest.json,evidence/checks.json.
@@ -162,4 +162,4 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - User đã accepted Q7B; kỹ thuật chưa iOS/Safari/device/full-run. Pages40292060536 đã SUCCESS; proxy live403 đã kiểm lại lượt này, không bypass/giả local/dist làlive. Snapshotf9d7930/evidence trước giữ ở REVISION.md; core approvals giữ PROGRESS vàdocs từngcheckpoint.
 
 ## NEXT ACTION
-Chờ user duyệt hoặc feedback bộ visual tại branch codex/q7c-visual-review/docs/q7c (README/index/evidence). Chỉ sau duyệt mới làm source sạch/asset rendering/animation, focused checks + mobile/desktop/performance, commit/push/deploy và AWAITING PLAYTEST APPROVAL. Không tự Q7D hoặc ACCEPTED.
+Hoàn tất sprite source sạch và asset rendering/animation Q7C theo approval; giữ gameplay/telegraph/VFX/HUD, kiểm focusedtests/build/mobile/desktop/crowd/grayscale/perf, commit/push/deploy Pages và dừng AWAITING PLAYTEST APPROVAL. Không tự Q7D hoặc runtimeACCEPTED.

@@ -1,6 +1,6 @@
 # Q7C — Character & Enemy Art Overhaul
 
-**AWAITING VISUAL APPROVAL — chưa tích hợp.** Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
+**VISUAL APPROVED** — user “visual approved q7c” ngày2026-10-26 sau research góc nhìn. Đang triển khai runtime; chưaplaytestaccepted. Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
 
 ## Review hiện hành
 
