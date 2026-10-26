@@ -1,6 +1,6 @@
 # Q7D — Full Run Experience Polish
 
-User giao ngày 2026-10-26, baseline `main@688f331`. Q2–Q7C giữ ACCEPTED; Q7D chờ approval riêng, không mở Q8. [Contract](../../GAME_BRIEF.md#q7d-design-contract--full-run-experience-polish).
+User giao ngày 2026-10-26, baseline `main@688f331`. Q2–Q7C giữ ACCEPTED; Q7D đã user accepted qua “đã đạt q7d” ngày2026-10-26 trên66e0799, không mở Q8. [Contract](../../GAME_BRIEF.md#q7d-design-contract--full-run-experience-polish).
 
 ## Audit và ba ưu tiên
 
@@ -34,17 +34,19 @@ Mobile390×844: CDP joystick + Chém/Bắn giữ và specials giữ-thả, đủ
 
 Chưa xác minh Safari/iOS, nhiệt máy, độ mượt và tầm với trên thiết bị thật. Fixtures và build không thay user acceptance.
 
-## Checklist user playtest
+## Checklist playtest đã user chấp nhận — giữ tham chiếu
 
 1. Start → đủ6draft: cue ngắn rõ, nhả tay rồi chọn card; sau draft không tự cast. Pause/resume giữa combat: timer đứng, không kéo tiếng đòn cũ.
 2. Elite200kills HOẶC2:30, Boss450kills HOẶC4:00: có cue vào trận, đọc telegraph và giữ nhịp đã duyệt.
 3. Hạ Boss trước5:00: death fade hết, Victory sau1100ms. Defeat doHP0 hoặc deadline rõ lý do. Chơi lại về build/resources/timer đầu, không ghost/cast cũ.
 4. Mobile dọc/ngang và desktop: đổi vi/en, mute/volume qua Pause; panel cuộn/focus không kẹt. Nghe thử âm lượng và theo dõi độ mượt/nóng máy.
 
-Phản hồi: tình huống/bước gặp vấn đề, quan sát thực tế, thiết bị/browser. Dừng **AWAITING USER PLAYTEST APPROVAL**, không tự ACCEPTED/Q8.
+User đã xác nhận “đã đạt q7d” ngày2026-10-26. Dừng tại Q7D đã ACCEPTED, không mở Q8. Phát sinh mới ghi tình huống/bước gặp vấn đề, quan sát thực tế, thiết bị/browser.
 
 ## Bản bàn giao
 
-**AWAITING USER PLAYTEST APPROVAL** — code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main và [Pages40311723418](https://github.com/gizgity/a-new-game/actions/runs/40311723418) completed/SUCCESS, job121534293554 gồm Deploy. [Chơi bản Q7D](https://gizgity.github.io/a-new-game/?v=66e0799). Tài liệu bàn giao sau đó không đổi runtime.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đã đạt q7d” ngày2026-10-26 trên bản code/deploy `66e0799` (handoff `bcfbfbe`), Pages40311723418 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ build/tests/fixture. Không mở Q8.
 
-Live smoke từ executor bị proxy CONNECT403; không bypass hoặc lấy local/dist làm bằng chứng live. Deployment được xác minh qua GitHub Actions. Chưa có user approval Q7D; Q2–Q7C giữ nguyên.
+Code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main và [Pages40311723418](https://github.com/gizgity/a-new-game/actions/runs/40311723418) completed/SUCCESS, job121534293554 gồm Deploy. [Chơi bản Q7D](https://gizgity.github.io/a-new-game/?v=66e0799). Tài liệu bàn giao sau đó không đổi runtime.
+
+Live smoke từ executor bị proxy CONNECT403; không bypass hoặc lấy local/dist làm bằng chứng live. Deployment được xác minh qua GitHub Actions. Q7D nay đã có user playtest approval; không suy rộng thành coverage mọi thiết bị/Safari. Q2–Q7C giữ nguyên.

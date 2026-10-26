@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7D — Full Run Experience Polish, user giao ngày2026-10-26. Baseline main688f331 đã fetch/fast-forward. Q2–Q7C giữ ACCEPTED; không làm lại, không Q8.
+Q7D — Full Run Experience Polish: **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đã đạt q7d” ngày2026-10-26 trên bản code/deploy `66e0799` (handoff `bcfbfbe`), Pages40311723418 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ build/tests/fixture. Không mở Q8.
 
 ## ACCEPTANCE
-Ba ưu tiên theo GAME_BRIEF: cue chuyển mốc, cleanup kết thúc, panel/Replay continuity. Audit và test input thật đủ6draft/Elite/Boss/Victory/Defeat/Replay; ghi rõ fixture và giới hạn thiết bị. Build/tests → push → Pages rồi **AWAITING USER PLAYTEST APPROVAL**, không tự accepted.
+User đã chấp nhận trải nghiệm xuyên suốt run với ba ưu tiên: cue chuyển mốc, cleanup kết thúc, panel/Replay continuity. Giữ mọi approval Q2–Q7C. Lượt này chỉ đồng bộ tài liệu approval, không đổi runtime hoặc chạy lại build/tests.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -37,9 +37,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
 | Q7C — Character & Enemy Art | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt q7c đạt” trên deploy2ef6d48; visual approved trước đó |
-| Q7D — Full Run Experience Polish | AWAITING USER PLAYTEST APPROVAL | Checks PASS; hoàn tất push/Pages, chờ cảm nhận thiết bị thật |
+| Q7D — Full Run Experience Polish | ACCEPTED — USER PLAYTEST APPROVAL | User “đã đạt q7d” ngày2026-10-26 trên66e0799; Pages40311723418 SUCCESS |
 
-## CURRENT STATUS — Q7D
+## CURRENT STATUS — Q7D ACCEPTED
+- User xác nhận “đã đạt q7d” ngày2026-10-26 trên bản66e0799 đã deploy. Các giới hạn coverage kỹ thuật bên dưới giữ nguyên; không yêu cầu duyệt lại Q7D.
 - Ba ưu tiên đã triển khai: cue chuyển mốc, result cleanup, panel/Replay continuity. Code `66e0799c65d1940692b94d9da8ac79f14550ca20` đã push main fast-forward; không đổi core/config/run/draft/input/AI/effects/balance/assets. Không artwork/content/dependency/QA infrastructure mới.
 - Desktop input thật đủ6draft/Elite/Boss → Victory199.42s,458kills,39HP → Replay → naturalDefeat9.95s → Replay. Mobile390×844 CDP multitouch đủ6draft/Elite/Boss → Victory194.12s,458kills,85HP → Replay → naturalDefeat9.95s → Replay. Bot đọc state/predicate Perfect, không grants/clock overrides, không thay human acceptance.
 - Build/typecheck và npmtest15files/163definitions PASS. Edge fixtures5sizes320/390/844/768/1440: pause freeze, audio settings, vi/en, draft grace, Victory freeze/death fade, deadline/Replay8cycles PASS; display list29, không overflow/errors. Fixture cấp kills/Boss slain/ticks17999 ghi rõ trong evidence, không natural run.
@@ -77,4 +78,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng AWAITING USER PLAYTEST APPROVAL trên bản66e0799 đã deploy. Chờ user thử scope/checklist docs/q7d (cue6draft/Elite/Boss, death/result, Replay; pause/vi-en/audio dọc-ngang/desktop) và phản hồi tình huống + quan sát + thiết bị/browser. Không tự ACCEPTED Q7D hoặc mở Q8.
+Dừng tại Q7D đã ACCEPTED. Chờ user giao task tiếp theo; không tự mở Q8 hoặc yêu cầu duyệt lại Q7D. Phát sinh mới xử lý theo scope/feedback riêng.
