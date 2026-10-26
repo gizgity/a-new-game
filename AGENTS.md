@@ -4,6 +4,8 @@
 - `AGENTS.md`: quy tắc làm việc và coding conventions.
 - `GAME_BRIEF.md`: mục tiêu, gameplay specification và giới hạn scope.
 - `HANDOFF.md`: active task, progress, context và NEXT ACTION.
+- `DESIGN_DECISIONS.md`: registry append-only quyết định mới sau Release; không backfill lịch sử.
+- `ART_BIBLE.md`: chuẩn visual từ artwork accepted, cùng reference board `docs/art-reference/README.md`.
 - Chỉ dẫn mới nhất của người dùng được ưu tiên khi có xung đột giữa các tài liệu này và yêu cầu của người dùng.
 - Không tự ý thay đổi project goal, task goal, scope hoặc quyết định đã khóa; chỉ thay đổi khi người dùng yêu cầu.
 
@@ -109,3 +111,10 @@ public/assets/
 - Baseline main7625fa2/runtime8cbff77. Chỉ validation/tune nhỏ có evidence, không ép build cùng DPS/winrate; bot không thay user acceptance. Không thêm content/framework/hệ thống balance.
 - Báo cáo/raw data/regression/cách thử tại [docs/q8d/README.md](docs/q8d/README.md). Hiện không đổi runtime/thông số vì chưa đủ evidence; số cũ đã bị Q8B/Q8C supersede giữ nguyên nhãn lịch sử.
 - **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9. Các gate chờ duyệt Q8D trước đây đã hoàn tất; không yêu cầu duyệt lại.
+
+## Design memory và art consistency
+- Chỉ ghi DDR khi user gọi rõ `$design-decision` kèm nội dung đã chốt; theo `.agents/skills/design-decision/SKILL.md`. Không tự gọi/ghi từ thảo luận, không suy approval, không nhập lại quyết định trước Release v0.1.0. Mỗi thay đổi/status tạo ID mới + Supersedes; implementation và acceptance theo dõi riêng.
+- Dùng `$game-art` / `.agents/skills/game-art/SKILL.md` cho tạo/sửa/review artwork. Bắt buộc đọc Art Bible, mở đúng approved image refs và truyền ảnh thật vào ImageGen; mockup trên arena/HUD runtime thật, so mobile/crowd/grayscale/4góc. Thiếu tool/reference thì báo blocker, không fallback procedural Graphics cho artwork.
+- Gate: concept → consistency check → user approval → production asset → integration. Không dùng tests/deploy/ảnh sinh thành công thay approval; không đổi style/Bible để hợp thức hóa ảnh lệch.
+- User chốt đổi art direction: cần invocation `$design-decision` và bằng chứng, ghi decision Approved mới trước, rồi mới cập nhật Art Bible đúng scope. Direction approval không tự approve từng artwork. Artwork accepted trước Release được audit trong Bible/index, không DDR.
+- Task Design Memory chỉ docs/skills/reference index; không sửa gameplay/production assets/roadmap, không build/deploy. Ví dụ invocation nằm trong từng SKILL.md, không phải decision/approval thật.

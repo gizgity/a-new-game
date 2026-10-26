@@ -8,7 +8,7 @@ description: Dùng khi bắt đầu hoặc tiếp tục task, cập nhật tiế
 ## START / RESUME
 1. Đọc `HANDOFF.md` ở root repository.
 2. Xác định PROJECT GOAL, TASK GOAL, ACTIVE TASK, CURRENT STATUS và NEXT ACTION, gồm giới hạn milestone đã được giao.
-3. Chỉ đọc file liên quan; không quét lại toàn bộ repo khi không cần.
+3. Đọc `DESIGN_DECISIONS.md` để biết quyết định mới, `ART_BIBLE.md` + `docs/art-reference/README.md` khi task visual; DDR không chứa lịch sử trước Release. Chỉ đọc file liên quan; không quét lại toàn bộ repo khi không cần.
 4. Tiếp tục task chưa hoàn thành từ trạng thái hiện tại sau compact/session mới, trong phạm vi đã được giao, không cần xin phép lại. Nếu milestone được giao đã hoàn thành, giữ trạng thái dừng; không tự bắt đầu milestone tiếp theo.
 5. Nếu user giao task mới, cập nhật task active mà không làm mất project goal, task goal đã xác nhận hoặc quyết định quan trọng còn hiệu lực; chỉ đổi goal/scope khi user yêu cầu.
 
@@ -42,3 +42,9 @@ Không cập nhật sau mỗi thao tác nhỏ; handoff chỉ cần phản ánh c
 - Giữ ngắn, ưu tiên dưới khoảng 150 dòng.
 - Không copy logs, stack traces hoặc diff dài.
 - Không tạo task database, scripts, dependencies hoặc hệ thống quản lý handoff phức tạp.
+
+## DESIGN / ART MEMORY
+- Handoff là snapshot, không thay DDR hay Art Bible. Không tự chuyển notes cũ thành DDR; chỉ user gọi `$design-decision` cùng nội dung đã chốt mới ghi bằng skill tương ứng. Thiếu evidence/Release boundary/approval ghi blocker, không tự Approved.
+- Với artwork dùng `$game-art` theo skill; ghi rõ reference images/provenance, concept/consistency/visual approval/production/integration và playtest acceptance riêng, kèm quote/ngày/version user đã duyệt. Mockup phải dùng arena/HUD runtime thật; thiếu tool/reference báo blocker.
+- Đổi art direction: cần `$design-decision` ghi decision Approved mới trước khi cập nhật Art Bible. Không sửa chuẩn cho hợp ảnh lệch; không lấy concept chưa duyệt làm reference accepted.
+- Không tự tiếp tục integration/milestone mới khi còn gate. Giữ các approval trước Release trong evidence/Art Bible; DDR khởi tạo rỗng, chỉ chứa quyết định mới.

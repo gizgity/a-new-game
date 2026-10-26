@@ -10,7 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Chốt release theo yêu cầu user “chốt phiên bản release ở đây, tạo release và tag”. Chọn v0.1.0 (repo chưa có tag/release), target đúng commit Q8D đã duyệt4770bf6. Acceptance: annotated tag remote đúng SHA, GitHub Release published/latest có release notes/link chơi/evidence, không thay gameplay hoặc mở Q9.
+Design Memory & Art Consistency System — chỉ docs/skills/reference index, không gameplay/assets/roadmap/build/deploy. Mục tiêu: DDR rỗng + skill explicit invocation; Art Bible và6nhóm references accepted Q7A–Q8C; game-art gate; AGENTS/handoff wiring; kiểm consistency và commit/push.
+
+## DESIGN MEMORY STATUS
+- Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
+- Fetch phát hiện checkout cũ30e7cdc; fast-forward origin/main bcd148b trước khi audit. Q8C đã accepted7625fa2; không giữ nhầm pending từ checkout cũ. Release v0.1.0 tại4770bf6 là boundary DDR, không dời tag.
+- References đủ Player/Enemy/Boss/Environment/UI/VFX, link production source/runtime/prompt/hash/provenance và ảnh arena/HUD/crowd/grayscale thật. Thiếu message permalink gốc, model/seed, raw HUD chat ref, full Enraged4facing, dedicated sheet mọi dynamic VFX và lighting/Arrival swatches có approval riêng; không tự bịa. Coverage device/iOS/Safari giữ giới hạn cũ.
+- Validation PASS:98local Markdown links không gãy, DDR0entry/nextDD-0001, hashes Q7A/Q7B/Q7Csource/Q8Csource+Arrival runtime khớp manifests; diff chỉ8Markdown, không runtime/assets/roadmap. Không build/deploy theo task. Commit/push trong bước hoàn tất của session.
 
 ## RELEASE STATUS
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
@@ -59,7 +65,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Dừng sau releasev0.1.0 và Q8D ACCEPTED. Không còn bước phát hành đang chờ; chỉ làm task mới khi user giao, không tự mở Q9.
+Dừng chờ task mới của user; không tự ghi DDR, generate art, tích hợp hoặc mở Q9. Prompt mẫu gọi2skills nằm trong mỗi SKILL.md.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.
