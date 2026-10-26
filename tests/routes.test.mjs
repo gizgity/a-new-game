@@ -11,11 +11,11 @@ test('Q5E routes progress through actual six drafts without starting resources o
   for(const kills of [25,80,160,220,300,380]){
    w.kills=kills;r.step(idle,1/60);assert.ok(r.draft.length);
    r.draft=routeDraft(route,r.draftKind,w.mutations,w.curses,r.draft);
-   assert.ok(r.draft.length<=3);assert.equal(new Set(r.draft.map(o=>o.id)).size,r.draft.length);
-   const expected=r.draftKind==='curse'?route.curse:route.mutations.find(id=>!w.mutations.includes(id));
+   assert.ok(kills===25?r.draft.length===4:r.draft.length<=3);assert.equal(new Set(r.draft.map(o=>o.id)).size,r.draft.length);
+   const expected=kills===25 ? { 'route-tank':'aegisCore','route-sustain':'bloodReclaimer','route-counter':'phantomEdge','route-ranged':'detonationSpecialist' }[route.id] : r.draftKind==='curse'?route.curse:route.mutations.find(id=>!w.mutations.includes(id));
    assert.ok(r.draft.some(o=>o.id===expected));r.choose(r.draft.findIndex(o=>o.id===expected));
   }
-  assert.deepEqual(w.mutations,route.mutations);assert.equal(w.curses[0],route.curse);
+  assert.deepEqual(new Set(w.mutations),new Set(route.mutations));assert.equal(w.curses[0],route.curse);
   const options=routeDraft(route,'curse',w.mutations,['deathEcho'],[{id:'glassSoul',role:'wildcard'}]);
   assert.equal(options[0].id,'deathEcho');assert.ok(options.some(o=>o.id===route.curse));
  }

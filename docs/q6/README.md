@@ -2,6 +2,10 @@
 
 Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages Actions40252934135](https://github.com/gizgity/a-new-game/actions/runs/40252934135) completed/success, gồm Deploy step. Implementation đã kiểm; **AWAITING USER PLAYTEST APPROVAL**. Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.
 
+## Feedback tiếp theo — Draft đầu chọn4hướng
+
+User xác nhận hiện4card tại Mutation đầu25kills/0:30: Aegis Core (Juggernaut), Blood Reclaimer (sustain), Phantom Edge (counter), Detonation Specialist (ranged/chain). Chọn1; các Mutation Draft sau vẫn Adaptive tối đa3card. Có nhãn vi/en; không khóa build, không thay effect/tuning/Curse stacking. Tests151definitions/12files, typecheck/build/diff PASS; Chromium local320/390/844/1440 kiểm4card/chọncard4/vi-en/lượt sau3card PASS (fixture kills, chưa user acceptance). Trên mobile cuộn tới card4 rồi chọn; desktop bố cục2×2. Trial Q5E cũng giữ4card đầu, route sustain lấy Reclaimer trước Catalyst; hướng dẫn Q5E cũ là lịch sử.
+
 ## Vào tình huống
 
 [Chơi run thường](https://gizgity.github.io/a-new-game/). Curse Draft đầu ở80kills HOẶC1:00; Curse Draft sau300kills HOẶC3:00, mốc tới trước kích hoạt. Mutation ở25/0:30,160/1:40,220/2:20,380/3:40. Weighted pool/unlock cũ giữ nguyên nên không bảo đảm roll đúng cặp; Death Echo vẫn cần unlock5Detonate tích lũy.
@@ -26,3 +30,5 @@ Mobile: joystick di chuyển, giữ Chém/Bắn, Heavy/Charged giữ-thả, Lư�
 Ảnh fixture renderer thật đã xem: [HUD320](hud-320.png), [Draft844](draft-844.png).
 
 Live smoke chưa thực hiện: proxy trả403 cho Pages URL; browser evidence là local Vite. Deploy success không là user gameplay acceptance.
+
+Ảnh feedback draft đầu: [mobile320](opening-320.png), [desktop1440](opening-1440.png).

@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q6 — Curse Stacking theo task user2026-10-26. Audit nguồn remote eb49190/Q5E8b1571d đã accepted; Q6 contract mới trong GAME_BRIEF.md. Implementation/tests/build/browser/deploy PASS b534315; **AWAITING USER PLAYTEST APPROVAL**, chưa ACCEPTED.
+Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code/tests/build/browser PASS, chuẩn bị deploy; **AWAITING USER PLAYTEST APPROVAL**. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
 
 ## ACCEPTANCE
-A–F theo Q6 contract:2Curse/4Mutation; draft thêm/Keep;8effect/risk/cap/cooldown; reset/save compatibility; desktop/mobile/vi-en. Tests/build rồi push/deploy; dừng AWAITING USER PLAYTEST APPROVAL.
+25kills/0:30 có Aegis Core/Blood Reclaimer/Phantom Edge/Detonation Specialist kèm nhãn vi/en; chọn1, không khóa hướng. Sau đó tối đa3card Adaptive, Curse2slots/4Mutation/timing/heal/unlocks/history/reset không regression. Trial không cắt mất card thứ4; desktop/mobile cuộn và chọn card cuối. Tests/build/browser/deploy rồi push handoff, chờ user playtest.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -32,8 +32,12 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5C — New pool tới12/8 | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên b5ba138 |
 | Q5D — Weighted Draft | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên514063a |
 | Q5E — Diversity/balance | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “playtest oki” trên8b1571d ngày2026-10-26 |
-
 | Q6 — Curse Stacking | AWAITING USER PLAYTEST APPROVAL | Code b534315, deploy40252934135 PASS; chờ cảm nhận A–F/mobile thật |
+
+## CURRENT STATUS — DRAFT ĐẦU4HƯỚNG
+- config/draft.ts định nghĩa4đại diện; Draft.ts chỉ dùng opening ở milestone đầu từ run.ts. builds.ts có direction metadata; main/i18n/style ghi4hướng vi/en, desktop2×2/mobile cuộn. playtests.ts giữ nguyên4card đầu; route sustain chọn Reclaimer trước Catalyst. Không đổi effect/balance/progression hoặc các lượt weighted sau.
+- npm test PASS12files/151definitions (2focused mới kiểm4hướng/eligibility/history/chọn từngcard/heal1lần/reset/time/later drafts); typecheck/build/diff PASS. Tests run/routes cập nhật kỳ vọng đầu4/sau3.
+- Chromium local Vite320/390/844/1440 PASS:4card, nhãn vi/en, cuộn/chọncard4 nhận đúng1Mutation, Curse và Mutation kế tiếp3card, không overflow/pageerrors. Fixtures cấp kills để mở milestone, không natural run/user acceptance. Ảnh opening-320/1440 đã xem, lưu docs/q6. Chưa Safari/device thật; live vẫn bị proxy403 từ lượt trước.
 
 ## CURRENT STATUS — Q6 VALIDATION / CONTEXT
 - Audit main eb49190 thay checkout Q5C cũ; Q6 chưa có spec/trùng số, contract mới đặt GAME_BRIEF. Không đổi AGENTS vì đủ quy tắc; repo không có README root. Q5 docs thêm chú thích superseded, giữ nguyên evidence/commit/approval lịch sử.
@@ -72,7 +76,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - Body collision: hai lượt resolve bounded giữa player radius16 và enemy14/22/32, clamp arena; giữ slide, bỏ resolve trong dash. Không engine/physics dependency mới.
 - Basic20damage, mỗi hit gain1ChargePoint (Catalyst2); Charged84 tự tăng1Rupture cap3 rồi Detonate×2. Blast nền24/stack1→72/stack3, radius105, chỉ blast Charged gốc142 với Specialist; chain budget12, VFX24 giữ. Không đòi melee để cấp ammo/trigger các blast synergies.
 - RunDirector dùng6mốc OR kills/time trong config; HUD draft kế và Boss hiển thị cả hai điều kiện. Draft ưu tiên trước encounter, vượt nhiều mốc chọn tuần tự; bossDue/eliteSpawned chặn lặp. Elite không spawn muộn sau Boss; nếu đồng thời đủ cả hai thì Boss ưu tiên, giữ Elite đã có.
-- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu, tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Q6 Curse lượt2 Keep hoặc thêm slot2; clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
+- Mutation draft chỉ lấy option hợp lệ/chưa sở hữu; hiện đầu4hướng, các lượt sau tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Q6 Curse lượt2 Keep hoặc thêm slot2; clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
 
 - Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
 - Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor vẫn prototype art; không tự accepted.
@@ -126,7 +130,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Chờ user playtest Q6 b534315 theo docs/q6/README.md: Curse80kills/1:00 chọn1;300kills/3:00 chọn Thêm để có2slot hoặc Keep để giữ1; thử cặp C–E nếu roll được, restart và mobile readability. Chỉ sửa feedback Q6, không mở Q7.
+Hoàn tất feedback4hướng ở draft đầu: focused checks/build/browser, deploy/push handoff rồi chờ user thử25kills/0:30 chọn1trong4; không mở Q7.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.

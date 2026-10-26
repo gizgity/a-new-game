@@ -71,7 +71,7 @@ export class RunDirector {
     // Resolve earned choices before an encounter, even when one chain crosses several milestones.
     while (this.nextDraft && this.reached(this.nextDraft)) {
       this.draftKind = this.nextDraft.kind;
-      const result = buildDraft({ kind: this.draftKind, owned: this.world.mutations, curses: this.world.curses,
+      const result = buildDraft({ opening: this.draftIndex === 0, kind: this.draftKind, owned: this.world.mutations, curses: this.world.curses,
         pool: this.draftKind === 'curse' ? this.cursePool : this.world.mutations.length < 4 ? this.mutationPool : [],
         signals: signalWindow(this.world.draftSignals, this.lastSignals), maxHp: this.world.maxHp,
         previousOffers: this.previousOffers, choices: this.choices }, this.draftRandom);

@@ -20,7 +20,7 @@ test('six kill drafts pause the timer, heal once, respect max HP, and cannot be 
  const {world,run}=setup();
  for(const {kills,kind} of DRAFT_MILESTONES) {
   world.hp=75;world.enemies.forEach(e=>e.stagger=999);world.kills=kills;const tick=run.ticks;
-  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,Math.min(3,kind==='mutation'?MUTATIONS.length-world.mutations.length:3));
+  run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.equal(run.draft.length,kills===25?4:Math.min(3,kind==='mutation'?MUTATIONS.length-world.mutations.length:3));
   const snapshot=JSON.stringify(world);run.step(idle,1/60);assert.equal(run.ticks,tick+1);assert.equal(JSON.stringify(world),snapshot);
   assert.equal(run.choose(-1),false);assert.equal(run.choose(0),true);assert.equal(run.choose(0),false);
   assert.equal(world.hp,Math.min(world.maxHp,world.curses[0]==='parasiticMark'?80:85));

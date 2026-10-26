@@ -1,4 +1,4 @@
-import type { BuildId } from '../builds.js';
+import type { BuildId, MutationId } from '../builds.js';
 import type { BehaviorTag } from '../DraftSignals.js';
 // First tag is the primary style used by Wildcard novelty.
 export const DRAFT_TAGS: Record<BuildId, readonly BehaviorTag[]> = {
@@ -24,3 +24,11 @@ export const SUPPORT_LINKS: readonly (readonly BuildId[])[] = [
   ['huntedVessel', 'bloodReclaimer', 'echoChamber'],
 ];
 export const DRAFT_RULES = { version: 1, adaptive: 3, synergy: 3, combined: 1.5, novelty: 2, repeat: 0.4 } as const;
+
+// The first milestone offers a starting direction; later drafts retain weighted sampling.
+export const OPENING_MUTATIONS = [
+  { id: 'aegisCore', direction: 'tank' },
+  { id: 'bloodReclaimer', direction: 'sustain' },
+  { id: 'phantomEdge', direction: 'counter' },
+  { id: 'detonationSpecialist', direction: 'ranged' },
+] as const satisfies readonly { id: MutationId; direction: string }[];

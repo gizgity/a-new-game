@@ -102,7 +102,7 @@
 | Mốc | Sự kiện |
 | --- | --- |
 | 0:00 | Start, Grunt + Archer |
-| 25 kills hoặc0:30 | Mutation Draft #1 + hồi10HP |
+| 25 kills hoặc0:30 | Mutation Draft #1: chọn1trong4hướng + hồi10HP |
 | 80 kills hoặc1:00 | Curse Draft #1 + hồi10HP |
 | 160 kills hoặc1:40 | Mutation Draft #2 + hồi10HP |
 | 200 kills hoặc2:30 | Bulwark Elite xuất hiện |
@@ -136,6 +136,10 @@
 - Boss giữ sweep230px/1.7rad →12đạn radial →slam110px,1500HP. Theo feedback sau Q5A: windup0.62s/cooldown0.55s, dưới nửaHP0.46s/0.38s; không rút windup đang chạy, không bị stun-lock. Khoảng đứng yên mở cơ hội phản công, phase nhanh hơn vẫn có recovery.
 - **Q3 ACCEPTED:** user xác nhận “oki q3 r” trên bảnfa55057; cue Grunt/Perfect Dodge đã được duyệt riêng trước đó. Tests/browser geometry/timing và evidence là bằng chứng kỹ thuật riêng; approval không đồng nghĩa đã xác minh mọi thiết bị/Safari hoặc full-run.
 
+## Mutation Draft đầu — Chọn hướng build
+
+Theo user xác nhận sau Q6 ngày2026-10-26: ở25kills HOẶC0:30, luôn hiện4card đại diện theo thứ tự Aegis Core (Juggernaut/Barrier), Blood Reclaimer (sustain), Phantom Edge (Perfect/counter), Detonation Specialist (ranged/chain). Chọn1Mutation, không khóa class/route; các mốc sau vẫn Adaptive Draft tối đa3card với weighted sampling/reasons/anti-repeat Q5D. Ngoại lệ4card cố định chỉ ở milestone đầu, không dùng anti-repeat để bỏ một hướng. Các offered IDs vẫn ghi history khi thực sự hiển thị để draft sau/run sau dùng quy tắc cũ. Giữ pool/unlock: nếu fixture có pool nhỏ hoặc đã sở hữu đại diện thì chỉ hiện lựa chọn hợp lệ, không bù bằng card khác hướng. Không thay damage/effects/cap4Mutation/2Curse/heal/timing. Trial Q5E cũng giữ4card đầu, gợi ý route ở các lượt sau; hướng sustain bắt đầu Reclaimer rồi lấy Catalyst. Không cấp build trước milestone.
+
 ## Q6 Design Contract — Curse Stacking
 
 Specification mới theo task user ngày2026-10-26; Q6 chưa từng có specification hoàn chỉnh trong repo. Không trùng Q5E hoặc M6. Q5A–Q5E giữ approval theo xác nhận mới nhất của user; evidence/commit Q5 bên dưới là lịch sử, không viết lại thành Q6.
@@ -152,7 +156,7 @@ Specification mới theo task user ngày2026-10-26; Q6 chưa từng có specific
 
 ## Q5 Design Contract — Build diversity & survivability
 
-> Lịch sử Q5: quy tắc1Curse/replace trong mục này được Q6 supersede; các effect, tuning, milestone và approval vẫn giữ.
+> Lịch sử Q5: draft Mutation đầu3card được feedback sau Q6 thay bằng4hướng; quy tắc1Curse/replace trong mục này được Q6 supersede; các effect, tuning, milestone và approval vẫn giữ.
 
 **Trạng thái: DESIGN APPROVED — user xác nhận “ok làm đi, xong thì deploy để test play luôn” ngày2026-10-25.** Đây là specification theo yêu cầu user ngày 2026-10-25; Q5A đã được user playtest/chấp nhận trên fa4045d; Q5B đã triển khai và deploy, tank trade-off d42cdaf được user duyệt “oki, ổn r á”; các vòng Q5B khác chưa có xác nhận riêng, Q5C b5ba138 đã được user duyệt “oki r, làm tiếp đi”; Q5D514063a đã được user duyệt “oki r, làm tiếp đi” ngày2026-10-26; Q5E8b1571d đã được user playtest/chấp nhận qua “playtest oki” ngày2026-10-26, giữ tuning. Design approval không là experience acceptance. Nguồn concept mới thay thế yêu cầu tìm concept còn thiếu ở audit trước. Q5A đã deploy theo contract; Q5B–Q5E chỉ mở tuần tự sau user playtest/chấp nhận checkpoint trước.
 

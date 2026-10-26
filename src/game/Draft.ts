@@ -1,6 +1,6 @@
 import { CURSES, MUTATIONS, type BuildId, type CurseId, type DraftOption, type MutationId } from './builds.js';
 import { behaviorScores, type BehaviorTag, type DraftSignals } from './DraftSignals.js';
-import { DRAFT_RULES, DRAFT_TAGS, STRONG_LINKS, SUPPORT_LINKS } from './config/draft.js';
+import { DRAFT_RULES, DRAFT_TAGS, OPENING_MUTATIONS, STRONG_LINKS, SUPPORT_LINKS } from './config/draft.js';
 
 export class DraftRandom {
   readonly seed: number;
@@ -16,6 +16,7 @@ export function newDraftSeed(): number {
   return globalThis.crypto?.getRandomValues(new Uint32Array(1))[0] || (Date.now() >>> 0) || 1;
 }
 export interface DraftContext {
+  opening?: boolean;
   kind: 'mutation' | 'curse'; owned: readonly MutationId[]; curses: readonly CurseId[];
   pool: readonly BuildId[]; signals: DraftSignals; maxHp: number; previousOffers: readonly BuildId[];
   choices: readonly BuildId[];
@@ -42,6 +43,12 @@ export function buildDraft(context: DraftContext, random: DraftRandom): { option
   const debug: DraftDebug = { version: DRAFT_RULES.version, seed: random.seed, stateBefore: random.state, context: c, slots: [], options: [] };
   const canonical = c.kind === 'mutation' ? MUTATIONS : CURSES;
   const available: BuildId[] = canonical.filter(id => c.pool.includes(id) && !c.owned.includes(id as MutationId) && !c.curses.includes(id as CurseId));
+  if (c.kind === 'mutation' && c.opening) {
+    const options: DraftOption[] = OPENING_MUTATIONS.filter(item => available.includes(item.id))
+      .map(item => ({ ...item, role: 'wildcard' }));
+    debug.options = options.map(option => ({ ...option }));
+    return { options, debug };
+  }
   const build: BuildId[] = [...c.owned, ...c.curses];
   const scores = behaviorScores(c.signals, c.maxHp);
   const dominant = (Object.keys(scores) as BehaviorTag[]).filter(t => t !== 'need' && t !== 'movement').sort((a, b) => scores[b] - scores[a])[0];

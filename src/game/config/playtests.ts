@@ -26,6 +26,7 @@ export function routeDraft(
   route: { mutations: readonly MutationId[]; curse: CurseId }, kind: 'mutation' | 'curse',
   owned: readonly MutationId[], current: readonly CurseId[], sampled: readonly import('../builds').DraftOption[],
 ): import('../builds').DraftOption[] {
+  if (sampled.some(option => option.direction)) return [...sampled];
   const desired = kind === 'curse' ? route.curse : route.mutations.find(id => !owned.includes(id));
   if (!desired || kind === 'mutation' && owned.length >= 4) return [...sampled];
   const choices: import('../builds').DraftOption[] = [];

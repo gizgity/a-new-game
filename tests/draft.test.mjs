@@ -111,3 +111,26 @@ test('skipped empty milestones do not discard behavior before the next actual dr
  const w=world(),r=new RunDirector(w);r.start();w.enemies=[];r.mutationPool=[];Object.assign(w.draftSignals,{rangedDamage:300,rangedHits:6});w.kills=25;r.step(idle,dt);assert.equal(r.draft.length,0);
  w.kills=80;r.step(idle,dt);assert.equal(r.draftDebug.context.signals.rangedDamage,300);assert.equal(r.draftDebug.context.signals.rangedHits,6);
 });
+
+
+test('opening milestone always offers four eligible directions despite behavior/history and keeps snapshot isolated',()=>{
+ const expected=['aegisCore','bloodReclaimer','phantomEdge','detonationSpecialist'];
+ for(const seed of [1,42,999]){
+  const random=new DraftRandom(seed),before=random.state;
+  const c=context({opening:true,signals:{...draftSignals(),rangedDamage:10000,rangedHits:20},previousOffers:MUTATIONS});
+  const {options,debug}=buildDraft(c,random);
+  assert.deepEqual(options.map(o=>o.id),expected);assert.deepEqual(options.map(o=>o.direction),['tank','sustain','counter','ranged']);assert.equal(random.state,before);
+  options[0].id='catalyst';assert.equal(debug.options[0].id,'aegisCore');
+ }
+ const small=buildDraft(context({opening:true,pool:['bloodReclaimer','staticRiposte','phantomEdge'],owned:['phantomEdge']}),new DraftRandom(2));
+ assert.deepEqual(small.options.map(o=>o.id),['bloodReclaimer']);assert.equal(buildDraft(context({opening:true,pool:[]}),new DraftRandom(2)).options.length,0);
+});
+test('each of four starting choices grants one Mutation, heals once, records offers; later milestones remain adaptive and restart restores opening',()=>{
+ for(let choice=0;choice<4;choice++){
+  const w=world(),r=new RunDirector(w),profile=defaultProfile(),p=new Progression(profile);r.start();w.enemies=[];w.hp=50;w.kills=25;
+  r.step(idle,dt);const options=r.draft;assert.equal(options.length,4);p.beginRun();p.offerDraft(options.map(o=>o.id));assert.deepEqual(new Set(profile.drafts.current),new Set(options.map(o=>o.id)));
+  const ticks=r.ticks;r.step(idle,dt);assert.equal(r.ticks,ticks);assert.equal(r.choose(choice),true);assert.deepEqual(w.mutations,[options[choice].id]);assert.equal(w.hp,60);assert.equal(r.choose(choice),false);
+  w.kills=160;r.step(idle,dt);assert.equal(r.draftKind,'curse');assert.equal(r.draft.length,3);r.choose(0);r.step(idle,dt);assert.equal(r.draftKind,'mutation');assert.ok(r.draft.length<=3);assert.ok(r.draft.every(o=>!o.direction && !w.mutations.includes(o.id)));
+  r.start();w.enemies=[];r.ticks=1799;r.step(idle,dt);assert.equal(r.draft.length,4);assert.deepEqual(w.mutations,[]);
+ }
+});
