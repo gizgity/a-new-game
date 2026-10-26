@@ -1,6 +1,6 @@
 # Q5E — thử độ đa dạng build và cân bằng
 
-Q5D514063a được user duyệt “oki r, làm tiếp đi” ngày2026-10-26. Lượt này bổ sung route trial theo các mốc draft thật để so bốn hướng chơi; **giữ nguyên toàn bộ tuning**, gồm tank costs đã duyệt. Chưa có feedback mất cân bằng mới để đổi số. Q5E đang chờ human playtest/acceptance; chưa đánh dấu toàn Q5 hoàn thành.
+Bản8b1571d719a51c6f0da50a8b4435782c20a444ff đã deploy; Pages Actions40248846311 completed/success. Q5D514063a được user duyệt “oki r, làm tiếp đi” ngày2026-10-26. Lượt này bổ sung route trial theo các mốc draft thật để so bốn hướng chơi; **giữ nguyên toàn bộ tuning**, gồm tank costs đã duyệt. Chưa có feedback mất cân bằng mới để đổi số. Q5E đang chờ human playtest/acceptance; chưa đánh dấu toàn Q5 hoàn thành.
 
 ## Cách vào và thử
 
@@ -35,4 +35,4 @@ Phản hồi ngắn: route/build + mốc sống/chết, kỹ năng/đòn đang d
 
 - Chromium390:4ảnh route-*-390.png từ renderer/core thật, fixture đưa kills lên mốc để xem card, chọn6lượt/reset/vi-en/no-grant/no-progress PASS. **Ảnh UI không phải các run offline trong bảng**. Dist320/844/1440 dùng input thật vài giây, pause/resume/vi-en/no-overflow/runtime PASS. Chưa Safari/iOS/device/full-run browser/human balance acceptance.
 - Không đổi combat.ts/run.ts/balance.ts/Draft.ts. Q5E route chỉ nằm ở config/playtests.ts và wiring UI; run thường không query vẫn eligible/unlocks cũ. Thêm entry TypeScript cho config vào npm test để focused test import được.
-- Deploy đang thực hiện qua Pages Actions; SHA/kết quả cập nhật HANDOFF. Browser evidence local/dist, chưa tự nhận smoke live.
+- Deploy PASS8b1571d: Pages Actions40248846311 completed/success, job121336104379;13blobs đối chiếu local/remote tree, giữ core/tuning. Browser evidence local/dist, chưa tự nhận smoke live.
