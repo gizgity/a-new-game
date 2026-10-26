@@ -54,4 +54,6 @@ URL và deploy được ghi bên dưới. Chơi run mới, không dùng fixture 
 
 ## Deploy
 
-Đang chờ commit/push/Pages; cập nhật sau workflow kết thúc. Deploy không là user approval.
+Code `eb6fbbe5bb3e52c7d5738f3ccf6fb9339c395265` đã push main fast-forward. [Pages40341327061](https://github.com/gizgity/a-new-game/actions/runs/40341327061), job121636501339 completed/SUCCESS, gồm bước Deploy. Connector list commit runs chỉ lọc PR nên trảrỗng; đã đọc trang Actions qua github.com và xác minh job qua connector. `gh` API bịproxy Forbidden; khôngbypass.
+
+Chơi: https://gizgity.github.io/a-new-game/?v=eb6fbbe . Route ví dụ: https://gizgity.github.io/a-new-game/?v=eb6fbbe&playtest=route-tank (đổi route-sustain/route-counter/route-ranged). Production dist local390/1440 Start/HUD milestones/errors/overflow PASS. Livecurl bịproxy CONNECT403 như các lượt trước; workflow SUCCESS là bằng chứng deploy, không giả local smoke thành live. Deploy không là user approval.
