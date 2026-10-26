@@ -1,0 +1,135 @@
+{
+  "source": "dev renderer, no enemies/granted invulnerability; real movement input into bounds",
+  "cases": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "corner": "nw",
+      "world": [
+        80,
+        80
+      ],
+      "screen": [
+        62.00000610351581,
+        62.000005340576344
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "corner": "ne",
+      "world": [
+        1520,
+        80
+      ],
+      "screen": [
+        309.999979400634,
+        62.000005340576344
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "corner": "se",
+      "world": [
+        1520,
+        920
+      ],
+      "screen": [
+        309.999979400634,
+        325.9999934350289
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "corner": "sw",
+      "world": [
+        80,
+        920
+      ],
+      "screen": [
+        62.00000610351581,
+        325.9999934350289
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "corner": "nw",
+      "world": [
+        80,
+        80
+      ],
+      "screen": [
+        68.70000732421886,
+        68.7000051879884
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "corner": "ne",
+      "world": [
+        1520,
+        80
+      ],
+      "screen": [
+        1305.300007324219,
+        68.7000051879884
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "corner": "se",
+      "world": [
+        1520,
+        920
+      ],
+      "screen": [
+        1305.300007324219,
+        473.2999999115455
+      ],
+      "inside": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "corner": "sw",
+      "world": [
+        80,
+        920
+      ],
+      "screen": [
+        68.70000732421886,
+        473.2999999115455
+      ],
+      "inside": true
+    },
+    "Trial label + Boss and fresh Enter selection PASS"
+  ],
+  "errors": []
+}

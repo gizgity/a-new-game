@@ -53,7 +53,8 @@ public/assets/
 - Artwork môi trường chính dùng PNG/WebP hoặc SVG có chủ đích, render bằng Phaser Image/TileSprite/layers tĩnh. Không thay artwork bằng vòng lặp Graphics, procedural art engine, tilemap phức tạp hoặc shader nặng. Graphics dành cho dynamic combat shapes/telegraphs/VFX/debug.
 - Lưu source artwork, prompt, nguồn/quyền sử dụng, version và giới hạn riêng với runtime assets. Concept/mockup và screenshot renderer thật phải ghi nhãn khác nhau; không dùng reference bên thứ ba chưa có quyền phù hợp làm asset.
 - Giữ player/threats nổi hơn floor qua luminance, outline, shape, size và animation; kiểm mobile/desktop/crowd/grayscale phù hợp. Giữ sprite/VFX đã accepted, gameplay bounds/camera/collider/input và balance trừ khi user giao thay đổi.
-- HUD/UI visual milestone cũng illustration-first: mockup dựa screenshot/bố cục thật, ghi rõ concept và baseline renderer; user duyệt trước sửa HUD production. CSS dùng cho layout/typography/interaction, asset cho icon/art có chủ đích; không UI drawing engine. Readiness/cooldown chỉ đọc resource state thật, không tạo timer/resource giả; text vi/en và touch hit areas/giữ-thả phải được bảo toàn.
+- HUD không được che canvas tại biên/góc: ưu tiên lane riêng và kiểm player4góc trên mobile/desktop, không chỉ chụp center. Những thay đổi input/auto aim/draft interaction phải có scope user, kiểm giữ-thả/cancel/fresh-press và ghi rõ ngoại lệ contract.
+- HUD/UI visual milestone cũng illustration-first: mockup dựa screenshot/bố cục thật, ghi rõ concept và baseline renderer; user duyệt trước sửa HUD production. CSS dùng cho layout/typography/interaction, asset cho icon/art có chủ đích; không UI drawing engine. Readiness/cooldown chỉ đọc resource state thật, không tạo timer/resource giả; text vi/en và giữ-thả/cancel phải được bảo toàn; thay touch hit areas/aim chỉ khi user giao.
 
 ## Kiểm thử
 - Chạy typecheck/build sau thay đổi implementation liên quan.

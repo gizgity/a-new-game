@@ -2,17 +2,26 @@
 <html lang="vi">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Q7B · HUD & Combat Readability · Concept review</title>
+<title>Q7B · HUD & Combat Readability · Playtest revision</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#090d19;color:#e5eeef;font:16px/1.6 system-ui}main{max-width:1440px;margin:auto;padding:24px}h1,h2{line-height:1.25}p{max-width:90ch}a{color:#9dffe2}.status{padding:14px;background:#111925;border-left:3px solid #ffe599}section{margin:36px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;padding:16px;background:#111925;border:1px solid #30434a;border-radius:8px}figcaption{margin-top:12px;color:#bdcbd6}img{display:block;max-width:100%;height:auto;margin:auto}.phone{width:390px;max-width:100%}.limits{color:#c6d5dd}label{display:inline-block;padding:12px;background:#202d3a;border-radius:6px;cursor:pointer}input{width:20px;height:20px;vertical-align:middle}#gray:checked~.gallery img{filter:grayscale(1)}summary{cursor:pointer;padding:12px}@media(max-width:720px){main{padding:14px}.pair{grid-template-columns:1fr}}
 </style>
 <main>
 <h1>Q7B · HUD & Combat Readability</h1>
-<p class="status"><strong>CONCEPT APPROVED · AWAITING USER PLAYTEST APPROVAL</strong> · HUD đã triển khai; runtime quality chờ user playtest. Gameplay/controls/sàn Q7A giữ nguyên.</p>
+<p class="status"><strong>CONCEPT APPROVED · AWAITING USER PLAYTEST APPROVAL</strong> · Sửa theo playtest: HUD/control lanes ngoài canvas, floating joystick,6nút radial,auto aim mobile và draft lock1s. Balance/effects/sàn Q7A giữ nguyên; runtime chờ user thử.</p>
 <p>Giữ HUD/controls nền tảng, rút prose trên sân thành grouping và icon có trạng thái. Dữ liệu readiness/cooldown lấy đúng state game; Charged dùng đạn + điểm, không tự hồi theo thời gian.</p>
 <p><a href="README.md">Audit, giới hạn, file dự kiến</a> · <a href="../../GAME_BRIEF.md#q7b-design-contract--hud--combat-readability">Design Contract + acceptance scenarios</a> · <a href="PROMPTS.md">Prompts/inputs</a> · <a href="manifest.json">Provenance</a></p>
 <input id="gray" type="checkbox"><label for="gray">Grayscale cùng ảnh</label>
 <div class="gallery">
+<section><h2>Hiện hành · sửa HUD che nhân vật ở góc</h2>
+<p><a href="REVISION.md">Scope/checks/cách thử mới</a> · <a href="revision/checks.json">Raw checks</a>. Baseline8a469c0 và bản sửa đều là renderer thật; fixture fullbuild/HP22/Barrier30/position, không natural run.</p>
+<div class="pair"><figure><a href="revision/before-corner-nw-390.png"><img class="phone" src="revision/before-corner-nw-390.png" alt="Trước sửa: nhân vật góc trên trái bị HUD che"></a><figcaption>TRƯỚC · góc trên trái, nhân vật bị card che.</figcaption></figure><figure><a href="revision/after-corner-nw-390.png"><img class="phone" src="revision/after-corner-nw-390.png" alt="Sau sửa: HUD ngoài canvas, nhân vật hiện rõ và cụm nút tỏa tròn"></a><figcaption>SAU · HUD/control lanes ngoài renderer, floating pad lớn và6nút theo cung.</figcaption></figure></div>
+<details><summary>Desktop cùng lỗi góc: trước–sau</summary><div class="pair"><figure><img src="revision/before-corner-ne-1440.png" alt="Desktop trước sửa góc trên phải"><figcaption>Trước:build summary đè góc arena.</figcaption></figure><figure><img src="revision/after-corner-ne-1440.png" alt="Desktop sau sửa góc trên phải"><figcaption>Sau:player nằm trongcanvas,HUD ởlane riêng.</figcaption></figure></div></details>
+<div class="pair"><figure><img class="phone" src="revision/after-crowd-390.png" alt="Combat đông sau sửa"><figcaption>Combat fullbuild390.</figcaption></figure><figure><img src="revision/after-crowd-844.png" alt="Landscape sau sửa với2lane controls"><figcaption>Landscape844,controls hai bên ngoài canvas.</figcaption></figure></div>
+<p><a href="revision/after-boss-390.png">Boss390</a> · <a href="revision/after-corner-se-390.png">Góc dưới phải</a> · <a href="revision/after-crowd-320.png">320px</a> · <a href="revision/after-crowd-768.png">Tablet768</a> · <a href="revision/draft-locked-390.png">Draft đang khóa</a> · <a href="revision/draft-ready-390.png">Draft sẵn sàng</a></p>
+</section>
+<details><summary>Lịch sử concept và implementation6664ee0 trước phản hồi controls/occlusion</summary>
+<p>Các câu “không đổi canvas/hit areas/6nút” bên dưới là snapshot cũ; ngoại lệ mới theo user xem REVISION.md. Evidence/concept giữ nguyên, không sửa lịch sử thành thiết kế mới.</p>
 <section><h2>Runtime · trước–sau từ renderer thật</h2>
 <p><a href="IMPLEMENTATION.md">Checks,provenance và cách playtest</a>. Cùng33enemy/4Mutation/2Curse fixture; không natural run hoặc user acceptance.</p>
 <div class="pair">
@@ -47,6 +56,7 @@
 <ol><li>HP/Barrier tách icon/thanh/số; grouping và mức decoration panel.</li><li>Build4M/2C gọn; tap một summary≥44px mở details qua pause, không auto-cast khi nhả.</li><li>Resource readiness bằng count/fill/timer/label; Charged ammo+points; không đổi6nút.</li><li>Damage/heal/break/Perfect và synergy có feedback ngắn trên HUD/icon, không prose/center spam.</li></ol>
 <p class="limits">Các hình concept ở trên giữ làm lịch sử, không là runtime assets. Bản HUD đã có checks/evidence tại đầu trang; user cần thử readability và độ mượt trên thiết bị thật. Q2–Q7A giữ accepted,Q1 riêng chưa duyệt; không mở Q7C.</p>
 </section>
+</details>
 </div>
 </main>
 </html>

@@ -10,17 +10,17 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7B — HUD & Combat Readability theo task user2026-10-26: audit → design contract → illustration-first visual gate. **CONCEPT APPROVED** — user “approved làm đi” ngày2026-10-26, implementation/checks/push/deploy đã PASS; runtime **AWAITING USER PLAYTEST APPROVAL**. Q7A floor broken-seal-v2.webp và Q2–Q6/draft đầu4hướng giữ ACCEPTED; Q1 vẫn chưa duyệt riêng.
+Q7B — HUD & Combat Readability, vòng sửa theo playtest user2026-10-26. User báo HUD che arena trên mobile và yêu cầu kiểm desktop/góc, joystick vùng lớn, cụm combat tỏa tròn, auto aim quái gần nhất trên mobile, khóa chọn draft1s. Đây là scope bổ sung được user giao trực tiếp, cho phép đổi touch mapping/viewport/draft interaction; không đổi balance/effects/timing combat hoặc sàn Q7A. Không Q7C.
 
 ## ACCEPTANCE
-Concept đã user duyệt; runtime HUD/feedback/details đã triển khai. Typecheck/build/test13files(5HUDfocused)/browser5sizes/scenarios/production smoke PASS; core/floor/inputinternals giữ nguyên. Chờ user quality/device playtest theo docs/q7b/IMPLEMENTATION.md, không lấy fixture/tests làm acceptance. Không Q7C.
+Bản sửa đã triển khai/check PASS; chưa user accepted Q7B. HUD/controls không chồng canvas, kiểm4góc desktop/mobile, 320/390/landscape/tablet; floating joystick nhận cả vùng trái;6nút theo cung quanh Chém/Bắn; auto aim nearest living/manual drag override/Heavy-Charged release đúng; draft khóa1000ms và đòi press mới. Build/tests/browser/evidence PASS; đang commit/push/Pages, rồi AWAITING USER PLAYTEST APPROVAL.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
 
 | Checkpoint | Trạng thái | Còn thiếu |
 | --- | --- | --- |
-| Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Bố cục cột mới và giữ/thả trên máy thật |
+| Mobile-first | IN PROGRESS — AWAITING PLAYTEST APPROVAL | Lanes/radial/floating joystick/auto aim mới trên máy thật |
 | Q1 — Player art/animation/readability | IN PROGRESS — AWAITING VISUAL APPROVAL | User duyệt visual Fractured Vessel |
 | Q2 — Combat feel/impact | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “ok q2 ổn đó” trên bản84fb33a |
 | Q3 — Enemy identity/precision | ACCEPTED — USER PLAYTEST/VISUAL APPROVAL | User xác nhận “oki q3 r” trên bảnfa55057 |
@@ -35,18 +35,18 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Draft đầu4hướng | ACCEPTED — USER PLAYTEST APPROVAL | User “approve” trên7843b98 ngày2026-10-26 |
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
-| Q7B — HUD & Combat Readability | AWAITING USER PLAYTEST APPROVAL | Concept user approved; code6664ee0/Pages40275065554 SUCCESS; chưa user runtime accepted |
+| Q7B — HUD & Combat Readability | AWAITING USER PLAYTEST APPROVAL | Concept approved; user phản hồi bản6664ee0, revision đã checks PASS/chờ deploy; chưa runtime accepted |
 
-## CURRENT STATUS — Q7B IMPLEMENTATION
-- Concept/design đã user duyệt “approved làm đi”. Remote main21f2c55 đã fetch/đối chiếu, nhánh q7b-visual-review chứa gói concept95c9ffd. Q2–Q7A/opening4hướng giữ accepted, Q1 riêng chưa duyệt.
-- CombatHUD đọc state/resources, render vitals/build6slots/details; HUDFeedback bounded transition queue, không đổi core. Authored SVG glyphsheet, CSS grouping/readiness; TouchControls chỉ updateResources presentation. main giữ progression/run/draft/settings wiring và pause lifecycle cho details.
-- Typecheck/build PASS,test13files PASS gồm5focused HUDFeedback checks. Browser fixture+dist5viewports320/390/844/768/1440 PASS: same canvas/6button geometry,4Mutation/2Curse/details/cuộn/vi-en/Pause/settings/Draft4cards/Victory/Defeat/Glass75/feedback/Boss. No pageerrors/requests/overflow. HoldHeavy(desktop)/holdCharged+summary2ndfinger(touch)→pause→release→resume không cast/consume; timerpause PASS.
-- Portrait HUDbox98px(vs198.5/213.5 trước),128px gồm timer→notice. Performance frozen33enemy:phone16.7ms/desktop33.4ms median không đổi,HUDCPU<0.05ms; không suy ra device FPS. docs/q7b/IMPLEMENTATION.md córenderer/screenshots/scenario/perf/provenance/cách thử; fixture không human approval.
-- Code6664ee09edf587e235b93112cea0186121cf4f88 đã fast-forward push main; Pages40275065554/job121415959796 completed/success gồmDeploy. URL https://gizgity.github.io/a-new-game/ ; live curl vẫn proxy403, ảnh/checks là local/dist. Floor/core/inputinternals giữ nguyên; AWAITING USER PLAYTEST APPROVAL, không Q7C.
-- Auto-review ban đầu chặn main push vì cho rằng thiếuủyquyền. Đã đối chiếu taskQ7B section7+AGENTS Deployment,ancestor/no-force vàdiffcore/workflow; retry đúngfast-forward thànhcông, khôngbypass qua ref/merge khác.
+## CURRENT STATUS — Q7B PLAYTEST REVISION
+- Baseline main8a469c0 đã fetch; user screenshot xác nhận overlay HUD che arena. Desktop cùng mô hình overlay nên cũng bị tại rìa. Đã tách top HUD và resource/control lanes khỏi canvas bằng CSS; landscape touch dùng2lane bên. Camera chỉ fit viewport mới để không lộ ngoài floor, world bounds/collision/follow giữ nguyên.
+- Đã sửa floating movement origin trong hit area lớn,6nút radial, nearest-living auto aim khi không kéo combat; manual Heavy/Charged snapshot riêng action. DraftInteractionGuard1s wallclock + disabled UI + fresh press, rerender locale không reset khóa. npm test14files và typecheck/build PASS. Browser6sizes320/390/667/844/768/1440: fullbuild/crowd/Boss/4góc/UI-canvas disjoint/button≥44/nooverlap/errors PASS; real touch390/keys1440 đi4góc PASS. CDPoffcentre4origins/manualwhilemove/Chargedrelease/Heavy1charge/detailscancel/pointercancel/rotate PASS. Draft1000ms/freshclick/heldSpace/freshSpace+Enter/rerender/lượt mới/card4 PASS. Dist5sizesinput/details/settings/vi-en PASS; docs/q7b/REVISION.md+revision/*.json/PNG. Fixture khôngnaturalrun/deviceapproval.
+
+## PREVIOUS CHECKPOINT — Q7B
+- Concept95c9ffd user “approved làm đi”; code6664ee0/deploy40275065554 success, docs8a469c0 là baseline trước feedback mới. Bản đó giữ canvas/controls, checks13files/5sizes/frozenperf PASS; user nay chỉ ra occlusion. Chi tiết/evidence lịch sử ở docs/q7b/IMPLEMENTATION.md, không dùng các bảo đảm “core/input/camera giữ” cho revision.
+- Auto-review lượt trước đã chặn main push rồi cho phép sau đối chiếu taskQ7B section7+AGENTS Deployment và fast-forward an toàn. Quyền deploy/push hiện hành giữ; không bypass policy/ref/merge khác.
 
 ## CURRENT STATUS — Q7A ĐÃ ACCEPTED
-- User duyệt runtime Q7A sau khi xác nhận scope chỉ artwork sàn; không thay player/enemy/VFX/gameplay. Đã đồng bộ GAME_BRIEF/docs Q7A/board. Q7B nay đã có scope riêng và đang visual gate, chưa triển khai HUD.
+- User duyệt runtime Q7A sau khi xác nhận scope chỉ artwork sàn; không thay player/enemy/VFX/gameplay. Đã đồng bộ GAME_BRIEF/docs Q7A/board. Q7B có scope riêng, concept đã duyệt/runtime đang sửa theo playtest.
 - Concept V2 user duyệt “approved, làm tiếp đi” ngày2026-10-26. Đã fetch/merge main bc07fd4, bảo toàn Q6 acceptance và opening4hướng, Q2–Q6 giữ accepted; Q1 riêng chưa duyệt.
 - ImageGen cleanup concept V2 bỏ footer thành source PNG mới; Pillow chỉ resize/compress1600×1000 WebP88,174334bytes. Một Phaser Image depth0, tint#7a8791 sau xem renderer thấy cạnh sàn còn sáng; không animation/shader/new dependency. ArenaScene chỉ thay preload/drawArena; mọi gameplay/camera/controls/collider/sprites/VFX giữ nguyên.
 - Source/review PNG và prompt giữ docs/q7a/artwork; runtime asset public/assets/arena/broken-seal-v2.webp; provenance/hash/rights/processing ở docs/q7a/runtime-asset.json. Không third-party artwork hoặc service lúc chạy.
@@ -99,7 +99,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 - RunDirector dùng6mốc OR kills/time trong config; HUD draft kế và Boss hiển thị cả hai điều kiện. Draft ưu tiên trước encounter, vượt nhiều mốc chọn tuần tự; bossDue/eliteSpawned chặn lặp. Elite không spawn muộn sau Boss; nếu đồng thời đủ cả hai thì Boss ưu tiên, giữ Elite đã có.
 - Mutation draft chỉ lấy option hợp lệ/chưa sở hữu; hiện đầu4hướng, các lượt sau tối đa3; pool còn1–2 hiển thị đúng số còn, hết thì bỏ qua không heal. Q6 Curse lượt2 Keep hoặc thêm slot2; clamp maxHP sau heal10 (Parasitic5). Milestones/unlocks giữ; effect dùng Q5B/Q5C, Draft v2 ở Q5D.
 
-- Layout: trong184×184, Charged52px tại(56,0), Heavy52px(56,64), Dash60px(52,124), Shoot64px(116,24), Melee68px(116,100), Surge48px(0,0). Pad trái132–180px/cao132–160, portrait reserve204px; safe-area/dvh và native-gesture guard khi playing giữ.
+- Layout hiện hành Q7B revision: HUD/control lanes ngoài canvas, combat180×240 theo cung, floating pad240px cao; landscape2side lanes/scale0.82. Thay layout184×184/portrait204px trước đây theo user, giữ evidence cũ; auto nearest/manual override và draft lock1s xem GAME_BRIEF/REVISION.
 - Q1 atlas Fractured Vessel và Charged VFX giữ; Light ba nhát có pose/trail/SFX riêng từ bản trước. Enemy đã có layered Fractured Geometry ở Q3; floor đã chuyển asset Q7A; runtime visual còn chờ user playtest, không tự accepted.
 
 ## IMPLEMENTATION AUDIT / LIMITS
@@ -138,41 +138,12 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- Q7B code6664ee0 đã deploy Pages40275065554/job121415959796 SUCCESS gồmDeploy. Sau deploy chỉ đồng bộ Markdown/handoff,không sửa runtime hoặc lặp tests/build. Live403 vẫn là giới hạn môi trường; khônguser/deviceapproval.
-- Q7Bimplementation: typecheck/build/test13files(5HUDcases) và browserfixture+dist5sizes PASS; samegamecore/inputinternals/floorhash. Benchmarkfrozen HUDCPU0.041msphone/0.0345msdesktop; medianframe16.7/33.4ms không đổi so baseline. Không device/Safari/full-run/human acceptance.
-- Q7Bdesign: baseline renderer4viewports PASS(no pageerror/overflow),10PNG headers/hash + docs links/diff PASS; board390/1440 image-load/grayscale/no-overflow/no-pageerror PASS. Không tests/build game vì chưa implementation. Status AWAITING VISUAL APPROVAL, không suy rộng approval Q7A sang HUD mới.
-- Ngày2026-10-26: ghi nhận user duyệt Q7A floor-only và chờ scope Q7B. Chỉ sửa tài liệu/nhãn board, kiểm diff và liên kết; không sửa runtime, không chạy lại tests/build thủ công. Lịch sử evidence/deploy giữ nguyên.
-- Deploy Q7A0e0a9af: Actions40266665479/job121390460491 completed/success, bước Deploy success. Live curl vẫn bị proxy403; ảnh/checks là local Vite/dist. Sau deploy chỉ đồng bộ docs/board, không sửa code hoặc lặp tests/build.
-- Q7A: user duyệt concept V2, runtime typecheck/build/test12files/browser4viewports PASS; evidence/limits/perf/cách thử tại docs/q7a/IMPLEMENTATION.md. Chỉ preload/floor rendering thay đổi, gameplay/bounds/camera/input/VFX giữ nguyên so main bc07fd4.
-- User duyệt thêm Q6 qua “aprroved q6 lun nha” ngày2026-10-26. Q6 stacking và draft đầu4hướng đều ACCEPTED. Lượt này chỉ sửa trạng thái Markdown/kiểm diff và push, không đổi code hoặc chạy lại tests/build/deploy; không coi approval là bằng chứng đã thử Safari/mọi thiết bị.
-- Lượt trước: user xác nhận “approve” cho draft đầu4hướng7843b98 ngày2026-10-26. Lượt này chỉ đồng bộ approval trong HANDOFF/GAME_BRIEF/docs/q6, kiểm diff; không đổi gameplay hoặc chạy lại tests/build/deploy. Không suy rộng approval sang Q6 stacking/Safari/mọi thiết bị.
-- Feedback draft đầu4hướng: code7843b988e6d0a109cc20994b3c874219b05443bb đã fast-forward push main; Pages Actions40259161783 completed/success. Tests151definitions/12files, typecheck/build/browser4viewport PASS như CURRENT STATUS. URL https://gizgity.github.io/a-new-game/ ; evidence local fixture, chưa smoke live (proxy403 từ lượt trước) hoặc user acceptance.
-
-- Q6 code b534315bb7cb15aa219e6ee8debd1682457a685a, parents c02c30a/f1fb9ea trên main eb49190; fast-forward push không force, giữ toàn bộ Q5 evidence. Pages Actions40252934135 completed/success (job121348532512), Deploy step thành công. Lượt đầu c02c30a Actions40252846937 cũng success.
-- URL https://gizgity.github.io/a-new-game/ ; curl live bị network proxy403 nên chưa smoke live, không bypass policy. Chromium evidence là local Vite, không giả là live. Tài liệu reconciliation sau deploy chỉ Markdown, kiểm diff, không cần chạy lại build/tests.
-
-- User xác nhận Q5E “playtest oki” và yêu cầu Q6 ngày2026-10-26. Lượt này chỉ đối chiếu brief/lịch sử và cập nhật approval/next action; kiểm diff, không chạy lại build/tests/deploy gameplay. Remote main8db19ba đã đối chiếu.
-- Lượt đồng bộ tài liệu ngày2026-10-26: lịch sử GitHub xác nhận HANDOFF/GAME_BRIEF đã được push trước đó; user cho phép đồng bộ và yêu cầu handoff bắt buộc push. Ghi quy tắc bắt buộc push tại KEY DECISIONS, gỡ blocker quyền cũ, giữ trạng thái Q5E chờ playtest. Chỉ sửa Markdown, kiểm diff/tính nhất quán; không chạy lại tests/build/deploy gameplay.
-- Q5E:137definitions/11files PASS (1focused4route×6draft), typecheck/build/diff PASS. Giữ nguyên combat.ts/run.ts/balance.ts/Draft.ts. Không thêm effects hoặc tune số Q5.
-- Core offline seed123456789, script biết vị trí/timing/Perfect, không grant HP/ammo/kills/time: tank thắng3:17.2 HP76; sustain3:07.1 HP100; counter3:11.1 HP100; ranged3:10.7 HP36/75. Cả4quaElite/Boss; sustainheal0 nên chưa chứng minh utility, không suy rộng thành user balance acceptance. docs/q5e/scripted-routes.json.
-- Chromium390:4route×6draft/label/reset/vi-en/no initial grant/no-progress PASS, normal unlock/old trial PASS; ảnh là fixture kill thresholds. Dist320/844/1440 real input/pause/vi-en/no-overflow/runtime PASS. Chưa Safari/iOS/device/full-run browser; local/dist chưa smoke live.
-- Q5D514063a user duyệt “oki r, làm tiếp đi” ngày2026-10-26. Q5C b5ba138/Q5A/Q2/Q3/Q4 giữ approvals; tank d42cdaf giữ tuning. Không suy rộng approval Q5D sang toàn Q5B counter/chain/echo.
-- Deploy Q5E PASS:8b1571d719a51c6f0da50a8b4435782c20a444ff, Actions40248846311 completed/success, job121336104379. Parent252b4b2, expected SHA/không force,13blobs(9text/4PNG) đối chiếu local+remote tree; core hash giữ nguyên.
-- Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
+- Revision Q7B: typecheck/build PASS, npm test14files PASS (3autoaimcases+5HUDcases và existing core tests). Không dependency mới; floor hash và combat/run/draft/effects/balance/AI/sprite/VFX/workflow/lockfile giữ nguyên. ArenaScene chỉ viewport fit và touch aim adapter.
+- Browser revision6sizes320/390/667/844/768/1440 PASS: HUD/control UI không giao canvas,6buttons≥44/no overlap,fullbuild/crowd/HP22/Barrier30/Boss/4góc/details/vi-en. CDPtouch+keyboard test góc chuyển động thật390/1440 PASS. checks.json/moving.json tại docs/q7b/revision/.
+- Input/draft:4floatingorigins,manual while move,nearest/Chargedmanualrelease/Heavyauto1charge,details2finger/cancel,rotate390→844/Heavycancel/canvas-parentmatch PASS. Draftlock≥1000ms,locale noreset,heldtouch/Space rejected/freshclick+Space+Enter accepted,lượt kế/card4 PASS.
+- Dist smoke5sizes PASS với input thật Bắn/aim/Heavy/WASD/mouse,Pause/details/settings/vi-en/nooverflow/no stuck/noerrors. Screenshot local dev/dist; chưa smoke live/device/iOS/Safari/full-run. Proxy live403 ở checkpoint trước; không bypass/giả local làlive. Không user runtime acceptance.
+- Revision links/PNG integrity/diff PASS. User playtest mới và Pages deploy đang là bước cuối; evidence/perf bản6664ee0 chỉ snapshot cũ (docs/q7b/IMPLEMENTATION.md), không benchmark revision hoặc thiết bị thật.
+- Q7A accepted floor/code0e0a9af/board2e48166; Q6 b534315+approvalbc07fd4 và draft đầu4hướng7843b98 accepted; Q2–Q5 approval/evidence giữ ở bảng PROGRESS và docs checkpoint tương ứng. Không sửa lịch sử accepted để phù hợp UI mới.
 
 ## NEXT ACTION
-Chờ user playtest Q7B6664ee0 tại https://gizgity.github.io/a-new-game/ (reload): HP/Barrier/readiness,summary→details/cuộn/Back/Resume,hold-releasekhôngcastnhầm,crowd+Perfect/proc vàBoss cues; thửphone320/390/dọc-ngang hoặcdesktopnếu có. Scope/checks/limits docs/q7b/IMPLEMENTATION.md. **AWAITING USER PLAYTEST APPROVAL**, chỉ sửa feedbackQ7B, không Q7C.
-
-## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
-Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.
-
-## PLAYTEST Q5D — ĐÃ DUYỆT / THAM CHIẾU
-Checklist scope/cách thử/giới hạn ở docs/q5d/README.md. Game thường không query để kiểm natural acquisition: draft25kills/0:30, Curse80/1:00, Mutation160/1:40 và220/2:20, Curse300/3:00, Mutation380/3:40. Chơi thiên melee/ranged/Perfect/Heavy hoặc defense, xem reason đúng bằng chứng/build; vi/en không đổi IDs; Curse2 có giữ; run kế giảm lặp có xác suất. Mobile joystick/Chém/Bắn/Lướt, specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Chưa yêu cầu thử lại Q5C.
-
-## PLAYTEST Q5E — ĐÃ DUYỆT / THAM CHIẾU
-4link route/checklist chi tiết docs/q5e/README.md. Chọn card “Gợi ý” ở Mutation25/0:30,160/1:40,220/2:20,380/3:40; Curse80/1:00 và giữ300/3:00. Đi tớiElite200/2:30, Boss450/4:00 hoặc ghi đòn/mốc chết. Tank so đứng/di chuyển và damagecost; sustain thử khi mấtHP, marked kill/nổ; counter Perfect→Light/Charged vàzeroDash; ranged GlassHP75/Fracture/chain4. Mobile joystick/giữ-kéo Chém/Bắn/Lướt/specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Trial không natural acquisition/không lưu progress. User đã duyệt Q5E qua “playtest oki”; checklist giữ làm tham chiếu, không yêu cầu thử lại. Không suy rộng sang Safari/mọi thiết bị.
-
-## BLOCKERS
-Không còn blocker Q6/approval; Q6 đã ACCEPTED. Live smoke trong môi trường vẫn chưa thực hiện do proxy403; giới hạn kỹ thuật này giữ nguyên.
-Git fetch ngoài sandbox đã hoạt động; dùng fast-forward push main, giữ tree remote/evidence. gh API bị Forbidden, theo dõi deploy bằng connector/web GitHub nếu cần. Không còn blocker scope Q6; user đã cung cấp contract. Q5E ACCEPTED; Q5A–Q5E giữ approval theo task mới nhất (Q5B được user xác nhận tổng thể trong task này, giữ nguyên evidence approval hẹp cũ).
-
+Commit/push main không force bản sửa Q7B đã checks PASS, theo dõi Pages rồi ghi version/link và bàn giao user thử4góc/floating movement/radial/auto aim/manual override/draft1s trên điện thoại. Không tự Q7C.

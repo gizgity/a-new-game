@@ -10,6 +10,7 @@ import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
 import { ARENA, FIXED_STEP, type PlayerState } from './movement';
+import { touchAim } from './touchAim';
 
 export type Phase = 'ready' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
 
@@ -156,9 +157,11 @@ export class ArenaScene extends Phaser.Scene {
 
   private resize(size: Phaser.Structs.Size): void {
     const compact = this.touch.enabled || size.width < 700;
-    this.cameras.main.setZoom(compact
+    const zoom = compact
       ? Phaser.Math.Clamp(Math.min(size.width / 480, size.height / 400), 0.75, 1.3)
-      : Math.min(size.width / 1120, size.height / 700));
+      : Math.min(size.width / 1120, size.height / 700);
+    // Reserved HUD/control lanes can make the canvas wide and short.
+    this.cameras.main.setZoom(Math.max(zoom, size.width / ARENA.width, size.height / ARENA.height));
     this.pressed.clear();
     this.armedSpecials.clear();
     this.releaseAim = {};
@@ -175,7 +178,7 @@ export class ArenaScene extends Phaser.Scene {
     const pointer = this.input.activePointer;
     const touch = this.touch.sample();
     if (this.touch.enabled) {
-      if (touch.aimAngle !== null) this.player.angle = touch.aimAngle;
+      this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
       this.reticle.setPosition(this.player.x + Math.cos(this.player.angle) * 100,
         this.player.y + Math.sin(this.player.angle) * 100);
     } else if (this.input.isOver && !pointer.wasTouch) {
@@ -188,6 +191,7 @@ export class ArenaScene extends Phaser.Scene {
     while (this.accumulator >= FIXED_STEP) {
       // Capture once per tick, including hitstop; CombatWorld buffers intent for 120ms.
       const touch = this.touch.sample();
+      if (this.touch.enabled) this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
       const input = {
         dx: touch.dx || Number(this.keys.D.isDown) - Number(this.keys.A.isDown),
         dy: touch.dy || Number(this.keys.S.isDown) - Number(this.keys.W.isDown),

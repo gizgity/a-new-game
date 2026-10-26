@@ -3,9 +3,9 @@ import { t } from '../i18n';
 import type { ResourceReadouts } from './CombatHUD';
 
 type Action = CombatAction;
-interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number; aiming: boolean }
+interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number; angle: number | null }
 
-/** Maps pointer contacts to existing combat inputs. No combat timing or targeting rules. */
+/** Maps pointer contacts to existing combat inputs; combat still owns timing/resources. */
 export class TouchControls {
   private readonly surface: HTMLElement;
   private readonly media = matchMedia('(pointer: coarse)');
@@ -25,7 +25,7 @@ export class TouchControls {
     this.surface = root.closest<HTMLElement>('.arena-shell')!;
     root.innerHTML = `
       <button id="move-stick" class="touch-stick" type="button" aria-label="${t('touchMove')}">
-        <span class="stick-knob" aria-hidden="true">◇</span><span class="stick-label" data-i18n="move"></span>
+        <span class="stick-base" aria-hidden="true"><span class="stick-knob">◇</span></span><span class="stick-label" data-i18n="move"></span>
       </button>
       <div class="touch-actions">
         <div class="touch-utility">
@@ -71,11 +71,13 @@ export class TouchControls {
     this.surface.classList.toggle('touch-playing', this.enabled && active);
   }
 
-  sample(): CombatInput & { aimAngle: number | null } {
+  sample(): CombatInput & { aimAngle: number | null; manualAimAngle: number | null } {
     const held = (action: Action) => this.pressed.has(action) ||
       [...this.contacts.values()].some(contact => contact.action === action);
     return {
-      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle, pressed: [...this.pressed], specialAim: this.releaseAim,
+      dx: this.dx, dy: this.dy, aimAngle: this.aimAngle,
+      manualAimAngle: [...this.contacts.values()].reverse().find(contact => contact.action !== 'move' && contact.angle !== null)?.angle ?? null,
+      pressed: [...this.pressed], specialAim: this.releaseAim,
       melee: held('melee'), shoot: held('shoot'), heavy: this.pressed.has('heavy'),
       charged: this.pressed.has('charged'), ultimate: held('ultimate'), dash: this.pressed.has('dash'),
     };
@@ -96,6 +98,8 @@ export class TouchControls {
       contact.element.classList.remove('pressed');
       contact.element.style.removeProperty('--stick-x');
       contact.element.style.removeProperty('--stick-y');
+      contact.element.style.removeProperty('--origin-x');
+      contact.element.style.removeProperty('--origin-y');
       if (contact.element.hasPointerCapture(id)) contact.element.releasePointerCapture(id);
     }
   }
@@ -128,10 +132,15 @@ export class TouchControls {
     element.addEventListener('pointerdown', event => {
       if (!this.active || !this.enabled || [...this.contacts.values()].some(contact => contact.element === element)) return;
       event.preventDefault();
-      this.contacts.set(event.pointerId, { element, action, x: event.clientX, y: event.clientY, aiming: false });
+      this.contacts.set(event.pointerId, { element, action, x: event.clientX, y: event.clientY, angle: null });
       element.setPointerCapture(event.pointerId);
       element.classList.add('pressed');
-      if (action === 'move') this.move(event);
+      if (action === 'move') {
+        const rect = element.getBoundingClientRect();
+        element.style.setProperty('--origin-x', `${event.clientX - rect.x}px`);
+        element.style.setProperty('--origin-y', `${event.clientY - rect.y}px`);
+        this.move(event);
+      }
       else if (action !== 'charged' && action !== 'heavy') this.pressed.add(action);
     });
     element.addEventListener('pointermove', event => {
@@ -146,12 +155,14 @@ export class TouchControls {
       if (event.type === 'pointerup' && (contact.action === 'charged' || contact.action === 'heavy')) {
         this.move(event);
         this.pressed.add(contact.action);
-        if (this.aimAngle !== null) this.releaseAim[contact.action] = this.aimAngle;
+        if (contact.angle !== null) this.releaseAim[contact.action] = contact.angle;
       }
       this.contacts.delete(event.pointerId);
       contact.element.classList.remove('pressed');
       contact.element.style.removeProperty('--stick-x');
       contact.element.style.removeProperty('--stick-y');
+      contact.element.style.removeProperty('--origin-x');
+      contact.element.style.removeProperty('--origin-y');
       if (contact.action === 'move') this.dx = this.dy = 0;
       if (element.hasPointerCapture(event.pointerId)) element.releasePointerCapture(event.pointerId);
     };
@@ -163,8 +174,8 @@ export class TouchControls {
   private move(event: PointerEvent): void {
     const contact = this.contacts.get(event.pointerId)!;
     const rect = contact.element.getBoundingClientRect();
-    const dx = event.clientX - (contact.action === 'move' ? rect.x + rect.width / 2 : contact.x);
-    const dy = event.clientY - (contact.action === 'move' ? rect.y + rect.height / 2 : contact.y);
+    const dx = event.clientX - contact.x;
+    const dy = event.clientY - contact.y;
     const distance = Math.hypot(dx, dy);
     const radius = contact.action === 'move' ? Math.min(42, Math.min(rect.width, rect.height) / 2 - 28) : 38;
     const scale = distance > radius ? radius / distance : 1;
@@ -173,11 +184,10 @@ export class TouchControls {
     if (contact.action === 'move') {
       this.dx = distance > 8 ? dx / distance : 0;
       this.dy = distance > 8 ? dy / distance : 0;
-      const aiming = [...this.contacts.values()].some(item => item.action !== 'move' && item.aiming);
+      const aiming = [...this.contacts.values()].some(item => item.action !== 'move' && item.angle !== null);
       if (distance > 8 && !aiming) this.aimAngle = Math.atan2(dy, dx);
     } else if (distance > 8) {
-      contact.aiming = true;
-      this.aimAngle = Math.atan2(dy, dx);
+      contact.angle = this.aimAngle = Math.atan2(dy, dx);
     }
   }
 }

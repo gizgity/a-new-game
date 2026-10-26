@@ -203,7 +203,7 @@ footer { display: none; }
 .curse-slots { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 10px; color: #d6afef; line-height: 1.35; }
 .curse-slots span { white-space: nowrap; }
 
-/* Q7B: compact read-only combat presentation. Controls retain their original geometry. */
+/* Q7B presentation; layout geometry is superseded by the playtest revision below. */
 .hud-icon, .slot-icon, .slot-frame { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: miter; width: 22px; height: 22px; flex-shrink: 0; }
 .combat-hud { inset: 30px 10px auto; top: 30px; display: grid; grid-template-columns: minmax(0,1fr); gap: 3px; max-width: none; z-index: 2; }
 .vitals-card, .build-summary, .hud-resource { background: #080e19f2; border: 1px solid #3c505c; border-radius: 3px; box-shadow: inset 2px 0 #66817f55; }
@@ -314,3 +314,63 @@ footer { display: none; }
 .hud-resource small { white-space: normal; font-size: 9px; line-height: 12px; }
 .build-summary #build-count { font-size: 10px; }
 #build-count > span { display: block; white-space: nowrap; }
+
+/* Q7B playtest revision: HUD and controls occupy lanes outside the renderer. */
+.arena-shell { --hud-height: 134px; --controls-height: 96px; }
+#game { top: var(--hud-height); bottom: var(--controls-height); }
+.combat-hud { display: contents; }
+.vitals-card { position: absolute; inset: 6px 10px auto; width: auto; min-height: 34px; height: 34px; padding: 4px 7px; z-index: 2; pointer-events: none; }
+.build-summary { position: absolute; inset: 44px 10px auto; width: auto; height: 44px; z-index: 2; }
+.hud-feedback { position: absolute; inset: 92px 10px auto; width: auto; height: 16px; line-height: 16px; z-index: 2; pointer-events: none; }
+.run-clock { left: 10px; right: auto; top: 113px; transform: none; font-size: 11px; }
+.boss-hud { top: 111px; bottom: auto; left: 106px; right: 10px; transform: none; width: auto; height: 18px; padding: 1px 5px; gap: 5px; font-size: 9px; }
+.boss-hud #boss-label { white-space: nowrap; }
+.hud-resources { position: absolute; left: 10px; right: 10px; bottom: 9px; height: 78px; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.hud-resource { padding: 4px; grid-template-columns: 18px 1fr; }
+.hud-resource .hud-icon { width: 18px; height: 18px; }
+.hud-milestones { display: none; }
+.combat-hud .trial-label { top: 114px; right: 10px; max-width: 60%; z-index: 2; }
+.touch-enabled .arena-shell { --controls-height: 252px; }
+.touch-controls { inset: auto 8px 6px; height: 240px; }
+.touch-actions { width: 180px; height: 240px; }
+.touch-stick { left: 0; bottom: 0; width: calc(100% - 184px); height: 240px; border-radius: 22px; overflow: hidden; background: #101f2580; }
+.touch-stick::before { display: none; }
+.stick-base { position: absolute; left: var(--origin-x, 50%); top: var(--origin-y, 60%); transform: translate(-50%,-50%); width: 104px; height: 104px; border: 1px solid #53877b; border-radius: 50%; background: #142d2c70; pointer-events: none; }
+.stick-base .stick-knob { left: calc(50% - 20px); top: calc(50% - 20px); }
+.stick-label { bottom: 8px; pointer-events: none; }
+/* Arc around the primary attack/thumb rest at the lower right. */
+.touch-button[data-action='ultimate'] { left: 104px; top: 0; width: 56px; height: 56px; border-radius: 50%; }
+.touch-button[data-action='charged'] { left: 32px; top: 36px; width: 58px; height: 58px; border-radius: 50%; }
+.touch-button[data-action='heavy'] { left: 0; top: 103px; width: 58px; height: 58px; border-radius: 50%; }
+.touch-button.dash-button { left: 28px; top: 173px; width: 62px; height: 62px; }
+.touch-button.shoot-button { left: 108px; top: 80px; width: 68px; height: 68px; }
+.touch-button.melee-button { left: 108px; top: 160px; width: 72px; height: 72px; }
+#draft-readiness { min-height: 18px; color: #b5f7df; }
+.draft-card:disabled { opacity: .65; border-style: dashed; }
+@media (orientation: landscape) and (max-height: 600px) {
+  .arena-shell { --hud-height: 78px; }
+  .vitals-card { inset: 6px auto auto 10px; width: min(30%,240px); min-height: 34px; }
+  .build-summary { inset: 6px 10px auto auto; width: min(36%,265px); height: 44px; }
+  .hud-feedback { inset: 44px auto auto 10px; width: min(30%,240px); height: 18px; }
+  .run-clock { left: 48%; top: 8px; transform: translateX(-50%); }
+  .boss-hud { top: 30px; left: 48%; right: auto; transform: translateX(-50%); width: min(24%,220px); }
+  .touch-enabled .arena-shell { --controls-height: 0px; }
+  .touch-enabled #game { left: 172px; right: 164px; }
+  .touch-controls { height: calc(100% - var(--hud-height)); }
+  .touch-stick { width: 156px; height: 100%; }
+  .touch-actions { transform: scale(.82); transform-origin: bottom right; }
+  .combat-hud .trial-label { top: 58px; right: 10px; }
+}
+@media (min-width: 900px) and (pointer: fine) {
+  .arena-shell { --hud-height: 96px; }
+  .vitals-card { inset: 10px auto auto 24px; width: 260px; height: 48px; }
+  .build-summary { inset: 10px 24px auto auto; width: 265px; height: 56px; }
+  .hud-feedback { inset: 64px auto auto 24px; width: 260px; height: 20px; }
+  .run-clock { top: 10px; left: 50%; transform: translateX(-50%); font-size: 14px; }
+  .boss-hud { top: 42px; left: 50%; right: auto; transform: translateX(-50%); width: min(300px,30%); height: 22px; }
+  .hud-resources { left: 24px; right: auto; width: 426px; bottom: 10px; height: 76px; }
+  .hud-milestones { position: absolute; display: grid; top: auto; left: auto; right: 24px; bottom: 14px; gap: 5px; padding: 6px; font-size: 11px; }
+  .combat-hud .trial-label { top: 72px; right: 24px; }
+}
+/* Trial labels share the feedback row, leaving the timer/Boss line clear. */
+.combat-hud .trial-label { position: static; flex: 1; max-width: none; font-size: 8px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

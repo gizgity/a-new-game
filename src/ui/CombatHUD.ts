@@ -12,13 +12,13 @@ export interface ResourceReadout { value: string; note: string; available: boole
 export type ResourceReadouts = Record<'dash' | 'heavy' | 'charged' | 'surge', ResourceReadout>;
 
 export function combatHUDMarkup(): string {
-  return `<div class="combat-hud" id="combat-hud"><span id="trial-label" class="trial-label" hidden></span>
+  return `<div class="combat-hud" id="combat-hud">
     <div class="vitals-card">
       <div class="health">${icon('heart')}<span data-i18n="health"></span><strong id="hp-value"></strong><progress id="hp" aria-label="${t('health')}" max="100" value="100"></progress></div>
       <div class="barrier-state">${icon('shield')}<span data-i18n="barrier"></span><strong id="barrier-value"></strong><progress id="barrier" aria-label="${t('barrier')}" max="30" value="0"></progress></div>
     </div>
     <button id="build-summary" class="build-summary" type="button" aria-haspopup="dialog" aria-controls="build-panel" aria-expanded="false"><span class="build-slots" id="build-slots"></span><span id="build-count"></span>${icon('info')}</button>
-    <div class="hud-feedback"><span id="hud-warning"></span><span id="combat-notice" role="status" aria-live="polite" aria-atomic="true"></span></div>
+    <div class="hud-feedback"><span id="hud-warning"></span><span id="trial-label" class="trial-label" hidden></span><span id="combat-notice" role="status" aria-live="polite" aria-atomic="true"></span></div>
     <div class="hud-resources">${(['dash', 'heavy', 'charged', 'surge'] as const).map(id => `<div class="hud-resource" data-hud-resource="${id}">${icon(id)}<span data-i18n="${id}"></span><strong id="${id}-value"></strong><small></small><progress max="1" value="0" aria-label="${t(id)}"></progress></div>`).join('')}</div>
     <div class="hud-milestones"><span id="draft-progress"></span><span id="boss-arrival"></span></div>
   </div>`;

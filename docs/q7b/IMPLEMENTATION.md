@@ -2,7 +2,13 @@
 
 **CONCEPT / DESIGN APPROVED:** user “approved làm đi” ngày2026-10-26. Runtime **AWAITING USER PLAYTEST APPROVAL**; không tự accepted, không mở Q7C. Q2–Q7A và draft đầu4hướng giữ accepted; Q1 vẫn riêng chưa có visual approval.
 
-## Thay đổi
+## Bản sửa hiện hành theo playtest
+
+User báo HUD che arena và giao sửa controls/auto aim/draft lock. **Xem [REVISION.md](REVISION.md) và [board hiện hành](index.html)** cho code/checks/ảnh/cách thử mới. Phần dưới là snapshot code6664ee0 (trước phản hồi); các câu “canvas/control geometry/input/core giữ nguyên” và checklist6nút giữ vị trí chỉ đúng snapshot đó, đã được ngoại lệ user supersede. Evidence/đo performance cũ không được dùng chứng nhận revision.
+
+## Snapshot implementation6664ee0 — lịch sử
+
+### Thay đổi
 
 - CombatHUD gom HP/Barrier thành card riêng heart/thanh liên tục và shield/thanh phân đoạn; lowHP có chữ/icon/contrast, không chỉ đổi màu. Desktop tài nguyên ởrìa dưới, build6slots góc phải; portrait tài nguyên trên6nút hiện có.
 - Một summary≥44px cho4Mutation+2Curse, empty/owned khác shape/fill; tap/click mở panel cuộn, tên/description/risk/state đầy đủ vi/en. Dùng pause/reset lifecycle cũ, focus trap/Back/Resume rõ, không thêm hotkey hay đổi lựa chọn build.

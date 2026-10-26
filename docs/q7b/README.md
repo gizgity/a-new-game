@@ -1,6 +1,6 @@
 # Q7B — HUD & Combat Readability
 
-**HIỆN HÀNH: CONCEPT APPROVED** — user “approved làm đi” ngày2026-10-26. HUD đã triển khai/checks PASS, runtime **AWAITING USER PLAYTEST APPROVAL**. Xem [implementation/checks/cách thử](IMPLEMENTATION.md),[renderer trước–sau](index.html),[runtime assets](runtime-assets.json). Gameplay/controls/floor Q7A giữ nguyên.
+**HIỆN HÀNH: CONCEPT APPROVED** — user “approved làm đi” ngày2026-10-26. HUD đã triển khai/checks PASS, runtime **AWAITING USER PLAYTEST APPROVAL**. Xem [implementation/checks/cách thử](IMPLEMENTATION.md),[renderer trước–sau](index.html),[runtime assets](runtime-assets.json). User đã phản hồi HUD che arena và yêu cầu sửa controls/auto aim/draft lock; [revision hiện hành](REVISION.md). Balance/effects/sàn Q7A giữ nguyên, canvas/touch interaction có ngoại lệ theo user.
 
 ---
 
