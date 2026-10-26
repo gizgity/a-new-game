@@ -5,7 +5,8 @@ import { RunDirector } from './run';
 import { CombatWorld, type CombatAction, type CombatInput } from './combat';
 import { drawBuildCues, drawBuildImpact } from './BuildVisual';
 import { drawBarrier } from './BarrierVisual';
-import { drawEnemyBody, drawEnemyTelegraph } from './EnemyVisual';
+import { drawEnemyStatus, drawEnemyTelegraph } from './EnemyVisual';
+import { EnemySprites } from './EnemySprites';
 import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
@@ -19,6 +20,8 @@ export class ArenaScene extends Phaser.Scene {
   phase: Phase = 'ready';
   readonly combat = new CombatWorld(this.player);
   readonly run = new RunDirector(this.combat);
+  private groundGraphics!: Phaser.GameObjects.Graphics;
+  private enemySprites!: EnemySprites;
   private combatGraphics!: Phaser.GameObjects.Graphics;
   private audio!: ProceduralAudio;
   private resultVisual!: RunResultVisual;
@@ -52,7 +55,9 @@ export class ArenaScene extends Phaser.Scene {
   create(): void {
     this.audio = new ProceduralAudio(this);
     this.drawArena();
-    this.combatGraphics = this.add.graphics().setDepth(1);
+    this.groundGraphics = this.add.graphics().setDepth(1);
+    this.combatGraphics = this.add.graphics().setDepth(1.5);
+    this.enemySprites = new EnemySprites(this);
     this.vessel = new PlayerVisual(this, this.combat);
     this.resultVisual = new RunResultVisual(this);
     this.reticle = this.add.graphics().setDepth(3).setVisible(false);
@@ -125,6 +130,7 @@ export class ArenaScene extends Phaser.Scene {
       this.resultVisual.reset();
       this.run.start();
       this.vessel.reset(this.combat);
+      this.enemySprites.reset();
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
     this.meleeHeld = this.shootHeld = false;
@@ -206,7 +212,10 @@ export class ArenaScene extends Phaser.Scene {
       };
       const frozen = this.combat.hitstop > 0;
       this.run.step(input, FIXED_STEP);
-      if (!frozen) this.vessel.step(this.combat, FIXED_STEP);
+      if (!frozen) {
+        this.vessel.step(this.combat, FIXED_STEP);
+        this.enemySprites.step(FIXED_STEP);
+      }
       this.audio.play(this.combat.soundEvents);
       this.pressed.clear();
       this.releaseAim = {};
@@ -223,9 +232,11 @@ export class ArenaScene extends Phaser.Scene {
   private drawCombat(): void {
     const g = this.combatGraphics.clear();
     const world = this.combat;
-    for (const enemy of world.enemies) drawEnemyTelegraph(g, enemy, world);
-    drawBuildCues(g, world);
-    for (const enemy of world.enemies) drawEnemyBody(g, enemy, this.time.now / 1000);
+    const ground = this.groundGraphics.clear();
+    for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
+    drawBuildCues(ground, world);
+    this.enemySprites.render(world);
+    for (const enemy of world.enemies) drawEnemyStatus(g, enemy);
     for (const shot of world.projectiles) {
       if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
       const color = shot.hostile ? 0xc399ff : shot.charged ? 0xffcc80 : 0x9dffe2;

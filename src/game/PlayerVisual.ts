@@ -1,34 +1,24 @@
 import Phaser from 'phaser';
 import { type Attack, type CombatWorld } from './combat';
+import { ACTOR_TEXTURE, actorFrame, preloadActorArt } from './ActorArt';
+import { attackArtPose } from './ActorPose';
 
-const TEXTURE = 'fractured-vessel';
 const MINT = 0x8affe0;
 const AMBER = 0xffcc80;
 const GHOST_LIFE = 0.22;
 const sweepDuration = (attack: Attack) => attack.heavy ? 0.16 : [0, 0.065, 0.085, 0.14][attack.combo];
 const clamp = (value: number) => Phaser.Math.Clamp(value, 0, 1);
 
-/** Presentation only: authored sprite parts + poses driven by the existing simulation. */
+/** State-driven sprite animation. The simulation and accepted slash/muzzle effects stay independent. */
 export class PlayerVisual {
   readonly body: Phaser.GameObjects.Container;
-  private readonly torso: Phaser.GameObjects.Image;
-  private readonly head: Phaser.GameObjects.Image;
-  private readonly leftArm: Phaser.GameObjects.Image;
-  private readonly rightArm: Phaser.GameObjects.Image;
-  private readonly leftFoot: Phaser.GameObjects.Image;
-  private readonly rightFoot: Phaser.GameObjects.Image;
-  private readonly core: Phaser.GameObjects.Image;
-  private readonly blade: Phaser.GameObjects.Image;
-  private readonly gun: Phaser.GameObjects.Image;
-  private readonly parts: Phaser.GameObjects.Image[];
+  private readonly sprite: Phaser.GameObjects.Image;
   private readonly slash: Phaser.GameObjects.Graphics;
   private readonly muzzle: Phaser.GameObjects.Graphics;
-  private readonly ghosts: { body: Phaser.GameObjects.Container; parts: Phaser.GameObjects.Image[]; life: number }[];
+  private readonly ghosts: { image: Phaser.GameObjects.Image; life: number }[];
   private clock = 0;
   private stride = 0;
   private moving = false;
-  private moveX = 0;
-  private moveY = 0;
   private lastX = 0;
   private lastY = 0;
   private shots = 0;
@@ -37,39 +27,19 @@ export class PlayerVisual {
   private shotAngle = 0;
   private ghostClock = 0;
   private nextGhost = 0;
+  private wasDashing = false;
+  private dashExit = 0;
 
-  static preload(scene: Phaser.Scene): void {
-    scene.load.svg(TEXTURE, `${import.meta.env.BASE_URL}assets/fractured-vessel.svg`);
-  }
+  static preload(scene: Phaser.Scene): void { preloadActorArt(scene); }
 
   constructor(scene: Phaser.Scene, world: CombatWorld) {
-    const texture = scene.textures.get(TEXTURE);
-    for (let frame = 0; frame < 8; frame++) {
-      if (!texture.has(String(frame))) texture.add(frame, 0, frame * 32, 0, 32, 32);
-    }
     this.body = scene.add.container(world.player.x, world.player.y).setDepth(2);
     const shadow = scene.add.graphics().fillStyle(0x000000, 0.4).fillEllipse(0, 12, 29, 11);
-    this.body.add(shadow);
-    const part = (frame: number) => {
-      const sprite = scene.add.image(0, 0, TEXTURE, frame);
-      this.body.add(sprite);
-      return sprite;
-    };
-    this.leftFoot = part(4);
-    this.rightFoot = part(4);
-    this.torso = part(0);
-    this.leftArm = part(2);
-    this.rightArm = part(3);
-    this.core = part(5);
-    this.head = part(1);
-    this.blade = part(6).setOrigin(4 / 32, 0.5);
-    this.gun = part(7).setOrigin(8 / 32, 0.5);
-    this.parts = [this.leftFoot, this.rightFoot, this.torso, this.leftArm, this.rightArm, this.core, this.head, this.blade, this.gun];
-    // Fixed, small pool. Each echo preserves the actual pose/position, then separates into shards.
-    this.ghosts = Array.from({ length: 6 }, () => {
-      const parts = this.parts.map((source) => scene.add.image(0, 0, TEXTURE, source.frame.name).setTintFill(MINT));
-      return { body: scene.add.container(0, 0, parts).setDepth(1.4).setVisible(false), parts, life: 0 };
-    });
+    this.sprite = scene.add.image(0, 0, ACTOR_TEXTURE, 'player/south/idle');
+    this.body.add([shadow, this.sprite]);
+    this.ghosts = Array.from({ length: 6 }, () => ({
+      image: scene.add.image(0, 0, ACTOR_TEXTURE, 'player/south/idle').setTintFill(MINT).setDepth(1.7).setVisible(false), life: 0,
+    }));
     this.slash = scene.add.graphics().setDepth(1.8);
     this.muzzle = scene.add.graphics().setDepth(2.2);
     this.reset(world);
@@ -77,26 +47,23 @@ export class PlayerVisual {
 
   reset(world: CombatWorld): void {
     this.clock = this.stride = this.recoil = this.ghostClock = this.nextGhost = 0;
-    this.moving = false;
-    this.moveX = this.moveY = 0;
-    this.lastX = world.player.x;
-    this.lastY = world.player.y;
+    this.moving = this.wasDashing = false;
+    this.dashExit = 0;
+    this.lastX = world.player.x; this.lastY = world.player.y;
     this.shots = world.stats.shots;
-    for (const ghost of this.ghosts) { ghost.life = 0; ghost.body.setVisible(false); }
+    for (const ghost of this.ghosts) { ghost.life = 0; ghost.image.setVisible(false); }
     this.render(world, 'mint');
   }
 
-  /** Called only for an unfrozen simulation tick: pause, drafts and hitstop freeze the pose. */
   step(world: CombatWorld, dt: number): void {
     this.clock += dt;
-    const dx = world.player.x - this.lastX, dy = world.player.y - this.lastY;
-    const distance = Math.hypot(dx, dy);
+    this.dashExit = Math.max(0, this.dashExit - dt);
+    if (this.wasDashing && world.dashTime <= 0) this.dashExit = 0.08;
+    this.wasDashing = world.dashTime > 0;
+    const distance = Math.hypot(world.player.x - this.lastX, world.player.y - this.lastY);
     this.moving = distance > 0.1 && world.dashTime <= 0;
-    this.moveX = distance > 0 ? dx / distance : 0;
-    this.moveY = distance > 0 ? dy / distance : 0;
     if (this.moving) this.stride += distance * 0.085;
-    this.lastX = world.player.x;
-    this.lastY = world.player.y;
+    this.lastX = world.player.x; this.lastY = world.player.y;
     this.recoil = Math.max(0, this.recoil - dt);
     if (world.stats.shots > this.shots) {
       this.charged = world.lastShot.charged;
@@ -106,11 +73,7 @@ export class PlayerVisual {
     this.shots = world.stats.shots;
     for (const ghost of this.ghosts) {
       ghost.life = Math.max(0, ghost.life - dt);
-      ghost.body.setVisible(ghost.life > 0).setAlpha(ghost.life / GHOST_LIFE * 0.4);
-      ghost.parts.forEach((part, index) => {
-        part.x += (index % 2 ? 1 : -1) * dt * 16;
-        part.y += (index < 2 ? 1 : -1) * dt * 10;
-      });
+      ghost.image.setVisible(ghost.life > 0).setAlpha(ghost.life / GHOST_LIFE * 0.4);
     }
     this.pose(world);
     if (world.dashTime > 0) {
@@ -119,19 +82,17 @@ export class PlayerVisual {
         this.ghostClock = 0.033;
         const ghost = this.ghosts[this.nextGhost++ % this.ghosts.length];
         ghost.life = GHOST_LIFE;
-        ghost.body.setPosition(world.player.x, world.player.y).setVisible(true).setAlpha(0.4);
-        this.parts.forEach((source, index) => {
-          ghost.parts[index].setPosition(source.x, source.y).setRotation(source.rotation)
-            .setScale(source.scaleX, source.scaleY).setOrigin(source.originX, source.originY)
-            .setAlpha(index === 5 ? 1 : 0.65).setVisible(source.visible);
-        });
+        ghost.image.setFrame(this.sprite.frame.name).setPosition(world.player.x + this.sprite.x, world.player.y + this.sprite.y)
+          .setScale(this.sprite.scaleX, this.sprite.scaleY).setVisible(true).setAlpha(0.4);
       }
     } else this.ghostClock = 0;
   }
 
   render(world: CombatWorld, cosmetic: 'mint' | 'prism'): void {
     this.pose(world);
-    this.core.setTint(this.charged && this.recoil > 0.12 ? AMBER : cosmetic === 'prism' ? 0xc9b2ff : 0xffffff);
+    if (world.hurtFlash > 0) this.sprite.setTintFill(0xffb9c4);
+    else if (cosmetic === 'prism') this.sprite.setTint(0xe1ceff);
+    else this.sprite.clearTint();
     this.slash.clear();
     this.muzzle.clear();
     if (world.attack) this.drawSlash(world.player.x, world.player.y, world.attack);
@@ -167,69 +128,30 @@ export class PlayerVisual {
 
   private pose(world: CombatWorld): void {
     const { player, attack } = world;
-    const dash = world.dashTime > 0;
-    const breath = Math.sin(this.clock * 3.5);
-    const gait = this.moving ? Math.sin(this.stride) : 0;
-    const bob = this.moving ? -Math.abs(gait) * 1.2 + this.moveY * 0.6 : breath * 0.55;
-    const recoil = this.charged ? (this.recoil / 0.22) ** 2 * 2.4 : this.recoil / 0.14;
-    const facing = Math.cos(player.angle) >= 0 ? 1 : -1;
-    const lean = this.moving ? this.moveX * 1.3 : 0;
-    const tuckX = dash ? -Math.cos(world.dashAngle) * 4 : 0;
-    const tuckY = dash ? -Math.sin(world.dashAngle) * 4 : 0;
-    this.body.setPosition(player.x, player.y).setAlpha(world.invulnerable > 0 ? 0.7 + 0.3 * Math.cos(this.clock * 35) : 1);
-    this.torso.setPosition(lean + tuckX * 0.3, bob).setRotation(dash ? Math.cos(world.dashAngle) * 0.16 : lean * 0.035);
-    if (this.charged && !dash) {
-      this.torso.x -= Math.cos(this.shotAngle) * recoil * 1.8;
-      this.torso.y -= Math.sin(this.shotAngle) * recoil * 1.8;
-    }
-    this.head.setPosition(lean + facing + tuckX * 0.2, -10 + bob - recoil).setScale(facing, 1).setRotation(Math.sin(player.angle) * 0.08);
-    this.leftArm.setPosition(-10 - breath * 0.5 + tuckX, -3 + bob + gait + tuckY).setRotation(dash ? -0.35 : -0.12 - gait * 0.04);
-    this.rightArm.setPosition(10 + breath * 0.5 + tuckX, -3 + bob - gait + tuckY).setRotation(dash ? 0.35 : 0.12 + gait * 0.04);
-    this.leftFoot.setPosition(-5 + tuckX, 10 + gait * 2.2 + tuckY).setRotation(-0.08 - gait * 0.1);
-    this.rightFoot.setPosition(5 + tuckX, 10 - gait * 2.2 + tuckY).setRotation(0.08 + gait * 0.1);
-    this.core.setPosition(lean, -1 + bob - recoil * 1.5).setScale(0.72 + breath * 0.035 + recoil * 0.13, 0.8 + breath * 0.04);
-    this.core.setAlpha(0.85 + (breath + 1) * 0.075);
-    const gunAngle = this.recoil > 0.075 ? this.shotAngle : player.angle;
-    this.gun.setPosition(Math.cos(gunAngle) * (8 - recoil * 4), Math.sin(gunAngle) * (8 - recoil * 4) + 3)
-      .setRotation(gunAngle - facing * recoil * 0.12).setScale(1 + (this.charged ? recoil * 0.12 : 0), facing).setAlpha(dash ? 0.6 : 1);
-    this.blade.setScale(1).setAlpha(1);
+    let pose = this.moving && Math.sin(this.stride) >= 0 ? 'move' : 'idle';
+    let angle = player.angle;
+    let bob = this.moving ? -Math.abs(Math.sin(this.stride)) * 1.2 : Math.sin(this.clock * 3.5) * 0.45;
+    let drive = 0;
     if (attack) {
-      const direction = attack.combo === 2 ? -1 : 1;
-      const sweepTime = sweepDuration(attack);
-      const releaseStart = attack.windup - sweepTime / 2;
-      const preparing = attack.age < releaseStart;
-      const prepare = clamp(attack.age / releaseStart);
-      // The blade crosses the aimed direction on the damage tick, not after hitstop.
-      const release = clamp((attack.age - releaseStart) / sweepTime);
-      const recovery = clamp((attack.age - releaseStart - sweepTime) / (attack.duration - releaseStart - sweepTime));
-      const angle = attack.angle + direction * (preparing
-        ? -attack.arc / 2 - Math.sin(prepare * Math.PI) * 0.25
-        : -attack.arc / 2 + release * attack.arc);
-      const finisher = attack.heavy || attack.combo === 3;
-      const power = attack.heavy ? 1.5 : attack.combo === 3 ? 1.05 : attack.combo === 2 ? 0.65 : 0.4;
-      const reach = preparing ? 8 : 12 + Math.sin(release * Math.PI) * (finisher ? 12 : 6);
-      this.blade.setPosition(Math.cos(angle) * reach, Math.sin(angle) * reach)
-        .setRotation(angle).setScale(1 + power * (1 - recovery), 1);
-      this.rightArm.x += Math.cos(angle) * (finisher ? 8 : 5);
-      this.rightArm.y += Math.sin(angle) * (finisher ? 8 : 5);
-      this.leftArm.rotation -= direction * power * (1 - recovery);
-      this.torso.rotation += direction * (release - 0.5) * (finisher ? 1.1 : 0.65) * (1 - recovery);
-      const drive = preparing ? -prepare * power * 3 : Math.sin(release * Math.PI) * power * 6 * (1 - recovery);
-      this.torso.x += Math.cos(attack.angle) * drive;
-      this.torso.y += Math.sin(attack.angle) * drive;
-      this.head.x += Math.cos(attack.angle) * drive * 0.6;
-      this.leftFoot.x -= power * 3 * (1 - recovery);
-      this.rightFoot.x += power * 3 * (1 - recovery);
-      if (preparing) this.core.setScale(0.72 + prepare * power * 0.3, finisher ? 0.8 - prepare * 0.3 : 0.8 + prepare * 0.18);
-      else if (finisher) this.core.setScale(1.1 - recovery * 0.35, 1.1 - recovery * 0.3);
-    } else {
-      this.blade.setPosition(-facing * 10 + tuckX, 5 + bob + tuckY)
-        .setRotation(dash ? world.dashAngle + Math.PI : Math.PI / 2 + facing * 0.28).setScale(0.85, 1);
+      angle = attack.angle;
+      const phase = attackArtPose(attack);
+      pose = phase;
+      if (phase === 'attack') pose = attack.heavy ? 'heavy' : `light${attack.combo}`;
+      const progress = clamp(attack.age / attack.windup);
+      drive = phase === 'windup' ? -progress * 2 : phase === 'attack' ? (attack.heavy ? 3 : 1.5) : 0;
+      bob = 0;
+    } else if (this.recoil > 0) {
+      pose = this.charged ? 'charged' : 'shoot';
+      angle = this.shotAngle;
+      drive = -this.recoil / (this.charged ? 0.22 : 0.14) * (this.charged ? 2.4 : 1);
     }
-    for (const part of this.parts) {
-      if (world.hurtFlash > 0) part.setTintFill(0xffb9c4);
-      else part.clearTint();
-    }
+    if (world.dashTime > 0) { pose = 'dash'; angle = world.dashAngle; bob = 0; drive = 0; }
+    else if (this.dashExit > 0 && !attack && this.recoil <= 0) pose = 'dash-exit';
+    else if (world.hurtFlash > 0 && !attack && this.recoil <= 0) pose = 'hit';
+    if (world.hp <= 0) { pose = 'death'; bob = drive = 0; }
+    this.body.setPosition(player.x, player.y).setAlpha(world.invulnerable > 0 ? 0.7 + 0.3 * Math.cos(this.clock * 35) : 1);
+    this.sprite.setFrame(actorFrame('player', angle, pose))
+      .setPosition(Math.cos(angle) * drive, bob + Math.sin(angle) * drive).setScale(1);
   }
 
   private drawSlash(x: number, y: number, attack: Attack): void {

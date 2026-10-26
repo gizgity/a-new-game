@@ -1,0 +1,2908 @@
+{
+  "approval": {
+    "date": "2026-10-26",
+    "user": "visual approved q7c"
+  },
+  "sources": [
+    {
+      "file": "docs/q7c/source/player-production-v1.png",
+      "width": 1660,
+      "height": 948,
+      "bytes": 2059280,
+      "sha256": "eb81ece6ee5704e6934bd6ec67ee6ebff1f0e89a65673b8bea679a9202662ca5"
+    },
+    {
+      "file": "docs/q7c/source/grunt-production-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 1539040,
+      "sha256": "5b4d4566e3c6a4729167299bc29d1324dd363a2f4409c67512248364a05fd1d4"
+    },
+    {
+      "file": "docs/q7c/source/archer-production-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 1668909,
+      "sha256": "220c2080c11d8e986cce2f64fb16c6b01b03892ca5bca693321d1b56b2e495bb"
+    },
+    {
+      "file": "docs/q7c/source/volatile-production-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 1436656,
+      "sha256": "dbc925003feb5b40a44a463566aaef74b9e491a937487eada9948c3dd0c52deb"
+    },
+    {
+      "file": "docs/q7c/source/bulwark-production-v1.png",
+      "width": 1660,
+      "height": 948,
+      "bytes": 1818807,
+      "sha256": "1e9de475b7c20afd62cb13a0f0032537543dd9cada4eeca9e23f6c3b18ea5f48"
+    },
+    {
+      "file": "docs/q7c/source/chain-warden-production-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 1798261,
+      "sha256": "87c8ca3c37d7c2ccf0dbe627a382daab31a8899c110983ada4983109fa184f70"
+    },
+    {
+      "file": "docs/q7c/source/player-actions-production-v1.png",
+      "width": 1659,
+      "height": 948,
+      "bytes": 1733395,
+      "sha256": "0f4f00e34430db2694ad73abb7e1f7f82d932eb1439d087610bba6cb92d2c31e"
+    },
+    {
+      "file": "docs/q7c/source/boss-patterns-production-v1.png",
+      "width": 1881,
+      "height": 836,
+      "bytes": 1999541,
+      "sha256": "3d2fdde9b4fd65a65d9c2e58202d8895f3c29da62fdfc08e3bbae9abc05bfa5e"
+    }
+  ],
+  "processing": "ImageGen art; offline connected-alpha extraction threshold192/min32pixels, per-row size normalization, nearest resize, foot registration, transparent-padding trim with Phaser metadata and PNG atlas packing. No procedural drawing. Original sources preserved.",
+  "runtime": {
+    "file": "public/assets/actors/occult-actors.png",
+    "sha256": "e5c40ac0851be3f1147719c79eed3e574a6664510406a5de7eb7cb83f4542a71",
+    "bytes": 990873,
+    "width": 1024,
+    "height": 1024,
+    "frames": 236,
+    "decodedRGBABytes": 4194304
+  },
+  "frames": [
+    {
+      "key": "player/south/idle",
+      "source": "player-production-v1.png",
+      "rect": [
+        27,
+        34,
+        155,
+        208
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/move",
+      "source": "player-production-v1.png",
+      "rect": [
+        257,
+        35,
+        164,
+        207
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/windup",
+      "source": "player-production-v1.png",
+      "rect": [
+        469,
+        14,
+        192,
+        223
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/attack",
+      "source": "player-production-v1.png",
+      "rect": [
+        722,
+        43,
+        247,
+        198
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/recovery",
+      "source": "player-production-v1.png",
+      "rect": [
+        987,
+        39,
+        157,
+        205
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/hit",
+      "source": "player-production-v1.png",
+      "rect": [
+        1219,
+        39,
+        161,
+        199
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/south/death",
+      "source": "player-production-v1.png",
+      "rect": [
+        1412,
+        123,
+        236,
+        139
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/east/idle",
+      "source": "player-production-v1.png",
+      "rect": [
+        31,
+        256,
+        162,
+        214
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/move",
+      "source": "player-production-v1.png",
+      "rect": [
+        249,
+        265,
+        192,
+        203
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/windup",
+      "source": "player-production-v1.png",
+      "rect": [
+        488,
+        251,
+        180,
+        222
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/attack",
+      "source": "player-production-v1.png",
+      "rect": [
+        709,
+        268,
+        276,
+        205
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/recovery",
+      "source": "player-production-v1.png",
+      "rect": [
+        991,
+        262,
+        175,
+        207
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/hit",
+      "source": "player-production-v1.png",
+      "rect": [
+        1221,
+        277,
+        159,
+        196
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/east/death",
+      "source": "player-production-v1.png",
+      "rect": [
+        1426,
+        351,
+        222,
+        127
+      ],
+      "scale": 0.1869,
+      "box": 96
+    },
+    {
+      "key": "player/north/idle",
+      "source": "player-production-v1.png",
+      "rect": [
+        23,
+        490,
+        181,
+        208
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/move",
+      "source": "player-production-v1.png",
+      "rect": [
+        254,
+        485,
+        158,
+        203
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/windup",
+      "source": "player-production-v1.png",
+      "rect": [
+        475,
+        477,
+        175,
+        221
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/attack",
+      "source": "player-production-v1.png",
+      "rect": [
+        710,
+        504,
+        251,
+        195
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/recovery",
+      "source": "player-production-v1.png",
+      "rect": [
+        983,
+        499,
+        157,
+        194
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/hit",
+      "source": "player-production-v1.png",
+      "rect": [
+        1214,
+        509,
+        164,
+        188
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/north/death",
+      "source": "player-production-v1.png",
+      "rect": [
+        1415,
+        588,
+        227,
+        111
+      ],
+      "scale": 0.1923,
+      "box": 96
+    },
+    {
+      "key": "player/west/idle",
+      "source": "player-production-v1.png",
+      "rect": [
+        26,
+        714,
+        151,
+        211
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/move",
+      "source": "player-production-v1.png",
+      "rect": [
+        242,
+        708,
+        164,
+        201
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/windup",
+      "source": "player-production-v1.png",
+      "rect": [
+        479,
+        710,
+        151,
+        223
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/attack",
+      "source": "player-production-v1.png",
+      "rect": [
+        664,
+        732,
+        264,
+        201
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/recovery",
+      "source": "player-production-v1.png",
+      "rect": [
+        981,
+        711,
+        156,
+        214
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/hit",
+      "source": "player-production-v1.png",
+      "rect": [
+        1200,
+        732,
+        171,
+        184
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "player/west/death",
+      "source": "player-production-v1.png",
+      "rect": [
+        1409,
+        805,
+        234,
+        123
+      ],
+      "scale": 0.1896,
+      "box": 96
+    },
+    {
+      "key": "grunt/south/idle",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        42,
+        60,
+        163,
+        188
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/move",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        278,
+        74,
+        162,
+        181
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/windup",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        506,
+        11,
+        146,
+        235
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/attack",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        727,
+        95,
+        222,
+        160
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/recovery",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        976,
+        83,
+        173,
+        172
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/hit",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1233,
+        91,
+        144,
+        165
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/south/death",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1430,
+        147,
+        193,
+        118
+      ],
+      "scale": 0.1915,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/idle",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        38,
+        305,
+        154,
+        187
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/move",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        271,
+        305,
+        168,
+        182
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/windup",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        513,
+        266,
+        159,
+        215
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/attack",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        727,
+        312,
+        257,
+        174
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/recovery",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        996,
+        313,
+        150,
+        176
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/hit",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1221,
+        315,
+        156,
+        173
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/east/death",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1411,
+        380,
+        225,
+        117
+      ],
+      "scale": 0.1925,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/idle",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        47,
+        528,
+        173,
+        176
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/move",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        287,
+        533,
+        153,
+        169
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/windup",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        514,
+        499,
+        156,
+        205
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/attack",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        692,
+        542,
+        205,
+        157
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/recovery",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        995,
+        528,
+        154,
+        176
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/hit",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1236,
+        546,
+        145,
+        162
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/north/death",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1423,
+        587,
+        207,
+        119
+      ],
+      "scale": 0.2045,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/idle",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        62,
+        741,
+        145,
+        169
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/move",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        289,
+        741,
+        162,
+        172
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/windup",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        478,
+        710,
+        164,
+        215
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/attack",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        684,
+        759,
+        210,
+        167
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/recovery",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1002,
+        747,
+        165,
+        178
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/hit",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1239,
+        749,
+        132,
+        172
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "grunt/west/death",
+      "source": "grunt-production-v1.png",
+      "rect": [
+        1412,
+        808,
+        222,
+        115
+      ],
+      "scale": 0.213,
+      "box": 80
+    },
+    {
+      "key": "archer/south/idle",
+      "source": "archer-production-v1.png",
+      "rect": [
+        43,
+        47,
+        166,
+        170
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/move",
+      "source": "archer-production-v1.png",
+      "rect": [
+        272,
+        47,
+        176,
+        178
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/windup",
+      "source": "archer-production-v1.png",
+      "rect": [
+        503,
+        32,
+        159,
+        185
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/attack",
+      "source": "archer-production-v1.png",
+      "rect": [
+        733,
+        37,
+        185,
+        183
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/recovery",
+      "source": "archer-production-v1.png",
+      "rect": [
+        989,
+        51,
+        164,
+        171
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/hit",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1219,
+        49,
+        155,
+        173
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/south/death",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1422,
+        127,
+        206,
+        97
+      ],
+      "scale": 0.2235,
+      "box": 80
+    },
+    {
+      "key": "archer/east/idle",
+      "source": "archer-production-v1.png",
+      "rect": [
+        37,
+        270,
+        172,
+        181
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/move",
+      "source": "archer-production-v1.png",
+      "rect": [
+        263,
+        273,
+        184,
+        178
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/windup",
+      "source": "archer-production-v1.png",
+      "rect": [
+        491,
+        255,
+        173,
+        193
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/attack",
+      "source": "archer-production-v1.png",
+      "rect": [
+        709,
+        261,
+        196,
+        189
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/recovery",
+      "source": "archer-production-v1.png",
+      "rect": [
+        984,
+        279,
+        171,
+        172
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/hit",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1209,
+        280,
+        173,
+        171
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/east/death",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1419,
+        348,
+        215,
+        104
+      ],
+      "scale": 0.2099,
+      "box": 80
+    },
+    {
+      "key": "archer/north/idle",
+      "source": "archer-production-v1.png",
+      "rect": [
+        47,
+        500,
+        154,
+        165
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/move",
+      "source": "archer-production-v1.png",
+      "rect": [
+        285,
+        500,
+        144,
+        174
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/windup",
+      "source": "archer-production-v1.png",
+      "rect": [
+        524,
+        484,
+        140,
+        191
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/attack",
+      "source": "archer-production-v1.png",
+      "rect": [
+        726,
+        486,
+        158,
+        189
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/recovery",
+      "source": "archer-production-v1.png",
+      "rect": [
+        991,
+        508,
+        160,
+        166
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/hit",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1219,
+        506,
+        145,
+        161
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/north/death",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1422,
+        572,
+        205,
+        102
+      ],
+      "scale": 0.2303,
+      "box": 80
+    },
+    {
+      "key": "archer/west/idle",
+      "source": "archer-production-v1.png",
+      "rect": [
+        45,
+        714,
+        164,
+        177
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/move",
+      "source": "archer-production-v1.png",
+      "rect": [
+        276,
+        717,
+        178,
+        174
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/windup",
+      "source": "archer-production-v1.png",
+      "rect": [
+        515,
+        698,
+        161,
+        193
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/attack",
+      "source": "archer-production-v1.png",
+      "rect": [
+        736,
+        708,
+        184,
+        180
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/recovery",
+      "source": "archer-production-v1.png",
+      "rect": [
+        986,
+        725,
+        162,
+        167
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/hit",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1206,
+        728,
+        161,
+        163
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "archer/west/death",
+      "source": "archer-production-v1.png",
+      "rect": [
+        1424,
+        791,
+        204,
+        93
+      ],
+      "scale": 0.2147,
+      "box": 80
+    },
+    {
+      "key": "volatile/south/idle",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        42,
+        52,
+        164,
+        192
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/move",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        277,
+        61,
+        162,
+        189
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/windup",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        511,
+        55,
+        143,
+        191
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/attack",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        731,
+        40,
+        189,
+        205
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/recovery",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        984,
+        65,
+        172,
+        180
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/hit",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1238,
+        65,
+        160,
+        186
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/south/death",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1451,
+        137,
+        174,
+        110
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/idle",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        67,
+        279,
+        129,
+        192
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/move",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        295,
+        289,
+        141,
+        182
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/windup",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        515,
+        282,
+        138,
+        183
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/attack",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        725,
+        273,
+        205,
+        193
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/recovery",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1000,
+        282,
+        133,
+        187
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/hit",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1244,
+        288,
+        143,
+        185
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/east/death",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1450,
+        233,
+        178,
+        243
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/idle",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        43,
+        506,
+        162,
+        175
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/move",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        264,
+        508,
+        174,
+        176
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/windup",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        511,
+        508,
+        146,
+        173
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/attack",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        725,
+        494,
+        208,
+        193
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/recovery",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        983,
+        506,
+        162,
+        175
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/hit",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1215,
+        509,
+        173,
+        180
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/north/death",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1439,
+        587,
+        187,
+        108
+      ],
+      "scale": 0.2057,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/idle",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        48,
+        717,
+        135,
+        192
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/move",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        275,
+        722,
+        141,
+        179
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/windup",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        516,
+        718,
+        144,
+        190
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/attack",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        734,
+        715,
+        199,
+        188
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/recovery",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1005,
+        715,
+        137,
+        188
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/hit",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1217,
+        727,
+        151,
+        180
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "volatile/west/death",
+      "source": "volatile-production-v1.png",
+      "rect": [
+        1436,
+        802,
+        192,
+        110
+      ],
+      "scale": 0.1875,
+      "box": 64
+    },
+    {
+      "key": "bulwark/south/idle",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        29,
+        40,
+        170,
+        185
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/move",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        257,
+        38,
+        175,
+        190
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/windup",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        476,
+        27,
+        185,
+        198
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/attack",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        715,
+        55,
+        184,
+        167
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/recovery",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        930,
+        32,
+        190,
+        193
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/hit",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1172,
+        54,
+        194,
+        171
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/south/death",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1397,
+        98,
+        238,
+        130
+      ],
+      "scale": 0.2703,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/idle",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        43,
+        262,
+        149,
+        194
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/move",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        261,
+        260,
+        157,
+        197
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/windup",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        476,
+        253,
+        182,
+        199
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/attack",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        703,
+        277,
+        198,
+        175
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/recovery",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        943,
+        258,
+        195,
+        194
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/hit",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1195,
+        282,
+        187,
+        174
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/east/death",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1408,
+        331,
+        227,
+        125
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/idle",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        34,
+        495,
+        164,
+        182
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/move",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        252,
+        494,
+        163,
+        189
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/windup",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        468,
+        486,
+        187,
+        188
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/attack",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        696,
+        499,
+        192,
+        177
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/recovery",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        940,
+        490,
+        178,
+        187
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/hit",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1181,
+        520,
+        186,
+        159
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/north/death",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1397,
+        586,
+        239,
+        100
+      ],
+      "scale": 0.2747,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/idle",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        44,
+        715,
+        145,
+        194
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/move",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        264,
+        714,
+        147,
+        194
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/windup",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        481,
+        706,
+        175,
+        200
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/attack",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        703,
+        725,
+        185,
+        182
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/recovery",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        939,
+        713,
+        192,
+        195
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/hit",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1174,
+        734,
+        192,
+        174
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "bulwark/west/death",
+      "source": "bulwark-production-v1.png",
+      "rect": [
+        1401,
+        782,
+        235,
+        127
+      ],
+      "scale": 0.2577,
+      "box": 96
+    },
+    {
+      "key": "boss/south/idle",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        32,
+        26,
+        165,
+        198
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/move",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        274,
+        32,
+        157,
+        197
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/windup",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        466,
+        14,
+        195,
+        216
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/attack",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        711,
+        37,
+        248,
+        190
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/recovery",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        982,
+        32,
+        163,
+        199
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/hit",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1216,
+        41,
+        156,
+        189
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/south/death",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1430,
+        129,
+        191,
+        112
+      ],
+      "scale": 0.3838,
+      "box": 192
+    },
+    {
+      "key": "boss/east/idle",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        53,
+        257,
+        127,
+        189
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/move",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        257,
+        262,
+        152,
+        193
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/windup",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        456,
+        250,
+        169,
+        201
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/attack",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        692,
+        275,
+        291,
+        182
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/recovery",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1000,
+        261,
+        148,
+        196
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/hit",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1210,
+        274,
+        154,
+        186
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/east/death",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1422,
+        347,
+        217,
+        117
+      ],
+      "scale": 0.4021,
+      "box": 192
+    },
+    {
+      "key": "boss/north/idle",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        46,
+        480,
+        151,
+        191
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/move",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        249,
+        481,
+        168,
+        189
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/windup",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        470,
+        477,
+        134,
+        197
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/attack",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        700,
+        489,
+        272,
+        187
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/recovery",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        993,
+        478,
+        137,
+        194
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/hit",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1208,
+        491,
+        167,
+        186
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/north/death",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1423,
+        560,
+        206,
+        122
+      ],
+      "scale": 0.3979,
+      "box": 192
+    },
+    {
+      "key": "boss/west/idle",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        45,
+        694,
+        137,
+        195
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/move",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        267,
+        695,
+        139,
+        192
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/windup",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        461,
+        688,
+        155,
+        203
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/attack",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        649,
+        707,
+        273,
+        185
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/recovery",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        975,
+        697,
+        149,
+        192
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/hit",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1210,
+        698,
+        155,
+        196
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "boss/west/death",
+      "source": "chain-warden-production-v1.png",
+      "rect": [
+        1416,
+        783,
+        214,
+        114
+      ],
+      "scale": 0.3897,
+      "box": 192
+    },
+    {
+      "key": "player/south/light1",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        18,
+        98,
+        181,
+        159
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/light2",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        230,
+        50,
+        171,
+        209
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/light3",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        431,
+        108,
+        191,
+        152
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/heavy",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        659,
+        14,
+        133,
+        245
+      ],
+      "scale": 0.2367,
+      "box": 96
+    },
+    {
+      "key": "player/south/shoot",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        862,
+        93,
+        174,
+        174
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/charged",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1053,
+        94,
+        180,
+        163
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/dash",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1246,
+        127,
+        182,
+        135
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/south/dash-exit",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1459,
+        95,
+        181,
+        169
+      ],
+      "scale": 0.2516,
+      "box": 96
+    },
+    {
+      "key": "player/east/light1",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        35,
+        302,
+        171,
+        167
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/light2",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        260,
+        289,
+        129,
+        182
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/light3",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        426,
+        318,
+        202,
+        158
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/heavy",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        668,
+        253,
+        122,
+        222
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/shoot",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        870,
+        314,
+        159,
+        166
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/charged",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1057,
+        311,
+        173,
+        165
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/dash",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1264,
+        334,
+        161,
+        131
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/east/dash-exit",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1481,
+        308,
+        150,
+        167
+      ],
+      "scale": 0.2395,
+      "box": 96
+    },
+    {
+      "key": "player/north/light1",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        25,
+        544,
+        183,
+        161
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/light2",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        246,
+        503,
+        157,
+        205
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/light3",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        439,
+        558,
+        205,
+        149
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/heavy",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        675,
+        479,
+        125,
+        229
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/shoot",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        859,
+        549,
+        182,
+        161
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/charged",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1064,
+        544,
+        158,
+        162
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/dash",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1258,
+        585,
+        174,
+        125
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/north/dash-exit",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1475,
+        541,
+        163,
+        170
+      ],
+      "scale": 0.2484,
+      "box": 96
+    },
+    {
+      "key": "player/west/light1",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        31,
+        749,
+        173,
+        180
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/light2",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        250,
+        739,
+        150,
+        195
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/light3",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        435,
+        773,
+        210,
+        156
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/heavy",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        676,
+        700,
+        130,
+        235
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/shoot",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        845,
+        757,
+        175,
+        171
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/charged",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1049,
+        761,
+        174,
+        172
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/dash",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1266,
+        795,
+        167,
+        131
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "player/west/dash-exit",
+      "source": "player-actions-production-v1.png",
+      "rect": [
+        1467,
+        756,
+        163,
+        169
+      ],
+      "scale": 0.2222,
+      "box": 96
+    },
+    {
+      "key": "boss/south/sweep-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        33,
+        33,
+        148,
+        181
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/sweep-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        233,
+        45,
+        224,
+        171
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/sweep-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        473,
+        34,
+        141,
+        180
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/ring-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        675,
+        41,
+        112,
+        175
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/ring-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        819,
+        42,
+        262,
+        174
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/ring-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1109,
+        43,
+        138,
+        171
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/slam-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1304,
+        21,
+        128,
+        192
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/slam-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1494,
+        45,
+        157,
+        168
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/south/slam-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1688,
+        82,
+        161,
+        135
+      ],
+      "scale": 0.4222,
+      "box": 192
+    },
+    {
+      "key": "boss/east/sweep-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        32,
+        227,
+        166,
+        188
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/sweep-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        247,
+        254,
+        258,
+        164
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/sweep-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        502,
+        241,
+        143,
+        170
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/ring-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        678,
+        237,
+        109,
+        178
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/ring-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        830,
+        249,
+        254,
+        168
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/ring-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1102,
+        243,
+        144,
+        174
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/slam-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1294,
+        225,
+        135,
+        192
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/slam-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1483,
+        255,
+        167,
+        162
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/east/slam-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1681,
+        279,
+        162,
+        136
+      ],
+      "scale": 0.4471,
+      "box": 192
+    },
+    {
+      "key": "boss/north/sweep-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        27,
+        433,
+        164,
+        177
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/sweep-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        196,
+        443,
+        217,
+        168
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/sweep-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        473,
+        426,
+        158,
+        168
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/ring-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        674,
+        440,
+        118,
+        172
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/ring-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        822,
+        444,
+        262,
+        168
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/ring-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1107,
+        445,
+        147,
+        166
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/slam-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1302,
+        427,
+        132,
+        183
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/slam-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1489,
+        455,
+        154,
+        156
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/north/slam-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1682,
+        475,
+        167,
+        136
+      ],
+      "scale": 0.4524,
+      "box": 192
+    },
+    {
+      "key": "boss/west/sweep-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        34,
+        622,
+        163,
+        185
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/sweep-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        198,
+        648,
+        230,
+        163
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/sweep-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        480,
+        629,
+        135,
+        179
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/ring-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        676,
+        635,
+        120,
+        175
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/ring-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        822,
+        635,
+        265,
+        175
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/ring-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1097,
+        637,
+        142,
+        172
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/slam-windup",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1302,
+        623,
+        137,
+        188
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/slam-attack",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1485,
+        639,
+        161,
+        172
+      ],
+      "scale": 0.4246,
+      "box": 192
+    },
+    {
+      "key": "boss/west/slam-recovery",
+      "source": "boss-patterns-production-v1.png",
+      "rect": [
+        1696,
+        670,
+        154,
+        137
+      ],
+      "scale": 0.4246,
+      "box": 192
+    }
+  ]
+}
