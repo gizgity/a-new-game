@@ -13,7 +13,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Design Memory & Art Consistency System — chỉ docs/skills/reference index, không gameplay/assets/roadmap/build/deploy. Mục tiêu: DDR rỗng + skill explicit invocation; Art Bible và6nhóm references accepted Q7A–Q8C; game-art gate; AGENTS/handoff wiring; kiểm consistency và commit/push.
 
 ## DEPLOY FOLLOW-UP
-User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Push commit mới để deploy main, theo dõi tới kết thúc; livecurl hiện proxy CONNECT403.
+User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
 
 ## DESIGN MEMORY STATUS
 - Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
