@@ -13,7 +13,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Q7B — HUD & Combat Readability, vòng sửa theo playtest user2026-10-26. User báo HUD che arena trên mobile và yêu cầu kiểm desktop/góc, joystick vùng lớn, cụm combat tỏa tròn, auto aim quái gần nhất trên mobile, khóa chọn draft1s. Đây là scope bổ sung được user giao trực tiếp, cho phép đổi touch mapping/viewport/draft interaction; không đổi balance/effects/timing combat hoặc sàn Q7A. Không Q7C.
 
 ## ACCEPTANCE
-Bản sửa đã triển khai/check PASS; chưa user accepted Q7B. HUD/controls không chồng canvas, kiểm4góc desktop/mobile, 320/390/landscape/tablet; floating joystick nhận cả vùng trái;6nút theo cung quanh Chém/Bắn; auto aim nearest living/manual drag override/Heavy-Charged release đúng; draft khóa1000ms và đòi press mới. Build/tests/browser/evidence PASS; đang commit/push/Pages, rồi AWAITING USER PLAYTEST APPROVAL.
+Bản sửa đã triển khai/check PASS; chưa user accepted Q7B. HUD/controls không chồng canvas, kiểm4góc desktop/mobile, 320/390/landscape/tablet; floating joystick nhận cả vùng trái;6nút theo cung quanh Chém/Bắn; auto aim nearest living/manual drag override/Heavy-Charged release đúng; draft khóa1000ms và đòi press mới. Build/tests/browser/evidence/push/Pages PASS. **AWAITING USER PLAYTEST APPROVAL** cho revisionf9d7930; thiết bị thật/iOS/Safari chưa kiểm.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -35,9 +35,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Draft đầu4hướng | ACCEPTED — USER PLAYTEST APPROVAL | User “approve” trên7843b98 ngày2026-10-26 |
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
-| Q7B — HUD & Combat Readability | AWAITING USER PLAYTEST APPROVAL | Concept approved; user phản hồi bản6664ee0, revision đã checks PASS/chờ deploy; chưa runtime accepted |
+| Q7B — HUD & Combat Readability | AWAITING USER PLAYTEST APPROVAL | Concept approved; user phản hồi6664ee0, revisionf9d7930/Pages40279081013 SUCCESS; chưa runtime accepted |
 
 ## CURRENT STATUS — Q7B PLAYTEST REVISION
+- Codef9d7930e583c8756037ceab2859ea65bd3ae055a đã fast-forward push main/review branch; Pages40279081013/job121428123386 completed/success gồm Deploy. URL https://gizgity.github.io/a-new-game/ ; live curl vẫn proxy403. Sau đó chỉ chốt Markdown, runtime giữ.
 - Baseline main8a469c0 đã fetch; user screenshot xác nhận overlay HUD che arena. Desktop cùng mô hình overlay nên cũng bị tại rìa. Đã tách top HUD và resource/control lanes khỏi canvas bằng CSS; landscape touch dùng2lane bên. Camera chỉ fit viewport mới để không lộ ngoài floor, world bounds/collision/follow giữ nguyên.
 - Đã sửa floating movement origin trong hit area lớn,6nút radial, nearest-living auto aim khi không kéo combat; manual Heavy/Charged snapshot riêng action. DraftInteractionGuard1s wallclock + disabled UI + fresh press, rerender locale không reset khóa. npm test14files và typecheck/build PASS. Browser6sizes320/390/667/844/768/1440: fullbuild/crowd/Boss/4góc/UI-canvas disjoint/button≥44/nooverlap/errors PASS; real touch390/keys1440 đi4góc PASS. CDPoffcentre4origins/manualwhilemove/Chargedrelease/Heavy1charge/detailscancel/pointercancel/rotate PASS. Draft1000ms/freshclick/heldSpace/freshSpace+Enter/rerender/lượt mới/card4 PASS. Dist5sizesinput/details/settings/vi-en PASS; docs/q7b/REVISION.md+revision/*.json/PNG. Fixture khôngnaturalrun/deviceapproval.
 
@@ -141,9 +142,9 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Revision Q7B: typecheck/build PASS, npm test14files PASS (3autoaimcases+5HUDcases và existing core tests). Không dependency mới; floor hash và combat/run/draft/effects/balance/AI/sprite/VFX/workflow/lockfile giữ nguyên. ArenaScene chỉ viewport fit và touch aim adapter.
 - Browser revision6sizes320/390/667/844/768/1440 PASS: HUD/control UI không giao canvas,6buttons≥44/no overlap,fullbuild/crowd/HP22/Barrier30/Boss/4góc/details/vi-en. CDPtouch+keyboard test góc chuyển động thật390/1440 PASS. checks.json/moving.json tại docs/q7b/revision/.
 - Input/draft:4floatingorigins,manual while move,nearest/Chargedmanualrelease/Heavyauto1charge,details2finger/cancel,rotate390→844/Heavycancel/canvas-parentmatch PASS. Draftlock≥1000ms,locale noreset,heldtouch/Space rejected/freshclick+Space+Enter accepted,lượt kế/card4 PASS.
-- Dist smoke5sizes PASS với input thật Bắn/aim/Heavy/WASD/mouse,Pause/details/settings/vi-en/nooverflow/no stuck/noerrors. Screenshot local dev/dist; chưa smoke live/device/iOS/Safari/full-run. Proxy live403 ở checkpoint trước; không bypass/giả local làlive. Không user runtime acceptance.
-- Revision links/PNG integrity/diff PASS. User playtest mới và Pages deploy đang là bước cuối; evidence/perf bản6664ee0 chỉ snapshot cũ (docs/q7b/IMPLEMENTATION.md), không benchmark revision hoặc thiết bị thật.
+- Dist smoke5sizes PASS với input thật Bắn/aim/Heavy/WASD/mouse,Pause/details/settings/vi-en/nooverflow/no stuck/noerrors. Screenshot local dev/dist; chưa smoke live/device/iOS/Safari/full-run. Proxy live403 đã kiểm lại lượt này; không bypass/giả local làlive. Không user runtime acceptance.
+- Revision links/PNG integrity/diff PASS. Pages revisionf9d7930 đã SUCCESS; chờ user playtest mới; evidence/perf bản6664ee0 chỉ snapshot cũ (docs/q7b/IMPLEMENTATION.md), không benchmark revision hoặc thiết bị thật.
 - Q7A accepted floor/code0e0a9af/board2e48166; Q6 b534315+approvalbc07fd4 và draft đầu4hướng7843b98 accepted; Q2–Q5 approval/evidence giữ ở bảng PROGRESS và docs checkpoint tương ứng. Không sửa lịch sử accepted để phù hợp UI mới.
 
 ## NEXT ACTION
-Commit/push main không force bản sửa Q7B đã checks PASS, theo dõi Pages rồi ghi version/link và bàn giao user thử4góc/floating movement/radial/auto aim/manual override/draft1s trên điện thoại. Không tự Q7C.
+Chờ user playtest revisionf9d7930 tại https://gizgity.github.io/a-new-game/ (reload): đi4góc dọc/ngang/desktop không bị HUD che; kéo từ mép vùng trái; giữBắn tự ngắm gần nhất/kéo override; Heavy/Charged chỉ thả mới cast,details cancel; draft25kills/0:30 khóa1s,phải chạm mới. Nhận feedback thiết bị/browser/tình huống; chỉ sửa phạm vi Q7B, approval thật mới cập nhật ACCEPTED. Không tự Q7C.

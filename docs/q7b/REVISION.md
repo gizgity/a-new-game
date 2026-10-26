@@ -27,7 +27,7 @@ Floor Q7A SHA256 giữ `71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c
 
 ## Deploy / thử trên điện thoại
 
-[Chơi bản mới](https://gizgity.github.io/a-new-game/) — reload sau deployment. Commit/run sẽ ghi khi Pages hoàn tất; chưa coi deploy là approval.
+[Chơi bản mới](https://gizgity.github.io/a-new-game/) — reload sau deployment. Code [f9d7930](https://github.com/gizgity/a-new-game/commit/f9d7930e583c8756037ceab2859ea65bd3ae055a) đã push main fast-forward; [Pages40279081013](https://github.com/gizgity/a-new-game/actions/runs/40279081013)/job121428123386 completed/success gồm Deploy. Workflow/base giữ nguyên. Live HTTP kiểm lại từ môi trường vẫn bị proxy403; không giả local/dist làlive. Deploy không là approval.
 
 1. Đi vào4góc trên phone dọc/ngang và desktop: nhân vật phải thấy rõ, HUD không phủ sân. Chạm/kéo từ mép trên/dưới vùng trái, thả phải dừng ngay.
 2. Chỉ giữ Bắn/Chém, kỳ vọng tự hướng quái gần nhất; kéo sang hướng khác để override, vừa đi vừa kéo. Heavy/Charged chỉ ra đòn khi thả; mở dải build khi đang giữ rồi Resume không tự cast. Đánh giá tầm với cung nút trên máy thật.
