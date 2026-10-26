@@ -1,5 +1,7 @@
 # Q7C — ImageGen prompts / source provenance
 
+Archiveconceptreview. User đã visualapproved2026-10-26; runtime dùng [sourceproduction mới riêng](source/PROMPTS.md), không dùng conceptboard hoặc sheetsV1 auto-slice.
+
 ## player-actions-v2.png — hiện hành (V1 superseded vì Player quá tối ở grayscale)
 
 ```text

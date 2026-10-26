@@ -1,10 +1,10 @@
 {
   "version": "Q7C V1",
-  "status": "AWAITING VISUAL APPROVAL",
+  "status": "VISUAL APPROVED — runtime AWAITING PLAYTEST APPROVAL",
   "baseline": "78f07e6 / runtime5ee970e",
   "primaryReference": "../q7a/artwork/contrast-palette-v1.png",
   "generator": "ImageGen tool; model/seed unavailable",
-  "usage": "review-only dedicated sprite-source candidates; no runtime assets integrated",
+  "usage": "Historical concept review only; runtime uses new production sources in source/ and runtime-assets.json",
   "processing": "Original bytes copied; Canvas drawImage used only for review composition/sizing. No generated drawing engine.",
   "files": [
     {
@@ -149,5 +149,10 @@
     "Uneven registration/alpha residue/weapon and effect overlap require clean sources after approval",
     "No threat/VFX present in staged arena; baseline screenshot retains actual accepted threat/VFX",
     "No motion/directional readability or new runtime/device performance validation"
-  ]
+  ],
+  "status_at_review": "AWAITING VISUAL APPROVAL",
+  "approval": {
+    "date": "2026-10-26",
+    "user": "visual approved q7c"
+  }
 }

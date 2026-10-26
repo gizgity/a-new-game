@@ -1,0 +1,132 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "frames": {
+        "grunt": {
+          "idle": "grunt/east/idle",
+          "windup": "grunt/east/windup",
+          "attack": "grunt/east/attack",
+          "recovery": "grunt/east/recovery",
+          "hit": "grunt/east/hit",
+          "death": "grunt/east/death"
+        },
+        "archer": {
+          "idle": "archer/east/idle",
+          "windup": "archer/east/windup",
+          "attack": "archer/east/attack",
+          "recovery": "archer/east/recovery",
+          "hit": "archer/east/hit",
+          "death": "archer/east/death"
+        },
+        "volatile": {
+          "idle": "volatile/east/idle",
+          "windup": "volatile/east/windup",
+          "attack": "volatile/east/attack",
+          "recovery": "volatile/east/recovery",
+          "hit": "volatile/east/hit",
+          "death": "volatile/east/death"
+        },
+        "bulwark": {
+          "idle": "bulwark/east/idle",
+          "windup": "bulwark/east/windup",
+          "attack": "bulwark/east/attack",
+          "recovery": "bulwark/east/recovery",
+          "hit": "bulwark/east/hit",
+          "death": "bulwark/east/death"
+        },
+        "boss": {
+          "idle": "boss/east/idle",
+          "windup": "boss/east/sweep-windup",
+          "attack": "boss/east/sweep-attack",
+          "recovery": "boss/east/sweep-recovery",
+          "hit": "boss/east/hit",
+          "death": "boss/east/death"
+        }
+      },
+      "player": {
+        "light1": "player/west/light1",
+        "heavy": "player/west/heavy",
+        "shoot": "player/west/shoot",
+        "charged": "player/west/charged",
+        "dash": "player/west/dash"
+      },
+      "pool": {
+        "alive": 0,
+        "free": 7,
+        "deaths": 8,
+        "ghosts": 6
+      },
+      "pauseFrozen": true
+    },
+    {
+      "reset20": {
+        "maxChildren": 29,
+        "finalChildren": 29,
+        "alive": 7,
+        "deaths": 0,
+        "ghosts": 0
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "start": {
+        "x": 800,
+        "y": 500,
+        "shots": 0
+      },
+      "end": {
+        "x": 843.3333333333337,
+        "y": 500,
+        "shots": 2,
+        "frame": "player/east/shoot",
+        "overflow": false
+      },
+      "moved": true,
+      "shot": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "start": {
+        "x": 800,
+        "y": 500,
+        "shots": 0
+      },
+      "end": {
+        "x": 847.6666666666671,
+        "y": 500,
+        "shots": 2,
+        "frame": "player/east/shoot",
+        "overflow": false
+      },
+      "moved": true,
+      "shot": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "start": {
+        "x": 800,
+        "y": 500,
+        "shots": 0
+      },
+      "end": {
+        "x": 821.6666666666669,
+        "y": 500,
+        "shots": 1,
+        "frame": "player/east/shoot",
+        "overflow": false
+      },
+      "moved": true,
+      "shot": true
+    }
+  ]
+}

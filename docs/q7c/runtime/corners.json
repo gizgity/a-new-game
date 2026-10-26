@@ -1,0 +1,98 @@
+[
+  {
+    "width": 390,
+    "name": "nw",
+    "frame": "player/east/idle",
+    "inside": true,
+    "bounds": [
+      24.8,
+      99.2,
+      24.880638604714964,
+      99.28063860471497
+    ]
+  },
+  {
+    "width": 390,
+    "name": "ne",
+    "frame": "player/east/idle",
+    "inside": true,
+    "bounds": [
+      272.8,
+      347.2,
+      24.880638604714964,
+      99.28063860471497
+    ]
+  },
+  {
+    "width": 390,
+    "name": "sw",
+    "frame": "player/east/idle",
+    "inside": true,
+    "bounds": [
+      24.8,
+      99.2,
+      256.60563860471495,
+      331.005638604715
+    ]
+  },
+  {
+    "width": 390,
+    "name": "se",
+    "frame": "player/east/idle",
+    "inside": true,
+    "bounds": [
+      272.8,
+      347.2,
+      256.60563860471495,
+      331.005638604715
+    ]
+  },
+  {
+    "width": 1440,
+    "name": "nw",
+    "frame": "player/south/idle",
+    "inside": true,
+    "bounds": [
+      27.48,
+      109.92,
+      27.524982169841508,
+      109.96498216984152
+    ]
+  },
+  {
+    "width": 1440,
+    "name": "ne",
+    "frame": "player/south/idle",
+    "inside": true,
+    "bounds": [
+      1264.08,
+      1346.52,
+      27.524982169841508,
+      109.96498216984152
+    ]
+  },
+  {
+    "width": 1440,
+    "name": "sw",
+    "frame": "player/south/idle",
+    "inside": true,
+    "bounds": [
+      27.48,
+      109.92,
+      431.9962321698415,
+      514.4362321698416
+    ]
+  },
+  {
+    "width": 1440,
+    "name": "se",
+    "frame": "player/south/idle",
+    "inside": true,
+    "bounds": [
+      1264.08,
+      1346.52,
+      431.9962321698415,
+      514.4362321698416
+    ]
+  }
+]

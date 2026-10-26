@@ -1,4 +1,8 @@
-# Q7C — Asset specification (đề xuất, chưa runtime approved)
+# Q7C — Asset specification / runtime
+
+Runtime hiện hành:236frames/4facings, pose-key animation+transforms; logicalboxes Player96/common80/Volatile64/Bulwark96/Boss192, trimmedPNGatlas1024square,4MiBdecoded. [Implementation](IMPLEMENTATION.md) supersede budget/framebox sơ bộ bên dưới; collider không đổi. User đã visualapproved2026-10-26, runtime AWAITING PLAYTEST APPROVAL.
+
+Specification đề xuất trước implementation (giữ lịch sử):
 
 Reference khóa tại README; V1 enemy/Boss và V2 Player là candidates hiện hành. Sheet lớn dùng duyệt pose/material, không được auto-slice7ô thành atlas production. Sprite source riêng, không concept-board crops.
 

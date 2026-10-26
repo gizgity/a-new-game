@@ -1,0 +1,55 @@
+{
+  "errors": [],
+  "badRequests": [],
+  "sizes": [
+    {
+      "width": 320,
+      "height": 740,
+      "overflow": false,
+      "heavy": {
+        "held": "2/2",
+        "released": "1/2"
+      },
+      "atlasFetched": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "heavy": {
+        "held": "2/2",
+        "released": "1/2"
+      },
+      "atlasFetched": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "overflow": false,
+      "heavy": {
+        "held": "2/2",
+        "released": "1/2"
+      },
+      "atlasFetched": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "heavy": {
+        "held": "2/2",
+        "released": "1/2"
+      },
+      "atlasFetched": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "heavy": {
+        "desktopRelease": true
+      },
+      "atlasFetched": true
+    }
+  ]
+}

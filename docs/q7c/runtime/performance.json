@@ -1,0 +1,57 @@
+{
+  "method": "Same 33-enemy frozen fixture, sequential baseline/after, Chromium software WebGL; drawCPU samples60, rAF90. Not deviceFPS or simulation benchmark. Sources before-report/after-report. Initial untrimmed2048atlas showed desktop rAF66.6ms; trimmed transparent padding keeping registration, then reran after5sizes.",
+  "rows": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "oldDrawMedianMs": 0.3,
+      "newDrawMedianMs": 0.1,
+      "oldRafMedianMs": 33.3,
+      "newRafMedianMs": 16.7
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "oldDrawMedianMs": 0.4,
+      "newDrawMedianMs": 0.1,
+      "oldRafMedianMs": 16.7,
+      "newRafMedianMs": 16.7
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "oldDrawMedianMs": 0.4,
+      "newDrawMedianMs": 0.1,
+      "oldRafMedianMs": 33.3,
+      "newRafMedianMs": 16.7
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "oldDrawMedianMs": 0.3,
+      "newDrawMedianMs": 0.1,
+      "oldRafMedianMs": 33.3,
+      "newRafMedianMs": 33.3
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "oldDrawMedianMs": 0.3,
+      "newDrawMedianMs": 0.1,
+      "oldRafMedianMs": 50.1,
+      "newRafMedianMs": 49.9
+    }
+  ],
+  "atlasRGBABytes": 4194304,
+  "atlasBytes": 990873
+}
