@@ -1,10 +1,10 @@
 # Q6 — Curse Stacking
 
-Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages Actions40252934135](https://github.com/gizgity/a-new-game/actions/runs/40252934135) completed/success, gồm Deploy step. Implementation đã kiểm; **AWAITING USER PLAYTEST APPROVAL**. Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.
+Bản code **b534315bb7cb15aa219e6ee8debd1682457a685a** đã push/deploy. [Pages Actions40252934135](https://github.com/gizgity/a-new-game/actions/runs/40252934135) completed/success, gồm Deploy step. Implementation đã kiểm; **ACCEPTED — USER PLAYTEST APPROVAL**: user xác nhận “aprroved q6 lun nha” ngày2026-10-26 trên bản7843b98 (gồm stacking b534315). Q5E ACCEPTED8b1571d và approval Q2–Q5 giữ nguyên. Contract hiện hành ở GAME_BRIEF.md; không thêm content/tune global balance.
 
 ## Feedback tiếp theo — Draft đầu chọn4hướng
 
-Code7843b988e6d0a109cc20994b3c874219b05443bb đã push/deploy; [Actions40259161783](https://github.com/gizgity/a-new-game/actions/runs/40259161783) completed/success. **ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “approve” ngày2026-10-26 cho draft đầu4hướng; không suy rộng sang Q6 stacking.
+Code7843b988e6d0a109cc20994b3c874219b05443bb đã push/deploy; [Actions40259161783](https://github.com/gizgity/a-new-game/actions/runs/40259161783) completed/success. **ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “approve” ngày2026-10-26 cho draft đầu4hướng; sau đó user duyệt thêm Q6 bằng “aprroved q6 lun nha”.
 
 User xác nhận hiện4card tại Mutation đầu25kills/0:30: Aegis Core (Juggernaut), Blood Reclaimer (sustain), Phantom Edge (counter), Detonation Specialist (ranged/chain). Chọn1; các Mutation Draft sau vẫn Adaptive tối đa3card. Có nhãn vi/en; không khóa build, không thay effect/tuning/Curse stacking. Tests151definitions/12files, typecheck/build/diff PASS; Chromium local320/390/844/1440 kiểm4card/chọncard4/vi-en/lượt sau3card PASS (fixture kills, bằng chứng kỹ thuật riêng với approval của user). Trên mobile cuộn tới card4 rồi chọn; desktop bố cục2×2. Trial Q5E cũng giữ4card đầu, route sustain lấy Reclaimer trước Catalyst; hướng dẫn Q5E cũ là lịch sử.
 

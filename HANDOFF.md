@@ -128,7 +128,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
-- User xác nhận “approve” cho draft đầu4hướng7843b98 ngày2026-10-26. Lượt này chỉ đồng bộ approval trong HANDOFF/GAME_BRIEF/docs/q6, kiểm diff; không đổi gameplay hoặc chạy lại tests/build/deploy. Không suy rộng approval sang Q6 stacking/Safari/mọi thiết bị.
+- User duyệt thêm Q6 qua “aprroved q6 lun nha” ngày2026-10-26. Q6 stacking và draft đầu4hướng đều ACCEPTED. Lượt này chỉ sửa trạng thái Markdown/kiểm diff và push, không đổi code hoặc chạy lại tests/build/deploy; không coi approval là bằng chứng đã thử Safari/mọi thiết bị.
+- Lượt trước: user xác nhận “approve” cho draft đầu4hướng7843b98 ngày2026-10-26. Lượt này chỉ đồng bộ approval trong HANDOFF/GAME_BRIEF/docs/q6, kiểm diff; không đổi gameplay hoặc chạy lại tests/build/deploy. Không suy rộng approval sang Q6 stacking/Safari/mọi thiết bị.
 - Feedback draft đầu4hướng: code7843b988e6d0a109cc20994b3c874219b05443bb đã fast-forward push main; Pages Actions40259161783 completed/success. Tests151definitions/12files, typecheck/build/browser4viewport PASS như CURRENT STATUS. URL https://gizgity.github.io/a-new-game/ ; evidence local fixture, chưa smoke live (proxy403 từ lượt trước) hoặc user acceptance.
 
 - Q6 code b534315bb7cb15aa219e6ee8debd1682457a685a, parents c02c30a/f1fb9ea trên main eb49190; fast-forward push không force, giữ toàn bộ Q5 evidence. Pages Actions40252934135 completed/success (job121348532512), Deploy step thành công. Lượt đầu c02c30a Actions40252846937 cũng success.
@@ -156,6 +157,6 @@ Checklist scope/cách thử/giới hạn ở docs/q5d/README.md. Game thường 
 4link route/checklist chi tiết docs/q5e/README.md. Chọn card “Gợi ý” ở Mutation25/0:30,160/1:40,220/2:20,380/3:40; Curse80/1:00 và giữ300/3:00. Đi tớiElite200/2:30, Boss450/4:00 hoặc ghi đòn/mốc chết. Tank so đứng/di chuyển và damagecost; sustain thử khi mấtHP, marked kill/nổ; counter Perfect→Light/Charged vàzeroDash; ranged GlassHP75/Fracture/chain4. Mobile joystick/giữ-kéo Chém/Bắn/Lướt/specials giữ-thả; desktop WASD/chuột/Space/Shift/E. Trial không natural acquisition/không lưu progress. User đã duyệt Q5E qua “playtest oki”; checklist giữ làm tham chiếu, không yêu cầu thử lại. Không suy rộng sang Safari/mọi thiết bị.
 
 ## BLOCKERS
-Không còn blocker implementation/deploy; còn user playtest approval và live smoke bị proxy403.
+Không còn blocker Q6/approval; Q6 đã ACCEPTED. Live smoke trong môi trường vẫn chưa thực hiện do proxy403; giới hạn kỹ thuật này giữ nguyên.
 Git fetch ngoài sandbox đã hoạt động; dùng fast-forward push main, giữ tree remote/evidence. gh API bị Forbidden, theo dõi deploy bằng connector/web GitHub nếu cần. Không còn blocker scope Q6; user đã cung cấp contract. Q5E ACCEPTED; Q5A–Q5E giữ approval theo task mới nhất (Q5B được user xác nhận tổng thể trong task này, giữ nguyên evidence approval hẹp cũ).
 
