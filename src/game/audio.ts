@@ -1,10 +1,12 @@
 import Phaser from 'phaser';
+import { arrivalPulse } from './arrival';
 import type { SoundCue } from './combat';
 
 type PresentationCue = 'start' | 'draft' | 'choice' | 'elite' | 'boss' | 'defeat';
-type AudioCue = SoundCue | PresentationCue;
+type AudioCue = SoundCue | PresentationCue | 'arrival';
 
 const tones: Record<AudioCue, [number, number, number]> = {
+  arrival: [76, 0.38, 0],
   start: [440, 0.20, 0], draft: [660, 0.24, 0], choice: [880, 0.15, 0],
   elite: [220, 0.36, 0], boss: [110, 0.65, 0], defeat: [220, 0.65, 0],
   victory: [440, 1.1, 0],
@@ -19,6 +21,7 @@ const tones: Record<AudioCue, [number, number, number]> = {
 export class ProceduralAudio {
   private last = new Map<AudioCue, number>();
   private available = false;
+  private arrivalBeat = -1;
   constructor(private readonly scene: Phaser.Scene) {
     if (!(scene.sound instanceof Phaser.Sound.WebAudioSoundManager)) return;
     const context = scene.sound.context;
@@ -27,6 +30,16 @@ export class ProceduralAudio {
       const samples = buffer.getChannelData(0);
       for (let i = 0; i < samples.length; i++) {
         const t = i / context.sampleRate, progress = i / samples.length;
+        if (cue === 'arrival') {
+          // Approved2s preview timbre, one beat at a time; warning simulation schedules it.
+          const attack = Math.min(1, t / 0.008);
+          const body = (Math.sin(2 * Math.PI * (76 * t - 24 * t * t)) * 0.20
+            + Math.sin(2 * Math.PI * 152 * t) * 0.055) * Math.exp(-t * 12);
+          const chain = (Math.sin(2 * Math.PI * 1187 * t) * 0.07 + Math.sin(2 * Math.PI * 1921 * t) * 0.05
+            + Math.sin(2 * Math.PI * 2857 * t) * 0.025) * Math.exp(-t * 25);
+          samples[i] = attack * (body + chain + (Math.random() * 2 - 1) * 0.025 * Math.exp(-t * 40));
+          continue;
+        }
         if (['start', 'draft', 'choice', 'elite', 'boss', 'defeat'].includes(cue)) {
           const descending = cue === 'boss' || cue === 'defeat';
           const pitch = frequency * (descending ? 1 - progress * 0.4 : 1 + Math.floor(progress * 3) * 0.25);
@@ -54,6 +67,19 @@ export class ProceduralAudio {
     }
     this.available = true;
   }
+  /** No wall-clock timers or replay on resume/unmute; at most one sound per reached beat. */
+  arrival(remaining: number): void {
+    if (remaining <= 0) { this.arrivalBeat = -1; return; }
+    const pulse = arrivalPulse(remaining);
+    if (pulse.beat < 0 || pulse.beat === this.arrivalBeat) return;
+    this.arrivalBeat = pulse.beat;
+    if (!this.available || this.scene.sound.mute || this.scene.sound.locked) return;
+    // Dedicated bounded cue must stay audible in a busy fight; still obey manager volume/mute.
+    const playing = this.scene.sound.getAllPlaying();
+    if (playing.length >= 8) (playing.find(sound => sound.key === 'sfx-gun') ?? playing[0]).stop();
+    this.scene.sound.play('sfx-arrival', { volume: pulse.gain });
+  }
+
   /** Phase cues replace combat tails, but resume leaves silence. No simulation state. */
   transition(cue?: PresentationCue | 'victory'): void {
     this.scene.sound.stopAll();

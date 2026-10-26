@@ -98,3 +98,5 @@ public/assets/
 - Scope này cho phép thêm pose Enraged ImageGen đồng bộ Q7C và tích hợp/deploy theo chỉ dẫn trực tiếp của user; không tự gán visual/playtest approval. Quy tắc gate artwork Q7C phía trên là lịch sử của overhaul, không chặn task Q8C đã giao. Spec hiện hành tại GAME_BRIEF.md và docs/q8c/README.md. Giữ1500HP/5:00/Q8A/Q8B/build/input/art đã duyệt ngoài đúng phần Boss được giao.
 
 - Feedback Q8C sau preset: user cho phép transform1.4s (thay0.8s), animation chậm và freeze timer run/toàn combat trong transform; chỉ presentation Boss tiến. Scope này supersede timing/vulnerability ban đầu; giữ AWAITING USER PLAYTEST APPROVAL.
+
+- Arrival ambient V2 và audio sketch đã được user duyệt qua “ok, làm đi” trước tích hợp. Cho phép edge asset production riêng/ImageGen +4nhịp xích/trầm; chỉ warning2s, không thay Boss/Enraged đã ổn. Dừng AWAITING USER PLAYTEST APPROVAL sau test/deploy, không Q8D.

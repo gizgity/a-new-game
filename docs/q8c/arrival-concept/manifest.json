@@ -1,0 +1,36 @@
+{
+  "status": "VISUAL / AUDIO PREVIEW APPROVED by user ok,làmđi; runtime awaits playtest",
+  "scope": "Review only; no runtime implementation or deploy",
+  "source": "OpenAI ImageGen; repository-owned Q7 artwork/renderer references; no third-party reference",
+  "references": [
+    "docs/q8c/evidence/warning-1440.png",
+    "docs/q8c/evidence/warning-390.png"
+  ],
+  "versions": {
+    "v1": "SUPERSEDED: large corner armor plates intrude into play area",
+    "v2": "Current concept: slender fractured emissive perimeter, narrow halo, no corner plates"
+  },
+  "limitations": [
+    "Generated concept board may alter fine floor/HUD details; not a pixel-perfect renderer capture",
+    "Board depicts strongest fourth pulse only, no animation proof",
+    "Never crop this board into runtime artwork; create separate production edge asset after approval",
+    "WAV is review-only, not a combat mix/device validation"
+  ],
+  "files": [
+    {
+      "file": "arrival-board-v1-superseded.png",
+      "sha256": "10cea361e852ae1404eab59bee90b786fd71e6d7e7b2e2237e78ac9f670a70b3",
+      "bytes": 2018618
+    },
+    {
+      "file": "arrival-board-v2.png",
+      "sha256": "a2fe38b6352695572e18fbfabbd2c0ea4782f99d60426045e0d5209105f06f33",
+      "bytes": 1916698
+    },
+    {
+      "file": "arrival-audio-sketch-v1.wav",
+      "sha256": "a20fab3390b41fa057af5dfd8a6d6256a564b0c420c2d5a19b8f26bb4c165334",
+      "bytes": 176444
+    }
+  ]
+}

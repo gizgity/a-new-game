@@ -553,3 +553,6 @@ M0–M6 là lịch sử functional implementation, không phải chứng nhận 
 
 ### Q8C playtest shortcut theo yêu cầu user
 `?playtest=boss` cấp1150kills tại3:40,4Mutation Phantom/Static/Reclaimer/Kinetic và2Curse Ghost/Parasitic, bỏ draft/Elite đã qua. Thêm50kills hoặc fallback4:00 kích hoạt warning2s bình thường; không sửa Boss/deadline/run thường. Replay reset cùng preset, không lưu progression. Đây là fixture có grants, không là experience approval. Chi tiết tại docs/q8c/README.md.
+
+### Q8C Arrival ambient — visual/audio approved; runtime awaiting playtest
+User xác nhận phần Boss ổn, warning thiếu ambient/thu hút. Hướng đã duyệt để làm mockup: seam rạn đỏ cam/halo hẹp sát mép arena,4nhịp tăng cường độ/2s, âm trầm+xích đồng bộ. Không phủ đỏ màn hình/che telegraph/input, không đổi Boss/Enraged/run. User “ok, làm đi” đã duyệt boardV2 và audio sketch trước tích hợp. Runtime mới dùng texture edge production riêng, halo10px(screen mobile)/14px(desktop),4strip dưới actors/telegraph,4beat âm cùng simulationclock tại0.1/0.6/1.1/1.6s với gain0.32/0.46/0.66/0.90; không timer âm riêng, không phát lại nhịp cũ sau Resume/unmute. Mute/volume và cap8SFX giữ. Pause/Draft/result stop tails; Replay reset. Spec/evidence tại docs/q8c/arrival-runtime/README.md. Viền Graphics5px ban đầu được supersede, timing warning/combat giữ. Không tự ACCEPTED/Q8D.

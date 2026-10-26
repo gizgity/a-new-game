@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { BossArrival } from './BossArrival';
 import { ProceduralAudio } from './audio';
 import { RunResultVisual } from './RunResultVisual';
 import { RunDirector } from './run';
@@ -24,6 +25,7 @@ export class ArenaScene extends Phaser.Scene {
   private enemySprites!: EnemySprites;
   private combatGraphics!: Phaser.GameObjects.Graphics;
   private audio!: ProceduralAudio;
+  private arrival!: BossArrival;
   private resultVisual!: RunResultVisual;
   victoryRevealing = false;
   cosmetic: 'mint' | 'prism' = 'mint';
@@ -49,12 +51,14 @@ export class ArenaScene extends Phaser.Scene {
 
   preload(): void {
     PlayerVisual.preload(this);
+    BossArrival.preload(this);
     this.load.image('arena-floor', `${import.meta.env.BASE_URL}assets/arena/broken-seal-v2.webp`);
   }
 
   create(): void {
     this.audio = new ProceduralAudio(this);
     this.drawArena();
+    this.arrival = new BossArrival(this);
     this.groundGraphics = this.add.graphics().setDepth(1);
     this.combatGraphics = this.add.graphics().setDepth(1.5);
     this.enemySprites = new EnemySprites(this);
@@ -133,6 +137,7 @@ export class ArenaScene extends Phaser.Scene {
       this.enemySprites.reset();
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
+    if (this.run.bossWarning === 0) this.audio.arrival(0);
     const previous = this.phase;
     this.audio.transition(phase === 'victory' || phase === 'defeat' ? phase
       : phase === 'draft' ? 'draft'
@@ -232,6 +237,7 @@ export class ArenaScene extends Phaser.Scene {
       if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
       else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
       else this.audio.play(this.combat.soundEvents);
+      this.audio.arrival(this.run.bossWarning);
       this.pressed.clear();
       this.releaseAim = {};
       this.touch.consume();
@@ -249,14 +255,7 @@ export class ArenaScene extends Phaser.Scene {
     const g = this.combatGraphics.clear();
     const world = this.combat;
     const ground = this.groundGraphics.clear();
-    if (this.run.bossWarning > 0) {
-      // Four border pulses only; never tint the screen or cover ground telegraphs.
-      const view = this.cameras.main.worldView;
-      const x = Math.max(0, view.x) + 4, y = Math.max(0, view.y) + 4;
-      const right = Math.min(ARENA.width, view.right) - 4, bottom = Math.min(ARENA.height, view.bottom) - 4;
-      const pulse = 0.25 + 0.75 * Math.sin((2 - this.run.bossWarning) * Math.PI * 2) ** 2;
-      ground.lineStyle(5, 0xff4056, pulse).strokeRect(x, y, right - x, bottom - y);
-    }
+    this.arrival.render(this.run.bossWarning);
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     this.enemySprites.render(world);

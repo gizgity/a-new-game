@@ -1,0 +1,17 @@
+{
+  "tool": "OpenAI ImageGen",
+  "rights": "Generated for project from own approved Q8C concept reference",
+  "sourceSha256": "24a099b619b8be5b4d6ccbf87ba0089de4e2a15a74b43431f4baee1774df6986",
+  "sourceBytes": 521279,
+  "processing": "Find brightest horizontal seam, keep lower/inward glow only, normalize512x32 with Lanczos. No drawing/body art, no concept board crop.",
+  "sourceCrop": [
+    0,
+    326,
+    2172,
+    414
+  ],
+  "runtimeSha256": "4bd17243e268ec9b7e869e025d6e732757e72a16bac729c17d71857d750e1aff",
+  "runtimeBytes": 34597,
+  "decodedRGBABytes": 65536,
+  "approval": "User ok,làmđi approving V2 + audio sketch before implementation; runtime awaits playtest"
+}

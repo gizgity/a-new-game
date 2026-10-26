@@ -1,0 +1,594 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "actualFourAudioBeats": true,
+    "pauseFreeze": true,
+    "audio": {
+      "duration": 0.38,
+      "peak": 0.3146005868911743,
+      "muted": true,
+      "noReplay": true,
+      "managerVolume": 0.25
+    },
+    "render": {
+      "displayListBefore": 50,
+      "displayListAfter": 50,
+      "edgeDepth": 0.95,
+      "hiddenAfter": true,
+      "corners": [
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 477.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 456.41935483870964,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 477.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 456.41935483870964,
+            "height": 12.903225806451612
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 477.41935483870975,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 456.41935483870964,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 477.41935483870975,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 456.41935483870964,
+            "height": 12.903225806451612
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 477.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 456.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 477.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 456.4193548387097,
+            "height": 12.903225806451612
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 477.41935483870975,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 456.4193548387097,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 477.41935483870975,
+            "height": 12.903225806451612
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 456.4193548387097,
+            "height": 12.903225806451612
+          }
+        ]
+      ],
+      "medianDrawMs": 0.09999999962747097,
+      "p95DrawMs": 0.10000000009313226
+    },
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "failed": [],
+    "fixture": "Preset kills/clock granted for warning trigger; real warning Scene progression/audio. Screenshots use24crowd/windup placement grant and sceneUpdate freeze for final pulse; software WebGL, not device acceptance."
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "actualFourAudioBeats": true,
+    "pauseFreeze": true,
+    "audio": {
+      "duration": 0.38,
+      "peak": 0.3046301007270813,
+      "muted": true,
+      "noReplay": true,
+      "managerVolume": 0.25
+    },
+    "render": {
+      "displayListBefore": 50,
+      "displayListAfter": 50,
+      "edgeDepth": 0.95,
+      "hiddenAfter": true,
+      "corners": [
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 1495.8193146417448,
+            "height": 15.264797507788161
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 697.8193146417445,
+            "height": 15.264797507788161
+          }
+        ]
+      ],
+      "medianDrawMs": 0.09999999962747097,
+      "p95DrawMs": 0.2999999998137355
+    },
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "failed": [],
+    "fixture": "Preset kills/clock granted for warning trigger; real warning Scene progression/audio. Screenshots use24crowd/windup placement grant and sceneUpdate freeze for final pulse; software WebGL, not device acceptance."
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "actualFourAudioBeats": true,
+    "pauseFreeze": true,
+    "audio": {
+      "duration": 0.38,
+      "peak": 0.3174109160900116,
+      "muted": true,
+      "noReplay": true,
+      "managerVolume": 0.25
+    },
+    "render": {
+      "displayListBefore": 50,
+      "displayListAfter": 50,
+      "edgeDepth": 0.95,
+      "hiddenAfter": true,
+      "corners": [
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 400.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 333.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 400.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 333.33333333333337,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 400.3333333333335,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 333.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 400.3333333333335,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 333.33333333333337,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 400.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 333.33333333333326,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 400.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 333.33333333333326,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 400.3333333333335,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 333.33333333333326,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 400.3333333333335,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 333.33333333333326,
+            "height": 13.333333333333334
+          }
+        ]
+      ],
+      "medianDrawMs": 0,
+      "p95DrawMs": 0.10000000009313226
+    },
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "failed": [],
+    "fixture": "Preset kills/clock granted for warning trigger; real warning Scene progression/audio. Screenshots use24crowd/windup placement grant and sceneUpdate freeze for final pulse; software WebGL, not device acceptance."
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "actualFourAudioBeats": true,
+    "pauseFreeze": true,
+    "audio": {
+      "duration": 0.38,
+      "peak": 0.3133048415184021,
+      "muted": true,
+      "noReplay": true,
+      "managerVolume": 0.25
+    },
+    "render": {
+      "displayListBefore": 50,
+      "displayListAfter": 50,
+      "edgeDepth": 0.95,
+      "hiddenAfter": true,
+      "corners": [
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 650.3333333333333,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 336.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 650.3333333333333,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 336.33333333333337,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 650.3333333333334,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 336.33333333333337,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 650.3333333333334,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 336.33333333333337,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 650.3333333333333,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 336.33333333333326,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 650.3333333333333,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 336.33333333333326,
+            "height": 13.333333333333334
+          }
+        ],
+        [
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 0,
+            "width": 650.3333333333334,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": 1.5707963267948966,
+            "width": 336.33333333333326,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -3.141592653589793,
+            "width": 650.3333333333334,
+            "height": 13.333333333333334
+          },
+          {
+            "visible": true,
+            "depth": 0.95,
+            "rotation": -1.5707963267948966,
+            "width": 336.33333333333326,
+            "height": 13.333333333333334
+          }
+        ]
+      ],
+      "medianDrawMs": 0.09999999962747097,
+      "p95DrawMs": 0.20000000018626451
+    },
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "failed": [],
+    "fixture": "Preset kills/clock granted for warning trigger; real warning Scene progression/audio. Screenshots use24crowd/windup placement grant and sceneUpdate freeze for final pulse; software WebGL, not device acceptance."
+  }
+]

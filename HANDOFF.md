@@ -10,12 +10,14 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q8C — Boss Challenge & Enraged Phase: **AWAITING USER PLAYTEST APPROVAL**. User giao riêng ngày2026-10-26, baseline main `e6eeec7`. Q8A394341c/Q8Beb6fbbe đã ACCEPTED; giữ Q2–Q7D; không mở Q8D.
+Q8C — Boss Arrival Ambient: **AWAITING USER PLAYTEST APPROVAL**; phần Boss/Enraged được user nhận xét “boss ổn r”, không yêu cầu duyệt lại phần đó. Toàn Q8C chưa tự ACCEPTED. User giao riêng ngày2026-10-26, baseline main `e6eeec7`. Q8A394341c/Q8Beb6fbbe đã ACCEPTED; giữ Q2–Q7D; không mở Q8D.
 
 ## ACCEPTANCE
 Warning viền4nhịp/2s, pause spawn không pause input; Boss sau warning. Enraged một lần tại≤50%HP, transform1.4s/pose ImageGen riêng, chỉ speed+15% và cooldown−20%, không heal/HP1500/deadline5:00. Combo slam→gap0.25→locked sweep0.62→recovery0.75, geometry/Perfect đúng. Giữ Q8A/Q8B và art/build/input ngoài Boss scope. Tests/build/deploy không là acceptance; chờ user playtest.
 
 ## CURRENT STATUS — Q8C
+- User “ok, làm đi” duyệt boardV2 + audio sketch. Đã tích hợp texture edge riêng ImageGen (không crop mockup),4TileSprite pooled dưới telegraph/body, halo10/14screenpx chỉ vào trong arena;4beat âm trầm/xích tăng dần đọc cùng warning clock.18testfiles/build PASS, browser390/1440/320/844 PASS4audio beats/Pause/mute/volume/Replay/khôngoverflow hoặc errors. CPUdraw p950.1–0.3ms/crowd24 softwareWebGL. Đang chốt dist/publish qua GitHub connector vì Git CLI thiếu xác thực; report tại docs/q8c/arrival-runtime.
+- User thấy warning viền đỏ thiếu ambient/thu hút và yêu cầu approve trước làm. Đã duyệt hướng “áp lực phong ấn sắp vỡ” qua “ok, ổn”: mockup trước, duyệt rồi tích hợp. Chỉ tạo ImageGen review boardV2 và WAV2s/4nhịp tại docs/q8c/arrival-concept; V1 plates góc lấn sân nên superseded. Snapshot concept trước tích hợp; nay user đã duyệt cụ thể bằng “ok, làm đi”, xem trạng thái implementation phía trên. Giữ Boss/Enraged1302474 đã được user nói ổn, không tự accepted toàn Q8C hoặc mở Q8D.
 - Feedback mới: user khó thấy Enraged0.8s, yêu cầu chậm hơn + dừng timer/quái/player. Đã đổi1.4s/84ticks, asset pose sine nâng/phồng chậm; chỉ transform/flash clock tiến, toàn world/run/inputbuffer freeze; Pause freeze cả transform. Tests17files/build và browser390/1440 giữD/Pause/Resume PASS; report docs/q8c/evidence/enrage-freeze.json. Correction code/deploy `1302474`, Pages40352171221/job121674876464 completed/SUCCESS gồm Deploy; link https://gizgity.github.io/a-new-game/?playtest=boss&v=1302474 ; không tự ACCEPTED/Q8D. Bản0.8s/vulnerability dưới là lịch sử.
 - User yêu cầu instance nhanh1150kills/buildsẵn sau bàn giao. Đã thêm `?playtest=boss`:3:40,1150kills,4Mutation Phantom/Static/Reclaimer/Kinetic +2Curse Ghost/Parasitic; thêm50kills hoặc fallback4:00→warning→Boss, Replay giữ preset, không lưu progression/không đổi run thường. Tests17files/build PASS; browser390/1440 PASS (1150kills/4Mutation/2Curse, Pause/Replay/fallbackBoss/run thường0kills); code/deploy `eb522df`, Pages40350368400/job121668460085 completed/SUCCESS gồm Deploy. Link https://gizgity.github.io/a-new-game/?playtest=boss&v=eb522df .
 - Runtime và asset đã triển khai; spec/audit/evidence/source/license/cách thử tại [docs/q8c/README.md](docs/q8c/README.md). Snapshot cũ dưới là lịch sử accepted Q8B, spawn tức thì và phase2 predicate/timing cũ được Q8C thay thế.
@@ -108,4 +110,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng **AWAITING USER PLAYTEST APPROVAL** cho Q8C; preset nhanh và correction Enraged1.4s/world freeze trên1302474. User thử warning/input/pause, transform halfHP, slam→follow-up/Perfect/recovery trên4hướng build/mobile/desktop theo docs/q8c/README.md; chỉ xử lý feedback Q8C. Không tự ACCEPTED hoặc mở Q8D.
+Chốt dist/publish và theo dõi Pages của arrival V2 đã được duyệt; sau deploy dừng AWAITING USER PLAYTEST APPROVAL chỉ warning ambient/âm/mute/Pause/mobile. Không yêu cầu duyệt lại Boss/Enraged đã ổn, không tự ACCEPTED toànQ8C hoặc mở Q8D.
