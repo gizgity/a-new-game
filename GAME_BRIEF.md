@@ -138,11 +138,13 @@
 
 ## Mutation Draft đầu — Chọn hướng build
 
-**ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “approve” cho bản7843b98 ngày2026-10-26. Approval này dành cho draft đầu4hướng; Q6 Curse Stacking vẫn chờ xác nhận riêng.
+**ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “approve” cho bản7843b98 ngày2026-10-26. Approval này dành cho draft đầu4hướng; sau đó user xác nhận thêm Q6 qua “aprroved q6 lun nha”.
 
 Theo user xác nhận sau Q6 ngày2026-10-26: ở25kills HOẶC0:30, luôn hiện4card đại diện theo thứ tự Aegis Core (Juggernaut/Barrier), Blood Reclaimer (sustain), Phantom Edge (Perfect/counter), Detonation Specialist (ranged/chain). Chọn1Mutation, không khóa class/route; các mốc sau vẫn Adaptive Draft tối đa3card với weighted sampling/reasons/anti-repeat Q5D. Ngoại lệ4card cố định chỉ ở milestone đầu, không dùng anti-repeat để bỏ một hướng. Các offered IDs vẫn ghi history khi thực sự hiển thị để draft sau/run sau dùng quy tắc cũ. Giữ pool/unlock: nếu fixture có pool nhỏ hoặc đã sở hữu đại diện thì chỉ hiện lựa chọn hợp lệ, không bù bằng card khác hướng. Không thay damage/effects/cap4Mutation/2Curse/heal/timing. Trial Q5E cũng giữ4card đầu, gợi ý route ở các lượt sau; hướng sustain bắt đầu Reclaimer rồi lấy Catalyst. Không cấp build trước milestone.
 
 ## Q6 Design Contract — Curse Stacking
+
+**ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “aprroved q6 lun nha” ngày2026-10-26 trên bản7843b98 (stacking triển khai từ b534315); giữ mọi approval Q2–Q5. Không tự mở Q7.
 
 Specification mới theo task user ngày2026-10-26; Q6 chưa từng có specification hoàn chỉnh trong repo. Không trùng Q5E hoặc M6. Q5A–Q5E giữ approval theo xác nhận mới nhất của user; evidence/commit Q5 bên dưới là lịch sử, không viết lại thành Q6.
 
@@ -407,4 +409,4 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã implementation/checks, chờ user playtest approval; không tự mở Q7.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking và draft đầu4hướng đã được user playtest/chấp nhận ngày2026-10-26; không tự mở Q7.
