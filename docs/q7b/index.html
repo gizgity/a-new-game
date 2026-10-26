@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Q7B · HUD & Combat Readability · Concept review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090d19;color:#e5eeef;font:16px/1.6 system-ui}main{max-width:1440px;margin:auto;padding:24px}h1,h2{line-height:1.25}p{max-width:90ch}a{color:#9dffe2}.status{padding:14px;background:#111925;border-left:3px solid #ffe599}section{margin:36px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;padding:16px;background:#111925;border:1px solid #30434a;border-radius:8px}figcaption{margin-top:12px;color:#bdcbd6}img{display:block;max-width:100%;height:auto;margin:auto}.phone{width:390px;max-width:100%}.limits{color:#c6d5dd}label{display:inline-block;padding:12px;background:#202d3a;border-radius:6px;cursor:pointer}input{width:20px;height:20px;vertical-align:middle}#gray:checked~.gallery img{filter:grayscale(1)}summary{cursor:pointer;padding:12px}@media(max-width:720px){main{padding:14px}.pair{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>Q7B · HUD & Combat Readability</h1>
+<p class="status"><strong>AWAITING VISUAL APPROVAL</strong> · Chỉ audit/design/concept. Chưa sửa HUD production, gameplay hoặc sàn Q7A.</p>
+<p>Giữ HUD/controls nền tảng, rút prose trên sân thành grouping và icon có trạng thái. Dữ liệu readiness/cooldown lấy đúng state game; Charged dùng đạn + điểm, không tự hồi theo thời gian.</p>
+<p><a href="README.md">Audit, giới hạn, file dự kiến</a> · <a href="../../GAME_BRIEF.md#q7b-design-contract--hud--combat-readability">Design Contract + acceptance scenarios</a> · <a href="PROMPTS.md">Prompts/inputs</a> · <a href="manifest.json">Provenance</a></p>
+<input id="gray" type="checkbox"><label for="gray">Grayscale cùng ảnh</label>
+<div class="gallery">
+<section><h2>01 · Desktop concept V1</h2>
+<figure><a href="artwork/hud-desktop-v1.png"><img src="artwork/hud-desktop-v1.png" alt="Desktop concept: vitals góc trái, build góc phải, tài nguyên sát rìa dưới"></a><figcaption>ĐỀ XUẤT: HP/Barrier riêng,4Mutation+2Curse,4resource cards. ImageGen làm HP có khấc; contract yêu cầu HP liên tục. Không thay actor/camera/floor theo sai lệch ảnh.</figcaption></figure>
+</section>
+<section><h2>02 · Portrait V2 cạnh baseline thật</h2>
+<div class="pair">
+<figure><a href="baseline/crowd-full-build-390.png"><img class="phone" src="baseline/crowd-full-build-390.png" alt="Baseline renderer HUD thật main21f2c55: status dài phủ phía trên combat"></a><figcaption>HIỆN TẠI · renderer thật, fixture4Mutation/2Curse/33enemy; không natural run. HUD box cao198.5px ởphone390.</figcaption></figure>
+<figure><a href="artwork/hud-mobile-v2.png"><img class="phone" src="artwork/hud-mobile-v2.png" alt="Mobile concept V2: vitals và build summary gọn, sáu nút dưới giữ chức năng"></a><figcaption>CONCEPT V2 · nhóm vitals/build/risk, tài nguyên trên6nút hiện có. Target≤128px topHUD chưa là số đo implementation. Contract giữ nguyên vị trí/size/capture/giữ-thả của controls.</figcaption></figure>
+</div>
+</section>
+<section><h2>03 · Crowd và feedback</h2>
+<figure><a href="artwork/crowd-feedback-v1.png"><img src="artwork/crowd-feedback-v1.png" alt="Concept crowd và bốn thời điểm feedback: hit,heal,Barrier break,Perfect"></a><figcaption>Một notice, proc gắn icon/card. Các panel bên phải là thời điểm khác nhau. Phone inset bị ImageGen xê dịch nút: chỉ duyệt feedback language; layout controls theo code hiện hành/contract và portrait V2.</figcaption></figure>
+</section>
+<section><h2>04 · Before/after — minh họa hierarchy</h2>
+<figure><a href="artwork/before-after-v1.png"><img src="artwork/before-after-v1.png" alt="Sheet concept before-after: phân biệt HP Barrier, build gọn, bớt chữ trên combat"></a><figcaption>CẢ SHEET ĐƯỢC SINH BẰNG IMAGEGEN, kể cả BEFORE có thể bị vẽ lại. Baseline PNG nguyên gốc ở mục02 là nguồn thật. Không gọi đây là screenshot HUD mới hoặc chứng minh runtime readability.</figcaption></figure>
+</section>
+<details><summary>Baseline320, landscape844, feedback hiện có</summary>
+<div class="pair">
+<figure><img class="phone" src="baseline/crowd-full-build-320.png" alt="HUD full-build renderer320 hiện hành"><figcaption>320: HUD213.5px/466pxcanvas, không document overflow nhưng prose vẫn cạnh tranh combat.</figcaption></figure>
+<figure><img src="baseline/crowd-full-build-844.png" alt="HUD landscape844 renderer hiện hành"><figcaption>Landscape844×390: HUD157.5px/332pxcanvas. Chưa có implementation mới để báo layout PASS.</figcaption></figure>
+</div>
+</details>
+<section><h2>Phạm vi cần duyệt</h2>
+<ol><li>HP/Barrier tách icon/thanh/số; grouping và mức decoration panel.</li><li>Build4M/2C gọn; tap một summary≥44px mở details qua pause, không auto-cast khi nhả.</li><li>Resource readiness bằng count/fill/timer/label; Charged ammo+points; không đổi6nút.</li><li>Damage/heal/break/Perfect và synergy có feedback ngắn trên HUD/icon, không prose/center spam.</li></ol>
+<p class="limits">Chưa có runtime HUD mới, tests/build/performance acceptance. Sau visual approval mới implementation, renderer before/after và kiểm320/390/1440/landscape/tablet. Q2–Q7A giữ accepted, Q1 chưa duyệt riêng; không tự mở Q7C.</p>
+</section>
+</div>
+</main>
+</html>

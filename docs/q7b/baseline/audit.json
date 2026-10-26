@@ -1,0 +1,139 @@
+{
+  "source": "21f2c55b847dbf4842215ca25059252eb7d85cad",
+  "fixture": "Q7A renderer fixture reused; Q7B read-only audit; 4Mutations/2Curses and resource states explicitly granted, not natural run",
+  "screenshots": [
+    {
+      "file": "crowd-full-build-1440.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "hud": {
+        "x": 61,
+        "y": 186,
+        "width": 200,
+        "height": 352.5
+      },
+      "canvas": {
+        "x": 33,
+        "y": 101,
+        "width": 1374,
+        "height": 734
+      },
+      "status": "Reversal s\u1eb5n s\u00e0ng 2.4s \u00b7 Pin 2/3 \u00b7 Phantom s\u1eb5n s\u00e0ng 2.1s \u00b7 Static Charge 3.2s \u00b7 H\u1ebft Dash: damage nh\u1eadn +20% \u00b7 \u0110\u1ed5i ch\u1ed1ng ch\u1ecbu: damage g\u00e2y ra -25%",
+      "build": "Phantom Edge \u00b7 Static Riposte \u00b7 Iron Reversal \u00b7 Kinetic Battery",
+      "curses": "Curse 1: Ghost StepCurse 2: Iron Oath",
+      "overflow": false,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "cursesActive": [
+        "ghostStep",
+        "ironOath"
+      ]
+    },
+    {
+      "file": "crowd-full-build-390.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "hud": {
+        "x": 21,
+        "y": 105,
+        "width": 348,
+        "height": 198.5
+      },
+      "canvas": {
+        "x": 9,
+        "y": 61,
+        "width": 372,
+        "height": 570
+      },
+      "status": "Reversal s\u1eb5n s\u00e0ng 2.4s \u00b7 Pin 2/3 \u00b7 Phantom s\u1eb5n s\u00e0ng 2.1s \u00b7 Static Charge 3.2s \u00b7 H\u1ebft Dash: damage nh\u1eadn +20% \u00b7 \u0110\u1ed5i ch\u1ed1ng ch\u1ecbu: damage g\u00e2y ra -25%",
+      "build": "Phantom Edge \u00b7 Static Riposte \u00b7 Iron Reversal \u00b7 Kinetic Battery",
+      "curses": "Curse 1: Ghost StepCurse 2: Iron Oath",
+      "overflow": false,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "cursesActive": [
+        "ghostStep",
+        "ironOath"
+      ]
+    },
+    {
+      "file": "crowd-full-build-320.png",
+      "viewport": [
+        320,
+        740
+      ],
+      "hud": {
+        "x": 21,
+        "y": 105,
+        "width": 278,
+        "height": 213.5
+      },
+      "canvas": {
+        "x": 9,
+        "y": 61,
+        "width": 302,
+        "height": 466
+      },
+      "status": "Reversal s\u1eb5n s\u00e0ng 2.4s \u00b7 Pin 2/3 \u00b7 Phantom s\u1eb5n s\u00e0ng 2.1s \u00b7 Static Charge 3.2s \u00b7 H\u1ebft Dash: damage nh\u1eadn +20% \u00b7 \u0110\u1ed5i ch\u1ed1ng ch\u1ecbu: damage g\u00e2y ra -25%",
+      "build": "Phantom Edge \u00b7 Static Riposte \u00b7 Iron Reversal \u00b7 Kinetic Battery",
+      "curses": "Curse 1: Ghost StepCurse 2: Iron Oath",
+      "overflow": false,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "cursesActive": [
+        "ghostStep",
+        "ironOath"
+      ]
+    },
+    {
+      "file": "crowd-full-build-844.png",
+      "viewport": [
+        844,
+        390
+      ],
+      "hud": {
+        "x": 21,
+        "y": 89,
+        "width": 600,
+        "height": 157.5
+      },
+      "canvas": {
+        "x": 9,
+        "y": 49,
+        "width": 826,
+        "height": 332
+      },
+      "status": "Reversal s\u1eb5n s\u00e0ng 2.4s \u00b7 Pin 2/3 \u00b7 Phantom s\u1eb5n s\u00e0ng 2.1s \u00b7 Static Charge 3.2s \u00b7 H\u1ebft Dash: damage nh\u1eadn +20% \u00b7 \u0110\u1ed5i ch\u1ed1ng ch\u1ecbu: damage g\u00e2y ra -25%",
+      "build": "Phantom Edge \u00b7 Static Riposte \u00b7 Iron Reversal \u00b7 Kinetic Battery",
+      "curses": "Curse 1: Ghost StepCurse 2: Iron Oath",
+      "overflow": false,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "cursesActive": [
+        "ghostStep",
+        "ironOath"
+      ]
+    }
+  ],
+  "errors": []
+}

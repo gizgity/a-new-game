@@ -2,7 +2,7 @@
 
 **ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved”, sau khi được làm rõ Q7A chỉ thay artwork sàn obsidian; gameplay/camera/controls/player-enemy sprites/combat VFX giữ nguyên. Approval dành cho Q7A đã deploy (code0e0a9af, bản board2e48166), không suy rộng sang Q1 hoặc mọi thiết bị/Safari.
 
-Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. **NEXT ACTION: chờ scope Q7B từ user**, chưa mở task mới.
+Concept V2 đã được user duyệt trước qua “approved, làm tiếp đi”. Q2–Q6 và draft đầu4hướng giữ accepted. NEXT ACTION lúc kết thúc Q7A là chờ scope. Nay user đã giao [Q7B HUD/readability](../q7b/README.md), đang design/visual gate; không thay lịch sử Q7A.
 
 ## Thay đổi
 
@@ -54,4 +54,4 @@ Code [0e0a9af](https://github.com/gizgity/a-new-game/commit/0e0a9af2b8cd5fc20169
 2. **Crowd / cue**: ở20–45s hoặc khi có nhiều Grunt, quan sát dashed chuẩn bị → solid/chevrons → hit/recovery, né bằng Lướt/Space. Bắn/Chém đặt dấu rồi Heavy/Charged để so Rupture/relay/blast với floor. Mong đợi floor không lấn threat hay che player/VFX; không cần duyệt lại damage/timing/build Q2–Q6.
 3. **Boss nếu tiện**:450kills hoặc4:00, quan sát sweep/ring/slam trên sàn mới. Không yêu cầu chơi cảrun để báo lỗi floor. Thử phone dọc/ngang và desktop nếu có; chú ý độ mượt khi đông quái.
 
-Checklist trên giữ làm lịch sử bàn giao/evidence; user đã duyệt Q7A, không yêu cầu thử lại. Phát sinh sau ghi rõ tình huống/thiết bị/browser. Q1 giữ trạng thái riêng; chờ user gửi scope Q7B trước khi làm tiếp.
+Checklist trên giữ làm lịch sử bàn giao/evidence; user đã duyệt Q7A, không yêu cầu thử lại. Phát sinh sau ghi rõ tình huống/thiết bị/browser. Q1 giữ trạng thái riêng; Q7B nay có scope riêng, xem contract/review được dẫn ở đầu tài liệu.

@@ -382,7 +382,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 
 **ACCEPTED — USER PLAYTEST APPROVAL** ngày2026-10-26: user xác nhận “hiện 7a chỉ mới có thay đổi về sàn arena? nếu vậy thì t approved” sau khi làm rõ scope chỉ artwork sàn obsidian (code0e0a9af/board2e48166), gameplay/camera/controls/sprites/VFX giữ nguyên. Concept V2 đã được duyệt trước qua “approved, làm tiếp đi”; checks/deploy PASS. Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking đã ACCEPTED theo main bc07fd4 (user “aprroved q6 lun nha”); Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
 
-Q7A đã đóng bằng approval của user; chờ user gửi scope **Q7B**, chưa tự mở milestone mới. Approval không suy rộng sang Q1 hoặc xác minh mọi thiết bị/Safari.
+Q7A đã đóng bằng approval của user. User nay đã giao scope Q7B HUD/readability; xem contract riêng bên dưới, chưa triển khai trước visual approval. Approval Q7A không suy rộng sang Q1 hoặc xác minh mọi thiết bị/Safari.
 
 ### Arena / art direction
 - Một arena **1600×1000, inset64**, player radius16 và toàn bộ clamp/collision giữ nguyên. Giữ follow/zoom/resize trong ArenaScene; không fit toàn arena vào phone theo mockup. Không procedural dungeon, tilemap phức tạp hoặc vật cản mới.
@@ -427,6 +427,55 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 7. Có screenshot/video **renderer thật** trước–sau và provenance fixture/input; ảnh ImageGen không thay bằng chứng này.
 8. Sau checks: commit/push, deploy workflow hiện có, bàn giao URL/commit/ảnh; ghi **AWAITING USER PLAYTEST APPROVAL**, chờ user xác nhận chất lượng. Không tự chuyển Q7B.
 
+## Q7B Design Contract — HUD & Combat Readability
+
+**AWAITING VISUAL APPROVAL — DESIGN PROPOSAL, chưa implementation.** Task user2026-10-26. Audit main `21f2c55`: Q7B trước đây chỉ là tên bước chờ scope, chưa có contract/implementation khác. Q2–Q6, draft đầu4hướng và Q7A giữ ACCEPTED; Q1 chưa có visual approval riêng. Q7B không mở Q7C.
+
+### Phạm vi / nguồn dữ liệu
+- Cải thiện presentation của HUD/feedback hiện có, không xây lại menu/game UI. Giữ floor `broken-seal-v2.webp` nguyên hash, camera/canvas bounds, controls/hit areas, gameplay/balance/effects/draft/AI/Boss/input timing và save/unlocks.
+- HUD chỉ đọc CombatWorld/RunDirector/BuildEffects/Barrier và translation keys. Không thêm resource, đổi cooldown/damage, điều kiện proc hoặc logic heal để dễ hiển thị. Không suy luận damage/heal tổng từ net HP delta khi nhiều sự kiện cùng tick.
+- Baseline renderer hiện hành và audit: [Q7B review](docs/q7b/README.md); đo fixture full build HUD cao198.5px ở390,213.5px ở320,352.5px ở1440 và157.5px ở844landscape. Là bounding box, không là đo mọi pixel che khuất; fixture không natural run.
+
+### A. Combat HUD
+- **HP / Barrier:** cùng card sống sót, tách rõ heart + thanh HP liên tục và shield + thanh Barrier có phân đoạn; số HP/maxHP và Barrier/30 độc lập. Không dùng thanh chồng lên nhau. HP mint ở bình thường, rose + warning khi≤25%maxHP (ngưỡng presentation); Barrier cyan,0 vẫn đọc được/broken icon ngắn khi vỡ, không tự có cooldown hồi khiên.
+- **Tài nguyên:** Dash/Heavy hiển thị lượt còn/tối đa + fill/timer phần hồi;1/2 vẫn AVAILABLE dù lượt tiếp đang hồi. Charged hiển thị đạn0–3 và chargePoints theo state hiện hành; không timer giả vì đạn không tự hồi theo thời gian. Surge hiện% và chữ/icon READY chỉ khi100. Empty/cooldown/ready khác nhau bằng số, nét đặc/rỗng, label/timer và icon; không chỉ hue/opacity.
+- Desktop1440: bỏ cột status prose dài, HP/Barrier card gọn góc trên trái (target≤136px gồm warning), timer/Boss ở trục trên giữa, build summary góc trên phải,4resource cards gọn sát rìa dưới. Không đặt notice lên player. Giữ header/footer/canvas kích thước hiện hành; stage legend/milestone text giảm ưu tiên.
+- Portrait390/320: top overlay gồm timer, HP/Barrier, build summary và một hàng risk/notice. Target≤128CSSpx bình thường và≤152px khi thêm Boss bar; kiểm thực sau approval, không hy sinh chữ/sáu nút để đạt số. Số quan trọng≥12–14px; panel nền charcoal đủ đặc để đọc trên obsidian, không che opaque cả playfield. Không lặp4resource rows trên đỉnh vì nút cảm ứng đã mang readout.
+- Mobile giữ portrait controls reserve204px và cụm184×184: Charged52@(56,0), Heavy52@(56,64), Dash60@(52,124), Shoot64@(116,24), Melee68@(116,100), Surge48@(0,0); joystick132–180 và safe-area giữ. Chỉ đổi decoration/readout, không đổi tọa độ/size/gesture/pointer capture. Available state không dùng HTML disabled làm mất giữ-thả/capture.
+- Landscape844×390/tablet: HUD rút thành các cụm sát đỉnh/rìa, ưu tiên vitals + resource readiness; text mục tiêu dài vào details/pause, không tăng vùng HUD vào giữa hai cụm controls. Target đỉnh≤104px ở landscape; kiểm riêng Boss và6nút, không coi mockup portrait là bằng chứng landscape PASS.
+- **Build4Mutation/2Curse:** bốn ô diamond và hai ô hex, empty/owned có nét/fill khác nhau, stable order theo state; một summary button≥44px cho cả dải trên phone, không6touch targets quá nhỏ. Count/names đầy đủ và effect/risk/cooldown ở panel details dùng t(id)/t(idDesc) hiện có; không cắt tên trong panel. Chưa đủ slot hiện đúng0–4/0–2, không giả full build.
+- Tap/click summary mở panel chi tiết cuộn được qua pause hiện có; giữ vi/en, focus/close/Resume rõ. Không hover-only. Mở/đóng clear armed input/capture/buffer theo lifecycle hiện có, không biến cú nhả đang aim thành action/chọn UI; resume chỉ sau thao tác mới rõ ràng. Không tự nhận input từ HUD text trang trí. Không thay draft/Pause/Victory/Defeat flow hoặc dùng details để chọn/đổi build.
+- Mốc draft tiếp/Boss vẫn xem được gọn khi chơi hoặc đầy đủ trong details/Pause, không xóa thông tin hay đổi milestones. Boss bar có vùng riêng ở đỉnh, không phủ tâm cue/đạn; nếu thiếu chỗ, ẩn thông tin P2/P3 trước.
+
+### B. Feedback / chống nhiễu
+- Giữ VFX/audio đã accepted: hurt tint/ring, segmented Barrier break, Perfect glyph, heal/build cues và charged/chain budgets. Ưu tiên bổ sung nhận diện trên **card/icon HUD**, không thêm bloom/full-screen vignette/particles/floating-damage-text.
+- HP hit → card edge/heart flash ngắn và “Trúng đòn”; heal → arrow/+HP từ actual heal state (không cộng số giả); Barrier break → shield nứt/0 và “Vỡ Barrier”; Perfect → glyph và notice ngắn. Các ví dụ trong board là các thời điểm khác nhau, không yêu cầu cùng xuất hiện.
+- Một notice visible ở hàng ngoài center, tối đa2pending, stale bỏ; target tồn tại0.8–1.0s simulation, không refresh mỗi render. Gộp cùng loại/cùng burst, chỉ thêm khi có transition/event thực từ flags/counters; không đọc cờ đang active thành event mỗi frame. Pause/draft/hitstop không làm trôi timer combat feedback; restart xóa presentation snapshot/queue.
+- Ưu tiên immediate risk/hit/Barrier break trước Perfect, rồi heal/proc; persistent lowHP/Ghost-risk vẫn có icon/label ở card để không mất khi notice khác hiện. Risk notice chỉ phát khi đi vào trạng thái, không giữ queue bận suốt lúc lowHP/zeroDash; persistent warning ở card vẫn còn. Không toast từng Light/shot/combo tick, không đọc screen-reader live-region liên tục.
+- Proc quan trọng gắn với hành động: Static→Charged lightning/timer; Reversal→Heavy; Phantom/Frenzy→melee hoặc mutation icon; Kinetic→3pips gần Barrier; Anchor→ready/spent; heal sources/chamber→icon cooldown. Dữ liệu từ state hiện có, không thêm proc hay đổi effect.
+- Curse: Ghost zeroDash có warning ngắn khi risk active; Blood cost/heal blocked, defensive damage cost, Glass maxHP, Hunted/DeathEcho risk và Parasitic heal trade-off xem rõ qua icon/details. Self-hazard vẫn giữ world cue thật. Không chuyển passive trade-off thành dòng thông báo lặp mãi.
+- Chỉ flash khi trạng thái đổi; READY giữ static mark sau một lần nhấn nhẹ. Respect prefers-reduced-motion cho CSS; không thêm loop rung/chớp liên tục. Không đổi pose/silhouette Q1 hoặc timing/threat shape Q2/Q3.
+
+### C. Visual language / kỹ thuật
+- Neon Occult / Fractured Geometry đồng bộ floor Q7A: panel obsidian/charcoal, bevel/broken corners tiết chế, hierarchy P0player/threat → vitals/readiness → build/proc → milestones/decor. Icon shape, contrast, spacing và numeral cùng truyền nghĩa; giữ hue enemy/threat.
+- Asset-first cho icon/decoration có chủ đích: một SVG sheet hoặc ít PNG/WebP; CSS chỉ layout/responsive/typography/state/interaction. Không UI drawing engine, procedural artwork loop, frontend/shader framework hoặc dependency mới.
+- Dự kiến file sau approval: src/main.ts wiring/HUD markup, src/style.css, src/i18n.ts vi+en, TouchControls.updateResources/translate presentation; có thể tách một src/ui/CombatHUD.ts nếu cần quản lý snapshot/panel gọn. public/assets/ui cho icon đã chốt. Không sửa TouchControls.bind/sample/release logic, CombatWorld/RunDirector/Draft/BuildEffects effects/config hoặc Q7A floor. PlayerVisual/BuildVisual/BarrierVisual/ArenaScene chỉ đối chiếu; chỉ chỉnh presentation nhỏ nếu thật cần và đúng contract, không rework VFX đã accepted.
+- Chưa có HUD runtime mới. Ảnh ImageGen có thể sai text/shape/icon/camera và vị trí nút; **contract + controls hiện hành ưu tiên hơn mockup**. Không import board thành HUD texture; không dùng ảnh BEFORE sinh lại thay baseline renderer.
+
+### Visual gate / acceptance scenarios
+- Deliverables: [Desktop V1](docs/q7b/artwork/hud-desktop-v1.png), [Portrait V2](docs/q7b/artwork/hud-mobile-v2.png), [Crowd/Feedback V1](docs/q7b/artwork/crowd-feedback-v1.png), [Before/after concept](docs/q7b/artwork/before-after-v1.png). [Review board](docs/q7b/index.html) còn đặt baseline thật cạnh concept để không giả pixel-perfect. Source/prompt/license/version/giới hạn trong README/PROMPTS/manifest. PortraitV1 superseded vì chữ cảnh báo sai.
+- User duyệt grouping HP/Barrier, compact build/details interaction, resource-state styling, icon/card feedback và mức decoration trước implementation. Dừng **AWAITING VISUAL APPROVAL**, không tự ART/DESIGN APPROVED hoặc triển khai HUD production.
+- Sau approval kiểm tối thiểu:
+  1. HP100/22/Glass75 với Barrier0/30/vỡ: số/thanh/icon phân biệt, nguy hiểm không chỉ dựa màu, grayscale đọc được.
+  2. Dash/Heavy0,1,2charges và recharge; Charged0/3 với points0–2, available và Surge0/99/100: không hiển thị sai timer/READY hoặc làm mất giữ-thả.
+  3. Build0/0 tới4Mutation+2Curse, tên dài vi/en; mở/cuộn/đóng details qua mouse/touch/keyboard-focus, không tự cast/chọn draft; restart/reset không giữ status cũ.
+  4. Crowd+Perfect/Static/Phantom/Reversal, đồng thời hit/heal/break: bounded notice, đúng priority, không refresh spam/che player/đạn.
+  5. Elite/Boss3patterns tại center/rìa, cả full build: cue không bị HUD/controls che; floor Q7A nguyên hash.
+  6. Desktop1440,phone390/320,landscape844/tablet768: touch targets≥44px,6nút không chồng, safe-area/aim-drag/hold-release/pointercancel/pause/blur giữ.
+  7. Draft đầu4hướng/các draft sau, Pause/Victory/Defeat/settings và vi/en vẫn thao tác; t(key) đủ cả2dictionary, không stale panel/notice.
+  8. Focused tests phù hợp presentation snapshot/reset/priority + typecheck/build, renderer screenshots trước–sau, browser input/overflow/runtime checks và perf so cùng scene. Không comprehensive E2E/framework; fixtures/tests không là user approval.
+- Sau implementation/checks: commit/push docs/code, deploy Pages workflow hiện có, bàn giao URL/commit/ảnh/checklist, ghi **AWAITING USER PLAYTEST APPROVAL**, dừng; không tự mở Q7C.
+
 ## Audio
 - Procedural SFX đơn giản qua Phaser Sound Manager.
 - Ưu tiên Light/Heavy Hit, Gun, Dash, Perfect Dodge, Detonate, Player Hurt.
@@ -458,4 +507,4 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã ACCEPTED theo user ngày2026-10-26. User mở Q7A visual theo task2026-10-26: concept V2 đã được user duyệt, đang triển khai artwork và không mở Q7B.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã ACCEPTED theo user ngày2026-10-26. Q7A arena floor đã được user ACCEPTED sau deploy. User mở Q7B HUD/readability ngày2026-10-26: đang design/illustration gate AWAITING VISUAL APPROVAL; chưa implementation, không mở Q7C.

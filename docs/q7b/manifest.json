@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-26",
+  "timezone": "Asia/Saigon",
+  "main": "21f2c55b847dbf4842215ca25059252eb7d85cad",
+  "status": "AWAITING VISUAL APPROVAL",
+  "runtime_changes": false,
+  "generator": "ImageGen provided in Codex session; model/seed not supplied",
+  "rights": "Project screenshot inputs and generated outputs under applicable service terms; no third-party reference/CC0/exclusivity asserted; concepts not runtime assets",
+  "floor_sha256": "71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a",
+  "files": [
+    {
+      "file": "artwork/before-after-v1.png",
+      "width": 1201,
+      "height": 1310,
+      "bytes": 2072977,
+      "sha256": "7326ca068085589f32322bf0a137320ec81acf760ce75c759f5cb13c4a26d166",
+      "kind": "generated-concept-only"
+    },
+    {
+      "file": "artwork/crowd-feedback-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1931992,
+      "sha256": "fae9008fd953b64f6a1379f1d977190f8760eaa7a6741089c1654f31a51dc9b2",
+      "kind": "generated-concept-only"
+    },
+    {
+      "file": "artwork/hud-desktop-v1.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 1844379,
+      "sha256": "f7e875a15f256f48ab9e116a76838769038f924d044c9d7625839b866e504bc1",
+      "kind": "generated-concept-only"
+    },
+    {
+      "file": "artwork/hud-mobile-v1.png",
+      "width": 853,
+      "height": 1844,
+      "bytes": 1856512,
+      "sha256": "84bb00ef8767ecf025184060c0c5c13bea05825d07252ceca62dc11ab1ca460e",
+      "kind": "generated-concept-only"
+    },
+    {
+      "file": "artwork/hud-mobile-v2.png",
+      "width": 853,
+      "height": 1844,
+      "bytes": 1848496,
+      "sha256": "e58af7c62d920e5ab58c7c125caaae5b6561a07780d55034f50bf6916557c164",
+      "kind": "generated-concept-only"
+    },
+    {
+      "file": "baseline/crowd-full-build-1440.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 859812,
+      "sha256": "bb6f37a9f53304d3f4cb750b645c37cab6b2042aca3c9e33b675d54cf4fe3e65",
+      "kind": "renderer-fixture-baseline"
+    },
+    {
+      "file": "baseline/crowd-full-build-320.png",
+      "width": 320,
+      "height": 740,
+      "bytes": 200788,
+      "sha256": "9b26a0b1ddb4bf17c612515d3984836c73553f004d6944c352bb55b514bc8cc5",
+      "kind": "renderer-fixture-baseline"
+    },
+    {
+      "file": "baseline/crowd-full-build-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 273474,
+      "sha256": "2c366298c681c709696a7b302f8f6ce54c8715bd9c549a6f55a79816858789fe",
+      "kind": "renderer-fixture-baseline"
+    },
+    {
+      "file": "baseline/crowd-full-build-844.png",
+      "width": 844,
+      "height": 390,
+      "bytes": 285129,
+      "sha256": "641cae3bcc1c113d1e020f0384b34bfce04818970798cad020ff7e258ca5613f",
+      "kind": "renderer-fixture-baseline"
+    },
+    {
+      "file": "baseline/feedback-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 275078,
+      "sha256": "b02dfdae6bff541073c44a30469d1f3734c98fc37e70f54e06161c0c683dc258",
+      "kind": "renderer-fixture-baseline"
+    }
+  ]
+}
