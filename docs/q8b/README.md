@@ -34,7 +34,7 @@ Clear nhanh nhận sớm10–25s tại mỗi mốc, Boss tối đa20s. Giữ kil
 
 Baseline Elite46.02–47.92s,452–458kills cuối run. Q8B Elite125s, sáu Draft20/50/85/120/155/190s cho các lượt sống; Ranged chỉ tới Draft5. Clear liên tục không bỏ qua run, nhưng có rủi ro chết thật.
 
-**Giới hạn quan trọng:** Victory mục tiêu4:30–5:00 **chưa được chứng minh đạt**. Bot hiệu quả giết Boss chỉ5–13s, thắng3:46–3:53 dù arrival đúng3:40. Không thể bảo đảm duration này cho build mạnh với Boss tới≤4:00, giữ nguyên Boss/build và Victory lập tức. Đã hỏi user về mục tiêu mềm so với khóa thời gian Victory; chưa nhận phản hồi nên giữ semantics Victory đã duyệt, không tự thêm chờ giả. Cần user playtest/đánh giá giới hạn này trước acceptance; không tự accepted Q8B hoặc sửa Q8C để bù.
+**Giới hạn quan trọng:** Victory mục tiêu4:30–5:00 **chưa được chứng minh đạt**. Bot hiệu quả giết Boss chỉ5–13s, thắng3:46–3:53 dù arrival đúng3:40. Không thể bảo đảm duration này cho build mạnh với Boss tới≤4:00, giữ nguyên Boss/build và Victory lập tức. User đã xác nhận “Giữ mục tiêu mềm; cho phép thắng sớm” ngày2026-10-26. Victory4:30–5:00 là mục tiêu mềm; giữ Victory ngay khi hạ Boss trước deadline, không khóa thời gian hoặc thêm chờ sau Boss chết. Lượt bot thắng sớm được phép theo quyết định này. Vẫn cần user playtest Q8B; quyết định mục tiêu mềm không là acceptance và không mở Q8C.
 
 ## Validation
 
@@ -48,7 +48,7 @@ Baseline Elite46.02–47.92s,452–458kills cuối run. Q8B Elite125s, sáu Draf
 URL và deploy được ghi bên dưới. Chơi run mới, không dùng fixture cấp sẵn `playtest=tank/chain`. Có thể dùng `playtest=route-tank`, `route-sustain`, `route-counter`, `route-ranged`: chọn card hướng tương ứng ở Draft đầu, các lượt sau chọn gợi ý; route chỉ gợi offer, không cấp build/resources đầu run. Chọn Keep ở Curse2 nếu muốn chỉ một Curse.
 
 1. Thử ít nhất một run clear nhanh và một run thường: Draft xuất hiện trong các cửa sổ bảng; không bị dồn card liên tiếp dù đã dư kills. Sau Draft6 có thời gian sử dụng build trước Boss, combat tiếp tục có quái.
-2. Boss tới3:40–4:00 simulation, không trước3:40. Ghi thời điểm Boss, Victory/Defeat, kills cuối run và route. Mục tiêu Victory4:30–5:00 đang cần đánh giá thực tế; báo rõ nếu thắng trước4:30 hoặc quá khó tới Boss.
+2. Boss tới3:40–4:00 simulation, không trước3:40. Ghi thời điểm Boss, Victory/Defeat, kills cuối run và route. Victory4:30–5:00 là mục tiêu mềm đã được user xác nhận; thắng trước4:30 được phép, vẫn ghi thời điểm để đánh giá nhịp run. Báo nếu quá khó tới Boss.
 3. Pause giữa run rồi Resume: timer đứng khi pause; Draft đứng timer, chọn bằng thao tác mới sau1s. Replay từ Victory/Defeat về run mới sạch kills/build/timer. Desktop WASD/chuột + specials hiện có; mobile di chuyển+bắn/giữ-thả như trước.
 4. Báo route + thời điểm/số kills + bước/vấn đề, thiết bị/browser. Không yêu cầu duyệt lại artwork/Q8A; không có warning2s/Enraged Q8C ở bản này.
 
