@@ -1,0 +1,42 @@
+[
+  {
+    "route": "route-tank",
+    "phase2": true,
+    "combo": false,
+    "bossSlain": true,
+    "playerHp": 86,
+    "bossHp": 0,
+    "perfectDodges": 2,
+    "fixture": "Full build granted; isolated Boss with real HP/resources, no HP refresh. Bot uses threat predicate."
+  },
+  {
+    "route": "route-sustain",
+    "phase2": true,
+    "combo": true,
+    "bossSlain": true,
+    "playerHp": 100,
+    "bossHp": 0,
+    "perfectDodges": 2,
+    "fixture": "Full build granted; isolated Boss with real HP/resources, no HP refresh. Bot uses threat predicate."
+  },
+  {
+    "route": "route-counter",
+    "phase2": true,
+    "combo": true,
+    "bossSlain": true,
+    "playerHp": 92,
+    "bossHp": 0,
+    "perfectDodges": 2,
+    "fixture": "Full build granted; isolated Boss with real HP/resources, no HP refresh. Bot uses threat predicate."
+  },
+  {
+    "route": "route-ranged",
+    "phase2": true,
+    "combo": true,
+    "bossSlain": true,
+    "playerHp": 59,
+    "bossHp": 0,
+    "perfectDodges": 3,
+    "fixture": "Full build granted; isolated Boss with real HP/resources, no HP refresh. Bot uses threat predicate."
+  }
+]

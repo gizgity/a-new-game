@@ -40,7 +40,7 @@ test('draft and hitstop freeze adaptation and spawn clocks; Boss keeps one-at-a-
  r.draft=[{id:'aegisCore',role:'wildcard'}];const before=JSON.stringify(r);
  for(let i=0;i<60;i++)r.step(idle,1/60);
  assert.equal(JSON.stringify(r),before);r.draft=[];w.hitstop=0;
- r.ticks=14399;tick(w,r);assert.equal(r.bossDue,true);
+ r.ticks=14399;tick(w,r);for(let i=0;i<120;i++)tick(w,r);assert.equal(r.bossDue,true);
  for(let i=0;i<6*60;i++){tick(w,r);assert.ok(w.enemies.length<=7);}
 });
 

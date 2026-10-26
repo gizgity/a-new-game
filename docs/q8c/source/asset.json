@@ -1,0 +1,9 @@
+{
+  "source": "enraged-v1.png",
+  "sha256": "b367bcca1f59455b20a0ce50d645c26a8df214ca1e622e2facdacf73c246fbda",
+  "tool": "OpenAI ImageGen",
+  "rights": "Generated for this project; Q7C reference from repository",
+  "processing": "First front-facing production transform pose, alpha trim, downsample to 76px, 192px box with Q7C foot pivot134. Other generated views unused. Not a concept crop.",
+  "runtime": "public/assets/actors/enraged-transform.png",
+  "approval": "AWAITING USER PLAYTEST APPROVAL; task authorizes Q8C implementation/deploy, no separate visual acceptance claimed"
+}

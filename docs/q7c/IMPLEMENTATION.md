@@ -1,3 +1,5 @@
+> Q8C hiện hành: [Boss warning/Enraged/combo](../q8c/README.md). Boss spawn tức thì và phase2 HP-predicate/timing cũ trong evidence dưới đây là lịch sử, được Q8C thay thế. Q8A dynamic spawn/Q8B milestone floors và approval giữ nguyên; warning thêm2s simulation trước spawn, không đổi threshold.
+
 > Q8B: thông số milestones OR cũ trong tài liệu này là **SUPERSEDED**; giữ làm lịch sử/evidence/approval. Quy tắc hiện hành: [GAME_BRIEF](../../GAME_BRIEF.md#run-tối-đa-5-phút), [audit Q8B](../q8b/README.md). Spawn Q8A và approvals giữ nguyên.
 
 # Q7C — Character & Enemy Art runtime

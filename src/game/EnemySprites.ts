@@ -81,11 +81,12 @@ export class EnemySprites {
       const bob = moving ? -Math.abs(Math.sin(body.stride)) * 1.5
         : pose === 'idle' ? Math.sin(this.clock * 3.5 + enemy.id) * 0.45 : 0;
       const lean = pose === 'windup' ? -progress * 2 : 0;
-      body.image.setFrame(actorFrame(enemy.kind, enemy.angle, pattern))
+      body.image.setTexture(enemy.transform > 0 ? 'enraged-transform' : ACTOR_TEXTURE,
+        enemy.transform > 0 ? undefined : actorFrame(enemy.kind, enemy.angle, pattern))
         .setPosition(enemy.x + Math.cos(enemy.angle) * lean, enemy.y - height + bob + Math.sin(enemy.angle) * lean)
         .setScale(1, pose === 'windup' ? 1 - progress * 0.035 : 1)
         .setDepth(1.2 + enemy.y / 100000).setVisible(true).setAlpha(1);
-      if (enemy.flash > 0) body.image.setTintFill(0xffffff); else body.image.clearTint();
+      if (enemy.flash > 0) body.image.setTintFill(0xffffff); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
     }
   }
 }

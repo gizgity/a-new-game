@@ -1,3 +1,5 @@
+> Q8C hiện hành: [Boss warning/Enraged/combo](../q8c/README.md). Boss spawn tức thì và phase2 HP-predicate/timing cũ trong evidence dưới đây là lịch sử, được Q8C thay thế. Q8A dynamic spawn/Q8B milestone floors và approval giữ nguyên; warning thêm2s simulation trước spawn, không đổi threshold.
+
 # Q8B — Run Pacing & Milestone Balance
 
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “oki duyệt q8b” ngày2026-10-26 trên code/deployeb6fbbe (docs7b2d005), Pages40341327061 SUCCESS. Đây là approval trực tiếp, không suy ra từ tests/fixture. Baseline main `46a17ed`; Q8A code394341c ACCEPTED bởi user “q8a đạt yêu cầu”. Chỉ Q8B, không mở Q8C/D.

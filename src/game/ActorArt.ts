@@ -8,6 +8,7 @@ export const ART_SIZE = { player: 40, grunt: 36, archer: 38, volatile: 36, bulwa
 
 export function preloadActorArt(scene: Phaser.Scene): void {
   const base = `${import.meta.env.BASE_URL}assets/actors/`;
+  scene.load.image('enraged-transform', `${base}enraged-transform.png`);
   scene.load.atlas(ACTOR_TEXTURE, `${base}occult-actors.png`, `${base}occult-actors.json`);
 }
 

@@ -92,3 +92,7 @@ public/assets/
 - Sau khi hoàn thành milestone được giao, cập nhật progress, validation, context và NEXT ACTION rồi dừng; không tự chuyển sang milestone tiếp theo nếu user chưa yêu cầu, kể cả khi resume.
 - Khi cập nhật handoff, giữ nguyên project goal, task goal đã xác nhận và các quyết định quan trọng còn hiệu lực.
 - Không dựa duy nhất vào auto-trigger của skill; các quy tắc handoff này luôn có hiệu lực.
+
+## Checkpoint hiện hành — Q8C
+- User giao riêng Q8C ngày2026-10-26: triển khai Boss warning/Enraged/combo, test, commit/push/Pages và dừng **AWAITING USER PLAYTEST APPROVAL**. Q8A394341c/Q8Beb6fbbe ACCEPTED; không mở Q8D.
+- Scope này cho phép thêm pose Enraged ImageGen đồng bộ Q7C và tích hợp/deploy theo chỉ dẫn trực tiếp của user; không tự gán visual/playtest approval. Quy tắc gate artwork Q7C phía trên là lịch sử của overhaul, không chặn task Q8C đã giao. Spec hiện hành tại GAME_BRIEF.md và docs/q8c/README.md. Giữ1500HP/5:00/Q8A/Q8B/build/input/art đã duyệt ngoài đúng phần Boss được giao.

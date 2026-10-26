@@ -249,6 +249,14 @@ export class ArenaScene extends Phaser.Scene {
     const g = this.combatGraphics.clear();
     const world = this.combat;
     const ground = this.groundGraphics.clear();
+    if (this.run.bossWarning > 0) {
+      // Four border pulses only; never tint the screen or cover ground telegraphs.
+      const view = this.cameras.main.worldView;
+      const x = Math.max(0, view.x) + 4, y = Math.max(0, view.y) + 4;
+      const right = Math.min(ARENA.width, view.right) - 4, bottom = Math.min(ARENA.height, view.bottom) - 4;
+      const pulse = 0.25 + 0.75 * Math.sin((2 - this.run.bossWarning) * Math.PI * 2) ** 2;
+      ground.lineStyle(5, 0xff4056, pulse).strokeRect(x, y, right - x, bottom - y);
+    }
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     this.enemySprites.render(world);

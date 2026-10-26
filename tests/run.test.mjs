@@ -8,6 +8,7 @@ import { draftSignals } from '../.test-build/DraftSignals.js';
 const offer=(pool,owned=[])=>buildDraft({kind:pool===CURSES?'curse':'mutation',owned,curses:[],pool,signals:{...draftSignals(),rangedDamage:400,rangedHits:20},maxHp:100,previousOffers:[],choices:[]},new DraftRandom(1)).options;
 import { DRAFT_MILESTONES, ENCOUNTERS } from '../.test-build/config/balance.js';
 const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false};
+function finishWarning(world,run){for(let i=0;i<120;i++){world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);}}
 function setup() { const world=new CombatWorld({x:800,y:500,angle:0});const run=new RunDirector(world);run.start();return {world,run}; }
 
 test('draft choices are unique, adaptive and never offer an owned Mutation',()=>{
@@ -37,7 +38,7 @@ test('waves start with Grunt/Archer, are bounded and include Volatile later; tim
   if(world.enemies.some(e=>e.kind==='volatile'))sawVolatile=true;
   assert.ok(world.enemies.length <= (run.bossDue ? 7 : 210));
  }
- assert.ok(sawVolatile);assert.equal(run.bossDue,true);assert.equal(run.expired,true);
+ assert.ok(sawVolatile);finishWarning(world,run);assert.equal(run.bossDue,true);assert.equal(run.expired,true);
  const tick=run.ticks;run.step(idle,1/60);assert.equal(run.ticks,tick);
 });
 test('Curse benefits have real costs and build effects reset per run',()=>{
@@ -52,7 +53,9 @@ test('Elite and Boss spawn once; boss arrival clears excess common enemies and h
  run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='bulwark').length,1);
  run.draftIndex=DRAFT_MILESTONES.length;run.ticks=14399;
  world.projectiles.push({x:100,y:100,vx:0,vy:0,hostile:true,life:2});
- run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='boss').length,1);assert.equal(world.projectiles.length,0);
+ run.step(idle,1/60);assert.equal(run.bossWarning,2);
+ for(let i=0;i<120;i++){world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);}
+ assert.equal(world.enemies.filter(e=>e.kind==='boss').length,1);assert.equal(world.projectiles.length,0);
  run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind==='boss').length,1);
 });
 test('mutual kill in the same tick is Victory before deadline; at deadline it is Defeat',()=>{
@@ -128,7 +131,7 @@ test('new common enemies grow in health, damage and speed over time; survivors a
  }
  assert.equal(samples[0].maxHp,36);assert.ok(samples.at(-1).maxHp<=106);
  run.start();run.draftIndex=DRAFT_MILESTONES.length;run.ticks=14399;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
- const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
+ finishWarning(world,run);const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
 });
 
 test('each milestone triggers on kills after its floor or fallback time, once, including simultaneous thresholds',()=>{
@@ -153,7 +156,7 @@ test('crossing all thresholds resolves six choices before Boss; reset restores m
   run.step(idle,1/60);assert.equal(run.draftKind,kind);assert.ok(run.draft.length);
   assert.equal(run.bossDue,false);assert.equal(run.choose(0),true);
  }
- run.ticks=ENCOUNTERS.boss.minSeconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);assert.equal(run.bossDue,true);
+ run.ticks=ENCOUNTERS.boss.minSeconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraftKills,null);finishWarning(world,run);assert.equal(run.bossDue,true);
  run.start();assert.equal(world.kills,0);assert.equal(run.nextDraftKills,25);assert.equal(run.bossDue,false);
 });
 test('small and exhausted Mutation pools never produce invalid options or block the run',()=>{
@@ -163,7 +166,7 @@ test('small and exhausted Mutation pools never produce invalid options or block 
   assert.ok(choices.every(o=>MUTATIONS.includes(o.id)));
  }
  const {world,run}=setup();run.mutationPool=[];run.cursePool=[];world.kills=2000;world.enemies=[];
- run.ticks=ENCOUNTERS.boss.seconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);assert.equal(run.bossDue,true);
+ run.ticks=ENCOUNTERS.boss.seconds*60-1;run.step(idle,1/60);assert.equal(run.draft.length,0);assert.equal(run.nextDraft,null);finishWarning(world,run);assert.equal(run.bossDue,true);
 });
 test('second Curse allows Keep or adding slot2; both effects remain and HP is clamped',()=>{
  const {world,run}=setup();world.enemies=[];world.setCurses(['bloodPact']);run.draftIndex=4;run.ticks=DRAFT_MILESTONES[4].minSeconds*60-1;world.kills=300;
@@ -181,12 +184,12 @@ test('Elite and Boss use gated kills OR fallback time, once; no late Elite after
    world.kills=mode==='time'?0:target.kills-1;run.ticks=mode==='kills'?target.minSeconds*60-2:target.seconds*60-2;
    run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,0);
    if(mode!=='time')world.kills++;
-   run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
-   run.step(idle,1/60);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
+   run.step(idle,1/60);if(kind==='boss')finishWarning(world,run);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
+   run.step(idle,1/60);if(kind==='boss')finishWarning(world,run);assert.equal(world.enemies.filter(e=>e.kind===kind).length,1);
   }
  }
  const {world,run}=setup();run.draftIndex=DRAFT_MILESTONES.length;world.enemies=[];world.kills=ENCOUNTERS.boss.kills;run.ticks=ENCOUNTERS.boss.minSeconds*60-1;
- run.step(idle,1/60);assert.equal(run.bossDue,true);assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
+ run.step(idle,1/60);finishWarning(world,run);assert.equal(run.bossDue,true);assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
  run.ticks=13201;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
  assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
  assert.equal(world.enemies.find(e=>e.kind==='boss').maxHp,1500);
@@ -226,7 +229,7 @@ test('Q8B banked kills cannot bypass any floor, chain choices stay spaced, and r
   assert.equal(run.ticks,clock);assert.equal(run.choose(0),true);
  }
  run.ticks=ENCOUNTERS.boss.minSeconds*60-2;run.step(idle,1/60);assert.equal(run.bossDue,false);
- run.step(idle,1/60);assert.equal(run.bossDue,true);
+ run.step(idle,1/60);finishWarning(world,run);assert.equal(run.bossDue,true);
  run.start();assert.equal(run.ticks,0);assert.equal(run.bossDue,false);assert.equal(run.nextDraft,DRAFT_MILESTONES[0]);
  run.step(idle,1/60);assert.equal(run.draft.length,0);
 });

@@ -1,4 +1,4 @@
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, CHAIN, BARRIER, GRUNT_LEAP, BUILD } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD } from './config/balance.js';
 import { BuildEffects, chainRoot, type ChainRoot } from './BuildEffects.js';
 import { draftSignals } from './DraftSignals.js';
 import { Barrier } from './barrier.js';
@@ -26,6 +26,7 @@ export interface Enemy {
   hp: number; maxHp: number; damageScale: number; speedScale: number; cooldown: number; windup: number;
   fracture: number; echoHaste: number; slow: number;
   leapCooldown: number; leapFromX: number; leapFromY: number;
+  enraged: boolean; transform: number; followup: boolean; comboFinish: boolean;
   recovery: number; active: number; windupDuration: number; attackAction: number;
   angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
 }
@@ -229,7 +230,7 @@ export class CombatWorld {
       hp: 0, maxHp: maxHp ?? Math.round(ENEMY_HP[kind] * (1 + growth * (ENEMY_GROWTH.health - 1))),
       damageScale: 1 + growth * (ENEMY_GROWTH.damage - 1), speedScale: 1 + growth * (ENEMY_GROWTH.speed - 1),
       fracture: 0, echoHaste: 0, slow: 0, leapCooldown: GRUNT_LEAP.initialDelay + id % 5 * GRUNT_LEAP.initialSpread, leapFromX: 0, leapFromY: 0,
-      cooldown: 0.8 + (id % 4) * 0.2, windup: 0, recovery: 0, active: 0, windupDuration: 0, attackAction: 0, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
+      cooldown: 0.8 + (id % 4) * 0.2, windup: 0, recovery: 0, active: 0, windupDuration: 0, attackAction: 0, enraged: false, transform: 0, followup: false, comboFinish: false, angle: 0, stagger: 0, flash: 0, rupture: 0, action: 0, targetX: 0, targetY: 0,
     };
     clampPosition(enemy);
     // Nếu player sát góc, chọn điểm phía đối diện để tránh spawn trên người.
@@ -700,11 +701,30 @@ export class CombatWorld {
 
   private stepBoss(boss: Enemy, dt: number): void {
     boss.flash = Math.max(0, boss.flash - dt);
+    if (!boss.enraged && boss.hp <= boss.maxHp / 2) {
+      boss.enraged = true;
+      boss.transform = BOSS_PHASE.transform;
+      boss.windup = boss.active = boss.recovery = 0;
+      boss.followup = boss.comboFinish = false;
+      boss.cooldown = BOSS_ATTACK.enragedCooldown;
+    }
+    if (boss.transform > 0) {
+      boss.transform = Math.max(0, boss.transform - dt);
+      return; // Vulnerable, no heal, no attacks or movement during transformation.
+    }
     boss.active = Math.max(0, boss.active - dt);
     if (boss.recovery > 0) {
       boss.recovery = Math.max(0, boss.recovery - dt);
       boss.cooldown = Math.max(0, boss.cooldown - dt);
       return;
+    }
+    if (boss.followup && boss.recovery === 0) {
+      boss.followup = false;
+      boss.comboFinish = true;
+      boss.active = 0;
+      boss.attackAction = 0;
+      boss.angle = Math.atan2(this.player.y - boss.y, this.player.x - boss.x);
+      boss.windup = boss.windupDuration = BOSS_PHASE.followupWindup;
     }
     if (boss.windup > 0) {
       boss.windup = Math.max(0, boss.windup - dt);
@@ -723,8 +743,15 @@ export class CombatWorld {
           }
         }
         boss.action = (boss.action + 1) % 3;
-        boss.cooldown = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedCooldown : BOSS_ATTACK.cooldown;
-        boss.recovery = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedRecovery : BOSS_ATTACK.recovery;
+        boss.cooldown = boss.enraged ? BOSS_ATTACK.enragedCooldown : BOSS_ATTACK.cooldown;
+        boss.recovery = boss.enraged ? BOSS_ATTACK.enragedRecovery : BOSS_ATTACK.recovery;
+        if (boss.enraged && boss.attackAction === 2) {
+          boss.followup = true;
+          boss.recovery = BOSS_PHASE.followupGap;
+        } else if (boss.comboFinish) {
+          boss.comboFinish = false;
+          boss.cooldown = boss.recovery = BOSS_PHASE.comboRecovery;
+        }
         boss.active = 0.22;
       }
       return;
@@ -733,12 +760,12 @@ export class CombatWorld {
     const dx = this.player.x - boss.x, dy = this.player.y - boss.y;
     boss.angle = Math.atan2(dy, dx);
     if (boss.cooldown === 0) {
-      boss.windup = boss.windupDuration = boss.hp < boss.maxHp / 2 ? BOSS_ATTACK.enragedWindup : BOSS_ATTACK.windup;
+      boss.windup = boss.windupDuration = boss.enraged ? BOSS_ATTACK.enragedWindup : BOSS_ATTACK.windup;
       boss.attackAction = boss.action === 0 && Math.hypot(dx, dy) > BOSS_ATTACK.range ? 2 : boss.action;
       this.lockLeap(boss, 80, BOSS_ATTACK.maxLeap);
     } else if (Math.hypot(dx, dy) > 155) {
-      boss.x += Math.cos(boss.angle) * BOSS_ATTACK.chaseSpeed * dt;
-      boss.y += Math.sin(boss.angle) * BOSS_ATTACK.chaseSpeed * dt;
+      boss.x += Math.cos(boss.angle) * BOSS_ATTACK.chaseSpeed * (boss.enraged ? BOSS_PHASE.speedMultiplier : 1) * dt;
+      boss.y += Math.sin(boss.angle) * BOSS_ATTACK.chaseSpeed * (boss.enraged ? BOSS_PHASE.speedMultiplier : 1) * dt;
       clampPosition(boss, 32);
     }
   }

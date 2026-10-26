@@ -1,4 +1,4 @@
-import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS } from './config/balance.js';
+import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS, BOSS_PHASE } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, type BuildId, type CurseId, type DraftOption, type MutationId } from './builds.js';
 
@@ -20,6 +20,7 @@ export class RunDirector {
   reason: 'slain' | 'deadline' | null = null;
   private eliteSpawned = false;
   bossDue = false;
+  bossWarning = 0;
   private draftIndex = 0;
   private spawnTicks = 0;
   private waveIndex = 0;
@@ -50,6 +51,7 @@ export class RunDirector {
       this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt',
         Math.floor(i / WAVES.packSize) * 2.39996 + (i % WAVES.packSize - 1) * WAVES.packSpread);
     }
+    this.bossWarning = 0;
     this.expired = this.bossDue = this.eliteSpawned = false;
     this.result = this.reason = null;
     this.draft = [];
@@ -74,7 +76,7 @@ export class RunDirector {
       this.result = 'defeat';
       this.reason = this.ticks >= 18000 ? 'deadline' : 'slain';
     }
-    if (this.result) { this.expired = this.ticks >= 18000; return; }
+    if (this.result) { this.bossWarning = 0; this.expired = this.ticks >= 18000; return; }
     // Resolve earned choices before an encounter, even when one chain crosses several milestones.
     while (this.nextDraft && this.reached(this.nextDraft)) {
       this.draftKind = this.nextDraft.kind;
@@ -86,12 +88,22 @@ export class RunDirector {
       this.draftIndex++;
       if (this.draft.length) { this.lastSignals = { ...this.world.draftSignals }; return; }
     }
+    if (this.bossWarning > 0) {
+      if (!frozen) this.bossWarning = Math.max(0, this.bossWarning - dt);
+      if (this.bossWarning < 1e-9) {
+        this.bossWarning = 0;
+        this.world.enemies = this.world.enemies.filter(enemy => enemy.kind === 'bulwark');
+        this.world.projectiles = [];
+        this.world.spawnEnemy('boss');
+        this.bossDue = true;
+      }
+      return; // No spawn debt or catch-up pack after arrival.
+    }
     if (!this.bossDue && this.reached(ENCOUNTERS.boss)) {
-      this.world.enemies = this.world.enemies.filter((enemy) => enemy.kind === 'bulwark');
-      this.world.projectiles = [];
-      this.world.spawnEnemy('boss');
-      this.bossDue = true;
-      this.eliteSpawned = true; // No late Elite joining an early Boss encounter.
+      this.bossWarning = BOSS_PHASE.arrival;
+      this.spawnTicks = 0;
+      this.eliteSpawned = true;
+      return;
     } else if (!this.bossDue && !this.eliteSpawned && this.reached(ENCOUNTERS.elite)) {
       this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
     }

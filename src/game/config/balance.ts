@@ -46,8 +46,8 @@ export const ENEMY_ATTACK = {
   volatile: { windup: 0.7, recovery: 0, cooldown: 1.5, range: 110, arc: Math.PI * 2 },
   bulwark: { windup: 0.65, recovery: 0.75, cooldown: 1.5, range: 100, arc: 1.7 },
 } as const;
-export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.46, recovery: 0.32,
-  enragedRecovery: 0.24, cooldown: 0.55, enragedCooldown: 0.38, range: 230, arc: 1.7, slamRadius: 110, leapFlight: 0.28, chaseSpeed: 300, maxLeap: 560, projectileSpeed: 430 } as const;
+export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.62, recovery: 0.32,
+  enragedRecovery: 0.32, cooldown: 0.55, enragedCooldown: 0.44, range: 230, arc: 1.7, slamRadius: 110, leapFlight: 0.28, chaseSpeed: 300, maxLeap: 560, projectileSpeed: 430 } as const;
 
 // Relay delay uses simulation time; damage/radii retain the M3 tuning.
 export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;
@@ -73,3 +73,6 @@ export const BUILD = {
   glassMaxHp: 75, glassMultiplier: 1.3, parasiticHeal: 2, parasiticCooldown: 2, huntedCooldown: 1, huntedSurge: 3, huntedBarrier: 2,
   healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
 } as const;
+
+// Q8C: only chase speed and cooldown scale; damage, reach, shots and windup stay fixed.
+export const BOSS_PHASE = { arrival: 2, transform: 0.8, speedMultiplier: 1.15, followupGap: 0.25, followupWindup: 0.62, comboRecovery: 0.75 } as const;

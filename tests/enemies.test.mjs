@@ -41,11 +41,11 @@ test('Bulwark reaches 100px, Perfect cue uses same geometry, recovery opens armo
   w.step(idle, dt); assert.ok(Math.abs(hp - e.hp - 11) < 1e-8);
 });
 
-test('Boss keeps locked active pattern and target through stationary recovery; phase accelerates next windup', () => {
+test('Boss keeps locked active pattern and target through stationary recovery; phase one recovery stays locked', () => {
   for (const action of [0, 1, 2]) {
     const { w, e } = setup('boss', 180); e.action = action;
     w.step(idle, dt); const { x, y, targetX, targetY, angle } = e;
-    w.player.y += 180; e.hp = e.maxHp / 2 - 1;
+    w.player.y += 180;
     assert.equal(e.windupDuration, BOSS_ATTACK.windup);
     step(w, BOSS_ATTACK.windup + dt);
     assert.equal(e.attackAction, action); assert.equal(e.action, (action + 1) % 3);
@@ -76,7 +76,7 @@ test('Boss cadence is faster in both phases while retaining a readable windup an
  assert.ok(BOSS_ATTACK.windup+BOSS_ATTACK.cooldown < .95+1.15);
  assert.ok(BOSS_ATTACK.enragedWindup+BOSS_ATTACK.enragedCooldown < .75+.8);
  for(const enraged of [false,true]) {
-  const {w,e}=setup('boss',180);if(enraged)e.hp=e.maxHp*.4;
+  const {w,e}=setup('boss',180);if(enraged){e.hp=e.maxHp*.4;e.enraged=true;}
   w.step(idle,dt);assert.equal(e.windupDuration,enraged?BOSS_ATTACK.enragedWindup:BOSS_ATTACK.windup);
   assert.ok(e.windupDuration>.16);w.player.y+=300;
   step(w,e.windupDuration+dt);assert.ok(e.recovery>0);assert.equal(e.action,1);
