@@ -4,6 +4,8 @@
 
 ## Review hiện hành
 
+- Feedback mới: user thấy arena/nhân vật lệchgóc và yêu cầu research. [Kết quả/nguồn/đánh đổi](VIEW_RESEARCH.md): đề xuất stylized top-down¾nhìnxuốngcao, giữfloor/camera/gameplay; không bắt buộc overhead90° hoặc chuyểnisometric. Chưa chốt góc/duyệt bộ hiện tại, chưa sinh artwork revision từ research.
+
 - [Board tương tác](index.html): grayscale/1×–2×,6silhouettes,7states,arena mobile/landscape/tablet/desktop,Boss3đòn và Playeractions. Source riêng/ảnh compositing, không renderer Q7C runtime.
 - [Six-character state preview](evidence/states-v1.png), [lineup](evidence/lineup-v1.png), [Boss3patterns](artwork/chain-warden-patterns-v1.png), [PlayeractionsV2](artwork/player-actions-v2.png). Board/state preview V1 hiện dùng PlayerV2; tên ảnh evidence là version của board, không version Player.
 - [Mobile có HUD accepted](evidence/phone-concept-390.png) / [grayscale](evidence/phone-grayscale-390.png); [arena390](evidence/crowd-390.png), [320](evidence/crowd-320.png), [844landscape](evidence/crowd-844.png), [tablet768](evidence/crowd-768.png), [desktop1440](evidence/crowd-1440.png), [Boss/Elite390](evidence/boss-390.png). Canvas/zoom lấy layout Q7B thật:372×356/.775,302×252/.75,490×254/.75,750×536/1.3,1374×542/.85875. 320 viewport là320×740, không844. Desktop floor coverage guard chi phối zoom.
