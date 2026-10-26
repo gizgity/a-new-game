@@ -4,7 +4,7 @@
 
 ## Bản sửa hiện hành theo playtest
 
-User báo HUD che arena và giao sửa controls/auto aim/draft lock. **Xem [REVISION.md](REVISION.md) và [board hiện hành](index.html)** cho code/checks/ảnh/cách thử mới. Phần dưới là snapshot code6664ee0 (trước phản hồi); các câu “canvas/control geometry/input/core giữ nguyên” và checklist6nút giữ vị trí chỉ đúng snapshot đó, đã được ngoại lệ user supersede. Evidence/đo performance cũ không được dùng chứng nhận revision.
+User báo HUD che arena và giao sửa controls/auto aim/draft lock. **Hiện hành: [HUD_V3.md](HUD_V3.md), snapshot vòng trước [REVISION.md](REVISION.md), và [board hiện hành](index.html)** cho code/checks/ảnh/cách thử mới. Phần dưới là snapshot code6664ee0 (trước phản hồi); các câu “canvas/control geometry/input/core giữ nguyên” và checklist6nút giữ vị trí chỉ đúng snapshot đó, đã được ngoại lệ user supersede. Evidence/đo performance cũ không được dùng chứng nhận revision.
 
 ## Snapshot implementation6664ee0 — lịch sử
 

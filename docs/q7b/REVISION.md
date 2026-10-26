@@ -2,7 +2,11 @@
 
 **AWAITING USER PLAYTEST APPROVAL.** User báo thanh HUD che arena trên điện thoại, yêu cầu kiểm desktop/góc; giao thêm joystick vùng lớn, combat tỏa tròn quanh vị trí ngón cái Chém/Bắn, mobile auto aim quái gần nhất và draft chờ1giây. Đây là ngoại lệ scope do user giao trực tiếp sau bản6664ee0/docs8a469c0, không phải acceptance runtime Q7B hoặc Q1. Q2–Q7A giữ accepted; không Q7C.
 
-## Thay đổi hiện hành
+## Hiện hành / snapshot
+
+Vòng này là snapshot runtimef9d7930. User nay giao correction frame/art và icon-only/groupedcontrols; **xem [HUD_V3.md](HUD_V3.md)**. Các kích thước180×240/controls252px và câu “không thay SVG” bên dưới chỉ đúng snapshotf9d7930, đã superseded; evidence cũ giữ nguyên.
+
+## Thay đổi tại f9d7930
 
 - HUD nằm ngoài canvas: dải trên134px ởportrait,96px desktop,78px landscape ngắn. Desktop resources/milestones có dải96px dưới. Phone dọc controls252px dưới; landscape controls ở2dải bên (canvas chừa172px trái,164px phải). Player/đạn/telegraph không thể nằm phía sau các card HUD. Đổi kích thước viewport/camera fit; arena1600×1000, movement/collision bounds và follow không đổi. Zoom tối thiểu phủ floor khi canvas rộng/ngắn.
 - Joystick nhận toàn vùng trái, điểm chạm mới làm gốc, kéo8px để bắt đầu; không phải tìm núm giữa. Pad102×240 ở320,172×240 ở390; so pad132×132/156×132 trước, diện tích tăng. Capture vẫn nhận ngoài vùng, thả/cancel dừng. Landscape pad156px rộng, cao phần còn lại của arena.

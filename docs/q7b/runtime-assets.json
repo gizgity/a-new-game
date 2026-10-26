@@ -2,11 +2,54 @@
   "name": "Q7B original HUD glyphs",
   "file": "public/assets/ui/hud-icons.svg",
   "source": "Hand-authored SVG symbol sheet in this repository, based on approved visual language; no third-party asset or generated screenshot imported",
-  "version": 1,
-  "bytes": 3591,
-  "sha256": "376dd6c4a74e5affeb75d7b84a800098dd006e306539670add77cd08fa9d112b",
+  "version": 2,
+  "bytes": 4139,
+  "sha256": "d134e0b3610326344b392be0e628ce98dcaeba905f31f14182f369471a2a61f8",
   "viewBox": "0 0 24 24",
   "usage": "Same-origin SVG use references for health/shield/resources/4Mutation/2Curse/details",
   "rights": "Original project artwork; no third-party reference/paid API/runtime service or external icon package",
-  "floorUnchanged": "71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a"
+  "floorUnchanged": "71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a",
+  "revision": "Q7B HUD frame / icon-only paired attacks, user reference correction after f9d7930",
+  "additionalAssets": [
+    {
+      "file": "public/assets/ui/hud-frame.svg",
+      "version": 1,
+      "bytes": 1329,
+      "sha256": "a2d94ea64e82a822fc03cf5b8ee841f22019680a6917424bcff0002b1065850a",
+      "usage": "Nine-slice outer obsidian/bevel/broken corner frame",
+      "source": "Original hand-authored SVG in repository; no third-party artwork or reference pixels extracted"
+    },
+    {
+      "file": "public/assets/ui/hud-inset.svg",
+      "version": 1,
+      "bytes": 478,
+      "sha256": "1e34988f0918df5d451f83a1edc3818a09458e905ab33c18d116bb96c72203e4",
+      "usage": "Nine-slice build summary inset frame",
+      "source": "Original hand-authored SVG in repository; no third-party artwork or reference pixels extracted"
+    },
+    {
+      "file": "public/assets/ui/control-ring.svg",
+      "version": 1,
+      "bytes": 432,
+      "sha256": "166e4fcbb15bbbf7336f00979e455cbd24fae1077f8645d2a22e256972424683",
+      "usage": "Static ring mask for basic attacks and Dash",
+      "source": "Original hand-authored SVG in repository; no third-party artwork or reference pixels extracted"
+    },
+    {
+      "file": "public/assets/ui/control-power.svg",
+      "version": 1,
+      "bytes": 436,
+      "sha256": "99dc999699b616c7a841f95b7ab80aaf3f26ac71add6789d8ec3c9e68a3ee50f",
+      "usage": "Static fractured octagon mask for power attacks and Surge",
+      "source": "Original hand-authored SVG in repository; no third-party artwork or reference pixels extracted"
+    },
+    {
+      "file": "public/assets/ui/attack-pair.svg",
+      "version": 1,
+      "bytes": 427,
+      "sha256": "85e298c79822e12a4407ed66f42a7342582cef0443c6e5ab7740ab42305bbdd2",
+      "usage": "Static bridge grouping basic/power attack pair; pointer-events none",
+      "source": "Original hand-authored SVG in repository; no third-party artwork or reference pixels extracted"
+    }
+  ]
 }

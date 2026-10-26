@@ -2,6 +2,8 @@ import type { CombatAction, CombatInput } from '../game/combat';
 import { t } from '../i18n';
 import type { ResourceReadouts } from './CombatHUD';
 
+const controlIcon = (id: string) => `<svg class="control-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="${import.meta.env.BASE_URL}assets/ui/hud-icons.svg#${id}"></use></svg>`;
+
 type Action = CombatAction;
 interface Contact { element: HTMLElement; action: Action | 'move'; x: number; y: number; angle: number | null }
 
@@ -25,19 +27,19 @@ export class TouchControls {
     this.surface = root.closest<HTMLElement>('.arena-shell')!;
     root.innerHTML = `
       <button id="move-stick" class="touch-stick" type="button" aria-label="${t('touchMove')}">
-        <span class="stick-base" aria-hidden="true"><span class="stick-knob">◇</span></span><span class="stick-label" data-i18n="move"></span>
+        <span class="stick-base" aria-hidden="true"><span class="stick-knob">◇</span></span>
       </button>
       <div class="touch-actions">
-        <div class="touch-utility">
-          <button type="button" class="touch-button" data-action="heavy"><span data-resource="heavy">2/2</span><span data-i18n="heavy"></span></button>
-          <button type="button" class="touch-button" data-action="charged"><span data-resource="charged">0</span><span data-i18n="touchCharged"></span></button>
-          <button type="button" class="touch-button" data-action="ultimate"><span data-resource="surge">0%</span><span data-i18n="surge"></span></button>
+        <div class="touch-pair touch-ranged" role="group" data-control-group="ranged">
+          <button type="button" class="touch-button power-button" data-action="charged">${controlIcon('shoot-heavy')}<span data-resource="charged">0/3</span></button>
+          <button type="button" class="touch-button aim-button shoot-button" data-action="shoot">${controlIcon('shoot')}</button>
         </div>
-        <div class="touch-primary">
-          <button type="button" class="touch-button dash-button" data-action="dash"><span data-resource="dash">2</span><span data-i18n="dash"></span></button>
-          <button type="button" class="touch-button aim-button melee-button" data-action="melee"><span aria-hidden="true">╱</span><span data-i18n="melee"></span></button>
-          <button type="button" class="touch-button aim-button shoot-button" data-action="shoot"><span aria-hidden="true">⊕</span><span data-i18n="shoot"></span></button>
+        <div class="touch-pair touch-melee" role="group" data-control-group="melee">
+          <button type="button" class="touch-button power-button" data-action="heavy">${controlIcon('melee-heavy')}<span data-resource="heavy">2/2</span></button>
+          <button type="button" class="touch-button aim-button melee-button" data-action="melee">${controlIcon('melee')}</button>
         </div>
+        <button type="button" class="touch-button utility-button dash-button" data-action="dash">${controlIcon('dash')}<span data-resource="dash">2/2</span></button>
+        <button type="button" class="touch-button utility-button power-button" data-action="ultimate">${controlIcon('surge')}<span data-resource="surge">0%</span></button>
       </div>`;
     this.bind(root.querySelector<HTMLElement>('#move-stick')!, 'move');
     root.querySelectorAll<HTMLElement>('[data-action]').forEach(element => {
@@ -112,7 +114,9 @@ export class TouchControls {
       const button = label.parentElement!;
       let note = button.querySelector<HTMLElement>('.resource-note');
       if (!note) { note = document.createElement('small'); note.className = 'resource-note'; label.insertAdjacentElement('afterend', note); }
-      if (note.textContent !== data.note) note.textContent = data.note;
+      if (note.textContent !== data.touchNote) note.textContent = data.touchNote;
+      note.hidden = !data.touchNote;
+      button.setAttribute('aria-description', `${data.value} · ${data.note}`);
       button.classList.toggle('unavailable', !data.available);
       button.classList.toggle('proc-active', data.proc);
       button.dataset.state = data.available ? 'ready' : 'empty';
@@ -121,6 +125,13 @@ export class TouchControls {
   }
 
   translate(): void {
+    this.root.querySelector('[data-control-group=melee]')!.setAttribute('aria-label', t('touchMeleeGroup'));
+    this.root.querySelector('[data-control-group=ranged]')!.setAttribute('aria-label', t('touchRangedGroup'));
+    this.root.querySelector('[data-action=dash]')!.setAttribute('aria-label', t('dash'));
+    this.root.querySelector('[data-action=ultimate]')!.setAttribute('aria-label', t('surge'));
+    for (const [action, label] of [['melee', 'melee'], ['shoot', 'shoot'], ['heavy', 'touchHeavy'], ['charged', 'touchCharged'], ['dash', 'dash'], ['ultimate', 'surge']] as const) {
+      this.root.querySelector<HTMLButtonElement>(`[data-action=${action}]`)!.title = t(label);
+    }
     this.root.querySelector('#move-stick')!.setAttribute('aria-label', t('touchMove'));
     this.root.querySelector('[data-action="melee"]')!.setAttribute('aria-label', t('touchMelee'));
     this.root.querySelector('[data-action="shoot"]')!.setAttribute('aria-label', t('touchShoot'));

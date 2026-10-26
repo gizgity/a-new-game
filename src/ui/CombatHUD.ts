@@ -8,11 +8,11 @@ import { HUDFeedback } from './HUDFeedback';
 const icon = (id: string, className = 'hud-icon') => `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true"><use href="${import.meta.env.BASE_URL}assets/ui/hud-icons.svg#${id}"></use></svg>`;
 const seconds = (n: number) => t('secondsShort').replace('{n}', Math.max(0, n).toFixed(1));
 const time = (n: number) => `${Math.floor(n / 60)}:${String(n % 60).padStart(2, '0')}`;
-export interface ResourceReadout { value: string; note: string; available: boolean; fill: number; proc: boolean }
+export interface ResourceReadout { value: string; note: string; touchNote: string; available: boolean; fill: number; proc: boolean }
 export type ResourceReadouts = Record<'dash' | 'heavy' | 'charged' | 'surge', ResourceReadout>;
 
 export function combatHUDMarkup(): string {
-  return `<div class="combat-hud" id="combat-hud">
+  return `<div class="combat-hud" id="combat-hud"><div class="hud-frame" aria-hidden="true"></div>
     <div class="vitals-card">
       <div class="health">${icon('heart')}<span data-i18n="health"></span><strong id="hp-value"></strong><progress id="hp" aria-label="${t('health')}" max="100" value="100"></progress></div>
       <div class="barrier-state">${icon('shield')}<span data-i18n="barrier"></span><strong id="barrier-value"></strong><progress id="barrier" aria-label="${t('barrier')}" max="30" value="0"></progress></div>
@@ -91,10 +91,10 @@ export class CombatHUD {
     this.node('barrier').setAttribute('aria-label', t('barrier'));
     const recover = (n: number) => t('hudRecover').replace('{n}', seconds(n));
     const resources: ResourceReadouts = {
-      dash: { value: `${w.dashCharges}/${COMBAT.dashCharges}`, note: w.dashCharges < COMBAT.dashCharges ? recover(w.rechargeDuration - w.dashRecharge) : t('hudAvailable'), available: w.dashCharges > 0, fill: (w.dashCharges + w.dashRecharge / w.rechargeDuration) / COMBAT.dashCharges, proc: false },
-      heavy: { value: `${w.heavyCharges}/${HEAVY.charges}`, note: w.heavyCharges < HEAVY.charges ? recover(HEAVY.recharge - w.heavyRecharge) : t('hudAvailable'), available: w.heavyCharges > 0, fill: (w.heavyCharges + w.heavyRecharge / HEAVY.recharge) / HEAVY.charges, proc: w.build.reversal > 0 },
-      charged: { value: `${w.chargedShots}/3`, note: t('hudPoints').replace('{n}', String(w.chargePoints)), available: w.chargedShots > 0, fill: w.chargedShots / 3, proc: w.build.staticCharge > 0 },
-      surge: { value: `${Math.floor(w.surge)}%`, note: t(w.surge >= 100 ? 'hudAvailable' : 'hudCharging'), available: w.surge >= 100, fill: w.surge / 100, proc: false },
+      dash: { value: `${w.dashCharges}/${COMBAT.dashCharges}`, note: w.dashCharges < COMBAT.dashCharges ? recover(w.rechargeDuration - w.dashRecharge) : t('hudAvailable'), touchNote: w.dashCharges < COMBAT.dashCharges ? seconds(w.rechargeDuration - w.dashRecharge) : '', available: w.dashCharges > 0, fill: (w.dashCharges + w.dashRecharge / w.rechargeDuration) / COMBAT.dashCharges, proc: false },
+      heavy: { value: `${w.heavyCharges}/${HEAVY.charges}`, note: w.heavyCharges < HEAVY.charges ? recover(HEAVY.recharge - w.heavyRecharge) : t('hudAvailable'), touchNote: w.heavyCharges < HEAVY.charges ? seconds(HEAVY.recharge - w.heavyRecharge) : '', available: w.heavyCharges > 0, fill: (w.heavyCharges + w.heavyRecharge / HEAVY.recharge) / HEAVY.charges, proc: w.build.reversal > 0 },
+      charged: { value: `${w.chargedShots}/3`, note: t('hudPoints').replace('{n}', String(w.chargePoints)), touchNote: `${w.chargePoints}/3`, available: w.chargedShots > 0, fill: w.chargedShots / 3, proc: w.build.staticCharge > 0 },
+      surge: { value: `${Math.floor(w.surge)}%`, note: t(w.surge >= 100 ? 'hudAvailable' : 'hudCharging'), touchNote: '', available: w.surge >= 100, fill: w.surge / 100, proc: false },
     };
     for (const id of ['dash', 'heavy', 'charged', 'surge'] as const) {
       const data = resources[id], card = this.root.querySelector<HTMLElement>(`[data-hud-resource="${id}"]`)!;

@@ -1,0 +1,505 @@
+{
+  "baseline": "6a851a0 (runtime f9d7930)",
+  "source": "local dev real renderer; injected build/resource/enemy state",
+  "errors": [],
+  "requests": [],
+  "layouts": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "canvas": {
+        "x": 9,
+        "y": 195,
+        "w": 372,
+        "h": 356
+      },
+      "overlap": [],
+      "buttons": [
+        {
+          "id": "charged",
+          "x": 197,
+          "y": 621,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "shoot",
+          "x": 293,
+          "y": 605,
+          "w": 72,
+          "h": 72
+        },
+        {
+          "id": "heavy",
+          "x": 189,
+          "y": 693,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "melee",
+          "x": 293,
+          "y": 689,
+          "w": 76,
+          "h": 76
+        },
+        {
+          "id": "dash",
+          "x": 217,
+          "y": 765,
+          "w": 60,
+          "h": 60
+        },
+        {
+          "id": "ultimate",
+          "x": 193,
+          "y": 557,
+          "w": 56,
+          "h": 56
+        }
+      ],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 9,
+        "y": 61,
+        "w": 372,
+        "h": 134
+      },
+      "move": {
+        "x": 17,
+        "y": 557,
+        "w": 168,
+        "h": 272
+      }
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "canvas": {
+        "x": 9,
+        "y": 195,
+        "w": 302,
+        "h": 252
+      },
+      "overlap": [],
+      "buttons": [
+        {
+          "id": "charged",
+          "x": 127,
+          "y": 517,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "shoot",
+          "x": 223,
+          "y": 501,
+          "w": 72,
+          "h": 72
+        },
+        {
+          "id": "heavy",
+          "x": 119,
+          "y": 589,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "melee",
+          "x": 223,
+          "y": 585,
+          "w": 76,
+          "h": 76
+        },
+        {
+          "id": "dash",
+          "x": 147,
+          "y": 661,
+          "w": 60,
+          "h": 60
+        },
+        {
+          "id": "ultimate",
+          "x": 123,
+          "y": 453,
+          "w": 56,
+          "h": 56
+        }
+      ],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 9,
+        "y": 61,
+        "w": 302,
+        "h": 134
+      },
+      "move": {
+        "x": 17,
+        "y": 453,
+        "w": 98,
+        "h": 272
+      }
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "canvas": {
+        "x": 181,
+        "y": 127,
+        "w": 313,
+        "h": 239
+      },
+      "overlap": [],
+      "buttons": [
+        {
+          "id": "charged",
+          "x": 505.67999267578125,
+          "y": 189.44000244140625,
+          "w": 52.47998046875,
+          "h": 52.480010986328125
+        },
+        {
+          "id": "shoot",
+          "x": 584.4000244140625,
+          "y": 176.32000732421875,
+          "w": 59.03997802734375,
+          "h": 59.040008544921875
+        },
+        {
+          "id": "heavy",
+          "x": 499.1199951171875,
+          "y": 248.48001098632812,
+          "w": 52.47998046875,
+          "h": 52.480010986328125
+        },
+        {
+          "id": "melee",
+          "x": 584.4000244140625,
+          "y": 245.20001220703125,
+          "w": 62.3199462890625,
+          "h": 62.32000732421875
+        },
+        {
+          "id": "dash",
+          "x": 522.0799560546875,
+          "y": 307.52001953125,
+          "w": 49.20001220703125,
+          "h": 49.199981689453125
+        },
+        {
+          "id": "ultimate",
+          "x": 502.3999938964844,
+          "y": 136.9600067138672,
+          "w": 45.920013427734375,
+          "h": 45.91999816894531
+        }
+      ],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 9,
+        "y": 49,
+        "w": 649,
+        "h": 78
+      },
+      "move": {
+        "x": 17,
+        "y": 121,
+        "w": 156,
+        "h": 239
+      }
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "canvas": {
+        "x": 181,
+        "y": 127,
+        "w": 490,
+        "h": 254
+      },
+      "overlap": [],
+      "buttons": [
+        {
+          "id": "charged",
+          "x": 682.6799926757812,
+          "y": 204.44000244140625,
+          "w": 52.47998046875,
+          "h": 52.480010986328125
+        },
+        {
+          "id": "shoot",
+          "x": 761.4000244140625,
+          "y": 191.32000732421875,
+          "w": 59.03997802734375,
+          "h": 59.040008544921875
+        },
+        {
+          "id": "heavy",
+          "x": 676.1199951171875,
+          "y": 263.4800109863281,
+          "w": 52.47998046875,
+          "h": 52.480010986328125
+        },
+        {
+          "id": "melee",
+          "x": 761.4000244140625,
+          "y": 260.20001220703125,
+          "w": 62.3199462890625,
+          "h": 62.32000732421875
+        },
+        {
+          "id": "dash",
+          "x": 699.0800170898438,
+          "y": 322.52001953125,
+          "w": 49.199951171875,
+          "h": 49.199981689453125
+        },
+        {
+          "id": "ultimate",
+          "x": 679.4000244140625,
+          "y": 151.9600067138672,
+          "w": 45.91998291015625,
+          "h": 45.91999816894531
+        }
+      ],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 9,
+        "y": 49,
+        "w": 826,
+        "h": 78
+      },
+      "move": {
+        "x": 17,
+        "y": 121,
+        "w": 156,
+        "h": 254
+      }
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "canvas": {
+        "x": 9,
+        "y": 195,
+        "w": 750,
+        "h": 536
+      },
+      "overlap": [],
+      "buttons": [
+        {
+          "id": "charged",
+          "x": 575,
+          "y": 801,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "shoot",
+          "x": 671,
+          "y": 785,
+          "w": 72,
+          "h": 72
+        },
+        {
+          "id": "heavy",
+          "x": 567,
+          "y": 873,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "id": "melee",
+          "x": 671,
+          "y": 869,
+          "w": 76,
+          "h": 76
+        },
+        {
+          "id": "dash",
+          "x": 595,
+          "y": 945,
+          "w": 60,
+          "h": 60
+        },
+        {
+          "id": "ultimate",
+          "x": 571,
+          "y": 737,
+          "w": 56,
+          "h": 56
+        }
+      ],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 9,
+        "y": 61,
+        "w": 750,
+        "h": 134
+      },
+      "move": {
+        "x": 17,
+        "y": 737,
+        "w": 546,
+        "h": 272
+      }
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "canvas": {
+        "x": 33,
+        "y": 197,
+        "w": 1374,
+        "h": 542
+      },
+      "overlap": [],
+      "buttons": [],
+      "buttonOverlap": [],
+      "small": [],
+      "overflow": false,
+      "groups": [
+        {
+          "id": "ranged",
+          "actions": [
+            "charged",
+            "shoot"
+          ],
+          "label": "B\u1eafn v\u00e0 b\u1eafn m\u1ea1nh"
+        },
+        {
+          "id": "melee",
+          "actions": [
+            "heavy",
+            "melee"
+          ],
+          "label": "Ch\u00e9m v\u00e0 ch\u00e9m m\u1ea1nh"
+        }
+      ],
+      "frame": {
+        "x": 33,
+        "y": 101,
+        "w": 1374,
+        "h": 96
+      },
+      "move": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      }
+    }
+  ]
+}

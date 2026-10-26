@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+<!-- Original static, nine-slice obsidian frame. Corners remain unscaled. -->
+<defs><linearGradient id="metal" x2=".2" y2="1"><stop stop-color="#91b3b7"/><stop offset=".34" stop-color="#344e58"/><stop offset=".7" stop-color="#243d48"/><stop offset="1" stop-color="#6a969b"/></linearGradient><linearGradient id="stone" x2=".5" y2="1"><stop stop-color="#11212a"/><stop offset=".32" stop-color="#080f17"/><stop offset="1" stop-color="#0c1720"/></linearGradient></defs>
+<path d="M13 1H115L127 13V115L115 127H13L1 115V13Z" fill="url(#stone)" stroke="url(#metal)" stroke-width="2"/>
+<path d="M16 6H112L122 16V112L112 122H16L6 112V16Z" fill="none" stroke="#344e56" stroke-width=".8"/>
+<path d="M1 21V13L13 1H21L12 5 5 12Z M107 1H115L127 13V21L123 12 116 5Z M127 107V115L115 127H107L116 123 123 116Z M21 127H13L1 115V107L5 116 12 123Z" fill="#a2f3e3"/>
+<path d="M3 24V14L14 3H24 M104 3H114L125 14V24 M125 104V114L114 125H104 M24 125H14L3 114V104" fill="none" stroke="#69cbbf" stroke-width="1"/>
+<path d="m8 26 5-6 6-1 6-7 M102 8l6 5 1 6 7 6 M120 102l-5 6-6 1-6 7 M26 120l-6-5-1-6-7-6" fill="none" stroke="#50777e" stroke-width=".7"/>
+<path d="m12 12 3-3 3 3-3 3Z m101 0 3-3 3 3-3 3Z m0 104 3-3 3 3-3 3Z m-101 0 3-3 3 3-3 3Z" fill="#61968e"/>
+</svg>

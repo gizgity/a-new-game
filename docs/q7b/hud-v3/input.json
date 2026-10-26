@@ -1,0 +1,22 @@
+{
+  "source": "local dev; scenario state + real CDP input",
+  "errors": [],
+  "badResponses": [],
+  "input": [
+    "Floating joystick: four off-centre origins, immediate drag + release PASS",
+    "Nearest mobile aim + manual override while moving + Charged manual release snapshot + auto resumes PASS",
+    "Heavy hold/release: one charge, auto-aimed strike PASS",
+    "Two-finger details cancels held Charged PASS",
+    "Multi-pointer cancel clears movement/armed action PASS"
+  ],
+  "draft": [
+    {
+      "lockMs": 1008.8000000007451,
+      "heldTouchRejected": true,
+      "freshTap": true,
+      "localeNoReset": true
+    },
+    "Held Space during lock rejected; new Space accepted PASS",
+    "Every new draft locks; opening fourth card remains usable PASS"
+  ]
+}

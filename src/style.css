@@ -374,3 +374,92 @@ footer { display: none; }
 }
 /* Trial labels share the feedback row, leaving the timer/Boss line clear. */
 .combat-hud .trial-label { position: static; flex: 1; max-width: none; font-size: 8px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Q7B reference correction: authored frames, paired attacks and separate utilities. */
+.hud-frame { position: absolute; inset: 0 0 auto; height: var(--hud-height); border: 16px solid transparent; border-image: url('/assets/ui/hud-frame.svg') 20 fill / 16px / 0 stretch; pointer-events: none; z-index: 1; }
+.vitals-card { inset: 28px 12px auto; height: 34px; min-height: 34px; padding: 0 2px 4px; border: 0; border-bottom: 1px solid #435d65; border-radius: 0; box-shadow: none; background: transparent; }
+.vitals-card .health { padding-right: 6px; border-right: 1px solid #38535e; }
+.vitals-card .health > .hud-icon { fill: currentColor; stroke-width: 1; }
+.vitals-card progress { height: 6px; outline: 1px solid #526775; outline-offset: 1px; }
+.vitals-card .barrier-state progress::-webkit-progress-value { background: #6bf4f5; }
+.vitals-card .barrier-state progress::-moz-progress-bar { background: #6bf4f5; }
+.build-summary { inset: 67px 10px auto; height: 44px; border: 9px solid transparent; border-image: url('/assets/ui/hud-inset.svg') 12 fill / 9px / 0 stretch; padding: 0; gap: 4px; box-shadow: none; border-radius: 0; background: transparent; }
+.build-slots { gap: 5px; padding-bottom: 0; }
+.build-slot, .build-slot .slot-frame { width: 27px; height: 27px; }
+.build-slot .slot-icon { width: 18px; height: 18px; stroke-width: 1.8; }
+.build-slot .slot-frame { opacity: .95; }
+.build-slot.empty .slot-frame { opacity: .45; }
+.build-slot.mutation:nth-child(2) { color: #d4a1fa; }
+.build-slot.mutation:nth-child(3) { color: #80e5ed; }
+.build-slot.mutation:nth-child(4) { color: #e6bc81; }
+.build-slot.curse:nth-child(5) { margin-left: 6px; padding-left: 0; color: #fc769e; }
+.build-slot.curse:nth-child(6) { color: #db90ef; }
+.build-slot small { bottom: -6px; background: #09121a; }
+.build-summary #build-count { flex-basis: 40px; font-size: 9px; }
+.build-summary > .hud-icon { width: 17px; height: 17px; }
+.run-clock { top: 9px; left: 16px; font-size: 12px; z-index: 2; }
+.hud-feedback { inset: 113px 14px auto; height: 16px; background: transparent; font-size: 10px; }
+.boss-hud { top: 8px; left: 113px; right: 15px; height: 16px; border: 0; padding: 0; background: transparent; }
+.touch-enabled .arena-shell { --controls-height: 284px; }
+.touch-controls { height: 272px; }
+.touch-stick { height: 272px; width: calc(100% - 188px); border-color: #507a77; background: #101f2580; }
+.touch-actions { width: 184px; height: 272px; }
+.touch-pair { position: absolute; left: 0; width: 184px; height: 84px; background: url('/assets/ui/attack-pair.svg') center / 100% 100% no-repeat; }
+.touch-ranged { top: 48px; }
+.touch-melee { top: 132px; }
+.touch-button { --control-color: #a2e5d5; border: 0; background: #102c2cec; color: #effbf8; box-shadow: none; isolation: isolate; }
+.touch-button::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--control-color); -webkit-mask: url('/assets/ui/control-ring.svg') center / 100% 100% no-repeat; mask: url('/assets/ui/control-ring.svg') center / 100% 100% no-repeat; }
+.touch-button.power-button::before { -webkit-mask-image: url('/assets/ui/control-power.svg'); mask-image: url('/assets/ui/control-power.svg'); }
+.touch-controls .touch-button { gap: 1px; padding: 7px 3px 4px; }
+.touch-button .control-icon { width: 18px; height: 18px; fill: none; stroke: var(--control-color); stroke-width: 1.8; flex-shrink: 0; }
+.touch-controls .touch-button > [data-i18n] { font-size: 10px; line-height: 12px; font-weight: 600; white-space: nowrap; }
+.touch-controls .touch-button > [data-resource] { font-size: 14px; line-height: 15px; }
+.touch-controls .touch-button .resource-note { font-size: 8px; line-height: 10px; }
+.touch-controls .touch-button .resource-note::before { content: none; }
+.touch-controls .unavailable { background: #0d1b28ed; color: #cedce5; border: 0; }
+.touch-controls .unavailable::before { opacity: .65; }
+.touch-controls [data-action='ultimate'][data-state='ready'] { border: 0; }
+.touch-button.shoot-button { left: 104px; top: 0; width: 72px; height: 72px; --control-color: #74e8fc; background: #123640f2; }
+.touch-button.melee-button { left: 104px; top: 0; width: 76px; height: 76px; --control-color: #95f3cd; background: #17463af2; }
+.touch-button.shoot-button .control-icon, .touch-button.melee-button .control-icon { width: 27px; height: 27px; }
+.touch-button[data-action='charged'] { left: 8px; top: 16px; width: 64px; height: 64px; --control-color: #74e8fc; border-radius: 20px; background: #102934ee; }
+.touch-button[data-action='heavy'] { left: 0; top: 4px; width: 64px; height: 64px; --control-color: #95f3cd; border-radius: 20px; background: #142e29ee; }
+.touch-button.dash-button { left: 28px; top: 208px; width: 60px; height: 60px; --control-color: #cab1fa; background: #211d35ef; }
+.touch-button[data-action='ultimate'] { left: 4px; top: 0; width: 56px; height: 56px; --control-color: #f2c58b; background: #30271bed; border-radius: 18px; }
+.touch-button.utility-button .control-icon { width: 16px; height: 16px; }
+.touch-controls .touch-button.pressed { background: #2e514e; border: 0; box-shadow: inset 0 0 12px #a1f3e225; }
+.touch-controls .touch-button.pressed::before { opacity: 1; }
+@media (max-width: 350px) {
+ .build-slots { gap: 3px; }
+ .build-slot, .build-slot .slot-frame { width: 23px; height: 23px; }
+ .build-slot .slot-icon { width: 16px; height: 16px; }
+ .build-slot.curse:nth-child(5) { margin-left: 2px; }
+ .build-summary #build-count { flex-basis: 35px; font-size: 8px; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+ .hud-frame { border-image-width: 12px; }
+ .vitals-card { inset: 10px auto auto 14px; width: min(29%,240px); }
+ .build-summary { inset: 12px 14px auto auto; width: min(43%,292px); }
+ .hud-feedback { inset: 48px auto auto 14px; width: min(30%,240px); }
+ .run-clock { left: calc((100% + min(29%,240px) - min(43%,292px)) / 2); top: 10px; transform: translateX(-50%); }
+ .boss-hud { top: 34px; left: calc(min(29%,240px) + 28px); right: calc(min(43%,292px) + 28px); transform: none; width: auto; }
+ .touch-enabled .arena-shell { --controls-height: 0px; }
+ .touch-controls { height: calc(100% - var(--hud-height)); }
+ .touch-stick { width: 156px; height: 100%; }
+}
+@media (min-width: 900px) and (pointer: fine) {
+ .vitals-card { inset: 22px auto auto 24px; width: 280px; height: 42px; }
+ .build-summary { inset: 20px 24px auto auto; width: 292px; height: 50px; }
+ .hud-feedback { inset: 69px auto auto 24px; width: 280px; height: 18px; }
+ .run-clock { top: 12px; left: 50%; transform: translateX(-50%); font-size: 14px; }
+ .boss-hud { top: 42px; left: 50%; right: auto; transform: translateX(-50%); width: min(300px,30%); height: 22px; }
+}
+/* Icon-only touch faces; compact counters sit on the rim. Names stay in tooltips/ARIA. */
+.touch-controls .touch-button, .touch-controls .power-button, .touch-controls .utility-button { display: flex; align-items: center; justify-content: center; padding: 3px; }
+.touch-controls .touch-button .control-icon { width: 32px; height: 32px; }
+.touch-controls .shoot-button .control-icon, .touch-controls .melee-button .control-icon { width: 38px; height: 38px; }
+.touch-controls .utility-button .control-icon { width: 28px; height: 28px; }
+.touch-controls .touch-button > [data-resource] { position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); padding: 1px 5px; border: 1px solid #49636c; border-radius: 3px; background: #0a1320; color: #f0faf6; font-size: 13px; line-height: 15px; font-weight: 600; white-space: nowrap; pointer-events: none; }
+.touch-controls .touch-button > .resource-note { position: absolute; right: -7px; top: 5px; padding: 1px 3px; border: 1px solid #3d5562; border-radius: 3px; background: #0a1320; color: #e6edef; font-size: 9px; line-height: 12px; pointer-events: none; }
+.touch-controls [data-action='charged'] .resource-note::before { content: '↯'; color: #74e8fc; margin-right: 2px; }
+.touch-controls [data-action='ultimate'] > [data-resource] { font-size: 12px; }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="white">
+<path d="M31 4H69L96 31V69L69 96H31L4 69V31Z" stroke-width="1.2" opacity=".7"/>
+<path d="M9 36V33L33 9H40 M60 9H67L91 33V40 M91 60V67L67 91H60 M40 91H33L9 67V60" stroke-width="2.4"/>
+<path d="M34 10H66L90 34V66L66 90H34L10 66V34Z" stroke-width=".6" opacity=".35"/>
+<path d="m46 14 4-4 4 4-4 4Z m-4 73 4 4 4-4 4 4 4-4" stroke-width="1.1"/>
+</svg>

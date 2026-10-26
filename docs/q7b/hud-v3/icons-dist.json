@@ -1,0 +1,70 @@
+{
+  "source": "latest production dist; no injected gameplay state",
+  "errors": [],
+  "requests": [],
+  "cases": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "buttons": 6,
+      "wordLabels": 0,
+      "glyphs": [
+        "/a-new-game/assets/ui/hud-icons.svg#shoot-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#shoot",
+        "/a-new-game/assets/ui/hud-icons.svg#melee-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#melee",
+        "/a-new-game/assets/ui/hud-icons.svg#dash",
+        "/a-new-game/assets/ui/hud-icons.svg#surge"
+      ],
+      "accessible": true,
+      "words": [],
+      "frame": "url(\"http://127.0.0.1:4174/a-new-game/assets/ui/hud-frame.svg\")",
+      "buildFits": true,
+      "overflow": false
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "buttons": 6,
+      "wordLabels": 0,
+      "glyphs": [
+        "/a-new-game/assets/ui/hud-icons.svg#shoot-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#shoot",
+        "/a-new-game/assets/ui/hud-icons.svg#melee-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#melee",
+        "/a-new-game/assets/ui/hud-icons.svg#dash",
+        "/a-new-game/assets/ui/hud-icons.svg#surge"
+      ],
+      "accessible": true,
+      "words": [],
+      "frame": "url(\"http://127.0.0.1:4174/a-new-game/assets/ui/hud-frame.svg\")",
+      "buildFits": true,
+      "overflow": false
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "buttons": 6,
+      "wordLabels": 0,
+      "glyphs": [
+        "/a-new-game/assets/ui/hud-icons.svg#shoot-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#shoot",
+        "/a-new-game/assets/ui/hud-icons.svg#melee-heavy",
+        "/a-new-game/assets/ui/hud-icons.svg#melee",
+        "/a-new-game/assets/ui/hud-icons.svg#dash",
+        "/a-new-game/assets/ui/hud-icons.svg#surge"
+      ],
+      "accessible": true,
+      "words": [],
+      "frame": "url(\"http://127.0.0.1:4174/a-new-game/assets/ui/hud-frame.svg\")",
+      "buildFits": true,
+      "overflow": false
+    }
+  ]
+}
