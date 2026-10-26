@@ -10,7 +10,14 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-CURSEBREAK Legacy V1 — ghi quyết định user đã chốt qua `$design-decision`, chỉ documentation. Acceptance: toàn bộ 7 mục vào DDR với ID tiếp theo, trạng thái Approved — Design Only, nguồn/ngày/Release boundary, Balance Tuning / TBD; kiểm diff và commit/push. Không sửa gameplay, Art Bible, roadmap hoặc triển khai/deploy.
+Complete Elemental Mechanics Contract — documentation only, user giao ngày 2026-10-26. Acceptance: đối chiếu DD-0001/combat hiện tại; soạn contract Proposed 6 Sigil/12 Branch đủ trigger/target/effect/consumption/stacking/CD/origin/Boss–Elite; chỉ rõ quyết định còn cần user duyệt; kiểm diff/links và commit/push. Không implementation, không mở lại Q9A, không deploy.
+
+## ELEMENTAL CONTRACT STATUS
+- **DRAFT COMPLETE — AWAITING USER DESIGN REVIEW**: [DD-0002 candidate](docs/design-drafts/DD-0002-elemental-mechanics-proposed.md), Proposed ngoài DDR. Skill design-decision bước3 không cho tự thiết kế/duyệt/append khi thiếu nguồn kết luận; bước4 cho phép user chốt Proposed. Chi tiết agent bổ sung chưa được xác nhận nên dùng fallback draft riêng user cho phép, không ghi Approved/không append registry. ID dự kiến chưa giữ chỗ; DD-0001 giữ nguyên, ID registry tiếp theo vẫn DD-0002.
+- Hướng 6 cơ chế user nêu được quote trong draft; lựa chọn cụ thể Proposed tại P1–P8: isolation proc/on-kill; Fire truyền một thế hệ/consume; Water knockback/refund; Lightning consume/haste; Ice consecutive/Brittle; Shadow target/Veilstep; Wind walk/slash; haste/CC safety. Tất cả damage/duration/CD/range và cap tuning vẫn TBD.
+- Audit trên main `9b1f988`: Heavy hồi từng charge, Static Riposte charge riêng, Detonation Specialist fracture, hitEnemy/fire/explosion proc hooks, Boss transform freeze/Elite resistance, Light pose/cadence và Kinetic Battery. Chưa sửa runtime/Art Bible/roadmap/DDR.
+- Phần nền Q9A commit `2868f77` đã push riêng nhánh `q9a-elemental-legacy`: catalog/RNG/ticket chưa nối combat/UI, tests19files/build/typecheck PASS từ lượt trước; chưa nghiệm thu. Nhánh docs hiện tại tạo từ main, không merge phần nền đó. User đã dừng implementation Q9A cho task contract này; không tự resume sau khi draft xong/được duyệt.
+- Validation lượt này: kiểm đủ18mục với các trường contract, links local, DDR byte-identical và diff chỉ Markdown. Không tests/build/deploy theo quy tắc docs-only. Sau commit/push dừng chờ user review; acceptance gameplay/visual vẫn riêng.
 
 ## DEPLOY FOLLOW-UP
 User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -73,7 +80,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Dừng chờ task mới của user sau khi commit/push tài liệu Legacy V1; không tự triển khai Legacy V1, generate art, tích hợp hoặc mở Q9. Thay đổi DDR tiếp theo vẫn cần invocation `$design-decision` và ID mới.
+Chờ user review contract draft, xác nhận/đổi P1–P8 và invocation `$design-decision` với version/nội dung/trạng thái muốn ghi. Khi được giao ghi DDR phải đọc lại registry để cấp ID thật, không sửa lịch sử hoặc tự nâng Proposed thành Approved. Không mở lại Q9A/Q9B hoặc deploy trong lúc chờ.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.
