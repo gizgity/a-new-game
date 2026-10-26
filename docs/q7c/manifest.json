@@ -1,6 +1,6 @@
 {
   "version": "Q7C V1",
-  "status": "VISUAL APPROVED — runtime AWAITING PLAYTEST APPROVAL",
+  "status": "ACCEPTED — USER PLAYTEST APPROVAL; concept archive, runtime recorded in runtime-assets.json",
   "baseline": "78f07e6 / runtime5ee970e",
   "primaryReference": "../q7a/artwork/contrast-palette-v1.png",
   "generator": "ImageGen tool; model/seed unavailable",
@@ -154,5 +154,13 @@
   "approval": {
     "date": "2026-10-26",
     "user": "visual approved q7c"
+  },
+  "playtest_approval": {
+    "date": "2026-10-26",
+    "user": "duyệt q7c đạt",
+    "deployed_commit": "2ef6d48180b4873198dd666627771296f4b4837b",
+    "code_commit": "0041064",
+    "workflow_run": 40305977315,
+    "status": "ACCEPTED — USER PLAYTEST APPROVAL"
   }
 }

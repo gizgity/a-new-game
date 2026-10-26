@@ -2904,5 +2904,13 @@
       "scale": 0.4246,
       "box": 192
     }
-  ]
+  ],
+  "playtest_approval": {
+    "date": "2026-10-26",
+    "user": "duyệt q7c đạt",
+    "deployed_commit": "2ef6d48180b4873198dd666627771296f4b4837b",
+    "code_commit": "0041064",
+    "workflow_run": 40305977315,
+    "status": "ACCEPTED — USER PLAYTEST APPROVAL"
+  }
 }

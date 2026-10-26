@@ -1,6 +1,6 @@
 # Q7C — Character & Enemy Art runtime
 
-**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Implementation và deploy đã hoàn tất; **AWAITING PLAYTEST APPROVAL**, chưa runtime ACCEPTED, không mở Q7D.
+**ACCEPTED — USER PLAYTEST APPROVAL** — User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture. Visual approval trước đó: “visual approved q7c”. Không mở Q7D.
 
 ## Deployment
 
@@ -30,13 +30,13 @@ Initial atlas2048square có nhiều transparentpadding và headlessdesktop rAF66
 - [Animation/input](runtime/animation-input.json): bodykeys idle/windup/attack/recovery/hit/death vàPlayeractions; pose flags làfixture injected, không bảo đảm naturalanimationsequence từ ảnhđơn. Coretests kiểm timeline thật. Pause freeze PASS;20restart displaylist29→29, không staleghost/death. CDPtouch thậtmove+shoot390/844 vàmouse/WASD1440 PASS,vi/en/Pause/resume. Volatile recovery fixture chỉ kiểmassetkey, không là state sống tronggame.
 - [Dist smoke](runtime/dist-smoke.json):5sizes,atlasđượcfetch,Heavy giữ2/2→thả1/2 trên4touchsizes,desktopShiftrelease,Pause/vi-en/resume,noerrors/overflow. Đây làinput thật tronglocaldist, không grantstats, chỉopeningngắn.
 - [Frozenperf](runtime/performance.json):60CPUdrawsamples+90rAF/scene. CPUdraw medianbaseline0.3–0.4ms→~0.1ms ở5sizes; resolutiontimerthô, không hiểu làbenchmarkanimation/coretick. rAF39033.3→16.7,32016.7→16.7,84433.3→16.7,76833.3→33.3,144050.1→49.9ms. Sequential headless/softwareWebGL cónoise, chưabenchmarkphoneGPU,nhiệt/loadmạng thật.
-- Source/runtimesPNG/hash/integrity,atlasnames/rectbounds,protected-filediff vàdocslinks kiểm riêng. Chưa Safari/iOS/thiếtbịthật,fullrun hoặc userruntimeacceptance. Cần user xemartifact lẫn cảmnhậnmovingcrowd.
+- Source/runtimesPNG/hash/integrity,atlasnames/rectbounds,protected-filediff vàdocslinks kiểm riêng. Coverage kỹ thuật chưa gồm Safari/iOS/thiết bị thật/full-run; approval Q7C nay đến từ xác nhận của user, không phải suy luận từ fixture hoặc kiểm thêm mọi thiết bị.
 
 ## Hình before/after thật
 
 [Before390](runtime/before-crowd-390.png) → [After390](runtime/after-crowd-390.png), [Before1440](runtime/before-crowd-1440.png) → [After1440](runtime/after-crowd-1440.png). [Grayscale390](runtime/after-grayscale-390.png), [Charged390](runtime/after-charged-390.png), [Boss sweep](runtime/after-boss-0-390.png)/[ring](runtime/after-boss-1-390.png)/[slam](runtime/after-boss-2-390.png), [atlaspose inspection](runtime/atlas-inspection.png). Ảnh này làrendererfixturethật; `evidence/` và `artwork/` cũ làconceptreview, không đổi nhãn thànhruntime.
 
-## Playtest user — chỉ artwork/animation Q7C
+## Playtest scope — user đã ACCEPTED (giữ hướng dẫn tham chiếu)
 
 Mở https://gizgity.github.io/a-new-game/ và reload bảnmới sau deploy. Dọc/ngangphone hoặcdesktop:
 
@@ -45,4 +45,4 @@ Mở https://gizgity.github.io/a-new-game/ và reload bảnmới sau deploy. D�
 3. Bulwark tại200kills HOẶC2:30: giáp/khiênđóng khác lõi mởrecovery, vẫn đọc được thờiđiểmphảncông. Boss tại450kills HOẶC4:00: sweepvungxích/ringmởtay/slamgiángxuống phânbiệt; giữnhịptelegraph cũ. Không yêu cầu duyệt lại balanceQ2–Q7B.
 4. Pause/resume/restart: animationkhôngtrôiquaPause, khôngghost/deathcũ; chúýđộmượt/nóngmáy khiđôngquái. Phản hồi nhânvật/state/tìnhhuống bịchìm/saihướng/giật,thiếtbị/browser. Build/tests không thayuserplaytestapproval.
 
-Dừng **AWAITING PLAYTEST APPROVAL** sau deploy; Q7D Full Run Polish chỉ mở khi usergiao.
+Q7C đã **ACCEPTED — USER PLAYTEST APPROVAL**; dừng tại checkpoint này. Q7D Full Run Polish chỉ mở khi user giao.

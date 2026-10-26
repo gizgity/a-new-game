@@ -1,6 +1,6 @@
 # Q7C — Research góc nhìn
 
-Ngày2026-10-26, theo user hỏi arena nhìn90° nhưng nhân vật xéo. **User đã “visual approved q7c” sau research ngày2026-10-26.** Đã triển khai top-down¾cáchđiệu nhìnxuốngcao, xem IMPLEMENTATION.md; chưa runtimeplaytestaccepted. Phần nghiên cứu/đềxuất bên dưới giữ theo thờiđiểm nghiêncứu, không còn làgate chờduyệt. Q7D chưa mở.
+Ngày2026-10-26, theo user hỏi arena nhìn90° nhưng nhân vật xéo. **User đã “visual approved q7c” sau research ngày2026-10-26.** Đã triển khai top-down¾cáchđiệu nhìnxuốngcao, xem IMPLEMENTATION.md; user đã xác nhận “duyệt q7c đạt” trên deploy2ef6d48 — runtime ACCEPTED. Phần nghiên cứu/đềxuất bên dưới giữ theo thờiđiểm nghiêncứu, không còn làgate chờduyệt. Q7D chưa mở.
 
 ## Kết luận đề xuất cho project
 

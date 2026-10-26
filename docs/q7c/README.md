@@ -1,6 +1,6 @@
 # Q7C — Character & Enemy Art Overhaul
 
-**VISUAL APPROVED** — user “visual approved q7c”2026-10-26 sau research góc nhìn. Đã triển khai và deploy2ef6d48, Pages40305977315 SUCCESS; **AWAITING PLAYTEST APPROVAL**, chưa runtimeACCEPTED. Q7D = Full Run Polish, chưa mở. Q2–Q7B giữ approval lịch sử, không đòi duyệt lại.
+**ACCEPTED — USER PLAYTEST APPROVAL** — User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture. Visual đã được duyệt trước qua “visual approved q7c”. Q2–Q7B giữ accepted; Q7D = Full Run Polish chưa mở.
 
 [Chơi bản Q7C](https://gizgity.github.io/a-new-game/?v=2ef6d48) · [Implementation/checks/cách playtest](IMPLEMENTATION.md) · [Board before/after](index.html) · [Source production/prompts](source/PROMPTS.md) · [Runtime asset/provenance](runtime-assets.json) · [Research góc nhìn](VIEW_RESEARCH.md) · [Asset specification](ASSET_SPEC.md).
 
@@ -12,4 +12,4 @@ Runtime dùngsourceImageGenproduction riêng,236frames/4facings,atlas1024square/
 
 Auditbaseline: fetchedmain78f07e6(runtime5ee970eQ7Baccepted), auditd747f49; review7a1db73,research2bb4792; đã merge main87c1ca8 trong3c940dd và ghiuserapproval. Giữmain/remotehistory, khôngforce. SànQ7AWebP giữhash71b8d5b2b0850d40cd7c39a795a8caee129e4b14dc7f08f20093d17c18fea70a.
 
-Build/typecheck163tests vàfocusedbrowser/distPASS; mọi giới hạn/ảnh/perf tạiIMPLEMENTATION. Chưa device/iOS/Safari/fullrun hoặc runtimeapproval. Saudeploy:user thửđọcpose/hướng/telegraph vàđộmượt trênmáythật. Báonhânvật/state/bướcgặplỗi+thiếtbị/browser. Không tựQ7D.
+Build/typecheck163tests vàfocusedbrowser/distPASS; mọi giới hạn/ảnh/perf tạiIMPLEMENTATION. Giới hạn coverage kỹ thuật device/iOS/Safari/full-run giữ nguyên; user đã accepted runtime Q7C, không cần duyệt lại. Dừng tại Q7C; chỉ mở Q7D khi user giao.
