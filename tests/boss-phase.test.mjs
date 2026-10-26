@@ -43,3 +43,12 @@ test('Enraged changes chase speed and cooldown only, hit flash fades during tran
  assert.ok(Math.abs(distances[1]/distances[0]-1.15)<1e-8);
  const {w,b}=setup();b.hp=750;b.flash=.08;step(w,8);assert.ok(b.transform>0);assert.equal(b.flash,0);
 });
+
+test('Boss shortcut starts at1150 kills/3:40, skips drafts, preserves threshold/warning and normal reset',()=>{
+ const w=new CombatWorld({x:800,y:500,angle:0}),r=new RunDirector(w);r.start();r.prepareBossPlaytest(1150,220);
+ assert.equal(w.kills,1150);assert.equal(r.elapsed,220);assert.equal(r.nextDraft,null);assert.equal(r.bossDue,false);assert.equal(r.bossWarning,0);
+ assert.equal(w.enemies.length,7);assert.ok(w.enemies.every(e=>e.kind==='grunt'||e.kind==='archer'));
+ r.step(idle,dt);assert.equal(r.draft.length,0);assert.equal(r.bossWarning,0);
+ w.kills+=50;r.step(idle,dt);assert.equal(r.bossWarning,2);
+ r.start();assert.equal(w.kills,0);assert.equal(r.elapsed,0);assert.ok(r.nextDraft);assert.equal(r.bossWarning,0);
+});

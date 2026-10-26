@@ -42,3 +42,9 @@ Cùng scene/position fixture: “trước” = Phase1/Q7C appearance giữ nguy�
 ## Deploy
 
 Code/deploy [`11bedbf`](https://github.com/gizgity/a-new-game/commit/11bedbfbc2b88792ec8c284f311607e2dc9e9992), push main fast-forward. [Pages40347916413](https://github.com/gizgity/a-new-game/actions/runs/40347916413) completed/SUCCESS, job121659711323 gồm Deploy SUCCESS. [Chơi Q8C](https://gizgity.github.io/a-new-game/?v=11bedbf). Livecurl qua proxy bị CONNECT403; không bypass hoặc giả local dist là live. Commit bàn giao sau chỉMarkdown; không đổi runtime sau deploy. Dừng AWAITING USER PLAYTEST APPROVAL, không Q8D.
+
+## Preset Boss nhanh — user yêu cầu sau bàn giao
+
+URL `?playtest=boss`: bắt đầu1150kills,3:40, bỏ6draft/Elite đã qua, spawn7common theo growth hiện tại. Build có sẵn4Mutation: Phantom Edge, Static Riposte, Blood Reclaimer, Kinetic Battery;2Curse: Ghost Step, Parasitic Mark. HP/resource theo reset bình thường; không bất tử hoặc tăng damage riêng. Hạ thêm50quái→warning2s→Boss, hoặc fallback4:00. Giữ toàn bộ Q8C/BossHP/deadline. Pause/resume không cấp lại; Replay khởi tạo lại preset. Dùng cơ chế trial hiện có để không lưu progression/unlocks/draft history; URL run thường và các trial cũ giữ nguyên. Đây là fixture có grants, không là natural-run evidence hoặc Q8D.
+
+Tests17files/build PASS, thêm focused shortcut threshold/reset. Browser390/1440 kiểm initial1150kills/4Mutation/2Curse, pause/resume, fallbackwarning→Boss, Replay preset và run thường0kills/no build: [report](evidence/boss-preset.json). Clock chỉ cấp tới4:00 trong bước kiểm fallback; initial/Replay đi qua UI thật.

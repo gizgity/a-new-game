@@ -57,6 +57,18 @@ export class RunDirector {
     this.draft = [];
   }
 
+  /** Opt-in fixture only: skip earned drafts/Elite, retain real Boss threshold and warning. */
+  prepareBossPlaytest(kills: number, seconds: number): void {
+    this.ticks = seconds * 60;
+    this.world.kills = this.previousKills = kills;
+    this.draftIndex = DRAFT_MILESTONES.length;
+    this.eliteSpawned = true;
+    this.world.enemies = [];
+    for (let i = 0; i < OPENING.initialCount; i++) {
+      this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt', i * 2.39996);
+    }
+  }
+
   step(input: CombatInput, dt: number): void {
     if (this.draft.length || this.result || this.expired) return;
     const frozen = this.world.hitstop > 0;

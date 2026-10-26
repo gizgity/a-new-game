@@ -35,3 +35,10 @@ export function routeDraft(
   for (const option of sampled) if (!choices.some(c => c.id === option.id) && !owned.includes(option.id as MutationId)) choices.push(option);
   return choices.slice(0, 3);
 }
+
+// Opt-in Q8C shortcut requested by user; never used by normal runs.
+export const BOSS_PLAYTEST = {
+  id: 'boss', label: 'bossTest', kills: 1150, seconds: 220,
+  mutations: ['phantomEdge', 'staticRiposte', 'bloodReclaimer', 'kineticBattery'],
+  curses: ['ghostStep', 'parasiticMark'],
+} as const;

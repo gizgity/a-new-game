@@ -5,14 +5,15 @@ import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
 import { DraftInteractionGuard } from './ui/DraftInteractionGuard';
 import { MUTATIONS, CURSES } from './game/builds';
-import { PLAYTEST_BUILDS, DIVERSITY_ROUTES, routeDraft } from './game/config/playtests';
+import { PLAYTEST_BUILDS, DIVERSITY_ROUTES, routeDraft, BOSS_PLAYTEST } from './game/config/playtests';
 import { TouchControls } from './ui/TouchControls';
 import { CombatHUD, combatHUDMarkup, buildPanelMarkup } from './ui/CombatHUD';
 import './style.css';
 
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
 const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchParams(location.search).get('playtest'));
-const buildTrial = Boolean(trialBuild || trialRoute);
+const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_PLAYTEST.id;
+const buildTrial = Boolean(trialBuild || trialRoute || trialBoss);
 const profile = loadProfile();
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
@@ -109,7 +110,7 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
   });
-  if (trialBuild || trialRoute) document.querySelector('#trial-label')!.textContent = t((trialRoute ?? trialBuild)!.label);
+  if (buildTrial) document.querySelector('#trial-label')!.textContent = t(trialBoss ? BOSS_PLAYTEST.label : (trialRoute ?? trialBuild)!.label);
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
@@ -212,7 +213,11 @@ function renderCombatHUD(world: CombatWorld): void {
 export const arena = new ArenaScene((phase) => {
   if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
     hud.reset();
-    if (trialBuild) {
+    if (trialBoss) {
+      arena.combat.mutations = [...BOSS_PLAYTEST.mutations];
+      arena.combat.setCurses([...BOSS_PLAYTEST.curses]);
+      arena.run.prepareBossPlaytest(BOSS_PLAYTEST.kills, BOSS_PLAYTEST.seconds);
+    } else if (trialBuild) {
       arena.combat.mutations = [...trialBuild!.mutations];
       arena.combat.setCurses([trialBuild!.curse]);
     } else if (!buildTrial) {

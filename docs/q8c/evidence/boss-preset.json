@@ -1,0 +1,56 @@
+[
+  {
+    "width": 390,
+    "state": {
+      "kills": 1150,
+      "t": 220.05,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "bloodReclaimer",
+        "kineticBattery"
+      ],
+      "curses": [
+        "ghostStep",
+        "parasiticMark"
+      ],
+      "next": null,
+      "boss": false,
+      "hp": 100,
+      "label": "Thử Boss · 1150 kills · Build phản công/hồi phục · Không lưu tiến độ"
+    },
+    "pauseResume": true,
+    "fallbackWarningBoss": true,
+    "replayPreset": true,
+    "normalRunUnchanged": true,
+    "errors": [],
+    "fixture": "Clock set to fallback only for arrival check; initial preset and Replay use actual UI."
+  },
+  {
+    "width": 1440,
+    "state": {
+      "kills": 1150,
+      "t": 220.01666666666668,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "bloodReclaimer",
+        "kineticBattery"
+      ],
+      "curses": [
+        "ghostStep",
+        "parasiticMark"
+      ],
+      "next": null,
+      "boss": false,
+      "hp": 100,
+      "label": "Thử Boss · 1150 kills · Build phản công/hồi phục · Không lưu tiến độ"
+    },
+    "pauseResume": true,
+    "fallbackWarningBoss": true,
+    "replayPreset": true,
+    "normalRunUnchanged": true,
+    "errors": [],
+    "fixture": "Clock set to fallback only for arrival check; initial preset and Replay use actual UI."
+  }
+]
