@@ -81,3 +81,6 @@ Phản hồi: route + Mutation/Curse + mốc thời gian/tình huống + HP/kế
 Live HTTP qua proxy: indexHTML, JS`index-CDtu8gf_`, CSS`index-MT4IgVwe`, EnragedPNG và ArrivalPNG đều200, SHA256 khớp byte-for-byte dist đã kiểm; đây là kiểm HTTP artifact, không thay livebrowser/device playtest. Runtime/src/public/package/workflow bytewise giữ baseline, hash cây tại [validation.json](evidence/validation.json). Q8D đã được user xác nhận “q8d đạt”: **ACCEPTED — USER PLAYTEST APPROVAL**; dừng, không Q9.
 
 Lượt ghi nhận approval chỉ cập nhật Markdown; không thay runtime, không chạy lại tests/build/deploy. Checklist và số đo giữ nguyên làm evidence lịch sử, không yêu cầu user duyệt lại.
+
+## Release chốt theo yêu cầu user
+Đã phát hành [v0.1.0](https://github.com/gizgity/a-new-game/releases/tag/v0.1.0) ngày2026-10-26. Annotated tag trỏ đúng commit approval `4770bf617f292c407685c4fbed1ebf5d3c6cb84f`; runtime tương đương Pagescbdb131 đã duyệt. Release published, không draft/prerelease; ghi nhận phát hành sau tag chỉ Markdown, không đổi game hoặc dời tag. Dừng tại Q8D, không Q9.

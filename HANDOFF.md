@@ -10,7 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q8D — Balance Validation & Final Tuning, user giao riêng ngày2026-10-26 trên main7625fa2. Q8A–Q8C ACCEPTED giữ nguyên; các gate chưa mởQ8D là lịch sử superseded bởi yêu cầu này.
+Chốt release theo yêu cầu user “chốt phiên bản release ở đây, tạo release và tag”. Chọn v0.1.0 (repo chưa có tag/release), target đúng commit Q8D đã duyệt4770bf6. Acceptance: annotated tag remote đúng SHA, GitHub Release published/latest có release notes/link chơi/evidence, không thay gameplay hoặc mở Q9.
+
+## RELEASE STATUS
+**HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -56,7 +59,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Dừng sau Q8D đã được user duyệt. Không còn yêu cầu playtest Q8D đang chờ; checklist/evidence trong docs/q8d giữ để tham chiếu. Chỉ thực hiện task mới khi user giao, không tự mở Q9.
+Dừng sau releasev0.1.0 và Q8D ACCEPTED. Không còn bước phát hành đang chờ; chỉ làm task mới khi user giao, không tự mở Q9.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.
+
+## VALIDATION RELEASE
+`git ls-remote` xác nhận annotated tag/peeledSHA; `gh release view` xác nhận published/non-draft/non-prerelease. Diff runtime so4770bf6 rỗng, chỉ sửa Markdown bàn giao; không chạy lại tests/build. Lịch sử checks/Pages và user approval Q8D giữ nguyên.
