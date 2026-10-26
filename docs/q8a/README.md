@@ -1,6 +1,6 @@
 # Q8A — Dynamic Spawn
 
-**AWAITING USER PLAYTEST APPROVAL** — chỉ Q8A. Q2–Q7D giữ ACCEPTED; Q8B–D chưa mở. User giao ngày2026-10-26; baseline main `7b01864` đã fetch/đối chiếu trước sửa. Code/deploy `394341c`, Pages SUCCESS; link chơi bên dưới.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8a đạt yêu cầu” ngày2026-10-26 trên code/deploy394341c (handoff938acf9). Đây là approval trực tiếp, không suy ra từ tests/fixture. Chỉ Q8A được duyệt. Q2–Q7D giữ ACCEPTED; Q8B–D chưa mở. User giao ngày2026-10-26; baseline main `7b01864` đã fetch/đối chiếu trước sửa. Code/deploy `394341c`, Pages SUCCESS; link chơi bên dưới.
 
 ## Audit và specification hiện hành
 
@@ -34,7 +34,7 @@ Software WebGL tại48quái visible: rAF median49.9ms desktop/66.6ms mobile view
 
 **Pacing còn pending:** density tăng kéo kills/milestones OR tới sớm hơn. Boss vẫn450kills HOẶC4:00, không có warning/phase2/pattern mới trong Q8A. Target Boss3:40–4:00/Victory4:30–5:00 thuộc Q8B chưa mở. Approval Q8A chỉ về density/an toàn/áp lực, không suy ra roadmap đã hoàn thành.
 
-## Playtest Q8A
+## Playtest Q8A — đã user accepted, giữ tham chiếu
 
 Mở bản deploy Q8A (link/version bên dưới), reload. Chỉ cần thử density, không kiểm lại toàn bộ Q2–Q7D:
 
@@ -47,4 +47,4 @@ Mở bản deploy Q8A (link/version bên dưới), reload. Chỉ cần thử den
 
 Code `394341ca66256af72fd8221e4185725c192cf116` đã push main fast-forward, Pages [40338795004](https://github.com/gizgity/a-new-game/actions/runs/40338795004) completed/SUCCESS, job121627451358 gồm bước Deploy SUCCESS. Không đổi runtime sau đó; commit bàn giao chỉ Markdown.
 
-Chơi [run thường Q8A](https://gizgity.github.io/a-new-game/?v=394341c) hoặc [chain fixture Q8A](https://gizgity.github.io/a-new-game/?v=394341c&playtest=chain). Live curl bị proxy CONNECT403; không bypass hoặc coi local/dist là live verification. GitHub CLI Actions cũng bị403, connector đọc kết quả được. Chỉ user mới approve; dừng **AWAITING USER PLAYTEST APPROVAL**, không mở Q8B.
+Chơi [run thường Q8A](https://gizgity.github.io/a-new-game/?v=394341c) hoặc [chain fixture Q8A](https://gizgity.github.io/a-new-game/?v=394341c&playtest=chain). Live curl bị proxy CONNECT403; không bypass hoặc coi local/dist là live verification. GitHub CLI Actions cũng bị403, connector đọc kết quả được. User đã approve Q8A qua “q8a đạt yêu cầu”; trạng thái chờ playtest trước đây được supersede bởi **ACCEPTED — USER PLAYTEST APPROVAL**. Giữ giới hạn coverage kỹ thuật; dừng chờ user giao Q8B, không yêu cầu duyệt lại Q8A.
