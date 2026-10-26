@@ -44,7 +44,7 @@ Không thấy suy giảm do artwork trong mẫu này; không suy ra mobile FPS h
 
 ## Deploy / cách user thử
 
-Code [0e0a9af](https://github.com/gizgity/a-new-game/commit/0e0a9af2b8cd5fc201690b50ae0a420995dcdd82) đã fast-forward push main. [Pages40266665479](https://github.com/gizgity/a-new-game/actions/runs/40266665479) / job121390460491 completed/success, gồm bước Deploy; giữ base /a-new-game/. Live curl từ môi trường bị proxy403 nên chưa smoke live; không bypass policy. Ảnh là local Vite/dist, không giả live. Actions success không là visual acceptance.
+Code [0e0a9af](https://github.com/gizgity/a-new-game/commit/0e0a9af2b8cd5fc201690b50ae0a420995dcdd82) đã fast-forward push main. [Pages40266665479](https://github.com/gizgity/a-new-game/actions/runs/40266665479) / job121390460491 completed/success, gồm bước Deploy; bản docs/board [2e48166](https://github.com/gizgity/a-new-game/commit/2e48166f11ad149172a1a47a3b100b1ec586531c) cũng [deploy40266875087](https://github.com/gizgity/a-new-game/actions/runs/40266875087) completed/success với runtime code giữ nguyên. Giữ base /a-new-game/. Live curl từ môi trường bị proxy403 nên chưa smoke live; không bypass policy. Ảnh là local Vite/dist, không giả live. Actions success không là visual acceptance.
 
 [Chơi Q7A](https://gizgity.github.io/a-new-game/) — reload sau deploy.
 
