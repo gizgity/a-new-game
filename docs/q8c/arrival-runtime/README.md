@@ -21,4 +21,4 @@ Mở preset `?playtest=boss`:1150kills tại3:40/buildsẵn; hạ thêm50quái h
 
 ## Deploy
 
-Đang chuẩn bị publish qua GitHub connector vì Git CLI thiếu credential. Không force/không thay remote. Chỉ coi deploy hoàn tất sau Pages Deploy SUCCESS.
+Code/deploy [`8cbff77`](https://github.com/gizgity/a-new-game/commit/8cbff77801553481df4c84e764a7485d13d0c38b) đã publish main fast-forward qua GitHub connector vì Git CLI thiếu credential; không force. Remote tree khớp Git index đã test. [Pages40357489627](https://github.com/gizgity/a-new-game/actions/runs/40357489627)/job121693735446 completed/SUCCESS gồm Deploy. [Preset1150kills bản mới](https://gizgity.github.io/a-new-game/?playtest=boss&v=8cbff77). Livecurl trước bịproxy CONNECT403; production local/dist và Pages Deploy được ghi riêng. [Before](../evidence/warning-390.png) / [After](evidence/peak-390.png) là renderer thật nhưng crowd khác nhau, không A/B cùng scene. Commit handoff sau chỉMarkdown, không runtime mới. Dừng AWAITING USER PLAYTEST APPROVAL.
