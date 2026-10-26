@@ -138,6 +138,8 @@
 
 ## Mutation Draft đầu — Chọn hướng build
 
+**ACCEPTED — USER PLAYTEST APPROVAL:** user xác nhận “approve” cho bản7843b98 ngày2026-10-26. Approval này dành cho draft đầu4hướng; Q6 Curse Stacking vẫn chờ xác nhận riêng.
+
 Theo user xác nhận sau Q6 ngày2026-10-26: ở25kills HOẶC0:30, luôn hiện4card đại diện theo thứ tự Aegis Core (Juggernaut/Barrier), Blood Reclaimer (sustain), Phantom Edge (Perfect/counter), Detonation Specialist (ranged/chain). Chọn1Mutation, không khóa class/route; các mốc sau vẫn Adaptive Draft tối đa3card với weighted sampling/reasons/anti-repeat Q5D. Ngoại lệ4card cố định chỉ ở milestone đầu, không dùng anti-repeat để bỏ một hướng. Các offered IDs vẫn ghi history khi thực sự hiển thị để draft sau/run sau dùng quy tắc cũ. Giữ pool/unlock: nếu fixture có pool nhỏ hoặc đã sở hữu đại diện thì chỉ hiện lựa chọn hợp lệ, không bù bằng card khác hướng. Không thay damage/effects/cap4Mutation/2Curse/heal/timing. Trial Q5E cũng giữ4card đầu, gợi ý route ở các lượt sau; hướng sustain bắt đầu Reclaimer rồi lấy Catalyst. Không cấp build trước milestone.
 
 ## Q6 Design Contract — Curse Stacking

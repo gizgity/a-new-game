@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code/tests/build/browser/deploy PASS7843b98; **AWAITING USER PLAYTEST APPROVAL**. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
+Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code7843b98: **ACCEPTED — USER PLAYTEST APPROVAL**, user xác nhận “approve” ngày2026-10-26 cho draft đầu4hướng. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
 
 ## ACCEPTANCE
-25kills/0:30 có Aegis Core/Blood Reclaimer/Phantom Edge/Detonation Specialist kèm nhãn vi/en; chọn1, không khóa hướng. Sau đó tối đa3card Adaptive, Curse2slots/4Mutation/timing/heal/unlocks/history/reset không regression. Trial không cắt mất card thứ4; desktop/mobile cuộn và chọn card cuối. Tests/build/browser/deploy rồi push handoff, chờ user playtest.
+25kills/0:30 có Aegis Core/Blood Reclaimer/Phantom Edge/Detonation Specialist kèm nhãn vi/en; chọn1, không khóa hướng. Sau đó tối đa3card Adaptive, Curse2slots/4Mutation/timing/heal/unlocks/history/reset không regression. Trial không cắt mất card thứ4; desktop/mobile cuộn và chọn card cuối. Tests/build/browser/deploy PASS; user đã duyệt draft đầu4hướng qua “approve”.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -32,6 +32,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5C — New pool tới12/8 | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên b5ba138 |
 | Q5D — Weighted Draft | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “oki r, làm tiếp đi” trên514063a |
 | Q5E — Diversity/balance | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “playtest oki” trên8b1571d ngày2026-10-26 |
+| Draft đầu4hướng | ACCEPTED — USER PLAYTEST APPROVAL | User “approve” trên7843b98 ngày2026-10-26 |
 | Q6 — Curse Stacking | AWAITING USER PLAYTEST APPROVAL | Code b534315, deploy40252934135 PASS; chờ cảm nhận A–F/mobile thật |
 
 ## CURRENT STATUS — DRAFT ĐẦU4HƯỚNG
@@ -117,6 +118,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm test.
 
 ## LAST VALIDATION
+- User xác nhận “approve” cho draft đầu4hướng7843b98 ngày2026-10-26. Lượt này chỉ đồng bộ approval trong HANDOFF/GAME_BRIEF/docs/q6, kiểm diff; không đổi gameplay hoặc chạy lại tests/build/deploy. Không suy rộng approval sang Q6 stacking/Safari/mọi thiết bị.
 - Feedback draft đầu4hướng: code7843b988e6d0a109cc20994b3c874219b05443bb đã fast-forward push main; Pages Actions40259161783 completed/success. Tests151definitions/12files, typecheck/build/browser4viewport PASS như CURRENT STATUS. URL https://gizgity.github.io/a-new-game/ ; evidence local fixture, chưa smoke live (proxy403 từ lượt trước) hoặc user acceptance.
 
 - Q6 code b534315bb7cb15aa219e6ee8debd1682457a685a, parents c02c30a/f1fb9ea trên main eb49190; fast-forward push không force, giữ toàn bộ Q5 evidence. Pages Actions40252934135 completed/success (job121348532512), Deploy step thành công. Lượt đầu c02c30a Actions40252846937 cũng success.
@@ -132,7 +134,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Chờ user thử bản7843b98 tại https://gizgity.github.io/a-new-game/ : tới25kills HOẶC0:30, xem4nhãn/card, mobile cuộn chọncard4 hoặc chọn hướng muốn thử; chỉ nhận1Mutation, các lượt Mutation sau vẫn3lựa chọn Adaptive. Gửi hướng đã chọn/lỗi/thiết bị nếu có. Q6 stacking vẫn chờ approval; chỉ sửa feedback, không mở Q7.
+Draft đầu4hướng7843b98 đã được user duyệt; dừng và chờ yêu cầu/feedback tiếp theo. Không tự mở Q7. Approval lượt này áp dụng draft đầu4hướng; Q6 Curse Stacking A–F vẫn chưa có xác nhận playtest riêng.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.
