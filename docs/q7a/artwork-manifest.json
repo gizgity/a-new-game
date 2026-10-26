@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-26",
+  "generator": "ImageGen tool provided in Codex session",
+  "model": null,
+  "seed": null,
+  "license": "Service output terms apply; no CC0 or runtime asset license asserted",
+  "runtime_integrated": false,
+  "files": [
+    {
+      "file": "artwork/arena-concept-v1.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 2506626,
+      "sha256": "6e8dc4454f8c343fde1f23d0bc957507fb4025842849400c00028890cf7eb3b2",
+      "inputs": [],
+      "usage": "concept-review-only",
+      "status": "superseded-by-v2"
+    },
+    {
+      "file": "artwork/arena-concept-v2.png",
+      "width": 1586,
+      "height": 992,
+      "bytes": 2174792,
+      "sha256": "6144dc6c8f2793dca091910c8a85617ee046bb21f2d488b54affefb833107999",
+      "inputs": [
+        "arena-concept-v1.png"
+      ],
+      "usage": "concept-review-only",
+      "status": "awaiting-visual-approval"
+    },
+    {
+      "file": "artwork/combat-mockup-v1.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2516540,
+      "sha256": "eefd47846b98fea0345d05ee034edeec6693ce594cf65a423517d87d9e876d48",
+      "inputs": [
+        "arena-concept-v1.png",
+        "docs/q3/identity-390.png"
+      ],
+      "usage": "concept-review-only",
+      "status": "superseded-by-v2"
+    },
+    {
+      "file": "artwork/combat-mockup-v2.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2152415,
+      "sha256": "8191ea9992e7ad78ac5034212b14f9a4c60789295f62c19c4e3173b0d9983176",
+      "inputs": [
+        "combat-mockup-v1.png",
+        "arena-concept-v2.png"
+      ],
+      "usage": "concept-review-only",
+      "status": "awaiting-visual-approval"
+    },
+    {
+      "file": "artwork/contrast-palette-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2144172,
+      "sha256": "616c9bd9567dd6670ea1ea09edf4941e361598d66724287c316f3e20956228b1",
+      "inputs": [],
+      "usage": "concept-review-only",
+      "status": "awaiting-visual-approval"
+    },
+    {
+      "file": "artwork/crowd-mockup-v1.png",
+      "width": 853,
+      "height": 1844,
+      "bytes": 2189176,
+      "sha256": "675bc2efff58ec8edd9776b4fa7f43ca469c64e709c02c1b3637d63dc89ee48f",
+      "inputs": [
+        "docs/q3/identity-390.png",
+        "arena-concept-v1.png"
+      ],
+      "usage": "concept-review-only",
+      "status": "superseded-by-v2"
+    },
+    {
+      "file": "artwork/crowd-mockup-v2.png",
+      "width": 853,
+      "height": 1844,
+      "bytes": 2016784,
+      "sha256": "f9d792630b60750029fca08fc60c79bebdb7991c4d3fdbde1a4484ee0a293e5b",
+      "inputs": [
+        "crowd-mockup-v1.png",
+        "arena-concept-v2.png"
+      ],
+      "usage": "concept-review-only",
+      "status": "awaiting-visual-approval"
+    }
+  ]
+}

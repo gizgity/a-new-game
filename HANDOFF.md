@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Feedback sau Q6: user xác nhận Mutation Draft đầu có4card đại diện Juggernaut/sustain/counter/ranged-chain; các draft sau giữ Adaptive. Code7843b98: **ACCEPTED — USER PLAYTEST APPROVAL**, user xác nhận “approve” ngày2026-10-26 cho draft đầu4hướng. Q6 stacking vẫn AWAITING USER PLAYTEST APPROVAL; Q2–Q5 giữ accepted.
+Q7A — Arena Art & Visual Contrast (task user2026-10-26): audit → illustration/design contract → visual gate. **AWAITING VISUAL APPROVAL** cho “Ấn phong bị vỡ / The Broken Seal V2”. Chưa thay arena/code/gameplay, chưa ART APPROVED. Q2–Q5 và draft đầu4hướng7843b98 giữ accepted; Q6 stacking còn chờ playtest riêng; Q1 chưa visual approved.
 
 ## ACCEPTANCE
-25kills/0:30 có Aegis Core/Blood Reclaimer/Phantom Edge/Detonation Specialist kèm nhãn vi/en; chọn1, không khóa hướng. Sau đó tối đa3card Adaptive, Curse2slots/4Mutation/timing/heal/unlocks/history/reset không regression. Trial không cắt mất card thứ4; desktop/mobile cuộn và chọn card cuối. Tests/build/browser/deploy PASS; user đã duyệt draft đầu4hướng qua “approve”.
+Checkpoint hiện tại: có audit main/approval, arena concept, combat mockup mobile/desktop, palette/contrast, crowd illustration, Q7A contract và provenance; user duyệt visual trước implementation. Runtime acceptance sau approval theo GAME_BRIEF Q7A: asset-based arena/readability/depth, không regression/performance rõ, renderer thật, typecheck/build/deploy rồi AWAITING USER PLAYTEST APPROVAL. Không Q7B.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -34,6 +34,16 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q5E — Diversity/balance | ACCEPTED — USER PLAYTEST APPROVAL | User xác nhận “playtest oki” trên8b1571d ngày2026-10-26 |
 | Draft đầu4hướng | ACCEPTED — USER PLAYTEST APPROVAL | User “approve” trên7843b98 ngày2026-10-26 |
 | Q6 — Curse Stacking | AWAITING USER PLAYTEST APPROVAL | Code b534315, deploy40252934135 PASS; chờ cảm nhận A–F/mobile thật |
+| Q7A — Arena art/contrast | AWAITING VISUAL APPROVAL | Concept V2 + combat/crowd V2, palette V1; chưa implementation/runtime acceptance |
+
+## CURRENT STATUS — Q7A VISUAL GATE
+- Dùng .agents/skills/handoff/SKILL.md; audit source/rendering/assets và toàn bộ Markdown liên quan. Git fetch ban đầu lỗi socket proxy trong sandbox; GitHub connector xác nhận main fbc994b6d5319dfb490e9a8bf30556dd52273224, ahead3 so local38d5e1c. Chưa có Q7 dùng cho mục tiêu khác. Đã đối chiếu remote code draft4hướng và approval, đồng bộ3docs mới từ main trước khi thêm Q7A; không ghi đè source.
+- 7PNG ImageGen thật có file: arena/combat/crowd V1→V2, palette V1. V2 chọn obsidian facet lớn, arc gãy,3inlay phẳng; bỏ rubble/masonry V1. Review tại docs/q7a/index.html; audit/provenance/giới hạn README, exact prompts và manifest cùng thư mục. Không reference bên thứ ba, không tự gán CC0/license runtime.
+- Contract GAME_BRIEF Q7A và AGENTS thêm illustration-first/asset-first; current Art không còn ưu tiên Graphics cho floor. Note cũ có cross-reference, không đổi evidence/approval lịch sử.
+- Ảnh là concept, không renderer: ImageGen còn lệch UI/camera/poses, Barrier và pips. Giữ sprite/VFX/UI/camera/bounds/collider/core hiện hành khi triển khai; không import board nguyên khối. Xem README Q7A cho sai lệch chi tiết.
+- Validation Q7A: diff/check liên kết nội bộ PASS,7PNG header/dimensions/SHA256 PASS; src/public/tests/package/workflow không đổi so main fbc994b6. Chromium headless preview không xuất screenshot trong timeout; không báo browser/grayscale render PASS.
+- Baseline renderer Q3/Q4 lịch sử trong board, không giả current/live. CSS toggle grayscale cùng PNG phục vụ review; chưa runtime/frame-time/device/Safari/full-run Q7A. Chưa build/test game vì không implementation; chỉ kiểm docs/PNG/board.
+- Đã fetch qua network capability và chuyển nhánh q7a-visual-review từ origin/main fbc994b6, giữ đủ source opening4hướng đã accepted. Chỉ sau user duyệt mới sửa ArenaScene/static assets, kiểm/deploy rồi dừng chờ playtest. Commit/push gói review riêng giữ tiến độ theo KEY DECISIONS, không deploy artwork.
 
 ## CURRENT STATUS — DRAFT ĐẦU4HƯỚNG
 - config/draft.ts định nghĩa4đại diện; Draft.ts chỉ dùng opening ở milestone đầu từ run.ts. builds.ts có direction metadata; main/i18n/style ghi4hướng vi/en, desktop2×2/mobile cuộn. playtests.ts giữ nguyên4card đầu; route sustain chọn Reclaimer trước Catalyst. Không đổi effect/balance/progression hoặc các lượt weighted sau.
@@ -134,7 +144,7 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - Remote main252b4b2 đã đối chiếu đầu Q5E. Git local vẫn396ed42+changes trước; deploy connector từ parent remote, expected SHA/không force, bảo toàn mọi evidence. Repo publicgizgity/a-new-game đã xác minh quyền ghi.
 
 ## NEXT ACTION
-Draft đầu4hướng7843b98 đã được user duyệt; dừng và chờ yêu cầu/feedback tiếp theo. Không tự mở Q7. Approval lượt này áp dụng draft đầu4hướng; Q6 Curse Stacking A–F vẫn chưa có xác nhận playtest riêng.
+Chờ user duyệt concept **Q7A V2** trong docs/q7a/index.html: material/motif ở arena-concept-v2, độ yên floor và player/threat ở combat/crowd-v2, palette/hierarchy. User ghi hình/vùng cần đổi hoặc duyệt hướng để triển khai. **AWAITING VISUAL APPROVAL**; không sửa game khi chưa duyệt, không ART APPROVED, không mở Q7B; Q6 approval riêng vẫn pending.
 
 ## PLAYTEST Q5C — ĐÃ DUYỆT / THAM CHIẾU
 Scope/cách thử/mong đợi/giới hạn ở docs/q5c/README.md. Link https://gizgity.github.io/a-new-game/?playtest=sustain, đổi query thành anchor/chamber/glass/hunted. Trial cấp build không lưu progress, không là natural acquisition. Mobile joystick/Lướt/Chém/Bắn; Heavy/Charged giữ-thả. Desktop WASD/Space/chuột trái-phải/Shift/E giữ-thả. Giữ tank d42cdaf đã duyệt; không yêu cầu thử lại Q5A/Q4.

@@ -48,6 +48,12 @@ public/assets/
 - Không tạo abstractions, frameworks, placeholder modules hoặc barrel files không cần thiết; `src/i18n/index.ts` dành cho API dịch `t(key)`, không chỉ re-export.
 - Giữ code đơn giản, dễ đọc, dễ mở rộng theo milestone; chỉ tổ chức lại code liên quan trong phạm vi task được giao.
 
+## Artwork và visual gate
+- Asset-first, illustration-first: audit rendering/approval và tạo concept, mockup gần tỷ lệ chơi, palette/contrast cùng cảnh đông quái trước khi thay artwork arena. Dừng **AWAITING VISUAL APPROVAL**; chỉ user duyệt mới cho triển khai concept. Ảnh sinh thành công không là ART APPROVED.
+- Artwork môi trường chính dùng PNG/WebP hoặc SVG có chủ đích, render bằng Phaser Image/TileSprite/layers tĩnh. Không thay artwork bằng vòng lặp Graphics, procedural art engine, tilemap phức tạp hoặc shader nặng. Graphics dành cho dynamic combat shapes/telegraphs/VFX/debug.
+- Lưu source artwork, prompt, nguồn/quyền sử dụng, version và giới hạn riêng với runtime assets. Concept/mockup và screenshot renderer thật phải ghi nhãn khác nhau; không dùng reference bên thứ ba chưa có quyền phù hợp làm asset.
+- Giữ player/threats nổi hơn floor qua luminance, outline, shape, size và animation; kiểm mobile/desktop/crowd/grayscale phù hợp. Giữ sprite/VFX đã accepted, gameplay bounds/camera/collider/input và balance trừ khi user giao thay đổi.
+
 ## Kiểm thử
 - Chạy typecheck/build sau thay đổi implementation liên quan.
 - Focused tests cho gameplay logic rủi ro cao; playtest ngắn sau milestone gameplay.

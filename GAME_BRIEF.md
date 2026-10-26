@@ -367,7 +367,7 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - Neon Occult / Fractured Geometry, original geometric pixel art.
 - Player 32×32; common enemy 24×24 hoặc 32×32.
 - Palette tối, neon dùng để truyền thông tin chiến đấu.
-- Sprite/SFX có thể tạo bằng code; ưu tiên Phaser Graphics, SVG/PNG, Sharp chỉ nếu cần.
+- Artwork mới theo Q7A dùng illustration-first/asset-first: PNG/WebP hoặc SVG có chủ đích, Phaser Image/TileSprite và static layers. Graphics chỉ cho dynamic combat shapes/telegraphs/VFX/debug; không dùng làm artwork môi trường chính. Quy tắc này thay định hướng ưu tiên Graphics cũ, không yêu cầu thay sprite/VFX đã accepted. Procedural SFX hiện có giữ nguyên.
 - Không custom art engine, không sao chép asset từ game khác.
 
 ### Fractured Vessel — nền tảng Q1
@@ -375,6 +375,51 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - Thân cơ sở 32×32; vũ khí và VFX có thể vượt khung, không thay collider. Idle: lõi thở và giáp lơ lửng; movement: nhịp chi và độ trễ các mảnh; melee: lấy đà, chém, hồi; shoot: giật súng/lõi và lóe nòng; dash: giáp co lại, bung mảnh và afterimages.
 - Slash là vệt cắt đa đoạn sắc cạnh biến đổi theo thời gian, đọc được hướng/tầm. Dash là dấu lưu hình các mảnh giáp ở vị trí đã đi qua. Mint là năng lượng player, amber nhấn Heavy/Charged; tránh che telegraph địch.
 - Repo chưa lưu Art Bible riêng; mục này cụ thể hóa Neon Occult / Fractured Geometry và yêu cầu Fractured Vessel của task Q1, chờ người dùng duyệt hình ảnh, không tuyên bố khôi phục đầy đủ một Art Bible không có trong repo.
+
+## Q7A Design Contract — Arena Art & Visual Contrast
+
+**AWAITING VISUAL APPROVAL — chưa ART APPROVED, chưa triển khai.** Task user ngày2026-10-26 mở riêng Q7A; audit main `fbc994b6` không thấy Q7 đã dùng cho mục tiêu khác. Q2–Q5 và draft đầu4hướng `7843b98` giữ accepted; Q6 Curse Stacking vẫn chờ playtest riêng; Q1 chưa visual approved. Q7A không tự hoàn thành Q1 hoặc mở Q7B.
+
+### Arena / art direction
+- Một arena **1600×1000, inset64**, player radius16 và toàn bộ clamp/collision giữ nguyên. Giữ follow/zoom/resize trong ArenaScene; không fit toàn arena vào phone theo mockup. Không procedural dungeon, tilemap phức tạp hoặc vật cản mới.
+- Hướng đề xuất **Ấn phong bị vỡ / The Broken Seal V2**: mặt cắt obsidian tối lớn, bevel nông và khe chìm; hai vòng nghi lễ đứt đoạn, rune/magical circuitry ít, có chủ đích. Ba dấu ấn phẳng cố định: split-crown tây bắc, các phiến lồng phía đông, fan ba phiến phía nam. Là hình inlay trên sàn đi xuyên bình thường, không là tường/pit/collider.
+- Material hierarchy: nền obsidian chìm → các mặt kính đá rộng → khắc nghi lễ/xước cạnh nông → actors/VFX. Khoảng65% trung tâm là vùng yên; không rải rubble/random noise, không lấy bloom/glow làm depth. Chi tiết nhận diện gần rìa cũng phải tối vì combat có thể diễn ra ở mọi vị trí.
+- Original Neon Occult / Fractured Geometry, dark fantasy pixel art và fragmented armor. Giữ Fractured Vessel, enemy visual Q3, combat effects Q2/Q4/Q5 hiện có; không thay hàng loạt sprite/VFX để giống nhân vật ImageGen.
+
+### Contrast / readability
+
+| Ưu tiên | Nội dung | Cách đọc ngoài màu |
+| --- | --- | --- |
+| P0 | Player, enemy attacks, danger telegraphs, immediate threats | Lõi mint/ivory sáng trong giáp tối; viền threat rõ; dashed prepare → solid/chevrons imminent → flash hit theo timing hiện có |
+| P1 | Enemy bodies, projectiles, Boss cues | Silhouette mask/hooks/hood/five-shards/plates/crown, outline, hướng bay/pose và quy mô hiện hành |
+| P2 | Rupture, Charged, Chain/Detonate, Barrier, resource feedback | 3diamond pips; đường nguồn→đích mảnh; vòng nổ gãy có tâm/radius thật; Barrier segmented; không phủ player/threat |
+| P3 | Floor, runes, cracks, ambient decoration | Chìm, ít cạnh sáng, không dùng hue danger, không pulse/animation giống telegraph |
+
+- Palette sàn đề xuất: `#090D19 #111925 #202D3A`; rune chìm tối đa sắc độ tham chiếu `#35474D`, không xem đây là mức sáng bắt buộc. Mint/ivory player `#9DFFE2/#E9FFF0`; rose danger `#FF6F87`; imminent `#FFE599`; hostile violet `#C399FF`; Charged amber `#FFCC80`; Barrier cyan `#63D9F5`. Đây là bảng tham chiếu; giữ mapping màu đang có của EnemyVisual, không đổi Bulwark sang cyan chỉ vì ảnh palette.
+- Kiểm màu **và** luminance, outline, size, shape, pose/animation. Player phải nhận ra ngay trên center/rìa và giữa crowd; danger phải sáng/rõ hơn khe sàn. Khe/rune không có chevrons, nhịp đóng vòng hay pixel sáng như projectile.
+- Floor giữ tĩnh; không tăng bloom/particle budget, không thêm shader/post-processing nặng. Giữ chain/impact budgets hiện hành. Một ảnh đẹp tĩnh không chứng minh telegraph lúc nổ/di chuyển đọc tốt.
+- Kiểm grayscale thực bằng CSS grayscale trên cùng ảnh trong board; sau implementation kiểm screenshot renderer màu/grayscale, threat prepare/imminent/hit/recovery và crowd. Không cần visual regression framework.
+
+### Visual gate / deliverables
+- [Gói review và audit](docs/q7a/README.md), [board](docs/q7a/index.html), [prompts](docs/q7a/PROMPTS.md). Arena concept V2, combat mobile/desktop mockup V2, contrast/palette V1 và crowd mockup V2 là **minh họa**, không là screenshot game hoặc runtime asset đã duyệt. Bản V1 environment/mocks giữ làm iteration lịch sử, được V2 supersede.
+- ImageGen có thể tạo file PNG local; không dùng paid API mới hoặc dịch vụ khi game chạy. Prompt/inputs/provenance/quyền dùng và sai lệch ảnh nằm trong README Q7A. Không dùng reference có bản quyền không phù hợp làm asset.
+- User duyệt hướng material, mức yên của floor, ba motif và combat contrast trước khi triển khai. Chưa duyệt: chỉ tài liệu/artwork review, không thay ArenaScene/public assets/gameplay. Nếu cần chỉnh concept, tiếp tục vòng minh họa rồi dừng lại cùng gate.
+
+### Implementation sau approval
+- Tách source artwork trong docs/q7a/artwork với optimized runtime PNG/WebP/SVG trong public/assets/arena. Ưu tiên một floor texture tĩnh và rất ít lớp decal tái sử dụng, preload một lần, Phaser Image layers dưới depth1 combat; không thêm custom art engine/dependency frontend.
+- Bỏ title/footer khỏi runtime source, cân scale theo world, loại hình dễ hiểu nhầm vật cản, kiểm độ nét/khả năng nạp texture trên mobile trước chốt kích thước. Không đưa nguyên board có actor/HUD vào game.
+- Dự kiến sửa ArenaScene preload/drawArena và thêm assets/metadata; PlayerVisual/EnemyVisual/BuildVisual/chargedVfx/BarrierVisual chỉ làm đối chiếu, không dự kiến sửa trong gói arena.
+- Khóa timing/damage/resources/Mutation/Curse/draft, AI/Boss patterns, input desktop/mobile, bounds/collider/camera. Free/open-source first, KISS.
+
+### Acceptance sau implementation
+1. Arena có art identity rõ, depth/material hierarchy có chủ đích, vượt nền lưới debug.
+2. Player vẫn focal point khi đông quái; enemy/Boss threats đọc rõ ở center/rìa.
+3. Rupture/Detonate/Chain/Charged/Barrier không bị background che hoặc hòa lẫn.
+4. Desktop và mobile dọc/ngang giữ camera/layout/control readability; kiểm size320/390/844/1440 phù hợp và thiết bị thật khi có.
+5. Artwork không gây suy giảm performance rõ: so cùng crowd/viewport trước–sau (frame time, texture/load), ghi thiết bị và giới hạn; không dùng fixture làm bảo đảm mọi mobile.
+6. Không regression gameplay; typecheck/build PASS, focused checks phù hợp thay đổi, không comprehensive E2E.
+7. Có screenshot/video **renderer thật** trước–sau và provenance fixture/input; ảnh ImageGen không thay bằng chứng này.
+8. Sau checks: commit/push, deploy workflow hiện có, bàn giao URL/commit/ảnh; ghi **AWAITING USER PLAYTEST APPROVAL**, chờ user xác nhận chất lượng. Không tự chuyển Q7B.
 
 ## Audio
 - Procedural SFX đơn giản qua Phaser Sound Manager.
@@ -407,4 +452,4 @@ Bàn giao từng checkpoint phải có version/link và cách vào build/tình h
 - M5: Elite, Boss, victory/death và restart.
 - M6: unlocks, localStorage, SFX và polish tối thiểu.
 
-M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã implementation/checks, chờ user playtest approval; không tự mở Q7.
+M0–M6 là lịch sử functional implementation, không phải chứng nhận experience acceptance. Q1 (player art/animation/readability) đang chờ visual approval. User đã mở rộng phạm vi sang mobile-first: triển khai input cảm ứng, bố cục và camera; Q2 đã được user chấp nhận qua playtest (“ok q2 ổn đó”); Q3 đã được user chấp nhận qua “oki q3 r”; Q4 đã được user chấp nhận qua “thấy ok r” trên daee80a, phát sinh sau theo issue mới; Q5 Design Contract12/8 được soạn theo yêu cầu ngày2026-10-25, DESIGN APPROVED; Q5A đã được user duyệt “q5a ok” trên fa4045d; Q5A–Q5E đã được user xác nhận hoàn tất/duyệt trong task Q6 ngày2026-10-26 (approval/evidence từng lượt Q5 ở contract lịch sử và HANDOFF). Q6 Curse Stacking đã implementation/checks, chờ user playtest approval riêng. User mở Q7A visual theo task2026-10-26: contract/minh họa đang AWAITING VISUAL APPROVAL, chưa triển khai artwork và không mở Q7B.

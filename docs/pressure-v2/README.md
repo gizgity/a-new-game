@@ -1,5 +1,7 @@
 # Pressure v2 — chống chạy vòng, giữ AoE
 
+> Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Damage/cooldown Grunt trong note này đã được feedback sau e4f0ab1 supersede (hiện damage6, cooldown7s+offset); không lấy thông số lịch sử làm tuning mới. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A chỉ visual concept, chưa đổi gameplay.
+
 Bản e4f0ab1b962a4e99f5172d4229ad59ee70c9e4aa đã deploy; Actions40171971219 completed/success. Chờ user playtest, chưa là experience acceptance. Browser evidence là local/dist; không xác minh trực tiếp live từ môi trường bị chặn Pages.
 
 - Không kill4s khi đủ18: thêm pack3, ưu tiên2Archer tới cap8; sau đó tiếp tục thêm Grunt. Boss phase bổ sung Archer trước tới2, vẫn cap7. Kill reset clock; không tăng HP quái, không nerf damage/resources/cleave/AoE của player.

@@ -1,5 +1,7 @@
 # Tank trade-off — feedback sau Q5B
 
+> Note lịch sử, giữ nguyên evidence/approval tại thời điểm đó. Q5C–Q5E đã accepted; câu chưa mở ở dưới là trạng thái tại checkpoint lịch sử. Contract/trạng thái hiện hành ở [GAME_BRIEF](../../GAME_BRIEF.md) và [HANDOFF](../../HANDOFF.md); Q7A chỉ visual concept, chưa đổi gameplay.
+
 Bản d42cdaf4b69a2253307c5a194a2b58f022ad3f94 đã deploy, Actions40209412564 completed/success. User đã duyệt balance qua “oki, ổn r á” trên d42cdaf. ACCEPTED — USER PLAYTEST APPROVAL cho tank trade-off; Q5C/D chưa mở.
 
 User yêu cầu chống chịu phải đánh đổi damage, tránh vừa Barrier vừa heal vừa damage lớn. Đây là điều chỉnh trực tiếp lên Q5A/Q5B đã có, không mở Q5C/D.

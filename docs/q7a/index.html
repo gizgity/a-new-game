@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Q7A — Visual review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090d19;color:#e7eef3;font:16px/1.6 system-ui}main{max-width:1400px;margin:auto;padding:24px}h1,h2{line-height:1.25}a{color:#9dffe2}p{max-width:85ch}figure{margin:0;padding:16px;background:#111925;border:1px solid #30434a;border-radius:10px}figcaption{margin-top:12px}img{display:block;max-width:100%;height:auto;margin:auto}section{margin:36px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.phone{width:390px;max-width:100%}.baseline{width:390px;max-width:100%}.status{padding:12px;border-left:3px solid #ffe599}label{display:inline-block;padding:12px;background:#202d3a;cursor:pointer;border-radius:8px}input{width:20px;height:20px;vertical-align:middle}#gray:checked~.gallery img{filter:grayscale(1)}.note{color:#b4c4cd}small{display:block}summary{cursor:pointer;padding:12px}@media(max-width:700px){main{padding:14px}.pair{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>Q7A · Ấn phong bị vỡ</h1>
+<p class="status"><strong>AWAITING VISUAL APPROVAL</strong> · Chỉ concept, chưa thay artwork trong game. V2 là hướng đề xuất, không phải ART APPROVED.</p>
+<p>Obsidian có mặt cắt lớn, các vòng nghi lễ gãy và ba motif phẳng cố định. Chi tiết sàn chìm dưới player, threat và VFX. So sánh ở kích thước phone; bấm hình để mở bản gốc.</p>
+<p><a href="README.md">Audit, nguồn/quyền dùng và giới hạn</a> · <a href="PROMPTS.md">Prompts</a> · <a href="../../GAME_BRIEF.md">Design contract</a></p>
+<input type="checkbox" id="gray"><label for="gray">Bật grayscale trên cùng ảnh</label>
+<div class="gallery">
+<section>
+<h2>01 · Arena concept V2</h2>
+<figure><a href="artwork/arena-concept-v2.png"><img src="artwork/arena-concept-v2.png" alt="Concept V2: obsidian phẳng, vòng khắc gãy và ba dấu ấn bất đối xứng"></a><figcaption>Hướng material/motif chính. Bevel chỉ là relief nông, không vật cản. Caption ngoài sàn sẽ bỏ nếu tạo runtime texture.</figcaption></figure>
+</section>
+<section>
+<h2>02 · Combat mockup V2</h2>
+<figure><a href="artwork/combat-mockup-v2.png"><img src="artwork/combat-mockup-v2.png" alt="Minh họa combat portrait mobile và desktop"></a><figcaption>Actor nhỏ, floor tối, khoảng controls ở dưới mobile. Ảnh sinh có sai UI/camera/sprite/VFX; implementation hiện hành vẫn là nguồn đúng, không đổi game cho giống ảnh.</figcaption></figure>
+</section>
+<section>
+<h2>03 · Contrast / palette reference V1</h2>
+<figure><a href="artwork/contrast-palette-v1.png"><img src="artwork/contrast-palette-v1.png" alt="Tham chiếu hierarchy P0 tới P3, palette và grayscale"></a><figcaption>Chỉ bảng màu/hierarchy. Nhân vật vẽ lại, màu Bulwark, fan fill và nhãn sai trong ảnh không thuộc đề xuất triển khai. Grayscale bên phải do ImageGen minh họa; checkbox phía trên dùng CSS grayscale thật cho toàn ảnh.</figcaption></figure>
+</section>
+<section>
+<h2>04 · Crowd V2 cạnh baseline renderer</h2>
+<div class="pair">
+<figure><a href="../q3/identity-390.png"><img class="baseline" src="../q3/identity-390.png" alt="Baseline Q3 fixture renderer thật với floor lưới hiện hành"></a><figcaption>TRƯỚC — evidence renderer Q3 lịch sử, fixture identity ít quái. Không cùng scene với mockup, không phải đo trước–sau.</figcaption></figure>
+<figure><a href="artwork/crowd-mockup-v2.png"><img class="phone" src="artwork/crowd-mockup-v2.png" alt="Concept đông quái V2 có player, threats, Rupture và blast"></a><figcaption>ĐỀ XUẤT — ImageGen, khoảng22quái; player/threat/P2 trên floor V2. Không là renderer screenshot. Sai pip states/Barrier/UI, chưa chứng minh combat động.</figcaption></figure>
+</div>
+</section>
+<details><summary>Baseline renderer: Boss và chain</summary>
+<div class="pair">
+<figure><a href="../q3/boss-2-windup.png"><img class="baseline" src="../q3/boss-2-windup.png" alt="Q3 fixture Boss slam trên floor cũ"></a><figcaption>Boss slam Q3, fixture thật. Giữ geometry/cue hiện hành.</figcaption></figure>
+<figure><a href="../q4/relay-390.png"><img class="baseline" src="../q4/relay-390.png" alt="Q4 fixture relay với pips và đường nguồn đích"></a><figcaption>Chain Q4, fixture thật. Pips/relay này là nguồn đối chiếu.</figcaption></figure>
+</div>
+</details>
+<section>
+<h2>Phạm vi duyệt</h2>
+<p>Duyệt material obsidian V2, broken ritual geometry/ba motif, mức yên của floor và hierarchy khi đông quái. Nếu cần đổi, ghi tên hình và vùng cần chỉnh. Chưa cần chơi lại Q2–Q6.</p>
+<p class="note">Chưa có runtime Q7A, chưa đổi controls/camera/collision/gameplay. Sau concept approval mới asset/rendering, typecheck/build, screenshot renderer thật và kiểm performance; sau deploy vẫn chờ user playtest.</p>
+</section>
+</div>
+</main>
+</html>
