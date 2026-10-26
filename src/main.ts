@@ -45,7 +45,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <p id="result-banner" class="result-banner" hidden></p>
         <span class="panel-sigil" aria-hidden="true">◇</span>
         <p class="eyebrow" data-i18n="subtitle"></p>
-        <h2 id="panel-title"></h2><p id="panel-body" class="panel-body"></p>
+        <h2 id="panel-title" tabindex="-1"></h2><p id="panel-body" class="panel-body"></p>
         <p class="touch-hint" data-i18n="touchHint"></p>
         <div class="mini-controls"><span><kbd data-i18n="moveKey"></kbd><span data-i18n="move"></span></span>
           <span><kbd data-i18n="mouse"></kbd><span data-i18n="aim"></span></span></div>
@@ -87,6 +87,7 @@ const draftGuard = new DraftInteractionGuard(document.querySelector<HTMLElement>
 draftGuard.onReadyChange = updateDraftReadiness;
 let currentPhase: Phase = 'ready';
 let buildDetailsOpen = false;
+let visiblePanel: string | null = null;
 const hud = new CombatHUD(document.querySelector<HTMLElement>('#combat-hud')!);
 
 function renderUI(phase: Phase = currentPhase): void {
@@ -124,6 +125,18 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
   touchControls.translate();
   touchControls.setActive(phase === 'playing');
+  // Only a newly visible panel resets scroll/focus; locale/settings rerenders retain it.
+  const panel = overlay.hidden ? null : buildDetailsOpen ? 'build' : phase;
+  if (panel !== visiblePanel) {
+    visiblePanel = panel;
+    if (panel && panel !== 'build') {
+      const container = document.querySelector<HTMLElement>(phase === 'draft' ? '#draft-panel' : '#menu-panel')!;
+      container.scrollTop = 0;
+      const title = container.querySelector<HTMLElement>('h2')!;
+      title.tabIndex = -1;
+      title.focus({ preventScroll: true });
+    }
+  }
 }
 
 function resultBody(): string {

@@ -1,0 +1,52 @@
+[
+  {
+    "size": [
+      320,
+      740
+    ],
+    "errors": [],
+    "badRequests": [],
+    "startPauseLocaleResume": true,
+    "overflow": false
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "errors": [],
+    "badRequests": [],
+    "startPauseLocaleResume": true,
+    "overflow": false
+  },
+  {
+    "size": [
+      844,
+      390
+    ],
+    "errors": [],
+    "badRequests": [],
+    "startPauseLocaleResume": true,
+    "overflow": false
+  },
+  {
+    "size": [
+      768,
+      1024
+    ],
+    "errors": [],
+    "badRequests": [],
+    "startPauseLocaleResume": true,
+    "overflow": false
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "errors": [],
+    "badRequests": [],
+    "startPauseLocaleResume": true,
+    "overflow": false
+  }
+]

@@ -1,6 +1,6 @@
 # Q7B — HUD frame và cụm combat theo nhóm chức năng
 
-> Checkpoint hiện hành: Q7B đã user accepted; user nay giao [Q7C — Character/Enemy Art](../q7c/README.md). Q7D = Full Run Polish chưa mở. Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
+> Checkpoint hiện hành: Q7B đã user accepted; Q7C cũng đã user accepted; hiện hành [Q7D — Full Run Experience Polish](../q7d/README.md). Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
 
 **ACCEPTED — USER PLAYTEST APPROVAL.** User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. User yêu cầu bám ảnh HUD bevel/góc gãy trong hội thoại, sửa cụm quạt thành **4attack + Dash + Surge**, rồi chỉ rõ “icon là đủ k cần chữ trong nút”. Đây là correction được giao trực tiếp sau baseline6a851a0/runtimef9d7930, scope correction nay đã được user chấp nhận; không tự mở Q7C. Q2–Q7A/draft đầu4hướng giữ accepted; Q1 chưa riêng được duyệt.
 

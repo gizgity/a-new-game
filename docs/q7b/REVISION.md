@@ -1,6 +1,6 @@
 # Q7B — sửa theo playtest: vùng chơi, cảm ứng và draft
 
-> Checkpoint hiện hành: Q7B đã user accepted; user nay giao [Q7C — Character/Enemy Art](../q7c/README.md). Q7D = Full Run Polish chưa mở. Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
+> Checkpoint hiện hành: Q7B đã user accepted; Q7C cũng đã user accepted; hiện hành [Q7D — Full Run Experience Polish](../q7d/README.md). Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
 
 > HIỆN HÀNH: Q7B ACCEPTED, user “q7b đã đạt” trên5ee970e. [Bản đã chốt](HUD_V3.md). Phần dưới giữ snapshotf9d7930 và gate lúc đó, không sửa lịch sử thành thiết kế mới.
 

@@ -38,6 +38,11 @@ export class EnemySprites {
       body.stride += distance * 0.14;
       body.x = body.enemy.x; body.y = body.enemy.y;
     }
+    this.stepDeaths(dt);
+  }
+
+  /** Only cosmetic remnants may finish after the run has stopped. */
+  stepDeaths(dt: number): void {
     for (const death of this.deaths) {
       death.life = Math.max(0, death.life - dt);
       death.image.setVisible(death.life > 0).setAlpha(death.life / 0.28);

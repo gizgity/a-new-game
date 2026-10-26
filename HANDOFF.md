@@ -10,10 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q7C — Character & Enemy Art Overhaul: **ACCEPTED — USER PLAYTEST APPROVAL**. User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture. Visual đã duyệt trước qua “visual approved q7c”. Dừng tại Q7C; Q7D = Full Run Polish chưa mở.
+Q7D — Full Run Experience Polish, user giao ngày2026-10-26. Baseline main688f331 đã fetch/fast-forward. Q2–Q7C giữ ACCEPTED; không làm lại, không Q8.
 
 ## ACCEPTANCE
-User đã chấp nhận artwork/animation 6 nhân vật theo Q7A và hướng top-down¾ nhìn xuống cao. Giữ gameplay/collider/AI/damage/timing/telegraph/VFX/controls/HUD và các approval Q2–Q7B. Chỉ đồng bộ tài liệu acceptance; không sửa runtime hoặc chạy lại build/tests thủ công.
+Ba ưu tiên theo GAME_BRIEF: cue chuyển mốc, cleanup kết thúc, panel/Replay continuity. Audit và test input thật đủ6draft/Elite/Boss/Victory/Defeat/Replay; ghi rõ fixture và giới hạn thiết bị. Build/tests → push → Pages rồi **AWAITING USER PLAYTEST APPROVAL**, không tự accepted.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -37,9 +37,14 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
 | Q7C — Character & Enemy Art | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt q7c đạt” trên deploy2ef6d48; visual approved trước đó |
-| Q7D — Full Run Polish | NOT STARTED | Chỉ mở khi user giao |
+| Q7D — Full Run Experience Polish | AWAITING USER PLAYTEST APPROVAL | Checks PASS; hoàn tất push/Pages, chờ cảm nhận thiết bị thật |
 
-## CURRENT STATUS — Q7C ACCEPTED
+## CURRENT STATUS — Q7D
+- Scope3ưu tiên tại GAME_BRIEF/docs/q7d: transitionSFX, resultcleanup, panel/replay. Baselineinputrun đủ6draft/Elite/Boss→Defeat219.82s. Finaldesktop input thật đủ6draft/Elite100.12s/Boss186.32s→Victory199.42s/458kills/39HP→Replay→naturalDefeat9.95s→Replay; khônggrants/timeoverride. Read-onlystatebot, khônghumanacceptance.
+- Build/typecheck vànpmtest15files/163definitions PASS. Fixture5sizes320/390/844/768/1440 pausefreeze/audioSettings/vi-en/draftgrace/victoryfreeze+deathfade/deadline/replay8cycles/nooverflow/noerrorsPASS,displaylist29. Productiondist5sizesassets/base/Start/Pause/vi-en/Resume/nooverflow/errorsPASS. Core/config/run/controls/assets nguyên; CSS chỉ bỏfocusringheading programmatic, controls giữring.
+- WebAudio focused PASS (buffers/cue/stop/mute/volume, chờ audio quantum60ms). Mobile CDP đủ6draft/Elite/Boss → Victory194.12s/458kills/85HP, Replay → naturalDefeat9.95s → Replay PASS; chưa push/deploy. Chỉpresentationdeath tiếp tục sauresult; simulation khôngtick. Khôngnewart/content/dependency/QAinfra. Chi tiết/fixtures/giới hạn/checklist tại docs/q7d/README.md.
+
+## PREVIOUS CHECKPOINT — Q7C ACCEPTED
 - User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture.
 - Review7a1db73/research2bb4792; đãmergeorigin/main87c1ca8 trong3c940dd và ghiapproval. Sourceproduction mới riêng bằngImageGen,4facings×7states/6actors +Player8actions/Boss9patternposes/hướng;236frames. Khôngcropconceptboard. AtlasPNG1024square/990873bytes/4MiBdecoded;provenance/sourceprompt/hash tại docs/q7c/runtime-assets.json vàsource/.
 - ActorPose/ActorArt/EnemySprites +PlayerVisual; bodies dùngImages/pooledassets, khôngGraphicsbody. Táchground/body/statusVFX để giữlayering. Telegraph vàdrawSlash bytewise; core/gameplay/config/AI/controls/HUD/style/i18n/floor/workflow khôngdiff. OldSVG giữlịch sử. Khôngnewgamedep/framework.
@@ -69,4 +74,4 @@ AGENTS.md,GAME_BRIEF.md,.agents/skills/handoff/SKILL.md;src/game/ActorPose.ts,Ac
 `npm run dev`; `npm run build` (typecheck+dist); `npm test`; `npm run preview`. Offlineatlaspacker cầnPillow/numpy/scipy trongworkspace,khôngcần trênCI/runtime.
 
 ## NEXT ACTION
-Dừng tại Q7C đã ACCEPTED, chờ user giao task tiếp theo. Q7D = Full Run Polish chưa mở; không tự bắt đầu hoặc yêu cầu duyệt lại Q7C. Phát sinh mới xử lý theo scope/feedback mới của user.
+Commit/push Q7D main không force, theo dõi Pages đến SUCCESS; bàn giao URL/version và checklist docs/q7d. Sau deploy dừng AWAITING USER PLAYTEST APPROVAL, không tự ACCEPTED/Q8.

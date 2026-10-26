@@ -1,0 +1,81 @@
+{
+  "context": "running",
+  "locked": false,
+  "buffers": [
+    {
+      "cue": "start",
+      "seconds": 0.2,
+      "finite": true,
+      "peak": 0.22767771780490875
+    },
+    {
+      "cue": "draft",
+      "seconds": 0.24,
+      "finite": true,
+      "peak": 0.23463523387908936
+    },
+    {
+      "cue": "choice",
+      "seconds": 0.15,
+      "finite": true,
+      "peak": 0.2123824954032898
+    },
+    {
+      "cue": "elite",
+      "seconds": 0.36,
+      "finite": true,
+      "peak": 0.24844498932361603
+    },
+    {
+      "cue": "boss",
+      "seconds": 0.65,
+      "finite": true,
+      "peak": 0.2570635974407196
+    },
+    {
+      "cue": "defeat",
+      "seconds": 0.65,
+      "finite": true,
+      "peak": 0.2595110237598419
+    },
+    {
+      "cue": "victory",
+      "seconds": 1.1000226757369616,
+      "finite": true,
+      "peak": 0.28975847363471985
+    }
+  ],
+  "cues": [
+    {
+      "cue": "start",
+      "playing": 1
+    },
+    {
+      "cue": "draft",
+      "playing": 1
+    },
+    {
+      "cue": "choice",
+      "playing": 1
+    },
+    {
+      "cue": "elite",
+      "playing": 1
+    },
+    {
+      "cue": "boss",
+      "playing": 1
+    },
+    {
+      "cue": "defeat",
+      "playing": 1
+    },
+    {
+      "cue": "victory",
+      "playing": 1
+    }
+  ],
+  "stopped": 0,
+  "muted": 0,
+  "volume": 0.25
+}

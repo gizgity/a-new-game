@@ -1,6 +1,6 @@
 # Q7B — HUD runtime / bàn giao playtest
 
-> Checkpoint hiện hành: Q7B đã user accepted; user nay giao [Q7C — Character/Enemy Art](../q7c/README.md). Q7D = Full Run Polish chưa mở. Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
+> Checkpoint hiện hành: Q7B đã user accepted; Q7C cũng đã user accepted; hiện hành [Q7D — Full Run Experience Polish](../q7d/README.md). Các gate/“không tự Q7C” bên dưới là lịch sử checkpoint, không chặn task Q7C mới.
 
 **CONCEPT / DESIGN APPROVED:** user “approved làm đi” ngày2026-10-26. Runtime nay **ACCEPTED — USER PLAYTEST APPROVAL**: User xác nhận “q7b đã đạt” ngày2026-10-26 trên bản5ee970e. Xem HUD_V3.md cho bản đã chốt; phần6664ee0 bên dưới giữ snapshot lịch sử. Không mở Q7C. Q2–Q7A và draft đầu4hướng giữ accepted; Q1 vẫn riêng chưa có visual approval.
 

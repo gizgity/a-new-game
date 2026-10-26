@@ -463,3 +463,5 @@ footer { display: none; }
 .touch-controls .touch-button > .resource-note { position: absolute; right: -7px; top: 5px; padding: 1px 3px; border: 1px solid #3d5562; border-radius: 3px; background: #0a1320; color: #e6edef; font-size: 9px; line-height: 12px; pointer-events: none; }
 .touch-controls [data-action='charged'] .resource-note::before { content: '↯'; color: #74e8fc; margin-right: 2px; }
 .touch-controls [data-action='ultimate'] > [data-resource] { font-size: 12px; }
+/* Programmatic reading focus belongs to the heading; interactive controls keep their focus ring. */
+#panel-title:focus, #draft-panel h2:focus { outline: none; }

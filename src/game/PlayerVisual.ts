@@ -126,6 +126,12 @@ export class PlayerVisual {
     }
   }
 
+  finish(): void {
+    this.slash.clear();
+    this.muzzle.clear();
+    for (const ghost of this.ghosts) { ghost.life = 0; ghost.image.setVisible(false); }
+  }
+
   private pose(world: CombatWorld): void {
     const { player, attack } = world;
     let pose = this.moving && Math.sin(this.stride) >= 0 ? 'move' : 'idle';

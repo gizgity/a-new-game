@@ -1,0 +1,6 @@
+{
+  "fixture": "Spawn boss, render body, set hp=0/remove body, force victory; not a natural run",
+  "baseline": { "main": "688f331", "afterWallMs": 1500, "deathLife": 0.28, "visibleDeaths": 1, "resultFocus": "" },
+  "after": { "afterWallMs": 1500, "deathLife": 0, "visibleDeaths": 0, "resultFocus": "panel-title" },
+  "note": "Observed in separate local Chromium executions; screenshot after only. No claim of baseline image comparison."
+}

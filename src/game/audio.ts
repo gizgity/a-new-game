@@ -1,7 +1,12 @@
 import Phaser from 'phaser';
 import type { SoundCue } from './combat';
 
-const tones: Record<SoundCue, [number, number, number]> = {
+type PresentationCue = 'start' | 'draft' | 'choice' | 'elite' | 'boss' | 'defeat';
+type AudioCue = SoundCue | PresentationCue;
+
+const tones: Record<AudioCue, [number, number, number]> = {
+  start: [440, 0.20, 0], draft: [660, 0.24, 0], choice: [880, 0.15, 0],
+  elite: [220, 0.36, 0], boss: [110, 0.65, 0], defeat: [220, 0.65, 0],
   victory: [440, 1.1, 0],
   swing2: [650, 0.095, 0.7], swing3: [230, 0.16, 0.65],
   light2: [460, 0.09, 0.4], light3: [145, 0.15, 0.5],
@@ -12,7 +17,7 @@ const tones: Record<SoundCue, [number, number, number]> = {
 };
 
 export class ProceduralAudio {
-  private last = new Map<SoundCue, number>();
+  private last = new Map<AudioCue, number>();
   private available = false;
   constructor(private readonly scene: Phaser.Scene) {
     if (!(scene.sound instanceof Phaser.Sound.WebAudioSoundManager)) return;
@@ -22,6 +27,13 @@ export class ProceduralAudio {
       const samples = buffer.getChannelData(0);
       for (let i = 0; i < samples.length; i++) {
         const t = i / context.sampleRate, progress = i / samples.length;
+        if (['start', 'draft', 'choice', 'elite', 'boss', 'defeat'].includes(cue)) {
+          const descending = cue === 'boss' || cue === 'defeat';
+          const pitch = frequency * (descending ? 1 - progress * 0.4 : 1 + Math.floor(progress * 3) * 0.25);
+          const envelope = Math.min(1, t * 60) * (1 - progress) ** 2;
+          samples[i] = (Math.sin(2 * Math.PI * pitch * t) + Math.sin(2 * Math.PI * pitch * 1.5 * t) * 0.3) * envelope * 0.22;
+          continue;
+        }
         if (cue === 'victory') {
           const envelope = Math.min(1, t * 30) * (1 - progress) ** 1.5;
           samples[i] = [1, 1.25, 1.5, 2].reduce((sum, ratio, index) => sum + (t >= index * 0.09 ? Math.sin(2 * Math.PI * frequency * ratio * t) : 0), 0) * envelope * 0.12;
@@ -42,12 +54,19 @@ export class ProceduralAudio {
     }
     this.available = true;
   }
-  play(cues: readonly SoundCue[]): void {
+  /** Phase cues replace combat tails, but resume leaves silence. No simulation state. */
+  transition(cue?: PresentationCue | 'victory'): void {
+    this.scene.sound.stopAll();
+    this.last.clear();
+    if (cue) this.play([cue]);
+  }
+
+  play(cues: readonly AudioCue[]): void {
     if (!this.available || this.scene.sound.mute || this.scene.sound.locked) return;
     const now = performance.now();
     let count = 0;
     // Ưu tiên feedback quan trọng; không chồng âm vô hạn trong chain.
-    for (const cue of ['victory', 'hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light3', 'light2', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing3', 'swing2', 'swing'] as const) {
+    for (const cue of ['victory', 'defeat', 'boss', 'elite', 'draft', 'choice', 'start', 'hurt', 'perfect', 'chargedBlast', 'chargedGun', 'detonate', 'heavy', 'light3', 'light2', 'light', 'chargedHit', 'shotHit', 'dash', 'gun', 'heavySwing', 'swing3', 'swing2', 'swing'] as const) {
       if (cue === 'detonate' && cues.includes('chargedBlast')) continue;
       if (!cues.includes(cue) || now - (this.last.get(cue) ?? -Infinity) < (cue === 'detonate' ? 140 : 65)) continue;
       if (count >= 3 || this.scene.sound.getAllPlaying().length >= 8) break;

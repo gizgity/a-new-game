@@ -1,0 +1,1019 @@
+{
+  "samples": [
+    {
+      "phase": "playing",
+      "t": 0,
+      "hp": 100,
+      "k": 0,
+      "mut": [],
+      "curse": [],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 800,
+      "y": 500,
+      "charge": 0,
+      "heavy": 2,
+      "surge": 0,
+      "threat": false,
+      "tx": 461.43641206179984,
+      "ty": 133.55022035462537,
+      "enemies": 7
+    },
+    {
+      "phase": "playing",
+      "t": 10.083333333333334,
+      "hp": 100,
+      "k": 21,
+      "mut": [],
+      "curse": [],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 942.7069519728719,
+      "y": 310.37637357184235,
+      "charge": 1,
+      "heavy": 1,
+      "surge": 30,
+      "threat": false,
+      "tx": -174.41814156890257,
+      "ty": 166.1349981732759,
+      "enemies": 4
+    },
+    {
+      "phase": "draft",
+      "t": 12.3,
+      "hp": 100,
+      "k": 25,
+      "mut": [],
+      "curse": [],
+      "draft": [
+        {
+          "id": "aegisCore",
+          "direction": "tank",
+          "role": "wildcard"
+        },
+        {
+          "id": "bloodReclaimer",
+          "direction": "sustain",
+          "role": "wildcard"
+        },
+        {
+          "id": "phantomEdge",
+          "direction": "counter",
+          "role": "wildcard"
+        },
+        {
+          "id": "detonationSpecialist",
+          "direction": "ranged",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 1073.3999617584568,
+      "y": 564.1789150519629,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 78,
+      "threat": false,
+      "tx": -65.28131342975885,
+      "ty": 309.2071811569424,
+      "enemies": 6
+    },
+    {
+      "phase": "playing",
+      "t": 12.383333333333333,
+      "hp": 100,
+      "k": 25,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 1073.3999617584568,
+      "y": 564.1789150519629,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 78,
+      "threat": false,
+      "tx": -65.28131342975885,
+      "ty": 292.1571811569424,
+      "enemies": 6
+    },
+    {
+      "phase": "playing",
+      "t": 20.1,
+      "hp": 100,
+      "k": 40,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 925.2515074325294,
+      "y": 301.06580070887344,
+      "charge": 3,
+      "heavy": 1,
+      "surge": 40,
+      "threat": false,
+      "tx": 75.92323972226401,
+      "ty": 315.5786382035904,
+      "enemies": 6
+    },
+    {
+      "phase": "playing",
+      "t": 30.116666666666667,
+      "hp": 100,
+      "k": 63,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 634.3167788630237,
+      "y": 311.7595036223203,
+      "charge": 0,
+      "heavy": 0,
+      "surge": 94,
+      "threat": false,
+      "tx": 225.94457918624238,
+      "ty": 445.6265208160397,
+      "enemies": 4
+    },
+    {
+      "phase": "draft",
+      "t": 38.61666666666667,
+      "hp": 100,
+      "k": 80,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [],
+      "draft": [
+        {
+          "id": "glassSoul",
+          "role": "adaptive",
+          "reason": {
+            "kind": "behavior",
+            "tag": "ranged"
+          }
+        },
+        {
+          "id": "parasiticMark",
+          "role": "synergy",
+          "reason": {
+            "kind": "synergy",
+            "id": "bloodReclaimer"
+          }
+        },
+        {
+          "id": "ghostStep",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 520.6085981053436,
+      "y": 479.6216371507156,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 70,
+      "threat": false,
+      "tx": 265.7967024413558,
+      "ty": 443.7714534905345,
+      "enemies": 2
+    },
+    {
+      "phase": "playing",
+      "t": 38.68333333333333,
+      "hp": 100,
+      "k": 80,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 520.6085981053436,
+      "y": 479.6216371507156,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 70,
+      "threat": false,
+      "tx": 264.6199853012829,
+      "ty": 439.8361144934138,
+      "enemies": 2
+    },
+    {
+      "phase": "playing",
+      "t": 40,
+      "hp": 100,
+      "k": 83,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 587.4053782971096,
+      "y": 345.9833013550952,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 100,
+      "threat": false,
+      "tx": -58.98471739101751,
+      "ty": 194.34319294379196,
+      "enemies": 2
+    },
+    {
+      "phase": "playing",
+      "t": 50.1,
+      "hp": 100,
+      "k": 101,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 592.7505090276919,
+      "y": 341.62853226355065,
+      "charge": 0,
+      "heavy": 0,
+      "surge": 100,
+      "threat": false,
+      "tx": 243.01794537267898,
+      "ty": 434.81660704495994,
+      "enemies": 5
+    },
+    {
+      "phase": "playing",
+      "t": 60.083333333333336,
+      "hp": 100,
+      "k": 121,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 539.2781455222356,
+      "y": 406.009575661926,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 94,
+      "threat": false,
+      "tx": 74.23995107341995,
+      "ty": 331.22122951697884,
+      "enemies": 6
+    },
+    {
+      "phase": "playing",
+      "t": 70.1,
+      "hp": 100,
+      "k": 142,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 532.2631140146433,
+      "y": 558.4443137110269,
+      "charge": 1,
+      "heavy": 1,
+      "surge": 2,
+      "threat": false,
+      "tx": 359.67359980932827,
+      "ty": 384.6795578665696,
+      "enemies": 3
+    },
+    {
+      "phase": "draft",
+      "t": 78.11666666666666,
+      "hp": 100,
+      "k": 160,
+      "mut": [
+        "bloodReclaimer"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [
+        {
+          "id": "echoChamber",
+          "role": "wildcard"
+        },
+        {
+          "id": "soulAnchor",
+          "role": "synergy",
+          "reason": {
+            "kind": "synergy",
+            "id": "bloodReclaimer"
+          }
+        },
+        {
+          "id": "ironReversal",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 921.4947240514504,
+      "y": 707.190056270383,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 100,
+      "threat": false,
+      "tx": -18.959767164159032,
+      "ty": 187.5535127255178,
+      "enemies": 3
+    },
+    {
+      "phase": "playing",
+      "t": 78.3,
+      "hp": 100,
+      "k": 160,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 921.4947240514504,
+      "y": 707.190056270383,
+      "charge": 1,
+      "heavy": 0,
+      "surge": 100,
+      "threat": false,
+      "tx": -6.559767164159034,
+      "ty": 183.6785127255178,
+      "enemies": 3
+    },
+    {
+      "phase": "playing",
+      "t": 80.05,
+      "hp": 100,
+      "k": 163,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 763.5680565073412,
+      "y": 726.2227549524819,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 32,
+      "threat": false,
+      "tx": 376.52258329925564,
+      "ty": -4.5482988189799585,
+      "enemies": 3
+    },
+    {
+      "phase": "playing",
+      "t": 90.2,
+      "hp": 100,
+      "k": 184,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 1038.2653541643444,
+      "y": 627.6469303420345,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 74,
+      "threat": false,
+      "tx": -40.27688369153337,
+      "ty": 52.405637056629075,
+      "enemies": 6
+    },
+    {
+      "phase": "playing",
+      "t": 98.53333333333333,
+      "hp": 100,
+      "k": 200,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": true,
+      "x": 663.7511354052507,
+      "y": 298.5088921210728,
+      "charge": 3,
+      "heavy": 1,
+      "surge": 82,
+      "threat": false,
+      "tx": 230.2472743350736,
+      "ty": 395.0484092853284,
+      "enemies": 9
+    },
+    {
+      "phase": "playing",
+      "t": 100.08333333333333,
+      "hp": 100,
+      "k": 203,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": true,
+      "x": 867.3306935472197,
+      "y": 282.10258416362274,
+      "charge": 3,
+      "heavy": 1,
+      "surge": 10,
+      "threat": false,
+      "tx": 52.59955923942203,
+      "ty": 364.21549943461747,
+      "enemies": 9
+    },
+    {
+      "phase": "draft",
+      "t": 107.25,
+      "hp": 100,
+      "k": 220,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [
+        {
+          "id": "aegisCore",
+          "role": "adaptive",
+          "reason": {
+            "kind": "behavior",
+            "tag": "melee"
+          }
+        },
+        {
+          "id": "kineticBattery",
+          "role": "synergy",
+          "reason": {
+            "kind": "synergy",
+            "id": "bloodReclaimer"
+          }
+        },
+        {
+          "id": "soulAnchor",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 747.4330354318371,
+      "y": 721.0031888800211,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 90,
+      "threat": false,
+      "tx": 314.2494090312257,
+      "ty": 16.528960093878034,
+      "enemies": 10
+    },
+    {
+      "phase": "playing",
+      "t": 107.35,
+      "hp": 100,
+      "k": 220,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 747.4330354318371,
+      "y": 721.0031888800211,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 90,
+      "threat": false,
+      "tx": 311.6225510315969,
+      "ty": 19.876836497785067,
+      "enemies": 10
+    },
+    {
+      "phase": "playing",
+      "t": 110.06666666666666,
+      "hp": 100,
+      "k": 228,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 525.2571309503612,
+      "y": 529.3822842082585,
+      "charge": 2,
+      "heavy": 0,
+      "surge": 78,
+      "threat": false,
+      "tx": 49.6249570976516,
+      "ty": 87.69304249593937,
+      "enemies": 8
+    },
+    {
+      "phase": "playing",
+      "t": 120.15,
+      "hp": 100,
+      "k": 255,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 713.7321044629094,
+      "y": 713.1661469872352,
+      "charge": 3,
+      "heavy": 1,
+      "surge": 98,
+      "threat": false,
+      "tx": 250.00899428845554,
+      "ty": 21.32505964936329,
+      "enemies": 8
+    },
+    {
+      "phase": "playing",
+      "t": 130.03333333333333,
+      "hp": 100,
+      "k": 277,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 1076.7169831823198,
+      "y": 457.9658364113707,
+      "charge": 2,
+      "heavy": 2,
+      "surge": 76,
+      "threat": false,
+      "tx": 242.82775975299725,
+      "ty": 223.20932372232636,
+      "enemies": 13
+    },
+    {
+      "phase": "draft",
+      "t": 136.56666666666666,
+      "hp": 100,
+      "k": 300,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [
+        {
+          "id": "parasiticMark",
+          "role": "curseChoice",
+          "action": "keep"
+        },
+        {
+          "id": "glassSoul",
+          "role": "adaptive",
+          "reason": {
+            "kind": "behavior",
+            "tag": "ranged"
+          }
+        },
+        {
+          "id": "ghostStep",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 554.2373344825658,
+      "y": 599.5296510367883,
+      "charge": 1,
+      "heavy": 2,
+      "surge": 26,
+      "threat": false,
+      "tx": 250.04715857257102,
+      "ty": 236.98202612661413,
+      "enemies": 11
+    },
+    {
+      "phase": "playing",
+      "t": 136.63333333333333,
+      "hp": 100,
+      "k": 300,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 554.2373344825658,
+      "y": 599.5296510367883,
+      "charge": 1,
+      "heavy": 2,
+      "surge": 26,
+      "threat": false,
+      "tx": 251.59715857257103,
+      "ty": 240.0820261266141,
+      "enemies": 11
+    },
+    {
+      "phase": "playing",
+      "t": 140.1,
+      "hp": 100,
+      "k": 306,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 569.842310535631,
+      "y": 363.3235620713255,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 96,
+      "threat": true,
+      "tx": 195.87038400119343,
+      "ty": 215.04794044425205,
+      "enemies": 14
+    },
+    {
+      "phase": "playing",
+      "t": 150.41666666666666,
+      "hp": 100,
+      "k": 340,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 568.0759588188495,
+      "y": 618.7551555392765,
+      "charge": 2,
+      "heavy": 2,
+      "surge": 60,
+      "threat": false,
+      "tx": 335.0099861637376,
+      "ty": 91.28089116900179,
+      "enemies": 13
+    },
+    {
+      "phase": "playing",
+      "t": 160.4,
+      "hp": 100,
+      "k": 373,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 1020.0020798081739,
+      "y": 646.9475687527189,
+      "charge": 1,
+      "heavy": 1,
+      "surge": 20,
+      "threat": false,
+      "tx": 43.01720150770975,
+      "ty": 349.8972505959257,
+      "enemies": 10
+    },
+    {
+      "phase": "draft",
+      "t": 163.18333333333334,
+      "hp": 100,
+      "k": 381,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [
+        {
+          "id": "detonationSpecialist",
+          "role": "adaptive",
+          "reason": {
+            "kind": "behavior",
+            "tag": "ranged"
+          }
+        },
+        {
+          "id": "catalyst",
+          "role": "synergy",
+          "reason": {
+            "kind": "synergy",
+            "id": "echoChamber"
+          }
+        },
+        {
+          "id": "berserker",
+          "role": "wildcard"
+        }
+      ],
+      "boss": false,
+      "elite": false,
+      "x": 737.362904027239,
+      "y": 719.9848984081085,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 100,
+      "threat": false,
+      "tx": -4.105868863640993,
+      "ty": 169.94596898958997,
+      "enemies": 11
+    },
+    {
+      "phase": "playing",
+      "t": 163.25,
+      "hp": 100,
+      "k": 381,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 737.362904027239,
+      "y": 719.9848984081085,
+      "charge": 0,
+      "heavy": 1,
+      "surge": 100,
+      "threat": false,
+      "tx": -1.8462617746099994,
+      "ty": 170.01500606705554,
+      "enemies": 11
+    },
+    {
+      "phase": "playing",
+      "t": 170.51666666666668,
+      "hp": 100,
+      "k": 405,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 822.5684817590648,
+      "y": 274.8796849113679,
+      "charge": 2,
+      "heavy": 1,
+      "surge": 98,
+      "threat": false,
+      "tx": 220.12667328832472,
+      "ty": 303.31781974903026,
+      "enemies": 11
+    },
+    {
+      "phase": "playing",
+      "t": 180.05,
+      "hp": 100,
+      "k": 441,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": false,
+      "elite": false,
+      "x": 566.0156088755418,
+      "y": 613.9303293934961,
+      "charge": 2,
+      "heavy": 2,
+      "surge": 50,
+      "threat": false,
+      "tx": 285.29155086600144,
+      "ty": -63.80970698098581,
+      "enemies": 8
+    },
+    {
+      "phase": "playing",
+      "t": 182.88333333333333,
+      "hp": 100,
+      "k": 451,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": true,
+      "elite": false,
+      "x": 577.2431538331238,
+      "y": 355.8549101855314,
+      "charge": 3,
+      "heavy": 2,
+      "surge": 60,
+      "threat": false,
+      "tx": 2.7166027386289713,
+      "ty": 361.57467240305215,
+      "enemies": 1
+    },
+    {
+      "phase": "playing",
+      "t": 190.11666666666667,
+      "hp": 94,
+      "k": 453,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": true,
+      "elite": false,
+      "x": 1072.2148266068514,
+      "y": 514.6436433848853,
+      "charge": 3,
+      "heavy": 2,
+      "surge": 67,
+      "threat": false,
+      "tx": 199.94399101119572,
+      "ty": 105.2298862190586,
+      "enemies": 7
+    },
+    {
+      "phase": "victory",
+      "t": 194.11666666666667,
+      "hp": 85,
+      "k": 458,
+      "mut": [
+        "bloodReclaimer",
+        "echoChamber",
+        "kineticBattery",
+        "catalyst"
+      ],
+      "curse": [
+        "parasiticMark"
+      ],
+      "draft": [],
+      "boss": true,
+      "elite": false,
+      "x": 581.9611811720965,
+      "y": 634.2651653564291,
+      "charge": 3,
+      "heavy": 2,
+      "surge": 60,
+      "threat": false,
+      "tx": 376.6368669398481,
+      "ty": 32.579451578837336,
+      "enemies": 6,
+      "resultPresentation": {
+        "visibleDeaths": 0,
+        "focus": "panel-title",
+        "frames": [
+          16.699999999982538,
+          16.79999999998836
+        ]
+      }
+    },
+    {
+      "phase": "playing",
+      "t": 0.26666666666666666,
+      "k": 0,
+      "mut": [],
+      "curse": [],
+      "replay": true
+    },
+    {
+      "phase": "defeat",
+      "t": 9.95,
+      "hp": 0,
+      "reason": "slain",
+      "focus": "panel-title"
+    },
+    {
+      "phase": "playing",
+      "t": 0.23333333333333334,
+      "hp": 100,
+      "replayAfterDefeat": true
+    }
+  ],
+  "errors": [],
+  "wallSeconds": 217.24756169319153,
+  "mode": "normal, state read only; CDP joystick + shoot/melee + specials; no grants/clock overrides"
+}

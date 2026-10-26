@@ -133,12 +133,16 @@ export class ArenaScene extends Phaser.Scene {
       this.enemySprites.reset();
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
+    const previous = this.phase;
+    this.audio.transition(phase === 'victory' || phase === 'defeat' ? phase
+      : phase === 'draft' ? 'draft'
+      : phase === 'playing' && previous === 'draft' ? 'choice'
+      : phase === 'playing' && previous !== 'paused' ? 'start' : undefined);
     this.meleeHeld = this.shootHeld = false;
     this.touch.reset();
     this.phase = phase;
     if (phase === 'victory') {
       this.victoryRevealing = true;
-      this.audio.play(['victory']);
       this.resultVisual.victory(this.combat.bossDeathPosition ?? this.player, () => {
         this.victoryRevealing = false;
         if (this.phase === 'victory') this.onPhaseChange('victory');
@@ -150,7 +154,11 @@ export class ArenaScene extends Phaser.Scene {
     this.releaseAim = {};
     this.combat.clearInput();
     this.input.keyboard?.resetKeys();
+    this.drawCombat();
+    this.vessel.render(this.combat, this.cosmetic);
+    if (phase === 'victory' || phase === 'defeat') this.vessel.finish();
     this.onPhaseChange(phase);
+    this.onCombatChange(this.combat);
   }
 
   chooseDraft(index: number): void {
@@ -179,7 +187,10 @@ export class ArenaScene extends Phaser.Scene {
 
   update(_time: number, delta: number): void {
     this.reticle.setVisible(this.phase === 'playing' && (this.touch.enabled || this.input.isOver));
-    if (this.phase !== 'playing') return;
+    if (this.phase !== 'playing') {
+      if (this.phase === 'victory' || this.phase === 'defeat') this.enemySprites.stepDeaths(Math.min(delta / 1000, 0.1));
+      return;
+    }
 
     const pointer = this.input.activePointer;
     const touch = this.touch.sample();
@@ -211,12 +222,16 @@ export class ArenaScene extends Phaser.Scene {
         specialAim: { ...this.releaseAim, ...touch.specialAim },
       };
       const frozen = this.combat.hitstop > 0;
+      const bossBefore = this.run.bossDue;
+      const eliteBefore = this.combat.enemies.some(enemy => enemy.kind === 'bulwark');
       this.run.step(input, FIXED_STEP);
       if (!frozen) {
         this.vessel.step(this.combat, FIXED_STEP);
         this.enemySprites.step(FIXED_STEP);
       }
-      this.audio.play(this.combat.soundEvents);
+      if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
+      else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
+      else this.audio.play(this.combat.soundEvents);
       this.pressed.clear();
       this.releaseAim = {};
       this.touch.consume();
@@ -227,6 +242,7 @@ export class ArenaScene extends Phaser.Scene {
     this.drawCombat();
     this.onCombatChange(this.combat);
     this.vessel.render(this.combat, this.cosmetic);
+    if (this.run.result) this.vessel.finish();
   }
 
   private drawCombat(): void {

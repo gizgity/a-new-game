@@ -1,6 +1,6 @@
 # Q7C — Character & Enemy Art runtime
 
-**ACCEPTED — USER PLAYTEST APPROVAL** — User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture. Visual approval trước đó: “visual approved q7c”. Không mở Q7D.
+**ACCEPTED — USER PLAYTEST APPROVAL** — User xác nhận “duyệt q7c đạt” ngày2026-10-26 trên bản đã deploy2ef6d48 (code0041064, docs5f3e938), Pages40305977315 SUCCESS. Đây là user playtest approval, không suy ra từ build/tests/fixture. Visual approval trước đó: “visual approved q7c”. Q7D được giao riêng sau approval này; xem [Q7D](../q7d/README.md).
 
 ## Deployment
 
@@ -45,4 +45,4 @@ Mở https://gizgity.github.io/a-new-game/ và reload bảnmới sau deploy. D�
 3. Bulwark tại200kills HOẶC2:30: giáp/khiênđóng khác lõi mởrecovery, vẫn đọc được thờiđiểmphảncông. Boss tại450kills HOẶC4:00: sweepvungxích/ringmởtay/slamgiángxuống phânbiệt; giữnhịptelegraph cũ. Không yêu cầu duyệt lại balanceQ2–Q7B.
 4. Pause/resume/restart: animationkhôngtrôiquaPause, khôngghost/deathcũ; chúýđộmượt/nóngmáy khiđôngquái. Phản hồi nhânvật/state/tìnhhuống bịchìm/saihướng/giật,thiếtbị/browser. Build/tests không thayuserplaytestapproval.
 
-Q7C đã **ACCEPTED — USER PLAYTEST APPROVAL**; dừng tại checkpoint này. Q7D Full Run Polish chỉ mở khi user giao.
+Q7C đã **ACCEPTED — USER PLAYTEST APPROVAL**; approval checkpoint này giữ nguyên; user đã giao [Q7D](../q7d/README.md).
