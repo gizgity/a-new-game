@@ -69,3 +69,10 @@ test('F: reset clears both/effects/clocks; old and untrusted saves retain meta/s
  const w=world(['volatileSoul','glassSoul']),r=new RunDirector(w);w.build.hazards.push({x:1,y:1,time:1});w.build.healed=8;w.build.huntedCooldown=1;r.start();assert.deepEqual(w.curses,[]);assert.equal(w.maxHp,100);assert.equal(w.build.hazards.length,0);assert.equal(w.build.healed,0);assert.equal(w.build.huntedCooldown,0);assert.equal(r.ticks,0);
  w.mutations=['catalyst','aegisCore','berserker','echoChamber'];r.draftKind='mutation';r.draft=[{id:'soulAnchor',role:'wildcard'}];assert.equal(r.choose(0),false);assert.equal(w.mutations.length,4);
 });
+
+test('adding slot2 retains queued Glass/Volatile/Blood effects and clocks; removing one leaves the other intact',()=>{
+ const w=world(['volatileSoul']);const e=target(w);e.rupture=1;w.detonate(e,1);const damage=w.explosions[0].damage;w.build.hazards.push({x:1,y:1,time:.8});w.build.hazardCooldown=2;
+ w.addCurse('glassSoul');w.fire(800,500,0,false);const shot=w.projectiles.at(-1);near(shot.damage,26);assert.equal(w.explosions[0].damage,damage);assert.equal(w.build.hazards.length,1);assert.equal(w.build.hazardCooldown,2);
+ w.setCurses(['glassSoul','bloodPact']);near(shot.damage,26);near(w.explosions[0].damage,damage/BUILD.volatileMultiplier);assert.equal(w.build.hazards.length,0);
+ w.beginAttack(true);assert.equal(w.attack.bloodPact,true);w.setCurses(['bloodPact','ghostStep']);assert.equal(w.attack.bloodPact,true);near(shot.damage,20);assert.equal(w.maxHp,100);assert.equal(w.hp,75);
+});
