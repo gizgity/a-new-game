@@ -15,10 +15,12 @@ Q7C — Character & Enemy Art Overhaul, task user2026-10-26. Audit → sprite co
 ## ACCEPTANCE
 Reference chính Q7A Visual Hierarchy / Contrast Study V1. Đủ idle/move/windup/attack/recovery/hit/death (Volatile recovery sống=N/A), Player actions và Boss sweep/ring/slam phân biệt. Preview ghi rõ concept và gameplay scale; source riêng, không crop concept board thành runtime sprite. User duyệt visual trước asset rendering/animation/deploy; sau deploy AWAITING PLAYTEST APPROVAL, không tự accepted.
 
-## CURRENT STATUS — Q7C AUDIT
-- Đã đọc source-of-truth/handoff skill, fetch/fast-forward main78f07e6 (approval Q7B5ee970e), không open PR qua connector. Đã kiểm PlayerVisual/EnemyVisual/ArenaScene/combat/balance; audit chi tiết tại docs/q7c/README.md.
-- Có ImageGen; đang sinh6sheet source riêng theo reference Q7A. Chưa sửa src/public runtime/dependencies/workflow. Ground telegraphs/VFX/collider/AI/timing/controls/HUD/Q2–Q7B khóa.
-- Q7C = Character/Enemy Art; Q7D = Full Run Polish, không tự mở. Q1 visual chưa tự accepted; Q7C sẽ thay hướng artwork đang pending sau user duyệt.
+## CURRENT STATUS — Q7C AWAITING VISUAL APPROVAL
+- Audit d747f49 đã push main từ baseline78f07e6/Q7B5ee970e accepted. Có6dedicatedsprite sheets7states; PlayerV2 sángmint hơnV1 sau grayscale review; PlayeractionsV2 và Boss3×3patterns riêng. Source/prompt/rights/hashes giữ docs/q7c; không crop concept board thành sprite.
+- Board docs/q7c/index.html + evidence: mobile320/390,landscape844,tablet768,desktop1440 đúng canvas/zoomQ7B; crowd32staged,Boss/Elite,grayscale và mobile giữHUD screenshot. Không renderer runtimeQ7C/naturalrun; threat/P2/VFX chưa cùngcandidate trongarena, phải kiểm saugate.
+- Typecheck/build PASS; npm test159PASS/0fail trên baseline. PNG/hash/board Chromium320/390/768/1440 đủảnh/noerror/nooverflow PASS. Không diff src/public/config/deps/workflow; chưa atlas/directions/motion/runtimeperf/device/Safari mới. Chi tiết/giới hạn/checklist: docs/q7c/README.md,ASSET_SPEC.md,manifest.json,evidence/checks.json.
+- Một số source còn alpha residue/pivot khôngđều/weapontrail/arrow/impact bake, phải làm sạch riêng sau userduyệt; không đưa sheet auto-slice thành atlasproduction. Volatile recovery sống=N/A; Bosshit khôngstagger. Không tự acceptedQ1/Q7C hoặc mởQ7D.
+- Bộreview/docs checkpoint7a1db73 đã push `codex/q7c-visual-review` (khôngmain) để chưa kíchPages trướcvisualgate. main cóaudit và pointer handoff; runtime vẫnQ7B5ee970e. User yêu cầu dừng visual trướcintegration; chưa deployQ7C.
 
 ## PROGRESS
 M0–M6 là functional implementation, không phải chứng nhận chất lượng toàn MVP.
@@ -41,7 +43,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q6 — Curse Stacking | ACCEPTED — USER PLAYTEST APPROVAL | User “aprroved q6 lun nha” ngày2026-10-26 trên7843b98, stacking b534315; remote bc07fd4 |
 | Q7A — Arena art/contrast | ACCEPTED — USER PLAYTEST APPROVAL | User “nếu vậy thì t approved” ngày2026-10-26 sau làm rõ floor-only; code0e0a9af/board2e48166 |
 | Q7B — HUD & Combat Readability | ACCEPTED — USER PLAYTEST APPROVAL | User “q7b đã đạt” trên5ee970e; Pages40292060536 SUCCESS |
-| Q7C — Character & Enemy Art | IN PROGRESS — CONCEPT GENERATION | Visual approval trước tích hợp |
+| Q7C — Character & Enemy Art | AWAITING VISUAL APPROVAL | User duyệt6characters/state/crowd/grayscale/Boss3patterns |
 | Q7D — Full Run Polish | NOT STARTED | Chỉ mở khi user giao |
 
 ## CURRENT STATUS — Q7B ACCEPTED
@@ -159,4 +161,4 @@ npm run dev (5173); npm run build (typecheck+dist); npm run preview (4173); npm 
 - User đã accepted Q7B; kỹ thuật chưa iOS/Safari/device/full-run. Pages40292060536 đã SUCCESS; proxy live403 đã kiểm lại lượt này, không bypass/giả local/dist làlive. Snapshotf9d7930/evidence trước giữ ở REVISION.md; core approvals giữ PROGRESS vàdocs từngcheckpoint.
 
 ## NEXT ACTION
-Hoàn tất sheet/preview Q7C và kiểm provenance, tỷ lệ gameplay/crowd/grayscale, đồng bộ docs/commit/push rồi dừng AWAITING VISUAL APPROVAL. Không tích hợp hoặc tự Q7D.
+Chờ user duyệt hoặc feedback bộ visual tại branch codex/q7c-visual-review/docs/q7c (README/index/evidence). Chỉ sau duyệt mới làm source sạch/asset rendering/animation, focused checks + mobile/desktop/performance, commit/push/deploy và AWAITING PLAYTEST APPROVAL. Không tự Q7D hoặc ACCEPTED.

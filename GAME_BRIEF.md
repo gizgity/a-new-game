@@ -482,7 +482,7 @@ Hiện hành: một WebP1600×1000,1Image depth0/tint#7a8791; source artwork/pro
 
 ## Q7C Design Contract — Character & Enemy Art Overhaul
 
-**IN PROGRESS — CONCEPT REVIEW**, task user2026-10-26. Q7B đã accepted5ee970e/approval78f07e6. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mở Q7D. Các câu “không tự mở Q7C” trong lịch sử Q7A/Q7B là gate cũ, nay user đã giao Q7C riêng.
+**AWAITING VISUAL APPROVAL**, task user2026-10-26. Sprite states6nhân vật,PlayerV2/actions,Boss3patterns và arena/crowd/grayscale đã có tại docs/q7c; chưa tích hợp runtime. Review branch `codex/q7c-visual-review`; không deployQ7C trước gate. Q7B đã accepted5ee970e/approval78f07e6. **Q7C = Character/Enemy Art; Q7D = Full Run Polish**, chưa mở Q7D. Các câu “không tự mở Q7C” trong lịch sử Q7A/Q7B là gate cũ, nay user đã giao Q7C riêng.
 
 - Player/Grunt/Archer/Volatile/Bulwark/Chain Warden: asset-first ImageGen, Neon Occult / Fractured Geometry theo ảnh user **Q7A Visual Hierarchy / Contrast Study V1**, giữ silhouette/palette/P0–P3. Không dùng procedural Graphics thay body artwork; không cắt concept board thành sprite runtime.
 - Tạo source sprites riêng và preview idle/move/windup/attack/recovery/hit/death, Player attack families/dash và Boss sweep/ring/slam phân biệt. Volatile không có recovery sống; pose aftermath=N/A, không thêm phase. Animation chỉ đọc state simulation, không đổi timing/hit/kill/remove để khớp ảnh.

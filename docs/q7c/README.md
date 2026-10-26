@@ -1,6 +1,11 @@
 # Q7C — Character & Enemy Art Overhaul
 
-**Audit / concept review — chưa tích hợp.** Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
+**AWAITING VISUAL APPROVAL — chưa tích hợp.** Q7C = Character/Enemy Art; Q7D = Full Run Polish, chưa mở. Q7B đã user accepted trên5ee970e; commit78f07e6 ghi nhận approval, không suy rộng sang artwork Q7C hoặc Q1.
+
+
+Bộreview đã commit/push **7a1db73**, branch [codex/q7c-visual-review](https://github.com/gizgity/a-new-game/tree/codex/q7c-visual-review/docs/q7c):6dedicatedsprite sheets7states,PlayerV2/actions,Boss3patterns,mobile/desktop/crowd/grayscale. [Ảnh6nhân vật](https://github.com/gizgity/a-new-game/blob/codex/q7c-visual-review/docs/q7c/evidence/states-v1.png), [mobile](https://github.com/gizgity/a-new-game/blob/codex/q7c-visual-review/docs/q7c/evidence/phone-concept-390.png). Mở nhánh review để đọc README đầy đủ/ASSET_SPEC/PROMPTS/manifest/checks. Main chỉ giữ audit và pointer docs để chưa kíchPages trước visualgate.
+
+Build/typecheck PASS; npm test159PASS/0fail trên baseline; board320/390/768/1440 noerror/nooverflow, PNG integrity/hash PASS. Không thay src/public/runtime. Source còn alpha/pivot/bakedVFX cần cleanup sau duyệt; chưa runtime atlas/motion/newperf/device. Chưa artaccepted, không tựQ7D.
 
 ## Goal / acceptance hiện tại
 
