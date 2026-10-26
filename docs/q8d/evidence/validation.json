@@ -1,0 +1,42 @@
+{
+  "baseline": "7625fa2fce2b8ec3c59a56e9779133f6c71dc754",
+  "decision": "No runtime/config tuning; same measured runtime before and after Q8D. Not an independent A/B experiment.",
+  "unchanged": {
+    "src": "b2c20ecd2e83e129050110b39015adc792496e3f",
+    "public": "aaa69269b028238d19db671080c488c7f0cdf49e",
+    "package.json": "2a3e7e16854fd09d0bd91992b90216ca7570b93f",
+    "package-lock.json": "8b77a6e1547f93f23e7f8fe404147c3bd67d62bd",
+    "tsconfig.json": "c9a4320a70f077911698e2b7f4a827faa736b6f0",
+    "vite.config.ts": "2707ae73e095d8905f0bb206b41f7513e212886e",
+    ".github": "a650aa5abaecd2df0136a28561569044a4812391"
+  },
+  "checks": {
+    "testFiles": 18,
+    "failures": 0,
+    "typecheckBuild": "PASS",
+    "browserSizes": [
+      [
+        1440,
+        1000
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        844,
+        390
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "distSizes": [
+      390,
+      1440
+    ],
+    "realDeviceAcceptance": false
+  },
+  "coverage": "20 distinct trajectories in 32 cells; policies identical except ranged. No human winrate inference."
+}

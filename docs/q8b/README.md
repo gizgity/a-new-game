@@ -1,3 +1,5 @@
+> **Liên kết hiện hành:** user đã giao riêng [Q8D — validation/final tuning](../q8d/README.md) ngày2026-10-26. Các gate “không mở Q8D” ở lịch sử dưới đã được supersede về phạm vi; approval và baseline Q8B giữ nguyên. Q8D không đổi thông số runtime.
+
 > Q8C hiện hành: [Boss warning/Enraged/combo](../q8c/README.md). Boss spawn tức thì và phase2 HP-predicate/timing cũ trong evidence dưới đây là lịch sử, được Q8C thay thế. Q8A dynamic spawn/Q8B milestone floors và approval giữ nguyên; warning thêm2s simulation trước spawn, không đổi threshold.
 
 # Q8B — Run Pacing & Milestone Balance

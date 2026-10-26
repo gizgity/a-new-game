@@ -93,7 +93,7 @@ public/assets/
 - Khi cập nhật handoff, giữ nguyên project goal, task goal đã xác nhận và các quyết định quan trọng còn hiệu lực.
 - Không dựa duy nhất vào auto-trigger của skill; các quy tắc handoff này luôn có hiệu lực.
 
-## Checkpoint hiện hành — Q8C
+## Checkpoint lịch sử — Q8C
 - User giao riêng Q8C ngày2026-10-26: triển khai Boss warning/Enraged/combo, test, commit/push/Pages và dừng **AWAITING USER PLAYTEST APPROVAL**. Q8A394341c/Q8Beb6fbbe ACCEPTED; không mở Q8D.
 - Scope này cho phép thêm pose Enraged ImageGen đồng bộ Q7C và tích hợp/deploy theo chỉ dẫn trực tiếp của user; không tự gán visual/playtest approval. Quy tắc gate artwork Q7C phía trên là lịch sử của overhaul, không chặn task Q8C đã giao. Spec hiện hành tại GAME_BRIEF.md và docs/q8c/README.md. Giữ1500HP/5:00/Q8A/Q8B/build/input/art đã duyệt ngoài đúng phần Boss được giao.
 
@@ -103,3 +103,9 @@ public/assets/
 
 ## Q8C approval hiện hành
 - **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8c đạt” ngày2026-10-26 trên code/deploy `8cbff77` (handoff `8e70df3`), Pages40357489627 SUCCESS. Đây là approval trực tiếp cho Q8C gồm Boss/Enraged và ArrivalV2/âm cảnh báo, không suy ra từ tests/build/deploy. Giữ giới hạn coverage kỹ thuật và lịch sử approval Q2–Q8B. Dừng, không mở Q8D. Các chỉ dẫn dừng chờ playtest Q8C phía trên là gate lịch sử đã hoàn tất; không yêu cầu duyệt lại hoặc tự triển khai Q8D.
+
+## Checkpoint hiện hành — Q8D
+- User giao riêng Q8D ngày2026-10-26, supersede các gate lịch sử “không mở Q8D” ở trên; không thay approval Q2–Q8C.
+- Baseline main7625fa2/runtime8cbff77. Chỉ validation/tune nhỏ có evidence, không ép build cùng DPS/winrate; bot không thay user acceptance. Không thêm content/framework/hệ thống balance.
+- Báo cáo/raw data/regression/cách thử tại [docs/q8d/README.md](docs/q8d/README.md). Hiện không đổi runtime/thông số vì chưa đủ evidence; số cũ đã bị Q8B/Q8C supersede giữ nguyên nhãn lịch sử.
+- Commit/push/Pages rồi dừng **AWAITING USER PLAYTEST APPROVAL**; không tự mở Q9 hoặc gán Q8D ACCEPTED.

@@ -1,3 +1,5 @@
+> **Liên kết hiện hành:** user đã giao riêng [Q8D — validation/final tuning](../q8d/README.md) ngày2026-10-26. Các gate “không mở Q8D” ở lịch sử dưới đã được supersede về phạm vi; approval và baseline Q8C giữ nguyên. Q8D không đổi thông số runtime.
+
 > **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8c đạt” ngày2026-10-26 trên code/deploy `8cbff77` (handoff `8e70df3`), Pages40357489627 SUCCESS. Đây là approval trực tiếp cho Q8C gồm Boss/Enraged và ArrivalV2/âm cảnh báo, không suy ra từ tests/build/deploy. Giữ giới hạn coverage kỹ thuật và lịch sử approval Q2–Q8B. Dừng, không mở Q8D.
 > Trạng thái chờ duyệt bên dưới là lịch sử trước approval; evidence/giới hạn coverage giữ nguyên.
 

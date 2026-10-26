@@ -1,0 +1,40 @@
+[
+  {
+    "width": 1440,
+    "milestones": [
+      20,
+      50,
+      85,
+      120,
+      155,
+      190
+    ],
+    "arrival": 222,
+    "pauseFreeze": true,
+    "draftFreeze": true,
+    "victoryReplay": true,
+    "deadlineReplay": true,
+    "errors": [],
+    "overflow": false,
+    "fixture": "Banked kills/clock/Boss slain granted for lifecycle boundaries; Chromium software WebGL, not natural input run/device acceptance."
+  },
+  {
+    "width": 390,
+    "milestones": [
+      20,
+      50,
+      85,
+      120,
+      155,
+      190
+    ],
+    "arrival": 222.01666666666668,
+    "pauseFreeze": true,
+    "draftFreeze": true,
+    "victoryReplay": true,
+    "deadlineReplay": true,
+    "errors": [],
+    "overflow": false,
+    "fixture": "Banked kills/clock/Boss slain granted for lifecycle boundaries; Chromium software WebGL, not natural input run/device acceptance."
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "width": 1440,
+    "height": 1000,
+    "pauseWarningFreeze": true,
+    "arrivalAfter222": true,
+    "transformAsset": true,
+    "followupRender": true,
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "perf": {
+      "medianDrawMs": 0,
+      "p95DrawMs": 0.10000000000582077,
+      "displayList": 33
+    },
+    "fixture": "Clock/kills/Boss HP and positions granted; renderer freezes for captures; software WebGL, not natural run or device acceptance."
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "pauseWarningFreeze": true,
+    "arrivalAfter222": true,
+    "transformAsset": true,
+    "followupRender": true,
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "perf": {
+      "medianDrawMs": 0.09999999997671694,
+      "p95DrawMs": 0.5999999999767169,
+      "displayList": 33
+    },
+    "fixture": "Clock/kills/Boss HP and positions granted; renderer freezes for captures; software WebGL, not natural run or device acceptance."
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "pauseWarningFreeze": true,
+    "arrivalAfter222": true,
+    "transformAsset": true,
+    "followupRender": true,
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "perf": {
+      "medianDrawMs": 0.09999999997671694,
+      "p95DrawMs": 1.099999999976717,
+      "displayList": 33
+    },
+    "fixture": "Clock/kills/Boss HP and positions granted; renderer freezes for captures; software WebGL, not natural run or device acceptance."
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "pauseWarningFreeze": true,
+    "arrivalAfter222": true,
+    "transformAsset": true,
+    "followupRender": true,
+    "replayReset": true,
+    "overflow": false,
+    "errors": [],
+    "perf": {
+      "medianDrawMs": 0.09999999997671694,
+      "p95DrawMs": 0.29999999998835847,
+      "displayList": 33
+    },
+    "fixture": "Clock/kills/Boss HP and positions granted; renderer freezes for captures; software WebGL, not natural run or device acceptance."
+  }
+]
