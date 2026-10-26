@@ -10,12 +10,17 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Design Memory & Art Consistency System — chỉ docs/skills/reference index, không gameplay/assets/roadmap/build/deploy. Mục tiêu: DDR rỗng + skill explicit invocation; Art Bible và6nhóm references accepted Q7A–Q8C; game-art gate; AGENTS/handoff wiring; kiểm consistency và commit/push.
+CURSEBREAK Legacy V1 — ghi quyết định user đã chốt qua `$design-decision`, chỉ documentation. Acceptance: toàn bộ 7 mục vào DDR với ID tiếp theo, trạng thái Approved — Design Only, nguồn/ngày/Release boundary, Balance Tuning / TBD; kiểm diff và commit/push. Không sửa gameplay, Art Bible, roadmap hoặc triển khai/deploy.
 
 ## DEPLOY FOLLOW-UP
 User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
 
-## DESIGN MEMORY STATUS
+## LEGACY V1 STATUS
+- Đã ghi [DD-0001 — CURSEBREAK Legacy V1](DESIGN_DECISIONS.md#dd-0001--cursebreak-legacy-v1), **Approved — Design Only**, theo invocation trực tiếp của user ngày 2026-10-26 trong hội thoại task hiện tại (không có permalink). Registry có 1 decision, ID tiếp theo DD-0002; không Supersedes/backfill.
+- Chỉ cập nhật DESIGN_DECISIONS.md và HANDOFF.md; giữ gameplay, Art Bible, roadmap và các approval trước đây. Damage/cooldown/radius, chi tiết cosmetic là Balance Tuning / TBD. Implementation/acceptance Legacy V1 chưa thực hiện; chỉ bắt đầu khi user giao task riêng.
+- Validation: đối chiếu đủ 7 mục với yêu cầu; kiểm ID/schema/nguồn/Release boundary, diff và Markdown links. Không chạy tests/build/deploy vì chỉ Markdown.
+
+## DESIGN MEMORY STATUS — CHECKPOINT KHỞI TẠO
 - Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
 - Fetch phát hiện checkout cũ30e7cdc; fast-forward origin/main bcd148b trước khi audit. Q8C đã accepted7625fa2; không giữ nhầm pending từ checkout cũ. Release v0.1.0 tại4770bf6 là boundary DDR, không dời tag.
 - References đủ Player/Enemy/Boss/Environment/UI/VFX, link production source/runtime/prompt/hash/provenance và ảnh arena/HUD/crowd/grayscale thật. Thiếu message permalink gốc, model/seed, raw HUD chat ref, full Enraged4facing, dedicated sheet mọi dynamic VFX và lighting/Arrival swatches có approval riêng; không tự bịa. Coverage device/iOS/Safari giữ giới hạn cũ.
@@ -68,7 +73,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Dừng chờ task mới của user; không tự ghi DDR, generate art, tích hợp hoặc mở Q9. Prompt mẫu gọi2skills nằm trong mỗi SKILL.md.
+Dừng chờ task mới của user sau khi commit/push tài liệu Legacy V1; không tự triển khai Legacy V1, generate art, tích hợp hoặc mở Q9. Thay đổi DDR tiếp theo vẫn cần invocation `$design-decision` và ID mới.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.
