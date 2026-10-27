@@ -1,3 +1,5 @@
+> **VFX follow-up V1.1:** user “visual ok, làm đi” ngày2026-10-27 đã duyệt visual và giao triển khai. Code/deploy `59b9a61`, Pages40509711771 SUCCESS; [production/evidence/6preset mới](vfx-production/README.md). Giữ gameplay/balance/progression; **AWAITING USER PLAYTEST APPROVAL**, không Q9D. Deliverya489279 bên dưới là baseline Q9C trướcVFX.
+
 # Q9C — Arena Anomalies
 
 **AWAITING USER PLAYTEST APPROVAL**. Scope user27/10; không Q9D. Baseline `278f439` gồm Q9A/Q9B accepted và Auto Aim desktop follow-up. Không đổi damage/AI/progression/timing của baseline ngoài các modifier Anomaly đang được chọn. Auto Aim/mobile-layout vẫn giữ trạng thái approval riêng từ HANDOFF.

@@ -32,10 +32,19 @@
 
 Các [6preset](../README.md#playtest) mở2:14, sau Bắt đầu~1s chọncardđầu; profile memory riêng không ghi unlock/save thật. Normalrun#2 vẫn chọn1/2tại2:15, ticket/RNG/choice giữ refresh.
 
+| Preset VFX mới | Link |
+| --- | --- |
+| Fractured Storm | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-fracturedStorm) |
+| Blood Moon | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-bloodMoon) |
+| Volatile Ground | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-volatileGround) |
+| Static Field | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-staticField) |
+| Broken Seal | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-brokenSeal) |
+| Echo Chamber | [Thử](https://gizgity.github.io/a-new-game/?v=59b9a61&playtest=anomaly-echoChamber) |
+
 1. **Storm/Ground/Echo:** chờ khoảng5–6s simulation sau chọn để thấy hazard định kỳ; nhìn vòng gãy+4ngoặc để phân biệt nguồn với quái; khi gần impact đổi gold, rời vùng/Dash; sau nổ không còn warninggiả. Storm bolt / Ground fissure+plates / Echo arcs phải phân biệt được.
 2. **Blood/Static/Seal:** Tiêu bớt Charged rồi Light3→energy fragments từ contact vềvũkhí; Perfect Dodge→zigzag vàArcherforkedshots; Heavy→sealbreak; quái sống sót mới cófootglyphresistance. Resource/trigger đúng, không hiểu nhầm làhồiHP/Barrier/đònBoss.
 3. Thử touch vàkeyboard/mouse khi crowd/Boss: Player/Rupture/Charged/telegraphchính còn rõ, không cheHUD/corner hoặc kẹtinput. Báo Anomaly+tìnhhuống+quan sát+thiếtbị/browser. Acceptance kỹ thuật không thay cảm nhận user.
 
 ## Delivery
 
-Đang chốt validation/commit/push/Pages; chưa cập nhật hash deploy mới. Dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.
+Code `59b9a61` đã push main fast-forward; [Pages40509711771](https://github.com/gizgity/a-new-game/actions/runs/40509711771), job122208075138 completed/SUCCESS (npmci/build/typecheck/upload/Deploy). [Chơi VFX V1.1](https://gizgity.github.io/a-new-game/?v=59b9a61). Chưa xác minh liveHTTP/hash từ môi trường; dist/hash đã kiểm là previewlocal, không thay liveverification. Commit bàn giao sau chỉMarkdown, không redeploy. Dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.
