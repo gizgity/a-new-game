@@ -4,7 +4,7 @@ import { BUILD } from './config/balance.js';
 export type ProcOrigin = 'primary' | 'anomalySecondary' | 'legacySecondary' | 'mutationSecondary' | 'curseSecondary' | 'ruptureDetonation' | 'hostile';
 export interface ProcContext { root: ChainRoot; depth: number; origin: ProcOrigin }
 let nextRootId = 0;
-export interface ChainRoot { id: number; anomalyRelay?: boolean; legacy?: { remaining: number }; primaryHits?: Set<number>; furnace?: boolean; seeded: Set<number>; echoes: number; hazard: boolean; marked: Set<number>; detonations: number; pulsed: boolean; healed: boolean; triggers: number; hasRelay: boolean }
+export interface ChainRoot { id: number; fractured?: boolean; anomalyRelay?: boolean; legacy?: { remaining: number }; primaryHits?: Set<number>; furnace?: boolean; seeded: Set<number>; echoes: number; hazard: boolean; marked: Set<number>; detonations: number; pulsed: boolean; healed: boolean; triggers: number; hasRelay: boolean }
 export const chainRoot = (): ChainRoot => ({ id: ++nextRootId, seeded: new Set(), echoes: 0, hazard: false, marked: new Set(), detonations: 0, pulsed: false, healed: false, triggers: 0, hasRelay: false });
 /** Native roots retain their original guards. Legacy descendants share a finite ledger. */
 export function admitProc(root: ChainRoot, depth: number): boolean {

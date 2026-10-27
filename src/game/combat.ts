@@ -1,3 +1,5 @@
+import { AscensionEffects } from './AscensionEffects.js';
+import { ASCENSION } from './config/ascension.js';
 import { ANOMALY_VFX } from './config/anomalyVfx.js';
 import type { AnomalyId } from './config/legacy.js';
 import { AnomalyEffects } from './AnomalyEffects.js';
@@ -87,6 +89,8 @@ export class CombatWorld {
       this.impact(zone.x, zone.y, zone.storm ? 0xffe599 : 0xff6f87, zone.radius, 'anomalyStrike');
       this.impacts[this.impacts.length - 1].anomaly = zone.storm ? 'fracturedStorm' : zone.source !== undefined ? 'echoChamber' : 'volatileGround';
     });
+  readonly ascension = new AscensionEffects(this, (enemy, damage, root) => this.hitEnemy(enemy, damage, 0, 0, 0, false, 'anomaly', root, true, 0, { root, depth: 1, origin: 'anomalySecondary' }),
+    (damage, enemy) => this.hurt(damage, 0, enemy, false));
   private recordedDeaths = new Set<number>();
   private activeCurses: readonly CurseId[] = Object.freeze([]);
   get curses(): readonly CurseId[] { return this.activeCurses; }
@@ -163,7 +167,7 @@ export class CombatWorld {
   enemies: Enemy[] = [];
   projectiles: Projectile[] = [];
   impacts: Impact[] = [];
-  private movementIntent = { x: 0, y: 0 };
+  movementIntent = { x: 0, y: 0 };
   private gruntLeapGap = 0;
   private nextId = 0;
   private replacement = 1.5;
@@ -218,7 +222,7 @@ export class CombatWorld {
     this.hp = COMBAT.maxHp;
     this.barrier.reset();
     this.build.reset();
-    this.legacy.reset(); this.anomaly.reset(); this.recordedDeaths.clear();
+    this.legacy.reset(); this.anomaly.reset(); this.ascension.reset(); this.recordedDeaths.clear();
     this.heavyCharges = HEAVY.charges;
     this.heavyRecharge = 0;
     this.dashCharges = COMBAT.dashCharges;
@@ -444,6 +448,7 @@ export class CombatWorld {
     }
     this.anomaly.step(dt); // Resolve warned zones after this tick's walk/Dash input.
     for (const enemy of this.enemies) this.stepEnemy(enemy, dt);
+    this.ascension.step(dt);
     if (!this.dashProtected) this.separateBodies();
     const actualDx = this.player.x - movementStart.x, actualDy = this.player.y - movementStart.y;
     const forward = actualDx * this.movementIntent.x + actualDy * this.movementIntent.y > 0;
@@ -650,7 +655,7 @@ export class CombatWorld {
     }
   }
 
-  private hurt(damage: number, angle: number, enemySource = true): void {
+  private hurt(damage: number, angle: number, enemySource = true, knockback = true): void {
     if (this.dashProtected || this.dashTime > 0) {
       if (enemySource && this.perfectAvailable && this.dashTime >= COMBAT.dashDuration - COMBAT.perfectWindow) {
         this.rewardPerfectDodge();
@@ -658,6 +663,7 @@ export class CombatWorld {
       return;
     }
     if (this.invulnerable > 0 || this.hp <= 0) return;
+    if (enemySource && this.ascension.penalty > 0) damage *= ASCENSION.fracture.penalty;
     if (enemySource && this.hasCurse('ghostStep') && this.dashCharges === 0) damage *= BUILD.ghostRisk;
     if (enemySource && this.mutations.includes('kineticBattery') && this.build.kinetic > 0 && this.build.kineticCooldown <= 1e-9) {
       this.barrier.gain(this.build.kinetic * BUILD.kineticBarrier, this.hasCurse('ironOath'));
@@ -687,10 +693,12 @@ export class CombatWorld {
     this.invulnerable = 0.65;
     this.cue('hurt');
     this.hurtFlash = 0.18;
-    this.player.x += Math.cos(angle) * 20;
-    this.player.y += Math.sin(angle) * 20;
+    if (knockback) {
+      this.player.x += Math.cos(angle) * 20;
+      this.player.y += Math.sin(angle) * 20;
+    }
     clampPosition(this.player);
-    this.hitstop = Math.max(this.hitstop, 0.04);
+    if (knockback) this.hitstop = Math.max(this.hitstop, 0.04);
     this.impact(this.player.x, this.player.y, 0xff6f87);
   }
 
@@ -755,8 +763,10 @@ export class CombatWorld {
     if (distance > 0) {
       const pursuit = direction > 0 ? this.anomaly.pursuit : 1;
       const speed = enemy.kind === 'grunt' ? 106 : enemy.kind === 'bulwark' ? 66 : 75;
-      enemy.x += dx / distance * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
-      enemy.y += dy / distance * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
+      const predicted = this.ascension.pursuit(enemy);
+      const px = predicted.x - enemy.x, py = predicted.y - enemy.y, pd = Math.hypot(px, py) || 1;
+      enemy.x += px / pd * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
+      enemy.y += py / pd * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
     }
     for (const other of this.enemies) {
       if (other === enemy || other.hp <= 0) continue;
@@ -828,6 +838,7 @@ export class CombatWorld {
           boss.recovery = BOSS_PHASE.followupGap;
         } else if (boss.comboFinish) {
           boss.comboFinish = false;
+          this.ascension.echo();
           boss.cooldown = boss.recovery = BOSS_PHASE.comboRecovery;
         }
         boss.active = 0.22;
@@ -884,6 +895,10 @@ export class CombatWorld {
           else this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
           this.detonate(target, shot.charged ? 2 : 1, !!shot.charged, undefined, shot.root);
           this.hitEnemy(target, (shot.damage ?? (shot.charged ? RANGED.chargedDamage : RANGED.basicDamage)) + (shot.staticBonus ?? 0), Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit', shot.root, true, shot.staticBonus ?? 0);
+          if (shot.staticBonus && shot.root) {
+            const bonus = shot.staticBonus * this.ascension.fractureBonus('staticRiposte', shot.root);
+            if (bonus > 0) this.hitEnemy(target, bonus, 0, 0, 0, true, 'legacy', shot.root, true, 0, { root: shot.root, depth: 1, origin: 'mutationSecondary' });
+          }
           shot.life = 0;
         }
       }

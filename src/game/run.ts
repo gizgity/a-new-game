@@ -1,3 +1,4 @@
+import { ASCENSION } from './config/ascension.js';
 import { ANOMALY } from './config/anomalies.js';
 import type { LegacyTicket } from './legacy.js';
 import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS, BOSS_PHASE } from './config/balance.js';
@@ -17,6 +18,8 @@ export class RunDirector {
   private draftRandom = new DraftRandom(1);
   private lastSignals = draftSignals();
   private choices: BuildId[] = [];
+  private mutationDrafts = 0;
+  private fractureOffered = false;
   ticks = 0;
   draft: DraftOption[] = [];
   draftKind: 'mutation' | 'curse' = 'mutation';
@@ -46,6 +49,7 @@ export class RunDirector {
 
   start(): void {
     this.world.reset();
+    this.mutationDrafts = 0; this.fractureOffered = false;
     this.anomalyPending = this.anomalyResolved = false;
     this.draftRandom = new DraftRandom(this.seedOverride ?? newDraftSeed());
     this.lastSignals = draftSignals(); this.choices = []; this.draftDebug = null;
@@ -72,6 +76,21 @@ export class RunDirector {
     this.world.enemies = [];
     for (let i = 0; i < OPENING.initialCount; i++) {
       this.spawnCommon(i === OPENING.initialCount - 1 ? 'archer' : 'grunt', i * 2.39996);
+    }
+  }
+
+  /** Isolated Q9D URL fixture; never used by production progression. */
+  prepareSealPlaytest(seal: number): void {
+    if (seal === 1) this.prepareBossPlaytest(0, 134);
+    if (seal === 3) {
+      this.ticks = 99 * 60; this.draftIndex = 2; this.mutationDrafts = 1;
+      this.world.mutations = ['phantomEdge']; this.world.setCurses(['ghostStep']);
+      this.mutationPool = ['staticRiposte'];
+    }
+    if (seal === 4) {
+      this.prepareBossPlaytest(1150, 220);
+      this.world.mutations = ['phantomEdge', 'staticRiposte', 'bloodReclaimer', 'kineticBattery'];
+      this.world.setCurses(['ghostStep', 'parasiticMark']);
     }
   }
 
@@ -106,6 +125,15 @@ export class RunDirector {
         signals: signalWindow(this.world.draftSignals, this.lastSignals), maxHp: this.world.maxHp,
         previousOffers: this.previousOffers, choices: this.choices }, this.draftRandom);
       this.draft = result.options; this.draftDebug = result.debug;
+      if (this.draftKind === 'mutation') {
+        this.mutationDrafts++;
+        if (this.world.ascension.seal >= 3 && this.mutationDrafts >= 2 && !this.fractureOffered) {
+          this.fractureOffered = true;
+          const eligible = this.draft.filter(o => ASCENSION.fracture.eligible.includes(o.id));
+          // A separate deterministic domain keeps baseline Draft RNG unchanged.
+          if (eligible.length) eligible[new DraftRandom((this.seedOverride ?? 1) ^ 0xf9ac).next() * eligible.length | 0].fractured = true;
+        }
+      }
       this.draftIndex++;
       if (this.draft.length) { this.lastSignals = { ...this.world.draftSignals }; return; }
     }
@@ -189,6 +217,7 @@ export class RunDirector {
     if (this.draftKind === 'mutation') {
       if (this.world.mutations.length >= 4 || this.world.mutations.includes(option.id as MutationId) || !this.mutationPool.includes(option.id as MutationId)) return false;
       this.world.mutations.push(option.id as MutationId);
+      if (option.fractured) { this.world.ascension.fractured = option.id; this.world.ascension.penalty = ASCENSION.fracture.duration; }
     } else if (option.action !== 'keep' && !this.world.hasCurse(option.id as CurseId)) {
       if (!this.cursePool.includes(option.id as CurseId) || !this.world.addCurse(option.id as CurseId, option.replaceSlot)) return false;
     }

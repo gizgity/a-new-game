@@ -1,3 +1,4 @@
+import { sealLevel, validateAscension, emptyAscension, ascensionAvailable, type AscensionProgress } from './ascension.js';
 import { ANOMALY } from './config/anomalies.js';
 import { SIGILS, BRANCHES, ANOMALIES, STARTER_ANOMALIES, LEGACY_IDS, type AnomalyId, legacyUnlocks, validLegacy, sameLegacy, type LegacyId, type LegacyOffer, type SigilId, type BranchId } from './config/legacy.js';
 import { DraftRandom, newDraftSeed, weightedIndex } from './Draft.js';
@@ -18,15 +19,17 @@ export function rollLegacy(unlocks: readonly LegacyId[], seed: number, previous:
   }
   return offers;
 }
-export interface LegacyTicket { anomalyOffers: AnomalyId[]; anomalySelected: AnomalyId | null; runId: number; seed: number; offers: LegacyOffer[]; selected: LegacyOffer | null; firstRun: boolean; started: boolean }
-export interface LegacyReceipt { runId: number; result: 'victory' | 'defeat'; rewards: LegacyId[] }
-export interface LegacyProgress { version: 2; nextRunId: number; victories: number; pity: number; receipt: LegacyReceipt | null; unlocks: LegacyId[]; previous: SigilId[]; previousAnomalies: AnomalyId[]; ticket: LegacyTicket | null }
-export const emptyLegacy = (): LegacyProgress => ({ version: 2, nextRunId: 1, victories: 0, pity: 0, receipt: null, unlocks: [...STARTER_ANOMALIES], previous: [], previousAnomalies: [], ticket: null });
+export interface LegacyTicket { seal: number; anomalyOffers: AnomalyId[]; anomalySelected: AnomalyId | null; runId: number; seed: number; offers: LegacyOffer[]; selected: LegacyOffer | null; firstRun: boolean; started: boolean }
+export interface LegacyReceipt { runId: number; result: 'victory' | 'defeat'; rewards: LegacyId[]; sealClear?: number; sealUnlocked?: number }
+export interface LegacyProgress { ascension: AscensionProgress; version: 2; nextRunId: number; victories: number; pity: number; receipt: LegacyReceipt | null; unlocks: LegacyId[]; previous: SigilId[]; previousAnomalies: AnomalyId[]; ticket: LegacyTicket | null }
+export const emptyLegacy = (): LegacyProgress => ({ ascension: emptyAscension(), version: 2, nextRunId: 1, victories: 0, pity: 0, receipt: null, unlocks: [...STARTER_ANOMALIES], previous: [], previousAnomalies: [], ticket: null });
 export function validateLegacy(value: unknown): LegacyProgress {
   const result = emptyLegacy();
   if (!value || typeof value !== 'object') return result;
   const raw = value as LegacyProgress;
+
   result.unlocks = legacyUnlocks([...legacyUnlocks(raw.unlocks), ...STARTER_ANOMALIES]);
+  result.ascension = validateAscension(raw.ascension, result.unlocks);
   const count = (n: unknown, max: number) => typeof n === 'number' && Number.isInteger(n) && n >= 0 ? Math.min(n, max) : 0;
   result.nextRunId = Math.max(1, count(raw.nextRunId, 1_000_001));
   result.victories = count(raw.victories, 1_000_000);
@@ -35,7 +38,7 @@ export function validateLegacy(value: unknown): LegacyProgress {
     const receipt = raw.receipt;
     const rewards = receipt.result === 'victory' && Array.isArray(receipt.rewards)
       ? [...new Set(receipt.rewards)].filter(id => LEGACY_IDS.includes(id) && result.unlocks.includes(id)).slice(0, 2) : [];
-    result.receipt = { runId: receipt.runId, result: receipt.result, rewards };
+    result.receipt = { runId: receipt.runId, result: receipt.result, rewards, ...(receipt.result === 'victory' && Number.isInteger(receipt.sealClear) && receipt.sealClear! >= 0 && receipt.sealClear! <= 4 ? { sealClear: receipt.sealClear, ...(Number.isInteger(receipt.sealUnlocked) && receipt.sealUnlocked === receipt.sealClear! + 1 && receipt.sealUnlocked! <= result.ascension.highest ? {sealUnlocked: receipt.sealUnlocked} : {}) } : {}) };
   }
   result.previous = SIGILS.filter(id => Array.isArray(raw.previous) && raw.previous.includes(id));
   result.previousAnomalies = ANOMALIES.filter(id => Array.isArray(raw.previousAnomalies) && raw.previousAnomalies.includes(id));
@@ -45,7 +48,7 @@ export function validateLegacy(value: unknown): LegacyProgress {
     const runId = raw.version === 2 ? ticket.runId : result.nextRunId++;
     if (!Number.isInteger(runId) || runId <= 0 || runId >= result.nextRunId || result.receipt) return result;
     const anomalyOffers = ticket.firstRun ? [] : rollAnomalies(result.unlocks, ticket.seed, result.previousAnomalies);
-    result.ticket = { anomalyOffers, anomalySelected: anomalyOffers.includes(ticket.anomalySelected!) ? ticket.anomalySelected : null, runId, seed: ticket.seed, started: ticket.started === true, firstRun: ticket.firstRun, offers: ticket.firstRun ? [] : offers,
+    result.ticket = { seal: Math.min(sealLevel(ticket.seal), result.ascension.highest), anomalyOffers, anomalySelected: anomalyOffers.includes(ticket.anomalySelected!) ? ticket.anomalySelected : null, runId, seed: ticket.seed, started: ticket.started === true, firstRun: ticket.firstRun, offers: ticket.firstRun ? [] : offers,
       selected: !ticket.firstRun && validLegacy(ticket.selected, result.unlocks) && offers.some(o => sameLegacy(o, ticket.selected!)) ? { sigil: ticket.selected.sigil, branch: ticket.selected.branch } : null };
   }
   return result;
@@ -55,7 +58,7 @@ export function beginLegacy(state: LegacyProgress, completedOrStartedRuns: numbe
   if (state.receipt) throw new Error('Unacknowledged result');
   if (state.nextRunId > 1_000_000) throw new Error('Run cap reached');
   const firstRun = completedOrStartedRuns === 0;
-  state.ticket = { anomalyOffers: firstRun ? [] : rollAnomalies(state.unlocks, seed, state.previousAnomalies), anomalySelected: null, runId: state.nextRunId++, seed, started: false, firstRun, offers: firstRun ? [] : rollLegacy(state.unlocks, seed, state.previous), selected: null };
+  state.ticket = { seal: ascensionAvailable(state.unlocks) ? state.ascension.selected : 0, anomalyOffers: firstRun ? [] : rollAnomalies(state.unlocks, seed, state.previousAnomalies), anomalySelected: null, runId: state.nextRunId++, seed, started: false, firstRun, offers: firstRun ? [] : rollLegacy(state.unlocks, seed, state.previous), selected: null };
   return state.ticket;
 }
 export function chooseLegacy(state: LegacyProgress, index: number): boolean {
@@ -94,7 +97,13 @@ export function finishLegacy(state: LegacyProgress, result: 'victory' | 'defeat'
     state.victories = Math.min(1_000_000, state.victories + 1);
     state.pity = rewards.some(id => SIGILS.includes(id as SigilId)) ? 0 : Math.min(3, state.pity + 1);
   }
-  state.receipt = { runId: ticket.runId, result, rewards };
+  const seal = ticket.seal ?? 0;
+  let unlocked: number | undefined;
+  if (result === 'victory' && ascensionAvailable(state.unlocks)) {
+    state.ascension.clears = [...new Set([...state.ascension.clears, seal])].sort();
+    if (seal < 4 && seal + 1 > state.ascension.highest) state.ascension.highest = unlocked = seal + 1;
+  }
+  state.receipt = { runId: ticket.runId, result, rewards, ...(result === 'victory' ? { sealClear: seal, ...(unlocked !== undefined ? { sealUnlocked: unlocked } : {}) } : {}) };
   closeLegacy(state);
   return true;
 }

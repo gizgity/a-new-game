@@ -1,3 +1,4 @@
+import { ASCENSION } from './config/ascension';
 import { AnomalyVisual } from './AnomalyVisual';
 import { drawLegacy } from './LegacyVisual';
 import Phaser from 'phaser';
@@ -277,6 +278,19 @@ export class ArenaScene extends Phaser.Scene {
     const ground = this.groundGraphics.clear();
     this.arrival.render(this.run.bossWarning);
     this.anomalyVisual.render(ground, world);
+    for (const zone of world.ascension.zones) {
+      const radius = zone.kind === 'pulse' ? ASCENSION.pulse.radius : ASCENSION.echo.radius;
+      ground.lineStyle(zone.hit ? 4 : 2, zone.kind === 'pulse' ? 0xff6f87 : 0xffcc80, 0.95);
+      ground.strokeCircle(zone.x, zone.y, radius);
+      ground.lineBetween(zone.x-8,zone.y,zone.x+8,zone.y);
+      ground.lineBetween(zone.x,zone.y-8,zone.x,zone.y+8);
+      if (zone.hit) { ground.fillStyle(0xff6f87,0.2); ground.fillCircle(zone.x,zone.y,radius); }
+    }
+    const hunter = world.enemies.find(e=>e.id === world.ascension.hunterId);
+    if (hunter) {
+      ground.lineStyle(3,world.ascension.hunterWarning > 0 ? 0xffcc80 : 0xff6f87,1);
+      ground.strokeTriangle(hunter.x,hunter.y-32,hunter.x-10,hunter.y-45,hunter.x+10,hunter.y-45);
+    }
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     drawLegacy(ground, world);

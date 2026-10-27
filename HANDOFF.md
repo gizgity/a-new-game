@@ -10,7 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đạt r” ngày2026-10-27 trên code/deploy `59b9a61` (bàn giao `3268f15`), Pages40509711771 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9C Arena Anomalies gồm VFX V1.1; giữ approval Q9A/Q9B và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance config từ approval chung. Không tự mở Q9D. Lượt ghi nhận này chỉ cập nhật tài liệu, không đổi runtime/artwork/balance/progression.
+**Q9D — Ascension System V1: implementation proposal — AWAITING USER PLAYTEST APPROVAL Q9D.** User giao ngày2026-10-27 theo contract A–E; supersede gate khôngQ9D lịch sử trong scope này. Không DDR Approved, không Q9E; giữ Q9A–Q9C accepted. Goal: progression/ticket/save0–4, bốn modifier cộng dồn, UI vi/en, focused regression/browser, commit/push/Pages rồi dừng AWAITING USER PLAYTEST APPROVAL Q9D.
+
+## Q9D STATUS
+Implementation đã có tại src/game/ascension.ts, AscensionEffects.ts, config/ascension.ts và lifecycle/UI hiện hữu. Receipt/journal Q9B dùng chung để chống double reward; Fracture allowlist V1 chỉ Static Riposte (proc damage an toàn), không có trong Draft Mutation thứ2 thì skip cảrun. Không artwork production mới, chỉ primitive telegraph. [Spec/checklist/preset/giới hạn](docs/q9d/README.md). PASS25testfiles (11focused Q9D cases), typecheck/build; browser320/390/844touch+1440keyboard/mouse, vi/en/Pulse/pause/CDPjoystick/WASD/HUDlane/isolation; production ticket refresh/Victory3→4/receipt no-double. Raw/screenshots tại docs/q9d/evidence. Chưa thiết bị thật/iOS/Safari/human feel; không suy acceptance từ tests/deploy. Commit/push/Pages đang hoàn tất.
 
 ## Q9C VFX PROPOSAL STATUS
 **VISUAL APPROVED — V1.1**, user “visual ok, làm đi” ngày2026-10-27, hội thoại hiện tại không permalink. Approval cho6motif/common signature và mockupV1.1; production/integration đã hoàn tất; user “đạt r” ngày2026-10-27 đã duyệt playtest trên59b9a61. Đã tạo board6motif +4composite trên current runtime320/390/844/1440, cảnh24quái/2Grunt windup, before/after vàCSSgrayscale trên cùngảnh; approved Q7C Charged/crowd/grayscale +Q8C Arrival dùng làm image inputs thật. [Review/spec/checklist](docs/q9c/vfx-art-v1/README.md), [board](docs/q9c/vfx-art-v1/source/concept-v1.1.png), [reviewHTML](docs/q9c/vfx-art-v1/review.html), prompts/manifest cùng thư mục.
@@ -74,7 +77,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-Q9C **AWAITING USER PLAYTEST APPROVAL**, chưa nghiệm thu. Q9A/Q9B đã ACCEPTED — USER PLAYTEST APPROVAL theo evidence riêng bên trên; Auto Aim/mobile-layout giữ trạng thái follow-up riêng. Không Q9D.
+Q9D **AWAITING USER PLAYTEST APPROVAL Q9D**, chưa user playtest acceptance. Q9A/Q9B/Q9C ACCEPTED theo evidence riêng; Auto Aim/mobile-layout giữ follow-up riêng. Không Q9E hoặc DDR Approved.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -123,7 +126,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9C — Arena Anomalies + VFX V1.1 | ACCEPTED — USER PLAYTEST APPROVAL | User “đạt r” ngày2026-10-27 trên59b9a61; Pages40509711771 SUCCESS; không Q9D |
 
 ## NEXT ACTION
-Dừng sau Q9C đã accepted; chờ yêu cầu mới của user. Không yêu cầu duyệt lại, tự tune hoặc mở Q9D. Auto Aim/mobile-layout giữ trạng thái approval riêng, không suy từ approval Q9C.
+Hoàn tất browser validation, commit/push và theo dõi Pages tới kết thúc; cập nhật version/link rồi dừng AWAITING USER PLAYTEST APPROVAL Q9D. Không Q9E hoặc tự tune/DDR Approved.
 
 ## VALIDATION APPROVAL Q9C
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff/tính nhất quán/links, không chạy lại tests/build/deploy. Giữ239tests, typecheck/build,28/28parity và Pages59b9a61 đã PASS. Không đổi runtime/assets/config/DDR/Art Bible.

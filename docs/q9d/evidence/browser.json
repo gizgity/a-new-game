@@ -1,0 +1,71 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "seal": 4,
+    "zones": 1,
+    "phase": "playing",
+    "frozen": true,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "isolatedSave": true,
+    "movement": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "seal": 4,
+    "zones": 1,
+    "phase": "playing",
+    "frozen": true,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "isolatedSave": true,
+    "movement": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "seal": 4,
+    "zones": 1,
+    "phase": "playing",
+    "frozen": true,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "isolatedSave": true,
+    "movement": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "seal": 4,
+    "zones": 1,
+    "phase": "playing",
+    "frozen": true,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "isolatedSave": true,
+    "movement": true,
+    "errors": []
+  },
+  {
+    "productionTicketRefresh": true,
+    "victoryUnlock": true,
+    "receiptIdempotent": true
+  }
+]

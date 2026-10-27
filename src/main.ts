@@ -1,3 +1,4 @@
+import { ascensionAvailable } from './game/ascension';
 import { beginLegacy, chooseLegacy, chooseAnomaly } from './game/legacy';
 import { validLegacy, LEGACY_IDS, SIGILS, BRANCHES, ANOMALIES, type SigilId, type AnomalyId, type LegacyId, type LegacyOffer } from './game/config/legacy';
 import Phaser from 'phaser';
@@ -15,6 +16,7 @@ import './style.css';
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
 const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchParams(location.search).get('playtest'));
 const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_PLAYTEST.id;
+const sealTrial = /^seal-[0-4]$/.test(new URLSearchParams(location.search).get('playtest') ?? '') ? Number(new URLSearchParams(location.search).get('playtest')!.slice(-1)) : null;
 const anomalyTrial = ANOMALIES.find(id => new URLSearchParams(location.search).get('playtest') === `anomaly-${id}`);
 const legacyParts = new URLSearchParams(location.search).get('playtest')?.split('-');
 const legacyCandidate = legacyParts?.[0] === 'legacy' ? { sigil: legacyParts[1], branch: legacyParts[2] === 'core' ? null : legacyParts[2] } : null;
@@ -26,6 +28,7 @@ if (legacyTrial) {
   profile.legacy.unlocks = LEGACY_IDS.filter(id => id === legacyTrial.sigil || id === legacyTrial.branch);
 }
 if (anomalyTrial) { profile.totals.runs = 1; profile.legacy.unlocks = [...LEGACY_IDS]; }
+if (sealTrial !== null) { profile.totals.runs = 1; profile.legacy.unlocks = [...LEGACY_IDS]; profile.legacy.ascension = { version:1, highest:4, selected:sealTrial, clears:[0,1,2,3] }; }
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
 let saveOK = true;
@@ -67,6 +70,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="mini-controls"><span><kbd data-i18n="moveKey"></kbd><span data-i18n="move"></span></span>
           <span><kbd data-i18n="mouse"></kbd><span data-i18n="aim"></span></span></div>
         <section id="reward-reveal" aria-live="polite" hidden></section>
+        <div id="seal-picker"></div><p id="seal-result" role="status"></p>
         <button id="primary" class="primary" disabled></button>
         <button id="menu-build" class="secondary" data-i18n="hudBuildDetails" hidden></button>
         <details id="collection" class="collection"><summary data-i18n="legacyCollection"></summary><div id="collection-list"></div></details>
@@ -116,6 +120,7 @@ const hud = new CombatHUD(document.querySelector<HTMLElement>('#combat-hud')!);
 function renderUI(phase: Phase = currentPhase): void {
   currentPhase = phase;
   renderCollection(phase);
+  renderSeals(phase);
   if (phase !== 'paused' && buildDetailsOpen) {
     buildDetailsOpen = false;
     (document.activeElement as HTMLElement | null)?.blur();
@@ -173,6 +178,21 @@ function renderUI(phase: Phase = currentPhase): void {
   }
 }
 
+function renderSeals(phase: Phase): void {
+  const picker = document.querySelector<HTMLElement>('#seal-picker')!;
+  picker.hidden = phase !== 'ready' && phase !== 'victory' && phase !== 'defeat';
+  const progress = profile.legacy.ascension, ticket = profile.legacy.ticket;
+  const selected = ticket?.seal ?? progress.selected;
+  picker.innerHTML = `<label>${t('sealChoose')} <select id="seal-select" ${ticket || !ascensionAvailable(profile.legacy.unlocks) ? 'disabled' : ''}>${[0,1,2,3,4].map(n=>`<option value="${n}" ${selected===n?'selected':''} ${n>progress.highest?'disabled':''}>${t('sealBadge').replace('{n}',String(n))} · ${t(`sealName${n}` as TranslationKey)}${n>progress.highest?' · '+t('legacyLocked'):''}</option>`).join('')}</select></label><p>${!ascensionAvailable(profile.legacy.unlocks)?t('sealRequirement'):''}</p><p>${Array.from({length:selected+1},(_,n)=>t(`sealMod${n}` as TranslationKey)).join(' ')}</p>`;
+  document.querySelector('#seal-select')!.addEventListener('change', event=>{
+    if (profile.legacy.ticket) return;
+    const n=Number((event.target as HTMLSelectElement).value);
+    if (Number.isInteger(n) && n>=0 && n<=progress.highest) { progress.selected=n; persist(); renderSeals(phase); }
+  });
+  const receipt=profile.legacy.receipt;
+  document.querySelector('#seal-result')!.textContent = phase==='victory' && receipt?.sealClear !== undefined ? t('sealClear').replace('{n}',String(receipt.sealClear)) + (receipt.sealUnlocked !== undefined ? ' '+t('sealUnlock').replace('{n}',String(receipt.sealUnlocked)) : '') : '';
+}
+
 function resultBody(): string {
   if (profile.legacy.receipt && !arena.run.result) return t(profile.legacy.receipt.result === 'victory' ? 'victoryBody' : 'defeatBody');
   return t(arena.run.result === 'victory' ? 'victoryBody' : arena.run.reason === 'deadline' ? 'deadlineBody' : 'defeatBody') +
@@ -210,7 +230,7 @@ function renderLegacy(): void {
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
   panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draft.some(option => option.direction) ? ' ' + t('openingDraftHint') : ''}${arena.run.draftKind === 'curse' && arena.combat.curses.length ? ' ' + t(arena.combat.curses.length === 2 ? 'curseFullHint' : 'curseSwapHint') : ''}</p><p id="draft-readiness" role="status"></p><div class="draft-options${arena.run.draft.some(option => option.direction) ? ' opening' : ''}">${arena.run.draft.map((option, index) =>
-    `<button class="draft-card" data-choice="${index}"><small>${t(option.direction ? `opening_${option.direction}` : option.action === 'keep' ? 'keepCurse' : arena.run.draftKind === 'curse' ? option.replaceSlot !== undefined ? 'replaceCurse' : 'addCurse' : trialRoute && trialRoute.mutations.find(id => !arena.combat.mutations.includes(id)) === option.id ? 'routeRecommended' : option.role)}</small><strong>${option.action === 'keep' ? arena.combat.curses.map(id => t(id)).join(' + ') : t(option.id)}</strong>${option.replaceSlot !== undefined ? `<span>${t('replaceCurseSlot').replace('{slot}', String(option.replaceSlot + 1)).replace('{item}', t(arena.combat.curses[option.replaceSlot]))}</span>` : ''}${trialRoute && option.id === trialRoute.curse && option.action !== 'keep' ? `<span class="draft-reason">${t('routeRecommended')}</span>` : ''}${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${option.action === 'keep' ? t('keepBuildDesc') : t(`${option.id}Desc`)}</span></button>`).join('')}</div>`;
+    `<button class="draft-card" data-choice="${index}"><small>${t(option.direction ? `opening_${option.direction}` : option.action === 'keep' ? 'keepCurse' : arena.run.draftKind === 'curse' ? option.replaceSlot !== undefined ? 'replaceCurse' : 'addCurse' : trialRoute && trialRoute.mutations.find(id => !arena.combat.mutations.includes(id)) === option.id ? 'routeRecommended' : option.role)}</small><strong>${option.action === 'keep' ? arena.combat.curses.map(id => t(id)).join(' + ') : t(option.id)}</strong>${option.replaceSlot !== undefined ? `<span>${t('replaceCurseSlot').replace('{slot}', String(option.replaceSlot + 1)).replace('{item}', t(arena.combat.curses[option.replaceSlot]))}</span>` : ''}${trialRoute && option.id === trialRoute.curse && option.action !== 'keep' ? `<span class="draft-reason">${t('routeRecommended')}</span>` : ''}${option.reason ? `<span class="draft-reason">${draftReason(option)}</span>` : ''}<span>${option.action === 'keep' ? t('keepBuildDesc') : t(`${option.id}Desc`)}</span>${option.fractured ? `<span class="draft-reason">${t('fracturedChoice')}</span>` : ''}</button>`).join('')}</div>`;
   updateDraftReadiness();
 }
 
@@ -271,7 +291,7 @@ function applySettings(): void {
   arena.cosmetic = profile.settings.cosmetic;
   arena.desktopAutoAim = profile.settings.desktopAutoAim;
   arena.autoAimPriority = profile.settings.autoAimPriority;
-  arena.run.mutationPool = trialRoute ? MUTATIONS : mutationPool(profile);
+  arena.run.mutationPool = sealTrial === 3 ? ['staticRiposte'] : trialRoute || sealTrial !== null ? MUTATIONS : mutationPool(profile);
   arena.run.cursePool = trialRoute ? CURSES : cursePool(profile);
 }
 
@@ -312,6 +332,11 @@ export const arena = new ArenaScene((phase) => {
       ticket.anomalyOffers = [anomalyTrial, ANOMALIES.find(id => id !== anomalyTrial)!];
       arena.run.prepareBossPlaytest(0, 134);
     }
+    if (sealTrial !== null) {
+      const ticket = beginLegacy(profile.legacy, 1); ticket.started = true;
+      arena.run.prepareSealPlaytest(ticket.seal);
+    }
+    arena.combat.ascension.seal = profile.legacy.ticket?.seal ?? 0;
     arena.run.anomalyTicket = profile.legacy.ticket;
     applySettings();
   }
@@ -386,7 +411,7 @@ primary.addEventListener('click', () => {
     profile.legacy.receipt = null;
   }
   let phase: Phase = 'playing';
-  if (currentPhase !== 'paused' && (!buildTrial || legacyTrial)) {
+  if (currentPhase !== 'paused' && (!buildTrial || legacyTrial || sealTrial !== null)) {
     const ticket = beginLegacy(profile.legacy, profile.totals.runs);
     persist();
     if (!buildTrial && !saveOK) return;

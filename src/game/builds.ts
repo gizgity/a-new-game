@@ -4,6 +4,7 @@ export type MutationId = typeof MUTATIONS[number];
 export type CurseId = typeof CURSES[number];
 export type BuildId = MutationId | CurseId;
 export interface DraftOption {
+  fractured?: boolean;
   id: BuildId; role: 'adaptive' | 'synergy' | 'wildcard' | 'curseChoice';
   direction?: 'tank' | 'sustain' | 'counter' | 'ranged';
   action?: 'keep'; replaceSlot?: 0 | 1;

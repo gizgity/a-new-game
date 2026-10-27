@@ -80,9 +80,9 @@ export class CombatHUD {
     const legacy = w.legacy, offer = legacy.selection;
     const resource = legacy.charge > 0 ? `${t('legacyCharge')} ${seconds(legacy.charge)}` : legacy.mark ? `${t('legacyMark')} ${seconds(legacy.mark.time)}` : offer?.sigil === 'wind' ? `${t('legacyMomentum')} ${Math.floor(legacy.momentum)}` : '';
     const sigilText = offer ? `${t(`legacy_${offer.sigil}`)}${offer.branch ? ` · ${t(`legacy_${offer.branch}`)}` : ''}${resource ? ` · ${resource}` : ''}${legacy.haste > 0 ? ` · ${t('legacyHaste')} ${seconds(legacy.haste)}` : ''}` : '';
-    const legacyText = [w.anomaly.active ? t(`legacy_${w.anomaly.active}`) : '', sigilText].filter(Boolean).join(' · ');
+    const legacyText = [t('sealBadge').replace('{n}',String(w.ascension.seal)),w.anomaly.active ? t(`legacy_${w.anomaly.active}`) : '', sigilText].filter(Boolean).join(' · ');
     this.text('legacy-indicator', legacyText);
-    this.node('legacy-indicator').hidden = !offer && !w.anomaly.active;
+    this.node('legacy-indicator').hidden = false;
     this.node('legacy-indicator').title = legacyText;
     const low = w.hp > 0 && w.hp / w.maxHp <= 0.25;
     const ghost = w.hasCurse('ghostStep') && w.dashCharges === 0;
