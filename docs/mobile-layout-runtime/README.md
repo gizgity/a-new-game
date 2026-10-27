@@ -1,5 +1,7 @@
 # Mobile layout — runtime sau scale75%
 
+Follow-up cùng ngày: user yêu cầu chỉ2light attack về kích thước cũ và header gọn thêm. Screenshot/checks hiện tại là bản Shoot72px/Melee76px, header40px. Hai light dịch±10.5screenpx dọc để có gap11.5px; Charged/Heavy/Dash/Surge bounding rect không đổi so bản trước. PASS build/typecheck + browser4viewports; chưa thiết bị thật. Các số44px và scale tất cả nút dưới đây mô tả baseline trước follow-up.
+
 User duyệt concept75% và yêu cầu header mobile chỉ icon ngày2026-10-27. Thay đổi CSS/markup trên main9db8191, giữ toàn bộ Q9A/gameplay đã accepted. Không dịch Dash, scale cả cụm kể cả offset và counters; không đổi touch aim/resource timings. Không ghi DDR từ thảo luận.
 
 ## Evidence
