@@ -1,5 +1,5 @@
 import { beginLegacy, chooseLegacy } from './game/legacy';
-import { validLegacy, LEGACY_IDS, type LegacyOffer } from './game/config/legacy';
+import { validLegacy, LEGACY_IDS, SIGILS, BRANCHES, ANOMALIES, type SigilId, type AnomalyId, type LegacyId, type LegacyOffer } from './game/config/legacy';
 import Phaser from 'phaser';
 import { loadProfile, defaultProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
 import { type CombatWorld } from './game/combat';
@@ -18,8 +18,8 @@ const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_
 const legacyParts = new URLSearchParams(location.search).get('playtest')?.split('-');
 const legacyCandidate = legacyParts?.[0] === 'legacy' ? { sigil: legacyParts[1], branch: legacyParts[2] === 'core' ? null : legacyParts[2] } : null;
 const legacyTrial: LegacyOffer | null = validLegacy(legacyCandidate) ? legacyCandidate : null;
-const buildTrial = Boolean(trialBuild || trialRoute || trialBoss || legacyTrial);
-const profile = legacyTrial ? defaultProfile() : loadProfile();
+const buildTrial = Boolean(new URLSearchParams(location.search).has('playtest') || new URLSearchParams(location.search).has('draftSeed') || new URLSearchParams(location.search).has('draftDebug'));
+const profile = buildTrial ? defaultProfile() : loadProfile();
 if (legacyTrial) {
   profile.totals.runs = 1;
   profile.legacy.unlocks = LEGACY_IDS.filter(id => id === legacyTrial.sigil || id === legacyTrial.branch);
@@ -64,8 +64,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <p class="touch-hint" data-i18n="touchHint"></p>
         <div class="mini-controls"><span><kbd data-i18n="moveKey"></kbd><span data-i18n="move"></span></span>
           <span><kbd data-i18n="mouse"></kbd><span data-i18n="aim"></span></span></div>
+        <section id="reward-reveal" aria-live="polite" hidden></section>
         <button id="primary" class="primary" disabled></button>
         <button id="menu-build" class="secondary" data-i18n="hudBuildDetails" hidden></button>
+        <details id="collection" class="collection"><summary data-i18n="legacyCollection"></summary><div id="collection-list"></div></details>
+        <p id="progression-save" role="status"></p>
         <p class="scope" data-i18n="scope"></p>
         <details id="settings" class="settings"><summary data-i18n="settings"></summary>
           <div class="setting-controls">
@@ -107,6 +110,7 @@ const hud = new CombatHUD(document.querySelector<HTMLElement>('#combat-hud')!);
 
 function renderUI(phase: Phase = currentPhase): void {
   currentPhase = phase;
+  renderCollection(phase);
   if (phase !== 'paused' && buildDetailsOpen) {
     buildDetailsOpen = false;
     (document.activeElement as HTMLElement | null)?.blur();
@@ -124,10 +128,11 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
   });
-  if (buildTrial) document.querySelector('#trial-label')!.textContent = legacyTrial ? t('legacyTrial') : t(trialBoss ? BOSS_PLAYTEST.label : (trialRoute ?? trialBuild)!.label);
+  if (buildTrial) document.querySelector('#trial-label')!.textContent = legacyTrial ? t('legacyTrial') : t(trialBoss ? BOSS_PLAYTEST.label : (trialRoute ?? trialBuild)?.label ?? 'legacyTrial');
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
+  primary.disabled = !buildTrial && !profile.legacy.ticket && profile.legacy.nextRunId > 1_000_000;
   primary.textContent = t(phase === 'victory' || phase === 'defeat' ? 'playAgain' : phase === 'ready' ? 'start' : 'resume');
   const pauseLabel = t(phase === 'paused' ? 'resume' : 'pause');
   pause.querySelector('.header-text')!.textContent = pauseLabel;
@@ -163,6 +168,7 @@ function renderUI(phase: Phase = currentPhase): void {
 }
 
 function resultBody(): string {
+  if (profile.legacy.receipt && !arena.run.result) return t(profile.legacy.receipt.result === 'victory' ? 'victoryBody' : 'defeatBody');
   return t(arena.run.result === 'victory' ? 'victoryBody' : arena.run.reason === 'deadline' ? 'deadlineBody' : 'defeatBody') +
     ' ' + t('resultStats').replace('{kills}', String(arena.combat.kills)).replace('{time}', String(Math.floor(arena.run.elapsed)));
 }
@@ -171,6 +177,19 @@ function draftReason(option: import('./game/builds').DraftOption): string {
   const reason = option.reason;
   if (!reason) return '';
   return reason.kind === 'synergy' ? t('reasonSynergy').replace('{item}', t(reason.id)) : t(`reason_${reason.tag}`);
+}
+function unlockMarkup(id: LegacyId): string {
+  const kind = SIGILS.includes(id as SigilId) ? 'rewardSigil' : ANOMALIES.includes(id as AnomalyId) ? 'rewardAnomaly' : 'rewardBranch';
+  return `<article class="collection-item"><strong>${t(`legacy_${id}`)}</strong><small>${t(kind)} · ${t(profile.legacy.unlocks.includes(id) ? 'unlocked' : 'legacyLocked')}</small><p>${t(`legacy_${id}Desc`)}</p>${kind === 'rewardAnomaly' ? `<small>${t('anomalyDeferred')}</small>` : ''}</article>`;
+}
+function renderCollection(phase: Phase): void {
+  const rewards = profile.legacy.receipt?.rewards ?? [];
+  const reveal = document.querySelector<HTMLElement>('#reward-reveal')!;
+  reveal.hidden = phase !== 'victory' || buildTrial;
+  reveal.innerHTML = `<h3>${t('victoryRewards')}</h3>${rewards.length ? rewards.map(unlockMarkup).join('') : `<p>${t('collectionComplete')}</p>`}`;
+  const sigils = profile.legacy.unlocks.filter(id => SIGILS.includes(id as SigilId)).length;
+  const branches = profile.legacy.unlocks.filter(id => Object.hasOwn(BRANCHES, id)).length;
+  document.querySelector('#collection-list')!.innerHTML = `<p>${t('collectionCounts').replace('{sigils}', String(sigils)).replace('{branches}', String(branches))}</p>${LEGACY_IDS.map(unlockMarkup).join('')}`;
 }
 function renderLegacy(): void {
   const ticket = profile.legacy.ticket!;
@@ -209,9 +228,10 @@ touchControls.onModeChange = () => { renderUI(); game.scale.refresh(); };
 document.querySelector<HTMLSelectElement>('#locale')!.value = profile.settings.locale;
 
 function persist(): void {
-  if (legacyTrial) return;
+  if (buildTrial) return;
   saveOK = saveProfile(profile);
-  document.querySelector('#save-status')!.textContent = legacyTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
+  document.querySelector('#progression-save')!.textContent = saveOK ? '' : t('rewardSaveRetry');
+  document.querySelector('#save-status')!.textContent = buildTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function renderSettings(): void {
   document.querySelector<HTMLInputElement>('#mute')!.checked = profile.settings.muted;
@@ -221,7 +241,8 @@ function renderSettings(): void {
   const values = [profile.totals.kills, profile.totals.detonations, profile.totals.perfectDodges, profile.totals.victories];
   const targets = [1, 5, 3, 1];
   document.querySelector('#unlock-list')!.innerHTML = UNLOCKS.map((id, index) => `<li class="${profile.unlocks.includes(id) ? 'unlocked' : ''}">${profile.unlocks.includes(id) ? t('unlocked') : `${Math.min(values[index], targets[index])}/${targets[index]}`} · ${t(id)}</li>`).join('');
-  document.querySelector('#save-status')!.textContent = legacyTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
+  document.querySelector('#progression-save')!.textContent = saveOK ? '' : t('rewardSaveRetry');
+  document.querySelector('#save-status')!.textContent = buildTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function applySettings(): void {
   game.sound.mute = profile.settings.muted;
@@ -281,6 +302,7 @@ export const arena = new ArenaScene((phase) => {
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
   applySettings();
   renderSettings();
+  if (profile.legacy.receipt) { arena.phase = profile.legacy.receipt.result; renderUI(profile.legacy.receipt.result); }
 }, renderCombatHUD, touchControls);
 
 const draftSeedText = new URLSearchParams(location.search).get('draftSeed');
@@ -328,10 +350,17 @@ document.querySelector('#build-resume')!.addEventListener('click', () => {
 });
 
 primary.addEventListener('click', () => {
+  if (!buildTrial && currentPhase !== 'paused') {
+    // Never leave a result before a complete durable snapshot exists.
+    persist();
+    if (!saveOK) return;
+    profile.legacy.receipt = null;
+  }
   let phase: Phase = 'playing';
   if (currentPhase !== 'paused' && (!buildTrial || legacyTrial)) {
     const ticket = beginLegacy(profile.legacy, profile.totals.runs);
     persist();
+    if (!buildTrial && !saveOK) return;
     arena.run.seedOverride = ticket.seed;
     if (ticket.offers.length && !ticket.selected) phase = 'legacy';
   }

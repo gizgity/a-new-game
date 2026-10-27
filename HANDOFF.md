@@ -10,7 +10,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Follow-up mobile ngày2026-10-27: chỉ đưa2light attack Shoot/Melee về kích thước cũ72/76px và thu header thêm44→40px. Acceptance: nút phụ/controls lane giữ nguyên,2light không chồng nhau, icon language/pause/resume còn hoạt động; build/typecheck và browser4viewports, deploy. Không đổi gameplay/Q9A accepted hoặc mở Q9B.
+Q9B — Victory Rewards & Legacy Progression, user giao2026-10-27. Scope:2Sigil ở Victory đầu;1unlock mới ở Victory sau,5/3/2 RNG/pity/dependency; versioned save/migration/pending/idempotency/debug isolation; ticket lifecycle/collection/reveal vi-en mobile/desktop; tests/typecheck/build/Pages/commit/push. Giữ toàn bộ balance/combat Q9A accepted, không artwork/Anomaly combat/Ascension/Cosmetic/reaction; khôngQ9C.
+
+## Q9B STATUS
+Implementation/validation hoàn tất; chuẩn bị commit/push/Pages. Chi tiết [docs/q9b/README.md](docs/q9b/README.md).214tests PASS; build/typecheck PASS;4viewports browser normal flow PASS; failure-injection UI/pending refresh/Victory thứ2 PASS. Chưa user/device playtest. Giữ các approval lịch sử bên dưới; gate khôngQ9B được user supersede bằng taskQ9B hiện tại.
 
 ## MOBILE LAYOUT STATUS
 - User xác nhận rõ **“Cho phép push và deploy”** cho follow-up Shoot72/Melee76/header40. Đã fetch remote, push fast-forward code3b726e9/bàn giaoe1edd63; [Pages40438958223](https://github.com/gizgity/a-new-game/actions/runs/40438958223) job121974380153 completed/SUCCESS, gồm build/typecheck/upload/Deploy. Link thử https://gizgity.github.io/a-new-game/?v=e1edd63 . Approval blocker cũ đã được giải quyết bằng xác nhận trực tiếp của user; không còn chờ quyền deploy. Chưa xác nhận liveHTTP/hash từ môi trường. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -92,7 +95,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9A — Elemental Legacy Core | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9a, nếu cần cân bằng sẽ mở issue mới” ngày2026-10-27 trên1a08448; Pages40428188955 SUCCESS; balance theo issue mới, không Q9B |
 
 ## NEXT ACTION
-Chờ user thử follow-upe1edd63 trên điện thoại: giữ joystick+Shoot, bấm Melee luân phiên Heavy và Dash (mong đợi2light dễ bấm, không lẫn nút), thử icon language/pause/resume ở header40px. Chỉ xử lý feedback được giao, chưa tự nghiệm thu device experience. Q9A vẫn accepted, không tự tune hoặc mở Q9B.
+Commit/push main fast-forward và theo dõi Pages tới kết thúc; sau đó bàn giao **AWAITING USER PLAYTEST APPROVAL** theo docs/q9b. Không mởQ9C hoặc tuneQ9A.
 
 ## VALIDATION APPROVAL Q9A
 Chỉ sửa4Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9a/README), kiểm nguồn/version/consistency/links/diff; không đổi runtime/DDR/balance/artwork, không tests/build/deploy. Kết quả kỹ thuật và Pages1a08448 giữ nguyên.

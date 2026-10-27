@@ -1,11 +1,12 @@
-import { emptyLegacy, validateLegacy, closeLegacy, type LegacyProgress } from './legacy.js';
+import { emptyLegacy, validateLegacy, finishLegacy, type LegacyProgress } from './legacy.js';
 import { MUTATIONS, CURSES, type BuildId, type MutationId, type CurseId } from './builds.js';
 
+export const PENDING_KEY = 'cursebreak.pending.v2';
 export const SAVE_KEY = 'cursebreak.save.v1';
 export const UNLOCKS = ['firstBlood', 'chainApprentice', 'dodgeMaster', 'wardenBreaker'] as const;
 export type UnlockId = typeof UNLOCKS[number];
 export interface Profile {
-  version: 1;
+  version: 2;
   legacy: LegacyProgress;
   settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism' };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
@@ -16,12 +17,12 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 1, legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint' },
+  return { version: 2, legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
   const raw = object(value), result = defaultProfile();
-  if (raw.version !== 1) return result;
+  if (raw.version !== 1 && raw.version !== 2) return result;
   result.legacy = validateLegacy(raw.legacy);
   const settings = object(raw.settings), totals = object(raw.totals);
   result.settings.locale = settings.locale === 'en' ? 'en' : 'vi';
@@ -39,11 +40,27 @@ export function validateProfile(value: unknown): Profile {
 export function loadProfile(storage?: StorageAccess): Profile {
   try {
     const text = (storage ?? localStorage).getItem(SAVE_KEY);
-    return text && text.length < 20_000 ? validateProfile(JSON.parse(text)) : defaultProfile();
+    let main = defaultProfile();
+    try { if (text && text.length < 20_000) main = validateProfile(JSON.parse(text)); } catch { /* Recover result journal below. */ }
+    const pendingText = (storage ?? localStorage).getItem(PENDING_KEY);
+    if (pendingText && pendingText.length < 20_000) {
+      try {
+        const pending = validateProfile(JSON.parse(pendingText));
+        if (pending.legacy.receipt && (main.legacy.ticket?.runId === pending.legacy.receipt.runId || main.legacy.nextRunId < pending.legacy.nextRunId)) return pending;
+      } catch { /* A corrupt journal cannot discard a valid main save. */ }
+    }
+    return main;
   } catch { return defaultProfile(); }
 }
 export function saveProfile(profile: Profile, storage?: StorageAccess): boolean {
-  try { (storage ?? localStorage).setItem(SAVE_KEY, JSON.stringify(validateProfile(profile))); return true; }
+  try {
+    const target = storage ?? localStorage, text = JSON.stringify(validateProfile(profile));
+    // Write-ahead result journal. Either complete snapshot recovers the same reward.
+    if (profile.legacy.receipt) { try { target.setItem(PENDING_KEY, text); } catch { /* Main write may still succeed. */ } }
+    target.setItem(SAVE_KEY, text);
+    try { target.setItem(PENDING_KEY, ''); } catch { /* Stale receipt loses to a newer ticket. */ }
+    return true;
+  }
   catch { return false; }
 }
 export function awardUnlocks(profile: Profile): boolean {
@@ -81,7 +98,7 @@ export class Progression {
     }
     if (result && !this.recorded) {
       this.recorded = true;
-      closeLegacy(this.profile.legacy);
+      finishLegacy(this.profile.legacy, result);
       if (result === 'victory') this.profile.totals.victories = counter(this.profile.totals.victories + 1);
     }
     return awardUnlocks(this.profile);

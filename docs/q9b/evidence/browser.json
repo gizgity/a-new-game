@@ -1,0 +1,52 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "firstVictoryTwoSigils": true,
+    "refreshReceiptIdempotent": true,
+    "newRunTwoOffers": true,
+    "refreshChoice": true,
+    "collectionViEn": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "firstVictoryTwoSigils": true,
+    "refreshReceiptIdempotent": true,
+    "newRunTwoOffers": true,
+    "refreshChoice": true,
+    "collectionViEn": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "firstVictoryTwoSigils": true,
+    "refreshReceiptIdempotent": true,
+    "newRunTwoOffers": true,
+    "refreshChoice": true,
+    "collectionViEn": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "firstVictoryTwoSigils": true,
+    "refreshReceiptIdempotent": true,
+    "newRunTwoOffers": true,
+    "refreshChoice": true,
+    "collectionViEn": true,
+    "errors": []
+  },
+  {
+    "mainWriteFailureBlocksNewRun": true,
+    "journalRefreshRecoversReward": true,
+    "secondVictoryOneUnlock": true,
+    "execution": "failure block ch\u1ea1y ri\u00eang sau 4viewport \u0111\u1ec3 tr\u00e1nh softwareGPU contention"
+  }
+]

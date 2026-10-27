@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SAVE_KEY, defaultProfile, validateProfile, loadProfile, saveProfile, mutationPool, cursePool, Progression } from '../.test-build/progression.js';
+import { SAVE_KEY, PENDING_KEY, defaultProfile, validateProfile, loadProfile, saveProfile, mutationPool, cursePool, Progression } from '../.test-build/progression.js';
 
 test('save validation whitelists IDs/settings and rejects invalid numbers/version/prototype payloads',()=>{
  const bad=JSON.parse('{"version":1,"settings":{"locale":"xx","muted":"true","volume":4,"cosmetic":"prism"},"totals":{"kills":-5,"detonations":1.2,"perfectDodges":1e100},"unlocks":["admin","firstBlood","firstBlood"],"hp":999,"__proto__":{"polluted":true}}');
@@ -14,7 +14,7 @@ test('corrupt, oversized and blocked localStorage fall back safely; valid settin
  for(const text of ['{broken','x'.repeat(21000),'null'])assert.deepEqual(loadProfile({getItem:()=>text,setItem(){}}),defaultProfile());
  const blocked={getItem(){throw Error('denied');},setItem(){throw Error('quota');}};
  assert.deepEqual(loadProfile(blocked),defaultProfile());assert.equal(saveProfile(defaultProfile(),blocked),false);
- let stored='';const memory={getItem:(key)=>{assert.equal(key,SAVE_KEY);return stored;},setItem:(key,value)=>{assert.equal(key,SAVE_KEY);stored=value;}};
+ let stored='';const memory={getItem:(key)=>{return key===SAVE_KEY ? stored : ''; },setItem:(key,value)=>{if(key===SAVE_KEY)stored=value;}};
  const profile=defaultProfile();Object.assign(profile.settings,{locale:'en',muted:true,volume:.25});
  assert.equal(saveProfile(profile,memory),true);assert.deepEqual(loadProfile(memory),profile);
 });

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SIGILS, BRANCHES, LEGACY_IDS, legacyUnlocks, validLegacy } from '../.test-build/config/legacy.js';
+import { STARTER_ANOMALIES, SIGILS, BRANCHES, LEGACY_IDS, legacyUnlocks, validLegacy } from '../.test-build/config/legacy.js';
 import { rollLegacy, emptyLegacy, beginLegacy, chooseLegacy, closeLegacy, validateLegacy } from '../.test-build/legacy.js';
 import { defaultProfile, validateProfile, Progression } from '../.test-build/progression.js';
 
@@ -53,20 +53,20 @@ test('first run has no Legacy; refresh/restart retains ticket, seed and choice u
 });
 test('profile round-trip does not unlock Legacy, consume a ticket or persist derived combat stats', () => {
   const profile = defaultProfile();
-  assert.deepEqual(profile.legacy.unlocks, []);
-  profile.legacy.unlocks = ['fire','wildfire']; beginLegacy(profile.legacy, 1, 4); chooseLegacy(profile.legacy, 0);
+  assert.deepEqual(profile.legacy.unlocks, [...STARTER_ANOMALIES]);
+  profile.legacy.unlocks = ['fire','wildfire', ...STARTER_ANOMALIES]; beginLegacy(profile.legacy, 1, 4); chooseLegacy(profile.legacy, 0);
   assert.deepEqual(validateProfile(JSON.parse(JSON.stringify(profile))).legacy, profile.legacy);
   const progress = new Progression(profile); progress.beginRun();
   assert.ok(profile.legacy.ticket); progress.observe({kills:0,detonations:0,perfectDodges:0}, 'defeat');
-  assert.equal(profile.legacy.ticket, null); assert.deepEqual(profile.legacy.unlocks, ['fire','wildfire']);
+  assert.equal(profile.legacy.ticket, null); assert.deepEqual(profile.legacy.unlocks, ['fire','wildfire', ...STARTER_ANOMALIES]);
   progress.beginRun(); progress.observe({kills:0,detonations:0,perfectDodges:0}, 'victory');
-  assert.deepEqual(profile.legacy.unlocks, ['fire','wildfire']);
+  assert.deepEqual(profile.legacy.unlocks, ['fire','wildfire', ...STARTER_ANOMALIES]);
 });
 
 test('ticket validation strips derived values and rejects foreign, duplicate and orphan offers', () => {
   const state = validateLegacy({unlocks:['fire','wildfire','brittle'], previous:['fire','alien'],
     ticket:{seed:7, firstRun:false, offers:[{sigil:'fire',branch:'wildfire',damage:999},{sigil:'fire',branch:'wildfire'},{sigil:'ice',branch:'brittle'}], selected:{sigil:'fire',branch:'wildfire',damage:999}}});
-  assert.deepEqual(state.unlocks, ['fire','wildfire']);
+  assert.deepEqual(state.unlocks, ['fire','wildfire', ...STARTER_ANOMALIES]);
   assert.deepEqual(state.ticket.offers, [{sigil:'fire',branch:'wildfire'}]);
   assert.deepEqual(state.ticket.selected, {sigil:'fire',branch:'wildfire'});
   assert.equal(validateLegacy({ticket:{seed:NaN,firstRun:false,offers:[]}}).ticket, null);

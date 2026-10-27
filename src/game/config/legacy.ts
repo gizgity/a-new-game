@@ -7,12 +7,15 @@ export const BRANCHES = {
   nightfall: 'shadow', veilstep: 'shadow', tailwind: 'wind', cyclone: 'wind',
 } as const satisfies Record<string, SigilId>;
 export type BranchId = keyof typeof BRANCHES;
-export type LegacyId = SigilId | BranchId;
+export const ANOMALIES = ['fracturedStorm', 'bloodMoon', 'volatileGround', 'staticField', 'brokenSeal', 'echoChamber'] as const;
+export type AnomalyId = typeof ANOMALIES[number];
+export const STARTER_ANOMALIES: readonly AnomalyId[] = ['fracturedStorm', 'bloodMoon'];
+export type LegacyId = SigilId | BranchId | AnomalyId;
 export interface LegacyOffer { sigil: SigilId; branch: BranchId | null }
-export const LEGACY_IDS: readonly LegacyId[] = [...SIGILS, ...Object.keys(BRANCHES) as BranchId[]];
+export const LEGACY_IDS: readonly LegacyId[] = [...SIGILS, ...Object.keys(BRANCHES) as BranchId[], ...ANOMALIES];
 export function legacyUnlocks(value: unknown): LegacyId[] {
   const ids = LEGACY_IDS.filter(id => Array.isArray(value) && value.includes(id));
-  return ids.filter(id => SIGILS.includes(id as SigilId) || ids.includes(BRANCHES[id as BranchId]));
+  return ids.filter(id => SIGILS.includes(id as SigilId) || ANOMALIES.includes(id as AnomalyId) || ids.includes(BRANCHES[id as BranchId]));
 }
 export function validLegacy(value: unknown, unlocks: readonly LegacyId[] = LEGACY_IDS): value is LegacyOffer {
   if (!value || typeof value !== 'object') return false;
