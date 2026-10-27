@@ -1,0 +1,218 @@
+{
+  "status": "VISUAL APPROVED — V1.1",
+  "conceptVersion": "V1.1",
+  "runtimeBaseline": "a489279",
+  "handoffBaseline": "e1b237e",
+  "references": [
+    {
+      "path": "docs/q7c/runtime/after-charged-390.png",
+      "sha256": "0901af08d74a864a42cd7d2b6dffe54bf37ef0b1e61925a3e871d9d35fe0334b",
+      "scope": "APPROVED Q7C dynamic Charged/crowd; user visual/playtest approval per Art Bible/index",
+      "opened": true
+    },
+    {
+      "path": "docs/q7c/runtime/after-grayscale-390.png",
+      "sha256": "61608a41b87ab91688035de9bca1995a212e3b95ba1761db61309a564190cd7a",
+      "scope": "APPROVED Q7C same-fixture grayscale; visual reference, not new evidence",
+      "opened": true
+    },
+    {
+      "path": "docs/q8c/arrival-runtime/evidence/peak-390.png",
+      "sha256": "c8033d692c8f9a66aa10352232c578276bae0c3b79ef264ed00823d353ba16cd",
+      "scope": "APPROVED Q8C Arrival V2/crowd; no independent hex palette invented",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/evidence/fracturedStorm-390.png",
+      "sha256": "13480a11114f65788b7033ff366a756da27cf268495889157a6defa2a804b793",
+      "scope": "CURRENT Q9C unaccepted VFX; earlier runtime fixture",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/evidence/fracturedStorm-1440.png",
+      "sha256": "c409901c3f4746a47471f696287e840ce4270ad46b53a4c7435966b45329867b",
+      "scope": "CURRENT Q9C unaccepted VFX; earlier runtime fixture",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/corner-ne-390.png",
+      "sha256": "848744e7bdcef9f1f9ef358fae03833860e9b6730c326f997de3d307dd58cd4a",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/corner-nw-390.png",
+      "sha256": "57bd2a2786c3b81298910d195ce4c8c27395aa672e17b049c7c9e064e4e0e531",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/corner-se-390.png",
+      "sha256": "afdef8b81b36a215cb2b03b664bb06aa176fdcda3921e106caf8bcbf4cdfc281",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/corner-sw-390.png",
+      "sha256": "b4dcab65b4ffab9383f0d3cb07ac1e8ed1f0e6c867f089e1f68c2d3177574f7e",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-1440-gray.png",
+      "sha256": "54ae449c10ddb11fc667bffd07077f18cfd4c325a80d3273d5a9a275c8f902b9",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": false
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-1440.png",
+      "sha256": "1e0abd656ee44c419812363c7d42afcd984f5a4da89e8d4ec9fa8c5df72dc3bc",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-320-gray.png",
+      "sha256": "22e14e6423dc57fddcb719c62d9a0770995f19865f7b4537176405a7c2926ce0",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": false
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-320.png",
+      "sha256": "6f01db99ed37cd7150687f97d399422ff24c9d75c0138531d5677be6ce73edbd",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-390-gray.png",
+      "sha256": "20e7f8571f1b3bf6035932fcdd359ebf56a9695e49448b1b5fec8afd2275644b",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-390.png",
+      "sha256": "a336a0910c14a2b368550578553c9ea8918cf6e83af4150418f14de23a3895a3",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-844-gray.png",
+      "sha256": "44ded7eb18342920932408c6eb0c97f81292f79b97e9db6a0c70aa0d27725544",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": false
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/baseline/current-844.png",
+      "sha256": "359bfdeb7c09f41aa6e0d3c69e919f2c3b6fd2af83455a8c006d867619c48368",
+      "scope": "Current Q9C renderer / CSS grayscale / corner visual fixture; not accepted Anomaly artwork",
+      "opened": true
+    }
+  ],
+  "prompts": "source/PROMPTS.md",
+  "generator": "ImageGen; exact model and seed not provided",
+  "rights": "Project approved artwork inputs; generated outputs under applicable service terms, no claim of CC0/exclusive ownership. No external third-party art.",
+  "production": false,
+  "integrated": false,
+  "deployed": false,
+  "newArtApproval": {
+    "quote": "visual ok, làm đi",
+    "date": "2026-10-27",
+    "source": "Current conversation, no permalink",
+    "scope": "V1.1 six motifs/common Anomaly source signature and mockup readability; production/integration authorized, no user playtest acceptance"
+  },
+  "outputs": [
+    {
+      "key": "board11",
+      "src": "/workspace/generated_images/exec-011bca32-5ba7-4fa5-be72-704a8d99220b.png",
+      "dst": "source/concept-v1.1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "72fdf80b772a12760c606b7a3287a05cc520c92bd3fb150b76ec6a266f070aa5",
+      "opened": true
+    },
+    {
+      "key": "mock320",
+      "src": "/workspace/generated_images/exec-1f79e62a-2747-41dd-940f-a1330a5e0d44.png",
+      "dst": "mockups/proposed-320.png",
+      "width": 824,
+      "height": 1908,
+      "sha256": "f41082d90fb11d7b58cb670caf71711d9c43de523227a5bf5efa2237ee70ac3b",
+      "opened": true
+    },
+    {
+      "key": "mock390",
+      "src": "/workspace/generated_images/exec-26c27bfc-de4c-477f-a11a-77dd1e990464.png",
+      "dst": "mockups/proposed-390.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "c8e0b722667d54a3b22175ed5bf2524442a07afdf40d96bdbabf640fcbb12dc4",
+      "opened": true
+    },
+    {
+      "key": "mock844",
+      "src": "/workspace/generated_images/exec-797b2fd6-5620-4db1-8363-04e1b38b60f0.png",
+      "dst": "mockups/proposed-844.png",
+      "width": 1844,
+      "height": 853,
+      "sha256": "698dc518d14177f858f1d3a3833b9bc95d5e251b82feffc724cee2b6c0e817f4",
+      "opened": true
+    },
+    {
+      "key": "mock1440",
+      "src": "/workspace/generated_images/exec-49735204-e55f-4eec-b93e-7b41f6d850bd.png",
+      "dst": "mockups/proposed-1440.png",
+      "width": 1505,
+      "height": 1045,
+      "sha256": "70646b8864bbc7d296e51cd8f32f0b118d23b83b7a5b5daa0c0790ffd84690d1",
+      "opened": true
+    }
+  ],
+  "supersededBoardDraft": {
+    "src": "/workspace/generated_images/exec-3c1004f6-ce69-4faf-8cdd-f89b2c75fd24.png",
+    "reason": "Final phase captions/fading rings/foot glyph cleanup; raw file retained, not review target."
+  },
+  "proof": "proof/review.json",
+  "proofFiles": [
+    {
+      "path": "proof/compare-1440-gray.png",
+      "sha256": "90dc661abd93b963ae8f08f7cbede0bd623cd771df28003e61cc854b1738ef65"
+    },
+    {
+      "path": "proof/compare-1440.png",
+      "sha256": "4cd727f7c9e98bc063cfe8496052188d992b2f331dc9811ba31b625a4594c6e0"
+    },
+    {
+      "path": "proof/compare-320-gray.png",
+      "sha256": "a3bba441413f235e4110841dea233f20f084d8269a302dfcd8b29f07d339e1c4"
+    },
+    {
+      "path": "proof/compare-320.png",
+      "sha256": "ec913e5d871cf572d4a345e4d9d0322eeee8755165a716c4d7d75e882e302dd2"
+    },
+    {
+      "path": "proof/compare-390-gray.png",
+      "sha256": "7092e43d7a04f91e2af7acaf0364e04cd7386928811971962d29c4a275327a4c"
+    },
+    {
+      "path": "proof/compare-390.png",
+      "sha256": "345bb63955b35433cdf16a081bb65a714a0c4421e162c27c11f65216c7b3713a"
+    },
+    {
+      "path": "proof/compare-844-gray.png",
+      "sha256": "9af5df5005461545cb49b228638369f16b50165be268bcaa726ecd461654328e"
+    },
+    {
+      "path": "proof/compare-844.png",
+      "sha256": "47524db183ab036e1db37aa13e30b4b6823f929bf173375dda6c5593fb130a6a"
+    }
+  ],
+  "reviewStatus": "Static palette/hierarchy/source-shape review was completed before user visual approval. User approved V1.1 via visual ok, làm đi on2026-10-27; production/runtime evidence and remaining device/playtest limits are in ../vfx-production/README.md.",
+  "supersededExplorations": [
+    {
+      "src": "/workspace/generated_images/exec-ab63c535-c58f-4fdd-ae5d-c088a2265112.png",
+      "copy": "source/concept-v1.png",
+      "sha256": "acc9ba339f6740775b4303b64f9eab37d0c5a70acd1bfe1654f595bd44fb11d4",
+      "reason": "Superseded by finalV1.1 phase/counter/resistance/caption refinements."
+    }
+  ],
+  "lifecycleScope": "This manifest describes proposal/composite artifacts only, never cropped into runtime. Production/integration lifecycle is tracked in ../vfx-production/README.md and assets.json; user visual approval is recorded here, user playtest remains pending."
+}

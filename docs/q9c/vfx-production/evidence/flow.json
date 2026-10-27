@@ -1,0 +1,78 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "firstRunExcluded": true,
+    "at135": true,
+    "twoOffers": true,
+    "simulationFrozen": true,
+    "noPauseOverlap": true,
+    "viEn": true,
+    "heldHeavyCanceled": true,
+    "refreshBeforeAndAfterChoice": true,
+    "saveRetry": false,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "firstRunExcluded": true,
+    "at135": true,
+    "twoOffers": true,
+    "simulationFrozen": true,
+    "noPauseOverlap": true,
+    "viEn": true,
+    "heldHeavyCanceled": true,
+    "refreshBeforeAndAfterChoice": true,
+    "saveRetry": true,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "firstRunExcluded": true,
+    "at135": true,
+    "twoOffers": true,
+    "simulationFrozen": true,
+    "noPauseOverlap": true,
+    "viEn": true,
+    "heldHeavyCanceled": true,
+    "refreshBeforeAndAfterChoice": true,
+    "saveRetry": false,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "firstRunExcluded": true,
+    "at135": true,
+    "twoOffers": true,
+    "simulationFrozen": true,
+    "noPauseOverlap": true,
+    "viEn": true,
+    "heldHeavyCanceled": true,
+    "refreshBeforeAndAfterChoice": true,
+    "saveRetry": false,
+    "geometry": {
+      "overflow": false,
+      "lane": true
+    },
+    "errors": []
+  }
+]

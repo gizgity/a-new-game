@@ -1,0 +1,284 @@
+{
+  "source": "/workspace/generated_images/exec-16c7aec9-3365-483c-b387-06416094fdad.png",
+  "runtime": "public/assets/vfx/anomaly-motifs.png",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "5884014fee29162b76167fd840efcb4e27a5109f138d64ebec8b37d249047a49",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "method": "Original ImageGen production PNG copied unchanged. Metadata registers per-cell alpha bounds>8 with2px transparent gutter; no bitmap editing, no concept-board crops, no procedural artwork.",
+  "columnCuts": [
+    0,
+    326,
+    643,
+    934,
+    1254
+  ],
+  "rowCuts": [
+    0,
+    369,
+    671,
+    929,
+    1254
+  ],
+  "frames": [
+    {
+      "frame": "stormRune",
+      "cell": 0,
+      "alphaBounds": [
+        123,
+        95,
+        214,
+        315
+      ],
+      "registered": {
+        "x": 121,
+        "y": 93,
+        "w": 95,
+        "h": 224
+      }
+    },
+    {
+      "frame": "stormBolt",
+      "cell": 1,
+      "alphaBounds": [
+        68,
+        51,
+        220,
+        338
+      ],
+      "registered": {
+        "x": 392,
+        "y": 49,
+        "w": 156,
+        "h": 291
+      }
+    },
+    {
+      "frame": "groundCracks",
+      "cell": 2,
+      "alphaBounds": [
+        27,
+        81,
+        270,
+        320
+      ],
+      "registered": {
+        "x": 668,
+        "y": 79,
+        "w": 247,
+        "h": 243
+      }
+    },
+    {
+      "frame": "groundBurst",
+      "cell": 3,
+      "alphaBounds": [
+        75,
+        128,
+        262,
+        310
+      ],
+      "registered": {
+        "x": 1007,
+        "y": 126,
+        "w": 191,
+        "h": 186
+      }
+    },
+    {
+      "frame": "bloodCrescent",
+      "cell": 4,
+      "alphaBounds": [
+        70,
+        31,
+        247,
+        257
+      ],
+      "registered": {
+        "x": 68,
+        "y": 398,
+        "w": 181,
+        "h": 230
+      }
+    },
+    {
+      "frame": "energy",
+      "cell": 5,
+      "alphaBounds": [
+        57,
+        60,
+        248,
+        210
+      ],
+      "registered": {
+        "x": 381,
+        "y": 427,
+        "w": 195,
+        "h": 154
+      }
+    },
+    {
+      "frame": "pursuit",
+      "cell": 6,
+      "alphaBounds": [
+        46,
+        64,
+        211,
+        225
+      ],
+      "registered": {
+        "x": 687,
+        "y": 431,
+        "w": 169,
+        "h": 165
+      }
+    },
+    {
+      "frame": "staticArc",
+      "cell": 7,
+      "alphaBounds": [
+        21,
+        99,
+        284,
+        192
+      ],
+      "registered": {
+        "x": 953,
+        "y": 466,
+        "w": 267,
+        "h": 97
+      }
+    },
+    {
+      "frame": "forkShot",
+      "cell": 8,
+      "alphaBounds": [
+        53,
+        67,
+        289,
+        183
+      ],
+      "registered": {
+        "x": 51,
+        "y": 736,
+        "w": 240,
+        "h": 120
+      }
+    },
+    {
+      "frame": "sealBreak",
+      "cell": 9,
+      "alphaBounds": [
+        37,
+        46,
+        290,
+        207
+      ],
+      "registered": {
+        "x": 361,
+        "y": 715,
+        "w": 257,
+        "h": 165
+      }
+    },
+    {
+      "frame": "resistance",
+      "cell": 10,
+      "alphaBounds": [
+        42,
+        131,
+        255,
+        190
+      ],
+      "registered": {
+        "x": 683,
+        "y": 800,
+        "w": 217,
+        "h": 63
+      }
+    },
+    {
+      "frame": "relay",
+      "cell": 11,
+      "alphaBounds": [
+        64,
+        126,
+        269,
+        183
+      ],
+      "registered": {
+        "x": 996,
+        "y": 795,
+        "w": 209,
+        "h": 61
+      }
+    },
+    {
+      "frame": "echoArcs",
+      "cell": 12,
+      "alphaBounds": [
+        113,
+        52,
+        256,
+        261
+      ],
+      "registered": {
+        "x": 111,
+        "y": 979,
+        "w": 147,
+        "h": 213
+      }
+    },
+    {
+      "frame": "bracket",
+      "cell": 13,
+      "alphaBounds": [
+        94,
+        103,
+        201,
+        217
+      ],
+      "registered": {
+        "x": 418,
+        "y": 1030,
+        "w": 111,
+        "h": 118
+      }
+    },
+    {
+      "frame": "sparks",
+      "cell": 14,
+      "alphaBounds": [
+        73,
+        85,
+        234,
+        240
+      ],
+      "registered": {
+        "x": 714,
+        "y": 1012,
+        "w": 165,
+        "h": 159
+      }
+    },
+    {
+      "frame": "echoRune",
+      "cell": 15,
+      "alphaBounds": [
+        116,
+        91,
+        209,
+        221
+      ],
+      "registered": {
+        "x": 1048,
+        "y": 1018,
+        "w": 97,
+        "h": 134
+      }
+    }
+  ]
+}

@@ -139,3 +139,7 @@ public/assets/
 - User giao Q9C Arena Anomalies ngày2026-10-27; supersede gate lịch sử “không mở Q9C” trong đúng scope này. Giữ Q9A/Q9B accepted, Auto Aim/mobile follow-up và balance/progression/art baseline278f439.
 - Run#1 không Anomaly, run#2+ chọn1/2tại~2:15;6mechanics/ticket/queue/UX/tunableconfig và coverage/cách thử tại docs/q9c/README.md. Không tự coi thông số Q9C là approved balance, không artwork mới.
 - Test/build/commit/push/Pages theo task, dừng **AWAITING USER PLAYTEST APPROVAL**; không tự Q9D hoặc suy acceptance từ bot/fixtures/deploy.
+
+## Q9C VFX visual approval / implementation
+- User “visual ok, làm đi” ngày2026-10-27 duyệt board/common signature6AnomalyV1.1 và giao production/integration; supersede gate chờvisual và scope “không artwork mới” của bản Q9C đầu trong đúng VFX follow-up này. Không cần duyệt lại V1.1.
+- Production source sinh riêng quaImageGen, không cropboard, giữ gameplay/balance/progression/input/camera/art baseline ngoài AnomalyVFX. Evidence tại docs/q9c/vfx-production và handoff; visual approval không là user playtest acceptance. Test/build/commit/push/Pages rồi dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.

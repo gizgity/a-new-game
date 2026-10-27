@@ -1,0 +1,12 @@
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright-core');
+import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const reports=[];
+for(const [width,height,touch,id]of[[390,844,true,'fracturedStorm'],[1440,1000,false,'staticField']]){
+ const p=await browser.newPage({viewport:{width,height},hasTouch:touch}),errors=[],assets=[];p.setDefaultTimeout(30000);p.setDefaultNavigationTimeout(60000);p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.url().includes('/assets/vfx/'))assets.push({path:r.url().split('/a-new-game/')[1],status:r.status()});});
+ await p.goto('http://127.0.0.1:5176/a-new-game/?playtest=anomaly-'+id);await p.locator('#primary').click();await p.waitForFunction(()=>document.querySelector('#draft-panel h2')?.textContent==='Chọn một Anomaly');await p.waitForTimeout(1100);assert.equal(await p.locator('[data-choice]').count(),2);
+ if(touch)await p.locator('[data-choice="0"]').tap();else{await p.locator('[data-choice="0"]').focus();await p.keyboard.press('Enter');}
+ await p.waitForFunction(()=>document.querySelector('#overlay').hidden);await p.locator('#pause').click();await p.locator('#menu-build').click();assert.ok((await p.locator('#anomaly-details').textContent()).length>40);await p.locator('#build-resume').click();
+ for(const file of ['anomaly-motifs.png','anomaly-motifs.json','anomaly-ground-cracks.png'])assert.ok(assets.some(a=>a.path.endsWith(file)&&a.status===200),file);
+ assert.equal(await p.evaluate(()=>localStorage.getItem('cursebreak.save.v1')),null);assert.deepEqual(errors,[]);reports.push({width,height,touch,id,productionBundle:true,select:true,hudDetailsPauseResume:true,assets,isolatedSave:true,errors});await p.close();
+}
+await browser.close();const files=['dist/index.html',...fs.readdirSync('dist/assets').filter(f=>f.endsWith('.js')||f.endsWith('.css')).map(f=>'dist/assets/'+f),...fs.readdirSync('dist/assets/vfx').map(f=>'dist/assets/vfx/'+f)];const hashes=Object.fromEntries(files.map(f=>[f,crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex')]));fs.writeFileSync('docs/q9c/vfx-production/evidence/dist.json',JSON.stringify({hashes,reports},null,2));console.log('PASS production dist touch/desktop, all3VFX assets200,2offers/HUD/details/pause/isolation');

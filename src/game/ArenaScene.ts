@@ -1,3 +1,4 @@
+import { AnomalyVisual } from './AnomalyVisual';
 import { drawLegacy } from './LegacyVisual';
 import Phaser from 'phaser';
 import { BossArrival } from './BossArrival';
@@ -23,6 +24,7 @@ export class ArenaScene extends Phaser.Scene {
   phase: Phase = 'ready';
   readonly combat = new CombatWorld(this.player);
   readonly run = new RunDirector(this.combat);
+  private anomalyVisual!: AnomalyVisual;
   private groundGraphics!: Phaser.GameObjects.Graphics;
   private enemySprites!: EnemySprites;
   private combatGraphics!: Phaser.GameObjects.Graphics;
@@ -55,6 +57,7 @@ export class ArenaScene extends Phaser.Scene {
 
   preload(): void {
     PlayerVisual.preload(this);
+    AnomalyVisual.preload(this);
     BossArrival.preload(this);
     this.load.image('arena-floor', `${import.meta.env.BASE_URL}assets/arena/broken-seal-v2.webp`);
   }
@@ -63,6 +66,7 @@ export class ArenaScene extends Phaser.Scene {
     this.audio = new ProceduralAudio(this);
     this.drawArena();
     this.arrival = new BossArrival(this);
+    this.anomalyVisual = new AnomalyVisual(this);
     this.groundGraphics = this.add.graphics().setDepth(1);
     this.combatGraphics = this.add.graphics().setDepth(1.5);
     this.enemySprites = new EnemySprites(this);
@@ -141,6 +145,7 @@ export class ArenaScene extends Phaser.Scene {
       this.run.start();
       this.vessel.reset(this.combat);
       this.enemySprites.reset();
+      this.anomalyVisual.reset();
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
     if (this.run.bossWarning === 0) this.audio.arrival(0);
@@ -237,6 +242,7 @@ export class ArenaScene extends Phaser.Scene {
       if (!frozen) {
         this.vessel.step(this.combat, FIXED_STEP);
         this.enemySprites.step(FIXED_STEP);
+        this.anomalyVisual.step(this.combat);
       }
       if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
       else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
@@ -270,27 +276,14 @@ export class ArenaScene extends Phaser.Scene {
     const world = this.combat;
     const ground = this.groundGraphics.clear();
     this.arrival.render(this.run.bossWarning);
-    for (const zone of world.anomaly.zones) {
-      const imminent = zone.time < zone.duration * 0.35;
-      ground.lineStyle(imminent ? 3 : 2, imminent ? 0xffe599 : 0xff6f87, 0.9);
-      // Thin local outline below existing telegraphs and actors, no screen fill.
-      ground.strokeCircle(zone.x, zone.y, zone.radius);
-      const r = zone.radius * (1 - zone.time / zone.duration);
-      ground.lineStyle(1, 0xffcc80, 0.65).strokeCircle(zone.x, zone.y, r);
-      ground.lineBetween(zone.x - 6, zone.y, zone.x + 6, zone.y);
-      ground.lineBetween(zone.x, zone.y - 6, zone.x, zone.y + 6);
-    }
+    this.anomalyVisual.render(ground, world);
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     drawLegacy(ground, world);
     this.enemySprites.render(world);
-    for (const enemy of world.enemies) {
-      drawEnemyStatus(g, enemy);
-      if (world.anomaly.resists(enemy) && enemy.stagger <= 0) {
-        ground.lineStyle(2, 0x63d9f5, 0.85).strokeRect(enemy.x - 18, enemy.y - 18, 36, 36);
-      }
-    }
+    for (const enemy of world.enemies) drawEnemyStatus(g, enemy);
     for (const shot of world.projectiles) {
+      if (shot.anomaly) continue;
       if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
       const color = shot.hostile ? 0xc399ff : shot.charged ? 0xffcc80 : 0x9dffe2;
       g.lineStyle(shot.hostile ? 3 : 2, color, 0.65);
@@ -311,14 +304,10 @@ export class ArenaScene extends Phaser.Scene {
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
     drawBarrier(g, world);
     for (const impact of world.impacts) {
+      if (this.anomalyVisual.handlesImpact(impact)) continue;
       if (drawBuildImpact(g, impact)) continue;
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);
-      if (impact.kind === 'anomalyStrike') {
-        g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, (impact.radius ?? 60) * (1 - fade * 0.15));
-        if (impact.color === 0xffe599) g.strokePoints([{ x: impact.x + 8, y: impact.y - 25 }, { x: impact.x - 5, y: impact.y - 3 }, { x: impact.x + 5, y: impact.y + 3 }, { x: impact.x - 8, y: impact.y + 25 }], false);
-        continue;
-      }
       if (impact.kind === 'guardBreak') {
         const x = impact.x + ((impact.sourceX ?? impact.x) - impact.x) * (1 - fade);
         const y = impact.y + ((impact.sourceY ?? impact.y) - impact.y) * (1 - fade);

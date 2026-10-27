@@ -1,0 +1,6 @@
+{
+  "baseline": "a489279",
+  "cases": 28,
+  "gameplaySummaryIdentical": true,
+  "compared": "All existing28run report fields including result/time/kills/HP/perfects/detonations/Elite/Boss/Enraged/combo/Drafts/Anomaly selection and density cap; visual impact events excluded by original report schema."
+}

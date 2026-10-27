@@ -1,0 +1,62 @@
+{
+  "hashes": {
+    "dist/index.html": "6eb3727298cb201e1184b7518b8b4a047916b9b5a9da038806ae09151478263f",
+    "dist/assets/index-CGTdVAHt.css": "7ed762832eeb59358ed19721b948ae80845b637f61a38177aff0a72baa2d367c",
+    "dist/assets/index-DBBvVnLS.js": "cac3b3eb16e87521e58893fc3e737fdcdb27f094bd731ad547ae937ce03aa720",
+    "dist/assets/vfx/anomaly-ground-cracks.png": "aa268c416a579386166def7e0d8d4d18c68681f92ab4f0b93ec94cc58a6a362d",
+    "dist/assets/vfx/anomaly-motifs.json": "7362f0802d7de8f576bad8bb6299c579c4b0954518f901b0171c5514c733db32",
+    "dist/assets/vfx/anomaly-motifs.png": "5884014fee29162b76167fd840efcb4e27a5109f138d64ebec8b37d249047a49"
+  },
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "id": "fracturedStorm",
+      "productionBundle": true,
+      "select": true,
+      "hudDetailsPauseResume": true,
+      "assets": [
+        {
+          "path": "assets/vfx/anomaly-ground-cracks.png",
+          "status": 200
+        },
+        {
+          "path": "assets/vfx/anomaly-motifs.png",
+          "status": 200
+        },
+        {
+          "path": "assets/vfx/anomaly-motifs.json",
+          "status": 200
+        }
+      ],
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "id": "staticField",
+      "productionBundle": true,
+      "select": true,
+      "hudDetailsPauseResume": true,
+      "assets": [
+        {
+          "path": "assets/vfx/anomaly-ground-cracks.png",
+          "status": 200
+        },
+        {
+          "path": "assets/vfx/anomaly-motifs.png",
+          "status": 200
+        },
+        {
+          "path": "assets/vfx/anomaly-motifs.json",
+          "status": 200
+        }
+      ],
+      "isolatedSave": true,
+      "errors": []
+    }
+  ]
+}

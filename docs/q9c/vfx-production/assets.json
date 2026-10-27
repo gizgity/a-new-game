@@ -1,0 +1,108 @@
+{
+  "approval": {
+    "quote": "visual ok, làm đi",
+    "date": "2026-10-27",
+    "source": "Current conversation, no permalink",
+    "scope": "V1.1 visual approved and production/integration authorized; user playtest pending"
+  },
+  "inputs": [
+    {
+      "path": "docs/q9c/vfx-art-v1/source/concept-v1.1.png",
+      "opened": true,
+      "sha256": "72fdf80b772a12760c606b7a3287a05cc520c92bd3fb150b76ec6a266f070aa5"
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/mockups/proposed-390.png",
+      "opened": true,
+      "sha256": "c8e0b722667d54a3b22175ed5bf2524442a07afdf40d96bdbabf640fcbb12dc4"
+    },
+    {
+      "path": "docs/q7c/runtime/after-charged-390.png",
+      "opened": true,
+      "sha256": "0901af08d74a864a42cd7d2b6dffe54bf37ef0b1e61925a3e871d9d35fe0334b"
+    },
+    {
+      "path": "docs/q8c/arrival-runtime/evidence/peak-390.png",
+      "opened": true,
+      "sha256": "c8033d692c8f9a66aa10352232c578276bae0c3b79ef264ed00823d353ba16cd"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "source/atlas-v1.png",
+      "sha256": "5884014fee29162b76167fd840efcb4e27a5109f138d64ebec8b37d249047a49",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "source/ground-fissures-v1.png",
+      "sha256": "aa268c416a579386166def7e0d8d4d18c68681f92ab4f0b93ec94cc58a6a362d",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "source/atlas-v1-draft.png",
+      "sha256": "c5be5c6e07a366beb07428d2cd38a3a1e24e2a3b3d3a79a92d174bc8c7395db6",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "rawGeneratedFilesRetained": [
+    "/workspace/generated_images/exec-714cade6-b8e8-4608-8853-ac8051b19ebb.png",
+    "/workspace/generated_images/exec-16c7aec9-3365-483c-b387-06416094fdad.png",
+    "/workspace/generated_images/exec-6c6473b6-a006-4c44-89ef-d999f66269c4.png"
+  ],
+  "generator": "ImageGen; exact model/seed not provided",
+  "rights": "Project approved artwork refs + generated production sources under applicable service terms; no CC0/exclusivity claim; no third-party art",
+  "runtime": [
+    {
+      "path": "public/assets/vfx/anomaly-ground-cracks.png",
+      "sha256": "aa268c416a579386166def7e0d8d4d18c68681f92ab4f0b93ec94cc58a6a362d"
+    },
+    {
+      "path": "public/assets/vfx/anomaly-motifs.json",
+      "sha256": "7362f0802d7de8f576bad8bb6299c579c4b0954518f901b0171c5514c733db32"
+    },
+    {
+      "path": "public/assets/vfx/anomaly-motifs.png",
+      "sha256": "5884014fee29162b76167fd840efcb4e27a5109f138d64ebec8b37d249047a49"
+    }
+  ],
+  "processing": "PNG copied byte-for-byte. Phaser atlas JSON registers actual transparent gutters/alpha bounds, no bitmap redraw/resample/crop and no concept-board crop. Ground cracks sheet cell unused; dedicated thin fissure source loaded separately. Runtime neutral tintFill only on bracket/resistance to match approved ivory source signature.",
+  "limits": "Source alpha/registration and static renderer checked; real device/user-playtest/FPS/latency/thermal/audio not accepted.",
+  "validation": {
+    "unitTests": 239,
+    "typecheckBuild": "PASS",
+    "gameplayParity": {
+      "baseline": "a489279",
+      "cases": 28,
+      "gameplaySummaryIdentical": true,
+      "compared": "All existing28run report fields including result/time/kills/HP/perfects/detonations/Elite/Boss/Enraged/combo/Drafts/Anomaly selection and density cap; visual impact events excluded by original report schema."
+    },
+    "rendererScenarios": 14,
+    "normalFlowViewports": 4,
+    "inputPlatforms": 2,
+    "deviceAcceptance": false
+  }
+}

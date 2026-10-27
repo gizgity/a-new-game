@@ -1,0 +1,38 @@
+# Anomaly VFX production V1 — exact ImageGen prompts
+
+## Cleanup revision — production draft + approved board + Q7C runtime inputs
+
+```text
+EDIT the FIRST attached PRODUCTION texture atlas, preserving its exact4x4 cell layout, transparent background, isolated VFX positions and all sixteen semantic subjects. Use attached image2 USER APPROVED ConceptV1.1 and image3 accepted Q7C runtime as the strict target style. This is a texture cleanup, not a new concept board. The first atlas has too much yellow/red/purple fuzzy glow and beveled shading compared to approved crisp restrained pixel motifs.
+REMOVE ALL diffuse halos, colored edge stains, airbrush blur and scattered low-opacity noise outside the intentional pixel shapes. Use only clean hard-edged deliberate pixel clusters and restrained1-2pixel dark under-edge, with clear alpha everywhere else. No broad glows or three-dimensional rounded bevels. At runtime these effects are12-60worldpx, so clear flat glyph silhouettes are essential. Keep white/gold for impact, rose for danger, lavender for electric arcs, DARK quiet obsidian plate interiors. Keep motif shapes and cell centers from first image, with same large transparent gutters.
+Mandatory shape fixes: row1 column3 must be4thin jagged inward ground FISSURES, like lightning-thin cracks on invisible floor around a clear EMPTY CENTER, NOT four fat red diamond/arrow totems. No enclosing circle. Row3 column1 must be a RIGHT-POINTING FORKED SHARD with TWO clearly separated pointed tips and a short lavender trail, no large central single-tip arrowhead and no new round bullets. Row3 column3 resistance-footmark is two small ivory bottom-corner brackets plus one small broken slash, no bevel, no glow, no shield. Row4 column2 is a single crisp flat neutral ivory chamfered L unit, with a little deliberate notch, not a shiny cube. Row3 column4 relay-foot glyph is two small separated pale lavender clipped corners, no glow blobs. Row4 column1 echo warning arcs stay TWO NESTED thin rose curves open to the right, no thick crescent body. Row4 column4 small double echo-notch stays delicate. Row1 column2 compact storm bolt stays SHORT, angular ivory, without yellow halo or a glowing puddle at its base. Row2 column1 crescent may remain a thin red/ivory slash but remove red outer glow. Energy motes are two tiny warm sharp shards without a fuzzy aura.
+Produce the same SQUARE PNG, exactly4rows4columns centered cells, TRUE TRANSPARENT alpha, no background/checkerboard/shadow plane, no visible grid, labels, text, actors or UI. No palette shift or composition drift. Do not crop a concept board or paste screenshot content. This is a new clean production atlas revision matching already approved art direction, not procedural fallback.
+```
+
+User visual approval: “visual ok, làm đi”,2026-10-27, hội thoại hiện tại không permalink. Inputs: approved conceptV1.1, approved phone390composite, accepted Q7C Charged390/Q8C Arrival390. Model/seed không được cung cấp. Đây là production source sinh riêng, không crop concept board.
+
+```text
+Create a BRAND NEW PRODUCTION SOURCE texture atlas for the original Fractured Geometry / Neon Occult game, following the attached USER VISUALLY APPROVED Anomaly VFX Concept V1.1 and approved phone mockup. The other attached images are accepted Q7C combat / Q8C Arrival style references. Do not crop, sample, paste or reproduce a concept board. Illustrate NEW isolated clean production effects matching these motifs and material language.
+Output one square PNG with a TRUE TRANSPARENT background, exactly FOUR columns by FOUR rows, sixteen uniformly spaced square cells, centered art in each cell, generous fully transparent gutters. No visible grid, captions, letters, numbers, frames, floor, actors, UI, fake checkerboard or background shadows. Each cell should have its effect contained in the inner70% of its square with plenty of empty alpha around it, no art crossing cell boundaries. Production target1024x1024 with256px cells; if higher resolution retain exactly4x4 layout. The art will render at small world-pixel sizes, so use crisp intentional pixel clusters, angular occult fragments and clean edges, not smooth blurry painting. No diffuse bloom or fog. No actor or arena depiction at all. It is a flat 2D VFX atlas, not a sheet of icons on tiles.
+ROW1 (left to right):
+1 small rose #FF6F87 jagged lightning rune, narrow vertical zigzag, about3small stepped segments; no circle.
+2 compact PALE IVORY #FFEDCE lightning strike: short crooked bolt with2tiny side branches and a few clipped sparks near its lower end. Not a sky pillar, no glow cloud; overall vertically oriented.
+3 a sparse set of ROSE RED #FF6F87 angular ground fissures radiating in4directions around a CLEAR EMPTY CENTER. No outer circle or brackets. Ground warning artwork constrained within a circle; hollow gaps, no fill. Not a persistent floor tile.
+4 tiny amber-edged OBSIDIAN PLATE BURST:4-6small angular flat dark fragments with #FFCC80 edges, separated by lots of alpha, center mostly empty. No wall, no rubble floor.
+ROW2:
+5 one broken CRIMSON/ROSE CRESCENT slash, sharp tapered ends, opening to the RIGHT, local finisher arc, not a full moon disc. No stars/clouds.
+6 two tiny warm gold energy fragments with short clean trails pointing RIGHT, meaning Charged energy, not healing; no cross/hearts or green.
+7 two small rose fractured pursuit-trail chips pointing RIGHT, compact, not a big chevron arrow or attack cone.
+8 one angular thin LAVENDER #C399FF / ivory zigzag arc oriented HORIZONTALLY left-to-right, a few hard kinks, clear alpha outside narrow bolt. No circular wave, no target-lock diamond.
+ROW3:
+9 one HORIZONTAL right-pointing lavender FORKED SHARD PROJECTILE, split two-tip head, short lavender tail, width about3timesheight. No round bullets, no multiple projectile copies.
+10 broken ivory/amber HEAVY SEAL IMPACT: two small separated angular seal halves splitting outward LEFT and RIGHT with3tiny flecks, substantial alpha gap in center. No shield and no enclosing circle.
+11 resistance-footmark: two detached neutral IVORY notched L brackets, symmetric left/right at the BOTTOM, with a tiny broken diagonal slash between; wide and low. Not cyan, not a shield, no complete enclosure, no diamond-pip.
+12 extra-relay landing: two small detached lavender/ivory clipped corner shapes around an EMPTY foot-level center, wider than tall; no enclosing box, no diamond, no target-lock graphic.
+ROW4:
+13 TWO nested ROSE RED broken ECHO ARCS, both opening RIGHT, clean separate arc fragments, no full circle, no lightning rune; this goes INSIDE a real circular retaliation telegraph.
+14 one neutral IVORY CHAMFERED L-BRACKET UNIT, a single angular broken corner with one little notch, thick crisp strokes and a narrow dark under-edge, no glow. This unit is placed4times OUTSIDE the exact circular danger boundary; DO NOT draw a full frame, square or circle here.
+15 three tiny PALE IVORY clipped contact SPARK CHIPS, spread locally with empty gaps, no full explosion/halo.
+16 one small rose double-notch ECHO SOURCE GLYPH, two short nested curved fragments with angular ends, no lightning rune, no circle, no text.
+Preserve exact motif identities from approved concept. Palette anchors only #FF6F87, #FFE599, #FFEDCE, #EDF7F5, #FFCC80, #C399FF with restrained dark obsidian #111925 under-edges. The player mint, Rupture3pips and cyan Barrier visuals do NOT appear anywhere. No new art direction, no scene tint, no fake resources. Warning circle geometry/progress is rendered separately from true simulation state, so no circles or giant fields should be baked into this atlas. Effects only, consistently sized isolated production atoms with true alpha.
+```

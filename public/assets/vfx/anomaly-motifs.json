@@ -1,0 +1,333 @@
+{
+  "frames": {
+    "stormRune": {
+      "frame": {
+        "x": 121,
+        "y": 93,
+        "w": 95,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 95,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 95,
+        "h": 224
+      }
+    },
+    "stormBolt": {
+      "frame": {
+        "x": 392,
+        "y": 49,
+        "w": 156,
+        "h": 291
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 156,
+        "h": 291
+      },
+      "sourceSize": {
+        "w": 156,
+        "h": 291
+      }
+    },
+    "groundCracks": {
+      "frame": {
+        "x": 668,
+        "y": 79,
+        "w": 247,
+        "h": 243
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 247,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 247,
+        "h": 243
+      }
+    },
+    "groundBurst": {
+      "frame": {
+        "x": 1007,
+        "y": 126,
+        "w": 191,
+        "h": 186
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 191,
+        "h": 186
+      },
+      "sourceSize": {
+        "w": 191,
+        "h": 186
+      }
+    },
+    "bloodCrescent": {
+      "frame": {
+        "x": 68,
+        "y": 398,
+        "w": 181,
+        "h": 230
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 181,
+        "h": 230
+      },
+      "sourceSize": {
+        "w": 181,
+        "h": 230
+      }
+    },
+    "energy": {
+      "frame": {
+        "x": 381,
+        "y": 427,
+        "w": 195,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 195,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 195,
+        "h": 154
+      }
+    },
+    "pursuit": {
+      "frame": {
+        "x": 687,
+        "y": 431,
+        "w": 169,
+        "h": 165
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 169,
+        "h": 165
+      },
+      "sourceSize": {
+        "w": 169,
+        "h": 165
+      }
+    },
+    "staticArc": {
+      "frame": {
+        "x": 953,
+        "y": 466,
+        "w": 267,
+        "h": 97
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 267,
+        "h": 97
+      },
+      "sourceSize": {
+        "w": 267,
+        "h": 97
+      }
+    },
+    "forkShot": {
+      "frame": {
+        "x": 51,
+        "y": 736,
+        "w": 240,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 240,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 240,
+        "h": 120
+      }
+    },
+    "sealBreak": {
+      "frame": {
+        "x": 361,
+        "y": 715,
+        "w": 257,
+        "h": 165
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 257,
+        "h": 165
+      },
+      "sourceSize": {
+        "w": 257,
+        "h": 165
+      }
+    },
+    "resistance": {
+      "frame": {
+        "x": 683,
+        "y": 800,
+        "w": 217,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 217,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 217,
+        "h": 63
+      }
+    },
+    "relay": {
+      "frame": {
+        "x": 996,
+        "y": 795,
+        "w": 209,
+        "h": 61
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 61
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 61
+      }
+    },
+    "echoArcs": {
+      "frame": {
+        "x": 111,
+        "y": 979,
+        "w": 147,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 147,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 147,
+        "h": 213
+      }
+    },
+    "bracket": {
+      "frame": {
+        "x": 418,
+        "y": 1030,
+        "w": 111,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 111,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 111,
+        "h": 118
+      }
+    },
+    "sparks": {
+      "frame": {
+        "x": 714,
+        "y": 1012,
+        "w": 165,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 165,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 165,
+        "h": 159
+      }
+    },
+    "echoRune": {
+      "frame": {
+        "x": 1048,
+        "y": 1018,
+        "w": 97,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 97,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 97,
+        "h": 134
+      }
+    }
+  },
+  "meta": {
+    "image": "anomaly-motifs.png",
+    "size": {
+      "w": 1254,
+      "h": 1254
+    },
+    "scale": "1",
+    "app": "Q9C VFX production grid registration"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "code": "a489279",
+  "handoff": "e1b237e",
+  "method": "Current Q9C actual renderer; visual fixture24enemies,2Grunt windups,Storm radius64,time0.85/1.3s. Simulation frozen for capture. CSS grayscale of exact same scene; corner captures relocate fixture without editing production. Not natural encounter/deviceFPS.",
+  "captures": [
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "phase": "playing",
+      "anomaly": "fracturedStorm",
+      "zones": [
+        {
+          "x": 800,
+          "y": 500,
+          "duration": 1.3,
+          "time": 0.85,
+          "radius": 64,
+          "storm": true
+        }
+      ],
+      "enemyCount": 24,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -0.36637061435917356
+      },
+      "zoom": 0.75,
+      "fixture": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "phase": "playing",
+      "anomaly": "fracturedStorm",
+      "zones": [
+        {
+          "x": 800,
+          "y": 500,
+          "duration": 1.3,
+          "time": 0.85,
+          "radius": 64,
+          "storm": true
+        }
+      ],
+      "enemyCount": 24,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -0.36637061435917356
+      },
+      "zoom": 0.775,
+      "fixture": true,
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "phase": "playing",
+      "anomaly": "fracturedStorm",
+      "zones": [
+        {
+          "x": 800,
+          "y": 500,
+          "duration": 1.3,
+          "time": 0.85,
+          "radius": 64,
+          "storm": true
+        }
+      ],
+      "enemyCount": 24,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -0.36637061435917356
+      },
+      "zoom": 0.75,
+      "fixture": true,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "phase": "playing",
+      "anomaly": "fracturedStorm",
+      "zones": [
+        {
+          "x": 800,
+          "y": 500,
+          "duration": 1.3,
+          "time": 0.85,
+          "radius": 64,
+          "storm": true
+        }
+      ],
+      "enemyCount": 24,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": 1.5707963550737354
+      },
+      "zoom": 0.9171428571428571,
+      "fixture": true,
+      "errors": []
+    }
+  ]
+}

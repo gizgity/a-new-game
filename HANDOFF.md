@@ -10,7 +10,17 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q9C — Arena Anomalies theo user27/10. Goal: run#1 không Anomaly; run#2+ chọn1/2offer tại~2:15, dùng Run Ticket/anti-repeat, pause/queue không chồng Draft/encounter/menu;6benefit+drawback tunable, telegraph/counterplay, save/unlock Q9B. Giữ Q9A/Q9B accepted, toàn bộ balance/progression/input/art ngoài scope. Acceptance: focused6Anomaly + interactions/reset/queue/ticket, typecheck/build/regression/mobile-desktop, docs/commit/push/Pages; dừng AWAITING USER PLAYTEST APPROVAL, không Q9D.
+Q9C VFX V1.1 production/integration: user27/10 xác nhận “visual ok, làm đi” sau bộV1.1, duyệt visual và giao triển khai. Tạo production source riêng quaImageGen, không crop board; tích hợp6motif/common signature theo combat state thật; giữ toàn bộ gameplay/balance/progression/input/art baseline ngoài VFX Anomaly. Kiểm source/alpha/worldscale, mobile/desktop/crowd/grayscale/4góc/Boss, regression/typecheck/build, commit/push/Pages; dừng AWAITING USER PLAYTEST APPROVAL, không Q9D.
+
+## Q9C VFX PROPOSAL STATUS
+**VISUAL APPROVED — V1.1**, user “visual ok, làm đi” ngày2026-10-27, hội thoại hiện tại không permalink. Approval cho6motif/common signature và mockupV1.1; production/integration đang triển khai, playtest chưa accepted. Đã tạo board6motif +4composite trên current runtime320/390/844/1440, cảnh24quái/2Grunt windup, before/after vàCSSgrayscale trên cùngảnh; approved Q7C Charged/crowd/grayscale +Q8C Arrival dùng làm image inputs thật. [Review/spec/checklist](docs/q9c/vfx-art-v1/README.md), [board](docs/q9c/vfx-art-v1/source/concept-v1.1.png), [reviewHTML](docs/q9c/vfx-art-v1/review.html), prompts/manifest cùng thư mục.
+- Đề xuất4ngoặc ấn gãy ivory ngoài biêntròn để nhận diện Anomaly, dangerrose→gold→ivory chuẩn Bible;6motif bolt/crescent-energy/crackedplates/zigzag-forkedshots/seal-footglyph/echoarcs. V1.1 final sửa nhãn phase, xóa warning sai sau nổ, không fake Static target-lock/HP heal; common footprint/damage/timing không đổi.
+- Review tĩnh palette/material/hierarchy/source-shape/crowd4viewport/grayscale đạt định tính. UNKNOWN production alpha/pivot/exactregistration/motion/FPS/device;4góc chỉ baseline, proposedcorner còn phải kiểm; chỉ Storm warning có runtimecomposite,5motif khác ở board. ImageGen có redraw/resample, không coi là renderer hoặc gameplay/effect acceptance.
+- Snapshotproposal trướcapproval: không đổi src/public/assets/config/Art Bible/DDR/progression/HUDlayout; lúc đó chưa production/integration/deploy và không build/tests gameplay lại. Lưu raw ImageGen ở /workspace/generated_images, copyreview tại docs; model/seed không cung cấp, provenance/hash/giới hạn trong manifest. User “làm tiếp đi” trong lúc hoàn thiệnproposal là tiếp tục scope, chưa là visual approval đúngV1.1.
+
+## Q9C VFX PRODUCTION STATUS
+Đã tạo PNG production riêng +atlasmetadata, alpha/gutters và motif kiểm trước integration; source/prompt/hash/provenance tại [docs/q9c/vfx-production](docs/q9c/vfx-production/README.md). Common source brackets/dashedcircle và6motif tích hợp qua AnomalyVisual, pool≤96, pure rendering; combat chỉ thêm presentation events/metadata từ actual triggers. Không đổi balance/configAnomaly/gameplay/input/progression/art đã accepted ngoài scope.
+- PASS239tests +typecheck/build;28/28run summary fields giốngbaselinea489279. Runtime14scenario/4viewport renderer/pool/purerender/freeze/Boss/reset/crowd/4góc/grayscale PASS; input2platform PASS. Normalflow4viewport/proddist2platform PASS; chuẩn bị commit/push/Pages. Dừng chờ user playtest, không Q9D.
 
 ## Q9C STATUS
 **AWAITING USER PLAYTEST APPROVAL** — implementation/validation/deploy hoàn tất; chờ user duyệt, không Q9D. Baseline origin/main278f439 đã fast-forward; Q9A/Q9B accepted giữ nguyên.
@@ -112,7 +122,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Chờ user playtest Q9C trên Pagesa489279 theo checklist docs/q9c (6preset độc lập hoặc normal run#2 đến2:15). Chỉ xử lý feedback được giao; giữ AWAITING USER PLAYTEST APPROVAL, không tự accepted/tune/Q9D.
+Hoàn tất production asset/VFX integration Q9C theo visual approvalV1.1, kiểm regression/readability rồi commit/push/Pages; dừng chờ user playtest, không Q9D.
 
 ## VALIDATION APPROVAL Q9B
 Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.

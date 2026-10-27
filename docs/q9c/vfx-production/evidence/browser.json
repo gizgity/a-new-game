@@ -1,0 +1,1246 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "id": "fracturedStorm",
+    "pure": true,
+    "active": "fracturedStorm",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "stormRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 424,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      }
+    ],
+    "pool": 5,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.3,
+        "time": 0.8450000000000001,
+        "radius": 64,
+        "storm": true
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "corners": [
+      {
+        "name": "nw",
+        "lane": true
+      },
+      {
+        "name": "ne",
+        "lane": true
+      },
+      {
+        "name": "sw",
+        "lane": true
+      },
+      {
+        "name": "se",
+        "lane": true
+      }
+    ],
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12177
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "fracturedStorm",
+    "pure": true,
+    "active": "fracturedStorm",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "stormRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 424,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      }
+    ],
+    "pool": 5,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.3,
+        "time": 0.8450000000000001,
+        "radius": 64,
+        "storm": true
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "corners": [
+      {
+        "name": "nw",
+        "lane": true
+      },
+      {
+        "name": "ne",
+        "lane": true
+      },
+      {
+        "name": "sw",
+        "lane": true
+      },
+      {
+        "name": "se",
+        "lane": true
+      }
+    ],
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12177
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "bloodMoon",
+    "pure": true,
+    "active": "bloodMoon",
+    "visible": [
+      {
+        "frame": "bloodCrescent",
+        "texture": "anomaly-vfx",
+        "x": 892.9416703991369,
+        "y": 569.7344999168331,
+        "w": 30,
+        "h": 38,
+        "depth": 1.16
+      },
+      {
+        "frame": "energy",
+        "texture": "anomaly-vfx",
+        "x": 835.8873908538005,
+        "y": 530.4048997094085,
+        "w": 18,
+        "h": 8,
+        "depth": 1.16
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 953.85483100272,
+        "y": 582.4043495031982,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 639.2307892807836,
+        "y": 548.4567198326349,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 758.8913414970573,
+        "y": 666.5407646191098,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 674.9691540074525,
+        "y": 505.35077449710354,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 689.8573852090283,
+        "y": 429.07104119541015,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 899.6927112367321,
+        "y": 570.81982562125,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      }
+    ],
+    "pool": 8,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      "anomalyFinisher"
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 13972
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "volatileGround",
+    "pure": true,
+    "active": "volatileGround",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 855.8614357137373,
+        "y": 555.8614357137373,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 744.1385642862627,
+        "y": 555.8614357137373,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 744.1385642862627,
+        "y": 444.13856428626275,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 855.8614357137373,
+        "y": 444.13856428626275,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "__BASE",
+        "texture": "anomaly-ground-cracks",
+        "x": 800,
+        "y": 418,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "__BASE",
+        "texture": "anomaly-ground-cracks",
+        "x": 800,
+        "y": 500,
+        "w": 140,
+        "h": 140,
+        "depth": 0.96
+      }
+    ],
+    "pool": 6,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.4,
+        "time": 0.9099999999999999,
+        "radius": 70,
+        "storm": false
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12793
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "brokenSeal",
+    "pure": true,
+    "active": "brokenSeal",
+    "visible": [
+      {
+        "frame": "sealBreak",
+        "texture": "anomaly-vfx",
+        "x": 851.203216201091,
+        "y": 639.9258040915411,
+        "w": 36,
+        "h": 24,
+        "depth": 1.16
+      },
+      {
+        "frame": "resistance",
+        "texture": "anomaly-vfx",
+        "x": 753.6077256108184,
+        "y": 690.9535849218269,
+        "w": 34,
+        "h": 16,
+        "depth": 1.16
+      }
+    ],
+    "pool": 2,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      "heavy",
+      "anomalySeal"
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12865
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "echoChamber",
+    "pure": true,
+    "active": "echoChamber",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 841.7193000900063,
+        "y": 541.7193000900063,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 758.2806999099937,
+        "y": 541.7193000900063,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 758.2806999099937,
+        "y": 458.2806999099937,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 841.7193000900063,
+        "y": 458.2806999099937,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "echoRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 438,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "echoArcs",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 500,
+        "w": 52.5,
+        "h": 52.5,
+        "depth": 0.96
+      },
+      {
+        "frame": "relay",
+        "texture": "anomaly-vfx",
+        "x": 1020,
+        "y": 535,
+        "w": 29,
+        "h": 14,
+        "depth": 1.16
+      }
+    ],
+    "pool": 7,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.2,
+        "time": 1.2,
+        "radius": 50,
+        "storm": false,
+        "source": 30
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [
+      null,
+      "anomalyRelay",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 14072
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "id": "fracturedStorm",
+    "pure": true,
+    "active": "fracturedStorm",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "stormRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 424,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      }
+    ],
+    "pool": 5,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.3,
+        "time": 0.8450000000000001,
+        "radius": 64,
+        "storm": true
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "corners": [
+      {
+        "name": "nw",
+        "lane": true
+      },
+      {
+        "name": "ne",
+        "lane": true
+      },
+      {
+        "name": "sw",
+        "lane": true
+      },
+      {
+        "name": "se",
+        "lane": true
+      }
+    ],
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12177
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "fracturedStorm",
+    "pure": true,
+    "active": "fracturedStorm",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 551.6187950266179,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 748.3812049733821,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 851.6187950266179,
+        "y": 448.381204973382,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "stormRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 424,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      }
+    ],
+    "pool": 5,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.3,
+        "time": 0.8450000000000001,
+        "radius": 64,
+        "storm": true
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "corners": [
+      {
+        "name": "nw",
+        "lane": true
+      },
+      {
+        "name": "ne",
+        "lane": true
+      },
+      {
+        "name": "sw",
+        "lane": true
+      },
+      {
+        "name": "se",
+        "lane": true
+      }
+    ],
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12195
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "bloodMoon",
+    "pure": true,
+    "active": "bloodMoon",
+    "visible": [
+      {
+        "frame": "bloodCrescent",
+        "texture": "anomaly-vfx",
+        "x": 884.9999998865901,
+        "y": 504.0104166666667,
+        "w": 30,
+        "h": 38,
+        "depth": 1.16
+      },
+      {
+        "frame": "energy",
+        "texture": "anomaly-vfx",
+        "x": 836.3020831389163,
+        "y": 504.0104166666667,
+        "w": 18,
+        "h": 8,
+        "depth": 1.16
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 955.714837901995,
+        "y": 584.4100534406247,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 668.0399196473452,
+        "y": 563.1597222020332,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 790.1539131313679,
+        "y": 679.3805350114757,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 703.114726114588,
+        "y": 520.1145376951099,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 896.0295739974664,
+        "y": 517.1366278179486,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      },
+      {
+        "frame": "pursuit",
+        "texture": "anomaly-vfx",
+        "x": 928.752755910384,
+        "y": 576.85035999889,
+        "w": 18,
+        "h": 10,
+        "depth": 0.96
+      }
+    ],
+    "pool": 8,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      "anomalyFinisher"
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 13976
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "volatileGround",
+    "pure": true,
+    "active": "volatileGround",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 855.8614357137373,
+        "y": 555.8614357137373,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 744.1385642862627,
+        "y": 555.8614357137373,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 744.1385642862627,
+        "y": 444.13856428626275,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 855.8614357137373,
+        "y": 444.13856428626275,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "__BASE",
+        "texture": "anomaly-ground-cracks",
+        "x": 800,
+        "y": 418,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "__BASE",
+        "texture": "anomaly-ground-cracks",
+        "x": 800,
+        "y": 500,
+        "w": 140,
+        "h": 140,
+        "depth": 0.96
+      }
+    ],
+    "pool": 6,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.4,
+        "time": 0.9099999999999999,
+        "radius": 70,
+        "storm": false
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12810
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "brokenSeal",
+    "pure": true,
+    "active": "brokenSeal",
+    "visible": [
+      {
+        "frame": "sealBreak",
+        "texture": "anomaly-vfx",
+        "x": 851.203216201091,
+        "y": 639.9258040915411,
+        "w": 36,
+        "h": 24,
+        "depth": 1.16
+      },
+      {
+        "frame": "resistance",
+        "texture": "anomaly-vfx",
+        "x": 753.6077256108184,
+        "y": 690.9535849218269,
+        "w": 34,
+        "h": 16,
+        "depth": 1.16
+      }
+    ],
+    "pool": 2,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      "heavy",
+      "anomalySeal"
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 12863
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "echoChamber",
+    "pure": true,
+    "active": "echoChamber",
+    "visible": [
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 841.7193000900063,
+        "y": 541.7193000900063,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 758.2806999099937,
+        "y": 541.7193000900063,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 758.2806999099937,
+        "y": 458.2806999099937,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "bracket",
+        "texture": "anomaly-vfx",
+        "x": 841.7193000900063,
+        "y": 458.2806999099937,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "echoRune",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 438,
+        "w": 15,
+        "h": 15,
+        "depth": 0.96
+      },
+      {
+        "frame": "echoArcs",
+        "texture": "anomaly-vfx",
+        "x": 800,
+        "y": 500,
+        "w": 52.5,
+        "h": 52.5,
+        "depth": 0.96
+      },
+      {
+        "frame": "relay",
+        "texture": "anomaly-vfx",
+        "x": 1020,
+        "y": 535,
+        "w": 29,
+        "h": 14,
+        "depth": 1.16
+      }
+    ],
+    "pool": 7,
+    "zones": [
+      {
+        "x": 800,
+        "y": 500,
+        "duration": 1.2,
+        "time": 1.2,
+        "radius": 50,
+        "storm": false,
+        "source": 30
+      }
+    ],
+    "enemyCount": 24,
+    "impacts": [
+      null,
+      "anomalyRelay",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 14072
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "id": "staticField",
+    "pure": true,
+    "active": "staticField",
+    "visible": [
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 850.4162167800304,
+        "y": 480.6556187592113,
+        "w": 61.99999999999996,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 827.4840941707106,
+        "y": 546.4825189465407,
+        "w": 61.999999999999986,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 854,
+        "y": 500,
+        "w": 62,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 809.008675595912,
+        "y": 446.7567491224698,
+        "w": 62,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "forkShot",
+        "texture": "anomaly-vfx",
+        "x": 956.2591754759914,
+        "y": 447.1533070388649,
+        "w": 25,
+        "h": 9,
+        "depth": 1.55,
+        "originX": 0.8
+      },
+      {
+        "frame": "forkShot",
+        "texture": "anomaly-vfx",
+        "x": 946.0332435070231,
+        "y": 423.2927991112719,
+        "w": 25,
+        "h": 9,
+        "depth": 1.55,
+        "originX": 0.8
+      }
+    ],
+    "pool": 6,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 15353
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "id": "staticField",
+    "pure": true,
+    "active": "staticField",
+    "visible": [
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 850.4162167800304,
+        "y": 480.6556187592113,
+        "w": 61.99999999999996,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 827.4840941707106,
+        "y": 546.4825189465407,
+        "w": 61.999999999999986,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 854,
+        "y": 500,
+        "w": 62,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "staticArc",
+        "texture": "anomaly-vfx",
+        "x": 809.008675595912,
+        "y": 446.7567491224698,
+        "w": 62,
+        "h": 9,
+        "depth": 1.16,
+        "originX": 0.5
+      },
+      {
+        "frame": "forkShot",
+        "texture": "anomaly-vfx",
+        "x": 956.2591754759914,
+        "y": 447.1533070388649,
+        "w": 25,
+        "h": 9,
+        "depth": 1.55,
+        "originX": 0.8
+      },
+      {
+        "frame": "forkShot",
+        "texture": "anomaly-vfx",
+        "x": 946.0332435070231,
+        "y": 423.2927991112719,
+        "w": 25,
+        "h": 9,
+        "depth": 1.55,
+        "originX": 0.8
+      }
+    ],
+    "pool": 6,
+    "zones": [],
+    "enemyCount": 24,
+    "impacts": [
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null,
+      "anomalyCounter",
+      null
+    ],
+    "save": null,
+    "lifecycle": {
+      "pause": true,
+      "hitstop": true,
+      "noDanger": true,
+      "transform": true,
+      "reset": true,
+      "initialSnapshot": 15351
+    },
+    "errors": []
+  }
+]

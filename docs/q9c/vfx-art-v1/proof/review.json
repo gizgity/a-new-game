@@ -1,0 +1,81 @@
+{
+  "method": "CSS grayscale of the same actual renderer / ImageGen composite concept pair. Native CSSwidth320/390/844/1440; candidate bitmap may differ by subpixel registration. Browser review only, not game integration/FPS/geometry evidence.",
+  "sizes": [
+    {
+      "path": "../../q7c/runtime/after-charged-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "../../q8c/arrival-runtime/evidence/peak-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "source/concept-v1.1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "baseline/current-320.png",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "path": "mockups/proposed-320.png",
+      "width": 824,
+      "height": 1908
+    },
+    {
+      "path": "baseline/current-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "mockups/proposed-390.png",
+      "width": 853,
+      "height": 1844
+    },
+    {
+      "path": "baseline/current-844.png",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "path": "mockups/proposed-844.png",
+      "width": 1844,
+      "height": 853
+    },
+    {
+      "path": "baseline/current-1440.png",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "mockups/proposed-1440.png",
+      "width": 1505,
+      "height": 1045
+    },
+    {
+      "path": "baseline/corner-nw-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "baseline/corner-ne-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "baseline/corner-sw-390.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "baseline/corner-se-390.png",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "errors": []
+}
