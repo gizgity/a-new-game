@@ -10,6 +10,10 @@ Trạng thái: triển khai để user playtest; **AWAITING USER PLAYTEST APPROV
 - Mọi `playtest`, `draftSeed`, `draftDebug` dùng profile memory riêng, không đọc/ghi save thật; không cấp unlock production.
 - UI vi/en: reveal tên/loại/effect/trạng thái; collection trong menu/pause/result có6Sigil/12Branch vàAnomaly lưu chờQ9C. Cuộn trong panel, touch và keyboard/mouse dùng cùng luật.
 
+## Delivery
+
+Code `c0a8247` đã push main fast-forward; [Pages40444521840](https://github.com/gizgity/a-new-game/actions/runs/40444521840), job121992491794 completed/SUCCESS (build/typecheck/upload/Deploy). [Chơi Q9B](https://gizgity.github.io/a-new-game/?v=c0a8247). Chưa xác minh liveHTTP/hash từ môi trường; commit bàn giao sau chỉMarkdown, không redeploy.
+
 ## Validation
 
 - `npm test`:214tests PASS, gồm5focused Q9B tests;200seed first Victory,80collection completions,30,000weighted samples; dependency/no duplicates/pity/exhaustion/Defeat/runID/migration/corruption/journal retry/stale journal.
