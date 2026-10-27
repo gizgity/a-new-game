@@ -75,7 +75,7 @@ test('Phase2 real combo schedules Echo once, full warning, dodge, no knockback, 
  b.transform=1;w.ascension.echoCooldown=0;w.ascension.echo();assert.equal(w.ascension.zones.length,0);
 });
 test('Seal0 has no effects; each stacked level enables only its threshold',()=>{
- for(let seal=0;seal<=4;seal++){const w=world(seal);w.anomaly.equip('bloodMoon');w.ascension.step(35);assert.equal(w.ascension.zones.length,seal>=1?1:0);w.ascension.echo();assert.equal(w.ascension.zones.filter(z=>z.kind==='echo').length,seal>=4?1:0);}
+ for(let seal=0;seal<=4;seal++){const w=world(seal);w.anomaly.equip('bloodMoon');w.ascension.step(35);assert.equal(w.ascension.zones.length,seal>=1?1:0);w.ascension.echo();assert.equal(w.ascension.zones.filter(z=>z.kind==='echo').length,0);w.spawnEnemy('boss');w.enemies.at(-1).enraged=true;w.ascension.echo();assert.equal(w.ascension.zones.filter(z=>z.kind==='echo').length,seal>=4?1:0);}
 });
 test('Static Riposte duplicate deals half actual proc damage and never duplicates primary/charge/death',()=>{
  const run=fractured=>{const w=world(3);w.mutations=['staticRiposte'];w.ascension.fractured=fractured?'staticRiposte':null;w.spawnEnemy('grunt',1000);const e=w.enemies.at(-1);Object.assign(e,{x:850,y:500,rupture:0});w.build.staticCharge=2;w.fire(800,500,0,false,true);w.stepProjectiles(.05);return {hp:e.hp,kills:w.kills,points:w.chargePoints,root:w.projectiles[0]?.root};};

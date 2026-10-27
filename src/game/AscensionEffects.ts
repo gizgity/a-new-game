@@ -33,7 +33,7 @@ export class AscensionEffects {
     root.fractured = true; legacyRoot(root); return admitProc(root, 1) ? A.fracture.scale : 0;
   }
   echo(): void {
-    if (this.seal < 4 || this.echoCooldown > 0 || this.world.anomaly.suspended || this.world.bossTransforming || this.zones.some(z => z.kind === 'echo')) return;
+    if (!this.world.enemies.some(e => e.kind === 'boss' && e.hp > 0 && e.enraged && e.windup <= 0) || this.seal < 4 || this.echoCooldown > 0 || this.world.anomaly.suspended || this.world.bossTransforming || this.zones.some(z => z.kind === 'echo')) return;
     this.zones.push({kind: 'echo', x: this.world.player.x, y: this.world.player.y, time: A.echo.warning, active: 0, hit: false});
     this.echoCooldown = A.echo.cooldown;
   }
