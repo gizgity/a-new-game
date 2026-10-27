@@ -1,0 +1,18 @@
+[
+  {
+    "touch": true,
+    "twoDistinctOffers": true,
+    "refreshKeepsSeedOffersChoiceAndRunNumber": true,
+    "noUnlockGrants": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "touch": false,
+    "twoDistinctOffers": true,
+    "refreshKeepsSeedOffersChoiceAndRunNumber": true,
+    "noUnlockGrants": true,
+    "errors": [],
+    "failed": []
+  }
+]

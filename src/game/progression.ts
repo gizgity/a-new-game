@@ -1,3 +1,4 @@
+import { emptyLegacy, validateLegacy, closeLegacy, type LegacyProgress } from './legacy.js';
 import { MUTATIONS, CURSES, type BuildId, type MutationId, type CurseId } from './builds.js';
 
 export const SAVE_KEY = 'cursebreak.save.v1';
@@ -5,6 +6,7 @@ export const UNLOCKS = ['firstBlood', 'chainApprentice', 'dodgeMaster', 'wardenB
 export type UnlockId = typeof UNLOCKS[number];
 export interface Profile {
   version: 1;
+  legacy: LegacyProgress;
   settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism' };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
   unlocks: UnlockId[];
@@ -14,12 +16,13 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 1, settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint' },
+  return { version: 1, legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
   const raw = object(value), result = defaultProfile();
   if (raw.version !== 1) return result;
+  result.legacy = validateLegacy(raw.legacy);
   const settings = object(raw.settings), totals = object(raw.totals);
   result.settings.locale = settings.locale === 'en' ? 'en' : 'vi';
   result.settings.muted = settings.muted === true;
@@ -60,12 +63,12 @@ export class Progression {
   private previous = { kills: 0, detonations: 0, perfectDodges: 0 };
   private recorded = false;
   constructor(readonly profile: Profile) {}
-  beginRun(): void {
+  beginRun(countRun = true): void {
     if (this.profile.drafts.active) this.profile.drafts.previous = [...this.profile.drafts.current];
     this.profile.drafts.current = []; this.profile.drafts.active = true;
     this.previous = { kills: 0, detonations: 0, perfectDodges: 0 };
     this.recorded = false;
-    this.profile.totals.runs = counter(this.profile.totals.runs + 1);
+    if (countRun) this.profile.totals.runs = counter(this.profile.totals.runs + 1);
   }
   offerDraft(ids: readonly BuildId[]): void {
     const offered = new Set([...this.profile.drafts.current, ...ids]);
@@ -78,6 +81,7 @@ export class Progression {
     }
     if (result && !this.recorded) {
       this.recorded = true;
+      closeLegacy(this.profile.legacy);
       if (result === 'victory') this.profile.totals.victories = counter(this.profile.totals.victories + 1);
     }
     return awardUnlocks(this.profile);

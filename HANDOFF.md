@@ -10,26 +10,17 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Revise DD-0002 Mechanics Contract — docs only, user giao ngày2026-10-27. Acceptance: sửa P1 proc synergy/root budget và lethal Ambush; đồng bộ Ice/Wind/Water/Wildfire/P1–P8; thêm tiêu chuẩn chung mobile-first + desktop-equivalent/acceptance riêng vào GAME_BRIEF và liên kết AGENTS; kiểm consistency/diff/links, commit/push nhánh docs hiện tại. Không runtime/artwork/balance/build/deploy hoặc mở lại Q9A.
+Q9A — Elemental Legacy Core, user mở lại ngày2026-10-27 sau approval DD-0002 revision09267ed. Acceptance: 6Sigil/12Branch đúng contract; catalog/RNG/ticket/progression-safe selection/HUD; kiểm combat/Mutation/Curse/Boss/Draft/mobile+desktop; tests/typecheck/build, commit/push/Pages, dừng nghiệm thu Q9A; không Q9B.
 
-## ELEMENTAL CONTRACT STATUS
-
-- **DRAFT REVISED — Proposed — Awaiting User Approval**: [DD-0002 candidate](docs/design-drafts/DD-0002-elemental-mechanics-proposed.md), revision2026-10-27 từ draft07db39c. Ngoài DDR; DD-0001 giữ nguyên, DD-0002 chưa cấp/giữ chỗ. Chưa Approved, chưa gameplay acceptance.
-- P1 sửa theo user: Legacy direct/DoT/chain/secondary kill có on-kill Mutation/Curse hợp lệ, root ID/origin/ownership kế thừa, dedup death/proc, shared bounded offspring/depth + native guards/CD/caps. Giữ Surge, kill count/Boss slain, Volatile death bắt buộc và Rupture queue/relay cũ; không mở quyền on-hit primary giả cho Legacy. Root legacy budget không giảm/cắt native queue.
-- Shadow lethal marked melee vẫn Ambush thành công/consume mark một lần; Nightfall nhận event theo CD rồi hủy nếu corpse/range sai, không retarget/duplicate kill/reward. Ice theo target window, Wind miss slash chỉ consume ở resolve, Undertow primary-on-Soaked/CD target, Wildfire một thế hệV1 có thể tuning qua playtest được ghi rõ; P1–P8 đã đồng bộ.
-- [GAME_BRIEF](GAME_BRIEF.md#mobile-first--desktop-equivalent--tiêu-chuẩn-chung) và AGENTS bổ sung tiêu chuẩn chung cả game: ngang hàng depth/precision/visual, cùng luật, assistance không quyết chiến thuật; acceptance riêng touch và keyboard/mouse. Không tự gán desktop/mobile PASS; giữ approval Q2–Q8D và giới hạn device coverage cũ.
-- Còn TBD/chờ duyệt: giá trị damage/duration/CD/range/root budget/depth/caps; lựa chọn chi tiết consume/target/haste/Brittle tại P2–P8; ngưỡng performance/latency/device matrix theo milestone. Chỉ thị revision cụ thể không là approval toàn contract.
-- Audit combat main9b1f988: Blood Reclaimer marked/root.marked, Hunted CD, Death Echo/root.echoCap, kill/Surge/Volatile trong hitEnemy; relay pending/seeded/healed guards và quota defer của resolveExplosions; snapshot/CD và Boss/Elite rules giữ nguyên trong draft. Không sửa implementation.
-- Nền Q9A2868f77 vẫn riêng nhánh `q9a-elemental-legacy`, chưa merge/nối combat/UI/acceptance; test19files/build PASS là kết quả lượt trước, không là validation task docs này. Nhánh docs chỉ sửa Markdown; user yêu cầu không resume Q9A sau draft.
-- Validation lượt này: đủ6Core/12Branch/các trường contract, local links, kiểm mâu thuẫn on-kill/Shadow/P1–P8 và platform rules, diff chỉ4Markdown, DDR byte-identical. Không tests/build/deploy. Sau commit/push dừng chờ user duyệt DD-0002.
+## Q9A STATUS
+Đang validation trên q9a-implementation. Đã implement catalog/RNG/ticket,6Core/12Branch/LegacyEffects và combat hooks, root ledger/death dedup, selection phase/guard/vi-en/HUD text, isolated fixture links. DD-0002 Approved — Design Only theo quote user “duyệt dd-0002. bắt đầu triển khai q9a”; DDR append mới, draft Proposed giữ lịch sử. Nền2868f77 được lấy các file liên quan, không merge handoff cũ. Không auto-unlock/reward hoặc đổi production artwork. Tuning nằm config, chưa approved balance. Tests20files (25focused elemental cases +72loadout subcases)/typecheck/build PASS; browser selection320/390/844touch +1440desktop và refresh ticket PASS. Browser input390touch/1440keyboard-mouse và dist390/1440 PASS; cách thử6/12 + giới hạn tại [docs/q9a/README.md](docs/q9a/README.md). Đang bàn giao commit/push/Pages; chưa device/iOS/Safari/user acceptance.
 
 ## DEPLOY FOLLOW-UP
 User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
 
 ## LEGACY V1 STATUS
-- Đã ghi [DD-0001 — CURSEBREAK Legacy V1](DESIGN_DECISIONS.md#dd-0001--cursebreak-legacy-v1), **Approved — Design Only**, theo invocation trực tiếp của user ngày 2026-10-26 trong hội thoại task hiện tại (không có permalink). Registry có 1 decision, ID tiếp theo DD-0002; không Supersedes/backfill.
-- Chỉ cập nhật DESIGN_DECISIONS.md và HANDOFF.md; giữ gameplay, Art Bible, roadmap và các approval trước đây. Damage/cooldown/radius, chi tiết cosmetic là Balance Tuning / TBD. Implementation/acceptance Legacy V1 chưa thực hiện; chỉ bắt đầu khi user giao task riêng.
-- Validation: đối chiếu đủ 7 mục với yêu cầu; kiểm ID/schema/nguồn/Release boundary, diff và Markdown links. Không chạy tests/build/deploy vì chỉ Markdown.
+- DDR có2decision: DD-0001 Legacy V1 và DD-0002 Elemental Mechanics Contract, đều Approved — Design Only; ID tiếp theo DD-0003. DD-0001 giữ nguyên, DD-0002 bổ sung theo approval trực tiếp27/10 cho revision09267ed. Snapshot draft giữ nhãn Proposed lịch sử, hiệu lực approval đọc từ DDR.
+- Q9A triển khai Core/Branch/RNG/UI trong scope user đã mở lại, còn chờ nghiệm thu gameplay. Victory rewards/unlock economy/Anomaly/Ascension/Cosmetic/fullmigration vẫn Q9B+, không tự triển khai. Chi tiết delivery/coverage tại Q9A STATUS và docs/q9a.
 
 ## DESIGN MEMORY STATUS — CHECKPOINT KHỞI TẠO
 - Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
@@ -84,7 +75,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Chờ user duyệt DD-0002 revision2026-10-27, xác nhận/đổi các chi tiết còn chờ tại P1–P8 và invocation `$design-decision` với version/nội dung/trạng thái muốn ghi. Khi được giao ghi DDR phải đọc lại registry để cấp ID thật, không sửa lịch sử hoặc tự nâng Proposed thành Approved. Không mở lại Q9A/Q9B hoặc deploy trong lúc chờ.
+Tiếp tục implementation Q9A theo DD-0001/DD-0002: effects/config/combat hooks, selection/HUD và focused/regression/browser checks, rồi commit/push main/Pages và dừng chờ user nghiệm thu. Không mở Q9B.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.

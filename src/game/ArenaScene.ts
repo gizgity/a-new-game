@@ -1,3 +1,4 @@
+import { drawLegacy } from './LegacyVisual';
 import Phaser from 'phaser';
 import { BossArrival } from './BossArrival';
 import { ProceduralAudio } from './audio';
@@ -14,7 +15,7 @@ import type { TouchControls } from '../ui/TouchControls';
 import { ARENA, FIXED_STEP, type PlayerState } from './movement';
 import { touchAim } from './touchAim';
 
-export type Phase = 'ready' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
+export type Phase = 'ready' | 'legacy' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
 
 export class ArenaScene extends Phaser.Scene {
   readonly player: PlayerState = { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 };
@@ -129,7 +130,7 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   setPhase(phase: Phase): void {
-    if (phase === 'playing' && (this.phase === 'ready' || this.phase === 'victory' || this.phase === 'defeat')) {
+    if ((phase === 'playing' || phase === 'legacy') && (this.phase === 'ready' || this.phase === 'victory' || this.phase === 'defeat')) {
       this.victoryRevealing = false;
       this.resultVisual.reset();
       this.run.start();
@@ -258,6 +259,7 @@ export class ArenaScene extends Phaser.Scene {
     this.arrival.render(this.run.bossWarning);
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
+    drawLegacy(ground, world);
     this.enemySprites.render(world);
     for (const enemy of world.enemies) drawEnemyStatus(g, enemy);
     for (const shot of world.projectiles) {

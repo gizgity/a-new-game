@@ -1,0 +1,62 @@
+[
+  {
+    "touch": true,
+    "heavyHoldRelease": true,
+    "moveAndBasicFire": true,
+    "manualAim": false,
+    "pauseReleaseNoExtraHeavy": true,
+    "corners": [
+      {
+        "x": 80,
+        "y": 80,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 1520,
+        "y": 80,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 80,
+        "y": 920,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 1520,
+        "y": 920,
+        "hudOutsideCanvas": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "touch": false,
+    "heavyHoldRelease": true,
+    "moveAndBasicFire": true,
+    "manualAim": true,
+    "pauseReleaseNoExtraHeavy": true,
+    "corners": [
+      {
+        "x": 80,
+        "y": 80,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 1520,
+        "y": 80,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 80,
+        "y": 920,
+        "hudOutsideCanvas": true
+      },
+      {
+        "x": 1520,
+        "y": 920,
+        "hudOutsideCanvas": true
+      }
+    ],
+    "errors": []
+  }
+]

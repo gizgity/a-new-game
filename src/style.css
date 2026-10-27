@@ -465,3 +465,6 @@ footer { display: none; }
 .touch-controls [data-action='ultimate'] > [data-resource] { font-size: 12px; }
 /* Programmatic reading focus belongs to the heading; interactive controls keep their focus ring. */
 #panel-title:focus, #draft-panel h2:focus { outline: none; }
+
+/* Q9A: text-only readout inside the existing reserved HUD lane. */
+.legacy-indicator { display: block; min-width: 0; flex: 1; text-align: right; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; color: #b3c5cd; }

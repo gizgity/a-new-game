@@ -121,3 +121,17 @@ _Registry khởi tạo rỗng; decision mới được append bên dưới. Khô
 - Chi tiết cosmetic của 6 variants dự kiến: **Balance Tuning / TBD**.
 - Không tự thay đổi design, không sửa gameplay, Art Bible hay roadmap.
 - Chỉ documentation; không implementation. Commit/push tài liệu và báo Decision ID cùng commit hash.
+
+
+### DD-0002 — Elemental Mechanics Contract
+
+- Ngày: 2026-10-27 (user duyệt và ngày ghi).
+- Trạng thái: **Approved — Design Only**; implementation và experience acceptance theo dõi riêng.
+- Quyết định: chốt toàn bộ contract 6 Sigil/12 Branch, P1–P8, proc synergy/bounded root/death dedup, lethal Ambush và platform parity trong [contract revision09267ed](https://github.com/gizgity/a-new-game/blob/09267ed/docs/design-drafts/DD-0002-elemental-mechanics-proposed.md).
+- Contract pinned: [draft đúng commit09267ed](https://github.com/gizgity/a-new-game/blob/09267ed/docs/design-drafts/DD-0002-elemental-mechanics-proposed.md), bản local tại [contract](docs/design-drafts/DD-0002-elemental-mechanics-proposed.md). Các nhãn Proposed/chờ duyệt trong snapshot là trạng thái lịch sử trước approval này; toàn bộ lựa chọn cơ chế được user duyệt qua message dưới. Damage/duration/CD/range/root budgets/caps là tunable config, chưa được coi là approved balance.
+- Lý do: hoàn tất đặc tả để Q9A triển khai đúng contract, không tự thiết kế gameplay (mục tiêu user giao trong task contract).
+- Phạm vi: chi tiết hóa Elemental Legacy DD-0001, giữ run/unlock/economy/progression và các approval trước đó. User đồng thời mở lại Q9A; không Q9B. Không cấp approval artwork/experience.
+- Nguồn: user, ngày2026-10-27, hội thoại task hiện tại không có permalink, quote chính xác: “duyệt dd-0002. bắt đầu triển khai q9a”. Đây là chỉ thị trực tiếp duyệt decision được nêu tên và triển khai, supersede yêu cầu cú pháp invocation máy móc trong skill cho lần ghi cụ thể này; không tự suy approval từ tests/code/deploy.
+- Bằng chứng sau Release: approval mới tiếp sau draft09267ed và DD-0001@9b1f988; Release boundary v0.1.0 target4770bf617f292c407685c4fbed1ebf5d3c6cb84f published2026-10-26T16:46:46Z theo entry DD-0001, không backfill.
+- Supersedes: None. Bổ sung DD-0001; DD-0002 chưa từng được append Proposed nên không sửa trạng thái entry cũ.
+- Theo dõi implementation/acceptance: [HANDOFF.md](HANDOFF.md#q9a-status); chưa nghiệm thu Q9A.

@@ -18,7 +18,7 @@ export function combatHUDMarkup(): string {
       <div class="barrier-state">${icon('shield')}<span data-i18n="barrier"></span><strong id="barrier-value"></strong><progress id="barrier" aria-label="${t('barrier')}" max="30" value="0"></progress></div>
     </div>
     <button id="build-summary" class="build-summary" type="button" aria-haspopup="dialog" aria-controls="build-panel" aria-expanded="false"><span class="build-slots" id="build-slots"></span><span id="build-count"></span>${icon('info')}</button>
-    <div class="hud-feedback"><span id="hud-warning"></span><span id="trial-label" class="trial-label" hidden></span><span id="combat-notice" role="status" aria-live="polite" aria-atomic="true"></span></div>
+    <div class="hud-feedback"><span id="hud-warning"></span><span id="trial-label" class="trial-label" hidden></span><span id="legacy-indicator" class="legacy-indicator"></span><span id="combat-notice" role="status" aria-live="polite" aria-atomic="true"></span></div>
     <div class="hud-resources">${(['dash', 'heavy', 'charged', 'surge'] as const).map(id => `<div class="hud-resource" data-hud-resource="${id}">${icon(id)}<span data-i18n="${id}"></span><strong id="${id}-value"></strong><small></small><progress max="1" value="0" aria-label="${t(id)}"></progress></div>`).join('')}</div>
     <div class="hud-milestones"><span id="draft-progress"></span><span id="boss-arrival"></span></div>
   </div>`;
@@ -26,7 +26,7 @@ export function combatHUDMarkup(): string {
 
 export function buildPanelMarkup(): string {
   return `<section id="build-panel" class="panel build-panel" role="dialog" aria-modal="true" aria-labelledby="build-title" hidden>
-    <h2 id="build-title" data-i18n="hudBuildDetails"></h2><p id="build-milestones"></p><p id="build-status"></p>
+    <h2 id="build-title" data-i18n="hudBuildDetails"></h2><p id="build-milestones"></p><p id="build-status"></p><p id="legacy-details"></p>
     <h3 data-i18n="hudMutations"></h3><div id="mutation-details"></div>
     <h3 data-i18n="hudCurses"></h3><div id="curse-details"></div>
     <div class="build-panel-actions"><button id="build-back" class="secondary" data-i18n="hudBack"></button><button id="build-resume" class="primary" data-i18n="resume"></button></div>
@@ -77,6 +77,12 @@ export class CombatHUD {
   }
 
   update(w: CombatWorld, run: RunDirector, dt: number): ResourceReadouts {
+    const legacy = w.legacy, offer = legacy.selection;
+    const resource = legacy.charge > 0 ? `${t('legacyCharge')} ${seconds(legacy.charge)}` : legacy.mark ? `${t('legacyMark')} ${seconds(legacy.mark.time)}` : offer?.sigil === 'wind' ? `${t('legacyMomentum')} ${Math.floor(legacy.momentum)}` : '';
+    const legacyText = offer ? `${t(`legacy_${offer.sigil}`)}${offer.branch ? ` · ${t(`legacy_${offer.branch}`)}` : ''}${resource ? ` · ${resource}` : ''}${legacy.haste > 0 ? ` · ${t('legacyHaste')} ${seconds(legacy.haste)}` : ''}` : '';
+    this.text('legacy-indicator', legacyText);
+    this.node('legacy-indicator').hidden = !offer;
+    this.node('legacy-indicator').title = legacyText;
     const low = w.hp > 0 && w.hp / w.maxHp <= 0.25;
     const ghost = w.hasCurse('ghostStep') && w.dashCharges === 0;
     this.root.classList.toggle('low-health', low);
@@ -136,6 +142,9 @@ export class CombatHUD {
     const entries = (ids: readonly BuildId[], target: string) => {
       document.querySelector(target)!.innerHTML = ids.length ? ids.map(id => `<article class="build-detail">${icon(id)}<div><strong>${t(id)}</strong><p>${t(`${id}Desc`)}</p>${this.proc(id, w) ? `<small>${t('hudState')}: ${this.proc(id, w)}</small>` : ''}</div></article>`).join('') : `<p>${t('emptySlot')}</p>`;
     };
+    const offer = w.legacy.selection;
+    document.querySelector('#legacy-details')!.textContent = offer ? `${t(`legacy_${offer.sigil}Desc`)}${offer.branch ? ` ${t(`legacy_${offer.branch}Desc`)}` : ''}` : t('legacyNone');
+    document.querySelector('#build-title')!.textContent = offer ? `${t('hudBuildDetails')} · ${t(`legacy_${offer.sigil}`)}${offer.branch ? ` / ${t(`legacy_${offer.branch}`)}` : ''}` : t('hudBuildDetails');
     entries(w.mutations, '#mutation-details'); entries(w.curses, '#curse-details');
     document.querySelector('#build-milestones')!.textContent = `${this.node('draft-progress').textContent} · ${this.node('boss-arrival').textContent}`;
     const cost = Math.round((1 - w.outgoingDamageMultiplier) * 100);

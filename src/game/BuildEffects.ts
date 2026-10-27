@@ -1,7 +1,18 @@
+import { LEGACY } from './config/legacy.js';
 import { BUILD } from './config/balance.js';
 
-export interface ChainRoot { seeded: Set<number>; echoes: number; hazard: boolean; marked: Set<number>; detonations: number; pulsed: boolean; healed: boolean; triggers: number; hasRelay: boolean }
-export const chainRoot = (): ChainRoot => ({ seeded: new Set(), echoes: 0, hazard: false, marked: new Set(), detonations: 0, pulsed: false, healed: false, triggers: 0, hasRelay: false });
+export type ProcOrigin = 'primary' | 'legacySecondary' | 'mutationSecondary' | 'curseSecondary' | 'ruptureDetonation' | 'hostile';
+export interface ProcContext { root: ChainRoot; depth: number; origin: ProcOrigin }
+let nextRootId = 0;
+export interface ChainRoot { id: number; legacy?: { remaining: number }; primaryHits?: Set<number>; furnace?: boolean; seeded: Set<number>; echoes: number; hazard: boolean; marked: Set<number>; detonations: number; pulsed: boolean; healed: boolean; triggers: number; hasRelay: boolean }
+export const chainRoot = (): ChainRoot => ({ id: ++nextRootId, seeded: new Set(), echoes: 0, hazard: false, marked: new Set(), detonations: 0, pulsed: false, healed: false, triggers: 0, hasRelay: false });
+/** Native roots retain their original guards. Legacy descendants share a finite ledger. */
+export function admitProc(root: ChainRoot, depth: number): boolean {
+  if (!root.legacy) return true;
+  if (depth > LEGACY.depthCap || root.legacy.remaining <= 0) return false;
+  root.legacy.remaining--; return true;
+}
+export function legacyRoot(root: ChainRoot): void { root.legacy ??= { remaining: LEGACY.rootBudget }; }
 export interface PhantomSlash { x: number; y: number; angle: number; range: number; arc: number; delay: number; root: ChainRoot }
 export interface SelfHazard { x: number; y: number; time: number }
 

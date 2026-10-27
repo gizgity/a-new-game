@@ -1,5 +1,7 @@
+import { beginLegacy, chooseLegacy } from './game/legacy';
+import { validLegacy, LEGACY_IDS, type LegacyOffer } from './game/config/legacy';
 import Phaser from 'phaser';
-import { loadProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
+import { loadProfile, defaultProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
 import { type CombatWorld } from './game/combat';
 import { ArenaScene, type Phase } from './game/ArenaScene';
 import { setLocale, t, type Locale, type TranslationKey } from './i18n';
@@ -13,8 +15,15 @@ import './style.css';
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
 const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchParams(location.search).get('playtest'));
 const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_PLAYTEST.id;
-const buildTrial = Boolean(trialBuild || trialRoute || trialBoss);
-const profile = loadProfile();
+const legacyParts = new URLSearchParams(location.search).get('playtest')?.split('-');
+const legacyCandidate = legacyParts?.[0] === 'legacy' ? { sigil: legacyParts[1], branch: legacyParts[2] === 'core' ? null : legacyParts[2] } : null;
+const legacyTrial: LegacyOffer | null = validLegacy(legacyCandidate) ? legacyCandidate : null;
+const buildTrial = Boolean(trialBuild || trialRoute || trialBoss || legacyTrial);
+const profile = legacyTrial ? defaultProfile() : loadProfile();
+if (legacyTrial) {
+  profile.totals.runs = 1;
+  profile.legacy.unlocks = LEGACY_IDS.filter(id => id === legacyTrial.sigil || id === legacyTrial.branch);
+}
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
 let saveOK = true;
@@ -100,7 +109,7 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelector<HTMLElement>('#build-panel')!.hidden = !buildDetailsOpen;
   document.querySelector('#build-summary')!.setAttribute('aria-expanded', String(buildDetailsOpen));
   document.querySelector<HTMLElement>('#menu-build')!.hidden = phase !== 'paused';
-  draftGuard.setActive(phase === 'draft');
+  draftGuard.setActive(phase === 'draft' || phase === 'legacy');
   overlay.dataset.result = phase === 'victory' || phase === 'defeat' ? phase : '';
   const resultBanner = document.querySelector<HTMLElement>('#result-banner')!;
   resultBanner.hidden = phase !== 'victory' && phase !== 'defeat';
@@ -110,17 +119,18 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
     element.textContent = t(element.dataset.i18n as TranslationKey);
   });
-  if (buildTrial) document.querySelector('#trial-label')!.textContent = t(trialBoss ? BOSS_PLAYTEST.label : (trialRoute ?? trialBuild)!.label);
+  if (buildTrial) document.querySelector('#trial-label')!.textContent = legacyTrial ? t('legacyTrial') : t(trialBoss ? BOSS_PLAYTEST.label : (trialRoute ?? trialBuild)!.label);
   document.querySelector('#status')!.textContent = t(phase);
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
   primary.textContent = t(phase === 'victory' || phase === 'defeat' ? 'playAgain' : phase === 'ready' ? 'start' : 'resume');
   pause.textContent = t(phase === 'paused' ? 'resume' : 'pause');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
-  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || buildDetailsOpen;
+  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || buildDetailsOpen;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
-  draftPanel.hidden = phase !== 'draft';
+  draftPanel.hidden = phase !== 'draft' && phase !== 'legacy';
   if (phase === 'draft') renderDraft();
+  if (phase === 'legacy') renderLegacy();
   overlay.hidden = phase === 'playing' || phase === 'victory' && arena.victoryRevealing;
   document.querySelector('#game')!.classList.toggle('playing', phase === 'playing');
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
@@ -131,7 +141,7 @@ function renderUI(phase: Phase = currentPhase): void {
   if (panel !== visiblePanel) {
     visiblePanel = panel;
     if (panel && panel !== 'build') {
-      const container = document.querySelector<HTMLElement>(phase === 'draft' ? '#draft-panel' : '#menu-panel')!;
+      const container = document.querySelector<HTMLElement>(phase === 'draft' || phase === 'legacy' ? '#draft-panel' : '#menu-panel')!;
       container.scrollTop = 0;
       const title = container.querySelector<HTMLElement>('h2')!;
       title.tabIndex = -1;
@@ -150,6 +160,11 @@ function draftReason(option: import('./game/builds').DraftOption): string {
   if (!reason) return '';
   return reason.kind === 'synergy' ? t('reasonSynergy').replace('{item}', t(reason.id)) : t(`reason_${reason.tag}`);
 }
+function renderLegacy(): void {
+  const ticket = profile.legacy.ticket!;
+  document.querySelector('#draft-panel')!.innerHTML = `<h2>${t('legacyChoose')}</h2><p>${t('legacyHint')}</p><p id="draft-readiness" role="status"></p><div class="draft-options opening">${ticket.offers.map((o, index) => `<button class="draft-card" data-choice="${index}"><strong>${t(`legacy_${o.sigil}`)}</strong><span>${t(`legacy_${o.sigil}Desc`)}</span><strong>${o.branch ? t(`legacy_${o.branch}`) : t('legacyCore')}</strong><span>${o.branch ? t(`legacy_${o.branch}Desc`) : ''}</span></button>`).join('')}</div>`;
+  updateDraftReadiness();
+}
 function renderDraft(): void {
   const panel = document.querySelector('#draft-panel')!;
   panel.innerHTML = `<h2>${t(arena.run.draftKind === 'curse' ? 'curseDraft' : 'mutationDraft')}</h2><p>${t('draftHint')}${arena.run.draft.some(option => option.direction) ? ' ' + t('openingDraftHint') : ''}${arena.run.draftKind === 'curse' && arena.combat.curses.length ? ' ' + t(arena.combat.curses.length === 2 ? 'curseFullHint' : 'curseSwapHint') : ''}</p><p id="draft-readiness" role="status"></p><div class="draft-options${arena.run.draft.some(option => option.direction) ? ' opening' : ''}">${arena.run.draft.map((option, index) =>
@@ -164,7 +179,15 @@ function updateDraftReadiness(): void {
 }
 document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
-  if (button && draftGuard.accepts(event as MouseEvent, button)) arena.chooseDraft(Number(button.dataset.choice));
+  if (button && draftGuard.accepts(event as MouseEvent, button)) {
+    const index = Number(button.dataset.choice);
+    if (currentPhase === 'legacy') {
+      if (chooseLegacy(profile.legacy, index)) {
+        arena.combat.legacy.equip(profile.legacy.ticket!.selected);
+        persist(); arena.setPhase('playing');
+      }
+    } else arena.chooseDraft(index);
+  }
 });
 for (const type of ['keydown', 'keyup']) document.querySelector('#draft-panel')!.addEventListener(type, event => {
   if ((event as KeyboardEvent).key === ' ' || (event as KeyboardEvent).key === 'Enter') event.stopPropagation();
@@ -174,8 +197,9 @@ touchControls.onModeChange = () => { renderUI(); game.scale.refresh(); };
 document.querySelector<HTMLSelectElement>('#locale')!.value = profile.settings.locale;
 
 function persist(): void {
+  if (legacyTrial) return;
   saveOK = saveProfile(profile);
-  document.querySelector('#save-status')!.textContent = saveOK ? t('savedLocally') : t('saveUnavailable');
+  document.querySelector('#save-status')!.textContent = legacyTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function renderSettings(): void {
   document.querySelector<HTMLInputElement>('#mute')!.checked = profile.settings.muted;
@@ -185,7 +209,7 @@ function renderSettings(): void {
   const values = [profile.totals.kills, profile.totals.detonations, profile.totals.perfectDodges, profile.totals.victories];
   const targets = [1, 5, 3, 1];
   document.querySelector('#unlock-list')!.innerHTML = UNLOCKS.map((id, index) => `<li class="${profile.unlocks.includes(id) ? 'unlocked' : ''}">${profile.unlocks.includes(id) ? t('unlocked') : `${Math.min(values[index], targets[index])}/${targets[index]}`} · ${t(id)}</li>`).join('');
-  document.querySelector('#save-status')!.textContent = saveOK ? t('savedLocally') : t('saveUnavailable');
+  document.querySelector('#save-status')!.textContent = legacyTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function applySettings(): void {
   game.sound.mute = profile.settings.muted;
@@ -211,7 +235,7 @@ function renderCombatHUD(world: CombatWorld): void {
 }
 
 export const arena = new ArenaScene((phase) => {
-  if (phase === 'playing' && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
+  if ((phase === 'playing' || phase === 'legacy') && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
     hud.reset();
     if (trialBoss) {
       arena.combat.mutations = [...BOSS_PLAYTEST.mutations];
@@ -221,9 +245,12 @@ export const arena = new ArenaScene((phase) => {
       arena.combat.mutations = [...trialBuild!.mutations];
       arena.combat.setCurses([trialBuild!.curse]);
     } else if (!buildTrial) {
-      progression.beginRun();
+      const ticket = beginLegacy(profile.legacy, profile.totals.runs);
+      progression.beginRun(!ticket.started); ticket.started = true;
       arena.run.previousOffers = [...profile.drafts.previous];
     }
+    if (legacyTrial) { const ticket = beginLegacy(profile.legacy, 1); ticket.started = true; }
+    if (profile.legacy.ticket?.selected) arena.combat.legacy.equip(profile.legacy.ticket.selected);
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
@@ -289,7 +316,14 @@ document.querySelector('#build-resume')!.addEventListener('click', () => {
 });
 
 primary.addEventListener('click', () => {
-  arena.setPhase('playing');
+  let phase: Phase = 'playing';
+  if (currentPhase !== 'paused' && (!buildTrial || legacyTrial)) {
+    const ticket = beginLegacy(profile.legacy, profile.totals.runs);
+    persist();
+    arena.run.seedOverride = ticket.seed;
+    if (ticket.offers.length && !ticket.selected) phase = 'legacy';
+  }
+  arena.setPhase(phase);
   primary.blur();
 });
 pause.addEventListener('click', () => {

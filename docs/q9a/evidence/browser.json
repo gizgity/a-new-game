@@ -1,0 +1,51 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "selectionGuard": true,
+    "chooseWith": "tap",
+    "pauseLocaleResume": true,
+    "isolatedSave": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "selectionGuard": true,
+    "chooseWith": "tap",
+    "pauseLocaleResume": true,
+    "isolatedSave": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "selectionGuard": true,
+    "chooseWith": "tap",
+    "pauseLocaleResume": true,
+    "isolatedSave": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "selectionGuard": true,
+    "chooseWith": "keyboard",
+    "pauseLocaleResume": true,
+    "isolatedSave": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "normalFirstRun": true,
+    "emptyPoolNoUnlock": true,
+    "refreshTicketAndRunCountStable": true
+  }
+]

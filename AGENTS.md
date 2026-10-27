@@ -124,3 +124,9 @@ public/assets/
 - Gate: concept → consistency check → user approval → production asset → integration. Không dùng tests/deploy/ảnh sinh thành công thay approval; không đổi style/Bible để hợp thức hóa ảnh lệch.
 - User chốt đổi art direction: cần invocation `$design-decision` và bằng chứng, ghi decision Approved mới trước, rồi mới cập nhật Art Bible đúng scope. Direction approval không tự approve từng artwork. Artwork accepted trước Release được audit trong Bible/index, không DDR.
 - Task Design Memory chỉ docs/skills/reference index; không sửa gameplay/production assets/roadmap, không build/deploy. Ví dụ invocation nằm trong từng SKILL.md, không phải decision/approval thật.
+
+## Checkpoint hiện hành — Q9A
+
+- User ngày2026-10-27 “duyệt dd-0002. bắt đầu triển khai q9a”: DD-0002 Approved — Design Only, contract revision09267ed; mở lại Q9A, supersede các gate lịch sử không mở Q9/Q9A ở trên. Không hủy approval Q2–Q8D, không tự mở Q9B.
+- Contract hiệu lực tại DESIGN_DECISIONS.md DD-0001/DD-0002; implementation/validation và cách thử6Sigil/12Branch tại docs/q9a/README.md, trạng thái tại HANDOFF. Balance tuning chưa approved; Q9A không cấp unlock/reward. Fixture Legacy dùng profile riêng không ghi save thật; không bypass progression production.
+- Sau delivery dừng AWAITING USER PLAYTEST APPROVAL Q9A, kiểm touch và keyboard/mouse riêng; không lấy tests/build/Pages làm experience acceptance. Không đổi artwork production trong Q9A.
