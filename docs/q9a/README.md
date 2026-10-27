@@ -2,6 +2,10 @@
 
 **IMPLEMENTED — AWAITING USER PLAYTEST APPROVAL**. Thiết kế được user duyệt ngày2026-10-27 qua “duyệt dd-0002. bắt đầu triển khai q9a”, [DD-0002](../../DESIGN_DECISIONS.md#dd-0002--elemental-mechanics-contract); approval thiết kế không là nghiệm thu implementation. Giữ DD-0001 và baseline Q2–Q8D, không mở Q9B.
 
+## Delivery
+
+Code `1a08448e40297eb762eb8530f1aeec35a37f7223` đã push main fast-forward. [Pages40428188955](https://github.com/gizgity/a-new-game/actions/runs/40428188955), job121939115034 completed/SUCCESS, gồm build/typecheck/upload/Deploy. [Chơi bản Q9A](https://gizgity.github.io/a-new-game/?v=1a08448). Validation browser/dist là local tested build; không tuyên bố đã xác minh liveHTTP/hash hoặc thiết bị thật từ workflow. Commit bàn giao tiếp theo chỉ Markdown, không redeploy.
+
 ## Implementation
 
 - Catalog data-driven6Sigil/12Branch và tuning tại [config/legacy.ts](../../src/game/config/legacy.ts). [LegacyEffects](../../src/game/LegacyEffects.ts) tách state/logic khỏi scene; combat giữ geometry/damage/death. Chỉ một bộ compatible/run, không cross-element.
@@ -51,7 +55,7 @@ Trang chơi: https://gizgity.github.io/a-new-game/ . Mỗi link fixture dưới 
 
 Thử theo nhóm ngắn; không cần lặp mọi milestone lịch sử:
 
-1. **Fire/Water/Ice:** Basic tích Charged rồi Charged đặt Ignite; đánh Heavy lên Ignite để Furnace hoặc kết liễu để Wildfire. Water dùng Heavy rồi primary để thấy Undertow; né vàng để FlowState hồi Heavy. Ice hit liên tiếp cùng target (có thể xen target khác), sau khi đủ3pips dùng Heavy/Charged lần sau để Shatter/Brittle/Echo. Mong đợi không tự Detonate thêm từ damage phụ, không lan Ignite thế hệ2, không mất cơ chế Rupture cũ.
+1. **Fire/Water/Ice:** Ignite/Frostbite cần mục tiêu sống qua đòn; dùng Bulwark Elite (từ2:05 theo kills, fallback2:30) hoặc Boss để dễ thấy đầy đủ. Charged giết quái thường ngay sẽ không đặt Ignite lên corpse. Basic tích Charged rồi Charged đặt Ignite; đánh Heavy lên Ignite để Furnace hoặc kết liễu để Wildfire. Water dùng Heavy rồi primary để thấy Undertow; né vàng để FlowState hồi Heavy. Ice hit liên tiếp cùng target (có thể xen target khác), sau khi đủ3pips dùng Heavy/Charged lần sau để Shatter/Brittle/Echo. Mong đợi không tự Detonate thêm từ damage phụ, không lan Ignite thế hệ2, không mất cơ chế Rupture cũ.
 2. **Lightning/Shadow:** Dash khi cue vàng/đạn sắp tới để PerfectDodge. Lightning HUD có charge; Charged không tiêu Legacy charge, Basic hit tiêu và chain; ArcRelay thêm1jump, Overclock chỉ nhanh Light/Basic. Shadow mark theo aim, melee kể cả kết liễu vẫn Ambush; Nightfall không nhảy đích/đánh xác, Veilstep không thêm i-frame. Mong đợi không double kill/resource, PD Mutation/Curse vẫn hoạt động.
 3. **Wind:** đi bộ gần enemy tới Momentum≥60 rồi Light; chém hụt vẫn slash khi resolve. Dash/cancel trước resolve/đứng sát tường/pause không farm điểm. Tailwind nhanh tạm thời, Cyclone đẩy common/Elite nhưng không Boss.
 4. **Touch + keyboard/mouse riêng:** chạy ít nhất một bộ trên mỗi thiết bị/input đang dùng; vừa di chuyển vừa bắn, giữ–thả Heavy/Charged, kéo aim touch hoặc manual mouse, pause/resume/Draft/đổi viewport. HUD không che player/cue ởgóc; giữ/thả/cancel không tiêu thêm lượt. Đánh giá readability/precision/responsiveness riêng, ghi nếu chỉ thử một nền tảng.
