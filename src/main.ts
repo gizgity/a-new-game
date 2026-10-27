@@ -74,6 +74,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <div class="setting-controls">
             <label><input id="mute" type="checkbox"><span data-i18n="mute"></span></label>
             <label><span data-i18n="volume"></span><input id="volume" type="range" min="0" max="1" step="0.05"></label>
+            <label><input id="desktop-auto-aim" type="checkbox" aria-describedby="auto-aim-hint"><span data-i18n="desktopAutoAim"></span></label>
+            <label id="auto-aim-priority-row" hidden><span data-i18n="autoAimPriority"></span><select id="auto-aim-priority" aria-describedby="auto-aim-hint"><option value="nearest" data-i18n="autoAimNearest"></option><option value="archer" data-i18n="autoAimArcher"></option><option value="elite" data-i18n="autoAimElite"></option></select></label>
+            <p id="auto-aim-hint" data-i18n="autoAimHint" hidden></p>
             <label><span data-i18n="cosmetic"></span><select id="cosmetic"><option value="mint" data-i18n="mint"></option><option value="prism" data-i18n="prism"></option></select></label>
           </div>
           <p data-i18n="unlockHint"></p><ul id="unlock-list"></ul>
@@ -234,6 +237,10 @@ function persist(): void {
   document.querySelector('#save-status')!.textContent = buildTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function renderSettings(): void {
+  document.querySelector<HTMLInputElement>('#desktop-auto-aim')!.checked = profile.settings.desktopAutoAim;
+  document.querySelector<HTMLElement>('#auto-aim-priority-row')!.hidden = !profile.settings.desktopAutoAim;
+  document.querySelector<HTMLElement>('#auto-aim-hint')!.hidden = !profile.settings.desktopAutoAim;
+  document.querySelector<HTMLSelectElement>('#auto-aim-priority')!.value = profile.settings.autoAimPriority;
   document.querySelector<HTMLInputElement>('#mute')!.checked = profile.settings.muted;
   document.querySelector<HTMLInputElement>('#volume')!.value = String(profile.settings.volume);
   document.querySelector<HTMLOptionElement>('#cosmetic option[value="prism"]')!.disabled = !profile.unlocks.includes('wardenBreaker');
@@ -248,6 +255,8 @@ function applySettings(): void {
   game.sound.mute = profile.settings.muted;
   game.sound.volume = profile.settings.volume;
   arena.cosmetic = profile.settings.cosmetic;
+  arena.desktopAutoAim = profile.settings.desktopAutoAim;
+  arena.autoAimPriority = profile.settings.autoAimPriority;
   arena.run.mutationPool = trialRoute ? MUTATIONS : mutationPool(profile);
   arena.run.cursePool = trialRoute ? CURSES : cursePool(profile);
 }
@@ -381,8 +390,11 @@ document.querySelector<HTMLSelectElement>('#locale')!.addEventListener('change',
   (event.target as HTMLSelectElement).blur();
 });
 
-for (const id of ['mute', 'volume', 'cosmetic']) {
+for (const id of ['mute', 'volume', 'cosmetic', 'desktop-auto-aim', 'auto-aim-priority']) {
   document.querySelector(`#${id}`)!.addEventListener('change', () => {
+    profile.settings.desktopAutoAim = document.querySelector<HTMLInputElement>('#desktop-auto-aim')!.checked;
+    const priority = document.querySelector<HTMLSelectElement>('#auto-aim-priority')!.value;
+    profile.settings.autoAimPriority = priority === 'archer' || priority === 'elite' ? priority : 'nearest';
     profile.settings.muted = document.querySelector<HTMLInputElement>('#mute')!.checked;
     profile.settings.volume = Number(document.querySelector<HTMLInputElement>('#volume')!.value);
     const cosmetic = document.querySelector<HTMLSelectElement>('#cosmetic')!.value;

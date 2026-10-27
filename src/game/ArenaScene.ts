@@ -13,6 +13,7 @@ import { PlayerVisual } from './PlayerVisual';
 import { drawChargedImpact, drawChargedProjectile } from './chargedVfx';
 import type { TouchControls } from '../ui/TouchControls';
 import { ARENA, FIXED_STEP, type PlayerState } from './movement';
+import { autoAimTarget, type AutoAimPriority } from './autoAim';
 import { touchAim } from './touchAim';
 
 export type Phase = 'ready' | 'legacy' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
@@ -30,6 +31,8 @@ export class ArenaScene extends Phaser.Scene {
   private resultVisual!: RunResultVisual;
   victoryRevealing = false;
   cosmetic: 'mint' | 'prism' = 'mint';
+  desktopAutoAim = false;
+  autoAimPriority: AutoAimPriority = 'nearest';
   private meleeHeld = false;
   private shootHeld = false;
   private vessel!: PlayerVisual;
@@ -92,7 +95,9 @@ export class ArenaScene extends Phaser.Scene {
         if (!this.armedSpecials.delete(action) || this.phase !== 'playing') return;
         const pointer = this.input.activePointer;
         const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
-        this.releaseAim[action] = Math.atan2(point.y - this.player.y, point.x - this.player.x);
+        const target = !this.touch.enabled && this.desktopAutoAim
+          ? autoAimTarget(this.player, this.combat.enemies, this.autoAimPriority) : undefined;
+        this.releaseAim[action] = Math.atan2((target ?? point).y - this.player.y, (target ?? point).x - this.player.x);
         this.pressed.add(action);
       });
     }
@@ -198,16 +203,13 @@ export class ArenaScene extends Phaser.Scene {
       return;
     }
 
-    const pointer = this.input.activePointer;
     const touch = this.touch.sample();
     if (this.touch.enabled && !this.combat.bossTransforming) {
       this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
       this.reticle.setPosition(this.player.x + Math.cos(this.player.angle) * 100,
         this.player.y + Math.sin(this.player.angle) * 100);
-    } else if (!this.combat.bossTransforming && this.input.isOver && !pointer.wasTouch) {
-      this.cameras.main.getWorldPoint(pointer.x, pointer.y, this.aim);
-      this.player.angle = Math.atan2(this.aim.y - this.player.y, this.aim.x - this.player.x);
-      this.reticle.setPosition(this.aim.x, this.aim.y);
+    } else if (!this.combat.bossTransforming && this.input.isOver && !this.input.activePointer.wasTouch) {
+      this.updateDesktopAim();
     }
     // Giới hạn catch-up; mọi cooldown và AI dùng cùng simulation 60Hz.
     this.accumulator += Math.min(delta / 1000, 0.1);
@@ -215,6 +217,7 @@ export class ArenaScene extends Phaser.Scene {
       // Capture once per tick, including hitstop; CombatWorld buffers intent for 120ms.
       const touch = this.touch.sample();
       if (this.touch.enabled && !this.combat.bossTransforming) this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
+      else if (!this.touch.enabled && !this.combat.bossTransforming && this.input.isOver && !this.input.activePointer.wasTouch) this.updateDesktopAim();
       const input = {
         dx: touch.dx || Number(this.keys.D.isDown) - Number(this.keys.A.isDown),
         dy: touch.dy || Number(this.keys.S.isDown) - Number(this.keys.W.isDown),
@@ -250,6 +253,15 @@ export class ArenaScene extends Phaser.Scene {
     this.onCombatChange(this.combat);
     this.vessel.render(this.combat, this.cosmetic);
     if (this.run.result) this.vessel.finish();
+  }
+
+  private updateDesktopAim(): void {
+    const pointer = this.input.activePointer;
+    this.cameras.main.getWorldPoint(pointer.x, pointer.y, this.aim);
+    const target = this.desktopAutoAim ? autoAimTarget(this.player, this.combat.enemies, this.autoAimPriority) : undefined;
+    const point = target ?? this.aim;
+    this.player.angle = Math.atan2(point.y - this.player.y, point.x - this.player.x);
+    this.reticle.setPosition(point.x, point.y);
   }
 
   private drawCombat(): void {

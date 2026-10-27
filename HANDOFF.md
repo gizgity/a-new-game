@@ -10,12 +10,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q9B — Victory Rewards & Legacy Progression đã được user nghiệm thu ngày2026-10-27 qua “duyệt 9b xong”; lượt hiện tại chỉ ghi nhận approval. Scope đã triển khai: 2Sigil ở Victory đầu;1unlock mới ở Victory sau,5/3/2 RNG/pity/dependency; versioned save/migration/pending/idempotency/debug isolation; ticket lifecycle/collection/reveal vi-en mobile/desktop; tests/typecheck/build/Pages/commit/push. Giữ toàn bộ balance/combat Q9A accepted, không artwork/Anomaly combat/Ascension/Cosmetic/reaction; khôngQ9C.
+Auto Aim desktop theo yêu cầu27/10: toggle trong Settings, mặc định OFF; bật mới hiện chọn quái gần/Archer/Elite(Boss). Acceptance: Rupture → nhóm chọn → quái gần nhất; nearest trong mỗi nhóm, bỏ dead/coincident, không target thì ngắm chuột; lưu/validate setting, vi/en, Heavy/Charged giữ-thả/cancel/fresh-press giữ nguyên, touch không đổi. Build/typecheck, focused tests và browser desktop/touch; deploy theo quyền repo, không mở Q9C.
+
+## AUTO AIM STATUS
+Implementation hoàn tất: selector Rupture→option→nearest, desktop reticle + tick aim + Heavy/Charged release; toggle OFF mặc định/ẩn dropdown khi OFF, vi/en và save v2 allowlist. Đồng bộ remote39e9025, giữ toàn bộ Q9B accepted/save journal; không Q9C.
+- PASS build/typecheck,22testfiles, browser1440desktop/390touch fixture: Settings bật/ẩn/vi-en/refresh, priority tier/reticle hướng, Heavy/Charged hold-release và pause cancel, touch không đổi; không pageerror. Browser loop dừng để đo hướng/input event, không natural run/deviceFPS. Chi tiết/cách thử [docs/auto-aim/README.md](docs/auto-aim/README.md). Chưa user playtest/thiết bị thật/iOS/Safari. Warning Phaser chunk có sẵn.
+- Đang commit/push/Pages theo quyền repo. AWAITING USER PLAYTEST APPROVAL cho Auto Aim; giữ toàn bộ approval Q9A/Q9B/mobile cũ.
 
 ## Q9B STATUS
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C.
 
 Code `c0a8247` đã push main fast-forward; [Pages40444521840](https://github.com/gizgity/a-new-game/actions/runs/40444521840), job121992491794 completed/SUCCESS gồm build/typecheck/upload/Deploy. [Chơi Q9B](https://gizgity.github.io/a-new-game/?v=c0a8247). Chưa xác minh liveHTTP/hash từ môi trường. Commit bàn giao sau chỉMarkdown, không redeploy. Chi tiết [docs/q9b/README.md](docs/q9b/README.md).214tests PASS; build/typecheck PASS;4viewports browser normal flow PASS; failure-injection UI/pending refresh/Victory thứ2 PASS. User đã nghiệm thu Q9B; giới hạn coverage kỹ thuật/thiết bị thật giữ nguyên. Giữ các approval lịch sử bên dưới; gate khôngQ9B được user supersede bằng taskQ9B hiện tại.
+
 
 ## MOBILE LAYOUT STATUS
 - User xác nhận rõ **“Cho phép push và deploy”** cho follow-up Shoot72/Melee76/header40. Đã fetch remote, push fast-forward code3b726e9/bàn giaoe1edd63; [Pages40438958223](https://github.com/gizgity/a-new-game/actions/runs/40438958223) job121974380153 completed/SUCCESS, gồm build/typecheck/upload/Deploy. Link thử https://gizgity.github.io/a-new-game/?v=e1edd63 . Approval blocker cũ đã được giải quyết bằng xác nhận trực tiếp của user; không còn chờ quyền deploy. Chưa xác nhận liveHTTP/hash từ môi trường. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -98,8 +104,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Chờ task mới hoặc feedback cụ thể của user. Q9B đã accepted; checklist docs/q9b giữ làm tham chiếu cho issue sau, không yêu cầu nghiệm thu lại. Không tự mở Q9C hoặc tuning Q9A.
-
+Theo dõi Pages cho Auto Aim tới kết thúc, rồi bàn giao link thử. User thử Settings bật Auto Aim→Archer/Elite, tạo Rupture rồi giữ bắn/thả E hoặc Shift: ưu tiên dấu trước, hết dấu về nhóm chọn, thiếu nhóm về nearest; pause khi giữ phải hủy, tắt về chuột và refresh giữ setting. Chưa tự nghiệm thu; không mở Q9C.
 ## VALIDATION APPROVAL Q9B
 Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.
 

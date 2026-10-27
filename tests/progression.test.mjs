@@ -30,3 +30,20 @@ test('four lifetime goals unlock choices/cosmetic without adding permanent stats
  assert.equal(profile.totals.kills,3);assert.equal(profile.totals.victories,1);assert.equal(profile.totals.runs,2);
  assert.deepEqual(Object.keys(profile).sort(),['drafts','legacy','settings','totals','unlocks','version']);
 });
+test('desktop auto aim defaults OFF for old saves, validates preferences and persists both settings', () => {
+  const old = validateProfile({ version: 1, settings: { locale: 'en' } });
+  assert.equal(old.settings.desktopAutoAim, false);
+  assert.equal(old.settings.autoAimPriority, 'nearest');
+  const invalid = validateProfile({ version: 1, settings: { desktopAutoAim: 'true', autoAimPriority: 'boss' } });
+  assert.equal(invalid.settings.desktopAutoAim, false);
+  assert.equal(invalid.settings.autoAimPriority, 'nearest');
+  const stored = new Map();
+  const storage = { getItem: key => stored.get(key) ?? null, setItem: (key, value) => { stored.set(key, value); } };
+  for (const priority of ['nearest', 'archer', 'elite']) {
+    const profile = defaultProfile();
+    profile.settings.desktopAutoAim = true;
+    profile.settings.autoAimPriority = priority;
+    assert.equal(saveProfile(profile, storage), true);
+    assert.deepEqual(loadProfile(storage).settings, profile.settings);
+  }
+});
