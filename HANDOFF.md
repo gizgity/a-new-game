@@ -13,6 +13,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Follow-up mobile ngày2026-10-27: chỉ đưa2light attack Shoot/Melee về kích thước cũ72/76px và thu header thêm44→40px. Acceptance: nút phụ/controls lane giữ nguyên,2light không chồng nhau, icon language/pause/resume còn hoạt động; build/typecheck và browser4viewports, deploy. Không đổi gameplay/Q9A accepted hoặc mở Q9B.
 
 ## MOBILE LAYOUT STATUS
+- Follow-up đã commit local3b726e9, chưa push/deploy: automatic approval review từ chối publication main vì latest trusted request chưa cấp quyền cho lượt deploy mới, dù request có dẫn quyền cũ AGENTS89–90. Không bypass hoặc retry cùng bằng chứng. Runtime/build/browser PASS; chờ user cho phép push/deploy cụ thể bản Shoot72/Melee76/header40. Bản live vẫn9c5666b; commit handoff sau chỉ documentation.
 - Follow-up mới: counter-scale riêng Shoot/Melee về72/76px trong parent75%, dịch từng nút±10.5screenpx theo chiều dọc để giữ gap11.5px, không chồng nhau; icon light cũng về38px. Bốn nút phụ giữ nguyên bounding rect so9c5666b. Header40px/icon20px/brand24px, lane216px giữ nguyên. PASS build/typecheck và browser320/390/844touch+1440desktop (geometry/nooverflow/pause-locale-resume/CDPhold-release-cancel). Screenshot/checks đã cập nhật, chưa kiểm thiết bị thật; không chạy lại gameplay suite vì chỉ CSS. Đang commit/push/Pages follow-up; số44px và scale cả6nút dưới đây là baseline lượt trước.
 - Concept đã duyệt qua “oki, thu nhỏ header ở mobile luôn, chỉ giữ lại icon là được”: `/workspace/generated_images/exec-c2875c60-87ae-42bc-a40f-81db3d3874c1.png`; [prompt/provenance](docs/mobile-layout-concept.md). User bác bản dịch Dash; chỉ scale toàn cụm75%, không chuyển Dash.
 - Đã đồng bộ remote main9db8191; giữ toàn bộ Q9A accepted/legacy indicator. Implementation: transform toàn cụm75% giữ offset, Dash45px vẫn dưới Heavy; lane portrait216px/joystick204px, ring78px. Header mobile44px icon-only; language giữ native select44px, pause/resume có aria-label/title vi/en và icon theo phase. Desktop header giữ100px. Portrait arena tăng84px (68controls+16header); landscape header giảm4px, giữ side lanes.
@@ -91,7 +92,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9A — Elemental Legacy Core | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9a, nếu cần cân bằng sẽ mở issue mới” ngày2026-10-27 trên1a08448; Pages40428188955 SUCCESS; balance theo issue mới, không Q9B |
 
 ## NEXT ACTION
-Chờ user thử layout mobile9c5666b theo scope ở trên; chỉ xử lý feedback được giao. Q9A vẫn accepted, balance theo issue mới; không tự tune hoặc mở Q9B/checkpoint tiếp theo.
+Chờ user cho phép push/deploy follow-up Shoot72/Melee76/header40 sau khi auto-review chặn publication main; sau khi được phép, push fast-forward và theo dõi Pages rồi bàn giao cách thử. Q9A vẫn accepted, không tự tune hoặc mở Q9B.
 
 ## VALIDATION APPROVAL Q9A
 Chỉ sửa4Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9a/README), kiểm nguồn/version/consistency/links/diff; không đổi runtime/DDR/balance/artwork, không tests/build/deploy. Kết quả kỹ thuật và Pages1a08448 giữ nguyên.
