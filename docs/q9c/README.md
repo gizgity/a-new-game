@@ -56,4 +56,4 @@ Preset độc lập mở tại2:14, bỏ các Draft/Elite đã qua để vào t�
 
 ## Delivery
 
-Đang hoàn tất kiểm tra và deploy qua workflow Pages hiện hữu; trạng thái/hash sẽ cập nhật sau khi workflow kết thúc. Dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.
+Code `a489279` đã push main fast-forward. [Pages40460402265](https://github.com/gizgity/a-new-game/actions/runs/40460402265), job122043367885 completed/SUCCESS gồm build/typecheck/upload/Deploy. [Chơi Q9C](https://gizgity.github.io/a-new-game/?v=a489279). Chưa xác minh liveHTTP/hash từ môi trường; dist/hash là preview local. Commit bàn giao tiếp theo chỉMarkdown, không redeploy. Dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.

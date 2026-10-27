@@ -13,11 +13,11 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Q9C — Arena Anomalies theo user27/10. Goal: run#1 không Anomaly; run#2+ chọn1/2offer tại~2:15, dùng Run Ticket/anti-repeat, pause/queue không chồng Draft/encounter/menu;6benefit+drawback tunable, telegraph/counterplay, save/unlock Q9B. Giữ Q9A/Q9B accepted, toàn bộ balance/progression/input/art ngoài scope. Acceptance: focused6Anomaly + interactions/reset/queue/ticket, typecheck/build/regression/mobile-desktop, docs/commit/push/Pages; dừng AWAITING USER PLAYTEST APPROVAL, không Q9D.
 
 ## Q9C STATUS
-**AWAITING USER PLAYTEST APPROVAL** — implementation/validation hoàn tất, đang commit/push/Pages, không Q9D. Baseline origin/main278f439 đã fast-forward; Q9A/Q9B accepted giữ nguyên.
+**AWAITING USER PLAYTEST APPROVAL** — implementation/validation/deploy hoàn tất; chờ user duyệt, không Q9D. Baseline origin/main278f439 đã fast-forward; Q9A/Q9B accepted giữ nguyên.
 - Đủ6benefit/drawback, tunableconfig riêng, không tuning baseline/artwork/dependency/framework. Ticket RNG/offers/choice giữ Restart/refresh; run#1 khôngAnomaly, run#2+~135s, hàng đợi Draft/encounter/menu, phase/input guard/vi-en/HUD/details/save retry. Dynamic outlines/bolt/relayline hợp lệ, không thay artwork chuẩn hoặc tự gán visual approval.
 - PASS236tests (18Q9C), build/typecheck;108loadout+72build/Curse subcases,8kseed;28bot runs kết thúc hợp lệ≤300s/24offers đúng135s, không dùng bot tự cân bằng. [Spec/config/evidence/checklist](docs/q9c/README.md). Browser320/390/844touch+1440desktop,6fixture×2platform/crowd24/4góc/refresh/save error; input390CDP/1440keyboard-mouse Heavy hold-release/move+Basic/Charged cancel-fresh/pause-locale-resume PASS. Dist production6×2platform PASS, kèm hash bundle tại docs/q9c/evidence/dist.json. Fixtures/bot/softwareWebGL không là human/device/iOS/Safari/FPS/latency/thermal/audio acceptance.
 - Cách thử: normal run#2 đến2:15, chọn1/2 và thử refresh cùngchoice;6link `?playtest=anomaly-<ID>` trong docs/q9c mở2:14, chọn card đầu sau1s, profile memory riêng không cấp unlock thật. Storm/Ground né vòng; Blood Light3; Static Perfect/tiaArcher; Seal Heavy rồi đổi mục tiêu khi khungcyan; Echo mark2nhóm/nối xa/né phản công. Touch+keyboard cần dễ đọc khi đông/Boss, không lẫn nút hoặc kẹt input; phản hồi Anomaly/bước/quan sát/thiết bị-browser.
-- Q9C tuning provisional, chưa approved balance; DDR DD-0001/0002 giữ nguyên. Không tự accepted/Q9D. Delivery sẽ cập nhật SHA/Pages sau khi hoàn tất.
+- Q9C tuning provisional, chưa approved balance; DDR DD-0001/0002 giữ nguyên. Không tự accepted/Q9D. Code `a489279` đã push main fast-forward; [Pages40460402265](https://github.com/gizgity/a-new-game/actions/runs/40460402265), job122043367885 completed/SUCCESS (build/typecheck/upload/Deploy). [Chơi Q9C](https://gizgity.github.io/a-new-game/?v=a489279). Chưa xác minh liveHTTP/hash từ môi trường; preview dist/hash PASS không thay live verification. Commit bàn giao sau chỉMarkdown, không redeploy.
 
 ## AUTO AIM STATUS
 Implementation hoàn tất: selector Rupture→option→nearest, desktop reticle + tick aim + Heavy/Charged release; toggle OFF mặc định/ẩn dropdown khi OFF, vi/en và save v2 allowlist. Đồng bộ remote39e9025, giữ toàn bộ Q9B accepted/save journal; không Q9C.
@@ -112,7 +112,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Push/deploy Q9C qua Pages và cập nhật delivery; sau SUCCESS dừng chờ user playtest Q9C theo checklist docs/q9c, không Q9D.
+Chờ user playtest Q9C trên Pagesa489279 theo checklist docs/q9c (6preset độc lập hoặc normal run#2 đến2:15). Chỉ xử lý feedback được giao; giữ AWAITING USER PLAYTEST APPROVAL, không tự accepted/tune/Q9D.
 
 ## VALIDATION APPROVAL Q9B
 Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.
