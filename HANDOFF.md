@@ -15,7 +15,7 @@ Auto Aim desktop theo yêu cầu27/10: toggle trong Settings, mặc định OFF;
 ## AUTO AIM STATUS
 Implementation hoàn tất: selector Rupture→option→nearest, desktop reticle + tick aim + Heavy/Charged release; toggle OFF mặc định/ẩn dropdown khi OFF, vi/en và save v2 allowlist. Đồng bộ remote39e9025, giữ toàn bộ Q9B accepted/save journal; không Q9C.
 - PASS build/typecheck,22testfiles, browser1440desktop/390touch fixture: Settings bật/ẩn/vi-en/refresh, priority tier/reticle hướng, Heavy/Charged hold-release và pause cancel, touch không đổi; không pageerror. Browser loop dừng để đo hướng/input event, không natural run/deviceFPS. Chi tiết/cách thử [docs/auto-aim/README.md](docs/auto-aim/README.md). Chưa user playtest/thiết bị thật/iOS/Safari. Warning Phaser chunk có sẵn.
-- Code `bd82bb7` đã commit local, chưa push/deploy. Auto-review REJECTED `git push origin HEAD:main`: cập nhật default main kích hoạt deployment, user giao Auto Aim chưa explicitly authorize push/deploy cho task này; không bypass. Đã hỏi user quyền push/deploy, chờ trả lời. Build/typecheck/tests/browser PASS trên code này. AWAITING DEPLOY AUTHORIZATION, sau deploy mới bàn giao playtest; giữ approval Q9A/Q9B/mobile cũ.
+- User xác nhận “deploy đi” ngày2026-10-27: quyền push/deploy Auto Aim đã được cấp rõ sau auto-review rejection cũ. Code `bd82bb7` + handoff `45684ed`; fetch remote không có thay đổi mới. Build/typecheck/tests/browser PASS giữ nguyên, chưa thay runtime. Đang push fast-forward và theo dõi Pages; sau đó AWAITING USER PLAYTEST APPROVAL riêng Auto Aim, giữ approval Q9A/Q9B/mobile cũ.
 
 ## Q9B STATUS
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C.
@@ -104,7 +104,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Chờ user xác nhận push/deploy Auto Aim (auto-review đã chặn); khi có quyền, fetch remote, bảo toàn thay đổi mới, push bd82bb7 và commit handoff fast-forward rồi theo dõi Pages tới kết thúc, bàn giao link thử. User thử Settings bật Auto Aim→Archer/Elite, tạo Rupture rồi giữ bắn/thả E hoặc Shift: ưu tiên dấu trước, hết dấu về nhóm chọn, thiếu nhóm về nearest; pause khi giữ phải hủy, tắt về chuột và refresh giữ setting. Chưa tự nghiệm thu; không mở Q9C.
+User đã xác nhận deploy; push fast-forward và theo dõi Pages tới kết thúc, bàn giao link thử. User thử Settings bật Auto Aim→Archer/Elite, tạo Rupture rồi giữ bắn/thả E hoặc Shift: ưu tiên dấu trước, hết dấu về nhóm chọn, thiếu nhóm về nearest; pause khi giữ phải hủy, tắt về chuột và refresh giữ setting. Chưa tự nghiệm thu; không mở Q9C.
 ## VALIDATION APPROVAL Q9B
 Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.
 
