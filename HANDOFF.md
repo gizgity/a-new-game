@@ -1,7 +1,7 @@
 # HANDOFF
 
 ## PROJECT GOAL
-Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, mobile-first trên browser (điện thoại dọc/ngang, tablet), vẫn chơi được trên desktop, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
+Xây dựng game HTML5 action roguelike hoàn chỉnh ở quy mô MVP, mobile-first + desktop-equivalent trên browser (điện thoại dọc/ngang, tablet và desktop keyboard/mouse), cùng gameplay depth, combat precision và visual quality, combat nhanh, chính xác, melee/ranged synergy, chain reaction, Curse, Adaptive Evolution và run 5 phút có Boss. Ưu tiên free-tier, KISS, hiệu năng và khả năng mở rộng vừa đủ.
 
 ## TASK GOAL
 Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và triển khai tuần tự một bản game playable.
@@ -10,14 +10,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Complete Elemental Mechanics Contract — documentation only, user giao ngày 2026-10-26. Acceptance: đối chiếu DD-0001/combat hiện tại; soạn contract Proposed 6 Sigil/12 Branch đủ trigger/target/effect/consumption/stacking/CD/origin/Boss–Elite; chỉ rõ quyết định còn cần user duyệt; kiểm diff/links và commit/push. Không implementation, không mở lại Q9A, không deploy.
+Revise DD-0002 Mechanics Contract — docs only, user giao ngày2026-10-27. Acceptance: sửa P1 proc synergy/root budget và lethal Ambush; đồng bộ Ice/Wind/Water/Wildfire/P1–P8; thêm tiêu chuẩn chung mobile-first + desktop-equivalent/acceptance riêng vào GAME_BRIEF và liên kết AGENTS; kiểm consistency/diff/links, commit/push nhánh docs hiện tại. Không runtime/artwork/balance/build/deploy hoặc mở lại Q9A.
 
 ## ELEMENTAL CONTRACT STATUS
-- **DRAFT COMPLETE — AWAITING USER DESIGN REVIEW**: [DD-0002 candidate](docs/design-drafts/DD-0002-elemental-mechanics-proposed.md), Proposed ngoài DDR. Skill design-decision bước3 không cho tự thiết kế/duyệt/append khi thiếu nguồn kết luận; bước4 cho phép user chốt Proposed. Chi tiết agent bổ sung chưa được xác nhận nên dùng fallback draft riêng user cho phép, không ghi Approved/không append registry. ID dự kiến chưa giữ chỗ; DD-0001 giữ nguyên, ID registry tiếp theo vẫn DD-0002.
-- Hướng 6 cơ chế user nêu được quote trong draft; lựa chọn cụ thể Proposed tại P1–P8: isolation proc/on-kill; Fire truyền một thế hệ/consume; Water knockback/refund; Lightning consume/haste; Ice consecutive/Brittle; Shadow target/Veilstep; Wind walk/slash; haste/CC safety. Tất cả damage/duration/CD/range và cap tuning vẫn TBD.
-- Audit trên main `9b1f988`: Heavy hồi từng charge, Static Riposte charge riêng, Detonation Specialist fracture, hitEnemy/fire/explosion proc hooks, Boss transform freeze/Elite resistance, Light pose/cadence và Kinetic Battery. Chưa sửa runtime/Art Bible/roadmap/DDR.
-- Phần nền Q9A commit `2868f77` đã push riêng nhánh `q9a-elemental-legacy`: catalog/RNG/ticket chưa nối combat/UI, tests19files/build/typecheck PASS từ lượt trước; chưa nghiệm thu. Nhánh docs hiện tại tạo từ main, không merge phần nền đó. User đã dừng implementation Q9A cho task contract này; không tự resume sau khi draft xong/được duyệt.
-- Validation lượt này: kiểm đủ18mục với các trường contract, links local, DDR byte-identical và diff chỉ Markdown. Không tests/build/deploy theo quy tắc docs-only. Sau commit/push dừng chờ user review; acceptance gameplay/visual vẫn riêng.
+
+- **DRAFT REVISED — Proposed — Awaiting User Approval**: [DD-0002 candidate](docs/design-drafts/DD-0002-elemental-mechanics-proposed.md), revision2026-10-27 từ draft07db39c. Ngoài DDR; DD-0001 giữ nguyên, DD-0002 chưa cấp/giữ chỗ. Chưa Approved, chưa gameplay acceptance.
+- P1 sửa theo user: Legacy direct/DoT/chain/secondary kill có on-kill Mutation/Curse hợp lệ, root ID/origin/ownership kế thừa, dedup death/proc, shared bounded offspring/depth + native guards/CD/caps. Giữ Surge, kill count/Boss slain, Volatile death bắt buộc và Rupture queue/relay cũ; không mở quyền on-hit primary giả cho Legacy. Root legacy budget không giảm/cắt native queue.
+- Shadow lethal marked melee vẫn Ambush thành công/consume mark một lần; Nightfall nhận event theo CD rồi hủy nếu corpse/range sai, không retarget/duplicate kill/reward. Ice theo target window, Wind miss slash chỉ consume ở resolve, Undertow primary-on-Soaked/CD target, Wildfire một thế hệV1 có thể tuning qua playtest được ghi rõ; P1–P8 đã đồng bộ.
+- [GAME_BRIEF](GAME_BRIEF.md#mobile-first--desktop-equivalent--tiêu-chuẩn-chung) và AGENTS bổ sung tiêu chuẩn chung cả game: ngang hàng depth/precision/visual, cùng luật, assistance không quyết chiến thuật; acceptance riêng touch và keyboard/mouse. Không tự gán desktop/mobile PASS; giữ approval Q2–Q8D và giới hạn device coverage cũ.
+- Còn TBD/chờ duyệt: giá trị damage/duration/CD/range/root budget/depth/caps; lựa chọn chi tiết consume/target/haste/Brittle tại P2–P8; ngưỡng performance/latency/device matrix theo milestone. Chỉ thị revision cụ thể không là approval toàn contract.
+- Audit combat main9b1f988: Blood Reclaimer marked/root.marked, Hunted CD, Death Echo/root.echoCap, kill/Surge/Volatile trong hitEnemy; relay pending/seeded/healed guards và quota defer của resolveExplosions; snapshot/CD và Boss/Elite rules giữ nguyên trong draft. Không sửa implementation.
+- Nền Q9A2868f77 vẫn riêng nhánh `q9a-elemental-legacy`, chưa merge/nối combat/UI/acceptance; test19files/build PASS là kết quả lượt trước, không là validation task docs này. Nhánh docs chỉ sửa Markdown; user yêu cầu không resume Q9A sau draft.
+- Validation lượt này: đủ6Core/12Branch/các trường contract, local links, kiểm mâu thuẫn on-kill/Shadow/P1–P8 và platform rules, diff chỉ4Markdown, DDR byte-identical. Không tests/build/deploy. Sau commit/push dừng chờ user duyệt DD-0002.
 
 ## DEPLOY FOLLOW-UP
 User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forbidden; rerun40360458461/attempt2 build/typecheck PASS nhưng Deploy fail vì2artifact cùng tên github-pages. Sửa workflow tối thiểu dùng tên artifact theo run_id/run_attempt cho upload và deploy; không thay game/assets. Đã push cf95428 lên main; Pages40364932127/job121719944587 completed/SUCCESS gồm build/typecheck/upload/Deploy. URL https://gizgity.github.io/a-new-game/?v=cf95428 . Livecurl proxy CONNECT403 nên không xác nhận liveHTTP từ môi trường này; không giả thành PASS. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -80,7 +84,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 
 ## NEXT ACTION
-Chờ user review contract draft, xác nhận/đổi P1–P8 và invocation `$design-decision` với version/nội dung/trạng thái muốn ghi. Khi được giao ghi DDR phải đọc lại registry để cấp ID thật, không sửa lịch sử hoặc tự nâng Proposed thành Approved. Không mở lại Q9A/Q9B hoặc deploy trong lúc chờ.
+Chờ user duyệt DD-0002 revision2026-10-27, xác nhận/đổi các chi tiết còn chờ tại P1–P8 và invocation `$design-decision` với version/nội dung/trạng thái muốn ghi. Khi được giao ghi DDR phải đọc lại registry để cấp ID thật, không sửa lịch sử hoặc tự nâng Proposed thành Approved. Không mở lại Q9A/Q9B hoặc deploy trong lúc chờ.
 
 ## VALIDATION LƯỢT APPROVAL
 Chỉ đồng bộ Markdown sau xác nhận “q8d đạt”; kiểm diff/tính nhất quán, không đổi runtime hoặc chạy lại tests/build/deploy. Kết quả kỹ thuật và Pages của cbdb131 giữ nguyên.

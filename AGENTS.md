@@ -24,6 +24,12 @@
 - Không tự thêm tính năng ngoài scope, không sửa/refactor phần không liên quan.
 - Mỗi milestone phải giữ game chạy được.
 
+## Tiêu chuẩn nền tảng chung
+
+- **Mobile-first + Desktop-equivalent**: cùng gameplay depth, combat precision và visual quality; desktop không là nền tảng phụ. Áp dụng [tiêu chuẩn chung/acceptance riêng touch và keyboard–mouse](GAME_BRIEF.md#mobile-first--desktop-equivalent--tiêu-chuẩn-chung).
+- Chung damage/RNG/cooldown/i-frame/enemy AI/Boss timing; khác layout/input assistance theo contract đã duyệt, không thay luật/difficulty theo thiết bị. Assistance hỗ trợ thao tác, không tự giải quyết quyết định chiến thuật.
+- Kiểm riêng responsiveness, camera/HUD, telegraphs, target selection, VFX/readability và input precision trên mỗi nền tảng; không suy desktop đạt từ game boot hoặc mobile PASS. Giữ approval cũ và ghi rõ phần kỹ thuật/device/user playtest chưa kiểm; yêu cầu chung không tự cấp phép đổi runtime/artwork hoặc mở milestone.
+
 ## Tổ chức source code
 Cấu trúc tham chiếu; chỉ tạo thư mục/file khi thực sự cần, không scaffold trước toàn bộ cây:
 

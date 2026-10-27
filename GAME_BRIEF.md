@@ -6,7 +6,7 @@
 
 ## Mục tiêu và phạm vi
 - Chưa chốt tên chính thức. `cursebreak` chỉ là codename nội bộ, không dùng làm thương hiệu public.
-- Top-down 2D action roguelike trên browser, **mobile-first** (điện thoại dọc/ngang và tablet), vẫn hỗ trợ desktop keyboard/mouse; một arena duy nhất.
+- Top-down 2D action roguelike trên browser, **mobile-first + desktop-equivalent** (điện thoại dọc/ngang, tablet và desktop keyboard/mouse), cùng gameplay depth, combat precision và visual quality; một arena duy nhất.
 - Hybrid: fast-paced với quái thường, precision combat với Elite/Boss; skill/build khoảng 50/50.
 - Ưu tiên playable, combat feel, hiệu năng; free/open-source first và KISS.
 
@@ -21,8 +21,41 @@
 - Build/unit tests chỉ xác nhận phần kỹ thuật. Experience acceptance cần playtest và bằng chứng hình ảnh phù hợp; visual chưa được người dùng xác nhận phải ghi **AWAITING VISUAL APPROVAL**, không tự accepted.
 - Các quality checkpoint giữ nguyên quyết định đã khóa và giới hạn MVP; không thêm nội dung để thay thế việc cải thiện chất lượng.
 
+## Mobile-first + Desktop-equivalent — tiêu chuẩn chung
+
+Yêu cầu chung user giao ngày2026-10-27 trong task “Revise DD-0002 Mechanics Contract”, hội thoại hiện tại không có permalink. Áp dụng toàn game và mọi checkpoint tiếp theo; không tự mở milestone, đổi artwork/runtime hoặc gán experience acceptance mới. Các approval trước đây giữ nguyên cùng giới hạn coverage đã ghi.
+
+- Mobile-first là thiết kế touch/layout/readability từ đầu. Desktop là nền tảng ngang hàng về chiều sâu gameplay, độ chính xác combat và chất lượng visual; không coi desktop đạt chỉ vì game chạy được, không phóng to UI mobile máy móc.
+- Dùng cùng một bộ luật gameplay, content/progression, damage, RNG, cooldown, i-frame, enemy AI, Boss timing và proc safety trên mọi nền tảng. Không âm thầm dễ hóa mobile hoặc làm khó desktop. Cùng input combat tương đương/seed/state phải cho kết quả simulation tương đương; cách nhập/aim trợ giúp có thể khác theo contract điều khiển đã duyệt.
+- Mobile: multi-touch thuận tay, auto-aim theo contract hiện hành và manual override rõ, hit areas phân biệt, safe-area/viewport động, HUD không che combat; crowd/telegraph/VFX đọc được và performance phù hợp màn hình nhỏ.
+- Desktop: WASD/keyboard + mouse precision/manual aim, phản hồi input tức thời trong simulation/cadence hiện hữu, pointer-to-world đúng khi resize/camera follow; HUD/layout tận dụng màn hình lớn, không thêm deadzone/delay touch hoặc overlay controls vô ích lên keyboard/mouse.
+- Accessibility/aim assistance hỗ trợ thao tác, không tự giải quyết lựa chọn chiến thuật: không tự chọn build, tài nguyên cần tiêu, thời điểm ra đòn/Dash, Perfect Dodge hay target ngoài quy tắc aim đã duyệt. Không sửa hitbox/range/timing hoặc enemy AI theo loại thiết bị.
+- Responsive camera, HUD, telegraphs, target selection, VFX và readability phải được kiểm riêng cả hai nền tảng, gồm crowd/Boss và player ở4góc; cùng geometry thật, hierarchy visual đã duyệt. Tối ưu render phù hợp thiết bị không được giấu cue quan trọng hoặc làm mất tương quan màu/shape/readability.
+
+### Acceptance — mobile touch
+
+Chưa tự PASS từ yêu cầu này; kiểm khi user giao implementation/milestone tương ứng:
+
+- Portrait320/390, landscape844 và tablet theo viewport tham chiếu, có safe-area/resize/orientation change: HUD/controls/menu/Draft/results không che target/telegraph, không clip/overflow hoặc khóa cuộn overlay; touch targets tối thiểu44CSSpx theo contract đã có.
+- Vừa di chuyển vừa combat bằng multi-touch; auto-aim nearest living và kéo manual override đúng, chém/bắn giữ lặp, Heavy/Charged giữ–thả dùng đúng một lượt khi hợp lệ. Thả/cancel/blur/pause/Draft/rotate không kẹt input, không tiêu resource ngoài ý muốn; fresh press sau transition như guard hiện hữu.
+- Camera/bounds/player4góc, crowd, Rupture relay, Legacy VFX và Boss preparation→attack→recovery/transform đọc rõ ở world scale; input/target selection và feedback khớp trạng thái/resource thật.
+- Có báo cáo responsiveness/performance và cảm giác thao tác trên thiết bị/browser thử thật, ghi model/browser/viewport, tình huống và giới hạn coverage. Emulation chỉ là evidence kỹ thuật; không thay touch playtest, Safari/iOS hoặc user experience approval.
+
+### Acceptance — desktop keyboard/mouse
+
+Chưa tự PASS vì game boot hoặc mobile đã đạt:
+
+- Viewport desktop1440 và cửa sổ nhỏ/resized: HUD/layout tận dụng không gian desktop, chữ/resource/target/cue đọc rõ; không kéo giãn nút mobile lên, không overlay canvas/cắt panel. Kiểm camera follow/bounds và player4góc, crowd/Boss như mobile.
+- WASD + mouse aim đồng thời chính xác theo tọa độ world; left/right hold, E/Shift giữ–thả, Space/Q/Esc phản hồi đúng thời điểm input và resource, không thêm delay/deadzone theo touch. Mouse hướng tay/manual aim không bị auto-aim ghi đè; không kẹt phím/chuột sau focus loss/pause/Draft hoặc giữ phím qua transition.
+- Kiểm riêng click/release/cancel/fresh-press và keyboard focus trong menu/Draft; cùng target selection/range, geometry telegraph, VFX, readability và Boss timing như luật chung. Không suy precision/feel từ việc render được canvas.
+- Có evidence keyboard/mouse playtest và responsiveness/performance trên desktop/browser thực được ghi rõ; screenshot chỉ chứng minh bố cục, không chứng minh độ trễ/FPS/combat feel. Kết luận experience acceptance desktop riêng với mobile, do user xác nhận trong scope thử.
+
+### Kiểm parity và cách ghi kết quả
+
+Dùng cùng seed/fixture/state và input gameplay tương đương để so luật, RNG/offers, damage/consumption/CD/i-frame/proc và Boss clocks; phân biệt khác biệt hướng aim hợp lệ với khác biệt luật. Ghi touch và keyboard/mouse thành hai kết quả riêng: kỹ thuật đã kiểm, playtest đã kiểm, chưa kiểm/TBD. Ngưỡng đo latency/FPS, dải thiết bị/browser mục tiêu và các chi tiết accessibility mới còn TBD theo milestone; không bịa con số đã duyệt, không tự gán PASS. Tiêu chuẩn này không yêu cầu chạy QA hoặc sửa production trong task docs hiện tại.
+
 ## Mobile-first — phạm vi mở rộng theo user
-- Mobile là tiêu chí chính cho layout, readability và input; không chỉ thu nhỏ giao diện desktop.
+- Layout/readability/input mobile cần thiết kế riêng cho touch; không chỉ thu nhỏ desktop. Áp dụng tiêu chuẩn ngang hàng và acceptance riêng hai nền tảng phía trên; giữ các chi tiết input/layout đã duyệt bên dưới.
 - Chém/Bắn giữ để lặp; Heavy/Charged giữ để ngắm, thả mới tiêu lượt và ra đòn, không đổi combat timing. Theo feedback Q7B ngày2026-10-26, mobile tự ngắm **quái sống gần nhất theo khoảng cách world**, không giới hạn riêng theo loại; bỏ body chết/trùng vị trí. Kéo nút combat qua deadzone8px ưu tiên hướng tay trong lúc giữ; Heavy/Charged chụp hướng riêng khi thả. Hết kéo dùng auto aim lại; không có target giữ hướng cuối/di chuyển. Desktop mouse aim giữ nguyên. Dash đang thực hiện không uốn hướng, Surge radial.
 - Vùng di chuyển trái nhận chạm ở mọi điểm, joystick lấy điểm chạm làm gốc rồi kéo (floating origin), không cần trúng vòng/núm. Portrait hit area cao272px, rộng phần còn lại sau cụm combat (98px ở320,168px ở390); diện tích lớn hơn pad cũ. Capture cho phép kéo ra ngoài; deadzone8px, thả/cancel dừng. Landscape vùng156px bên trái, cao phần arena còn lại.
 - Khi đang chơi, toàn bộ arena (canvas/HUD/khoảng trống/controls) chặn selection, callout/context menu, double-tap và pinch/gesture mặc định; dùng touch-action/CSS và fallback touch/gesture listeners có scope. Pause/menu/settings gỡ guard; draft dùng guard riêng giữ cuộn và chặn native mouse/selection, để cuộn/thao tác; không khóa zoom bằng viewport meta toàn trang. Cần playtest Safari/iOS thật sau kiểm tra browser.
