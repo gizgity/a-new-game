@@ -1,8 +1,10 @@
-> **VFX follow-up V1.1:** user “visual ok, làm đi” ngày2026-10-27 đã duyệt visual và giao triển khai. Code/deploy `59b9a61`, Pages40509711771 SUCCESS; [production/evidence/6preset mới](vfx-production/README.md). Giữ gameplay/balance/progression; **AWAITING USER PLAYTEST APPROVAL**, không Q9D. Deliverya489279 bên dưới là baseline Q9C trướcVFX.
+> **VFX follow-up V1.1:** user “visual ok, làm đi” ngày2026-10-27 đã duyệt visual và giao triển khai. Code/deploy `59b9a61`, Pages40509711771 SUCCESS; [production/evidence/6preset mới](vfx-production/README.md). Giữ gameplay/balance/progression; **ACCEPTED — USER PLAYTEST APPROVAL**, không Q9D. Deliverya489279 bên dưới là baseline Q9C trướcVFX.
 
 # Q9C — Arena Anomalies
 
-**AWAITING USER PLAYTEST APPROVAL**. Scope user27/10; không Q9D. Baseline `278f439` gồm Q9A/Q9B accepted và Auto Aim desktop follow-up. Không đổi damage/AI/progression/timing của baseline ngoài các modifier Anomaly đang được chọn. Auto Aim/mobile-layout vẫn giữ trạng thái approval riêng từ HANDOFF.
+**ACCEPTED — USER PLAYTEST APPROVAL**. Scope user27/10; không Q9D. Baseline `278f439` gồm Q9A/Q9B accepted và Auto Aim desktop follow-up. Không đổi damage/AI/progression/timing của baseline ngoài các modifier Anomaly đang được chọn. Auto Aim/mobile-layout vẫn giữ trạng thái approval riêng từ HANDOFF.
+
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đạt r” ngày2026-10-27 trên code/deploy `59b9a61` (bàn giao `3268f15`), Pages40509711771 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9C Arena Anomalies gồm VFX V1.1; giữ approval Q9A/Q9B và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance config từ approval chung. Không tự mở Q9D. Gate chờ duyệt trong delivery baseline bên dưới là lịch sử đã hoàn tất.
 
 ## Contract và implementation
 

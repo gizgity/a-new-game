@@ -1,6 +1,6 @@
 # Q9C — Anomaly VFX production V1
 
-**VISUAL APPROVED V1.1 — AWAITING USER PLAYTEST APPROVAL.** User “visual ok, làm đi”,2026-10-27, hội thoại hiện tại không permalink, sau [board/mockups V1.1](../vfx-art-v1/README.md). Đây là visual approval và chỉ thị production/integration, không tự là gameplay/device/playtest acceptance; không Q9D.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đạt r” ngày2026-10-27 trên code/deploy `59b9a61` (bàn giao `3268f15`), Pages40509711771 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9C Arena Anomalies gồm VFX V1.1; giữ approval Q9A/Q9B và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance config từ approval chung. Không tự mở Q9D. Visual V1.1 đã duyệt trước qua “visual ok, làm đi”; [board/mockups](../vfx-art-v1/README.md).
 
 ## Thay đổi
 
@@ -47,4 +47,4 @@ Các [6preset](../README.md#playtest) mở2:14, sau Bắt đầu~1s chọncardđ
 
 ## Delivery
 
-Code `59b9a61` đã push main fast-forward; [Pages40509711771](https://github.com/gizgity/a-new-game/actions/runs/40509711771), job122208075138 completed/SUCCESS (npmci/build/typecheck/upload/Deploy). [Chơi VFX V1.1](https://gizgity.github.io/a-new-game/?v=59b9a61). Chưa xác minh liveHTTP/hash từ môi trường; dist/hash đã kiểm là previewlocal, không thay liveverification. Commit bàn giao sau chỉMarkdown, không redeploy. Dừng **AWAITING USER PLAYTEST APPROVAL**, không Q9D.
+Code `59b9a61` đã push main fast-forward; [Pages40509711771](https://github.com/gizgity/a-new-game/actions/runs/40509711771), job122208075138 completed/SUCCESS (npmci/build/typecheck/upload/Deploy). [Chơi VFX V1.1](https://gizgity.github.io/a-new-game/?v=59b9a61). Chưa xác minh liveHTTP/hash từ môi trường; dist/hash đã kiểm là previewlocal, không thay liveverification. Commit bàn giao sau chỉMarkdown, không redeploy. User đã duyệt playtest qua “đạt r” ngày2026-10-27; dừng, không Q9D. Lượt ghi nhận approval chỉ Markdown, không chạy lại tests/build/deploy.
