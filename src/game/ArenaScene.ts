@@ -16,7 +16,7 @@ import { ARENA, FIXED_STEP, type PlayerState } from './movement';
 import { autoAimTarget, type AutoAimPriority } from './autoAim';
 import { touchAim } from './touchAim';
 
-export type Phase = 'ready' | 'legacy' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
+export type Phase = 'ready' | 'anomaly' | 'legacy' | 'playing' | 'paused' | 'draft' | 'victory' | 'defeat';
 
 export class ArenaScene extends Phaser.Scene {
   readonly player: PlayerState = { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 };
@@ -247,6 +247,7 @@ export class ArenaScene extends Phaser.Scene {
       this.touch.consume();
       this.accumulator -= FIXED_STEP;
       if (this.run.result) { this.setPhase(this.run.result); break; }
+      if (this.run.anomalyPending) { this.setPhase('anomaly'); break; }
       if (this.run.draft.length) { this.setPhase('draft'); break; }
     }
     this.drawCombat();
@@ -269,11 +270,26 @@ export class ArenaScene extends Phaser.Scene {
     const world = this.combat;
     const ground = this.groundGraphics.clear();
     this.arrival.render(this.run.bossWarning);
+    for (const zone of world.anomaly.zones) {
+      const imminent = zone.time < zone.duration * 0.35;
+      ground.lineStyle(imminent ? 3 : 2, imminent ? 0xffe599 : 0xff6f87, 0.9);
+      // Thin local outline below existing telegraphs and actors, no screen fill.
+      ground.strokeCircle(zone.x, zone.y, zone.radius);
+      const r = zone.radius * (1 - zone.time / zone.duration);
+      ground.lineStyle(1, 0xffcc80, 0.65).strokeCircle(zone.x, zone.y, r);
+      ground.lineBetween(zone.x - 6, zone.y, zone.x + 6, zone.y);
+      ground.lineBetween(zone.x, zone.y - 6, zone.x, zone.y + 6);
+    }
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     drawLegacy(ground, world);
     this.enemySprites.render(world);
-    for (const enemy of world.enemies) drawEnemyStatus(g, enemy);
+    for (const enemy of world.enemies) {
+      drawEnemyStatus(g, enemy);
+      if (world.anomaly.resists(enemy) && enemy.stagger <= 0) {
+        ground.lineStyle(2, 0x63d9f5, 0.85).strokeRect(enemy.x - 18, enemy.y - 18, 36, 36);
+      }
+    }
     for (const shot of world.projectiles) {
       if (!shot.hostile && shot.charged) { drawChargedProjectile(g, shot); continue; }
       const color = shot.hostile ? 0xc399ff : shot.charged ? 0xffcc80 : 0x9dffe2;
@@ -298,6 +314,11 @@ export class ArenaScene extends Phaser.Scene {
       if (drawBuildImpact(g, impact)) continue;
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);
+      if (impact.kind === 'anomalyStrike') {
+        g.lineStyle(2, impact.color, fade).strokeCircle(impact.x, impact.y, (impact.radius ?? 60) * (1 - fade * 0.15));
+        if (impact.color === 0xffe599) g.strokePoints([{ x: impact.x + 8, y: impact.y - 25 }, { x: impact.x - 5, y: impact.y - 3 }, { x: impact.x + 5, y: impact.y + 3 }, { x: impact.x - 8, y: impact.y + 25 }], false);
+        continue;
+      }
       if (impact.kind === 'guardBreak') {
         const x = impact.x + ((impact.sourceX ?? impact.x) - impact.x) * (1 - fade);
         const y = impact.y + ((impact.sourceY ?? impact.y) - impact.y) * (1 - fade);

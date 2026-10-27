@@ -189,7 +189,7 @@ export class LegacyEffects {
         this.enqueue(root, 0, 0, ctx => this.hit(e, L.ice.damage, ctx, this.branch === 'brittle' && e.kind !== 'boss'));
         if (e.hp > 0 && this.branch === 'brittle' && e.kind !== 'boss') {
           t.brittle = L.ice.breakDuration;
-          if (t.interruptCD <= 1e-9 && snapshot.windup > 0) { e.windup = 0; e.cooldown = Math.max(e.cooldown, 0.45); t.interruptCD = Math.max(L.ice.interruptCooldown, e.kind === 'bulwark' ? L.eliteImmunity : 0); }
+          if (t.interruptCD <= 1e-9 && snapshot.windup > 0 && !this.world.anomaly.resists(e)) { e.windup = 0; e.cooldown = Math.max(e.cooldown, 0.45); t.interruptCD = Math.max(L.ice.interruptCooldown, e.kind === 'bulwark' ? L.eliteImmunity : 0); }
         }
         if (this.branch === 'crystalEcho' && this.ready('crystal')) {
           if (this.enqueue(root, 0, L.ice.echoDelay, ctx => {

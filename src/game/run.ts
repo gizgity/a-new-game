@@ -1,3 +1,5 @@
+import { ANOMALY } from './config/anomalies.js';
+import type { LegacyTicket } from './legacy.js';
 import { ENEMY_HP, OPENING, WAVES, ENEMY_GROWTH, DRAFT_MILESTONES, ENCOUNTERS, BOSS_PHASE } from './config/balance.js';
 import { CombatWorld, type CombatInput } from './combat.js';
 import { CURSES, MUTATIONS, type BuildId, type CurseId, type DraftOption, type MutationId } from './builds.js';
@@ -6,6 +8,9 @@ import { buildDraft, DraftRandom, newDraftSeed, type DraftDebug } from './Draft.
 import { draftSignals, signalWindow } from './DraftSignals.js';
 
 export class RunDirector {
+  anomalyTicket: LegacyTicket | null = null;
+  anomalyPending = false;
+  anomalyResolved = false;
   seedOverride: number | undefined;
   previousOffers: readonly BuildId[] = [];
   draftDebug: DraftDebug | null = null;
@@ -41,6 +46,7 @@ export class RunDirector {
 
   start(): void {
     this.world.reset();
+    this.anomalyPending = this.anomalyResolved = false;
     this.draftRandom = new DraftRandom(this.seedOverride ?? newDraftSeed());
     this.lastSignals = draftSignals(); this.choices = []; this.draftDebug = null;
     this.world.practice = false;
@@ -70,9 +76,10 @@ export class RunDirector {
   }
 
   step(input: CombatInput, dt: number): void {
-    if (this.draft.length || this.result || this.expired) return;
+    if (this.draft.length || this.anomalyPending || this.result || this.expired) return;
     const transforming = this.world.hp > 0 && this.world.bossTransforming;
     const frozen = this.world.hitstop > 0;
+    this.world.anomaly.suspended = this.bossWarning > 0;
     this.world.step(input, dt);
     if (transforming) return; // Transform clock advances, run/spawn/adaptation clocks do not.
     if (!frozen && !this.bossDue) {
@@ -113,6 +120,7 @@ export class RunDirector {
       }
       return; // No spawn debt or catch-up pack after arrival.
     }
+    let eliteTransition = false;
     if (!this.bossDue && this.reached(ENCOUNTERS.boss)) {
       this.bossWarning = BOSS_PHASE.arrival;
       this.spawnTicks = 0;
@@ -120,6 +128,12 @@ export class RunDirector {
       return;
     } else if (!this.bossDue && !this.eliteSpawned && this.reached(ENCOUNTERS.elite)) {
       this.world.spawnEnemy('bulwark', undefined, undefined, this.enemyGrowth); this.eliteSpawned = true;
+      eliteTransition = true; // Preserve spawn pacing; queue Anomaly on a subsequent tick.
+    }
+    const ticket = this.anomalyTicket;
+    if (!eliteTransition && !this.anomalyResolved && ticket && !ticket.firstRun && this.elapsed >= ANOMALY.offerSeconds && !this.world.anomaly.unsafe && !frozen) {
+      if (ticket.anomalySelected) { this.world.anomaly.equip(ticket.anomalySelected); this.anomalyResolved = true; }
+      else if (ticket.anomalyOffers.length === 2) { this.anomalyPending = true; return; }
     }
     this.expired = this.ticks >= 18000;
     if (frozen) return;
@@ -161,6 +175,12 @@ export class RunDirector {
     const baseHp = OPENING.hp[kind] + (ENEMY_HP[kind] - OPENING.hp[kind]) * this.openingBlend;
     const hp = Math.round(baseHp * (1 + this.enemyGrowth * (ENEMY_GROWTH.health - 1)));
     this.world.spawnEnemy(kind, hp, angle, this.enemyGrowth);
+  }
+
+  resolveAnomaly(): boolean {
+    const id = this.anomalyTicket?.anomalySelected;
+    if (!this.anomalyPending || !id || !this.world.anomaly.equip(id)) return false;
+    this.anomalyPending = false; this.anomalyResolved = true; return true;
   }
 
   choose(index: number): boolean {

@@ -1,3 +1,4 @@
+import { ANOMALY } from './config/anomalies.js';
 import { SIGILS, BRANCHES, ANOMALIES, STARTER_ANOMALIES, LEGACY_IDS, type AnomalyId, legacyUnlocks, validLegacy, sameLegacy, type LegacyId, type LegacyOffer, type SigilId, type BranchId } from './config/legacy.js';
 import { DraftRandom, newDraftSeed, weightedIndex } from './Draft.js';
 
@@ -17,10 +18,10 @@ export function rollLegacy(unlocks: readonly LegacyId[], seed: number, previous:
   }
   return offers;
 }
-export interface LegacyTicket { runId: number; seed: number; offers: LegacyOffer[]; selected: LegacyOffer | null; firstRun: boolean; started: boolean }
+export interface LegacyTicket { anomalyOffers: AnomalyId[]; anomalySelected: AnomalyId | null; runId: number; seed: number; offers: LegacyOffer[]; selected: LegacyOffer | null; firstRun: boolean; started: boolean }
 export interface LegacyReceipt { runId: number; result: 'victory' | 'defeat'; rewards: LegacyId[] }
-export interface LegacyProgress { version: 2; nextRunId: number; victories: number; pity: number; receipt: LegacyReceipt | null; unlocks: LegacyId[]; previous: SigilId[]; ticket: LegacyTicket | null }
-export const emptyLegacy = (): LegacyProgress => ({ version: 2, nextRunId: 1, victories: 0, pity: 0, receipt: null, unlocks: [...STARTER_ANOMALIES], previous: [], ticket: null });
+export interface LegacyProgress { version: 2; nextRunId: number; victories: number; pity: number; receipt: LegacyReceipt | null; unlocks: LegacyId[]; previous: SigilId[]; previousAnomalies: AnomalyId[]; ticket: LegacyTicket | null }
+export const emptyLegacy = (): LegacyProgress => ({ version: 2, nextRunId: 1, victories: 0, pity: 0, receipt: null, unlocks: [...STARTER_ANOMALIES], previous: [], previousAnomalies: [], ticket: null });
 export function validateLegacy(value: unknown): LegacyProgress {
   const result = emptyLegacy();
   if (!value || typeof value !== 'object') return result;
@@ -37,12 +38,14 @@ export function validateLegacy(value: unknown): LegacyProgress {
     result.receipt = { runId: receipt.runId, result: receipt.result, rewards };
   }
   result.previous = SIGILS.filter(id => Array.isArray(raw.previous) && raw.previous.includes(id));
+  result.previousAnomalies = ANOMALIES.filter(id => Array.isArray(raw.previousAnomalies) && raw.previousAnomalies.includes(id));
   const ticket = raw.ticket;
   if (ticket && Number.isInteger(ticket.seed) && ticket.seed > 0 && ticket.seed <= 0xffffffff && typeof ticket.firstRun === 'boolean' && Array.isArray(ticket.offers)) {
     const offers = ticket.offers.filter(o => validLegacy(o, result.unlocks)).filter((o, i, all) => all.findIndex(other => sameLegacy(o, other)) === i).slice(0, 2).map(({ sigil, branch }) => ({ sigil, branch }));
     const runId = raw.version === 2 ? ticket.runId : result.nextRunId++;
     if (!Number.isInteger(runId) || runId <= 0 || runId >= result.nextRunId || result.receipt) return result;
-    result.ticket = { runId, seed: ticket.seed, started: ticket.started === true, firstRun: ticket.firstRun, offers: ticket.firstRun ? [] : offers,
+    const anomalyOffers = ticket.firstRun ? [] : rollAnomalies(result.unlocks, ticket.seed, result.previousAnomalies);
+    result.ticket = { anomalyOffers, anomalySelected: anomalyOffers.includes(ticket.anomalySelected!) ? ticket.anomalySelected : null, runId, seed: ticket.seed, started: ticket.started === true, firstRun: ticket.firstRun, offers: ticket.firstRun ? [] : offers,
       selected: !ticket.firstRun && validLegacy(ticket.selected, result.unlocks) && offers.some(o => sameLegacy(o, ticket.selected!)) ? { sigil: ticket.selected.sigil, branch: ticket.selected.branch } : null };
   }
   return result;
@@ -52,7 +55,7 @@ export function beginLegacy(state: LegacyProgress, completedOrStartedRuns: numbe
   if (state.receipt) throw new Error('Unacknowledged result');
   if (state.nextRunId > 1_000_000) throw new Error('Run cap reached');
   const firstRun = completedOrStartedRuns === 0;
-  state.ticket = { runId: state.nextRunId++, seed, started: false, firstRun, offers: firstRun ? [] : rollLegacy(state.unlocks, seed, state.previous), selected: null };
+  state.ticket = { anomalyOffers: firstRun ? [] : rollAnomalies(state.unlocks, seed, state.previousAnomalies), anomalySelected: null, runId: state.nextRunId++, seed, started: false, firstRun, offers: firstRun ? [] : rollLegacy(state.unlocks, seed, state.previous), selected: null };
   return state.ticket;
 }
 export function chooseLegacy(state: LegacyProgress, index: number): boolean {
@@ -64,6 +67,7 @@ export function chooseLegacy(state: LegacyProgress, index: number): boolean {
 }
 export function closeLegacy(state: LegacyProgress): void {
   if (state.ticket) state.previous = [...new Set(state.ticket.offers.map(o => o.sigil))];
+  if (state.ticket) state.previousAnomalies = [...state.ticket.anomalyOffers];
   state.ticket = null;
 }
 
@@ -93,4 +97,19 @@ export function finishLegacy(state: LegacyProgress, result: 'victory' | 'defeat'
   state.receipt = { runId: ticket.runId, result, rewards };
   closeLegacy(state);
   return true;
+}
+
+/** Domain-separated ticket RNG; selecting does not consume or reroll the run/draft stream. */
+export function rollAnomalies(unlocks: readonly LegacyId[], seed: number, previous: readonly AnomalyId[] = []): AnomalyId[] {
+  const pool = ANOMALIES.filter(id => unlocks.includes(id)), random = new DraftRandom(seed ^ 0xa90c135);
+  const offers: AnomalyId[] = [];
+  while (pool.length && offers.length < 2) offers.push(pool.splice(weightedIndex(pool.map(id => previous.includes(id) ? ANOMALY.repeatWeight : 1), random.next), 1)[0]);
+  return offers;
+}
+export function chooseAnomaly(state: LegacyProgress, index: number): boolean {
+  const ticket = state.ticket;
+  if (!ticket || ticket.firstRun || ticket.anomalySelected || !Number.isInteger(index)) return false;
+  const id = ticket.anomalyOffers[index];
+  if (!id || !state.unlocks.includes(id)) return false;
+  ticket.anomalySelected = id; return true;
 }

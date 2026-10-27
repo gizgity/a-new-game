@@ -1,0 +1,1321 @@
+{
+  "method": "Q8D fast role-aware bot, seed808, 4 routes x (none + 6 anomalies). Legacy unlocked fixture at start; drafts earned via real milestones; no HP/kill/clock grants. Bot does not deliberately avoid anomaly zones. Not balance approval or human/device input evidence.",
+  "runs": [
+    {
+      "route": "route-tank",
+      "anomaly": null,
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": null,
+      "result": "victory",
+      "reason": null,
+      "time": 232.36666666666667,
+      "kills": 1222,
+      "hp": 100,
+      "perfects": 13,
+      "detonations": 639,
+      "elite": 125,
+      "boss": 222.56666666666666,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 233.11666666666667,
+      "kills": 1212,
+      "hp": 100,
+      "perfects": 15,
+      "detonations": 649,
+      "elite": 125,
+      "boss": 223.23333333333332,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 234.35,
+      "kills": 1231,
+      "hp": 100,
+      "perfects": 13,
+      "detonations": 662,
+      "elite": 125,
+      "boss": 222.53333333333333,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 232.23333333333332,
+      "kills": 1228,
+      "hp": 100,
+      "perfects": 17,
+      "detonations": 614,
+      "elite": 125,
+      "boss": 222.56666666666666,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 233,
+      "kills": 1212,
+      "hp": 100,
+      "perfects": 16,
+      "detonations": 636,
+      "elite": 125,
+      "boss": 223.91666666666666,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 232.38333333333333,
+      "kills": 1213,
+      "hp": 84,
+      "perfects": 13,
+      "detonations": 637,
+      "elite": 125,
+      "boss": 222.65,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-tank",
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 232.68333333333334,
+      "kills": 1224,
+      "hp": 83,
+      "perfects": 14,
+      "detonations": 638,
+      "elite": 125,
+      "boss": 222.38333333333333,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore"
+        },
+        {
+          "time": 50,
+          "id": "ironOath"
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ironOath"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": null,
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": null,
+      "result": "victory",
+      "reason": null,
+      "time": 227.95,
+      "kills": 1263,
+      "hp": 98,
+      "perfects": 10,
+      "detonations": 568,
+      "elite": 125,
+      "boss": 222.48333333333332,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 28,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 228.31666666666666,
+      "kills": 1262,
+      "hp": 0,
+      "perfects": 17,
+      "detonations": 586,
+      "elite": 125,
+      "boss": 222.5,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 28,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 227.61666666666667,
+      "kills": 1258,
+      "hp": 18,
+      "perfects": 12,
+      "detonations": 568,
+      "elite": 125,
+      "boss": 222.38333333333333,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 24,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 229.75,
+      "kills": 1271,
+      "hp": 38,
+      "perfects": 9,
+      "detonations": 578,
+      "elite": 125,
+      "boss": 222.51666666666668,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.1,
+      "kills": 1258,
+      "hp": 45,
+      "perfects": 15,
+      "detonations": 581,
+      "elite": 125,
+      "boss": 222.45,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 26,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 228.31666666666666,
+      "kills": 1262,
+      "hp": 0,
+      "perfects": 17,
+      "detonations": 586,
+      "elite": 125,
+      "boss": 222.5,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 28,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-sustain",
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.68333333333334,
+      "kills": 1260,
+      "hp": 31,
+      "perfects": 9,
+      "detonations": 607,
+      "elite": 125,
+      "boss": 222.5,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 25,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer"
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 85,
+          "id": "catalyst"
+        },
+        {
+          "time": 120,
+          "id": "echoChamber"
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": null,
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": null,
+      "result": "victory",
+      "reason": null,
+      "time": 227.3,
+      "kills": 1259,
+      "hp": 26,
+      "perfects": 16,
+      "detonations": 541,
+      "elite": 125,
+      "boss": 222.4,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.38333333333333,
+      "kills": 1259,
+      "hp": 35,
+      "perfects": 16,
+      "detonations": 530,
+      "elite": 125,
+      "boss": 222.53333333333333,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 228.4,
+      "kills": 1252,
+      "hp": 0,
+      "perfects": 17,
+      "detonations": 566,
+      "elite": 125,
+      "boss": 222.41666666666666,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 228.95,
+      "kills": 1254,
+      "hp": 0,
+      "perfects": 14,
+      "detonations": 566,
+      "elite": 125,
+      "boss": 222.55,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.65,
+      "kills": 1262,
+      "hp": 2.4000000000000004,
+      "perfects": 25,
+      "detonations": 548,
+      "elite": 125,
+      "boss": 222.43333333333334,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.38333333333333,
+      "kills": 1259,
+      "hp": 35,
+      "perfects": 16,
+      "detonations": 530,
+      "elite": 125,
+      "boss": 222.53333333333333,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 29,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-counter",
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.16666666666666,
+      "kills": 1260,
+      "hp": 44,
+      "perfects": 21,
+      "detonations": 531,
+      "elite": 125,
+      "boss": 222.53333333333333,
+      "phase2": true,
+      "combo": false,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge"
+        },
+        {
+          "time": 50,
+          "id": "ghostStep"
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte"
+        },
+        {
+          "time": 120,
+          "id": "ironReversal"
+        },
+        {
+          "time": 155,
+          "id": "ghostStep"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": null,
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": null,
+      "result": "victory",
+      "reason": null,
+      "time": 240.31666666666666,
+      "kills": 1236,
+      "hp": 75,
+      "perfects": 27,
+      "detonations": 430,
+      "elite": 125,
+      "boss": 224.38333333333333,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 236.13333333333333,
+      "kills": 1224,
+      "hp": 31,
+      "perfects": 22,
+      "detonations": 420,
+      "elite": 125,
+      "boss": 223.11666666666667,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 232.53333333333333,
+      "kills": 1239,
+      "hp": 45,
+      "perfects": 23,
+      "detonations": 409,
+      "elite": 125,
+      "boss": 222.31666666666666,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 227.66666666666666,
+      "kills": 1233,
+      "hp": 59,
+      "perfects": 19,
+      "detonations": 444,
+      "elite": 125,
+      "boss": 222.36666666666667,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 229.15,
+      "kills": 1230,
+      "hp": 51,
+      "perfects": 23,
+      "detonations": 408,
+      "elite": 125,
+      "boss": 222.25,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 228.65,
+      "kills": 1238,
+      "hp": 33,
+      "perfects": 20,
+      "detonations": 401,
+      "elite": 125,
+      "boss": 222.23333333333332,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    },
+    {
+      "route": "route-ranged",
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "offer": 135,
+      "result": "victory",
+      "reason": null,
+      "time": 227.8,
+      "kills": 1230,
+      "hp": 65,
+      "perfects": 18,
+      "detonations": 429,
+      "elite": 125,
+      "boss": 222.48333333333332,
+      "phase2": true,
+      "combo": true,
+      "maxEnemies": 30,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist"
+        },
+        {
+          "time": 50,
+          "id": "glassSoul"
+        },
+        {
+          "time": 85,
+          "id": "echoChamber"
+        },
+        {
+          "time": 120,
+          "id": "catalyst"
+        },
+        {
+          "time": 155,
+          "id": "glassSoul"
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery"
+        }
+      ]
+    }
+  ]
+}

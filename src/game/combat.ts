@@ -1,3 +1,5 @@
+import { AnomalyEffects } from './AnomalyEffects.js';
+import { ANOMALY } from './config/anomalies.js';
 import { LegacyEffects, type PrimaryHit } from './LegacyEffects.js';
 import { LEGACY } from './config/legacy.js';
 import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD } from './config/balance.js';
@@ -33,7 +35,7 @@ export interface Enemy {
   angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
 }
 export interface Projectile {
-  x: number; y: number; vx: number; vy: number; hostile: boolean; life: number; charged?: boolean; damage?: number; staticBonus?: number; glassBoost?: boolean; root?: ChainRoot;
+  x: number; y: number; vx: number; vy: number; hostile: boolean; life: number; charged?: boolean; anomaly?: boolean; damage?: number; staticBonus?: number; glassBoost?: boolean; root?: ChainRoot;
 }
 export interface Attack {
   heavy: boolean; combo: number; angle: number; age: number;
@@ -41,7 +43,7 @@ export interface Attack {
 }
 export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number; arc?: number;
-  kind?: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast' | 'guardBreak' | 'phantom' | 'seed' | 'echo' | 'slow' | 'heal'; angle?: number; sourceX?: number; sourceY?: number;
+  kind?: 'anomalyStrike' | 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast' | 'guardBreak' | 'phantom' | 'seed' | 'echo' | 'slow' | 'heal'; angle?: number; sourceX?: number; sourceY?: number;
 }
 interface Explosion { context?: ProcContext; root?: ChainRoot; echo?: boolean; volatileBoost?: boolean; x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number; delay?: number; enemyId?: number; sourceX?: number; sourceY?: number }
 
@@ -70,6 +72,15 @@ export class CombatWorld {
   readonly build = new BuildEffects();
   readonly legacy = new LegacyEffects(this, (enemy, damage, context, bypass) =>
     this.hitEnemy(enemy, damage, 0, 0, 0, bypass, 'legacy', context.root, true, 0, context));
+  readonly anomaly = new AnomalyEffects(this, (enemy, damage, context) => {
+    this.hitEnemy(enemy, damage, 0, 0, 0, false, 'anomaly', context.root, true, 0, context);
+    if (this.anomaly.active === 'staticField') {
+      this.impact(enemy.x, enemy.y, 0xc399ff, 24, 'chainBlast');
+      const cue = this.impacts[this.impacts.length - 1]; cue.sourceX = this.player.x; cue.sourceY = this.player.y;
+    }
+  },
+    (damage, x, y) => this.hurt(damage, Math.atan2(this.player.y - y, this.player.x - x), false), points => this.gainCharge(points),
+    zone => this.impact(zone.x, zone.y, zone.storm ? 0xffe599 : 0xff6f87, zone.radius, 'anomalyStrike'));
   private recordedDeaths = new Set<number>();
   private activeCurses: readonly CurseId[] = Object.freeze([]);
   get curses(): readonly CurseId[] { return this.activeCurses; }
@@ -201,7 +212,7 @@ export class CombatWorld {
     this.hp = COMBAT.maxHp;
     this.barrier.reset();
     this.build.reset();
-    this.legacy.reset(); this.recordedDeaths.clear();
+    this.legacy.reset(); this.anomaly.reset(); this.recordedDeaths.clear();
     this.heavyCharges = HEAVY.charges;
     this.heavyRecharge = 0;
     this.dashCharges = COMBAT.dashCharges;
@@ -398,6 +409,7 @@ export class CombatWorld {
             this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? HEAVY.force : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? HEAVY.stagger : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light', attack.root);
           }
         }
+        if (hits > 0 && attack.combo === 3) this.anomaly.finisher();
         if (effectiveHeavy) this.draftSignals.heavySuccess++;
         if (attack.heavy && hits === 0 && attack.bloodPact) this.payBloodMiss();
         if (!attack.heavy) {
@@ -415,6 +427,7 @@ export class CombatWorld {
       }
       if (attack.age >= attack.duration) this.attack = null;
     }
+    this.anomaly.step(dt); // Resolve warned zones after this tick's walk/Dash input.
     for (const enemy of this.enemies) this.stepEnemy(enemy, dt);
     if (!this.dashProtected) this.separateBodies();
     const actualDx = this.player.x - movementStart.x, actualDy = this.player.y - movementStart.y;
@@ -457,7 +470,7 @@ export class CombatWorld {
     this.comboWindow = 1.1;
   }
 
-  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' | 'legacy' = 'blast', root: ChainRoot = chainRoot(), playerSource = true, procBonus = 0, context?: ProcContext): void {
+  private hitEnemy(enemy: Enemy, damage: number, angle: number, force: number, stagger: number, bypassArmor = false, sound: 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'blast' | 'phantom' | 'legacy' | 'anomaly' = 'blast', root: ChainRoot = chainRoot(), playerSource = true, procBonus = 0, context?: ProcContext): void {
     if (enemy.hp <= 0) return;
     const primaryKind: PrimaryHit | null = sound === 'heavy' ? 'heavy' : sound === 'chargedHit' ? 'charged' : sound === 'shotHit' ? 'basic' : ['light', 'light2', 'light3'].includes(sound) ? 'light' : null;
     if (primaryKind && this.legacy.selection) legacyRoot(root);
@@ -481,23 +494,28 @@ export class CombatWorld {
     }
     if (this.hasCurse('bloodPact') && this.barrier.value <= 0 && ['light', 'light2', 'light3', 'heavy'].includes(sound)) this.healPlayer();
     this.surge = Math.min(100, this.surge + 2);
+    const resisted = this.anomaly.resists(enemy);
+    if (sound === 'heavy' && this.anomaly.heavy(enemy)) {
+      force += ANOMALY.seal.force; stagger += ANOMALY.seal.stagger;
+      this.anomaly.resistance.set(enemy.id, stagger + ANOMALY.seal.resistance);
+    }
     if (enemy.kind === 'boss') force *= 0.1;
     else if (enemy.kind === 'bulwark') force *= 0.4;
     enemy.x += Math.cos(angle) * force;
     enemy.y += Math.sin(angle) * force;
     clampPosition(enemy);
-    if (sound !== 'phantom' && sound !== 'legacy') enemy.stagger = enemy.kind === 'boss' ? 0 : stagger;
+    if (!resisted && sound !== 'phantom' && sound !== 'legacy' && sound !== 'anomaly') enemy.stagger = enemy.kind === 'boss' ? 0 : stagger;
     const interrupts = sound === 'heavy' || sound === 'chargedHit' || sound === 'blast';
-    if (enemy.kind !== 'boss' && interrupts) {
+    if (!resisted && enemy.kind !== 'boss' && interrupts) {
       enemy.windup = 0;
       enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     }
     enemy.flash = 0.12;
-    if (sound !== 'legacy') this.cue(sound === 'blast' || sound === 'phantom' ? 'light' : sound);
+    if (sound !== 'legacy' && sound !== 'anomaly') this.cue(sound === 'blast' || sound === 'phantom' ? 'light' : sound);
     this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
-      22, sound === 'blast' || sound === 'phantom' || sound === 'legacy' ? undefined : sound, angle);
+      22, sound === 'blast' || sound === 'phantom' || sound === 'legacy' || sound === 'anomaly' ? undefined : sound, angle);
     const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.085 : sound === 'light3' ? 0.065 : sound === 'light2' ? 0.045 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;
-    if (sound !== 'phantom' && sound !== 'legacy') this.hitstop = Math.max(this.hitstop, stop);
+    if (sound !== 'phantom' && sound !== 'legacy' && sound !== 'anomaly') this.hitstop = Math.max(this.hitstop, stop);
     if (enemy.hp === 0 && !this.recordedDeaths.has(enemy.id)) {
       this.recordedDeaths.add(enemy.id);
       this.kills++;
@@ -528,6 +546,7 @@ export class CombatWorld {
     this.perfectFlash = 0.65;
     this.cue('perfect');
     this.legacy.perfect();
+    this.anomaly.perfect();
     this.perfectDodges++; this.draftSignals.perfects++;
     this.gainCharge(3);
     this.build.perfect(this.mutations.includes('phantomEdge'), this.mutations.includes('staticRiposte'));
@@ -683,7 +702,11 @@ export class CombatWorld {
         } else if (enemy.kind === 'volatile') {
           enemy.hp = 0;
           this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
-        } else if (enemy.kind === 'archer') this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
+        } else if (enemy.kind === 'archer') {
+          this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
+          if (this.anomaly.extraVolley()) for (const offset of [-ANOMALY.static.spread, ANOMALY.static.spread])
+            this.fire(enemy.x, enemy.y, enemy.angle + offset, true, false, Math.round(10 * enemy.damageScale), undefined, true);
+        }
         else if (distance < spec.range && Math.abs(angleDifference(Math.atan2(dy, dx), enemy.angle)) < 0.85) {
           this.hurt(Math.round((enemy.kind === 'bulwark' ? 22 : 12) * enemy.damageScale), enemy.angle);
         }
@@ -712,9 +735,10 @@ export class CombatWorld {
     }
     const direction = enemy.kind !== 'archer' ? (distance > 40 ? 1 : 0) : (distance > 340 ? 1 : distance < 230 ? -1 : 0);
     if (distance > 0) {
+      const pursuit = direction > 0 ? this.anomaly.pursuit : 1;
       const speed = enemy.kind === 'grunt' ? 106 : enemy.kind === 'bulwark' ? 66 : 75;
-      enemy.x += dx / distance * direction * speed * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
-      enemy.y += dy / distance * direction * speed * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
+      enemy.x += dx / distance * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
+      enemy.y += dy / distance * direction * speed * pursuit * enemy.speedScale * (enemy.echoHaste > 0 || this.hasCurse('huntedVessel') && direction > 0 ? BUILD.hasteMultiplier : 1) * Math.min(enemy.slow > 0 ? BUILD.slowMultiplier : 1, this.legacy.slowMultiplier(enemy)) * dt;
     }
     for (const other of this.enemies) {
       if (other === enemy || other.hp <= 0) continue;
@@ -806,7 +830,7 @@ export class CombatWorld {
     }
   }
 
-  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false, damage = 10, speedOverride?: number): void {
+  private fire(x: number, y: number, angle: number, hostile: boolean, charged = false, damage = 10, speedOverride?: number, anomaly = false): void {
     if (this.projectiles.length >= COMBAT.projectileLimit) return;
     if (!hostile) { this.stats.shots++; this.lastShot = { angle, charged }; this.cue(charged ? 'chargedGun' : 'gun'); }
     const speed = speedOverride ?? (hostile ? 310 : 850);
@@ -814,11 +838,12 @@ export class CombatWorld {
     if (staticBonus) this.build.staticCharge = 0;
     const glassBoost = !hostile && this.hasCurse('glassSoul');
     if (!hostile) damage = (charged ? RANGED.chargedDamage : RANGED.basicDamage) * (glassBoost ? BUILD.glassMultiplier : 1);
-    this.projectiles.push({ glassBoost, root: hostile ? undefined : chainRoot(), staticBonus, x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
+    this.projectiles.push({ anomaly, glassBoost, root: hostile ? undefined : chainRoot(), staticBonus, x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
       vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, damage, life: hostile ? 3 : 1.3 });
   }
 
   private stepProjectiles(dt: number): void {
+    if (this.anomaly.unsafe) this.projectiles = this.projectiles.filter(shot => !shot.anomaly);
     for (const shot of this.projectiles) {
       const x = shot.x, y = shot.y;
       shot.x += shot.vx * dt; shot.y += shot.vy * dt; shot.life -= dt;
@@ -863,9 +888,9 @@ export class CombatWorld {
     this.chargePoints = Math.min(2, this.chargePoints);
   }
 
-  private detonate(enemy: Enemy, multiplier: number, charged = false, source?: Explosion, root = source?.root ?? chainRoot()): void {
-    if (enemy.rupture === 0 || root.seeded.has(enemy.id) || this.chainSeen.has(enemy.id) || this.pendingDetonations.has(enemy.id)) return;
-    if (source?.context && !admitProc(root, source.context.depth + 1)) return;
+  private detonate(enemy: Enemy, multiplier: number, charged = false, source?: Explosion, root = source?.root ?? chainRoot()): boolean {
+    if (enemy.rupture === 0 || root.seeded.has(enemy.id) || this.chainSeen.has(enemy.id) || this.pendingDetonations.has(enemy.id)) return false;
+    if (source?.context && !admitProc(root, source.context.depth + 1)) return false;
     this.chainSeen.add(enemy.id);
     if (!source) {
       root.triggers++; this.draftSignals.markedTriggers++;
@@ -876,8 +901,9 @@ export class CombatWorld {
     enemy.rupture = 0;
     this.pendingDetonations.add(enemy.id);
     const specialist = charged && this.mutations.includes('detonationSpecialist');
-    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * CHAIN.damagePerStack * multiplier * (this.hasCurse('volatileSoul') ? BUILD.volatileMultiplier : 1) * (specialist ? BUILD.specialistMultiplier : 1), radius: specialist ? CHAIN.specialistRadius : CHAIN.radius, hostile: false, charged, root, volatileBoost: this.hasCurse('volatileSoul'),
+    this.explosions.push({ x: enemy.x, y: enemy.y, damage: stacks * CHAIN.damagePerStack * multiplier * (this.hasCurse('volatileSoul') ? BUILD.volatileMultiplier : 1) * (specialist ? BUILD.specialistMultiplier : 1), radius: (specialist ? CHAIN.specialistRadius : CHAIN.radius) * this.anomaly.radiusMultiplier, hostile: false, charged, root, volatileBoost: this.hasCurse('volatileSoul'),
       context: source?.context ? { root, depth: source.context.depth + 1, origin: 'ruptureDetonation' } : undefined, enemyId: enemy.id, delay: source ? CHAIN.relayDelay : 0, sourceX: source?.x, sourceY: source?.y });
+    return true;
   }
 
   private resolveExplosions(): void {
@@ -911,6 +937,9 @@ export class CombatWorld {
         root.pulsed = true; this.build.chamberCooldown = BUILD.chamberCooldown;
         this.impact(explosion.x, explosion.y, 0xc399ff, BUILD.chamberRadius, 'slow');
         for (const enemy of this.enemies) if (enemy.hp > 0 && enemy.kind !== 'boss' && Math.hypot(enemy.x - explosion.x, enemy.y - explosion.y) <= BUILD.chamberRadius) enemy.slow = BUILD.chamberDuration;
+      }
+      if (ruptureBlast) for (const enemy of this.anomaly.relay(root, explosion.x, explosion.y, explosion.radius)) {
+        if (this.detonate(enemy, 1, false, explosion)) this.anomaly.retaliate(enemy);
       }
       let actualBlastDamage = 0;
       for (const { enemy } of targets) {

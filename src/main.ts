@@ -1,4 +1,4 @@
-import { beginLegacy, chooseLegacy } from './game/legacy';
+import { beginLegacy, chooseLegacy, chooseAnomaly } from './game/legacy';
 import { validLegacy, LEGACY_IDS, SIGILS, BRANCHES, ANOMALIES, type SigilId, type AnomalyId, type LegacyId, type LegacyOffer } from './game/config/legacy';
 import Phaser from 'phaser';
 import { loadProfile, defaultProfile, saveProfile, Progression, mutationPool, cursePool, UNLOCKS } from './game/progression';
@@ -15,6 +15,7 @@ import './style.css';
 const trialBuild = PLAYTEST_BUILDS.find(build => build.id === new URLSearchParams(location.search).get('playtest'));
 const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchParams(location.search).get('playtest'));
 const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_PLAYTEST.id;
+const anomalyTrial = ANOMALIES.find(id => new URLSearchParams(location.search).get('playtest') === `anomaly-${id}`);
 const legacyParts = new URLSearchParams(location.search).get('playtest')?.split('-');
 const legacyCandidate = legacyParts?.[0] === 'legacy' ? { sigil: legacyParts[1], branch: legacyParts[2] === 'core' ? null : legacyParts[2] } : null;
 const legacyTrial: LegacyOffer | null = validLegacy(legacyCandidate) ? legacyCandidate : null;
@@ -24,6 +25,7 @@ if (legacyTrial) {
   profile.totals.runs = 1;
   profile.legacy.unlocks = LEGACY_IDS.filter(id => id === legacyTrial.sigil || id === legacyTrial.branch);
 }
+if (anomalyTrial) { profile.totals.runs = 1; profile.legacy.unlocks = [...LEGACY_IDS]; }
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
 let saveOK = true;
@@ -121,7 +123,7 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelector<HTMLElement>('#build-panel')!.hidden = !buildDetailsOpen;
   document.querySelector('#build-summary')!.setAttribute('aria-expanded', String(buildDetailsOpen));
   document.querySelector<HTMLElement>('#menu-build')!.hidden = phase !== 'paused';
-  draftGuard.setActive(phase === 'draft' || phase === 'legacy');
+  draftGuard.setActive(phase === 'draft' || phase === 'legacy' || phase === 'anomaly');
   overlay.dataset.result = phase === 'victory' || phase === 'defeat' ? phase : '';
   const resultBanner = document.querySelector<HTMLElement>('#result-banner')!;
   resultBanner.hidden = phase !== 'victory' && phase !== 'defeat';
@@ -146,11 +148,12 @@ function renderUI(phase: Phase = currentPhase): void {
   localeSelect.setAttribute('aria-label', t('language'));
   localeSelect.parentElement!.title = t('language');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
-  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || buildDetailsOpen;
+  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || phase === 'anomaly' || buildDetailsOpen;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
-  draftPanel.hidden = phase !== 'draft' && phase !== 'legacy';
+  draftPanel.hidden = phase !== 'draft' && phase !== 'legacy' && phase !== 'anomaly';
   if (phase === 'draft') renderDraft();
   if (phase === 'legacy') renderLegacy();
+  if (phase === 'anomaly') renderAnomaly();
   overlay.hidden = phase === 'playing' || phase === 'victory' && arena.victoryRevealing;
   document.querySelector('#game')!.classList.toggle('playing', phase === 'playing');
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
@@ -161,7 +164,7 @@ function renderUI(phase: Phase = currentPhase): void {
   if (panel !== visiblePanel) {
     visiblePanel = panel;
     if (panel && panel !== 'build') {
-      const container = document.querySelector<HTMLElement>(phase === 'draft' || phase === 'legacy' ? '#draft-panel' : '#menu-panel')!;
+      const container = document.querySelector<HTMLElement>(phase === 'draft' || phase === 'legacy' || phase === 'anomaly' ? '#draft-panel' : '#menu-panel')!;
       container.scrollTop = 0;
       const title = container.querySelector<HTMLElement>('h2')!;
       title.tabIndex = -1;
@@ -183,7 +186,7 @@ function draftReason(option: import('./game/builds').DraftOption): string {
 }
 function unlockMarkup(id: LegacyId): string {
   const kind = SIGILS.includes(id as SigilId) ? 'rewardSigil' : ANOMALIES.includes(id as AnomalyId) ? 'rewardAnomaly' : 'rewardBranch';
-  return `<article class="collection-item"><strong>${t(`legacy_${id}`)}</strong><small>${t(kind)} · ${t(profile.legacy.unlocks.includes(id) ? 'unlocked' : 'legacyLocked')}</small><p>${t(`legacy_${id}Desc`)}</p>${kind === 'rewardAnomaly' ? `<small>${t('anomalyDeferred')}</small>` : ''}</article>`;
+  return `<article class="collection-item"><strong>${t(`legacy_${id}`)}</strong><small>${t(kind)} · ${t(profile.legacy.unlocks.includes(id) ? 'unlocked' : 'legacyLocked')}</small><p>${t(`legacy_${id}Desc`)}</p></article>`;
 }
 function renderCollection(phase: Phase): void {
   const rewards = profile.legacy.receipt?.rewards ?? [];
@@ -193,6 +196,11 @@ function renderCollection(phase: Phase): void {
   const sigils = profile.legacy.unlocks.filter(id => SIGILS.includes(id as SigilId)).length;
   const branches = profile.legacy.unlocks.filter(id => Object.hasOwn(BRANCHES, id)).length;
   document.querySelector('#collection-list')!.innerHTML = `<p>${t('collectionCounts').replace('{sigils}', String(sigils)).replace('{branches}', String(branches))}</p>${LEGACY_IDS.map(unlockMarkup).join('')}`;
+}
+function renderAnomaly(): void {
+  const ticket = profile.legacy.ticket!;
+  document.querySelector('#draft-panel')!.innerHTML = `<h2>${t('anomalyChoose')}</h2><p>${t('anomalyHint')}</p><p id="draft-readiness" role="status"></p><p role="status">${saveOK ? '' : t('rewardSaveRetry')}</p><div class="draft-options opening">${ticket.anomalyOffers.map((id, index) => `<button class="draft-card" data-choice="${index}"><strong>${t(`legacy_${id}`)}</strong><span>${t(`anomaly_${id}Benefit`)}</span><span>${t(`anomaly_${id}Risk`)}</span></button>`).join('')}</div>`;
+  updateDraftReadiness();
 }
 function renderLegacy(): void {
   const ticket = profile.legacy.ticket!;
@@ -207,7 +215,7 @@ function renderDraft(): void {
 }
 
 function updateDraftReadiness(): void {
-  document.querySelectorAll<HTMLButtonElement>('#draft-panel [data-choice]').forEach(button => { button.disabled = !draftGuard.ready; });
+  document.querySelectorAll<HTMLButtonElement>('#draft-panel [data-choice]').forEach(button => { button.disabled = !draftGuard.ready || currentPhase === 'anomaly' && Boolean(profile.legacy.ticket?.anomalySelected) && profile.legacy.ticket?.anomalySelected !== profile.legacy.ticket?.anomalyOffers[Number(button.dataset.choice)]; });
   const status = document.querySelector('#draft-readiness');
   if (status) status.textContent = t(draftGuard.ready ? 'draftReady' : 'draftWait');
 }
@@ -215,7 +223,13 @@ document.querySelector('#draft-panel')!.addEventListener('click', (event) => {
   const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
   if (button && draftGuard.accepts(event as MouseEvent, button)) {
     const index = Number(button.dataset.choice);
-    if (currentPhase === 'legacy') {
+    if (currentPhase === 'anomaly') {
+      if (profile.legacy.ticket?.anomalySelected || chooseAnomaly(profile.legacy, index)) {
+        persist();
+        if (!buildTrial && !saveOK) { renderAnomaly(); return; }
+        if (arena.run.resolveAnomaly()) arena.setPhase('playing');
+      }
+    } else if (currentPhase === 'legacy') {
       if (chooseLegacy(profile.legacy, index)) {
         arena.combat.legacy.equip(profile.legacy.ticket!.selected);
         persist(); arena.setPhase('playing');
@@ -293,6 +307,12 @@ export const arena = new ArenaScene((phase) => {
     }
     if (legacyTrial) { const ticket = beginLegacy(profile.legacy, 1); ticket.started = true; }
     if (profile.legacy.ticket?.selected) arena.combat.legacy.equip(profile.legacy.ticket.selected);
+    if (anomalyTrial) {
+      const ticket = beginLegacy(profile.legacy, 1); ticket.started = true;
+      ticket.anomalyOffers = [anomalyTrial, ANOMALIES.find(id => id !== anomalyTrial)!];
+      arena.run.prepareBossPlaytest(0, 134);
+    }
+    arena.run.anomalyTicket = profile.legacy.ticket;
     applySettings();
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {

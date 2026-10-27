@@ -134,3 +134,8 @@ public/assets/
 ## Checkpoint hiện hành — Q9B
 - User giao Q9B ngày2026-10-27: mở scope Victory reward/Legacy permanent progression/ticket lifecycle/reward+collection UI vi-en, test/deploy/commit/push; supersede gate khôngQ9B lịch sử phía trên. Giữ Q9A accepted và toàn bộ tuning; không tự tuning/Q9C/artwork/Anomaly combat/Ascension/Cosmetic/reaction. Chi tiết tại docs/q9b/README.md và HANDOFF.
 - **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C. Gate chờ duyệt Q9B đã hoàn tất; không yêu cầu duyệt lại. Lượt ghi nhận này chỉ docs, không runtime/deploy.
+
+## Checkpoint hiện hành — Q9C
+- User giao Q9C Arena Anomalies ngày2026-10-27; supersede gate lịch sử “không mở Q9C” trong đúng scope này. Giữ Q9A/Q9B accepted, Auto Aim/mobile follow-up và balance/progression/art baseline278f439.
+- Run#1 không Anomaly, run#2+ chọn1/2tại~2:15;6mechanics/ticket/queue/UX/tunableconfig và coverage/cách thử tại docs/q9c/README.md. Không tự coi thông số Q9C là approved balance, không artwork mới.
+- Test/build/commit/push/Pages theo task, dừng **AWAITING USER PLAYTEST APPROVAL**; không tự Q9D hoặc suy acceptance từ bot/fixtures/deploy.

@@ -10,7 +10,14 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Auto Aim desktop theo yêu cầu27/10: toggle trong Settings, mặc định OFF; bật mới hiện chọn quái gần/Archer/Elite(Boss). Acceptance: Rupture → nhóm chọn → quái gần nhất; nearest trong mỗi nhóm, bỏ dead/coincident, không target thì ngắm chuột; lưu/validate setting, vi/en, Heavy/Charged giữ-thả/cancel/fresh-press giữ nguyên, touch không đổi. Build/typecheck, focused tests và browser desktop/touch; deploy theo quyền repo, không mở Q9C.
+Q9C — Arena Anomalies theo user27/10. Goal: run#1 không Anomaly; run#2+ chọn1/2offer tại~2:15, dùng Run Ticket/anti-repeat, pause/queue không chồng Draft/encounter/menu;6benefit+drawback tunable, telegraph/counterplay, save/unlock Q9B. Giữ Q9A/Q9B accepted, toàn bộ balance/progression/input/art ngoài scope. Acceptance: focused6Anomaly + interactions/reset/queue/ticket, typecheck/build/regression/mobile-desktop, docs/commit/push/Pages; dừng AWAITING USER PLAYTEST APPROVAL, không Q9D.
+
+## Q9C STATUS
+**AWAITING USER PLAYTEST APPROVAL** — implementation/validation hoàn tất, đang commit/push/Pages, không Q9D. Baseline origin/main278f439 đã fast-forward; Q9A/Q9B accepted giữ nguyên.
+- Đủ6benefit/drawback, tunableconfig riêng, không tuning baseline/artwork/dependency/framework. Ticket RNG/offers/choice giữ Restart/refresh; run#1 khôngAnomaly, run#2+~135s, hàng đợi Draft/encounter/menu, phase/input guard/vi-en/HUD/details/save retry. Dynamic outlines/bolt/relayline hợp lệ, không thay artwork chuẩn hoặc tự gán visual approval.
+- PASS236tests (18Q9C), build/typecheck;108loadout+72build/Curse subcases,8kseed;28bot runs kết thúc hợp lệ≤300s/24offers đúng135s, không dùng bot tự cân bằng. [Spec/config/evidence/checklist](docs/q9c/README.md). Browser320/390/844touch+1440desktop,6fixture×2platform/crowd24/4góc/refresh/save error; input390CDP/1440keyboard-mouse Heavy hold-release/move+Basic/Charged cancel-fresh/pause-locale-resume PASS. Dist production6×2platform PASS, kèm hash bundle tại docs/q9c/evidence/dist.json. Fixtures/bot/softwareWebGL không là human/device/iOS/Safari/FPS/latency/thermal/audio acceptance.
+- Cách thử: normal run#2 đến2:15, chọn1/2 và thử refresh cùngchoice;6link `?playtest=anomaly-<ID>` trong docs/q9c mở2:14, chọn card đầu sau1s, profile memory riêng không cấp unlock thật. Storm/Ground né vòng; Blood Light3; Static Perfect/tiaArcher; Seal Heavy rồi đổi mục tiêu khi khungcyan; Echo mark2nhóm/nối xa/né phản công. Touch+keyboard cần dễ đọc khi đông/Boss, không lẫn nút hoặc kẹt input; phản hồi Anomaly/bước/quan sát/thiết bị-browser.
+- Q9C tuning provisional, chưa approved balance; DDR DD-0001/0002 giữ nguyên. Không tự accepted/Q9D. Delivery sẽ cập nhật SHA/Pages sau khi hoàn tất.
 
 ## AUTO AIM STATUS
 Implementation hoàn tất: selector Rupture→option→nearest, desktop reticle + tick aim + Heavy/Charged release; toggle OFF mặc định/ẩn dropdown khi OFF, vi/en và save v2 allowlist. Đồng bộ remote39e9025, giữ toàn bộ Q9B accepted/save journal; không Q9C.
@@ -45,7 +52,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 
 ## LEGACY V1 STATUS
 - DDR có2decision: DD-0001 Legacy V1 và DD-0002 Elemental Mechanics Contract, đều Approved — Design Only; ID tiếp theo DD-0003. DD-0001 giữ nguyên, DD-0002 bổ sung theo approval trực tiếp27/10 cho revision09267ed. Snapshot draft giữ nhãn Proposed lịch sử, hiệu lực approval đọc từ DDR.
-- Q9A Core/Branch/RNG/UI và Q9B Victory rewards/unlock economy/save migration/ticket/collection đã được user nghiệm thu ngày2026-10-27. Anomaly chỉ lưu catalog, chưa combat; Ascension/Cosmetic/reaction chưa triển khai. Không mở Q9C hoặc tự tuning; chi tiết tại Q9A/Q9B STATUS.
+- Q9A Core/Branch/RNG/UI và Q9B Victory rewards/unlock economy/save migration/ticket/collection đã được user nghiệm thu ngày2026-10-27. Q9C Anomaly đang được user giao riêng, Ascension/Cosmetic/reaction chưa triển khai. Không Q9D hoặc tự tuning; chi tiết tại Q9A/Q9B STATUS.
 
 ## DESIGN MEMORY STATUS — CHECKPOINT KHỞI TẠO
 - Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
@@ -57,7 +64,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C.
+Q9C **AWAITING USER PLAYTEST APPROVAL**, chưa nghiệm thu. Q9A/Q9B đã ACCEPTED — USER PLAYTEST APPROVAL theo evidence riêng bên trên; Auto Aim/mobile-layout giữ trạng thái follow-up riêng. Không Q9D.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -105,7 +112,8 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Chờ feedback Auto Aim tại https://gizgity.github.io/a-new-game/?v=991be96 ; Pages đã SUCCESS. User thử Settings bật Auto Aim→Archer/Elite, tạo Rupture rồi giữ bắn/thả E hoặc Shift: ưu tiên dấu trước, hết dấu về nhóm chọn, thiếu nhóm về nearest; pause khi giữ phải hủy, tắt về chuột và refresh giữ setting. Chưa tự nghiệm thu; không mở Q9C.
+Push/deploy Q9C qua Pages và cập nhật delivery; sau SUCCESS dừng chờ user playtest Q9C theo checklist docs/q9c, không Q9D.
+
 ## VALIDATION APPROVAL Q9B
 Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.
 

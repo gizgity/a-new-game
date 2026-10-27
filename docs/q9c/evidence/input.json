@@ -1,0 +1,20 @@
+[
+  {
+    "touch": true,
+    "active": "staticField",
+    "heavyHoldRelease": true,
+    "movePlusBasic": true,
+    "chargedCancelFreshRelease": true,
+    "pauseLocaleResume": true,
+    "errors": []
+  },
+  {
+    "touch": false,
+    "active": "staticField",
+    "heavyHoldRelease": true,
+    "movePlusBasic": true,
+    "chargedCancelFreshRelease": true,
+    "pauseLocaleResume": true,
+    "errors": []
+  }
+]

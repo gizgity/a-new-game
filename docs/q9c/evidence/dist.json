@@ -1,0 +1,129 @@
+{
+  "hashes": {
+    "dist/index.html": "c704e7769ad26d399c967fb4f310712be846a0c8510b60b32d01bd6283e2beb3",
+    "dist/assets/index-CGTdVAHt.css": "7ed762832eeb59358ed19721b948ae80845b637f61a38177aff0a72baa2d367c",
+    "dist/assets/index-Cjodd-1s.js": "1e9740968cc2891d1f1df716c66fb9cb4ecb28d09403e9fafdc59677cf57d500"
+  },
+  "reports": [
+    {
+      "id": "fracturedStorm",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "bloodMoon",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "volatileGround",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "staticField",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "brokenSeal",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "echoChamber",
+      "touch": true,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "fracturedStorm",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "bloodMoon",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "volatileGround",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "staticField",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "brokenSeal",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "id": "echoChamber",
+      "touch": false,
+      "productionBundle": true,
+      "choose": true,
+      "hudAndDetails": true,
+      "pauseResume": true,
+      "isolatedSave": true,
+      "errors": []
+    }
+  ]
+}
