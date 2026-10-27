@@ -35,9 +35,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div class="header-actions">
       <label class="language"><span data-i18n="language"></span>
+        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
         <select id="locale"><option value="vi" data-i18n="vi"></option><option value="en" data-i18n="en"></option></select>
       </label>
-      <button id="pause" class="secondary" disabled data-i18n="pause"></button>
+      <button id="pause" class="secondary" disabled>
+        <svg class="header-icon pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+        <svg class="header-icon resume-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+        <span class="header-text" data-i18n="pause"></span>
+      </button>
     </div>
   </header>
   <section class="arena-shell">
@@ -124,7 +129,14 @@ function renderUI(phase: Phase = currentPhase): void {
   document.querySelector('#panel-title')!.textContent = t(phase === 'victory' ? 'victoryTitle' : phase === 'defeat' ? 'defeatTitle' : phase === 'ready' ? 'welcomeTitle' : 'pauseTitle');
   document.querySelector('#panel-body')!.textContent = (phase === 'victory' || phase === 'defeat') ? resultBody() : t(phase === 'ready' ? touchControls.enabled ? 'touchWelcomeBody' : 'welcomeBody' : 'pauseBody');
   primary.textContent = t(phase === 'victory' || phase === 'defeat' ? 'playAgain' : phase === 'ready' ? 'start' : 'resume');
-  pause.textContent = t(phase === 'paused' ? 'resume' : 'pause');
+  const pauseLabel = t(phase === 'paused' ? 'resume' : 'pause');
+  pause.querySelector('.header-text')!.textContent = pauseLabel;
+  pause.setAttribute('aria-label', pauseLabel);
+  pause.title = pauseLabel;
+  pause.dataset.paused = String(phase === 'paused');
+  const localeSelect = document.querySelector<HTMLSelectElement>('#locale')!;
+  localeSelect.setAttribute('aria-label', t('language'));
+  localeSelect.parentElement!.title = t('language');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
   document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || buildDetailsOpen;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
