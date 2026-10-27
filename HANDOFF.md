@@ -10,10 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q9B — Victory Rewards & Legacy Progression, user giao2026-10-27. Scope:2Sigil ở Victory đầu;1unlock mới ở Victory sau,5/3/2 RNG/pity/dependency; versioned save/migration/pending/idempotency/debug isolation; ticket lifecycle/collection/reveal vi-en mobile/desktop; tests/typecheck/build/Pages/commit/push. Giữ toàn bộ balance/combat Q9A accepted, không artwork/Anomaly combat/Ascension/Cosmetic/reaction; khôngQ9C.
+Q9B — Victory Rewards & Legacy Progression đã được user nghiệm thu ngày2026-10-27 qua “duyệt 9b xong”; lượt hiện tại chỉ ghi nhận approval. Scope đã triển khai: 2Sigil ở Victory đầu;1unlock mới ở Victory sau,5/3/2 RNG/pity/dependency; versioned save/migration/pending/idempotency/debug isolation; ticket lifecycle/collection/reveal vi-en mobile/desktop; tests/typecheck/build/Pages/commit/push. Giữ toàn bộ balance/combat Q9A accepted, không artwork/Anomaly combat/Ascension/Cosmetic/reaction; khôngQ9C.
 
 ## Q9B STATUS
-**AWAITING USER PLAYTEST APPROVAL** — code `c0a8247` đã push main fast-forward; [Pages40444521840](https://github.com/gizgity/a-new-game/actions/runs/40444521840), job121992491794 completed/SUCCESS gồm build/typecheck/upload/Deploy. [Chơi Q9B](https://gizgity.github.io/a-new-game/?v=c0a8247). Chưa xác minh liveHTTP/hash từ môi trường. Commit bàn giao sau chỉMarkdown, không redeploy. Chi tiết [docs/q9b/README.md](docs/q9b/README.md).214tests PASS; build/typecheck PASS;4viewports browser normal flow PASS; failure-injection UI/pending refresh/Victory thứ2 PASS. Chưa user/device playtest. Giữ các approval lịch sử bên dưới; gate khôngQ9B được user supersede bằng taskQ9B hiện tại.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C.
+
+Code `c0a8247` đã push main fast-forward; [Pages40444521840](https://github.com/gizgity/a-new-game/actions/runs/40444521840), job121992491794 completed/SUCCESS gồm build/typecheck/upload/Deploy. [Chơi Q9B](https://gizgity.github.io/a-new-game/?v=c0a8247). Chưa xác minh liveHTTP/hash từ môi trường. Commit bàn giao sau chỉMarkdown, không redeploy. Chi tiết [docs/q9b/README.md](docs/q9b/README.md).214tests PASS; build/typecheck PASS;4viewports browser normal flow PASS; failure-injection UI/pending refresh/Victory thứ2 PASS. User đã nghiệm thu Q9B; giới hạn coverage kỹ thuật/thiết bị thật giữ nguyên. Giữ các approval lịch sử bên dưới; gate khôngQ9B được user supersede bằng taskQ9B hiện tại.
 
 ## MOBILE LAYOUT STATUS
 - User xác nhận rõ **“Cho phép push và deploy”** cho follow-up Shoot72/Melee76/header40. Đã fetch remote, push fast-forward code3b726e9/bàn giaoe1edd63; [Pages40438958223](https://github.com/gizgity/a-new-game/actions/runs/40438958223) job121974380153 completed/SUCCESS, gồm build/typecheck/upload/Deploy. Link thử https://gizgity.github.io/a-new-game/?v=e1edd63 . Approval blocker cũ đã được giải quyết bằng xác nhận trực tiếp của user; không còn chờ quyền deploy. Chưa xác nhận liveHTTP/hash từ môi trường. Commit bàn giao sau chỉ Markdown, không redeploy.
@@ -36,7 +38,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 
 ## LEGACY V1 STATUS
 - DDR có2decision: DD-0001 Legacy V1 và DD-0002 Elemental Mechanics Contract, đều Approved — Design Only; ID tiếp theo DD-0003. DD-0001 giữ nguyên, DD-0002 bổ sung theo approval trực tiếp27/10 cho revision09267ed. Snapshot draft giữ nhãn Proposed lịch sử, hiệu lực approval đọc từ DDR.
-- Q9A triển khai Core/Branch/RNG/UI trong scope user đã mở lại, đã được user nghiệm thu gameplay ngày2026-10-27; cân bằng tương lai theo issue mới. Victory rewards/unlock economy/Anomaly/Ascension/Cosmetic/fullmigration vẫn Q9B+, không tự triển khai. Chi tiết delivery/coverage tại Q9A STATUS và docs/q9a.
+- Q9A Core/Branch/RNG/UI và Q9B Victory rewards/unlock economy/save migration/ticket/collection đã được user nghiệm thu ngày2026-10-27. Anomaly chỉ lưu catalog, chưa combat; Ascension/Cosmetic/reaction chưa triển khai. Không mở Q9C hoặc tự tuning; chi tiết tại Q9A/Q9B STATUS.
 
 ## DESIGN MEMORY STATUS — CHECKPOINT KHỞI TẠO
 - Đã tạo DESIGN_DECISIONS.md (0entry, next DD-0001), ART_BIBLE.md, docs/art-reference/README.md và2skills design-decision/game-art; cập nhật AGENTS/handoff skill. Không backfill hoặc phê duyệt artwork/decision mới.
@@ -48,7 +50,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-**AWAITING USER PLAYTEST APPROVAL — Q9B** trên code/deployc0a8247, Pages40444521840SUCCESS. Q9A vẫn accepted; không tự tuning hoặc mởQ9C. Mobile layout follow-up vẫn giữ giới hạn thiết bị thật đã ghi riêng. Validation không thay user acceptance.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -93,9 +95,13 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q8B — Run Pacing & Milestone Balance | ACCEPTED — USER PLAYTEST APPROVAL | User “oki duyệt q8b” ngày2026-10-26 trêneb6fbbe; Pages40341327061 SUCCESS; Victory là mục tiêu mềm |
 | Q8D — Balance Validation & Final Tuning | ACCEPTED — USER PLAYTEST APPROVAL | User “q8d đạt” trên cbdb131, handoff4791b27; Pages40360458461 SUCCESS; không Q9 |
 | Q9A — Elemental Legacy Core | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9a, nếu cần cân bằng sẽ mở issue mới” ngày2026-10-27 trên1a08448; Pages40428188955 SUCCESS; balance theo issue mới, không Q9B |
+| Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 
 ## NEXT ACTION
-Chờ user playtest [Q9B](https://gizgity.github.io/a-new-game/?v=c0a8247) theo [checklist](docs/q9b/README.md#user-playtest): dùng URL thường (tab ẩn danh nếu muốn collection sạch), thắngBoss lần đầu→2Sigil; refresh mànVictory không thêmreward; Chơi tiếp→2Legacy offers, chọn1→refresh giữchoice; Victory tiếp→1unlock, Defeat không thêmcollection; mở/cuộncollection vàđổi vi/en trên mobile/desktop. Mong đợi thao tác/readability rõ. Báo bước/hiện tượng/thiết bị/browser. Dừng **AWAITING USER PLAYTEST APPROVAL**, khôngQ9C/tuneQ9A.
+Chờ task mới hoặc feedback cụ thể của user. Q9B đã accepted; checklist docs/q9b giữ làm tham chiếu cho issue sau, không yêu cầu nghiệm thu lại. Không tự mở Q9C hoặc tuning Q9A.
+
+## VALIDATION APPROVAL Q9B
+Chỉ sửa Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9b/README); kiểm diff/consistency/links, không thay runtime/DDR/artwork/balance. Không chạy lại tests/build/deploy cho lượt ghi nhận approval; giữ validation và Pages c0a8247 đã PASS.
 
 ## VALIDATION APPROVAL Q9A
 Chỉ sửa4Markdown (HANDOFF, AGENTS, GAME_BRIEF, docs/q9a/README), kiểm nguồn/version/consistency/links/diff; không đổi runtime/DDR/balance/artwork, không tests/build/deploy. Kết quả kỹ thuật và Pages1a08448 giữ nguyên.

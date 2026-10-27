@@ -1,6 +1,6 @@
 # Q9B — Victory Rewards & Legacy Progression
 
-Trạng thái: triển khai để user playtest; **AWAITING USER PLAYTEST APPROVAL**. User mở Q9B ngày 2026-10-27; không mở Q9C. Giữ Q9A accepted1a08448, toàn bộ tuning/combat/art và mobile layout baselinec3694ed.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9b xong” ngày2026-10-27 trên code/deploy `c0a8247` (bàn giao `e9cc11c`), Pages40444521840 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là approval trực tiếp của user; không suy thêm device/iOS/Safari coverage từ approval chung hoặc tests/build/deploy. Giữ Q9A accepted và toàn bộ tuning. Không tự mở Q9C. User mở Q9B ngày 2026-10-27; không mở Q9C. Giữ Q9A accepted1a08448, toàn bộ tuning/combat/art và mobile layout baselinec3694ed.
 
 - Victory đầu tiên trong economy Q9B mở 2 Sigil khác nhau; sau đó 1 ID chưa sở hữu, đủ dependency. Weight **từng ID**: Sigil5/Branch3/Anomaly2. Pity sau3Victory không Sigil bảo đảm Sigil ở Victory tiếp nếu còn; Defeat không đổi collection/pity.
 - 6Sigil/12Branch và6Anomaly DD-0001; Fractured Storm/Blood Moon mở sẵn, **không Anomaly nào hoạt động trong combat**. Không Ascension/Cosmetic mới/reaction.
@@ -21,7 +21,7 @@ Code `c0a8247` đã push main fast-forward; [Pages40444521840](https://github.co
 - [Browser script](browser-check.mjs), [raw results](evidence/browser.json), screenshot `evidence/`:320×740,390×844,844×390 touch và1440×1000 desktop. Fixture kích hoạt predicate Victory/Defeat thật bằng state browser context; không cheat URL production. Kiểm reward→refresh→collection vi/en→newrun→2offers→tap/keyboard→refresh giữchoice; Defeat không đổicollection. Failure injection kiểm journal/main-save failure, chặn newrun vàVictory thứ2 nhận1unlock.
 - Software WebGL/emulation/fixture không thay thiết bị thật, iOS/Safari, FPS/latency/thermal/audio hoặc user experience approval. Không tuning Q9A.
 
-## User playtest
+## User playtest — checklist tham chiếu sau nghiệm thu
 
 Dùng link Pages của commit bàn giao. Thử normal URL, không dùng `?playtest=...` vì preset không lưu progression. Có thể dùng tab ẩn danh để bắt đầu collection sạch mà không xóa save thật.
 
@@ -30,4 +30,4 @@ Dùng link Pages của commit bàn giao. Thử normal URL, không dùng `?playte
 3. Victory tiếp theo:1unlock mới. Defeat: không thêm unlock; run tiếp tạo ticket/roll mới.
 4. Trên mobile vàdesktop: mở/cuộn Bộ sưu tập, đổi vi/en; tên/effect/locked/unlocked rõ, nút chơi tiếp và2offers dễ thao tác. Báo bước lỗi + điều quan sát + thiết bị/browser.
 
-Dừng tại **AWAITING USER PLAYTEST APPROVAL**, không tự mởQ9C.
+Q9B đã **ACCEPTED — USER PLAYTEST APPROVAL**; checklist trên giữ làm tham chiếu cho issue sau, không yêu cầu nghiệm thu lại. Chờ task mới, không tự mở Q9C.
