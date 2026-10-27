@@ -1,6 +1,6 @@
 # Q9A — Elemental Legacy Core
 
-**IMPLEMENTED — AWAITING USER PLAYTEST APPROVAL**. Thiết kế được user duyệt ngày2026-10-27 qua “duyệt dd-0002. bắt đầu triển khai q9a”, [DD-0002](../../DESIGN_DECISIONS.md#dd-0002--elemental-mechanics-contract); approval thiết kế không là nghiệm thu implementation. Giữ DD-0001 và baseline Q2–Q8D, không mở Q9B.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9a, nếu cần cân bằng sẽ mở issue mới” ngày2026-10-27 trên code/deploy `1a08448` (bàn giao `49394c0`), Pages40428188955 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Đây là nghiệm thu trực tiếp của user, không suy từ tests/build/deploy; giữ giới hạn coverage kỹ thuật đã ghi. Nếu cần cân bằng, user sẽ mở issue mới; không tự tune hoặc mở Q9B. Thiết kế được user duyệt ngày2026-10-27 qua “duyệt dd-0002. bắt đầu triển khai q9a”, [DD-0002](../../DESIGN_DECISIONS.md#dd-0002--elemental-mechanics-contract); approval thiết kế và nghiệm thu implementation được ghi riêng; user đã nghiệm thu implementation theo nguồn phía trên. Giữ DD-0001 và baseline Q2–Q8D, không mở Q9B.
 
 ## Delivery
 
@@ -26,7 +26,7 @@ Run đầu không Sigil. Ticket giữ seed/offers/selected/started qua refresh; 
 
 ## Tuning
 
-Damage/duration/CD/range/force/threshold/haste/queue/target/root budgets trong config là thông số khởi tạo Q9A, **chưa approved balance**. Wildfire một thế hệ V1 có thể được xem lại qua playtest có user review, không tự tăng generation. Không thay damage/cadence/encounter balance cũ ngoài Legacy đã giao.
+Damage/duration/CD/range/force/threshold/haste/queue/target/root budgets trong config là thông số khởi tạo Q9A, không phải số balance được chốt vĩnh viễn trong DDR; bản Q9A hiện tại đã được nghiệm thu, cân bằng tiếp theo chờ issue mới. Wildfire một thế hệ V1 có thể được xem lại qua playtest có user review, không tự tăng generation. Không thay damage/cadence/encounter balance cũ ngoài Legacy đã giao.
 
 ## Validation
 
@@ -40,7 +40,7 @@ Damage/duration/CD/range/force/threshold/haste/queue/target/root budgets trong c
 
 Browser scripts dùng Playwright có sẵn ngoài package project: `PLAYWRIGHT_MODULE` trỏ tới module cài trong môi trường, không thêm dependency game. [browser-check.mjs](browser-check.mjs)/[input-check.mjs](input-check.mjs) dùng Vite5173; [dist-check.mjs](dist-check.mjs) dùng preview5175, base `/a-new-game/`. Chạy sau khi code ổn định, không HMR mutation song song; input checks chờ simulation state để không suy từ software render wall time.
 
-## User playtest — cách vào và tiêu chí đạt
+## User playtest — checklist tham chiếu sau nghiệm thu
 
 Trang chơi: https://gizgity.github.io/a-new-game/ . Mỗi link fixture dưới mở menu, bấm **Bắt đầu → chờ1s → chọn bộ**. Banner thử Legacy báo không lưu tiến trình. Dùng browser/tab mới hoặc quay lại trang thường để rời fixture. Fixture có cùng gameplay/combat config, chỉ pool Legacy và profile thử được tách riêng; không tặng kill/HP/resource trong các link này.
 
@@ -53,7 +53,7 @@ Trang chơi: https://gizgity.github.io/a-new-game/ . Mỗi link fixture dưới 
 | Shadow | [Ambush](https://gizgity.github.io/a-new-game/?playtest=legacy-shadow-core) | [Nightfall](https://gizgity.github.io/a-new-game/?playtest=legacy-shadow-nightfall) | [Veilstep](https://gizgity.github.io/a-new-game/?playtest=legacy-shadow-veilstep) |
 | Wind | [Momentum](https://gizgity.github.io/a-new-game/?playtest=legacy-wind-core) | [Tailwind](https://gizgity.github.io/a-new-game/?playtest=legacy-wind-tailwind) | [Cyclone](https://gizgity.github.io/a-new-game/?playtest=legacy-wind-cyclone) |
 
-Thử theo nhóm ngắn; không cần lặp mọi milestone lịch sử:
+Checklist dưới là reference của lượt thử đã bàn giao và để mô tả issue sau này; không yêu cầu nghiệm thu lại Q9A. Không suy thiết bị/browser cụ thể từ approval chung của user:
 
 1. **Fire/Water/Ice:** Ignite/Frostbite cần mục tiêu sống qua đòn; dùng Bulwark Elite (từ2:05 theo kills, fallback2:30) hoặc Boss để dễ thấy đầy đủ. Charged giết quái thường ngay sẽ không đặt Ignite lên corpse. Basic tích Charged rồi Charged đặt Ignite; đánh Heavy lên Ignite để Furnace hoặc kết liễu để Wildfire. Water dùng Heavy rồi primary để thấy Undertow; né vàng để FlowState hồi Heavy. Ice hit liên tiếp cùng target (có thể xen target khác), sau khi đủ3pips dùng Heavy/Charged lần sau để Shatter/Brittle/Echo. Mong đợi không tự Detonate thêm từ damage phụ, không lan Ignite thế hệ2, không mất cơ chế Rupture cũ.
 2. **Lightning/Shadow:** Dash khi cue vàng/đạn sắp tới để PerfectDodge. Lightning HUD có charge; Charged không tiêu Legacy charge, Basic hit tiêu và chain; ArcRelay thêm1jump, Overclock chỉ nhanh Light/Basic. Shadow mark theo aim, melee kể cả kết liễu vẫn Ambush; Nightfall không nhảy đích/đánh xác, Veilstep không thêm i-frame. Mong đợi không double kill/resource, PD Mutation/Curse vẫn hoạt động.
@@ -61,4 +61,4 @@ Thử theo nhóm ngắn; không cần lặp mọi milestone lịch sử:
 4. **Touch + keyboard/mouse riêng:** chạy ít nhất một bộ trên mỗi thiết bị/input đang dùng; vừa di chuyển vừa bắn, giữ–thả Heavy/Charged, kéo aim touch hoặc manual mouse, pause/resume/Draft/đổi viewport. HUD không che player/cue ởgóc; giữ/thả/cancel không tiêu thêm lượt. Đánh giá readability/precision/responsiveness riêng, ghi nếu chỉ thử một nền tảng.
 5. **Boss + build:** nhận Draft tự nhiên, giữ4M/2C; Boss warning ởkill/time window hiện hữu (sớm nhất3:40, fallback4:00), transform khi≤50%HP đóng băng world1.4s. Mong đợi status không slow/stun/knock-lock Boss, mutation/curse/relay không mất synergy hoặc gây chuỗi vô hạn. Không cần ép thắng; balance/feel chưa được suy từ tests.
 
-Phản hồi: Sigil/Branch, thao tác/tình huống, hiện tượng và thiết bị/browser. Dừng **AWAITING USER PLAYTEST APPROVAL Q9A** sau delivery; chỉ mở Q9B khi user giao riêng.
+Phản hồi: Sigil/Branch, thao tác/tình huống, hiện tượng và thiết bị/browser. Q9A đã **ACCEPTED — USER PLAYTEST APPROVAL**; nếu cần cân bằng, user sẽ mở issue mới. Dừng chờ task mới, không tự mở Q9B.
