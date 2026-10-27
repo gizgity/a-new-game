@@ -30,3 +30,7 @@ Preset memory riêng, không đọc/ghi save thật; chọn Legacy rồi chơi:
 | [?playtest=seal-4](https://gizgity.github.io/a-new-game/?playtest=seal-4) | Mở3:40 với build Boss fixture; chọn Anomaly nếu hiện. Boss fallback4:00, đánh xuống≤50% để transform; sau slam+followup phase2 rời vòng Echo hoặc Dash trước1.3s. Kiểm thêm modifiers1–3, readability khi đông. |
 
 Thử riêng mobile dọc/ngang và desktop: joystick+Shoot hoặc WASD+mouse, giữ/thả Heavy/Charged, Dash, pause/resume; cue/Seal không che player ở biên/góc, không kẹt input khi Draft. Báo Seal/tình huống/thao tác/quan sát và thiết bị/browser. Tests/deploy không thay playtest approval.
+
+## Delivery
+
+Code `43c4e26` + guard `afd084a` đã push main fast-forward. [Pages40538754967](https://github.com/gizgity/a-new-game/actions/runs/40538754967) completed/SUCCESS, job122311064072 gồm build/typecheck/upload/Deploy. [Chơi Q9D](https://gizgity.github.io/a-new-game/?v=afd084a). PASS25testfiles gồm11focused Q9Dcases, typecheck/build và5browser reports. Chưa xác minh liveHTTP/hash; commit bàn giao chỉMarkdown, không redeploy. Dừng **AWAITING USER PLAYTEST APPROVAL Q9D**, không Q9E hoặc DDR Approved.
