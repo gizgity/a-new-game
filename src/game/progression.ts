@@ -1,3 +1,4 @@
+import { SIGILS, type SigilId } from './config/legacy.js';
 import { emptyCollection, validateCollection, recordCollection, type CollectionProgress, type RunSummary } from './collection.js';
 import type { AutoAimPriority } from './autoAim.js';
 import { emptyLegacy, validateLegacy, finishLegacy, type LegacyProgress } from './legacy.js';
@@ -11,7 +12,7 @@ export interface Profile {
   version: 3;
   collection: CollectionProgress;
   legacy: LegacyProgress;
-  settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism'; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
+  settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism'; trail: SigilId | null; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
   unlocks: UnlockId[];
   drafts: { previous: BuildId[]; current: BuildId[]; active: boolean };
@@ -20,7 +21,7 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint', desktopAutoAim: false, autoAimPriority: 'nearest' },
+  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint', trail: null, desktopAutoAim: false, autoAimPriority: 'nearest' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
@@ -30,6 +31,7 @@ export function validateProfile(value: unknown): Profile {
   result.collection = validateCollection(raw.collection, result.legacy.nextRunId);
   const settings = object(raw.settings), totals = object(raw.totals);
   result.settings.locale = settings.locale === 'en' ? 'en' : 'vi';
+  result.settings.trail = SIGILS.includes(settings.trail as SigilId) && result.collection.sigilWins.includes(settings.trail as SigilId) ? settings.trail as SigilId : null;
   result.settings.muted = settings.muted === true;
   result.settings.desktopAutoAim = settings.desktopAutoAim === true;
   result.settings.autoAimPriority = settings.autoAimPriority === 'archer' || settings.autoAimPriority === 'elite' ? settings.autoAimPriority : 'nearest';

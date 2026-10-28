@@ -1,0 +1,133 @@
+{
+  "frames": {
+    "fire": {
+      "frame": {
+        "x": 44,
+        "y": 225,
+        "w": 466,
+        "h": 187
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 187
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 187
+      }
+    },
+    "water": {
+      "frame": {
+        "x": 552,
+        "y": 229,
+        "w": 458,
+        "h": 188
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 458,
+        "h": 188
+      },
+      "sourceSize": {
+        "w": 458,
+        "h": 188
+      }
+    },
+    "lightning": {
+      "frame": {
+        "x": 1060,
+        "y": 224,
+        "w": 448,
+        "h": 174
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 448,
+        "h": 174
+      },
+      "sourceSize": {
+        "w": 448,
+        "h": 174
+      }
+    },
+    "ice": {
+      "frame": {
+        "x": 56,
+        "y": 659,
+        "w": 439,
+        "h": 181
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 439,
+        "h": 181
+      },
+      "sourceSize": {
+        "w": 439,
+        "h": 181
+      }
+    },
+    "shadow": {
+      "frame": {
+        "x": 543,
+        "y": 670,
+        "w": 466,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 159
+      }
+    },
+    "wind": {
+      "frame": {
+        "x": 1048,
+        "y": 657,
+        "w": 457,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 457,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 457,
+        "h": 194
+      }
+    }
+  },
+  "meta": {
+    "image": "elemental-trails.png",
+    "size": {
+      "w": 1536,
+      "h": 1024
+    },
+    "scale": "1",
+    "app": "Q9E original production PNG alpha registration"
+  }
+}

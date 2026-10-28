@@ -159,3 +159,8 @@ public/assets/
 ## Checkpoint hiện hành — Q9E
 - User giao Q9E Final Design & Implementation2026-10-28, supersede gate lịch sử khôngQ9E trong đúngscope. DD-0003 Approved design append-only; giữ Q9A–D accepted gồmQ9D VFX V1.1/a4ea34b, không tune/combat/progression/Boss mới.
 - PhaseA e2c1b92 Codex/6badge/history20/recap schema3 journal đã push q9e-final; PhaseB6trail V1 và exactcomposite6×4viewport/grayscale ở docs/q9e/art/README.md. Dừng AWAITING USER VISUAL APPROVAL trước production/integrationcosmetics. Chưa duyệtV1; conceptcroponlydocs không runtimeassets. Khôngdeploy trướcC; không tựuseracceptance/Q10. Chỉ sau userduyệt visual mớiC, deploy hoàn chỉnh rồi chờ USER PLAYTEST APPROVAL Q9E.
+
+
+## Q9E visual approval / Phase C
+- User “oki duyệt. làm tiếp đi” ngày2026-10-28 duyệt Q9E Trails V1 trên a60f256 và giao tiếpC; supersede gate chờvisual trong đúngscope6trail. Không cần duyệt lạiV1. Giữ DD-0003/design, ArtBible/Q9A–D, khôngbalance/Boss/combat/RNG mới.
+- Production source riêngImageGen/alpha, max1trail/None deriveVictoryevidence, menu/persistence/recap; validation/cáchthử tại docs/q9e/production/README.md. Cho phép commit/pushmain/Pages bản hoàn chỉnh sauchecksPASS theo contract; dừng AWAITING USER PLAYTEST APPROVAL Q9E, không tựexperienceaccepted/Q10.

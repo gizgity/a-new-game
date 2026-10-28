@@ -1,0 +1,113 @@
+{
+  "source": "/workspace/a-new-game/docs/q9e/production/source/trails-v1.png",
+  "runtime": "public/assets/vfx/elemental-trails.png",
+  "sha256": "82a6dee87f0638f6895e531bf0b13d521929ac60afff8622b5e05db1f5d34347",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "decodedBytes": 6291456,
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "method": "PNG copied byte-for-byte; metadata alpha>8 bounds+2px padding, no artwork redraw/crop/alpha edits. Independent production source, not concept board.",
+  "frames": [
+    {
+      "id": "fire",
+      "cell": 0,
+      "alphaBounds": [
+        46,
+        227,
+        508,
+        410
+      ],
+      "frame": {
+        "x": 44,
+        "y": 225,
+        "w": 466,
+        "h": 187
+      }
+    },
+    {
+      "id": "water",
+      "cell": 1,
+      "alphaBounds": [
+        42,
+        231,
+        496,
+        415
+      ],
+      "frame": {
+        "x": 552,
+        "y": 229,
+        "w": 458,
+        "h": 188
+      }
+    },
+    {
+      "id": "lightning",
+      "cell": 2,
+      "alphaBounds": [
+        38,
+        226,
+        482,
+        396
+      ],
+      "frame": {
+        "x": 1060,
+        "y": 224,
+        "w": 448,
+        "h": 174
+      }
+    },
+    {
+      "id": "ice",
+      "cell": 3,
+      "alphaBounds": [
+        58,
+        149,
+        493,
+        326
+      ],
+      "frame": {
+        "x": 56,
+        "y": 659,
+        "w": 439,
+        "h": 181
+      }
+    },
+    {
+      "id": "shadow",
+      "cell": 4,
+      "alphaBounds": [
+        33,
+        160,
+        495,
+        315
+      ],
+      "frame": {
+        "x": 543,
+        "y": 670,
+        "w": 466,
+        "h": 159
+      }
+    },
+    {
+      "id": "wind",
+      "cell": 5,
+      "alphaBounds": [
+        26,
+        147,
+        479,
+        337
+      ],
+      "frame": {
+        "x": 1048,
+        "y": 657,
+        "w": 457,
+        "h": 194
+      }
+    }
+  ]
+}

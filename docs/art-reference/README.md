@@ -83,3 +83,8 @@ User “visual ok, làm đi” ngày2026-10-27 duyệt [boardV1.1](../q9c/vfx-ar
 ## Q9D Ascension VFX — accepted V1.1
 
 User “duyệt, làm đi” ngày2026-10-28, hội thoại task hiện tại không permalink, duyệt [board/mockupsV1.1](../q9d/vfx-art-v1/README.md) và giao production/integration. [Production/source/hash/renderer/checklist](../q9d/vfx-production/README.md). Motif ripple/scar, Huntereye, localFracturefork+penaltyticks, Wardenchaincrown; giữArtBible/direction/geometry/balance. Q9D gồm VFX V1.1 đã **ACCEPTED — USER PLAYTEST APPROVAL** qua user “duyệt 9d” ngày2026-10-28 trênffd39a9/bàn giaoa985145, Pages40629442727 SUCCESS; nguồn hội thoại hiện tại không permalink. Giữ giới hạn coverage kỹ thuật; không DDR Approved hoặc Q9E. Các manifest/ảnh concept giữ trạng thái lịch sử trước playtest, không là gate còn chờ.
+
+
+## Q9E Elemental Trails — visual target approved V1
+
+User “oki duyệt. làm tiếp đi” ngày2026-10-28 duyệt [board6motifV1](../q9e/art/source/concept-v1.png) và [scale/hierarchycomposites](../q9e/art/README.md) trên a60f256, giaoPhaseC. Không đổi direction/Bible. [Production source/runtime/checks](../q9e/production/README.md) riêng, khôngcropboard. Đây là **visual approval**, chưa userplaytestacceptance Q9E; không dùng làm bằng chứng deviceFPS/experienceaccepted hoặc thay approval Q7C/Q9D.

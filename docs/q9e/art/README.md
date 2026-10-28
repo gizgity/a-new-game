@@ -1,6 +1,6 @@
 # Q9E — Elemental Trails Concept V1
 
-**AWAITING USER VISUAL APPROVAL.** Chỉ concept/review theo `$game-art`; không production texture, không tích hợp cosmetic mới, không deploy, không userplaytestacceptance.
+**VISUAL APPROVED V1** — user “oki duyệt. làm tiếp đi” ngày2026-10-28 trên a60f256, hội thoại hiện tại không permalink. PhaseB checklist dưới là snapshot proposal; [PhaseC production/runtime](../production/README.md) có coverage hiện hành, user playtest còn pending. Chỉ concept/review theo `$game-art`; không production texture, không tích hợp cosmetic mới, không deploy, không userplaytestacceptance.
 
 [Review HTML — baseline / six alternatives / grayscale](review.html) · [Board V1](source/concept-v1.png) · [Exact prompts](source/PROMPTS.md) · [Hashes/provenance](manifest.json).
 

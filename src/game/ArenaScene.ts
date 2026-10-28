@@ -1,3 +1,5 @@
+import { TrailVisual } from './TrailVisual';
+import type { SigilId } from './config/legacy';
 import { AscensionVisual } from './AscensionVisual';
 import { AnomalyVisual } from './AnomalyVisual';
 import { drawLegacy } from './LegacyVisual';
@@ -34,6 +36,8 @@ export class ArenaScene extends Phaser.Scene {
   private arrival!: BossArrival;
   private resultVisual!: RunResultVisual;
   victoryRevealing = false;
+  trail: SigilId | null = null;
+  private trailVisual!: TrailVisual;
   cosmetic: 'mint' | 'prism' = 'mint';
   desktopAutoAim = false;
   autoAimPriority: AutoAimPriority = 'nearest';
@@ -59,6 +63,7 @@ export class ArenaScene extends Phaser.Scene {
 
   preload(): void {
     PlayerVisual.preload(this);
+    TrailVisual.preload(this);
     AnomalyVisual.preload(this);
     AscensionVisual.preload(this);
     BossArrival.preload(this);
@@ -75,6 +80,8 @@ export class ArenaScene extends Phaser.Scene {
     this.combatGraphics = this.add.graphics().setDepth(1.5);
     this.enemySprites = new EnemySprites(this);
     this.vessel = new PlayerVisual(this, this.combat);
+    this.trailVisual = new TrailVisual(this);
+    this.trailVisual.reset(this.combat);
     this.resultVisual = new RunResultVisual(this);
     this.reticle = this.add.graphics().setDepth(3).setVisible(false);
     this.reticle.lineStyle(1, 0x91ffe0, 0.8).strokeCircle(0, 0, 7);
@@ -148,6 +155,7 @@ export class ArenaScene extends Phaser.Scene {
       this.resultVisual.reset();
       this.run.start();
       this.vessel.reset(this.combat);
+      this.trailVisual.reset(this.combat);
       this.enemySprites.reset();
       this.anomalyVisual.reset();
       this.ascensionVisual.reset();
@@ -177,7 +185,7 @@ export class ArenaScene extends Phaser.Scene {
     this.input.keyboard?.resetKeys();
     this.drawCombat();
     this.vessel.render(this.combat, this.cosmetic);
-    if (phase === 'victory' || phase === 'defeat') this.vessel.finish();
+    if (phase === 'victory' || phase === 'defeat') { this.vessel.finish(); this.trailVisual.finish(); }
     this.onPhaseChange(phase);
     this.onCombatChange(this.combat);
   }
@@ -246,6 +254,7 @@ export class ArenaScene extends Phaser.Scene {
       this.run.step(input, FIXED_STEP);
       if (!frozen) {
         this.vessel.step(this.combat, FIXED_STEP);
+        this.trailVisual.step(this.combat, FIXED_STEP, this.trail);
         this.enemySprites.step(FIXED_STEP);
         this.anomalyVisual.step(this.combat);
         this.ascensionVisual.step(this.combat);

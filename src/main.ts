@@ -19,9 +19,10 @@ const trialRoute = DIVERSITY_ROUTES.find(route => route.id === new URLSearchPara
 const trialBoss = new URLSearchParams(location.search).get('playtest') === BOSS_PLAYTEST.id;
 const sealTrial = /^seal-[0-4]$/.test(new URLSearchParams(location.search).get('playtest') ?? '') ? Number(new URLSearchParams(location.search).get('playtest')!.slice(-1)) : null;
 const anomalyTrial = ANOMALIES.find(id => new URLSearchParams(location.search).get('playtest') === `anomaly-${id}`);
+const trailTrial = SIGILS.find(id => new URLSearchParams(location.search).get('playtest') === `trail-${id}`);
 const legacyParts = new URLSearchParams(location.search).get('playtest')?.split('-');
 const legacyCandidate = legacyParts?.[0] === 'legacy' ? { sigil: legacyParts[1], branch: legacyParts[2] === 'core' ? null : legacyParts[2] } : null;
-const legacyTrial: LegacyOffer | null = validLegacy(legacyCandidate) ? legacyCandidate : null;
+const legacyTrial: LegacyOffer | null = trailTrial ? {sigil:trailTrial,branch:null} : validLegacy(legacyCandidate) ? legacyCandidate : null;
 const buildTrial = Boolean(new URLSearchParams(location.search).has('playtest') || new URLSearchParams(location.search).has('draftSeed') || new URLSearchParams(location.search).has('draftDebug'));
 const profile = buildTrial ? defaultProfile() : loadProfile();
 if (legacyTrial) {
@@ -30,6 +31,7 @@ if (legacyTrial) {
 }
 if (anomalyTrial) { profile.totals.runs = 1; profile.legacy.unlocks = [...LEGACY_IDS]; }
 if (sealTrial !== null) { profile.totals.runs = 1; profile.legacy.unlocks = [...LEGACY_IDS]; profile.legacy.ascension = { version:1, highest:4, selected:sealTrial, clears:[0,1,2,3] }; }
+if (trailTrial) { profile.collection.sigilWins = [...SIGILS]; profile.settings.trail = trailTrial; }
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
 let saveOK = true;
@@ -78,6 +80,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <details id="collection" class="collection"><summary data-i18n="legacyCollection"></summary><label><span data-i18n="qFilter"></span><select id="codex-filter"><option value="all" data-i18n="q_all"></option><option value="sigils" data-i18n="q_sigils"></option><option value="branches" data-i18n="q_branches"></option><option value="anomalies" data-i18n="q_anomalies"></option><option value="seals" data-i18n="q_seals"></option></select></label><div id="collection-list"></div></details>
         <details class="collection"><summary data-i18n="qChallenges"></summary><div id="challenge-list"></div></details>
         <details class="collection"><summary data-i18n="qHistory"></summary><div id="history-list"></div><button id="history-reset" class="secondary" data-i18n="qResetHistory"></button></details>
+        <label><span data-i18n="qTrail"></span><select id="elemental-trail"></select></label><p data-i18n="qTrailHint"></p>
         <p id="progression-save" role="status"></p>
         <p class="scope" data-i18n="scope"></p>
         <details id="settings" class="settings"><summary data-i18n="settings"></summary>
@@ -279,6 +282,9 @@ function persist(): void {
   document.querySelector('#save-status')!.textContent = buildTrial ? t('legacyTrial') : saveOK ? t('savedLocally') : t('saveUnavailable');
 }
 function renderSettings(): void {
+  const trailSelect = document.querySelector<HTMLSelectElement>('#elemental-trail')!;
+  trailSelect.innerHTML = `<option value="none">${t('qNone')}</option>` + SIGILS.map(id=>`<option value="${id}" ${profile.collection.sigilWins.includes(id)?'':'disabled'}>${t(`trail_${id}`)}${profile.collection.sigilWins.includes(id)?'':' · '+t('legacyLocked')}</option>`).join('');
+  trailSelect.value = profile.settings.trail ?? 'none';
   document.querySelector<HTMLInputElement>('#desktop-auto-aim')!.checked = profile.settings.desktopAutoAim;
   document.querySelector<HTMLElement>('#auto-aim-priority-row')!.hidden = !profile.settings.desktopAutoAim;
   document.querySelector<HTMLElement>('#auto-aim-hint')!.hidden = !profile.settings.desktopAutoAim;
@@ -297,6 +303,7 @@ function applySettings(): void {
   game.sound.mute = profile.settings.muted;
   game.sound.volume = profile.settings.volume;
   arena.cosmetic = profile.settings.cosmetic;
+  arena.trail = profile.settings.trail;
   arena.desktopAutoAim = profile.settings.desktopAutoAim;
   arena.autoAimPriority = profile.settings.autoAimPriority;
   arena.run.mutationPool = sealTrial === 3 ? ['staticRiposte'] : trialRoute || sealTrial !== null ? MUTATIONS : mutationPool(profile);
@@ -449,6 +456,12 @@ document.querySelector<HTMLSelectElement>('#locale')!.addEventListener('change',
   renderSettings();
   persist();
   (event.target as HTMLSelectElement).blur();
+});
+
+document.querySelector('#elemental-trail')!.addEventListener('change', event=>{
+  const id=(event.target as HTMLSelectElement).value as SigilId;
+  profile.settings.trail=profile.collection.sigilWins.includes(id)?id:null;
+  applySettings();persist();
 });
 
 for (const id of ['mute', 'volume', 'cosmetic', 'desktop-auto-aim', 'auto-aim-priority']) {

@@ -4,7 +4,7 @@ import type { LegacyProgress, LegacyTicket } from './legacy.js';
 export interface RunSummary {
   runId: number; at: number; result: 'victory' | 'defeat'; duration: number; seal: number;
   legacy: LegacyOffer | null; anomaly: AnomalyId | null; mutations: MutationId[]; curses: CurseId[];
-  kills: number; boss: boolean; rewards: LegacyId[];
+  kills: number; boss: boolean; rewards: LegacyId[]; trailUnlocked?: SigilId | null;
 }
 export interface CollectionProgress { version: 1; lastRunId: number; sigilWins: SigilId[]; anomalyWins: AnomalyId[]; history: RunSummary[] }
 export const emptyCollection = (): CollectionProgress => ({version:1,lastRunId:0,sigilWins:[],anomalyWins:[],history:[]});
@@ -18,10 +18,10 @@ export function validateCollection(value: unknown, nextRunId: number): Collectio
   out.sigilWins=ids(raw.sigilWins,SIGILS);out.anomalyWins=ids(raw.anomalyWins,ANOMALIES);
   for(const entry of Array.isArray(raw.history)?raw.history.slice(0,20):[]) {
     const r=obj(entry), runId=count(r.runId);
-    if(!runId || runId>out.lastRunId || out.history.some(h=>h.runId===runId) || !['victory','defeat'].includes(String(r.result))) continue;
+    if(!runId || runId>out.lastRunId || out.history.some(h=>h.runId===runId) || (r.result!=='victory' && r.result!=='defeat')) continue;
     const legacy=validLegacy(r.legacy)?{sigil:r.legacy.sigil,branch:r.legacy.branch}:null;
     out.history.push({runId,at:count(r.at,8_640_000_000_000_000),result:r.result as RunSummary['result'],duration:count(r.duration,3600),seal:count(r.seal,4),legacy,
-      anomaly:ids([r.anomaly],ANOMALIES)[0]??null,mutations:ids(r.mutations,MUTATIONS).slice(0,4),curses:ids(r.curses,CURSES).slice(0,2),kills:count(r.kills),boss:r.boss===true,rewards:ids(r.rewards,LEGACY_IDS).slice(0,2)});
+      anomaly:ids([r.anomaly],ANOMALIES)[0]??null,mutations:ids(r.mutations,MUTATIONS).slice(0,4),curses:ids(r.curses,CURSES).slice(0,2),kills:count(r.kills),boss:r.boss===true,trailUnlocked:r.result==='victory'?ids([r.trailUnlocked],SIGILS)[0]??null:null,rewards:ids(r.rewards,LEGACY_IDS).slice(0,2)});
   }
   out.history.sort((a,b)=>b.runId-a.runId);return out;
 }
@@ -30,11 +30,12 @@ export function recordCollection(state: CollectionProgress, legacy: LegacyProgre
   const receipt=legacy.receipt;
   if(!receipt || receipt.runId!==ticket.runId || receipt.runId<=state.lastRunId) return;
   state.lastRunId=receipt.runId;
+  const trailUnlocked=receipt.result==='victory' && ticket.selected && !state.sigilWins.includes(ticket.selected.sigil) ? ticket.selected.sigil : null;
   if(receipt.result==='victory') {
     if(ticket.selected && !state.sigilWins.includes(ticket.selected.sigil)) state.sigilWins.push(ticket.selected.sigil);
     if(ticket.anomalySelected && !state.anomalyWins.includes(ticket.anomalySelected)) state.anomalyWins.push(ticket.anomalySelected);
   }
-  state.history.unshift({...run,duration:count(run.duration,3600),runId:ticket.runId,result:receipt.result,seal:ticket.seal,legacy:ticket.selected?{...ticket.selected}:null,anomaly:ticket.anomalySelected,rewards:[...receipt.rewards]});
+  state.history.unshift({...run,trailUnlocked,duration:count(run.duration,3600),runId:ticket.runId,result:receipt.result,seal:ticket.seal,legacy:ticket.selected?{...ticket.selected}:null,anomaly:ticket.anomalySelected,rewards:[...receipt.rewards]});
   state.history=state.history.slice(0,20);
 }
 export function challenges(legacy: LegacyProgress, collection: CollectionProgress) {

@@ -6,7 +6,7 @@ import type { Profile } from '../game/progression';
 const tr = (key: string) => t(key as TranslationKey);
 const name = (id: LegacyId) => tr(`legacy_${id}`);
 export function summaryMarkup(r: RunSummary): string {
-  return `<article class="collection-item"><strong>${new Date(r.at).toLocaleString(document.documentElement.lang)} · ${t(r.result)}</strong><p>${t('sealBadge').replace('{n}',String(r.seal))} · ${r.duration}s · ${t('qKills')}: ${r.kills} · ${t('bossName')}: ${t(r.boss?'qBossWon':'qBossNotWon')}</p><p>${t('qBuild')}: ${r.legacy ? name(r.legacy.sigil)+' / '+(r.legacy.branch?name(r.legacy.branch):t('legacyCore')):t('qNone')} · ${r.anomaly?name(r.anomaly):t('qNone')}</p><p>${[...r.mutations,...r.curses].map(id=>t(id)).join(' · ') || t('qNone')}</p><p>${t('victoryRewards')}: ${r.rewards.map(name).join(' · ')||t('qNone')}</p></article>`;
+  return `<article class="collection-item"><strong>${new Date(r.at).toLocaleString(document.documentElement.lang)} · ${t(r.result)}</strong><p>${t('sealBadge').replace('{n}',String(r.seal))} · ${r.duration}s · ${t('qKills')}: ${r.kills} · ${t('bossName')}: ${t(r.boss?'qBossWon':'qBossNotWon')}</p><p>${t('qBuild')}: ${r.legacy ? name(r.legacy.sigil)+' / '+(r.legacy.branch?name(r.legacy.branch):t('legacyCore')):t('qNone')} · ${r.anomaly?name(r.anomaly):t('qNone')}</p><p>${[...r.mutations,...r.curses].map(id=>t(id)).join(' · ') || t('qNone')}</p><p>${t('victoryRewards')}: ${r.rewards.map(name).join(' · ')||t('qNone')}</p>${r.trailUnlocked?`<p>${t('qTrailUnlocked')}: ${tr('trail_'+r.trailUnlocked)}</p>`:''}</article>`;
 }
 export function renderCodex(profile: Profile, category: string): string {
   const owned=profile.legacy.unlocks;

@@ -1,0 +1,24 @@
+[
+  {
+    "touch": true,
+    "unlockFromVictory": true,
+    "equipRefresh": true,
+    "resultDedup": true,
+    "defeatNoUnlock": true,
+    "NoneRefresh": true,
+    "historyResetPreservesUnlock": true,
+    "malformedMetadataCoreSafe": true,
+    "errors": []
+  },
+  {
+    "touch": false,
+    "unlockFromVictory": true,
+    "equipRefresh": true,
+    "resultDedup": true,
+    "defeatNoUnlock": true,
+    "NoneRefresh": true,
+    "historyResetPreservesUnlock": true,
+    "malformedMetadataCoreSafe": true,
+    "errors": []
+  }
+]

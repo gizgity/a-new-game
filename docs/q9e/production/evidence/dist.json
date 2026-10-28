@@ -1,0 +1,36 @@
+[
+  {
+    "touch": true,
+    "saveAndRefresh": true,
+    "assets": [
+      {
+        "file": "elemental-trails.png",
+        "status": 200,
+        "sha256": "82a6dee87f0638f6895e531bf0b13d521929ac60afff8622b5e05db1f5d34347"
+      },
+      {
+        "file": "elemental-trails.json",
+        "status": 200,
+        "sha256": "ba8b83f52ae5046b05c5c3cea58dc7dc9da8d4c711e42b6d6f362e4dba745c2a"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "touch": false,
+    "saveAndRefresh": true,
+    "assets": [
+      {
+        "file": "elemental-trails.png",
+        "status": 200,
+        "sha256": "82a6dee87f0638f6895e531bf0b13d521929ac60afff8622b5e05db1f5d34347"
+      },
+      {
+        "file": "elemental-trails.json",
+        "status": 200,
+        "sha256": "ba8b83f52ae5046b05c5c3cea58dc7dc9da8d4c711e42b6d6f362e4dba745c2a"
+      }
+    ],
+    "errors": []
+  }
+]

@@ -1,4 +1,14 @@
 const vi = {
+  qTrail: "Elemental Trail",
+  qTrailHint: "Mở trail bằng Victory hợp lệ với Sigil tương ứng. Tối đa 1 hoặc Không; chỉ thay visual.",
+  qTrailUnlocked: "Trail mới được mở",
+  trail_fire: "Ember Trail",
+  trail_water: "Tidal Echo",
+  trail_lightning: "Volt Trace",
+  trail_ice: "Frost Shards",
+  trail_shadow: "Umbral Wake",
+  trail_wind: "Gale Spiral",
+
   qFilter: "Lọc danh mục",
   q_all: "Tất cả",
   q_sigils: "Sigil",
@@ -339,6 +349,16 @@ export type TranslationKey = keyof typeof vi;
 export type Locale = 'vi' | 'en';
 
 const en: Record<TranslationKey, string> = {
+  qTrail: "Elemental Trail",
+  qTrailHint: "Unlock a trail by winning a valid run with its Sigil. Equip one or None; visuals only.",
+  qTrailUnlocked: "New trail unlocked",
+  trail_fire: "Ember Trail",
+  trail_water: "Tidal Echo",
+  trail_lightning: "Volt Trace",
+  trail_ice: "Frost Shards",
+  trail_shadow: "Umbral Wake",
+  trail_wind: "Gale Spiral",
+
   qFilter: "Category filter",
   q_all: "All",
   q_sigils: "Sigils",

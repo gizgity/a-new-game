@@ -35,7 +35,22 @@ test('metadata corruption and quota cannot discard core; journal recovers comple
  // Use valid, unique summaries to exercise optional-history fallback.
  p.legacy.nextRunId=21;p.collection.lastRunId=20;p.collection.history=Array.from({length:20},(_,i)=>({...p.collection.history[0],runId:20-i}));
  assert.equal(saveProfile(p,store),true);assert.equal(loadProfile(store).legacy.victories,1);assert.equal(loadProfile(store).collection.history.length,0);assert.deepEqual(loadProfile(store).collection.sigilWins,['fire']);
+ const hostileHistory=validateProfile({...p,collection:{...p.collection,history:[{runId:1,result:{toString:{broken:true}}}]}});assert.equal(hostileHistory.legacy.victories,1);assert.deepEqual(hostileHistory.collection.history,[]);
  const core=validateProfile({...p,collection:'broken'});assert.equal(core.legacy.victories,1);assert.deepEqual(core.collection.history,[]);
  const failMain={getItem:k=>data.get(k),setItem:(k,v)=>{if(k===SAVE_KEY)throw Error('blocked');data.set(k,v);}};
  data.clear();assert.equal(saveProfile(p,failMain),false);assert.ok(data.get(PENDING_KEY));assert.equal(loadProfile(failMain).collection.lastRunId,20);
+});
+test('trail selection only accepts six journaled Victory Sigils; migration/metadata failure safely uses None',()=>{
+ for(const sigil of SIGILS) {
+  const p=defaultProfile();assert.equal(p.settings.trail,null);p.settings.trail=sigil;
+  assert.equal(validateProfile(p).settings.trail,null);
+  finish(p,'victory',sigil);assert.equal(p.collection.history[0].trailUnlocked,sigil);
+  assert.equal(validateProfile(p).settings.trail,sigil);
+  const first=p.collection.history[0];finish(p,'victory',sigil);assert.equal(p.collection.history[0].trailUnlocked,null);assert.equal(p.collection.sigilWins.length,1);
+  assert.equal(first.trailUnlocked,sigil);
+  p.settings.trail='admin';assert.equal(validateProfile(p).settings.trail,null);
+  p.settings.trail=sigil;p.collection.history=[];assert.equal(validateProfile(p).settings.trail,sigil);
+  p.collection='broken';assert.equal(validateProfile(p).settings.trail,null);assert.equal(validateProfile(p).legacy.victories,2);
+ }
+ const p=defaultProfile();finish(p,'defeat');assert.equal(p.collection.history[0].trailUnlocked,null);
 });
