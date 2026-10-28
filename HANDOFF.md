@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**Q9E — Phase C production/integration hoàn tất kỹ thuật, chuẩn bị deploy rồi chờ USER PLAYTEST APPROVAL.** User giao2026-10-28, contract [DD-0003](DESIGN_DECISIONS.md). Goal Collection6/12/6/Seal0–4 +6badge +history20/recap +6trail cosmetic hữu hạn, giữ Q9A–D accepted. Uservisualapproval bắt buộc trước PhaseC production/integration. Không Q10; không deploy trướcC; không tự nghiệm thu.
+**Q9E — AWAITING USER PLAYTEST APPROVAL.** User giao2026-10-28, contract [DD-0003](DESIGN_DECISIONS.md). Goal Collection6/12/6/Seal0–4 +6badge +history20/recap +6trail cosmetic hữu hạn, giữ Q9A–D accepted. Uservisualapproval bắt buộc trước PhaseC production/integration. Không Q10; không deploy trướcC; không tự nghiệm thu.
 
 ## Q9E STATUS
 Baseline remote a4ea34b đã fast-forward, bảo toàn Q9D VFX V1.1 accepted. PhaseA `e2c1b92` đã commit/push origin/q9e-final: profile3/migration/journal/dedup/allowlist, Codex/Challenges/History/Recap vi/en đã triển khai; tests27files/typecheck/build PASS; browser evidence và giới hạn tại [docs/q9e](docs/q9e/README.md). Nhánh q9e-final để commit/push từngphase không autoPages. PhaseC6trail đã production/integration, dropdownmax1/None persistderivecollection.sigilWins; khôngcombat/RNG mới.
@@ -19,7 +19,7 @@ PhaseB hoàn tất proposalV1: ImageGen6motif, refs acceptedQ7C/currentQ9D,24exa
 
 ## Q9E PHASE C STATUS
 ProductionPNG riêng ImageGen/alpha/atlas6frames, khôngcropboard, source/prompt/hash/evidence tại [docs/q9e/production](docs/q9e/production/README.md).1Image/depth0.8/52×22/alpha≤.58/fade.3s, purepresentation. Mở bằngVictorySigil journalPhaseA, settings.trail allowlist/null; recaptrailUnlocked; trial6URL memory riêng. Khôngbalance/combat/Boss/economy changes.
-PASS27testfiles (5focusedcollection), typecheck/build; renderer6×4viewport/crowd/grayscale/fullJSONworldunchanged/4góc390+1440/sharedfootprint/freeze/lifecycle/objectcountstable; CPU6000movingsteps~2.8–6.1ms worker khôngdeviceFPS; inputtouch+desktop, productionflowunlock/equip/None/refresh/dedup/defeat/reset/corruptmetadata; dist2platform/assets200+hashes. FinalPhaseA4viewport regression PASS. Chưa naturalfullrun/iOS/Safari/deviceFPS/thermal/humanfeel/userplaytestacceptance. Code/docs chuẩn bịcommit/pushmain/Pages; chưa xácnhậnliveHTTP.
+PASS27testfiles (5focusedcollection), typecheck/build; renderer6×4viewport/crowd/grayscale/fullJSONworldunchanged/4góc390+1440/sharedfootprint/freeze/lifecycle/objectcountstable; CPU6000movingsteps~2.8–6.1ms worker khôngdeviceFPS; inputtouch+desktop, productionflowunlock/equip/None/refresh/dedup/defeat/reset/corruptmetadata; dist2platform/assets200+hashes. FinalPhaseA4viewport regression PASS. Chưa naturalfullrun/iOS/Safari/deviceFPS/thermal/humanfeel/userplaytestacceptance. Code/deploy **2fcdfd2** đã cập nhật fast-forward main/q9e-final bằngGitHubconnector (CLIauth unavailable; không phải approvalblocker). Cây cb9adcb16c3700539ce89bf501bb6a72aa5e0ec9 giống100% bản localđãtest92a9146; workspace đã checkout remotecommit tươngứng, backup localgiữriêng. [Pages40671706957](https://github.com/gizgity/a-new-game/actions/runs/40671706957) **completed/SUCCESS**, job122759836928 npmci/build/typecheck/upload/DeploySUCCESS. [Chơi Q9E](https://gizgity.github.io/a-new-game/?v=2fcdfd2). Chưa liveHTTP/hashverification từmôi trường; previewdist/assets200/hashes không thay liveverification. Bàn giao sau chỉMarkdown, không redeploy.
 
 ## Q9D VFX STATUS
 **ACCEPTED — USER PLAYTEST APPROVAL**, gồm VFX V1.1; nguồn/version tại ACTIVE TASK. Visual approval “duyệt, làm đi” và playtest approval “duyệt 9d” là hai bước riêng, đều đã hoàn tất.
@@ -143,9 +143,10 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9B — Victory Rewards & Legacy Progression | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9b xong” ngày2026-10-27 trên c0a8247; Pages40444521840 SUCCESS; không Q9C |
 | Q9C — Arena Anomalies + VFX V1.1 | ACCEPTED — USER PLAYTEST APPROVAL | User “đạt r” ngày2026-10-27 trên59b9a61; Pages40509711771 SUCCESS; không Q9D |
 | Q9D — Ascension System V1 + VFX V1.1 | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9d” ngày2026-10-28 trên ffd39a9, bàn giao a985145; Pages40629442727 SUCCESS; không Q9E |
+| Q9E — Codex / Cosmetics / Challenges / History–Recap | AWAITING USER PLAYTEST APPROVAL | Visual V1 user “oki duyệt. làm tiếp đi”2026-10-28; code2fcdfd2/Pages40671706957 SUCCESS; human/device coverage pending, không Q10 |
 
 ## NEXT ACTION
-Hoàn tất finalPhaseA browsercheck, commit/pushPhaseC q9e-final và main fast-forward, theo dõi Pages đến kết thúc, cập nhật version/link/checklist. Sau deploy dừng **AWAITING USER PLAYTEST APPROVAL Q9E**. UservisualapprovalV1 đã có, không yêu cầu lại; không Q10.
+Dừng **AWAITING USER PLAYTEST APPROVAL Q9E** trên2fcdfd2. User thử normalURL Collection/filter/Challenges/History/vi-en/Skip–Continue; thắng với1Sigil để trail tươngứng mở, equip1/None vàrefresh/runkế giữ, Defeat/refreshkhôngdouble. Previewnhanh6trail bằng `?playtest=trail-fire` (water/lightning/ice/shadow/wind), Bắtđầu→chờ1s→chọnCore, di chuyển/Dash/Heavy/Basic/Charged, pauseđổitrail/None; fixturekhônglưutiếntrình. Kiểm mobileportrait/landscape+desktop:trailnhỏsauchân, Player/cue vẫn rõ khiđông/góc, khôngkẹt input. Phản hồi trail/tìnhhuống/thao tác/quan sát+thiếtbị/browser. UservisualapprovalV1 đã có; chỉuser mớinghiệmthuplaytest Q9E, không Q10.
 
 ## VALIDATION APPROVAL Q9D
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff, nguồn/version, links và tính nhất quán. Không chạy lại build/tests hoặc deploy. Giữ26testfiles, typecheck/build,15case parity và browser/input/dist/Pages ffd39a9 đã PASS; không suy coverage thiết bị mới từ acceptance chung.

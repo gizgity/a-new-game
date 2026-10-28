@@ -31,3 +31,12 @@ Screenshots chính: `evidence/{sigil}-{320|390|844|1440}.png` cùng `-gray.png`;
 3. Để xem nhanh đủ6trail mà không sửa save: `?playtest=trail-fire` (hoặc water/lightning/ice/shadow/wind), Bắtđầu→chờ1s→chọnCore, di chuyển/Dash/Heavy/Basic/Charged; pause để đổitrail/None. Kỳ vọngtrailnhỏsauchân, khônglẫnattack/telegraph, khôngchePlayerởgóc/crowd, pause/resume khôngkẹtinput. Fixture khôngtínhthànhtích/progression thật.
 
 Phản hồi: trail/tìnhhuống/thao tác/điềuquan sát +thiếtbị/browser. Chờ **AWAITING USER PLAYTEST APPROVAL Q9E**, không Q10.
+
+
+## Delivery
+
+Code/deploy **2fcdfd2** trênmain/q9e-final, [Pages40671706957](https://github.com/gizgity/a-new-game/actions/runs/40671706957) completed/SUCCESS, job122759836928: npmci/build/typecheck/upload/DeployPASS. [Chơi normal Q9E](https://gizgity.github.io/a-new-game/?v=2fcdfd2) · [PreviewFire/6trail qua dropdown](https://gizgity.github.io/a-new-game/?playtest=trail-fire&v=2fcdfd2).
+
+Git CLIauth unavailable; dùngGitHubconnector tạo95blobSHAverified, cây `cb9adcb16c3700539ce89bf501bb6a72aa5e0ec9` **khớp100% localtested92a9146**, parenta60f256, refs fast-forward cóexpectedSHA/no-force. Không cònpush/deployblocker. Không đổi nội dung để đẩy qua phương thức khác. Workspacecheckout2fcdfd2, local92a9146 giữbackup; bàn giao sau chỉMarkdown nên khôngredeploy.
+
+Chưa kiểm liveHTTP/hash từ môi trường; previewdist/hashes vàPagesSUCCESS không thay liveverification/devicehumanplaytest. **AWAITING USER PLAYTEST APPROVAL Q9E**, khôngQ10.

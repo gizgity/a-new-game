@@ -164,3 +164,8 @@ public/assets/
 ## Q9E visual approval / Phase C
 - User “oki duyệt. làm tiếp đi” ngày2026-10-28 duyệt Q9E Trails V1 trên a60f256 và giao tiếpC; supersede gate chờvisual trong đúngscope6trail. Không cần duyệt lạiV1. Giữ DD-0003/design, ArtBible/Q9A–D, khôngbalance/Boss/combat/RNG mới.
 - Production source riêngImageGen/alpha, max1trail/None deriveVictoryevidence, menu/persistence/recap; validation/cáchthử tại docs/q9e/production/README.md. Cho phép commit/pushmain/Pages bản hoàn chỉnh sauchecksPASS theo contract; dừng AWAITING USER PLAYTEST APPROVAL Q9E, không tựexperienceaccepted/Q10.
+
+
+## Q9E delivery gate hiện hành
+- Code/deploy2fcdfd2 trênmain/q9e-final; Pages40671706957/job122759836928 completed/SUCCESS. CLIauthunavailable đã giải bằngGitHubconnector; treeSHAverified khớplocaltested92a9146, khôngforce. Source/validation/cáchthử/coverage tại docs/q9e/production/README.md.
+- Dừng **AWAITING USER PLAYTEST APPROVAL Q9E**, khôngQ10/tựaccepted. VisualV1 đãuserduyệt; userplaytestchưa có. Không suyfull-device/iOS/Safari/FPS/naturalrun/liveHTTP từfixtures/build/Pages. Bàn giao sauchỉMarkdown khôngredeploy.

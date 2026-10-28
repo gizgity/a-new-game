@@ -13,3 +13,8 @@ Validation: `npm test` PASS27files (4focused Q9E + migration assertions cập nh
 ## Phase B / C
 
 PhaseA commit/push `e2c1b92`, PhaseB `a60f256` trên branch `q9e-final`. User “oki duyệt. làm tiếp đi” ngày2026-10-28 đã **VISUAL APPROVED Q9E Trails V1**:6motif/scale/hierarchy, mởPhaseC. [Proposal](art/README.md) giữprovenance; [PhaseC production/validation/cáchthử](production/README.md) có evidence hiệnhành. Chưa userplaytestacceptance Q9E. DD-0003/ArtBible/Q9A–D giữnguyên. Deploy final sau kiểmtraPASS; không Q10.
+
+
+## Delivery / gate hiện hành
+
+**AWAITING USER PLAYTEST APPROVAL Q9E** — bảnhoànchỉnh **2fcdfd2**, [chơi](https://gizgity.github.io/a-new-game/?v=2fcdfd2), [Pages40671706957](https://github.com/gizgity/a-new-game/actions/runs/40671706957) completed/SUCCESS. [Cáchthửngắn +6previewtrails](production/README.md#cách-user-playtest-q9e-sau-deploy). Build27testfiles/browser/input/flow/distPASS không làuseracceptance; device/iOS/Safari/naturalfullrun/FPS vàliveHTTP/hashverification giữgiớihạn. KhôngQ10.
