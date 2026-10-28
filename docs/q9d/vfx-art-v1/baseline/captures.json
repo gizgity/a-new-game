@@ -1,0 +1,159 @@
+{
+  "code": "afd084a",
+  "handoff": "720a33e",
+  "description": "Actual current Q9D renderer visual fixture:24enemies,2windup,simultaneousPulse+Echo+Hunter for visual stress only. This co-occurrence is deliberately injected and not claimed to be reachable combat, progression proof or natural play. State clocks frozen for screenshot; CSSgrayscale same scene. No production edits/save writes.",
+  "captures": [
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "zoom": 0.75,
+      "scrollX": 649,
+      "scrollY": 330,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -2.806370614359173
+      },
+      "zones": [
+        {
+          "kind": "pulse",
+          "x": 892,
+          "y": 500,
+          "time": 1,
+          "active": 0,
+          "hit": false
+        },
+        {
+          "kind": "echo",
+          "x": 720,
+          "y": 410,
+          "time": 0.8,
+          "active": 0,
+          "hit": false
+        }
+      ],
+      "hunter": {
+        "x": 858.0761311274119,
+        "y": 658.7077912179225
+      },
+      "fixture": true,
+      "enemyCount": 24,
+      "phase": "playing"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "zoom": 0.775,
+      "scrollX": 614,
+      "scrollY": 278,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -2.806370614359173
+      },
+      "zones": [
+        {
+          "kind": "pulse",
+          "x": 892,
+          "y": 500,
+          "time": 1,
+          "active": 0,
+          "hit": false
+        },
+        {
+          "kind": "echo",
+          "x": 720,
+          "y": 410,
+          "time": 0.8,
+          "active": 0,
+          "hit": false
+        }
+      ],
+      "hunter": {
+        "x": 858.0761311274119,
+        "y": 658.7077912179225
+      },
+      "fixture": true,
+      "enemyCount": 24,
+      "phase": "playing"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "zoom": 0.75,
+      "scrollX": 555,
+      "scrollY": 369,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": -2.806370614359173
+      },
+      "zones": [
+        {
+          "kind": "pulse",
+          "x": 892,
+          "y": 500,
+          "time": 1,
+          "active": 0,
+          "hit": false
+        },
+        {
+          "kind": "echo",
+          "x": 720,
+          "y": 410,
+          "time": 0.8,
+          "active": 0,
+          "hit": false
+        }
+      ],
+      "hunter": {
+        "x": 858.0761311274119,
+        "y": 658.7077912179225
+      },
+      "fixture": true,
+      "enemyCount": 24,
+      "phase": "playing"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "zoom": 0.9171428571428571,
+      "scrollX": 113,
+      "scrollY": 179,
+      "player": {
+        "x": 800,
+        "y": 500,
+        "angle": 1.57079633780876
+      },
+      "zones": [
+        {
+          "kind": "pulse",
+          "x": 892,
+          "y": 500,
+          "time": 1,
+          "active": 0,
+          "hit": false
+        },
+        {
+          "kind": "echo",
+          "x": 720,
+          "y": 410,
+          "time": 0.8,
+          "active": 0,
+          "hit": false
+        }
+      ],
+      "hunter": {
+        "x": 858.0761311274119,
+        "y": 658.7077912179225
+      },
+      "fixture": true,
+      "enemyCount": 24,
+      "phase": "playing"
+    }
+  ]
+}

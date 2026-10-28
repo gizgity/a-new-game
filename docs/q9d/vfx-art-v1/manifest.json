@@ -1,0 +1,281 @@
+{
+  "status": "AWAITING VISUAL APPROVAL — V1.1",
+  "runtimeBaseline": "afd084a",
+  "handoffBaseline": "720a33e",
+  "date": "2026-10-28",
+  "feedback": "chưa có vfx, k thể phân biệt được lúc chơi",
+  "references": [
+    {
+      "path": "docs/q7c/source/grunt-production-v1.png",
+      "scope": "Q7C accepted Grunt",
+      "opened": true,
+      "sha256": "5b4d4566e3c6a4729167299bc29d1324dd363a2f4409c67512248364a05fd1d4"
+    },
+    {
+      "path": "docs/q7c/source/chain-warden-production-v1.png",
+      "scope": "Q7C accepted Chain Warden",
+      "opened": true,
+      "sha256": "87c8ca3c37d7c2ccf0dbe627a382daab31a8899c110983ada4983109fa184f70"
+    },
+    {
+      "path": "docs/q7c/runtime/after-crowd-390.png",
+      "scope": "Q7C accepted crowd",
+      "opened": true,
+      "sha256": "1b6b1a91c04363be680ab087b9a08c0788823d9ffabda169dbea1cbe6713de92"
+    },
+    {
+      "path": "docs/q7c/runtime/after-grayscale-390.png",
+      "scope": "Q7C accepted grayscale same scene",
+      "opened": true,
+      "sha256": "61608a41b87ab91688035de9bca1995a212e3b95ba1761db61309a564190cd7a"
+    },
+    {
+      "path": "docs/q8c/arrival-runtime/evidence/peak-390.png",
+      "scope": "Q8C accepted Arrival",
+      "opened": true,
+      "sha256": "c8033d692c8f9a66aa10352232c578276bae0c3b79ef264ed00823d353ba16cd"
+    },
+    {
+      "path": "docs/q9c/vfx-art-v1/source/concept-v1.1.png",
+      "scope": "Q9C visual approvedV1.1",
+      "opened": true,
+      "sha256": "72fdf80b772a12760c606b7a3287a05cc520c92bd3fb150b76ec6a266f070aa5"
+    },
+    {
+      "path": "docs/q9c/vfx-production/evidence/fracturedStorm-390.png",
+      "scope": "Q9C accepted59b9a61",
+      "opened": true,
+      "sha256": "ded25da839590aeb87347c6ac44678a783ae166d8f6a8932c10cc66d2c5c7f82"
+    }
+  ],
+  "method": "ImageGen source concepts and composite edits over actual renderer. No production assets/gameplay edits. No board crops for sprites. Model/seed not supplied; generated-output service terms, not CC0 claim. Concept alpha/pivot/motion/native device performance not verified.",
+  "baselineCaptures": "baseline/captures.json",
+  "outputs": [
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/corner-ne-390.png",
+      "sha256": "5ad1b4362def89909556195bc399d5c63c63a4de9c6e316506dc295759f38abe",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/corner-nw-390.png",
+      "sha256": "fd2af08ef49d65dd80c80bc93c57d11080d983dee2b12e6869817f6a2612c1c2",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/corner-se-390.png",
+      "sha256": "599a94af50411d6dac3bac2d61b5da408ae0d7249307ab46da0e01e6492ec064",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/corner-sw-390.png",
+      "sha256": "0f38285306112eac07aac11f35d279d3f74498aba783742aaf579db49e70168e",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-1440-gray.png",
+      "sha256": "9c06f27bcac4192d9ec5c12c67822ecab6ce15f672f4f1da5b8863d5780774d3",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-1440.png",
+      "sha256": "d9fc1dc47438be2598314846272780248ce3768b7d5220eeed4d36ab82ef3947",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-320-gray.png",
+      "sha256": "b9e0876d3575dda7c23f2bcf2db41d2d329f3be298045cf6e8fd04fe664b9bb9",
+      "dimensions": [
+        320,
+        740
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-320.png",
+      "sha256": "5e50d7f0333583db15e081e0c204ccd3300dbd736cff16336437198a13ff6d4e",
+      "dimensions": [
+        320,
+        740
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-390-gray.png",
+      "sha256": "fb7ad53b18b118960f8acebe874a98eefacac4d36e1beb05d98a2b1ff795f6e6",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-390.png",
+      "sha256": "b73ee46941e829c8db0b1b3a3122b9914dd3231b32088a5e4365ecd4bb339945",
+      "dimensions": [
+        390,
+        844
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-844-gray.png",
+      "sha256": "1c8827028e6dc13aeb65207e7b4fbca7d53656e6c86f4e3acaec0096cc5c01a9",
+      "dimensions": [
+        844,
+        390
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/baseline/current-844.png",
+      "sha256": "6d10584250562b20790918d1c2c41995154e029bfa82ad6e6280c28a9d94ddbc",
+      "dimensions": [
+        844,
+        390
+      ],
+      "role": "CURRENT RENDERER FIXTURE"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-1440.png",
+      "sha256": "0fb19a5dcfc6c71d63df6f11d196c350441189e7a0ab6ecc4e129ba832bd1da7",
+      "dimensions": [
+        1505,
+        1045
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "rawImageGenPath": "/workspace/generated_images/exec-88f31b45-792d-4c58-9468-88751c93bd2a.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-320.png",
+      "sha256": "01627092f2f8acf57c2014d044e6e4928c02a7adbfbc6e38549565cb9231cc6e",
+      "dimensions": [
+        824,
+        1909
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "rawImageGenPath": "/workspace/generated_images/exec-2cd92d60-fd0c-46a5-860b-c307865fce83.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-390-draft.png",
+      "sha256": "e0160acbe09a98226949b451a8cb02740343757b2727f1ac077e140db37844d5",
+      "dimensions": [
+        853,
+        1844
+      ],
+      "role": "SUPERSEDED DRAFT — excluded from approval",
+      "rawImageGenPath": "/workspace/generated_images/exec-1e92aa2b-5ace-44d9-a0da-e8b72376706c.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-390.png",
+      "sha256": "ed9a4bdca8c352b4e76d336cf14711baff21ec5e87a5444b42a44126bda1dcc1",
+      "dimensions": [
+        853,
+        1843
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "rawImageGenPath": "/workspace/generated_images/exec-22fca702-ae32-49f2-b7b2-a0cf4a7aeeaa.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-844.png",
+      "sha256": "1c700f1a7ba2799ee2595c6bfbbe5100f9172384e5c8535914bd8d755a4c2671",
+      "dimensions": [
+        1846,
+        852
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "rawImageGenPath": "/workspace/generated_images/exec-91459ccc-7b9f-42b9-bdbc-c285db6aac2a.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/review-gray-1440.png",
+      "sha256": "f6ce024d4046790c817f3158074cf5fe993d003cef6166a06ac1c5aa3b8893da",
+      "dimensions": [
+        1442,
+        1035
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "method": "Browser screenshot CSSgrayscale of exact same composite at intendedCSSwidth"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/review-gray-320.png",
+      "sha256": "baf3f149e693d3943e12246121e967a98e6cdebeaf3acf548f6b8efab1467ab1",
+      "dimensions": [
+        323,
+        777
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "method": "Browser screenshot CSSgrayscale of exact same composite at intendedCSSwidth"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/review-gray-390.png",
+      "sha256": "70706c5af633e6b109fcbe1536aefe5123237264dfb3a01810941e75a797913a",
+      "dimensions": [
+        393,
+        878
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "method": "Browser screenshot CSSgrayscale of exact same composite at intendedCSSwidth"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/review-gray-844.png",
+      "sha256": "f19ade505f2e5c423a8eea487626c30ef32c414e5e2ee3a05b350d95e64b9367",
+      "dimensions": [
+        846,
+        425
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "method": "Browser screenshot CSSgrayscale of exact same composite at intendedCSSwidth"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/source/concept-v1-draft.png",
+      "sha256": "e1b006bd7b8b981dbe35396323cd8756eb0cf26fe7f94115a628b8f4cb8f6410",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "role": "SUPERSEDED DRAFT — excluded from approval",
+      "rawImageGenPath": "/workspace/generated_images/exec-60f687d4-c98a-46b8-8532-76be15c9975d.png"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/source/concept-v1.1.png",
+      "sha256": "bd648f80ebae57b94fdfce477b0e322064c2eb33731e4477f5bbb889d9363956",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "role": "CANDIDATE CONCEPT — not in game",
+      "rawImageGenPath": "/workspace/generated_images/exec-18c4c974-52f0-4cfe-ac4b-930f87b7dd84.png"
+    }
+  ],
+  "validation": {
+    "baselineFourViewports": true,
+    "compositeFourViewports": true,
+    "grayscaleSameImages": true,
+    "draft390MissingArcherCorrected": true,
+    "productionAlphaPivotMotionDevicePerformance": "UNKNOWN",
+    "corners": "baseline only, proposed integration not verified"
+  }
+}
