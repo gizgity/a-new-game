@@ -1,0 +1,421 @@
+{
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.14955633878707886,
+            "rms": 0.029954011230026927
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.16856372356414795,
+            "rms": 0.03402447680016689
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.17701862752437592,
+            "rms": 0.037808019690672906
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.04119128389440898
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.06353435782174072
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.03854934118774233
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.04430538539991809
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.04568728638441887
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.2199999988079071,
+            "rms": 0.04452960451093299
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.2199999988079071,
+            "rms": 0.04438348443448538
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.059656203689770905
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3171173334121704,
+            "rms": 0.04714002231965979
+          }
+        },
+        "peakBound": 0.9331173334121705,
+        "bufferCount": 30,
+        "afterBuffers": 30,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.17687466740608215,
+            "rms": 0.030828963349224737
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.2160479873418808,
+            "rms": 0.034073622544801216
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.1853867471218109,
+            "rms": 0.037157959837217036
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.040431657003500134
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.06654473945482713
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.03854739386282196
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.04430538539991809
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.04568728638441887
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.2199999988079071,
+            "rms": 0.04452960451093299
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.2199999988079071,
+            "rms": 0.04438348443448538
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.059656203689770905
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.31519365310668945,
+            "rms": 0.04705398112928586
+          }
+        },
+        "peakBound": 0.9311936531066896,
+        "bufferCount": 30,
+        "afterBuffers": 30,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.15324127674102783,
+            "rms": 0.028138395885684748
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.1667628437280655,
+            "rms": 0.03394297611092161
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.19359852373600006,
+            "rms": 0.03757037872714827
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.041450154625986294
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.06305892018712099
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.038505255425830824
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.04430538539991809
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.04568728638441887
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.2199999988079071,
+            "rms": 0.04452960451093299
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.2199999988079071,
+            "rms": 0.04438348443448538
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.059656203689770905
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3181256651878357,
+            "rms": 0.04714862682406356
+          }
+        },
+        "peakBound": 0.9341256651878358,
+        "bufferCount": 30,
+        "afterBuffers": 30,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.19054996967315674,
+            "rms": 0.03162742174392591
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.1548866331577301,
+            "rms": 0.03458754232610373
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.20600849390029907,
+            "rms": 0.03726315729221748
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.04241487400514429
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.06723367628397486
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.04034747372245369
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.04430538539991809
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.2199999988079071,
+            "rms": 0.04568728638441887
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.2199999988079071,
+            "rms": 0.04452960451093299
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.2199999988079071,
+            "rms": 0.04438348443448538
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.059656203689770905
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.31377238035202026,
+            "rms": 0.04719500522779991
+          }
+        },
+        "peakBound": 0.9297723803520204,
+        "bufferCount": 30,
+        "afterBuffers": 30,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    }
+  ],
+  "unsupported": {
+    "available": false,
+    "track": 1
+  },
+  "limits": "Chromium software WebGL, technical WebAudio scheduling only; no real speaker/headphone listening or iOS/Safari acceptance."
+}

@@ -1,0 +1,338 @@
+{
+  "baseline": {
+    "sfx-arrival": {
+      "duration": 0.38,
+      "peak": 0.3126451373100281,
+      "rms": 0.04716301083320133,
+      "differenceEnergy": 0.000018285296686672953
+    },
+    "sfx-start": {
+      "duration": 0.2,
+      "peak": 0.22767771780490875,
+      "rms": 0.06298559264891086,
+      "differenceEnergy": 0.000022183569460873412
+    },
+    "sfx-draft": {
+      "duration": 0.24,
+      "peak": 0.23463523387908936,
+      "rms": 0.06463489520065578,
+      "differenceEnergy": 0.00004511851574769135
+    },
+    "sfx-choice": {
+      "duration": 0.15,
+      "peak": 0.2123824954032898,
+      "rms": 0.06015920462493838,
+      "differenceEnergy": 0.00006966937738503473
+    },
+    "sfx-elite": {
+      "duration": 0.36,
+      "peak": 0.24844498932361603,
+      "rms": 0.06735026992800877,
+      "differenceEnergy": 0.000005495214716199934
+    },
+    "sfx-boss": {
+      "duration": 0.65,
+      "peak": 0.2570635974407196,
+      "rms": 0.06973791280605268,
+      "differenceEnergy": 9.852483850295589e-7
+    },
+    "sfx-defeat": {
+      "duration": 0.65,
+      "peak": 0.2595110237598419,
+      "rms": 0.069598555908377,
+      "differenceEnergy": 0.000003908552247843683
+    },
+    "sfx-victory": {
+      "duration": 1.1000226757369616,
+      "peak": 0.28975847363471985,
+      "rms": 0.06650992816197919,
+      "differenceEnergy": 0.000031597807500820465
+    },
+    "sfx-swing2": {
+      "duration": 0.09501133786848072,
+      "peak": 0.2863432466983795,
+      "rms": 0.06177200004816801,
+      "differenceEnergy": 0.005772204804117762
+    },
+    "sfx-swing3": {
+      "duration": 0.16,
+      "peak": 0.2888731062412262,
+      "rms": 0.05876244050167349,
+      "differenceEnergy": 0.0047638783848721784
+    },
+    "sfx-light2": {
+      "duration": 0.09,
+      "peak": 0.2711658775806427,
+      "rms": 0.06491224069881324,
+      "differenceEnergy": 0.0019443263281254484
+    },
+    "sfx-light3": {
+      "duration": 0.15,
+      "peak": 0.29063165187835693,
+      "rms": 0.06135441429893127,
+      "differenceEnergy": 0.003000145855429641
+    },
+    "sfx-chargedGun": {
+      "duration": 0.16,
+      "peak": 0.45768851041793823,
+      "rms": 0.08204566625284752,
+      "differenceEnergy": 0.0009298152577960533
+    },
+    "sfx-chargedBlast": {
+      "duration": 0.26,
+      "peak": 0.4184962809085846,
+      "rms": 0.08127925055452358,
+      "differenceEnergy": 0.0008905869333497023
+    },
+    "sfx-swing": {
+      "duration": 0.07501133786848073,
+      "peak": 0.28540825843811035,
+      "rms": 0.06739567148279448,
+      "differenceEnergy": 0.008612949036644488
+    },
+    "sfx-heavySwing": {
+      "duration": 0.24,
+      "peak": 0.29109427332878113,
+      "rms": 0.06314647252650041,
+      "differenceEnergy": 0.006757464354757402
+    },
+    "sfx-shotHit": {
+      "duration": 0.04,
+      "peak": 0.2805533707141876,
+      "rms": 0.06064729060350409,
+      "differenceEnergy": 0.002397770024484415
+    },
+    "sfx-chargedHit": {
+      "duration": 0.1,
+      "peak": 0.2833509147167206,
+      "rms": 0.0601992381342777,
+      "differenceEnergy": 0.0028689515392417426
+    },
+    "sfx-light": {
+      "duration": 0.07002267573696146,
+      "peak": 0.2659544348716736,
+      "rms": 0.06460735389531742,
+      "differenceEnergy": 0.001380327091354489
+    },
+    "sfx-heavy": {
+      "duration": 0.22,
+      "peak": 0.44172483682632446,
+      "rms": 0.08191188156180605,
+      "differenceEnergy": 0.0009837529254604327
+    },
+    "sfx-gun": {
+      "duration": 0.055011337868480725,
+      "peak": 0.2580856680870056,
+      "rms": 0.07292233431900078,
+      "differenceEnergy": 0.0007578770303197364
+    },
+    "sfx-dash": {
+      "duration": 0.1,
+      "peak": 0.2906692624092102,
+      "rms": 0.07792164647650301,
+      "differenceEnergy": 0.0005459864441935468
+    },
+    "sfx-perfect": {
+      "duration": 0.16,
+      "peak": 0.29473987221717834,
+      "rms": 0.09019481413841487,
+      "differenceEnergy": 0.00021141477082548321
+    },
+    "sfx-detonate": {
+      "duration": 0.2,
+      "peak": 0.2852463126182556,
+      "rms": 0.06075171306649549,
+      "differenceEnergy": 0.00529707791514655
+    },
+    "sfx-hurt": {
+      "duration": 0.12,
+      "peak": 0.28699254989624023,
+      "rms": 0.06251114241990631,
+      "differenceEnergy": 0.0023987831005511493
+    }
+  },
+  "method": "Cached mono PCM, seeded presentation noise only for repeatable comparison; no human listening claim. Arrival samples byte-equivalent with identical noise stream.",
+  "revised": {
+    "sfx-arrival": {
+      "duration": 0.38,
+      "peak": 0.3126451373100281,
+      "rms": 0.04716301083320133,
+      "differenceEnergy": 0.000018285296686672953
+    },
+    "sfx-charge": {
+      "duration": 1.2,
+      "peak": 0.1248006671667099,
+      "rms": 0.06377099808472732,
+      "differenceEnergy": 0.000025984897175873243
+    },
+    "sfx-stack1": {
+      "duration": 0.055011337868480725,
+      "peak": 0.2199999988079071,
+      "rms": 0.04568728638441887,
+      "differenceEnergy": 0.000025168236830668026
+    },
+    "sfx-stack2": {
+      "duration": 0.07002267573696146,
+      "peak": 0.2199999988079071,
+      "rms": 0.04452960451093299,
+      "differenceEnergy": 0.00004178127236820167
+    },
+    "sfx-stack3": {
+      "duration": 0.1,
+      "peak": 0.2199999988079071,
+      "rms": 0.04438348443448538,
+      "differenceEnergy": 0.00009350590307783608
+    },
+    "sfx-chain": {
+      "duration": 0.055011337868480725,
+      "peak": 0.2199999988079071,
+      "rms": 0.06389769513239565,
+      "differenceEnergy": 0.00018267175424280555
+    },
+    "sfx-start": {
+      "duration": 0.2,
+      "peak": 0.2199999988079071,
+      "rms": 0.06085790997147427,
+      "differenceEnergy": 0.000020710822508559186
+    },
+    "sfx-draft": {
+      "duration": 0.24,
+      "peak": 0.2199999988079071,
+      "rms": 0.060601438045598234,
+      "differenceEnergy": 0.00003966389884321735
+    },
+    "sfx-choice": {
+      "duration": 0.15,
+      "peak": 0.2123824954032898,
+      "rms": 0.060155459758604736,
+      "differenceEnergy": 0.00006966320255683124
+    },
+    "sfx-elite": {
+      "duration": 0.36,
+      "peak": 0.2199999988079071,
+      "rms": 0.05963587274691775,
+      "differenceEnergy": 0.000004308516621820781
+    },
+    "sfx-boss": {
+      "duration": 0.65,
+      "peak": 0.2199999988079071,
+      "rms": 0.059681227738029946,
+      "differenceEnergy": 7.217288326077376e-7
+    },
+    "sfx-defeat": {
+      "duration": 0.65,
+      "peak": 0.2199999988079071,
+      "rms": 0.05900033217065535,
+      "differenceEnergy": 0.000002808775649812857
+    },
+    "sfx-victory": {
+      "duration": 1.1000226757369616,
+      "peak": 0.2199999988079071,
+      "rms": 0.05049782676256471,
+      "differenceEnergy": 0.00001821502242606103
+    },
+    "sfx-swing2": {
+      "duration": 0.09501133786848072,
+      "peak": 0.18832719326019287,
+      "rms": 0.03341836686455495,
+      "differenceEnergy": 0.00024083617377264061
+    },
+    "sfx-swing3": {
+      "duration": 0.16,
+      "peak": 0.19101573526859283,
+      "rms": 0.0381131403015059,
+      "differenceEnergy": 0.0002223046032628921
+    },
+    "sfx-light2": {
+      "duration": 0.09,
+      "peak": 0.20051296055316925,
+      "rms": 0.055894131852307766,
+      "differenceEnergy": 0.000088855342430214
+    },
+    "sfx-light3": {
+      "duration": 0.15,
+      "peak": 0.20131944119930267,
+      "rms": 0.04977772499689516,
+      "differenceEnergy": 0.00012757192832756086
+    },
+    "sfx-chargedGun": {
+      "duration": 0.16,
+      "peak": 0.2199999988079071,
+      "rms": 0.04338018933231135,
+      "differenceEnergy": 0.00021637728819891758
+    },
+    "sfx-chargedBlast": {
+      "duration": 0.26,
+      "peak": 0.2199999988079071,
+      "rms": 0.04204139012565577,
+      "differenceEnergy": 0.00019939653609018343
+    },
+    "sfx-swing": {
+      "duration": 0.07501133786848073,
+      "peak": 0.16965599358081818,
+      "rms": 0.03014143633137708,
+      "differenceEnergy": 0.0003619685860911329
+    },
+    "sfx-heavySwing": {
+      "duration": 0.24,
+      "peak": 0.19109392166137695,
+      "rms": 0.03466101765000469,
+      "differenceEnergy": 0.0002927473640038284
+    },
+    "sfx-shotHit": {
+      "duration": 0.04,
+      "peak": 0.17211848497390747,
+      "rms": 0.04876924616627903,
+      "differenceEnergy": 0.00012097392023419982
+    },
+    "sfx-chargedHit": {
+      "duration": 0.1,
+      "peak": 0.19805744290351868,
+      "rms": 0.04893291524246095,
+      "differenceEnergy": 0.0001274254257284983
+    },
+    "sfx-light": {
+      "duration": 0.07002267573696146,
+      "peak": 0.20308496057987213,
+      "rms": 0.05978875345042342,
+      "differenceEnergy": 0.00006674874161253305
+    },
+    "sfx-heavy": {
+      "duration": 0.22,
+      "peak": 0.2199999988079071,
+      "rms": 0.040952236595288474,
+      "differenceEnergy": 0.0002020743397582353
+    },
+    "sfx-gun": {
+      "duration": 0.055011337868480725,
+      "peak": 0.2199999988079071,
+      "rms": 0.06525608481325977,
+      "differenceEnergy": 0.00005472285323583787
+    },
+    "sfx-dash": {
+      "duration": 0.1,
+      "peak": 0.2199999988079071,
+      "rms": 0.06786280034407477,
+      "differenceEnergy": 0.00006741678480065298
+    },
+    "sfx-perfect": {
+      "duration": 0.16,
+      "peak": 0.2199999988079071,
+      "rms": 0.04430538539991809,
+      "differenceEnergy": 0.00006146504668003963
+    },
+    "sfx-detonate": {
+      "duration": 0.2,
+      "peak": 0.18718324601650238,
+      "rms": 0.038915956353788035,
+      "differenceEnergy": 0.0002248457868537685
+    },
+    "sfx-hurt": {
+      "duration": 0.12,
+      "peak": 0.2199999988079071,
+      "rms": 0.059656203689770905,
+      "differenceEnergy": 0.000003449438617391209
+    }
+  },
+  "arrivalExact": true
+}

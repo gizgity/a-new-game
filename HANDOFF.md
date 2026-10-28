@@ -10,7 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9e” ngày2026-10-28 trên code/deploy `2fcdfd2` (bàn giao `44e202f`), Pages40671706957 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho toàn bộ Q9E: Collection Codex, 6 Elemental Trails V1, 6 Challenges, History/Recap và UX/integrity theo DD-0003. Giữ Q9A–Q9D accepted và giới hạn coverage kỹ thuật đã ghi; không suy thêm thiết bị/browser, iOS/Safari, device FPS hoặc live HTTP/hash verification từ approval chung. Không tự mở Q10 hoặc yêu cầu duyệt lại Q9E. Lượt ghi nhận này chỉ tài liệu, không đổi runtime, balance, artwork hay progression.
+Q12A — Combat Audio Identity Revised Contract V1.1 (user giao 2026-10-28). Goal: giữ ProceduralAudio/Phaser WebAudio, bổ sung event identity, priority/cap/lifecycle và audition riêng; không balance/RNG/Boss/progression/artwork, không Q12B–E, không DDR.
+
+## Q12A STATUS
+**AWAITING USER AUDIO/PLAYTEST APPROVAL Q12A.** Code nền tảng/SFX đã triển khai trong ProceduralAudio hiện hữu, cap8/5cueframe(3regular)/priority/cooldown riêng, cache30mono buffers/reusable sounds, root+hop metadata/stack accents/Charged armed-resource buildup và cleanup/mute guard. Giữ Arrival waveform/cadence accepted, gameplay/config/RNG/progression/artwork. Không DDR, không Q12B–E.
+Baseline `6ed8a96`. PASS build/typecheck,28testfiles;15case full serialized gameplay parity trừ presentation sound events; PCM Arrival exact cùngnoise seed, headroom/noise metrics; browser390/320/844touch+1440desktop và input390CDP/1440keyboard giữ-thả/cancel/fresh-release; cap/warning/mute/locked/suspended/unsupported/cleanup. [Event map, audition, evidence và giới hạn](docs/q12a/README.md). Chưa nghe thực tế/real-device/iOS/Safari/latency/thermal/FPS/natural full run; không tự nghiệm thu.
+Deploy review đang chuẩn bị qua GitHub connector vì CLI Git không kết nối proxy; theo Pages workflow repo, không force. Q9A–Q9E accepted giữ nguyên.
+Cách thử: [Audition](https://gizgity.github.io/a-new-game/audition.html), chạm bài1–2 nghe từngcue,3–4combat24quái/Arrival; giữ buildup rồi thả/cancel, mute/pause/resume/rời tab. [Game fixture](https://gizgity.github.io/a-new-game/?playtest=chain) memory riêng; Heavy/Charged giữ-thả, hụt khônghit, Perfect khácDash. Mong đợi punch rõ/không gắt, stack tăng, Arrival dễnhận khi spam. Phản hồi tình huống/âm/thiết bị-browser-loa.
 
 ## Q9E STATUS
 Baseline remote a4ea34b đã fast-forward, bảo toàn Q9D VFX V1.1 accepted. PhaseA `e2c1b92` đã commit/push origin/q9e-final: profile3/migration/journal/dedup/allowlist, Codex/Challenges/History/Recap vi/en đã triển khai; tests27files/typecheck/build PASS; browser evidence và giới hạn tại [docs/q9e](docs/q9e/README.md). Nhánh q9e-final để commit/push từngphase không autoPages. PhaseC6trail đã production/integration, dropdownmax1/None persistderivecollection.sigilWins; khôngcombat/RNG mới.
@@ -146,7 +152,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Dừng sau Q9E đã accepted; chờ task mới của user. Không yêu cầu duyệt lại, tự tune, mở Q10 hoặc ghi DDR mới. Giữ các approval và giới hạn coverage kỹ thuật hiện hành.
+Theo dõi deploy review Q12A tới kết thúc, cập nhật commit/Pages rồi dừng chờ USER AUDIO/PLAYTEST APPROVAL Q12A; không Q12B–E.
 
 ## VALIDATION APPROVAL Q9E
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff, nguồn/version, links và tính nhất quán. Không chạy lại build/tests hoặc deploy. Giữ27testfiles, typecheck/build, renderer/input/flow/dist và Pages2fcdfd2 đã PASS; không suy coverage thiết bị mới từ acceptance chung. DD-0003 append-only và Art Bible không đổi.

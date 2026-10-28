@@ -140,6 +140,7 @@ export class ArenaScene extends Phaser.Scene {
     this.game.events.on(Phaser.Core.Events.BLUR, this.handleBlur, this);
     this.game.events.on(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.audio.destroy();
       this.scale.off(Phaser.Scale.Events.RESIZE, this.resize, this);
       this.game.events.off(Phaser.Core.Events.BLUR, this.handleBlur, this);
       this.game.events.off(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
@@ -215,6 +216,8 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number): void {
+    this.audio.beginFrame();
+    this.audio.charge(this.phase === 'playing' && !this.combat.bossTransforming && this.combat.hp > 0 && this.combat.chargedShots > 0 && (this.touch.enabled ? this.touch.charging : this.armedSpecials.has('charged')));
     this.reticle.setVisible(this.phase === 'playing' && (this.touch.enabled || this.input.isOver));
     if (this.phase !== 'playing') {
       if (this.phase === 'victory' || this.phase === 'defeat') this.enemySprites.stepDeaths(Math.min(delta / 1000, 0.1));
@@ -259,10 +262,10 @@ export class ArenaScene extends Phaser.Scene {
         this.anomalyVisual.step(this.combat);
         this.ascensionVisual.step(this.combat);
       }
+      this.audio.arrival(this.run.bossWarning);
       if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
       else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
-      else this.audio.play(this.combat.soundEvents);
-      this.audio.arrival(this.run.bossWarning);
+      else this.audio.play(this.combat.audioEvents);
       this.pressed.clear();
       this.releaseAim = {};
       this.touch.consume();

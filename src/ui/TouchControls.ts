@@ -85,6 +85,8 @@ export class TouchControls {
     };
   }
 
+  get charging(): boolean { return [...this.contacts.values()].some(contact => contact.action === 'charged'); }
+
   // Retain taps until a simulation tick; CombatWorld owns the bounded recovery buffer.
   consume(): void { this.pressed.clear(); this.releaseAim = {}; }
 

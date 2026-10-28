@@ -1,4 +1,16 @@
 const vi = {
+  audioTitle: "Q12A · Nghe thử âm thanh",
+  audioHint: "Phòng nghe riêng, không lưu tiến trình. Chạm một bài để mở audio. Bài 1–2 phát cue mẫu; bài 3–4 chạy simulation 24 quái.",
+  audioActions: "1 · Light L1–L3 / Heavy / Basic / Charged",
+  audioProcs: "2 · Perfect Dodge / Rupture / Detonate / Chain",
+  audioCrowd: "3 · Combat 24 quái",
+  audioWarning: "4 · Arrival + combat 24 quái",
+  audioPause: "Tạm dừng / tiếp tục",
+  audioMute: "Bật / tắt tiếng",
+  audioStop: "Dừng / hủy buildup",
+  audioCharge: "Giữ để nghe buildup · thả để hủy",
+  audioBack: "Vào game",
+
   qTrail: "Elemental Trail",
   qTrailHint: "Mở trail bằng Victory hợp lệ với Sigil tương ứng. Tối đa 1 hoặc Không; chỉ thay visual.",
   qTrailUnlocked: "Trail mới được mở",
@@ -349,6 +361,14 @@ export type TranslationKey = keyof typeof vi;
 export type Locale = 'vi' | 'en';
 
 const en: Record<TranslationKey, string> = {
+  audioTitle: 'Q12A · Audio Audition',
+  audioHint: 'Isolated room, no saved progression. Tap a track to unlock audio. Tracks 1–2 audition example cues; tracks 3–4 run a 24-enemy simulation.',
+  audioActions: '1 · Light L1–L3 / Heavy / Basic / Charged',
+  audioProcs: '2 · Perfect Dodge / Rupture / Detonate / Chain',
+  audioCrowd: '3 · Combat · 24 enemies',
+  audioWarning: '4 · Arrival + combat · 24 enemies',
+  audioPause: 'Pause / resume', audioMute: 'Mute / unmute', audioStop: 'Stop / cancel buildup',
+  audioCharge: 'Hold for buildup · release to cancel', audioBack: 'Open game',
   qTrail: "Elemental Trail",
   qTrailHint: "Unlock a trail by winning a valid run with its Sigil. Equip one or None; visuals only.",
   qTrailUnlocked: "New trail unlocked",

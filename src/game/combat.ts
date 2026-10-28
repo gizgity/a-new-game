@@ -20,7 +20,9 @@ export const COMBAT = {
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
 
-export type SoundCue = 'victory' | 'light' | 'light2' | 'light3' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'swing2' | 'swing3' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast';
+export type SoundCue = 'victory' | 'light' | 'light2' | 'light3' | 'heavy' | 'gun' | 'dash' | 'perfect' | 'detonate' | 'hurt' | 'swing' | 'swing2' | 'swing3' | 'heavySwing' | 'shotHit' | 'chargedHit' | 'chargedGun' | 'chargedBlast' | 'stack1' | 'stack2' | 'stack3' | 'chain';
+
+export interface CombatSoundEvent { cue: SoundCue; root?: number; hop?: number }
 
 export type CombatAction = 'melee' | 'shoot' | 'heavy' | 'charged' | 'ultimate' | 'dash';
 type BufferedAction = 'melee' | 'shoot' | 'heavy' | 'charged';
@@ -72,6 +74,7 @@ export function segmentHitsCircle(
 
 export class CombatWorld {
   soundEvents: SoundCue[] = [];
+  audioEvents: CombatSoundEvent[] = [];
   hp: number = COMBAT.maxHp;
   readonly barrier = new Barrier();
   mutations: MutationId[] = [];
@@ -215,6 +218,7 @@ export class CombatWorld {
   reset(): void {
     Object.assign(this.player, { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 });
     this.soundEvents = [];
+    this.audioEvents = [];
     this.clearInput();
     this.lastShot = { angle: 0, charged: false };
     this.mutations = [];
@@ -279,6 +283,7 @@ export class CombatWorld {
 
   step(input: CombatInput, dt: number): void {
     this.soundEvents = [];
+    this.audioEvents = [];
     if (this.hp <= 0) { this.clearInput(); return; }
     if (this.bossTransforming) {
       const boss = this.enemies.find(enemy => enemy.kind === 'boss' && enemy.hp > 0)!;
@@ -417,7 +422,9 @@ export class CombatWorld {
                 (enemy.windup > 0 || enemy.kind === 'bulwark' && enemy.recovery <= 0)) guardPoint ??= { x: enemy.x, y: enemy.y };
             if (attack.heavy) this.detonate(enemy, 1.4, false, undefined, attack.root);
             else {
+              const previousStack = enemy.rupture;
               enemy.rupture = Math.min(3, enemy.rupture + 1);
+              if (enemy.rupture > previousStack) this.cue(`stack${enemy.rupture}` as SoundCue);
               this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
             }
             this.hitEnemy(enemy, attack.damage, attack.angle, attack.heavy ? HEAVY.force : LIGHT_COMBO[attack.combo - 1].force, attack.heavy ? HEAVY.stagger : LIGHT_COMBO[attack.combo - 1].stagger, attack.heavy && this.mutations.includes('guardBreaker'), attack.heavy ? 'heavy' : attack.combo === 3 ? 'light3' : attack.combo === 2 ? 'light2' : 'light', attack.root);
@@ -535,7 +542,7 @@ export class CombatWorld {
       enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     }
     enemy.flash = 0.12;
-    if (sound !== 'legacy' && sound !== 'anomaly') this.cue(sound === 'blast' || sound === 'phantom' ? 'light' : sound);
+    if (sound !== 'legacy' && sound !== 'anomaly' && sound !== 'blast') this.cue(sound === 'phantom' ? 'light' : sound);
     this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
       22, sound === 'blast' || sound === 'phantom' || sound === 'legacy' || sound === 'anomaly' ? undefined : sound, angle);
     if (sealCue) this.impact(contactX, contactY, 0xffedce, 30, 'anomalySeal', angle);
@@ -643,7 +650,9 @@ export class CombatWorld {
       for (const enemy of this.enemies) {
         const dx = enemy.x - slash.x, dy = enemy.y - slash.y;
         if (enemy.hp <= 0 || Math.hypot(dx, dy) > slash.range + (enemy.kind === 'boss' ? 30 : 14) || Math.abs(angleDifference(Math.atan2(dy, dx), slash.angle)) > slash.arc / 2) continue;
+        const previousStack = enemy.rupture;
         enemy.rupture = Math.min(3, enemy.rupture + 1);
+        if (enemy.rupture > previousStack) this.cue(`stack${enemy.rupture}` as SoundCue);
         this.hitEnemy(enemy, BUILD.phantomDamage, slash.angle, 0, 0, false, 'phantom', slash.root);
       }
     }
@@ -893,7 +902,11 @@ export class CombatWorld {
           if (distance < nearest) { target = enemy; nearest = distance; }
         }
         if (target) {
-          if (shot.charged) target.rupture = Math.min(3, target.rupture + 1);
+          if (shot.charged) {
+            const previousStack = target.rupture;
+            target.rupture = Math.min(3, target.rupture + 1);
+            if (target.rupture > previousStack) this.cue(`stack${target.rupture}` as SoundCue);
+          }
           else this.gainCharge(this.mutations.includes('catalyst') ? 2 : 1);
           this.detonate(target, shot.charged ? 2 : 1, !!shot.charged, undefined, shot.root);
           this.hitEnemy(target, (shot.damage ?? (shot.charged ? RANGED.chargedDamage : RANGED.basicDamage)) + (shot.staticBonus ?? 0), Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit', shot.root, true, shot.staticBonus ?? 0);
@@ -915,7 +928,7 @@ export class CombatWorld {
   }
 
   private cue(cue: SoundCue): void {
-    if (!this.soundEvents.includes(cue)) this.soundEvents.push(cue);
+    if (!this.soundEvents.includes(cue)) { this.soundEvents.push(cue); this.audioEvents.push({ cue }); }
   }
 
   private gainCharge(points: number): void {
@@ -966,7 +979,9 @@ export class CombatWorld {
           this.build.hazards.push({ x: explosion.x, y: explosion.y, time: BUILD.hazardDelay });
         }
       }
-      this.cue(explosion.charged ? 'chargedBlast' : 'detonate');
+      // Presentation metadata only: root identity survives delayed relay frames.
+      this.audioEvents.push({ cue: explosion.charged ? 'chargedBlast' : 'detonate', root: root.id, hop: Math.max(0, root.detonations - 1) });
+      if (!this.soundEvents.includes(explosion.charged ? 'chargedBlast' : 'detonate')) this.soundEvents.push(explosion.charged ? 'chargedBlast' : 'detonate');
       this.lastChain++;
       this.impact(explosion.x, explosion.y, explosion.echo ? 0xc399ff : explosion.hostile ? 0xffb36b : 0x6bf3d0, explosion.radius, explosion.charged ? 'chargedBlast' : explosion.echo ? 'echo' : explosion.sourceX !== undefined ? 'chainBlast' : undefined);
       const blast = this.impacts[this.impacts.length - 1];
@@ -1005,7 +1020,7 @@ export class CombatWorld {
           if (root.seeded.size >= BUILD.catalystSeeds) break;
           // A pending marked relay has already consumed its mark; it is not a new target.
           if (enemy.hp <= 0 || enemy.rupture > 0 || this.pendingDetonations.has(enemy.id) || this.chainSeen.has(enemy.id) || root.seeded.has(enemy.id)) continue;
-          enemy.rupture = 1; root.seeded.add(enemy.id);
+          enemy.rupture = 1; root.seeded.add(enemy.id); this.cue('stack1');
           this.impact(enemy.x, enemy.y, 0x6bf3d0, 12, 'seed');
           const seed = this.impacts[this.impacts.length - 1]; seed.sourceX = explosion.x; seed.sourceY = explosion.y;
         }

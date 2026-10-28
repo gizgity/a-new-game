@@ -1,0 +1,50 @@
+[
+  {
+    "width": 390,
+    "touch": true,
+    "initial": {
+      "phase": "playing",
+      "charged": 2,
+      "context": "running"
+    },
+    "hold": {
+      "charge": true,
+      "resource": 2
+    },
+    "cancelled": {
+      "voices": 0,
+      "resource": 2,
+      "replayed": false
+    },
+    "release": {
+      "resource": 1,
+      "release": true,
+      "hit": false
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "touch": false,
+    "initial": {
+      "phase": "playing",
+      "charged": 2,
+      "context": "running"
+    },
+    "hold": {
+      "charge": true,
+      "resource": 2
+    },
+    "cancelled": {
+      "voices": 0,
+      "resource": 2,
+      "replayed": false
+    },
+    "release": {
+      "resource": 1,
+      "release": true,
+      "hit": false
+    },
+    "errors": []
+  }
+]
