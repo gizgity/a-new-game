@@ -79,3 +79,7 @@ Audit2026-10-26, baseline main@bcd148b / Release v0.1.0. [Art Bible](../../ART_B
 ## Q9C Anomaly VFX — accepted V1.1
 
 User “visual ok, làm đi” ngày2026-10-27 duyệt [boardV1.1](../q9c/vfx-art-v1/source/concept-v1.1.png), common source signature và6motif; [proposal/provenance](../q9c/vfx-art-v1/README.md). Đây là approved visual target theo Art Bible hiện hành, không đổi direction/palette hoặc nhập DDR. [Production source/runtime evidence](../q9c/vfx-production/README.md) đã **ACCEPTED — USER PLAYTEST APPROVAL** qua user “đạt r” ngày2026-10-27 trên59b9a61 (bàn giao3268f15), Pages40509711771 SUCCESS; nguồn hội thoại hiện tại không permalink. Đây là reference runtime Anomaly hiện hành; giữ approval Q7C/Q8C, Art Bible/direction và giới hạn coverage đã ghi. Manifest assets.json là snapshot visual approval trước playtest, không là gate còn chờ. Không Q9D.
+
+## Q9D Ascension VFX — visual approved V1.1
+
+User “duyệt, làm đi” ngày2026-10-28, hội thoại task hiện tại không permalink, duyệt [board/mockupsV1.1](../q9d/vfx-art-v1/README.md) và giao production/integration. [Production/source/hash/renderer/checklist](../q9d/vfx-production/README.md). Motif ripple/scar, Huntereye, localFracturefork+penaltyticks, Wardenchaincrown; giữArtBible/direction/geometry/balance. Đây là visual approval, **chưa Q9D user playtest acceptance**; khôngDDRApproved hoặcQ9E.

@@ -1,0 +1,45 @@
+{
+  "status": "VISUAL APPROVED V1.1 — production integrated, awaiting Q9D user playtest",
+  "approval": {
+    "date": "2026-10-28",
+    "quote": "duyệt, làm đi",
+    "source": "Hội thoại task hiện tại, không permalink",
+    "scope": "Q9D VFXV1.1 motifs/mockups +production/integration, not Q9Dplaytestacceptance or DDRApproved"
+  },
+  "model": "not supplied",
+  "seed": "not supplied",
+  "rawProduction": "/workspace/generated_images/exec-d893dfb9-dfa7-46ae-9ecd-17ee924a1485.png",
+  "rawDraft": "/workspace/generated_images/exec-a22f9f8d-e19d-4c7b-b24b-f4581d17036f.png",
+  "rights": "Original project references +ImageGen output under applicable service terms; no CC0/exclusivity claim.",
+  "method": "Original generated production bitmap copied unchanged; alpha frame registration only, no board crops or procedural artwork.",
+  "files": [
+    {
+      "path": "docs/q9d/vfx-art-v1/source/concept-v1.1.png",
+      "sha256": "bd648f80ebae57b94fdfce477b0e322064c2eb33731e4477f5bbb889d9363956"
+    },
+    {
+      "path": "docs/q9d/vfx-art-v1/mockups/proposed-390.png",
+      "sha256": "ed9a4bdca8c352b4e76d336cf14711baff21ec5e87a5444b42a44126bda1dcc1"
+    },
+    {
+      "path": "docs/q9c/vfx-production/source/atlas-v1.png",
+      "sha256": "5884014fee29162b76167fd840efcb4e27a5109f138d64ebec8b37d249047a49"
+    },
+    {
+      "path": "docs/q7c/runtime/after-grayscale-390.png",
+      "sha256": "61608a41b87ab91688035de9bca1995a212e3b95ba1761db61309a564190cd7a"
+    },
+    {
+      "path": "docs/q9d/vfx-production/source/atlas-v1.1.png",
+      "sha256": "ad74b36dec5bac84a228784dd25b5f29cf90d0036cb63e90cd8698921778a0ef"
+    },
+    {
+      "path": "public/assets/vfx/ascension-motifs.png",
+      "sha256": "ad74b36dec5bac84a228784dd25b5f29cf90d0036cb63e90cd8698921778a0ef"
+    },
+    {
+      "path": "public/assets/vfx/ascension-motifs.json",
+      "sha256": "1127aa18270655a7ab5ebde24b04add35653fd77df02d98ff0ab5dc77087ecf6"
+    }
+  ]
+}

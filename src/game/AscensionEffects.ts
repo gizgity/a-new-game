@@ -19,7 +19,8 @@ export class AscensionEffects {
   fractured: string | null = null;
   penalty = 0;
   constructor(private world: CombatWorld, private damage: (e: Enemy, amount: number, root: ChainRoot) => void,
-    private hurt: (amount: number, enemy: boolean) => void) {}
+    private hurt: (amount: number, enemy: boolean) => void,
+    private visual: (kind: 'sealPulse' | 'sealEcho' | 'sealHunterEnd', x: number, y: number, radius: number) => void) {}
   toJSON(): object {
     return { seal:this.seal, pulseClock:this.pulseClock, echoCooldown:this.echoCooldown, zones:this.zones.map(z=>({...z,victims:[...(z.victims??[])]})), hunterId:this.hunterId, hunterWarning:this.hunterWarning, hunterTime:this.hunterTime, hunterCooldown:this.hunterCooldown, stable:this.stable, group:this.group, distances:[...this.distances], fractured:this.fractured, penalty:this.penalty };
   }
@@ -56,7 +57,10 @@ export class AscensionEffects {
         else z.active -= dt;
         if (z.time <= 1e-9 && (!z.hit || z.active > 0)) {
           const spec = z.kind === 'pulse' ? A.pulse : A.echo;
-          if (!z.hit) z.active = z.kind === 'pulse' ? A.pulse.active : dt;
+          if (!z.hit) {
+            z.active = z.kind === 'pulse' ? A.pulse.active : dt;
+            this.visual(z.kind === 'pulse' ? 'sealPulse' : 'sealEcho', z.x, z.y, spec.radius);
+          }
           z.hit = true;
           if (z.kind === 'pulse') {
             const root = chainRoot(); legacyRoot(root); z.victims ??= new Set();
@@ -85,7 +89,11 @@ export class AscensionEffects {
     if (this.hunterId !== null) {
       if (this.hunterWarning > 0) this.hunterWarning = Math.max(0,this.hunterWarning-dt);
       else this.hunterTime = Math.max(0,this.hunterTime-dt);
-      if (this.hunterTime === 0 || !this.world.enemies.some(e=>e.id===this.hunterId && e.hp>0)) { this.hunterId=null; this.group=''; this.stable=0; }
+      if (this.hunterTime === 0 || !this.world.enemies.some(e=>e.id===this.hunterId && e.hp>0)) {
+        const previous = this.world.enemies.find(e => e.id === this.hunterId);
+        if (previous) this.visual('sealHunterEnd', previous.x, previous.y, 0);
+        this.hunterId=null; this.group=''; this.stable=0;
+      }
       return;
     }
     const moving = Math.hypot(this.world.movementIntent.x,this.world.movementIntent.y) > A.hunter.minMotion && this.world.dashTime <= 0;

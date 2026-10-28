@@ -1,0 +1,96 @@
+{
+  "baseline": "afd084a compiled snapshot before VFX changes",
+  "method": "Full serialized combat state excluding presentation-only impacts at300tick intervals, seeded Draft+combat, up to180s or natural defeat. No HP grants; not balance or human input evidence.",
+  "cases": [
+    {
+      "seal": 0,
+      "anomaly": null,
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "bloodMoon",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "fracturedStorm",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": null,
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "bloodMoon",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "fracturedStorm",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": null,
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "bloodMoon",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "fracturedStorm",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": null,
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "bloodMoon",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "fracturedStorm",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": null,
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "bloodMoon",
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "fracturedStorm",
+      "snapshots": 36,
+      "identical": true
+    }
+  ]
+}

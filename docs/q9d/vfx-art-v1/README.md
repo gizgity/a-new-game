@@ -1,3 +1,5 @@
+> **VISUAL APPROVED — V1.1**: user “duyệt, làm đi” ngày2026-10-28, hội thoại hiện tại không permalink; đã giao production/integration. [Delivery mới](../vfx-production/README.md). Các nhãn candidate/chờ duyệt bên dưới là snapshot trước approval, không là gate hiện hành. Chưa Q9D playtest acceptance.
+
 # Q9D — VFX proposal V1.1
 
 **CONCEPT CANDIDATE — chưa visual approval.** Feedback user ngày2026-10-28: “chưa có vfx, k thể phân biệt được lúc chơi”. Scope: presentation cho4modifier, không đổi damage/radius/CD/timing/progression/save/input/camera; không Q9E hoặc DDR Approved. Runtimeafd084a vẫn chưa user playtest accepted.

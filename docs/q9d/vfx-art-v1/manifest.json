@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING VISUAL APPROVAL — V1.1",
+  "status": "VISUAL APPROVED — V1.1",
   "runtimeBaseline": "afd084a",
   "handoffBaseline": "720a33e",
   "date": "2026-10-28",
@@ -277,5 +277,12 @@
     "draft390MissingArcherCorrected": true,
     "productionAlphaPivotMotionDevicePerformance": "UNKNOWN",
     "corners": "baseline only, proposed integration not verified"
-  }
+  },
+  "approval": {
+    "date": "2026-10-28",
+    "quote": "duyệt, làm đi",
+    "source": "Hội thoại task hiện tại, không permalink",
+    "scope": "Visual V1.1 +production/integration; not Q9D playtest acceptance"
+  },
+  "production": "../vfx-production/README.md"
 }

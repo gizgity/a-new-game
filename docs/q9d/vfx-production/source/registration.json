@@ -1,0 +1,160 @@
+{
+  "source": "docs/q9d/vfx-production/source/atlas-v1.1.png",
+  "runtime": "public/assets/vfx/ascension-motifs.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sha256": "ad74b36dec5bac84a228784dd25b5f29cf90d0036cb63e90cd8698921778a0ef",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "method": "Original production PNG copied byte-for-byte. Metadata registers alpha>8 bounds with2pxgutter. No concept board crops, bitmap redraw or procedural artwork.",
+  "frames": [
+    {
+      "name": "scar",
+      "cell": 0,
+      "alphaBounds": [
+        141,
+        57,
+        277,
+        398
+      ],
+      "frame": {
+        "x": 139,
+        "y": 55,
+        "w": 140,
+        "h": 345
+      }
+    },
+    {
+      "name": "ripple",
+      "cell": 1,
+      "alphaBounds": [
+        49,
+        86,
+        362,
+        377
+      ],
+      "frame": {
+        "x": 465,
+        "y": 84,
+        "w": 317,
+        "h": 295
+      }
+    },
+    {
+      "name": "hunterEye",
+      "cell": 2,
+      "alphaBounds": [
+        127,
+        98,
+        337,
+        362
+      ],
+      "frame": {
+        "x": 961,
+        "y": 96,
+        "w": 214,
+        "h": 268
+      }
+    },
+    {
+      "name": "chainRim",
+      "cell": 3,
+      "alphaBounds": [
+        43,
+        46,
+        373,
+        383
+      ],
+      "frame": {
+        "x": 41,
+        "y": 462,
+        "w": 334,
+        "h": 341
+      }
+    },
+    {
+      "name": "crown",
+      "cell": 4,
+      "alphaBounds": [
+        100,
+        115,
+        318,
+        335
+      ],
+      "frame": {
+        "x": 516,
+        "y": 531,
+        "w": 222,
+        "h": 224
+      }
+    },
+    {
+      "name": "fractureFork",
+      "cell": 5,
+      "alphaBounds": [
+        132,
+        70,
+        350,
+        370
+      ],
+      "frame": {
+        "x": 966,
+        "y": 486,
+        "w": 222,
+        "h": 304
+      }
+    },
+    {
+      "name": "penaltyTick",
+      "cell": 6,
+      "alphaBounds": [
+        151,
+        127,
+        258,
+        290
+      ],
+      "frame": {
+        "x": 149,
+        "y": 961,
+        "w": 111,
+        "h": 167
+      }
+    },
+    {
+      "name": "chainSnap",
+      "cell": 7,
+      "alphaBounds": [
+        67,
+        75,
+        344,
+        359
+      ],
+      "frame": {
+        "x": 483,
+        "y": 909,
+        "w": 281,
+        "h": 288
+      }
+    },
+    {
+      "name": "pulseBurst",
+      "cell": 8,
+      "alphaBounds": [
+        51,
+        65,
+        369,
+        356
+      ],
+      "frame": {
+        "x": 885,
+        "y": 899,
+        "w": 322,
+        "h": 295
+      }
+    }
+  ]
+}

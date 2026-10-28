@@ -1,0 +1,53 @@
+{
+  "hashes": {
+    "dist/index.html": "ef86f4044e7b60de83881551389d836b284be94f637d275b47637d571827afac",
+    "dist/assets/index-CCUpky55.js": "f75dbbd58439772672bf812edcb9ae2b60a5c6b19427a08c4ee00d4836accf46",
+    "dist/assets/index-CGTdVAHt.css": "7ed762832eeb59358ed19721b948ae80845b637f61a38177aff0a72baa2d367c",
+    "dist/assets/vfx/ascension-motifs.png": "ad74b36dec5bac84a228784dd25b5f29cf90d0036cb63e90cd8698921778a0ef",
+    "dist/assets/vfx/ascension-motifs.json": "1127aa18270655a7ab5ebde24b04add35653fd77df02d98ff0ab5dc77087ecf6"
+  },
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "productionBundle": true,
+      "legacyAndFractureChoice": true,
+      "viEn": true,
+      "detailsPauseResume": true,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:5175/a-new-game/assets/vfx/ascension-motifs.png",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5175/a-new-game/assets/vfx/ascension-motifs.json",
+          "status": 200
+        }
+      ],
+      "isolatedSave": true,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "productionBundle": true,
+      "legacyAndFractureChoice": true,
+      "viEn": true,
+      "detailsPauseResume": true,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:5175/a-new-game/assets/vfx/ascension-motifs.png",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5175/a-new-game/assets/vfx/ascension-motifs.json",
+          "status": 200
+        }
+      ],
+      "isolatedSave": true,
+      "errors": []
+    }
+  ]
+}

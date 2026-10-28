@@ -1,3 +1,4 @@
+import { ASCENSION_VFX } from './config/ascensionVfx.js';
 import { AscensionEffects } from './AscensionEffects.js';
 import { ASCENSION } from './config/ascension.js';
 import { ANOMALY_VFX } from './config/anomalyVfx.js';
@@ -48,7 +49,7 @@ export interface Attack {
 export interface Impact {
   x: number; y: number; life: number; color: number; radius?: number; duration?: number; arc?: number;
   anomaly?: AnomalyId;
-  kind?: 'anomalyFinisher' | 'anomalyCounter' | 'anomalySeal' | 'anomalyRelay' | 'anomalyStrike' | 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast' | 'guardBreak' | 'phantom' | 'seed' | 'echo' | 'slow' | 'heal'; angle?: number; sourceX?: number; sourceY?: number;
+  kind?: 'sealPulse' | 'sealEcho' | 'sealFracture' | 'sealHunterEnd' | 'anomalyFinisher' | 'anomalyCounter' | 'anomalySeal' | 'anomalyRelay' | 'anomalyStrike' | 'light' | 'light2' | 'light3' | 'heavy' | 'shotHit' | 'chargedHit' | 'chargedBlast' | 'chainBlast' | 'guardBreak' | 'phantom' | 'seed' | 'echo' | 'slow' | 'heal'; angle?: number; sourceX?: number; sourceY?: number;
 }
 interface Explosion { context?: ProcContext; root?: ChainRoot; echo?: boolean; volatileBoost?: boolean; x: number; y: number; damage: number; radius: number; hostile: boolean; charged?: boolean; playerDamage?: number; delay?: number; enemyId?: number; sourceX?: number; sourceY?: number }
 
@@ -90,7 +91,8 @@ export class CombatWorld {
       this.impacts[this.impacts.length - 1].anomaly = zone.storm ? 'fracturedStorm' : zone.source !== undefined ? 'echoChamber' : 'volatileGround';
     });
   readonly ascension = new AscensionEffects(this, (enemy, damage, root) => this.hitEnemy(enemy, damage, 0, 0, 0, false, 'anomaly', root, true, 0, { root, depth: 1, origin: 'anomalySecondary' }),
-    (damage, enemy) => this.hurt(damage, 0, enemy, false));
+    (damage, enemy) => this.hurt(damage, 0, enemy, false),
+    (kind, x, y, radius) => this.impact(x, y, ASCENSION_VFX.active, radius, kind));
   private recordedDeaths = new Set<number>();
   private activeCurses: readonly CurseId[] = Object.freeze([]);
   get curses(): readonly CurseId[] { return this.activeCurses; }
@@ -897,7 +899,11 @@ export class CombatWorld {
           this.hitEnemy(target, (shot.damage ?? (shot.charged ? RANGED.chargedDamage : RANGED.basicDamage)) + (shot.staticBonus ?? 0), Math.atan2(shot.vy, shot.vx), 8, 0.08, !!shot.charged, shot.charged ? 'chargedHit' : 'shotHit', shot.root, true, shot.staticBonus ?? 0);
           if (shot.staticBonus && shot.root) {
             const bonus = shot.staticBonus * this.ascension.fractureBonus('staticRiposte', shot.root);
-            if (bonus > 0) this.hitEnemy(target, bonus, 0, 0, 0, true, 'legacy', shot.root, true, 0, { root: shot.root, depth: 1, origin: 'mutationSecondary' });
+            if (bonus > 0) {
+              const before = target.hp;
+              this.hitEnemy(target, bonus, 0, 0, 0, true, 'legacy', shot.root, true, 0, { root: shot.root, depth: 1, origin: 'mutationSecondary' });
+              if (target.hp < before) this.impact(target.x, target.y, ASCENSION_VFX.proc, ASCENSION_VFX.procSize, 'sealFracture', Math.atan2(shot.vy, shot.vx));
+            }
           }
           shot.life = 0;
         }
@@ -1013,7 +1019,7 @@ export class CombatWorld {
   private impact(x: number, y: number, color: number, radius = 22, kind?: Impact['kind'], angle = 0): void {
     // Keep the primary Charged blast readable when a chain fills the existing VFX budget.
     if (this.impacts.length >= 24) this.impacts.splice(Math.max(0, this.impacts.findIndex(item => item.kind !== 'chargedBlast')), 1);
-    const duration = kind === 'anomalyFinisher' || kind === 'anomalyCounter' || kind === 'anomalyRelay' ? ANOMALY_VFX.feedbackDuration : kind === 'anomalySeal' ? ANOMALY_VFX.sealDuration : kind === 'guardBreak' ? 0.35 : kind === 'chainBlast' ? 0.24 : kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
+    const duration = kind === 'sealHunterEnd' ? ASCENSION_VFX.hunterEndDuration : kind === 'sealFracture' ? ASCENSION_VFX.procDuration : kind === 'sealPulse' || kind === 'sealEcho' ? ASCENSION_VFX.impactDuration : kind === 'anomalyFinisher' || kind === 'anomalyCounter' || kind === 'anomalyRelay' ? ANOMALY_VFX.feedbackDuration : kind === 'anomalySeal' ? ANOMALY_VFX.sealDuration : kind === 'guardBreak' ? 0.35 : kind === 'chainBlast' ? 0.24 : kind === 'chargedBlast' ? 0.36 : kind === 'chargedHit' ? 0.24 : kind === 'heavy' ? 0.26 : 0.18;
     this.impacts.push({ x, y, color, radius, kind, angle, duration, life: duration });
   }
 }

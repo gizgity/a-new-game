@@ -1,4 +1,4 @@
-import { ASCENSION } from './config/ascension';
+import { AscensionVisual } from './AscensionVisual';
 import { AnomalyVisual } from './AnomalyVisual';
 import { drawLegacy } from './LegacyVisual';
 import Phaser from 'phaser';
@@ -26,6 +26,7 @@ export class ArenaScene extends Phaser.Scene {
   readonly combat = new CombatWorld(this.player);
   readonly run = new RunDirector(this.combat);
   private anomalyVisual!: AnomalyVisual;
+  private ascensionVisual!: AscensionVisual;
   private groundGraphics!: Phaser.GameObjects.Graphics;
   private enemySprites!: EnemySprites;
   private combatGraphics!: Phaser.GameObjects.Graphics;
@@ -59,6 +60,7 @@ export class ArenaScene extends Phaser.Scene {
   preload(): void {
     PlayerVisual.preload(this);
     AnomalyVisual.preload(this);
+    AscensionVisual.preload(this);
     BossArrival.preload(this);
     this.load.image('arena-floor', `${import.meta.env.BASE_URL}assets/arena/broken-seal-v2.webp`);
   }
@@ -68,6 +70,7 @@ export class ArenaScene extends Phaser.Scene {
     this.drawArena();
     this.arrival = new BossArrival(this);
     this.anomalyVisual = new AnomalyVisual(this);
+    this.ascensionVisual = new AscensionVisual(this);
     this.groundGraphics = this.add.graphics().setDepth(1);
     this.combatGraphics = this.add.graphics().setDepth(1.5);
     this.enemySprites = new EnemySprites(this);
@@ -147,6 +150,7 @@ export class ArenaScene extends Phaser.Scene {
       this.vessel.reset(this.combat);
       this.enemySprites.reset();
       this.anomalyVisual.reset();
+      this.ascensionVisual.reset();
       this.cameras.main.centerOn(this.player.x, this.player.y);
     }
     if (this.run.bossWarning === 0) this.audio.arrival(0);
@@ -244,6 +248,7 @@ export class ArenaScene extends Phaser.Scene {
         this.vessel.step(this.combat, FIXED_STEP);
         this.enemySprites.step(FIXED_STEP);
         this.anomalyVisual.step(this.combat);
+        this.ascensionVisual.step(this.combat);
       }
       if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
       else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
@@ -278,19 +283,7 @@ export class ArenaScene extends Phaser.Scene {
     const ground = this.groundGraphics.clear();
     this.arrival.render(this.run.bossWarning);
     this.anomalyVisual.render(ground, world);
-    for (const zone of world.ascension.zones) {
-      const radius = zone.kind === 'pulse' ? ASCENSION.pulse.radius : ASCENSION.echo.radius;
-      ground.lineStyle(zone.hit ? 4 : 2, zone.kind === 'pulse' ? 0xff6f87 : 0xffcc80, 0.95);
-      ground.strokeCircle(zone.x, zone.y, radius);
-      ground.lineBetween(zone.x-8,zone.y,zone.x+8,zone.y);
-      ground.lineBetween(zone.x,zone.y-8,zone.x,zone.y+8);
-      if (zone.hit) { ground.fillStyle(0xff6f87,0.2); ground.fillCircle(zone.x,zone.y,radius); }
-    }
-    const hunter = world.enemies.find(e=>e.id === world.ascension.hunterId);
-    if (hunter) {
-      ground.lineStyle(3,world.ascension.hunterWarning > 0 ? 0xffcc80 : 0xff6f87,1);
-      ground.strokeTriangle(hunter.x,hunter.y-32,hunter.x-10,hunter.y-45,hunter.x+10,hunter.y-45);
-    }
+    this.ascensionVisual.render(ground, world);
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     drawLegacy(ground, world);
@@ -318,7 +311,7 @@ export class ArenaScene extends Phaser.Scene {
     if (world.hurtFlash > 0) g.lineStyle(3, 0xff6f87).strokeCircle(this.player.x, this.player.y, 23);
     drawBarrier(g, world);
     for (const impact of world.impacts) {
-      if (this.anomalyVisual.handlesImpact(impact)) continue;
+      if (this.anomalyVisual.handlesImpact(impact) || this.ascensionVisual.handlesImpact(impact)) continue;
       if (drawBuildImpact(g, impact)) continue;
       if (impact.kind === 'chargedBlast' || impact.kind === 'chargedHit') { drawChargedImpact(g, impact); continue; }
       const fade = impact.life / (impact.duration ?? 0.18);

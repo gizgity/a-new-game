@@ -146,3 +146,7 @@ public/assets/
 
 ## Q9C approval hiện hành
 - **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “đạt r” ngày2026-10-27 trên code/deploy `59b9a61` (bàn giao `3268f15`), Pages40509711771 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9C Arena Anomalies gồm VFX V1.1; giữ approval Q9A/Q9B và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance config từ approval chung. Không tự mở Q9D. Các gate chờ playtest Q9C phía trên đã hoàn tất; không yêu cầu duyệt lại. Lượt ghi nhận chỉ Markdown, không runtime/DDR/art direction/deploy.
+
+## Q9D VFX visual approval hiện hành
+- User “duyệt, làm đi” ngày2026-10-28 duyệt board/mockupsQ9DVFXV1.1 và giao production/integration; không cần duyệt lại concept. Scope giữ gameplay/save/progression/input/balance, artwork dùng production source riêng quaImageGen, không cropboard.
+- Spec/provenance/renderer/checklist tại docs/q9d/vfx-production/README.md; test/build/commit/push/Pages rồi dừng **AWAITING USER PLAYTEST APPROVAL Q9D**. Visual approval không là Q9D experience acceptance; không DDR Approved hoặc Q9E.

@@ -1,0 +1,193 @@
+{
+  "frames": {
+    "scar": {
+      "frame": {
+        "x": 139,
+        "y": 55,
+        "w": 140,
+        "h": 345
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 140,
+        "h": 345
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 345
+      }
+    },
+    "ripple": {
+      "frame": {
+        "x": 465,
+        "y": 84,
+        "w": 317,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 317,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 317,
+        "h": 295
+      }
+    },
+    "hunterEye": {
+      "frame": {
+        "x": 961,
+        "y": 96,
+        "w": 214,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 214,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 214,
+        "h": 268
+      }
+    },
+    "chainRim": {
+      "frame": {
+        "x": 41,
+        "y": 462,
+        "w": 334,
+        "h": 341
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 334,
+        "h": 341
+      },
+      "sourceSize": {
+        "w": 334,
+        "h": 341
+      }
+    },
+    "crown": {
+      "frame": {
+        "x": 516,
+        "y": 531,
+        "w": 222,
+        "h": 224
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 222,
+        "h": 224
+      },
+      "sourceSize": {
+        "w": 222,
+        "h": 224
+      }
+    },
+    "fractureFork": {
+      "frame": {
+        "x": 966,
+        "y": 486,
+        "w": 222,
+        "h": 304
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 222,
+        "h": 304
+      },
+      "sourceSize": {
+        "w": 222,
+        "h": 304
+      }
+    },
+    "penaltyTick": {
+      "frame": {
+        "x": 149,
+        "y": 961,
+        "w": 111,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 111,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 111,
+        "h": 167
+      }
+    },
+    "chainSnap": {
+      "frame": {
+        "x": 483,
+        "y": 909,
+        "w": 281,
+        "h": 288
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 281,
+        "h": 288
+      },
+      "sourceSize": {
+        "w": 281,
+        "h": 288
+      }
+    },
+    "pulseBurst": {
+      "frame": {
+        "x": 885,
+        "y": 899,
+        "w": 322,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 322,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 322,
+        "h": 295
+      }
+    }
+  },
+  "meta": {
+    "image": "ascension-motifs.png",
+    "size": {
+      "w": 1254,
+      "h": 1254
+    },
+    "scale": "1",
+    "app": "Q9D production alpha registration, original bitmap unchanged"
+  }
+}
