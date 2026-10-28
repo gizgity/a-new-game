@@ -88,3 +88,8 @@ User “duyệt, làm đi” ngày2026-10-28, hội thoại task hiện tại kh
 ## Q9E Elemental Trails — visual target approved V1
 
 User “oki duyệt. làm tiếp đi” ngày2026-10-28 duyệt [board6motifV1](../q9e/art/source/concept-v1.png) và [scale/hierarchycomposites](../q9e/art/README.md) trên a60f256, giaoPhaseC. Không đổi direction/Bible. [Production source/runtime/checks](../q9e/production/README.md) riêng, khôngcropboard. Đây là **visual approval**, chưa userplaytestacceptance Q9E; không dùng làm bằng chứng deviceFPS/experienceaccepted hoặc thay approval Q7C/Q9D.
+
+
+## Q9E Elemental Trails — playtest accepted
+
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9e” ngày2026-10-28 trên code/deploy `2fcdfd2` (bàn giao `44e202f`), Pages40671706957 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho toàn bộ Q9E: Collection Codex, 6 Elemental Trails V1, 6 Challenges, History/Recap và UX/integrity theo DD-0003. Giữ Q9A–Q9D accepted và giới hạn coverage kỹ thuật đã ghi; không suy thêm thiết bị/browser, iOS/Safari, device FPS hoặc live HTTP/hash verification từ approval chung. Không tự mở Q10 hoặc yêu cầu duyệt lại Q9E. Lượt ghi nhận này chỉ tài liệu, không đổi runtime, balance, artwork hay progression. [Production/runtime evidence](../q9e/production/README.md). Visual approval “oki duyệt. làm tiếp đi” và playtest approval “duyệt 9e” là hai bước riêng, đều đã hoàn tất. Các nhãn pending trong snapshot proposal/manifest cũ không ghi đè approval hiện hành này; không đổi Art Bible/direction hoặc production assets.

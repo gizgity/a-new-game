@@ -1,6 +1,8 @@
 # Q9E Phase C — Elemental Trails V1
 
-**VISUAL APPROVED V1** — user “oki duyệt. làm tiếp đi” ngày2026-10-28, hội thoại hiện tại không permalink, trên proposal `a60f256`. Approval cho cả6motif và scale/hierarchy composite V1; cho phép production/integration/deploy PhaseC. **Chưa USER PLAYTEST APPROVAL Q9E.** DD-0003 giữ nguyên, không ghi DDR mới từ artwork approval.
+**ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9e” ngày2026-10-28 trên code/deploy `2fcdfd2` (bàn giao `44e202f`), Pages40671706957 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho toàn bộ Q9E: Collection Codex, 6 Elemental Trails V1, 6 Challenges, History/Recap và UX/integrity theo DD-0003. Giữ Q9A–Q9D accepted và giới hạn coverage kỹ thuật đã ghi; không suy thêm thiết bị/browser, iOS/Safari, device FPS hoặc live HTTP/hash verification từ approval chung. Không tự mở Q10 hoặc yêu cầu duyệt lại Q9E. Lượt ghi nhận này chỉ tài liệu, không đổi runtime, balance, artwork hay progression.
+
+**VISUAL APPROVED V1** — user “oki duyệt. làm tiếp đi” ngày2026-10-28, hội thoại hiện tại không permalink, trên proposal `a60f256`. Approval cho cả6motif và scale/hierarchy composite V1; cho phép production/integration/deploy PhaseC. **USER PLAYTEST APPROVAL Q9E đã có**, theo nguồn ở đầu tài liệu. DD-0003 giữ nguyên, không ghi DDR mới từ artwork approval.
 
 Production source riêng ImageGen, không crop board: [PNG](source/trails-v1.png), [exact prompt/inputs/quyền](source/PROMPT.md), [registration/hash](source/registration.json), [script](register-atlas.py). RGBA1536×1024, alpha0–254,6frames/gutter≥4px trước padding, PNG runtime copied nguyên bytes. RGBglow ngoài marks có alpha0, không bake floor/halo. Runtime6MiBdecoded,1pooledImage/atlas; không thêm Graphics/shader/dependency.
 
@@ -26,11 +28,13 @@ Screenshots chính: `evidence/{sigil}-{320|390|844|1440}.png` cùng `-gray.png`;
 
 ## Cách user playtest Q9E sau deploy
 
+Checklist tham chiếu sau nghiệm thu; không yêu cầu thử lại.
+
 1. Normal URL: mở Collection/filter cả4category/Seal, Challenges, History trên mobileportrait/landscape vàdesktop. Kỳ vọng29mục/catalog hiện hành, X/Y/locked/dependency vàvi/en rõ, cuộn/focus khôngkẹt, bấm Skip/Continue chơi run kế nhanh.
 2. Thắng vớiSigil bất kỳ: recap hiệnbuild/unlock/challengeprogress/nextgoal, trailtươngứng mở; trangbị1trail hoặcNone, refresh/runkế giữlựa chọn; Defeat không mởtrail. History20run gầnnhất, refreshkhôngdouble; xóahistorykhôngxóachallenge/unlock. Không cần mởhết6trong1lượt thử.
 3. Để xem nhanh đủ6trail mà không sửa save: `?playtest=trail-fire` (hoặc water/lightning/ice/shadow/wind), Bắtđầu→chờ1s→chọnCore, di chuyển/Dash/Heavy/Basic/Charged; pause để đổitrail/None. Kỳ vọngtrailnhỏsauchân, khônglẫnattack/telegraph, khôngchePlayerởgóc/crowd, pause/resume khôngkẹtinput. Fixture khôngtínhthànhtích/progression thật.
 
-Phản hồi: trail/tìnhhuống/thao tác/điềuquan sát +thiếtbị/browser. Chờ **AWAITING USER PLAYTEST APPROVAL Q9E**, không Q10.
+Checklist trên giữ làm tham chiếu cho issue sau nghiệm thu; không yêu cầu user thử lại. Phản hồi issue nếu có: trail, tình huống, thao tác, điều quan sát và thiết bị/browser. **ACCEPTED — USER PLAYTEST APPROVAL Q9E**; chờ task mới, không Q10.
 
 
 ## Delivery
@@ -39,4 +43,4 @@ Code/deploy **2fcdfd2** trênmain/q9e-final, [Pages40671706957](https://github.c
 
 Git CLIauth unavailable; dùngGitHubconnector tạo95blobSHAverified, cây `cb9adcb16c3700539ce89bf501bb6a72aa5e0ec9` **khớp100% localtested92a9146**, parenta60f256, refs fast-forward cóexpectedSHA/no-force. Không cònpush/deployblocker. Không đổi nội dung để đẩy qua phương thức khác. Workspacecheckout2fcdfd2, local92a9146 giữbackup; bàn giao sau chỉMarkdown nên khôngredeploy.
 
-Chưa kiểm liveHTTP/hash từ môi trường; previewdist/hashes vàPagesSUCCESS không thay liveverification/devicehumanplaytest. **AWAITING USER PLAYTEST APPROVAL Q9E**, khôngQ10.
+Chưa kiểm liveHTTP/hash từ môi trường; previewdist/hashes vàPagesSUCCESS không thay liveverification/devicehumanplaytest. **ACCEPTED — USER PLAYTEST APPROVAL Q9E**; chờ task mới, không Q10.

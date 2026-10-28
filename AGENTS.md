@@ -169,3 +169,8 @@ public/assets/
 ## Q9E delivery gate hiện hành
 - Code/deploy2fcdfd2 trênmain/q9e-final; Pages40671706957/job122759836928 completed/SUCCESS. CLIauthunavailable đã giải bằngGitHubconnector; treeSHAverified khớplocaltested92a9146, khôngforce. Source/validation/cáchthử/coverage tại docs/q9e/production/README.md.
 - Dừng **AWAITING USER PLAYTEST APPROVAL Q9E**, khôngQ10/tựaccepted. VisualV1 đãuserduyệt; userplaytestchưa có. Không suyfull-device/iOS/Safari/FPS/naturalrun/liveHTTP từfixtures/build/Pages. Bàn giao sauchỉMarkdown khôngredeploy.
+
+
+## Q9E approval hiện hành
+- **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9e” ngày2026-10-28 trên code/deploy `2fcdfd2` (bàn giao `44e202f`), Pages40671706957 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho toàn bộ Q9E: Collection Codex, 6 Elemental Trails V1, 6 Challenges, History/Recap và UX/integrity theo DD-0003. Giữ Q9A–Q9D accepted và giới hạn coverage kỹ thuật đã ghi; không suy thêm thiết bị/browser, iOS/Safari, device FPS hoặc live HTTP/hash verification từ approval chung. Không tự mở Q10 hoặc yêu cầu duyệt lại Q9E. Lượt ghi nhận này chỉ tài liệu, không đổi runtime, balance, artwork hay progression.
+- Gate chờ user playtest Q9E phía trên đã hoàn tất; các note đó giữ làm lịch sử. Giữ cấu hình hiện tại; thay đổi sau theo task mới, không tự mở Q10.
