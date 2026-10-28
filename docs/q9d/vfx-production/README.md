@@ -1,3 +1,5 @@
+> **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9d” ngày2026-10-28 trên code/deploy `ffd39a9` (bàn giao `a985145`), Pages40629442727 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9D Ascension System V1 gồm VFX V1.1; giữ Q9A–Q9C accepted và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance trong DDR từ approval chung. Không tự mở Q9E hoặc yêu cầu duyệt lại Q9D. Lượt ghi nhận này chỉ tài liệu, không đổi runtime/balance/artwork/progression. Các nhãn Proposed/chờ duyệt/chưa acceptance bên dưới là snapshot trước approval; checklist giữ làm tham chiếu cho issue sau, không yêu cầu nghiệm thu lại.
+
 # Q9D VFX V1.1 — production
 
 **VISUAL APPROVED — V1.1**: user “duyệt, làm đi” ngày 2026-10-28, hội thoại hiện tại không có permalink. Approval cho [board và mockup](../vfx-art-v1/README.md), đồng thời giao production/integration. Chưa có Q9D user playtest acceptance; không ghi DDR Approved, không mở Q9E.

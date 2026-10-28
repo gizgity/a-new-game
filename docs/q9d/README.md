@@ -1,3 +1,5 @@
+> **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9d” ngày2026-10-28 trên code/deploy `ffd39a9` (bàn giao `a985145`), Pages40629442727 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9D Ascension System V1 gồm VFX V1.1; giữ Q9A–Q9C accepted và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance trong DDR từ approval chung. Không tự mở Q9E hoặc yêu cầu duyệt lại Q9D. Lượt ghi nhận này chỉ tài liệu, không đổi runtime/balance/artwork/progression. Các nhãn Proposed/chờ duyệt/chưa acceptance bên dưới là snapshot trước approval; checklist giữ làm tham chiếu cho issue sau, không yêu cầu nghiệm thu lại.
+
 > **VFX follow-up V1.1 đã tích hợp:** user “duyệt, làm đi” ngày2026-10-28 duyệt visual và giao triển khai; code/deploy `ffd39a9`, [Pages40629442727](https://github.com/gizgity/a-new-game/actions/runs/40629442727) SUCCESS. [Production/evidence/checklist](vfx-production/README.md), [chơi bản mới](https://gizgity.github.io/a-new-game/?v=ffd39a9). Giữ gameplay/progression; **AWAITING USER PLAYTEST APPROVAL Q9D**. Các delivery/primitive cue bên dưới là baseline trước VFX.
 
 # Q9D — Ascension System V1

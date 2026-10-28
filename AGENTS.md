@@ -150,3 +150,7 @@ public/assets/
 ## Q9D VFX visual approval hiện hành
 - User “duyệt, làm đi” ngày2026-10-28 duyệt board/mockupsQ9DVFXV1.1 và giao production/integration; không cần duyệt lại concept. Scope giữ gameplay/save/progression/input/balance, artwork dùng production source riêng quaImageGen, không cropboard.
 - Spec/provenance/renderer/checklist tại docs/q9d/vfx-production/README.md; test/build/commit/push/Pages rồi dừng **AWAITING USER PLAYTEST APPROVAL Q9D**. Visual approval không là Q9D experience acceptance; không DDR Approved hoặc Q9E.
+
+## Q9D approval hiện hành
+- **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9d” ngày2026-10-28 trên code/deploy `ffd39a9` (bàn giao `a985145`), Pages40629442727 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9D Ascension System V1 gồm VFX V1.1; giữ Q9A–Q9C accepted và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance trong DDR từ approval chung. Không tự mở Q9E hoặc yêu cầu duyệt lại Q9D. Lượt ghi nhận này chỉ tài liệu, không đổi runtime/balance/artwork/progression.
+- Gate chờ user playtest Q9D phía trên đã hoàn tất; các note này giữ làm lịch sử. Giữ config hiện tại; thay đổi sau này theo task mới, không tự mở Q9E.
