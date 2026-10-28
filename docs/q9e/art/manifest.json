@@ -1,0 +1,322 @@
+{
+  "version": "Q9E trails concept V1",
+  "baseline": "a4ea34b / Phase A e2c1b92",
+  "approval": "AWAITING USER VISUAL APPROVAL",
+  "production": false,
+  "model": null,
+  "seed": null,
+  "rights": "ImageGen output theo terms dịch vụ; không CC0/độc quyền; refs original project accepted Q7C/Q9D.",
+  "raw_concept": "/workspace/generated_images/exec-45b33c4e-c2fd-4f8a-bcd1-d9b40e7ea652.png",
+  "raw_studies": {
+    "320": "exec-1cc74b41-9600-4c54-90a1-8145451d0f06.png",
+    "390": "exec-e71523dc-9398-4873-9d3d-9861ec33ed6d.png",
+    "844": "exec-c2112a58-2a9f-4564-a7de-16a73eff6d9d.png",
+    "1440": "exec-af487bf2-0926-45ff-ab3a-763a2d4af02c.png"
+  },
+  "files": [
+    {
+      "path": "docs/q7c/source/player-production-v1.png",
+      "sha256": "eb81ece6ee5704e6934bd6ec67ee6ebff1f0e89a65673b8bea679a9202662ca5"
+    },
+    {
+      "path": "docs/q7c/runtime/after-charged-390.png",
+      "sha256": "0901af08d74a864a42cd7d2b6dffe54bf37ef0b1e61925a3e871d9d35fe0334b"
+    },
+    {
+      "path": "docs/q7c/runtime/after-grayscale-390.png",
+      "sha256": "61608a41b87ab91688035de9bca1995a212e3b95ba1761db61309a564190cd7a"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-0-gray.png",
+      "sha256": "309bfbf9a4ee0f6aa59f100a037540598047f3e6fc4f389341345558709f8404"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390--1-gray.png",
+      "sha256": "be4cc3f49c9bb1fa50b11df5507aa45835e23f892c6be768d59e721dfe1f2336"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-5-gray.png",
+      "sha256": "2cd83d21ff719062e4f8943f127501e453ce700cfc7d771d08cecac415c45215"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-2.png",
+      "sha256": "31510fc04e04c2d93689de83ab520eb8cbf866138c64a3426d7eea23333d3f74"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-4-gray.png",
+      "sha256": "b510282a54de0536fb002a4c3d1acdf5bcc943305f75d5c42b03691d14714bd2"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-0.png",
+      "sha256": "f58fdf8810ec793f2f1d46f768dc5252b97ddaa0de6a47da2ef46cd97116a4be"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-5.png",
+      "sha256": "50e3075b1eec06cac1ec614cb062e09e0ae120b4defed0fffc7f2b13e70e420d"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-0-gray.png",
+      "sha256": "358e8b7243d8a09790ffb4dbcb850b34c652e6518c51fe465bb4fbe7d2385bad"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-2.png",
+      "sha256": "c35952bcce7b688db9de9a8ddf19be443fa4215ad31a528b89d9a4900b101df0"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440--1.png",
+      "sha256": "ed7bd24e44eefc3c47ca38284e424bc89be16ba2b8d39697ddcf3a6bdd33060a"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440--1-gray.png",
+      "sha256": "bf7775d4904586cf95ad6b2afc2b3555cc619769fc7674c3a53a09ab14c9b08b"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844--1.png",
+      "sha256": "0cc2bff4f6386fb37e77c4091eef47c26e5714736fade06edfe9ca1b0948a89a"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320--1.png",
+      "sha256": "89b4488167b69bdda1e827fd94d4671faf51523b9368bcd90cc0fc6047ac209d"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-0-gray.png",
+      "sha256": "0c0349eac889bb7d21ac6ae0db931a864fa5d94ef6de3d4a77f1a50a56e8b27d"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-3-gray.png",
+      "sha256": "46f031bb9fcf35bb820726bc4a14dac52f190a1805085f3b7b9bf907e4904f5f"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-4.png",
+      "sha256": "8b67b8cfe9262a45496daee6424b9df6d51537105b3ae635a2429f92453d2d96"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-5-gray.png",
+      "sha256": "15b20f5c429560ea8da83385bdc1a8dd12c939d8c8af462d5bbcec1744f45bf0"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390--1.png",
+      "sha256": "a6d8f11af229d1793859fff0ec31432e8275ed0549fc6d963c770460268427cb"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-5-gray.png",
+      "sha256": "5628a22576947db7899c76b528a8ccfbc4ec494571d65108c8e9411c8f03c41d"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-3.png",
+      "sha256": "446ef93a1a36c5d48b39b2d777a847eae256d94c1bb91d730bfb26cae02af00e"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-2-gray.png",
+      "sha256": "2d65cd4ab01ebc4d3145e96545938f84088e83d892024267b0c715499a14fe60"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-1.png",
+      "sha256": "6b8a2970a52b3ed48ba2318870db5f710bd49d5855b06a092090067ba909bfcc"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-2.png",
+      "sha256": "6590aeb1f2019536b3693310881a5eb41135acbf5c1bdc3667ec3df66c8740e4"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-2.png",
+      "sha256": "8c34b505bc13073fefb684e42fe7ff353bfb42e7518503c4a3cdf18d6e3c07d2"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-5-gray.png",
+      "sha256": "e1f6d02a7fbdf0b397f91d920e867325bc0c7451671956b1382bc07c64e2bc24"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-4.png",
+      "sha256": "5db5a16dce1e47950ee4888a6bf1107da5aef4a4e6d4141bf6c434f04f8a33b3"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-0.png",
+      "sha256": "6a261c8c5d5a8f990ea86264a0b6b06b87c168628722d50dfc5eccc0218f835f"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-1.png",
+      "sha256": "1bad5bf576b024bf02da6ef02a34801380a8d30b6fcfd618c92cca52706e026b"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844--1-gray.png",
+      "sha256": "deddc87724596c7139cd6193f84d994f1020917070776ac920e4bc63edfc9857"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-0.png",
+      "sha256": "58e3411045c2d5bf31f7a59131a143c818d2b250f9c29ae02d8cfecc8678c7e4"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-3.png",
+      "sha256": "f4ee2310913a66188ffe346af58a093b363e6b3fc255c53c23c167b8f2abf53c"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-1-gray.png",
+      "sha256": "8e92d6fc7ed539b0d7c927505f40499a470768b1357c8c4f3ca587a16a550d46"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-3.png",
+      "sha256": "c39d236af9542fa2f5e017c8213561d78ee23b39917b5c218de0b8f141007901"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-3-gray.png",
+      "sha256": "4f915a83431a1745827bc17eb987fa35af96d0717a434b2952930c455efa7034"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-4-gray.png",
+      "sha256": "35bd0935130c446832a92fafeaf2b09ab3eb20acca97d2511520d50938e831ba"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-2-gray.png",
+      "sha256": "2701e3d099f2cc27212190b74ba322630b32e95b87ddebf4727e553f0997f846"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-1.png",
+      "sha256": "4ec54e15d8146bdcbcf720634e61ccd3c02a3b274931c1322379b0ccb59b9413"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-0-gray.png",
+      "sha256": "1ffdcc3328a42548b6a6c71977cce3084f7dcc785aa8627255c226d244da7712"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-4-gray.png",
+      "sha256": "a6ba9372391a897e0eb67a03479d28e49c3383a999153e03f0f83b338301b072"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-1-gray.png",
+      "sha256": "4146120b4854c36e85e6f0c3eb16f09d1f1ab74bd29c3daf463b2fdc205a4410"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-3.png",
+      "sha256": "0afd2bf0374380bdcc96be5d824c46ebe76fe7a614b19470f402dca060480b42"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-5.png",
+      "sha256": "5d332b4c2ebb60f150112b4add60d83e2d83e613fb16537bd61fc391043bdfee"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-1-gray.png",
+      "sha256": "a4510743eeb990297f103d5b5a86ef211a9e68dbc7fb8a80f1ddc45e5439de99"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-2-gray.png",
+      "sha256": "80b75514c4255993ae92c26ad1ea340b0f6459abadee0263d05097ccdc99aed0"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-5.png",
+      "sha256": "f5edd3068c67b179721680fe446cef18bee55b1c3317140fb9b48919fb1d9f46"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-3-gray.png",
+      "sha256": "60c12c3b266dbd0768e315d521d5f2c38f50500d75cc53a5f558298045e44788"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-1-gray.png",
+      "sha256": "50091fabb27a0d99d4e0d6ccd751f62c5fa7b5184daed7948aa13d7f3636f54b"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-5.png",
+      "sha256": "4983a7fa1678d19d3166776b9aa1ae51599f0eb0208ebd6fa9c5f835f7a9334c"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-0.png",
+      "sha256": "7c5b91b2ef4f6f4ba2af800ce39da760667b65bbd42aeb5f862617f532eedfbc"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-4-gray.png",
+      "sha256": "753018c67baf519de15e7fd65a9510e94b83901fe3f4165fb2434d93432eec15"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-2-gray.png",
+      "sha256": "426eab804115fb88c4f1510b86440d9cf69d3add25d8011c30df0ca4d2908ac2"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320-3-gray.png",
+      "sha256": "9c7174773c98d5a8eb484e16c789e0f5e0fa317bf7a6addc224bc154f57d809f"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-320--1-gray.png",
+      "sha256": "15fcb00ba45e1949372c489abc551ee077bc8ef5e36b086da41ec581011ac7b4"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-1440-1.png",
+      "sha256": "31f06c723cd3a6b56d239d48c874ca52ba5ee3c58470110e8978e702b29184e5"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-390-4.png",
+      "sha256": "f448d66cc00bcbe5e5909ea3ecb7cf37127723640a8cdbed085193385b30be99"
+    },
+    {
+      "path": "docs/q9e/art/mockups/composite-844-4.png",
+      "sha256": "44241e8d4ce8c9ffa4f880b29bbe82d5c6bf61a9ca8af1109730a180ec0c0790"
+    },
+    {
+      "path": "docs/q9e/art/baseline/corner-nw-390.png",
+      "sha256": "2240201081de3b719d47f102c590d57af1d4cc45559547b13033763ac8e800c5"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-1440.png",
+      "sha256": "cd9004ce95895bbf8594b80f19db6f5a0f3818a470ae0d0d33bb9cf3b63ccfe1"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-390.png",
+      "sha256": "322734f991fa184c7d828f172c6819a9418338ced6a823a637aba71d8d39a3dd"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-1440-gray.png",
+      "sha256": "891844e119e89f4dd407011385ebbdf1127d87197e62801d6cddb322e78d19c6"
+    },
+    {
+      "path": "docs/q9e/art/baseline/corner-se-390.png",
+      "sha256": "8dcd39846dfbf0de297b35f5bcf530a428925a1b2425c5bc92de3f691605f13b"
+    },
+    {
+      "path": "docs/q9e/art/baseline/corner-ne-390.png",
+      "sha256": "eac3a4c27d2c54ff6cdbdff48f0249332d4d819c79cfbe15ab2c98d7b8349522"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-320.png",
+      "sha256": "d809b1c36c48183609bfb040b19d82ac2f93858be3c6607f6ab75a42bda99d72"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-320-gray.png",
+      "sha256": "d5bbeba1ab9e0d6e88cc234c3e3f613749b1e9e09d796add37b24ad91f3aa919"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-844-gray.png",
+      "sha256": "7b2c37476ba3709478b5a96520ddcad874821d29fef8431c35e8ca16529aa2d0"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-844.png",
+      "sha256": "1a2f2ea64ff45a0972fc4afa2065c3ed0871d1f8603cbeaeffa6e44ed0ed6a03"
+    },
+    {
+      "path": "docs/q9e/art/baseline/corner-sw-390.png",
+      "sha256": "e7e849a524f524bc9ccd7b675e44fddf0cfd9de1a5bf051bdd83ade1edf4e9bf"
+    },
+    {
+      "path": "docs/q9e/art/baseline/current-390-gray.png",
+      "sha256": "7b33b55d38d4cbe40d39f6d73439891ba8b12ed733922cbc2a32f5b400357351"
+    },
+    {
+      "path": "docs/q9e/art/source/concept-v1.png",
+      "sha256": "f999eac12fb691afa8851e9481b346c0a9191eac67ffa12391a86c0ae379d5d9"
+    },
+    {
+      "path": "docs/q9e/art/source/studies/redraw-390.png",
+      "sha256": "12b108f9c3bdd7b34c3c50069be7be01de62a5a72509e7db0ee971faec942b4c"
+    },
+    {
+      "path": "docs/q9e/art/source/studies/redraw-320.png",
+      "sha256": "cdcd638ee81281908af4ec970b84290e24f3118603591ca85d6cf78d2a1aa015"
+    },
+    {
+      "path": "docs/q9e/art/source/studies/redraw-844.png",
+      "sha256": "845fa7b6717f34d526a54454a26bdfb59adab475a990b5fdb39c8a9252b7e9af"
+    },
+    {
+      "path": "docs/q9e/art/source/studies/redraw-1440.png",
+      "sha256": "c4aead90ae520bcf3be5ecb3f80315f5a72847b2cde63641f87056fbb199f630"
+    }
+  ]
+}

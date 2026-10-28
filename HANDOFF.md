@@ -10,13 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**Q9E — Phase A hoàn tất kỹ thuật; Phase B concept/mockup đang làm.** User giao2026-10-28, contract [DD-0003](DESIGN_DECISIONS.md). Goal Collection6/12/6/Seal0–4 +6badge +history20/recap +6trail cosmetic hữu hạn, giữ Q9A–D accepted. Uservisualapproval bắt buộc trước PhaseC production/integration. Không Q10; không deploy trướcC; không tự nghiệm thu.
+**Q9E — AWAITING USER VISUAL APPROVAL — Trails V1.** User giao2026-10-28, contract [DD-0003](DESIGN_DECISIONS.md). Goal Collection6/12/6/Seal0–4 +6badge +history20/recap +6trail cosmetic hữu hạn, giữ Q9A–D accepted. Uservisualapproval bắt buộc trước PhaseC production/integration. Không Q10; không deploy trướcC; không tự nghiệm thu.
 
 ## Q9E STATUS
-Baseline remote a4ea34b đã fast-forward, bảo toàn Q9D VFX V1.1 accepted. PhaseA profile3/migration/journal/dedup/allowlist, Codex/Challenges/History/Recap vi/en đã triển khai; tests27files/typecheck/build PASS; browser evidence và giới hạn tại [docs/q9e](docs/q9e/README.md). Nhánh q9e-final để commit/push từngphase không autoPages. Cosmetics mới chưa production hoặc tích hợp.
+Baseline remote a4ea34b đã fast-forward, bảo toàn Q9D VFX V1.1 accepted. PhaseA `e2c1b92` đã commit/push origin/q9e-final: profile3/migration/journal/dedup/allowlist, Codex/Challenges/History/Recap vi/en đã triển khai; tests27files/typecheck/build PASS; browser evidence và giới hạn tại [docs/q9e](docs/q9e/README.md). Nhánh q9e-final để commit/push từngphase không autoPages. Cosmetics mới chưa production hoặc tích hợp.
 
-## NEXT ACTION Q9E
-Hoàn thiện PhaseB6concept và mockup runtime mobile/desktop/crowd/grayscale, commit/push evidence rồi dừng AWAITING USER VISUAL APPROVAL. Sau user duyệt đúngversion mớiC, deploy và dừng AWAITING USER PLAYTEST APPROVAL Q9E.
+PhaseB hoàn tất proposalV1: ImageGen6motif, refs acceptedQ7C/currentQ9D,24exactcomposite6×4viewport320/390/844/1440 +grayscale; baseline24enemy/2windup,4góc390baseline. [Board/review/checklist/prompts/manifest](docs/q9e/art/README.md). ContactsheetImageGen bị redraw giữ nhãn FAILgeometry, thay reviewchính bằng baseline nguyênpixels +CSSclip motifconcept screenblend58%, footprint52×32world; chỉdocs, không productioncrop. Staticreadability đạt định tính; productionalpha/motion/FPS/device/iOS/Safari và proposedcorners cònUNKNOWN PhaseC. Chưa visualapproval; chưa production/integration/deploy. ArtBible giữ nguyên. Approvaldesign DD-0003 không là artworkapproval.
 
 ## Q9D VFX STATUS
 **ACCEPTED — USER PLAYTEST APPROVAL**, gồm VFX V1.1; nguồn/version tại ACTIVE TASK. Visual approval “duyệt, làm đi” và playtest approval “duyệt 9d” là hai bước riêng, đều đã hoàn tất.
@@ -142,7 +141,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9D — Ascension System V1 + VFX V1.1 | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9d” ngày2026-10-28 trên ffd39a9, bàn giao a985145; Pages40629442727 SUCCESS; không Q9E |
 
 ## NEXT ACTION
-Dừng sau Q9D đã accepted; chờ task mới của user. Không yêu cầu duyệt lại, tự tune, mở Q9E hoặc ghi DDR Approved. Auto Aim/mobile-layout giữ trạng thái follow-up riêng.
+Dừng **AWAITING USER VISUAL APPROVAL Q9E Trails V1**: user xem board và6alternatives ở4viewport/color–grayscale tại docs/q9e/art/README.md. Chỉ sau user duyệt đúngV1 mới PhaseC production riêng/integration/max1 hoặcNone/persistence/regression/performance/mobile+desktop/4góc/deploy; rồi dừng AWAITING USER PLAYTEST APPROVAL Q9E. Không Q10. Không tự coi build/staticreview là useracceptance.
 
 ## VALIDATION APPROVAL Q9D
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff, nguồn/version, links và tính nhất quán. Không chạy lại build/tests hoặc deploy. Giữ26testfiles, typecheck/build,15case parity và browser/input/dist/Pages ffd39a9 đã PASS; không suy coverage thiết bị mới từ acceptance chung.

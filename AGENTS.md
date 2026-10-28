@@ -154,3 +154,8 @@ public/assets/
 ## Q9D approval hiện hành
 - **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “duyệt 9d” ngày2026-10-28 trên code/deploy `ffd39a9` (bàn giao `a985145`), Pages40629442727 SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Q9D Ascension System V1 gồm VFX V1.1; giữ Q9A–Q9C accepted và giới hạn coverage kỹ thuật đã ghi, không suy thêm thiết bị/browser hoặc chốt balance trong DDR từ approval chung. Không tự mở Q9E hoặc yêu cầu duyệt lại Q9D. Lượt ghi nhận này chỉ tài liệu, không đổi runtime/balance/artwork/progression.
 - Gate chờ user playtest Q9D phía trên đã hoàn tất; các note này giữ làm lịch sử. Giữ config hiện tại; thay đổi sau này theo task mới, không tự mở Q9E.
+
+
+## Checkpoint hiện hành — Q9E
+- User giao Q9E Final Design & Implementation2026-10-28, supersede gate lịch sử khôngQ9E trong đúngscope. DD-0003 Approved design append-only; giữ Q9A–D accepted gồmQ9D VFX V1.1/a4ea34b, không tune/combat/progression/Boss mới.
+- PhaseA e2c1b92 Codex/6badge/history20/recap schema3 journal đã push q9e-final; PhaseB6trail V1 và exactcomposite6×4viewport/grayscale ở docs/q9e/art/README.md. Dừng AWAITING USER VISUAL APPROVAL trước production/integrationcosmetics. Chưa duyệtV1; conceptcroponlydocs không runtimeassets. Khôngdeploy trướcC; không tựuseracceptance/Q10. Chỉ sau userduyệt visual mớiC, deploy hoàn chỉnh rồi chờ USER PLAYTEST APPROVAL Q9E.
