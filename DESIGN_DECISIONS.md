@@ -135,3 +135,21 @@ _Registry khởi tạo rỗng; decision mới được append bên dưới. Khô
 - Bằng chứng sau Release: approval mới tiếp sau draft09267ed và DD-0001@9b1f988; Release boundary v0.1.0 target4770bf617f292c407685c4fbed1ebf5d3c6cb84f published2026-10-26T16:46:46Z theo entry DD-0001, không backfill.
 - Supersedes: None. Bổ sung DD-0001; DD-0002 chưa từng được append Proposed nên không sửa trạng thái entry cũ.
 - Theo dõi implementation/acceptance: [HANDOFF.md](HANDOFF.md#q9a-status); chưa nghiệm thu Q9A.
+
+
+### DD-0003 — Q9E Final Design & Implementation
+
+- Ngày: 2026-10-28.
+- Trạng thái: **Approved** (design); implementation/visual/playtest acceptance riêng.
+- Quyết định: Collection Codex dùng catalog/progression hiện hành, đủ 6 Sigil/12 Branch/6 Anomaly/Seal 0–4; locked/unlocked, cơ chế, dependency, X/Y và filter category. Không tạo nguồn progression thứ hai.
+- Cosmetics: 6 Elemental Trails, mở bằng Victory hợp lệ với Sigil tương ứng: Fire → Ember Trail, Water → Tidal Echo, Lightning → Volt Trace, Ice → Frost Shards, Shadow → Umbral Wake, Wind → Gale Spiral. Tối đa 1 hoặc None, lưu qua run. Chỉ visual; không combat/timing/collider/RNG. Bắt buộc game-art concept cả6, mockup runtime mobile/desktop/crowd/grayscale; dừng USER VISUAL APPROVAL trước production/integration. Không procedural Graphics thay artwork.
+- Challenges hữu hạn, badge/completion chỉ: First Victory (1 win), Elemental Explorer (6 Sigil), Branch Master (12 Branch), Anomaly Survivor (win mỗi6Anomaly), Seal Breaker (clear4), Elemental Conqueror (win mỗi6Sigil). Không damage/currency/stat; debug/playtest không tính.
+- History tối đa20run: thời gian, result, duration, Seal, Sigil/Branch, Anomaly, Mutation/Curse, kills, Boss result. Victory/Defeat recap có build/unlock mới/challenge progress/next goal; không replay/frame data. Dùng runID/reward journal/validation chống double count; lỗi metadata không được làm hỏng progression chính.
+- UX/integrity: menu Collection/Challenges/History ngoài combat; touch/keyboard–mouse/focus/safe area/responsive và vi/en; Skip/Continue giữ replay loop; save versioned/migration/allowlist/reset/refresh an toàn. Giữ Q9A–D, không tự balance/progression/Boss/combat; KISS, không backend/framework/analytics mới.
+- Execution: A DDR + Collection/Challenges/History/Recap, focused tests/typecheck/build. B concept+runtime mockup6trail, dừng AWAITING USER VISUAL APPROVAL. C chỉ sau visual approval: production/integration, visual/performance/regression portrait/landscape/desktop. Commit/push từng phase; deploy bản hoàn chỉnh sauC, cập nhật HANDOFF/docs/evidence/version/coverage. Dừng AWAITING USER PLAYTEST APPROVAL Q9E, không Q10 hoặc tự acceptance.
+- Lý do: Chưa được user cung cấp.
+- Phạm vi: Q9E; giữ approval Q9A–Q9D theo xác nhận user trong task này; không đổi Art Bible.
+- Nguồn: user hội thoại hiện tại ngày2026-10-28, không permalink; quote “User đã chốt Q9E. Gọi $design-decision để lưu quyết định mới vào DDR (append-only, không sửa lịch sử), sau đó triển khai theo contract dưới đây.” và contract1–6 cùng message.
+- Bằng chứng sau Release: quyết định mới sau v0.1.0 target4770bf617f292c407685c4fbed1ebf5d3c6cb84f published2026-10-26T16:46:46Z đã xác minh ở DD-0001; không backfill.
+- Supersedes: DD-0001 chỉ phần cosmetic TBD/6variants dự kiến và chi tiết collection/endgame hữu hạn được cụ thể hóa ở đây. Giữ mọi phần khác DD-0001 và DD-0002.
+- Theo dõi implementation/acceptance: [docs/q9e/README.md](docs/q9e/README.md), [HANDOFF](HANDOFF.md). Chưa visual/playtest approval Q9E.

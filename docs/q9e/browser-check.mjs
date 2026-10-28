@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+const {chromium}=await import('/opt/codex/cua_node/lib/node_modules/playwright/index.mjs');
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const reports=[];
+for(const [width,height,touch]of [[320,740,true],[390,844,true],[844,390,true],[1440,1000,false]]){
+ const p=await b.newPage({viewport:{width,height},hasTouch:touch}),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ await p.goto('http://localhost:5173/a-new-game/');await p.locator('#primary:enabled').waitFor();
+ await p.locator('#collection summary').click();assert.equal(await p.locator('#collection-list article').count(),29);
+ await p.selectOption('#codex-filter','branches');assert.equal(await p.locator('#collection-list article').count(),12);
+ await p.selectOption('#locale','en');assert.match(await p.locator('#collection-list').textContent(),/Requirement/);
+ await p.selectOption('#codex-filter','seals');assert.equal(await p.locator('#collection-list article').count(),5);
+ await p.screenshot({path:`docs/q9e/evidence/codex-${width}.png`});await p.locator('#collection summary').click();
+ await p.locator('summary[data-i18n="qChallenges"]').click();assert.equal(await p.locator('#challenge-list article').count(),6);await p.screenshot({path:`docs/q9e/evidence/challenges-${width}.png`});await p.locator('summary[data-i18n="qChallenges"]').click();
+ await p.locator('#primary').click();
+ await p.evaluate(async()=>{const {arena,game}=await import('/a-new-game/src/main.ts');arena.combat.bossSlain=true;arena.update(0,1000/60);});
+ let saved=await p.evaluate(()=>JSON.parse(localStorage.getItem('cursebreak.save.v1')));assert.equal(saved.collection.history.length,1);assert.equal(saved.collection.history[0].boss,true);assert.equal(saved.collection.history[0].result,'victory');
+ await p.locator('#run-recap summary').click();await p.screenshot({path:`docs/q9e/evidence/recap-${width}.png`});await p.reload();assert.equal(await p.locator('#run-recap').isVisible(),true);assert.equal(await p.locator('#history-list article').count(),1);
+ const before=await p.evaluate(()=>JSON.parse(localStorage.getItem('cursebreak.save.v1')).collection);assert.equal(before.lastRunId,1);
+ await p.locator('summary[data-i18n="qHistory"]').click();await p.locator('#history-reset').click();assert.equal(await p.locator('#history-list article').count(),0);
+ assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(errors,[]);
+ await p.goto('http://localhost:5173/a-new-game/?playtest=seal-4');await p.locator('#primary:enabled').waitFor();await p.locator('#primary').click();await p.evaluate(async()=>{const {arena,game}=await import('/a-new-game/src/main.ts');arena.setPhase('playing');arena.combat.bossSlain=true;arena.update(0,1000/60);});
+ assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('cursebreak.save.v1')).collection.lastRunId),1);
+ reports.push({width,height,touch,codex29:true,filters:true,locales:true,challenges6:true,recap:true,refreshDedup:true,reset:true,debugIsolated:true,overflow:false,errors});await p.close();
+}await b.close();fs.writeFileSync('docs/q9e/evidence/browser.json',JSON.stringify(reports,null,2));console.log('Q9E browser PASS',reports.length);

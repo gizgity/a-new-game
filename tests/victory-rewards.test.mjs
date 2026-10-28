@@ -39,7 +39,7 @@ test('each eligible ID has 5/3/2 weight, independent of category size',()=>{
 test('v1 migration preserves settings, IDs and active ticket; counters, IDs and derived stats are bounded',()=>{
  const old={version:1,settings:{locale:'en',volume:.3},totals:{runs:1},legacy:{unlocks:['fire','wildfire','brittle','alien'],ticket:{seed:12,firstRun:false,started:true,offers:[{sigil:'fire',branch:'wildfire',damage:999}],selected:{sigil:'fire',branch:'wildfire'}}}};
  const m=memory();m.setItem(SAVE_KEY,JSON.stringify(old));const p=loadProfile(m);
- assert.equal(p.version,2);assert.equal(p.settings.locale,'en');assert.equal(p.legacy.ticket.seed,12);assert.equal(p.legacy.ticket.runId,1);
+ assert.equal(p.version,3);assert.equal(p.settings.locale,'en');assert.equal(p.legacy.ticket.seed,12);assert.equal(p.legacy.ticket.runId,1);
  assert.ok(!p.legacy.unlocks.includes('brittle'));assert.equal(p.legacy.ticket.offers[0].damage,undefined);
  assert.equal(saveProfile(p,m),true);assert.deepEqual(loadProfile(m),p);
  const s=validateLegacy({pity:999,victories:1e9,nextRunId:1e9,unlocks:LEGACY_IDS});assert.equal(s.pity,3);assert.equal(s.victories,1e6);assert.equal(s.nextRunId,1000001);

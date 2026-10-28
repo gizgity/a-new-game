@@ -1,3 +1,4 @@
+import { emptyCollection, validateCollection, recordCollection, type CollectionProgress, type RunSummary } from './collection.js';
 import type { AutoAimPriority } from './autoAim.js';
 import { emptyLegacy, validateLegacy, finishLegacy, type LegacyProgress } from './legacy.js';
 import { MUTATIONS, CURSES, type BuildId, type MutationId, type CurseId } from './builds.js';
@@ -7,7 +8,8 @@ export const SAVE_KEY = 'cursebreak.save.v1';
 export const UNLOCKS = ['firstBlood', 'chainApprentice', 'dodgeMaster', 'wardenBreaker'] as const;
 export type UnlockId = typeof UNLOCKS[number];
 export interface Profile {
-  version: 2;
+  version: 3;
+  collection: CollectionProgress;
   legacy: LegacyProgress;
   settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism'; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
@@ -18,13 +20,14 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 2, legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint', desktopAutoAim: false, autoAimPriority: 'nearest' },
+  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint', desktopAutoAim: false, autoAimPriority: 'nearest' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
   const raw = object(value), result = defaultProfile();
-  if (raw.version !== 1 && raw.version !== 2) return result;
+  if (raw.version !== 1 && raw.version !== 2 && raw.version !== 3) return result;
   result.legacy = validateLegacy(raw.legacy);
+  result.collection = validateCollection(raw.collection, result.legacy.nextRunId);
   const settings = object(raw.settings), totals = object(raw.totals);
   result.settings.locale = settings.locale === 'en' ? 'en' : 'vi';
   result.settings.muted = settings.muted === true;
@@ -44,9 +47,9 @@ export function loadProfile(storage?: StorageAccess): Profile {
   try {
     const text = (storage ?? localStorage).getItem(SAVE_KEY);
     let main = defaultProfile();
-    try { if (text && text.length < 20_000) main = validateProfile(JSON.parse(text)); } catch { /* Recover result journal below. */ }
+    try { if (text && text.length < 64_000) main = validateProfile(JSON.parse(text)); } catch { /* Recover result journal below. */ }
     const pendingText = (storage ?? localStorage).getItem(PENDING_KEY);
-    if (pendingText && pendingText.length < 20_000) {
+    if (pendingText && pendingText.length < 64_000) {
       try {
         const pending = validateProfile(JSON.parse(pendingText));
         if (pending.legacy.receipt && (main.legacy.ticket?.runId === pending.legacy.receipt.runId || main.legacy.nextRunId < pending.legacy.nextRunId)) return pending;
@@ -57,10 +60,17 @@ export function loadProfile(storage?: StorageAccess): Profile {
 }
 export function saveProfile(profile: Profile, storage?: StorageAccess): boolean {
   try {
-    const target = storage ?? localStorage, text = JSON.stringify(validateProfile(profile));
+    const target = storage ?? localStorage;
+    const snapshot = validateProfile(profile);
+    let text = JSON.stringify(snapshot);
     // Write-ahead result journal. Either complete snapshot recovers the same reward.
     if (profile.legacy.receipt) { try { target.setItem(PENDING_KEY, text); } catch { /* Main write may still succeed. */ } }
-    target.setItem(SAVE_KEY, text);
+    try { target.setItem(SAVE_KEY, text); } catch {
+      // Optional history must never block the core progression transaction (quota).
+      snapshot.collection.history = []; text = JSON.stringify(snapshot);
+      if (profile.legacy.receipt) { try { target.setItem(PENDING_KEY, text); } catch { /* Main may succeed. */ } }
+      target.setItem(SAVE_KEY, text);
+    }
     try { target.setItem(PENDING_KEY, ''); } catch { /* Stale receipt loses to a newer ticket. */ }
     return true;
   }
@@ -94,14 +104,15 @@ export class Progression {
     const offered = new Set([...this.profile.drafts.current, ...ids]);
     this.profile.drafts.current = [...MUTATIONS, ...CURSES].filter(id => offered.has(id));
   }
-  observe(world: { kills: number; detonations: number; perfectDodges: number }, result: 'victory' | 'defeat' | null): boolean {
+  observe(world: { kills: number; detonations: number; perfectDodges: number }, result: 'victory' | 'defeat' | null, summary?: Omit<RunSummary,'runId'|'result'|'seal'|'legacy'|'anomaly'|'rewards'>): boolean {
     for (const key of ['kills', 'detonations', 'perfectDodges'] as const) {
       this.profile.totals[key] = counter(this.profile.totals[key] + Math.max(0, world[key] - this.previous[key]));
       this.previous[key] = world[key];
     }
     if (result && !this.recorded) {
       this.recorded = true;
-      finishLegacy(this.profile.legacy, result);
+      const ticket = this.profile.legacy.ticket;
+      if (finishLegacy(this.profile.legacy, result) && ticket && summary) recordCollection(this.profile.collection, this.profile.legacy, ticket, summary);
       if (result === 'victory') this.profile.totals.victories = counter(this.profile.totals.victories + 1);
     }
     return awardUnlocks(this.profile);
