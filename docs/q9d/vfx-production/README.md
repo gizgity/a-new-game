@@ -38,3 +38,7 @@ Dùng normal progression hoặc5preset tại [checklist Q9D](../README.md). Pres
 5. Thử riêng mobile dọc/ngang và desktop: đông quái,4góc, giữ–thả attack/Dash, pause/resume/Draft; Player/cue vẫn rõ, không kẹt input. Báo Seal, bước gặp lỗi, điều quan sát và thiết bị/browser.
 
 Tái lập: `npm test && npm run build`; dev5173 cho browser/input, preview5175 cho dist. `parity-check.mjs` dùng `BASELINE_BUILD` trỏ thư mục đã compile combat/run từafd084a; snapshot `/tmp/q9d-vfx-baseline` chỉ có trong workspace kiểm hiện tại, không là dependency production. Chromium software WebGL và Playwright có sẵn ngoài repo, không thêm dependency.
+
+## Delivery
+
+Code `ffd39a9` đã push main fast-forward. [Pages40629442727](https://github.com/gizgity/a-new-game/actions/runs/40629442727) completed/SUCCESS, job122622110158 gồm npmci/build/typecheck/upload/Deploy. [Chơi Q9D VFX V1.1](https://gizgity.github.io/a-new-game/?v=ffd39a9). Chưa xác minh liveHTTP/hash từ môi trường; dist/hashes là preview local. Commit bàn giao chỉMarkdown, không redeploy. **AWAITING USER PLAYTEST APPROVAL Q9D**, không Q9E hoặc DDR Approved.

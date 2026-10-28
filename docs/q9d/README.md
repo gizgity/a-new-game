@@ -1,3 +1,5 @@
+> **VFX follow-up V1.1 đã tích hợp:** user “duyệt, làm đi” ngày2026-10-28 duyệt visual và giao triển khai; code/deploy `ffd39a9`, [Pages40629442727](https://github.com/gizgity/a-new-game/actions/runs/40629442727) SUCCESS. [Production/evidence/checklist](vfx-production/README.md), [chơi bản mới](https://gizgity.github.io/a-new-game/?v=ffd39a9). Giữ gameplay/progression; **AWAITING USER PLAYTEST APPROVAL Q9D**. Các delivery/primitive cue bên dưới là baseline trước VFX.
+
 # Q9D — Ascension System V1
 
 **Implementation proposal — AWAITING USER PLAYTEST APPROVAL Q9D.** User giao ngày2026-10-27; không ghi DDR Approved, không Q9E. Giữ Q9A–Q9C accepted và tuning/artwork/input baseline7207745.
