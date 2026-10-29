@@ -1,6 +1,8 @@
 # Q12C — Elemental Audio & Proc Feedback
 
-Direction user: **Pure Synth / Retro Arcade + Punchy & Controlled**. Baseline `91490f1`, Q12B runtime `b2042e8` accepted; Q12A/Arrival Q8C giữ nguyên. **AWAITING USER AUDIO/PLAYTEST APPROVAL Q12C**. Không DDR/Q12D–E/balance/artwork/combat mới.
+**ACCEPTED — USER AUDIO/PLAYTEST APPROVAL Q12C** — user xác nhận “oki duyệt” ngày2026-10-29 trên code/deploy **3013c9d** (bàn giao **ec1a5dd**), [Pages40911173801](https://github.com/gizgity/a-new-game/actions/runs/40911173801) SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Elemental Audio & Proc Feedback, 6 Core/12 Branch theo direction Pure Synth / Retro Arcade + Punchy & Controlled. Giữ Arrival gốc Q8C, Q12A/Q12B accepted và giới hạn coverage kỹ thuật; không suy thêm real-device/iOS/Safari/latency/FPS/thermal/liveHTTP từ approval chung. Không DDR hoặc tự mở Q12D–E.
+
+Direction user: **Pure Synth / Retro Arcade + Punchy & Controlled**. Baseline `91490f1`, Q12B runtime `b2042e8` accepted; Q12A/Arrival Q8C giữ nguyên. **ACCEPTED — USER AUDIO/PLAYTEST APPROVAL Q12C**. Không DDR/Q12D–E/balance/artwork/combat mới.
 
 Code/deploy **3013c9d** đã push main; [Pages40911173801](https://github.com/gizgity/a-new-game/actions/runs/40911173801) **completed/SUCCESS**, job123579227760: npmci/build/typecheck/upload/Deploy và cleanup SUCCESS. Xác minh qua GitHub connector vì gh API từ CLI trả Forbidden; không còn blocker deploy. Chưa liveHTTP/hash verification; local Chromium không thay coverage live/thiết bị thật. Commit bàn giao sau chỉMarkdown, khôngredeploy.
 
@@ -36,7 +38,7 @@ Không apply sound khi refresh, tick/expire/consume tự thân; không DoT tick/
 - `npm run build`/typecheck PASS; chunk warning Phaser có sẵn.
 - [Parity126case](evidence/parity.json):18loadout (6Core+12Branch) × none/6Anomaly, Seal0–4 phân bố theo loadout,4Mutation/2Curse, seed808/cùng input. Full serialized world mỗi300tick, tối đa10800tick hoặc defeat; **chỉ loại elementalEvents**, gồm toàn bộ audio/Q12B feedback/Legacy state/tasks/root accounting. Không HP grants. Đây không là balance test hay full natural run/human input.
 - [Audition WebAudio](evidence/browser.json): Chromium software WebGL320/390/844/1440,22cue scheduling/PCM, cap8/root flood/danger/mute/suspend/no replay/cleanup/storage isolation. [Crowd](evidence/crowd.json), [input/feedback regression](evidence/regression/) ghi riêng kết quả và viewport; scripts tái lập kèm theo.
-- Browser automation chỉ xác nhận technical scheduling/input/render, **không nghe bằng tai, không chứng minh audio quality**, loa/headphone, iOS/Safari/real-device latency/FPS/thermal hoặc experience acceptance. Cần user audition/playtest dưới đây.
+- Browser automation chỉ xác nhận technical scheduling/input/render, **không nghe bằng tai, không chứng minh audio quality**, loa/headphone, iOS/Safari/real-device latency/FPS/thermal hoặc experience acceptance. User đã duyệt theo nguồn ở đầu tài liệu; checklist dưới giữ để tái lập tình huống, không yêu cầu duyệt lại.
 - Tái lập: compile baseline combat/run từ91490f1 vào `/tmp/q12c-baseline` ES2022/ESM; `npm test && node docs/q12c/parity-check.mjs`. `npm run dev`, chạy browser/input/feedback/crowd scripts với Playwright toolchain `/opt/codex/cua_node`.
 
 ## Review nghe thử / playtest
@@ -49,4 +51,4 @@ Không apply sound khi refresh, tick/expire/consume tự thân; không DoT tick/
 2. Dropdown crowd24: thử từng bộ, nhấn4 cho Arrival + combat; Arrival phải rõ, proc nhỏ hơn primary, không volume cộng theo số target. Anomaly kết hợp có technical fixture trongcrowd-check, kiểm cảm nhận thêm trong normal/Anomaly run nếu đã mở.
 3. Mobile portrait/landscape: di chuyển+kéo/thả Heavy/Charged; desktop WASD+mouse/Shift/E. Hit/camera Q12B và aim giữ nguyên. Miss/cancel không giả hit, pause/resume/mute/restart không dồn tiếng. Nghe cả loa điện thoại và headphone ở volume vừa.
 
-Phản hồi: Sigil/Branch/tình huống, âm quá nhỏ/chói/lẫn cue nào, thiết bị/browser. Dừng **AWAITING USER AUDIO/PLAYTEST APPROVAL Q12C**, không tự accepted/Q12D–E.
+Phản hồi: Sigil/Branch/tình huống, âm quá nhỏ/chói/lẫn cue nào, thiết bị/browser. Gate chờ audio/playtest đã hoàn tất theo approval ở đầu tài liệu. Dừng sau Q12C ACCEPTED, không tự mở Q12D–E.

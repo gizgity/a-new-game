@@ -184,3 +184,8 @@ public/assets/
 ## Q12B approval hiện hành
 - **ACCEPTED — USER PLAYTEST APPROVAL Q12B** — user xác nhận “ok ổn r đó” ngày2026-10-29 trên code/deploy **b2042e8** (bàn giao51faa2a), [Pages40908358381](https://github.com/gizgity/a-new-game/actions/runs/40908358381) SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval gồm revision rung chỉ Heavy/Detonate vào Elite/Boss, ngoại lệ giữ hitstop simulation và toàn bộ feedback Q12B; không suy thêm coverage thiết bị/iOS/Safari/FPS/liveHTTP từ acceptance chung. Giữ Q12A/Arrival gốc Q8C và các approval trước. Không DDR hoặc tự mở Q12C–E.
 - Các gate chờ playtest Q12B trong snapshot cũ đã hoàn tất; chỉ ghi nhận tài liệu, không runtime/deploy. [Scope và evidence](docs/q12b/README.md).
+
+
+## Q12C approval hiện hành
+- **ACCEPTED — USER AUDIO/PLAYTEST APPROVAL Q12C** — user xác nhận “oki duyệt” ngày2026-10-29 trên code/deploy **3013c9d** (bàn giao **ec1a5dd**), [Pages40911173801](https://github.com/gizgity/a-new-game/actions/runs/40911173801) SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval cho Elemental Audio & Proc Feedback, 6 Core/12 Branch theo direction Pure Synth / Retro Arcade + Punchy & Controlled. Giữ Arrival gốc Q8C, Q12A/Q12B accepted và giới hạn coverage kỹ thuật; không suy thêm real-device/iOS/Safari/latency/FPS/thermal/liveHTTP từ approval chung. Không DDR hoặc tự mở Q12D–E.
+- Gate chờ Q12C trong snapshot cũ đã hoàn tất; không yêu cầu duyệt lại. Lượt ghi nhận chỉ Markdown, không runtime/build/tests/deploy. [Scope/evidence](docs/q12c/README.md).
