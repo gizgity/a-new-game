@@ -8,16 +8,16 @@ export type AudioCue = SoundCue | PresentationCue | 'arrival' | 'charge';
 
 const tones: Record<AudioCue, [number, number, number]> = {
   arrival: [76, 0.38, 0],
-  charge: [280, 1.2, 0], stack1: [740, 0.055, 0.1], stack2: [980, 0.07, 0.1], stack3: [1480, 0.10, 0.1], chain: [1650, 0.055, 0.22],
+  charge: [280, 1.2, 0], stack1: [520, 0.055, 0.1], stack2: [680, 0.07, 0.1], stack3: [860, 0.10, 0.1], chain: [1100, 0.055, 0.16],
   start: [440, 0.20, 0], draft: [660, 0.24, 0], choice: [880, 0.15, 0],
   elite: [220, 0.36, 0], boss: [110, 0.65, 0], defeat: [220, 0.65, 0],
   victory: [440, 1.1, 0],
   swing2: [650, 0.095, 0.7], swing3: [230, 0.16, 0.65],
   light2: [460, 0.09, 0.4], light3: [145, 0.15, 0.5],
   chargedGun: [220, 0.16, 0.45], chargedBlast: [95, 0.26, 0.6],
-  swing: [480, 0.075, 0.85], heavySwing: [150, 0.24, 0.75], shotHit: [940, 0.04, 0.45], chargedHit: [180, 0.10, 0.5],
-  light: [330, 0.07, 0.35], heavy: [110, 0.22, 0.5], gun: [650, 0.055, 0.25],
-  dash: [850, 0.10, 0.2], perfect: [1200, 0.16, 0.05], detonate: [75, 0.20, 0.65], hurt: [150, 0.12, 0.45],
+  swing: [480, 0.075, 0.85], heavySwing: [150, 0.24, 0.75], shotHit: [680, 0.04, 0.45], chargedHit: [180, 0.10, 0.5],
+  light: [330, 0.07, 0.35], heavy: [110, 0.22, 0.5], gun: [520, 0.055, 0.25],
+  dash: [850, 0.10, 0.2], perfect: [880, 0.16, 0.05], detonate: [75, 0.20, 0.65], hurt: [150, 0.12, 0.45],
 };
 
 export class ProceduralAudio {
@@ -73,7 +73,7 @@ export class ProceduralAudio {
           continue;
         }
         if (cue === 'perfect' || cue.startsWith('stack')) {
-          samples[i] = (Math.sin(2 * Math.PI * frequency * t) + Math.sin(2 * Math.PI * frequency * 1.5 * t) * 0.25) * Math.min(1, t * 500) * Math.exp(-progress * 5) * 0.24;
+          samples[i] = (Math.sin(2 * Math.PI * frequency * t) + Math.sin(2 * Math.PI * frequency * 2 * t) * 0.10) * Math.min(1, t * 250) * Math.exp(-progress * 5) * 0.22;
           continue;
         }
         if (cue === 'hurt') {
@@ -85,7 +85,7 @@ export class ProceduralAudio {
           const body = Math.sin(2 * Math.PI * frequency * t * (1 - progress * 0.65));
           const crack = (Math.random() * 2 - 1) * Math.exp(-progress * 12);
           const overtone = Math.sin(2 * Math.PI * frequency * 2.4 * t) * Math.exp(-progress * 4);
-          samples[i] = (body * 0.6 + crack * 0.5 + overtone * 0.25) * (1 - progress) ** 2 * 0.4;
+          samples[i] = (body * 0.65 + crack * 0.30 + overtone * 0.18) * (1 - progress) ** 2 * 0.4;
           continue;
         }
         filteredNoise += 0.28 * ((Math.random() * 2 - 1) - filteredNoise);
@@ -93,9 +93,20 @@ export class ProceduralAudio {
           filteredNoise * noise) * (1 - progress) ** 2 * 0.3;
       }
       if (cue !== 'arrival') {
+        // Bake warmer timbre into cached PCM; no extra nodes in combat.
+        const filterStep = 1 - Math.exp(-2 * Math.PI * AUDIO.trebleCutoff / context.sampleRate);
+        let low1 = 0, low2 = 0;
+        const impactBody = ['heavy', 'chargedGun', 'chargedHit', 'chargedBlast', 'detonate', 'light3'].includes(cue);
+        const regularBody = ['light', 'light2', 'gun', 'shotHit'].includes(cue);
         let peak = 0;
         for (let i = 0; i < samples.length; i++) {
-          samples[i] *= Math.min(1, i / (context.sampleRate * 0.002), (samples.length - 1 - i) / (context.sampleRate * 0.003));
+          const t = i / context.sampleRate, progress = i / samples.length;
+          low1 += filterStep * (samples[i] - low1);
+          low2 += filterStep * (low1 - low2);
+          // Short 120–240Hz body remains audible on phone speakers; Basic stays lighter.
+          const body = (Math.sin(2 * Math.PI * 120 * t) + 0.45 * Math.sin(2 * Math.PI * 240 * t))
+            * Math.exp(-progress * 4) * (impactBody ? AUDIO.impactBody : regularBody ? AUDIO.regularBody : 0);
+          samples[i] = (low2 + body) * Math.min(1, t / 0.004, (samples.length - 1 - i) / (context.sampleRate * 0.004));
           peak = Math.max(peak, Math.abs(samples[i]));
         }
         const scale = Math.min(1, AUDIO.bufferPeak / (peak || 1));

@@ -4,6 +4,21 @@
 
 Code/deploy **7e74904** đã push main fast-forward. [Pages40791046554](https://github.com/gizgity/a-new-game/actions/runs/40791046554), job123176060022 SUCCESS (npmci/build/typecheck/upload/Deploy). Chưa liveHTTP/hash verification từ môi trường; không suy từ Pages success. Commit bàn giao chỉMarkdown, không redeploy.
 
+## Revision theo feedback 2026-10-29
+
+User nghe bản7e74904: “nghe hơi gắt tai, giảm treb, tăng bass thêm 1 tí. hiện tại nghe như tiếng thuỷ tinh gõ z”. Revision này chỉ tune cached PCM, không scheduling/event/gameplay/UI:
+
+- Hạ stack từ740/980/1480 xuống520/680/860Hz, Perfect1200→880Hz, Chain1650→1100Hz, Basic650→520Hz, shotHit940→680Hz. Stack vẫn tăng theo1/2/3 thật; Perfect giữ cue riêng.
+- Bỏ partial1.5× dễ gợi chuông/thủy tinh, dùng harmonic2× chỉ10%; bớt crack/noise và overtone của Heavy/Charged.
+- Low-pass2pole1800Hz bake vào buffer ngoài Arrival; attack4ms/tail4ms mềm hơn. Thêm body120Hz+240Hz, gain.055 cho L3/Heavy/Charged/Detonate, .018 cho Basic/Light nhỏ; giữ peak≤.22/gain.4/cap8.
+- Arrival giữ từng sample với cùngnoise seed/cadence/gain, không thêm filter hay bass vào warning accepted.
+
+[So phổ trước/sau](warm/evidence/comparison.json), baseline7e74904: năng lượng phần>2kHz giảm~7.6–20.3dB trên các cue combat đo; vùng60–300Hz Heavy+1.7dB, Charged release+3.5dB, blast+2.3dB, Basic+3.4dB; không tăng volume tổng. Đo filter-band là evidence kỹ thuật, không thay nghe cảm nhận hoặc khẳng định đã hết gắt trên loa thật. Light1/2 vẫn ítbass; L3/Detonate tăng nhẹ hơn Heavy/Charged.
+
+[Browser revision](warm/evidence/browser.json):390/320/844touch+1440desktop, cap/warning/root/mute/locked/suspended/unsupported/cleanup PASS; build/typecheck và28testfiles PASS. Các evidence ở `evidence/` bên dưới giữ snapshot V1; revision hiện tại dùng `warm/evidence/`. Tái lập so sánh: tạo tạm `src/game/audioBaseline.ts` từ `git show 7e74904:src/game/audio.ts`, chạy `node docs/q12a/warm/compare-check.mjs`, xóa file tạm trước build. Browser: `AUDIO_EVIDENCE_PATH=docs/q12a/warm/evidence node docs/q12a/browser-check.mjs`.
+
+**Vẫn AWAITING USER AUDIO/PLAYTEST APPROVAL Q12A**; chưa nghe thực tế/thiết bị/iOS/Safari. Nghe lại bài1–2 để so độ sắc/thân impact, bài4 để kiểm warning giữa spam.
+
 ## Nghe thử
 
 - [Audio Audition](https://gizgity.github.io/a-new-game/audition.html?v=7e74904): entry riêng, không import main/profile, không đọc/ghi localStorage hay progression. Chạm/click bài để mở WebAudio; mặc định cùng volume100% như manager. Game thật vẫn dùng mute/volume Settings hiện hữu.
@@ -14,19 +29,19 @@ Code/deploy **7e74904** đã push main fast-forward. [Pages40791046554](https://
 
 ## Audit và event map
 
-Giữ ProceduralAudio, cache Phaser và WebAudioSoundManager; không mixer/framework song song. Giữ tần số/duration và identity cơ bản của các cue cũ, âm transition/victory. Có lý do sửa: noise cũ rộng/gắt → low-pass recurrence +2ms attack/3ms tail; Hurt cũ gần impact → double gated dissonant pulse; Perfect → harmonic chime riêng; thêm stack/chaining/buildup do thiếu identity. Arrival **giữ nguyên công thức, gain4nhịp, duration.38s và cadence**; không thêm warning giả. Các cue ngoài Arrival được giới hạn peak và gain để giữ headroom.
+Giữ ProceduralAudio, cache Phaser và WebAudioSoundManager; không mixer/framework song song. Giữ tần số/duration và identity cơ bản của các cue cũ, âm transition/victory. Có lý do sửa: noise cũ rộng/gắt → low-pass recurrence (revision:2pole1800Hz +4ms attack/4ms tail); Hurt cũ gần impact → double gated dissonant pulse; Perfect → harmonic chime riêng; thêm stack/chaining/buildup do thiếu identity. Arrival **giữ nguyên công thức, gain4nhịp, duration.38s và cadence**; không thêm warning giả. Các cue ngoài Arrival được giới hạn peak và gain để giữ headroom.
 
 | Sự kiện thật | Cue | Identity / thời điểm |
 | --- | --- | --- |
 | Accepted Light L1/2/3 beginAttack | swing/swing2/swing3 |480/650/230Hz; .075/.095/.16s; chưa hit |
 | Light confirmed contact | light/light2/light3 |330/460/145Hz, transient ngắn; miss/cancel không impact |
 | Heavy accepted windup | heavySwing |150Hz/.24s; Heavy hit riêng110Hz + harmonic/crack |
-| Basic fire / contact | gun / shotHit |650Hz/.055s;940Hz/.04s; miss không hit |
+| Basic fire / contact | gun / shotHit |520Hz/.055s;680Hz/.04s; miss không hit |
 | Charged có resource thật + armed aim đang giữ | charge | Harmonics tăng280Hz trở lên; không tạo charge meter/gameplay state |
 | Charged accepted fire / contact / resolved blast | chargedGun / chargedHit / chargedBlast | Release220Hz/crack, hit180Hz, blast95Hz+overtone; chỉ simulation phát release |
-| Dash thực thi / Perfect xác nhận | dash / perfect | Movement noise ngắn / chime1200Hz; không chime từ nút Dash |
-| Rupture thật tăng1/2/3 | stack1/2/3 |740/980/1480Hz, .055/.07/.10s; cap3 không accent giả; gồm phantom/Catalyst/Charged mark |
-| Explosion resolved | detonate/chargedBlast +root ID/hop | Một primary/root; các resolution cùngroot thành chain ticks1650Hz, gain giảm0.65^hop, sàn.15 |
+| Dash thực thi / Perfect xác nhận | dash / perfect | Movement noise ngắn / chime880Hz; không chime từ nút Dash |
+| Rupture thật tăng1/2/3 | stack1/2/3 |520/680/860Hz, .055/.07/.10s; cap3 không accent giả; gồm phantom/Catalyst/Charged mark |
+| Explosion resolved | detonate/chargedBlast +root ID/hop | Một primary/root; các resolution cùngroot thành chain ticks1100Hz, gain giảm0.65^hop, sàn.15 |
 | Player hurt xác nhận | hurt |190/287Hz, double pulse riêng; priority cao |
 | Arrival warning simulation | arrival | Q8C waveform/cadence giữ nguyên |
 

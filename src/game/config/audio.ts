@@ -1,5 +1,5 @@
 /** Presentation budgets only; no gameplay clocks or RNG. 2 frame slots reserved for danger. */
-export const AUDIO = { voiceCap: 8, perFrame: 5, regularPerFrame: 3, combatGain: 0.4, bufferPeak: 0.22, rootHistory: 512 } as const;
+export const AUDIO = { voiceCap: 8, perFrame: 5, regularPerFrame: 3, combatGain: 0.4, bufferPeak: 0.22, rootHistory: 512, trebleCutoff: 1800, impactBody: 0.055, regularBody: 0.018 } as const;
 export function cuePolicy(cue: string): { priority: number; cooldown: number } {
   switch (cue) {
     case 'arrival': return { priority: 5, cooldown: 0 };

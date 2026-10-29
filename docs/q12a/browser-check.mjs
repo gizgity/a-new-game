@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const {chromium}=await import('/opt/codex/cua_node/lib/node_modules/playwright/index.mjs');
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--autoplay-policy=user-gesture-required']});
-const reports=[];
+const reports=[];const evidence=process.env.AUDIO_EVIDENCE_PATH || 'docs/q12a/evidence';
 for(const [width,height,touch] of [[390,844,true],[1440,1000,false],[320,740,true],[844,390,true]]){
  const p=await browser.newPage({viewport:{width,height},hasTouch:touch});const errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto('http://localhost:5173/a-new-game/audition.html');await p.locator('button').first().waitFor();
@@ -37,10 +37,10 @@ for(const [width,height,touch] of [[390,844,true],[1440,1000,false],[320,740,tru
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(errors,[]);
  // Fresh page for real simulation crowd + gesture/track/pause/mute controls.
  await p.reload();await p.locator('button').nth(3).click();await p.waitForTimeout(700);await p.locator('button').nth(4).click();const pause=await p.evaluate(async()=>{const {audition:a}=await import('/a-new-game/src/audioAudition.ts');return {paused:a.paused,voices:a.sound.getAllPlaying().length,enemies:a.world.enemies.length};});assert.equal(pause.paused,true);assert.equal(pause.voices,0);assert.equal(pause.enemies,24);
- await p.screenshot({path:`docs/q12a/evidence/audition-${width}.png`});
+ await p.screenshot({path:`${evidence}/audition-${width}.png`});
  const saved=await p.evaluate(()=>Object.keys(localStorage));assert.deepEqual(saved,[]);
  reports.push({width,height,touch,errors,pause,saved,report});await p.close();
 }
 // Unsupported WebAudio must still boot audition, with silent gameplay.
 const p=await browser.newPage();await p.addInitScript(()=>{window.AudioContext=undefined;window.webkitAudioContext=undefined;});await p.goto('http://localhost:5173/a-new-game/audition.html');await p.locator('button').first().click();await p.waitForTimeout(100);const unsupported=await p.evaluate(async()=>{const {audition:a}=await import('/a-new-game/src/audioAudition.ts');return {available:a.audio.available,track:a.track};});assert.equal(unsupported.available,false);assert.equal(unsupported.track,1);await p.close();
-fs.writeFileSync('docs/q12a/evidence/browser.json',JSON.stringify({reports,unsupported,limits:'Chromium software WebGL, technical WebAudio scheduling only; no real speaker/headphone listening or iOS/Safari acceptance.'},null,2));await browser.close();console.log('PASS audio browser4sizes');
+fs.writeFileSync(`${evidence}/browser.json`,JSON.stringify({reports,unsupported,limits:'Chromium software WebGL, technical WebAudio scheduling only; no real speaker/headphone listening or iOS/Safari acceptance.'},null,2));await browser.close();console.log('PASS audio browser4sizes');
