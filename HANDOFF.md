@@ -10,12 +10,11 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-Q12A — Combat Audio Identity Revised Contract V1.1 (user giao 2026-10-28). Goal: giữ ProceduralAudio/Phaser WebAudio, bổ sung event identity, priority/cap/lifecycle và audition riêng; không balance/RNG/Boss/progression/artwork, không Q12B–E, không DDR.
+**ACCEPTED — USER AUDIO/PLAYTEST APPROVAL Q12A** — user ngày2026-10-29: “t đổi ý lại r, giữa lại tiếng arrival cũ để dễ phân biệt, làm xong là 12a ok r đó” (hội thoại task hiện tại, không permalink). Điều kiện khôi phục Arrival cũ đã hoàn tất trên code/deploy **c30248a**. Giữ combat giảm treble/tăng bass của591fa0e và Arrival gốc Q8C; thử nghiệm Arrival mềm d3fbc1c đã hủy. Đây là approval trực tiếp có điều kiện đã thực hiện, không suy từ build/tests/deploy. Không DDR, không Q12B–E hoặc tune gameplay/progression/artwork.
 
 ## Q12A STATUS
-User2026-10-29: “t đổi ý lại r, giữa lại tiếng arrival cũ để dễ phân biệt, làm xong là 12a ok r đó” (hội thoại task hiện tại, không permalink). Giao khôi phục Arrival cũ và đồng ý nghiệm thu Q12A khi hoàn tất. Khôi phục `src/game/audio.ts` đúng591fa0e: giữ combat đã giảm treble/tăng bass, Arrival gốc Q8C/7e74904 nguyên waveform/cadence/gain; hủy riêng thử nghiệm Arrival mềm d3fbc1c. Không DDR, không Q12B–E/gameplay/balance/artwork/progression.
-Đang kiểm/build và deploy bản khôi phục; sau deploy ghi nhận ACCEPTED — USER AUDIO/PLAYTEST APPROVAL theo lời user, không yêu cầu duyệt lại.
-Evidence Q12A nền tại [docs/q12a](docs/q12a/README.md): cap8/5cueframe(3regular), priority/cooldown riêng/cache/root-hop/stack/buildup/lifecycle;28testfiles,15case gameplay parity, browser4sizes và input390touch/1440desktop đã PASS. Runtime khôi phục trở về591fa0e đã kiểm; không suy thêm thiết bị/iOS/Safari/latency/thermal/FPS/natural run/liveHTTP từ approval chung. Q9A–Q9E accepted giữ nguyên.
+Khôi phục `src/game/audio.ts` đúng591fa0e; toànruntime `src/`, Vite config và audition entry không khác591fa0e. Build/typecheck và28testfiles chạy lại PASS. [Pages40882653011](https://github.com/gizgity/a-new-game/actions/runs/40882653011) **completed/SUCCESS**; build/typecheck/upload/Deploy. Chưa liveHTTP/hash verification. Commit bàn giao tiếp theo chỉMarkdown, không redeploy.
+Evidence tại [docs/q12a](docs/q12a/README.md): cap8/5cueframe(3regular), priority/cooldown/cache/root-hop/stack/buildup/lifecycle;15case gameplay parity, browser390/320/844touch+1440desktop và input390CDP/1440keyboard đã PASS trên runtime591fa0e tươngứng. Không chạy lại browser vì source runtime đã trở về đúng bản đã kiểm. Không suy thêm thiết bị/iOS/Safari/latency/thermal/FPS/naturalrun từ approval chung. Q9A–Q9E accepted giữ nguyên; không yêu cầu user duyệt lại Q12A.
 
 ## Q9E STATUS
 Baseline remote a4ea34b đã fast-forward, bảo toàn Q9D VFX V1.1 accepted. PhaseA `e2c1b92` đã commit/push origin/q9e-final: profile3/migration/journal/dedup/allowlist, Codex/Challenges/History/Recap vi/en đã triển khai; tests27files/typecheck/build PASS; browser evidence và giới hạn tại [docs/q9e](docs/q9e/README.md). Nhánh q9e-final để commit/push từngphase không autoPages. PhaseC6trail đã production/integration, dropdownmax1/None persistderivecollection.sigilWins; khôngcombat/RNG mới.
@@ -100,7 +99,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-Q9D **ACCEPTED — USER PLAYTEST APPROVAL** qua “duyệt 9d” ngày2026-10-28 trên ffd39a9/a985145, gồm VFX V1.1. Q9A–Q9C accepted giữ nguyên; Auto Aim/mobile-layout giữ follow-up riêng. Dừng, không Q9E hoặc DDR Approved.
+Q12A **ACCEPTED — USER AUDIO/PLAYTEST APPROVAL** trênc30248a, theo quote/điều kiện đã hoàn tất tại ACTIVE TASK. Giữ Q9A–Q9E accepted và các giới hạn coverage. Dừng, không Q12B–E/DDR.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -151,7 +150,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Hoàn tất build/tests và deploy bản khôi phục Arrival cũ; ghi nhận user nghiệm thu Q12A rồi dừng. Không mở Q12B–E hoặc DDR.
+Dừng sau Q12A ACCEPTED theo lời user và Arrival cũ đã khôi phục. Chờ task mới; không tự Q12B–E/tune gameplay/DDR hoặc yêu cầu duyệt lại.
 
 ## VALIDATION APPROVAL Q9E
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff, nguồn/version, links và tính nhất quán. Không chạy lại build/tests hoặc deploy. Giữ27testfiles, typecheck/build, renderer/input/flow/dist và Pages2fcdfd2 đã PASS; không suy coverage thiết bị mới từ acceptance chung. DD-0003 append-only và Art Bible không đổi.
