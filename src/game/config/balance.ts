@@ -25,6 +25,10 @@ export const HEAVY = { charges: 2, recharge: 8, damage: 100, finisherDamage: 140
 export const ENEMY_GROWTH = { startSeconds: 60, endSeconds: 300, health: 1.6, damage: 1.5, speed: 1.2 } as const;
 
 export const RANGED = { basicDamage: 20, chargedDamage: 84 } as const;
+export const DASH = { charges: 2, recharge: 2.2, duration: 0.18 } as const;
+export const ENEMY_DAMAGE = { grunt: 9, archer: 8, volatile: 12, bulwark: 22 } as const;
+// Archers may track early, then commit to the visible aim so walking can evade a shot.
+export const ARCHER = { aimLock: 0.25, projectileSpeed: 280 } as const;
 // Q8B: kills unlock the early edge of each window; time guarantees a fallback.
 export const DRAFT_MILESTONES = [
   { kills: 25, minSeconds: 20, seconds: 30, kind: 'mutation' },
@@ -52,12 +56,13 @@ export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.62, recovery: 0.32,
 // Relay delay uses simulation time; damage/radii retain the M3 tuning.
 export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;
 
-// Q5A defaults; baseline combat and the remaining Q5 checkpoints are unchanged.
+// Shared defensive resource; all proc cooldowns advance only with the simulation.
 export const BARRIER = { cap: 30, guardGain: 10, guardCooldown: 2,
+  specialistGain: 6, specialistCooldown: 2,
   aegisDamage: 40, aegisGain: 4, aegisRate: 4, aegisDamageMultiplier: 0.8, aegisWindow: 1,
-  oathMultiplier: 1.25, oathDamageMultiplier: 0.75, oathHeavyGain: 4, oathDashMultiplier: 1.3 } as const;
+  oathMultiplier: 1.25, oathDamageMultiplier: 0.75, oathHeavyGain: 4, oathDashMultiplier: 1.15 } as const;
 
-export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 7, damage: 6, initialDelay: 4, initialSpread: 0.65, sparseGap: 1.6, crowdGap: 0.7, crowdThreshold: 18, maxConcurrent: 3, lead: 160 } as const;
+export const GRUNT_LEAP = { minRange: 150, maxRange: 380, distance: 560, windup: 0.68, flight: 0.24, radius: 48, cooldown: 7, damage: 5, initialDelay: 4, initialSpread: 0.65, sparseGap: 1.6, crowdGap: 0.7, crowdThreshold: 18, maxConcurrent: 3, lead: 160 } as const;
 
 export const BUILD = {
   phantomDuration: 3, phantomCooldown: 4, phantomDelay: 0.12, phantomDamage: 18,
@@ -65,13 +70,13 @@ export const BUILD = {
   specialistMultiplier: 1.25, fractureDuration: 3, fractureDamage: 20,
   staticDuration: 4, staticCooldown: 4, staticDamage: 40,
   volatileMultiplier: 1.4, hazardDelay: 0.8, hazardDamage: 8, hazardRadius: 70, hazardCooldown: 2, hazardCap: 2,
-  ghostRefund: 1, ghostRisk: 1.2, bloodDamageMultiplier: 0.8, bloodHeal: 2, bloodCooldown: 2, bloodBudget: 6, bloodMissCost: 4,
-  reclaimerHeal: 3, reclaimerCooldown: 2, reversalDuration: 4, reversalCooldown: 6, reversalMultiplier: 1.4,
+  ghostRefund: 1, ghostRisk: 1.2, bloodDamageMultiplier: 0.8, bloodHeal: 3, bloodCooldown: 2, bloodBudget: 9, bloodMissCost: 4,
+  reclaimerHeal: 4, reclaimerCooldown: 2, reversalDuration: 4, reversalCooldown: 6, reversalMultiplier: 1.4,
   anchorThreshold: 0.25, anchorBarrier: 20, anchorRadius: 120, anchorForce: 80,
   chamberCount: 4, chamberRadius: 160, chamberDuration: 2, chamberCooldown: 5, slowMultiplier: 0.7,
   kineticDistance: 120, kineticRange: 360, kineticRate: 1, kineticCap: 3, kineticBarrier: 4, kineticCooldown: 3,
-  glassMaxHp: 75, glassMultiplier: 1.3, parasiticHeal: 2, parasiticCooldown: 2, huntedCooldown: 1, huntedSurge: 3, huntedBarrier: 2,
-  healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
+  glassMaxHp: 75, glassMultiplier: 1.3, parasiticHeal: 3, parasiticCooldown: 2, huntedCooldown: 1, huntedSurge: 3, huntedBarrier: 2,
+  healBudget: 12, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
 } as const;
 
 // Q8C: only chase speed and cooldown scale; damage, reach, shots and windup stay fixed.

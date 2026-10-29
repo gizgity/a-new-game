@@ -41,8 +41,8 @@ for(const reverse of [false,true]){
  test(`C: Oath+Blood shared caps/cost and sustain risks, reversed=${reverse}`,()=>{
   const w=world(pair('ironOath','bloodPact'));w.mutations=['aegisCore','bloodReclaimer'];near(w.outgoingDamageMultiplier,.8*.75*.8);near(w.rechargeDuration,COMBAT.dashRecharge*BARRIER.oathDashMultiplier);
   w.barrier.gain(100,true);assert.equal(w.barrier.value,30);w.hp=40;const e=target(w);w.hitEnemy(e,10,0,0,0,false,'light');assert.equal(w.hp,40);
-  w.barrier.value=0;for(let i=0;i<5;i++){w.hitEnemy(e,1,0,0,0,false,'light');w.build.step(2);}assert.equal(w.hp,46);
-  w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',3,2);assert.equal(w.build.healed<=8,true);
+  w.barrier.value=0;for(let i=0;i<5;i++){w.hitEnemy(e,1,0,0,0,false,'light');w.build.step(2);}assert.equal(w.hp,49);
+  w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',3,2);assert.equal(w.build.healed<=12,true);
   w.build.bloodCooldown=1;w.setCurses(['ironOath']);w.addCurse('bloodPact');assert.equal(w.build.bloodCooldown,1);
   w.barrier.value=30;w.hp=100;for(let i=0;i<12;i++){w.invulnerable=0;w.hurt(20,0);}assert.ok(w.hp<=0,'standing still is mortal');
  });
@@ -61,8 +61,8 @@ for(const reverse of [false,true]){
   w.invulnerable=0;w.dashTime=0;w.hurt(10,0);near(w.hp,63);w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',100,2);assert.ok(w.hp<=75);
  });
  test(`Hunted+Parasitic both trigger with shared heal/capped kill reward, reversed=${reverse}`,()=>{
-  const w=world(pair('huntedVessel','parasiticMark'));w.hp=50;const a=target(w,1);a.rupture=1;w.detonate(a,1);w.resolveExplosions();assert.equal(w.hp,52);assert.equal(w.barrier.value,2);assert.equal(w.build.huntedCooldown,1);assert.equal(w.build.parasiticCooldown,2);
-  const r=new RunDirector(w);r.draftKind='curse';r.draft=sample(w.curses).options;r.choose(0);assert.equal(w.hp,57);
+  const w=world(pair('huntedVessel','parasiticMark'));w.hp=50;const a=target(w,1);a.rupture=1;w.detonate(a,1);w.resolveExplosions();assert.equal(w.hp,53);assert.equal(w.barrier.value,2);assert.equal(w.build.huntedCooldown,1);assert.equal(w.build.parasiticCooldown,2);
+  const r=new RunDirector(w);r.draftKind='curse';r.draft=sample(w.curses).options;r.choose(0);assert.equal(w.hp,58);
  });
 }
 test('F: reset clears both/effects/clocks; old and untrusted saves retain meta/settings and never restore curses; four mutation cap',()=>{

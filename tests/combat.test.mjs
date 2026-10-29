@@ -91,7 +91,7 @@ test('swept shot collision prevents tunneling and only damages one target', () =
   assert.equal(state.projectiles.length, 0);
 });
 
-test('dash consumes two charges and recharges sequentially at 2.8 seconds each', () => {
+test('dash consumes two charges and recharges sequentially at 2.2 seconds each', () => {
   const state = world();
   state.step({ ...idle, dash: true }, FIXED_STEP);
   assert.equal(state.dashCharges, 1);
@@ -102,11 +102,11 @@ test('dash consumes two charges and recharges sequentially at 2.8 seconds each',
   const before = state.player.x;
   state.step({ ...idle, dash: true }, FIXED_STEP);
   assert.equal(state.player.x, before);
-  advance(state, 2.3);
+  advance(state, 1.7);
   assert.equal(state.dashCharges, 0);
   advance(state, 0.15);
   assert.equal(state.dashCharges, 1);
-  advance(state, 2.6);
+  advance(state, 2.0);
   assert.equal(state.dashCharges, 1);
   advance(state, 0.25);
   assert.equal(state.dashCharges, 2);
@@ -155,7 +155,7 @@ test('Grunt telegraphs before damage; Archer tracks during windup before releasi
   assert.ok(grunt.windup > 0);
   assert.equal(gruntWorld.hp, 100);
   advance(gruntWorld, 0.5);
-  assert.equal(gruntWorld.hp, 88);
+  assert.equal(gruntWorld.hp, 91);
   const archerWorld = world();
   const archer = archerWorld.enemies.find((enemy) => enemy.kind === 'archer');
   Object.assign(archer, { x: 1100, y: 500, stagger: 0, cooldown: 0 });
@@ -291,7 +291,7 @@ test('Volatile telegraphs its blast and explosion chains damage nearby enemies',
   advance(state, 0.75);
   assert.equal(volatile.hp, 0);
   assert.ok(neighbour.hp < 500);
-  assert.equal(state.hp, 84);
+  assert.equal(state.hp, 88);
 });
 
 test('Bulwark armor mitigates basic shots; Guard Breaker Heavy bypasses it', () => {
@@ -658,14 +658,14 @@ test('enemy scaling affects real approach speed, melee hits and projectile damag
   Object.assign(enemy,{x:state.player.x+300,y:state.player.y,cooldown:999});const x=enemy.x;
   state.step(idle,FIXED_STEP);distances.push(x-enemy.x);
   Object.assign(enemy,{x:state.player.x+50,y:state.player.y,windup:FIXED_STEP,angle:Math.PI});
-  state.step(idle,FIXED_STEP);assert.equal(state.hp,growth?82:88);
+  state.step(idle,FIXED_STEP);assert.equal(state.hp,growth?86:91);
  }
  assert.ok(distances[1]>distances[0]);
  const state=emptyWorld();state.spawnEnemy('archer',500,0,1);const archer=state.enemies[0];
  Object.assign(archer,{x:state.player.x+200,y:state.player.y,windup:FIXED_STEP,angle:Math.PI});
- state.step(idle,FIXED_STEP);const shot=state.projectiles[0];assert.equal(shot.damage,15);
+ state.step(idle,FIXED_STEP);const shot=state.projectiles[0];assert.equal(shot.damage,12);
  archer.damageScale=1;shot.x=state.player.x+4;shot.y=state.player.y;
- state.step(idle,FIXED_STEP);assert.equal(state.hp,85);
+ state.step(idle,FIXED_STEP);assert.equal(state.hp,88);
 });
 
 

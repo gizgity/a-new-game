@@ -67,7 +67,7 @@ test('Iron Oath multiplies grants once, Heavy requires existing Barrier and spen
  const w=world();w.setCurses(['ironOath']);w.beginAttack(true);assert.equal(w.barrier.value,0);assert.equal(w.heavyCharges,1);
  w.barrier.gain(4,true);assert.equal(w.barrier.value,5);w.beginAttack(true);
  assert.equal(w.barrier.value,9);assert.equal(w.heavyCharges,0);
- assert.equal(w.rechargeDuration,COMBAT.dashRecharge*1.3);
+ assert.equal(w.rechargeDuration,COMBAT.dashRecharge*BARRIER.oathDashMultiplier);
  w.mutations=['aegisCore'];const e=target(w);w.hitEnemy(e,80,0,0,0,true,'heavy');assert.equal(w.barrier.value,14);
  w.barrier.guardBreak(true);assert.equal(w.barrier.value,26.5);
  assert.equal(w.attack.damage,100,'does not change baseline damage');
@@ -100,4 +100,19 @@ test('Q5C pool retains Aegis and Iron Oath, preserving unlock gates and draft ow
  assert.equal(mutationPool(p).length,10);assert.equal(cursePool(p).length,7);
  const w=world(),r=new RunDirector(w);w.mutations=['guardBreaker','aegisCore'];w.kills=25;r.step(idle,1/60);
  assert.ok(r.draft.every(o=>!w.mutations.includes(o.id)));assert.equal(BARRIER.cap,30);
+});
+
+test('Specialist defense needs actual Charged detonation damage, caps multihits, and cannot bank cooldown through freeze',()=>{
+ const w=world();w.mutations=['detonationSpecialist'];
+ const blast=(charged=true)=>{const e=target(w,'grunt',1000);e.rupture=1;w.chainSeen.clear();w.detonate(e,1,charged);w.resolveExplosions();};
+ blast(false);assert.equal(w.barrier.value,0,'Basic detonation grants nothing');
+ blast();assert.equal(w.barrier.value,6);assert.equal(w.hp,100);
+ blast();assert.equal(w.barrier.value,6,'another target/cleave cannot bypass cooldown');
+ const clock=w.barrier.specialistCooldown;w.hitstop=1;w.step(idle,1/60);assert.equal(w.barrier.specialistCooldown,clock);
+ const r=new RunDirector(w);r.draft=[{id:'catalyst',role:'wildcard'}];r.step(idle,1);assert.equal(w.barrier.specialistCooldown,clock);
+ w.barrier.step(2);w.barrier.value=29;blast();assert.equal(w.barrier.value,30);
+ w.barrier.step(2);w.barrier.value=0;w.setCurses(['ironOath']);blast();assert.equal(w.barrier.value,7.5,'Oath is applied once');
+ w.reset();assert.equal(w.barrier.specialistCooldown,0);assert.equal(w.barrier.value,0);
+ const empty=world();empty.mutations=['detonationSpecialist'];const e=target(empty,'grunt',0);e.rupture=1;empty.detonate(e,1,true);empty.resolveExplosions();assert.equal(empty.barrier.value,0);
+ const plain=world();const t=target(plain);t.rupture=1;plain.detonate(t,1,true);plain.resolveExplosions();assert.equal(plain.barrier.value,0,'requires the mutation');
 });

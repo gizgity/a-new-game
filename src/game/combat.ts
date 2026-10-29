@@ -9,7 +9,7 @@ import { AnomalyEffects } from './AnomalyEffects.js';
 import { ANOMALY } from './config/anomalies.js';
 import { LegacyEffects, type PrimaryHit } from './LegacyEffects.js';
 import { LEGACY } from './config/legacy.js';
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD, DASH, ENEMY_DAMAGE, ARCHER } from './config/balance.js';
 import { BuildEffects, chainRoot, type ChainRoot, type ProcContext, admitProc, legacyRoot } from './BuildEffects.js';
 import { draftSignals } from './DraftSignals.js';
 import { Barrier } from './barrier.js';
@@ -17,7 +17,7 @@ import { CURSES, type MutationId, type CurseId, type CombatStats } from './build
 import { ARENA, movePlayer, PLAYER_RADIUS, type PlayerState } from './movement.js';
 
 export const COMBAT = {
-  maxHp: 100, dashCharges: 2, dashRecharge: 2.8, dashDuration: 0.18,
+  maxHp: 100, dashCharges: DASH.charges, dashRecharge: DASH.recharge, dashDuration: DASH.duration,
   dashSpeed: 920, perfectWindow: 0.16, shotInterval: 0.18,
   enemyCount: 6, projectileLimit: 80, chainLimit: 12, inputBuffer: 0.12,
 } as const;
@@ -581,7 +581,7 @@ export class CombatWorld {
         root.echoes++;
         this.explosions.push({ x: enemy.x, y: enemy.y, damage: BUILD.echoDamage, radius: BUILD.echoRadius, hostile: false, root, echo: true, context: { root, depth: eventContext.depth + 1, origin: 'curseSecondary' } });
       }
-      if (enemy.kind === 'volatile') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale), root, context: { root, depth: eventContext.depth + 1, origin: 'hostile' } });
+      if (enemy.kind === 'volatile') this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(ENEMY_DAMAGE.volatile * enemy.damageScale), root, context: { root, depth: eventContext.depth + 1, origin: 'hostile' } });
       if (playerSource) this.legacy.killed(enemy, eventContext);
     }
     if (primaryKind && playerSource && actualDamage > 0) this.legacy.primary(enemy, primaryKind, root, legacySnapshot);
@@ -736,7 +736,7 @@ export class CombatWorld {
     enemy.active = Math.max(0, enemy.active - dt);
     enemy.leapCooldown = Math.max(0, enemy.leapCooldown - dt);
     enemy.stagger = Math.max(0, enemy.stagger - dt);
-    if (enemy.kind === 'archer' && enemy.windup > 0) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
+    if (enemy.kind === 'archer' && enemy.windup > ARCHER.aimLock) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
     if (enemy.stagger > 0) return;
     const spec = ENEMY_ATTACK[enemy.kind];
     if (enemy.recovery > 0) {
@@ -754,14 +754,14 @@ export class CombatWorld {
           if (Math.hypot(this.player.x - enemy.targetX, this.player.y - enemy.targetY) < GRUNT_LEAP.radius) this.hurt(Math.round(GRUNT_LEAP.damage * enemy.damageScale), enemy.angle);
         } else if (enemy.kind === 'volatile') {
           enemy.hp = 0;
-          this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(16 * enemy.damageScale) });
+          this.explosions.push({ x: enemy.x, y: enemy.y, damage: 38, radius: 110, hostile: true, playerDamage: Math.round(ENEMY_DAMAGE.volatile * enemy.damageScale) });
         } else if (enemy.kind === 'archer') {
-          this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(10 * enemy.damageScale));
+          this.fire(enemy.x, enemy.y, enemy.angle, true, false, Math.round(ENEMY_DAMAGE.archer * enemy.damageScale), ARCHER.projectileSpeed);
           if (this.anomaly.extraVolley()) for (const offset of [-ANOMALY.static.spread, ANOMALY.static.spread])
-            this.fire(enemy.x, enemy.y, enemy.angle + offset, true, false, Math.round(10 * enemy.damageScale), undefined, true);
+            this.fire(enemy.x, enemy.y, enemy.angle + offset, true, false, Math.round(ENEMY_DAMAGE.archer * enemy.damageScale), ARCHER.projectileSpeed, true);
         }
         else if (distance < spec.range && Math.abs(angleDifference(Math.atan2(dy, dx), enemy.angle)) < 0.85) {
-          this.hurt(Math.round((enemy.kind === 'bulwark' ? 22 : 12) * enemy.damageScale), enemy.angle);
+          this.hurt(Math.round(ENEMY_DAMAGE[enemy.kind === 'bulwark' ? 'bulwark' : 'grunt'] * enemy.damageScale), enemy.angle);
         }
         enemy.cooldown = spec.cooldown;
         enemy.recovery = spec.recovery;
@@ -1025,6 +1025,9 @@ export class CombatWorld {
         if (ruptureBlast && hpBefore > enemy.hp) this.draftSignals.chainTargets++;
         if (enemy.hp > 0 && explosion.charged && this.mutations.includes('detonationSpecialist')) enemy.fracture = BUILD.fractureDuration;
         if (enemy.hp > 0 && explosion.echo && enemy.kind !== 'boss') enemy.echoHaste = BUILD.hasteDuration;
+      }
+      if (ruptureBlast && actualBlastDamage > 0 && explosion.charged && this.mutations.includes('detonationSpecialist')) {
+        this.barrier.chargedDetonation(this.hasCurse('ironOath'));
       }
       if (ruptureBlast && actualBlastDamage > 0 && !root.healed && this.hasCurse('parasiticMark')) {
         root.healed = true;

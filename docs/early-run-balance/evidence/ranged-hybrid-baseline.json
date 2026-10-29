@@ -1,0 +1,4732 @@
+{
+  "spacing": "hybrid",
+  "method": "Controlled full runs: route-aware policies x 4 dash modes x 8 draft seeds. Fresh profile with Progression.observe and live pool updates, earned natural drafts, no Legacy/Anomaly/Ascension or resource/offer grants. Movement/aim decisions300ms; ranged uses melee only within130px, earned Charged/Surge, wall steering; Counter approaches melee. Near spacing190–260px; far320–400px. Observed samples imminent-threat at300ms; reflex everytick is machine control. Not human/device/population win rate.",
+  "reports": [
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 119.58333333333333,
+      "hp": 0,
+      "kills": 659,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 151,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 78,
+        "ultimate": 48
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 42,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 2075,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": null,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 122,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 30,
+          "offers": [
+            "phantomEdge",
+            "catalyst",
+            "aegisCore"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 64,
+          "kills": 279,
+          "enemies": 22
+        },
+        {
+          "time": 90,
+          "hp": 30,
+          "kills": 470,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 119.58333333333333,
+      "hp": 0,
+      "kills": 659,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 151,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 78,
+        "ultimate": 48
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 42,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 2075,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": null,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 122,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 30,
+          "offers": [
+            "bloodReclaimer",
+            "catalyst",
+            "phantomEdge"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 64,
+          "kills": 279,
+          "enemies": 22
+        },
+        {
+          "time": 90,
+          "hp": 30,
+          "kills": 470,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 131.11666666666667,
+      "hp": 0,
+      "kills": 730,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 174,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 88,
+        "ultimate": 51
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 42,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 2767,
+          "damage": 49,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 131,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "ironOath",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 30,
+          "offers": [
+            "berserker",
+            "guardBreaker",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 2,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "ironReversal"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 64,
+          "kills": 279,
+          "enemies": 22
+        },
+        {
+          "time": 90,
+          "hp": 30,
+          "kills": 470,
+          "enemies": 18
+        },
+        {
+          "time": 120,
+          "hp": 2,
+          "kills": 662,
+          "enemies": 15
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.35,
+      "hp": 15,
+      "kills": 1293,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 448,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 148,
+        "ultimate": 86
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 17,
+          "healed": 18,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8249,
+          "damage": 115,
+          "healed": 80,
+          "perfects": 0
+        },
+        "boss": {
+          "ticks": 556,
+          "damage": 52,
+          "healed": 6,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": 222.48333333333332,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 224,
+      "healed": 104,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 76,
+          "offers": [
+            "ironReversal",
+            "echoChamber",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 69,
+          "offers": [
+            "guardBreaker",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 66,
+          "offers": [
+            "parasiticMark",
+            "volatileSoul",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 48,
+          "offers": [
+            "phantomEdge",
+            "bloodReclaimer",
+            "kineticBattery"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 79,
+          "kills": 285,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 83,
+          "kills": 473,
+          "enemies": 16
+        },
+        {
+          "time": 120,
+          "hp": 69,
+          "kills": 660,
+          "enemies": 17
+        },
+        {
+          "time": 150,
+          "hp": 74,
+          "kills": 854,
+          "enemies": 10
+        },
+        {
+          "time": 180,
+          "hp": 42,
+          "kills": 1037,
+          "enemies": 13
+        },
+        {
+          "time": 210,
+          "hp": 55,
+          "kills": 1218,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 229.68333333333334,
+      "hp": 5,
+      "kills": 1300,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 446,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 148,
+        "ultimate": 85
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8247,
+          "damage": 125,
+          "healed": 64,
+          "perfects": 0
+        },
+        "boss": {
+          "ticks": 518,
+          "damage": 38,
+          "healed": 3,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": 222.45,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "bloodReclaimer",
+        "ironReversal"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 203,
+      "healed": 67,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 46,
+          "offers": [
+            "bloodReclaimer",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 69,
+          "offers": [
+            "glassSoul",
+            "ghostStep",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 43,
+          "offers": [
+            "ironReversal",
+            "phantomEdge",
+            "guardBreaker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 285,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 75,
+          "kills": 478,
+          "enemies": 14
+        },
+        {
+          "time": 120,
+          "hp": 46,
+          "kills": 660,
+          "enemies": 20
+        },
+        {
+          "time": 150,
+          "hp": 67,
+          "kills": 845,
+          "enemies": 22
+        },
+        {
+          "time": 180,
+          "hp": 45,
+          "kills": 1038,
+          "enemies": 12
+        },
+        {
+          "time": 210,
+          "hp": 32,
+          "kills": 1211,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 230.75,
+      "hp": 64,
+      "kills": 1282,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 460,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 142,
+        "ultimate": 87
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 17,
+          "healed": 18,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8249,
+          "damage": 61,
+          "healed": 64,
+          "perfects": 0
+        },
+        "boss": {
+          "ticks": 580,
+          "damage": 37,
+          "healed": 6,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": 222.48333333333332,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 155,
+      "healed": 88,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 76,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 80,
+          "offers": [
+            "guardBreaker",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 72,
+          "offers": [
+            "parasiticMark",
+            "deathEcho",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 99,
+          "offers": [
+            "echoChamber",
+            "phantomEdge",
+            "soulAnchor"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 79,
+          "kills": 285,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 83,
+          "kills": 473,
+          "enemies": 16
+        },
+        {
+          "time": 120,
+          "hp": 80,
+          "kills": 660,
+          "enemies": 21
+        },
+        {
+          "time": 150,
+          "hp": 70,
+          "kills": 831,
+          "enemies": 25
+        },
+        {
+          "time": 180,
+          "hp": 93,
+          "kills": 1024,
+          "enemies": 18
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "kills": 1202,
+          "enemies": 26
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 145.95,
+      "hp": 0,
+      "kills": 819,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 225,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 90,
+        "ultimate": 54
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 3657,
+          "damage": 85,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 125,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 70,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "deathEcho"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 75,
+          "offers": [
+            "echoChamber",
+            "ironReversal",
+            "berserker"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 35,
+          "offers": [
+            "bloodReclaimer",
+            "catalyst",
+            "phantomEdge"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 285,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 75,
+          "kills": 478,
+          "enemies": 14
+        },
+        {
+          "time": 120,
+          "hp": 35,
+          "kills": 651,
+          "enemies": 24
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 163.36666666666667,
+      "hp": 0,
+      "kills": 920,
+      "dashes": 0,
+      "perfects": 0,
+      "detonations": 228,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 105,
+        "ultimate": 61
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 40,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 4702,
+          "damage": 95,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 135,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 70,
+          "offers": [
+            "bloodPact",
+            "glassSoul",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 75,
+          "offers": [
+            "berserker",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 35,
+          "offers": [
+            "echoChamber",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 8,
+          "offers": [
+            "glassSoul",
+            "bloodPact",
+            "huntedVessel"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 285,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 75,
+          "kills": 478,
+          "enemies": 14
+        },
+        {
+          "time": 120,
+          "hp": 35,
+          "kills": 651,
+          "enemies": 24
+        },
+        {
+          "time": 150,
+          "hp": 8,
+          "kills": 839,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 171.36666666666667,
+      "hp": 0,
+      "kills": 925,
+      "dashes": 54,
+      "perfects": 0,
+      "detonations": 312,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 92,
+        "ultimate": 62
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 48,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 5182,
+          "damage": 54,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul",
+        "glassSoul"
+      ],
+      "damage": 140,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 24,
+          "offers": [
+            "phantomEdge",
+            "catalyst",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 17,
+          "offers": [
+            "echoChamber",
+            "soulAnchor",
+            "guardBreaker"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 6,
+          "offers": [
+            "volatileSoul",
+            "bloodPact",
+            "glassSoul"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 56,
+          "kills": 257,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 34,
+          "kills": 451,
+          "enemies": 14
+        },
+        {
+          "time": 120,
+          "hp": 17,
+          "kills": 632,
+          "enemies": 13
+        },
+        {
+          "time": 150,
+          "hp": 6,
+          "kills": 799,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 171.4,
+      "hp": 0,
+      "kills": 942,
+      "dashes": 54,
+      "perfects": 0,
+      "detonations": 304,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 94,
+        "ultimate": 66
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 48,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 5184,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 124,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 24,
+          "offers": [
+            "bloodReclaimer",
+            "catalyst",
+            "phantomEdge"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 17,
+          "offers": [
+            "guardBreaker",
+            "berserker",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 12,
+          "offers": [
+            "volatileSoul",
+            "huntedVessel",
+            "deathEcho"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 56,
+          "kills": 257,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 34,
+          "kills": 451,
+          "enemies": 14
+        },
+        {
+          "time": 120,
+          "hp": 17,
+          "kills": 632,
+          "enemies": 13
+        },
+        {
+          "time": 150,
+          "hp": 19,
+          "kills": 810,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 100.15,
+      "hp": 0,
+      "kills": 503,
+      "dashes": 32,
+      "perfects": 0,
+      "detonations": 115,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 52,
+        "ultimate": 35
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 48,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 909,
+          "damage": 34,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": null,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "ironOath",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 24,
+          "offers": [
+            "berserker",
+            "guardBreaker",
+            "soulAnchor"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 56,
+          "kills": 257,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 34,
+          "kills": 446,
+          "enemies": 19
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 314,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 191.21666666666667,
+      "hp": 0,
+      "kills": 1056,
+      "dashes": 59,
+      "perfects": 3,
+      "detonations": 354,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 108,
+        "ultimate": 68
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 58,
+          "healed": 20,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 6373,
+          "damage": 113,
+          "healed": 64,
+          "perfects": 3
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 209,
+      "healed": 84,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 29,
+          "offers": [
+            "ironReversal",
+            "echoChamber",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 39,
+          "offers": [
+            "guardBreaker",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 9,
+          "offers": [
+            "parasiticMark",
+            "volatileSoul",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 9,
+          "offers": [
+            "berserker",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 63,
+          "kills": 266,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 32,
+          "kills": 440,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 39,
+          "kills": 625,
+          "enemies": 20
+        },
+        {
+          "time": 150,
+          "hp": 9,
+          "kills": 799,
+          "enemies": 19
+        },
+        {
+          "time": 180,
+          "hp": 25,
+          "kills": 987,
+          "enemies": 15
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 232.5,
+      "hp": 0,
+      "kills": 1243,
+      "dashes": 70,
+      "perfects": 1,
+      "detonations": 490,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 120,
+        "ultimate": 94
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 36,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8242,
+          "damage": 46,
+          "healed": 0,
+          "perfects": 1
+        },
+        "boss": {
+          "ticks": 692,
+          "damage": 30,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": 222.36666666666667,
+      "bossHp": 591.9200000000008,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "aegisCore",
+        "ironReversal"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 150,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 36,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 11,
+          "offers": [
+            "aegisCore",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 10,
+          "offers": [
+            "glassSoul",
+            "bloodPact",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 20,
+          "offers": [
+            "ironReversal",
+            "phantomEdge",
+            "guardBreaker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 62,
+          "kills": 266,
+          "enemies": 17
+        },
+        {
+          "time": 90,
+          "hp": 46,
+          "kills": 460,
+          "enemies": 12
+        },
+        {
+          "time": 120,
+          "hp": 11,
+          "kills": 647,
+          "enemies": 13
+        },
+        {
+          "time": 150,
+          "hp": 10,
+          "kills": 811,
+          "enemies": 17
+        },
+        {
+          "time": 180,
+          "hp": 20,
+          "kills": 998,
+          "enemies": 13
+        },
+        {
+          "time": 210,
+          "hp": 30,
+          "kills": 1170,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 1337,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 236.96666666666667,
+      "hp": 0,
+      "kills": 1246,
+      "dashes": 73,
+      "perfects": 2,
+      "detonations": 486,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 127,
+        "ultimate": 80
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 58,
+          "healed": 20,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8240,
+          "damage": 80,
+          "healed": 86,
+          "perfects": 1
+        },
+        "boss": {
+          "ticks": 962,
+          "damage": 65,
+          "healed": 10,
+          "perfects": 1
+        }
+      },
+      "elite": 125,
+      "boss": 222.33333333333334,
+      "bossHp": 10,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 241,
+      "healed": 116,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 29,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 39,
+          "offers": [
+            "guardBreaker",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 42,
+          "offers": [
+            "parasiticMark",
+            "deathEcho",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 53,
+          "offers": [
+            "echoChamber",
+            "phantomEdge",
+            "soulAnchor"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 63,
+          "kills": 266,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 32,
+          "kills": 440,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 39,
+          "kills": 635,
+          "enemies": 14
+        },
+        {
+          "time": 150,
+          "hp": 38,
+          "kills": 802,
+          "enemies": 24
+        },
+        {
+          "time": 180,
+          "hp": 63,
+          "kills": 985,
+          "enemies": 15
+        },
+        {
+          "time": 210,
+          "hp": 68,
+          "kills": 1176,
+          "enemies": 8
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 117.9,
+      "hp": 0,
+      "kills": 619,
+      "dashes": 38,
+      "perfects": 0,
+      "detonations": 147,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 62,
+        "ultimate": 45
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 36,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 1974,
+          "damage": 46,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": null,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 62,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "deathEcho"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 36,
+          "offers": [
+            "kineticBattery",
+            "echoChamber",
+            "berserker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 62,
+          "kills": 266,
+          "enemies": 17
+        },
+        {
+          "time": 90,
+          "hp": 46,
+          "kills": 457,
+          "enemies": 15
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "scheduled",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 140.46666666666667,
+      "hp": 0,
+      "kills": 770,
+      "dashes": 44,
+      "perfects": 0,
+      "detonations": 197,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 75,
+        "ultimate": 53
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 38,
+          "healed": 0,
+          "perfects": 0
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 36,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 3328,
+          "damage": 56,
+          "healed": 0,
+          "perfects": 0
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 130,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 62,
+          "offers": [
+            "bloodPact",
+            "glassSoul",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 36,
+          "offers": [
+            "berserker",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 6,
+          "offers": [
+            "echoChamber",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "kills": 79,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 62,
+          "kills": 266,
+          "enemies": 17
+        },
+        {
+          "time": 90,
+          "hp": 46,
+          "kills": 457,
+          "enemies": 15
+        },
+        {
+          "time": 120,
+          "hp": 6,
+          "kills": 639,
+          "enemies": 17
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 228.71666666666667,
+      "hp": 13,
+      "kills": 1289,
+      "dashes": 9,
+      "perfects": 9,
+      "detonations": 449,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 150,
+        "ultimate": 93
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 16,
+          "healed": 0,
+          "perfects": 1
+        },
+        "later": {
+          "ticks": 8242,
+          "damage": 69,
+          "healed": 0,
+          "perfects": 6
+        },
+        "boss": {
+          "ticks": 465,
+          "damage": 18,
+          "healed": 0,
+          "perfects": 1
+        }
+      },
+      "elite": 125,
+      "boss": 222.36666666666667,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul",
+        "glassSoul"
+      ],
+      "damage": 123,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 84,
+          "offers": [
+            "phantomEdge",
+            "catalyst",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 55,
+          "offers": [
+            "echoChamber",
+            "soulAnchor",
+            "staticRiposte"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 39,
+          "offers": [
+            "volatileSoul",
+            "bloodPact",
+            "glassSoul"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 21,
+          "offers": [
+            "guardBreaker",
+            "staticRiposte",
+            "phantomEdge"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "kills": 286,
+          "enemies": 14
+        },
+        {
+          "time": 90,
+          "hp": 94,
+          "kills": 474,
+          "enemies": 21
+        },
+        {
+          "time": 120,
+          "hp": 55,
+          "kills": 646,
+          "enemies": 30
+        },
+        {
+          "time": 150,
+          "hp": 39,
+          "kills": 838,
+          "enemies": 21
+        },
+        {
+          "time": 180,
+          "hp": 21,
+          "kills": 1024,
+          "enemies": 18
+        },
+        {
+          "time": 210,
+          "hp": 31,
+          "kills": 1207,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 203.1,
+      "hp": 0,
+      "kills": 1165,
+      "dashes": 10,
+      "perfects": 10,
+      "detonations": 373,
+      "procs": {
+        "phantom": 0,
+        "static": 5,
+        "charged": 131,
+        "ultimate": 81
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 16,
+          "healed": 0,
+          "perfects": 1
+        },
+        "later": {
+          "ticks": 7086,
+          "damage": 76,
+          "healed": 0,
+          "perfects": 8
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "staticRiposte",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 112,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 84,
+          "offers": [
+            "bloodReclaimer",
+            "catalyst",
+            "phantomEdge"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 55,
+          "offers": [
+            "staticRiposte",
+            "guardBreaker",
+            "berserker"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 19,
+          "offers": [
+            "volatileSoul",
+            "huntedVessel",
+            "deathEcho"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 14,
+          "offers": [
+            "echoChamber",
+            "berserker",
+            "guardBreaker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "kills": 286,
+          "enemies": 14
+        },
+        {
+          "time": 90,
+          "hp": 94,
+          "kills": 474,
+          "enemies": 21
+        },
+        {
+          "time": 120,
+          "hp": 55,
+          "kills": 646,
+          "enemies": 30
+        },
+        {
+          "time": 150,
+          "hp": 39,
+          "kills": 838,
+          "enemies": 18
+        },
+        {
+          "time": 180,
+          "hp": 14,
+          "kills": 1021,
+          "enemies": 13
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 174.81666666666666,
+      "hp": 0,
+      "kills": 989,
+      "dashes": 11,
+      "perfects": 11,
+      "detonations": 230,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 109,
+        "ultimate": 70
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 16,
+          "healed": 0,
+          "perfects": 1
+        },
+        "later": {
+          "ticks": 5389,
+          "damage": 93,
+          "healed": 8,
+          "perfects": 9
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul",
+        "parasiticMark"
+      ],
+      "damage": 129,
+      "healed": 8,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "ironOath",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 84,
+          "offers": [
+            "berserker",
+            "guardBreaker",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 60,
+          "offers": [
+            "staticRiposte",
+            "echoChamber",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 13,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "parasiticMark"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "kills": 286,
+          "enemies": 14
+        },
+        {
+          "time": 90,
+          "hp": 94,
+          "kills": 474,
+          "enemies": 21
+        },
+        {
+          "time": 120,
+          "hp": 60,
+          "kills": 659,
+          "enemies": 19
+        },
+        {
+          "time": 150,
+          "hp": 13,
+          "kills": 848,
+          "enemies": 19
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.81666666666666,
+      "hp": 88,
+      "kills": 1266,
+      "dashes": 9,
+      "perfects": 9,
+      "detonations": 432,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 151,
+        "ultimate": 96
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 42,
+          "healed": 18,
+          "perfects": 2
+        },
+        "later": {
+          "ticks": 8247,
+          "damage": 36,
+          "healed": 50,
+          "perfects": 5
+        },
+        "boss": {
+          "ticks": 586,
+          "damage": 14,
+          "healed": 2,
+          "perfects": 1
+        }
+      },
+      "elite": 125,
+      "boss": 222.45,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 112,
+      "healed": 70,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 71,
+          "offers": [
+            "bloodReclaimer",
+            "echoChamber",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 79,
+          "offers": [
+            "staticRiposte",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 97,
+          "offers": [
+            "parasiticMark",
+            "volatileSoul",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 98,
+          "offers": [
+            "berserker",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 83,
+          "kills": 279,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 80,
+          "kills": 458,
+          "enemies": 27
+        },
+        {
+          "time": 120,
+          "hp": 79,
+          "kills": 635,
+          "enemies": 23
+        },
+        {
+          "time": 150,
+          "hp": 95,
+          "kills": 829,
+          "enemies": 12
+        },
+        {
+          "time": 180,
+          "hp": 92,
+          "kills": 998,
+          "enemies": 27
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "kills": 1182,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 229.9,
+      "hp": 17,
+      "kills": 1287,
+      "dashes": 9,
+      "perfects": 9,
+      "detonations": 360,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 153,
+        "ultimate": 99
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 52,
+          "healed": 0,
+          "perfects": 2
+        },
+        "later": {
+          "ticks": 8247,
+          "damage": 39,
+          "healed": 0,
+          "perfects": 5
+        },
+        "boss": {
+          "ticks": 531,
+          "damage": 7,
+          "healed": 0,
+          "perfects": 1
+        }
+      },
+      "elite": 125,
+      "boss": 222.45,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "aegisCore",
+        "catalyst"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 118,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 23,
+          "offers": [
+            "berserker",
+            "soulAnchor",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 4,
+          "offers": [
+            "aegisCore",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 4,
+          "offers": [
+            "glassSoul",
+            "bloodPact",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 14,
+          "offers": [
+            "ironReversal",
+            "catalyst",
+            "staticRiposte"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 59,
+          "kills": 279,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 33,
+          "kills": 478,
+          "enemies": 13
+        },
+        {
+          "time": 120,
+          "hp": 4,
+          "kills": 663,
+          "enemies": 18
+        },
+        {
+          "time": 150,
+          "hp": 4,
+          "kills": 844,
+          "enemies": 18
+        },
+        {
+          "time": 180,
+          "hp": 14,
+          "kills": 1024,
+          "enemies": 19
+        },
+        {
+          "time": 210,
+          "hp": 24,
+          "kills": 1211,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 232.38333333333333,
+      "hp": 100,
+      "kills": 1258,
+      "dashes": 18,
+      "perfects": 18,
+      "detonations": 467,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 151,
+        "ultimate": 90
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 42,
+          "healed": 18,
+          "perfects": 2
+        },
+        "later": {
+          "ticks": 8243,
+          "damage": 53,
+          "healed": 67,
+          "perfects": 12
+        },
+        "boss": {
+          "ticks": 684,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 3
+        }
+      },
+      "elite": 125,
+      "boss": 222.38333333333333,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 115,
+      "healed": 85,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 71,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 56,
+          "offers": [
+            "staticRiposte",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 81,
+          "offers": [
+            "parasiticMark",
+            "deathEcho",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100,
+          "offers": [
+            "echoChamber",
+            "phantomEdge",
+            "soulAnchor"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 83,
+          "kills": 279,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 80,
+          "kills": 458,
+          "enemies": 27
+        },
+        {
+          "time": 120,
+          "hp": 56,
+          "kills": 632,
+          "enemies": 23
+        },
+        {
+          "time": 150,
+          "hp": 77,
+          "kills": 814,
+          "enemies": 22
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "kills": 992,
+          "enemies": 24
+        },
+        {
+          "time": 210,
+          "hp": 97,
+          "kills": 1170,
+          "enemies": 26
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 236.93333333333334,
+      "hp": 0,
+      "kills": 1299,
+      "dashes": 11,
+      "perfects": 11,
+      "detonations": 380,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 157,
+        "ultimate": 82
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 52,
+          "healed": 0,
+          "perfects": 2
+        },
+        "later": {
+          "ticks": 8239,
+          "damage": 79,
+          "healed": 64,
+          "perfects": 6
+        },
+        "boss": {
+          "ticks": 961,
+          "damage": 56,
+          "healed": 8,
+          "perfects": 2
+        }
+      },
+      "elite": 125,
+      "boss": 222.31666666666666,
+      "bossHp": 47.59999999999991,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "bloodReclaimer",
+        "catalyst"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 207,
+      "healed": 72,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "deathEcho"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 23,
+          "offers": [
+            "echoChamber",
+            "bloodReclaimer",
+            "staticRiposte"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 4,
+          "offers": [
+            "bloodReclaimer",
+            "berserker",
+            "phantomEdge"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 20,
+          "offers": [
+            "glassSoul",
+            "deathEcho",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 33,
+          "offers": [
+            "ironReversal",
+            "soulAnchor",
+            "catalyst"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 59,
+          "kills": 279,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 33,
+          "kills": 478,
+          "enemies": 13
+        },
+        {
+          "time": 120,
+          "hp": 4,
+          "kills": 663,
+          "enemies": 18
+        },
+        {
+          "time": 150,
+          "hp": 18,
+          "kills": 844,
+          "enemies": 24
+        },
+        {
+          "time": 180,
+          "hp": 27,
+          "kills": 1032,
+          "enemies": 22
+        },
+        {
+          "time": 210,
+          "hp": 40,
+          "kills": 1204,
+          "enemies": 30
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 116.68333333333334,
+      "hp": 0,
+      "kills": 643,
+      "dashes": 4,
+      "perfects": 4,
+      "detonations": 160,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 79,
+        "ultimate": 46
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 20,
+          "healed": 0,
+          "perfects": 1
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 52,
+          "healed": 0,
+          "perfects": 2
+        },
+        "later": {
+          "ticks": 1901,
+          "damage": 33,
+          "healed": 0,
+          "perfects": 1
+        }
+      },
+      "elite": null,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 105,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90,
+          "offers": [
+            "bloodPact",
+            "glassSoul",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 23,
+          "offers": [
+            "berserker",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 93,
+          "enemies": 13
+        },
+        {
+          "time": 60,
+          "hp": 59,
+          "kills": 279,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 33,
+          "kills": 478,
+          "enemies": 13
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 197.61666666666667,
+      "hp": 0,
+      "kills": 1143,
+      "dashes": 20,
+      "perfects": 20,
+      "detonations": 388,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 134,
+        "ultimate": 78
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 17,
+          "healed": 0,
+          "perfects": 6
+        },
+        "later": {
+          "ticks": 6757,
+          "damage": 99,
+          "healed": 0,
+          "perfects": 10
+        }
+      },
+      "elite": 125,
+      "boss": null,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul",
+        "glassSoul"
+      ],
+      "damage": 116,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75,
+          "offers": [
+            "phantomEdge",
+            "catalyst",
+            "guardBreaker"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 60,
+          "offers": [
+            "kineticBattery",
+            "echoChamber",
+            "guardBreaker"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 52,
+          "offers": [
+            "volatileSoul",
+            "bloodPact",
+            "glassSoul"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 11,
+          "offers": [
+            "guardBreaker",
+            "staticRiposte",
+            "phantomEdge"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "kills": 283,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 68,
+          "kills": 471,
+          "enemies": 22
+        },
+        {
+          "time": 120,
+          "hp": 60,
+          "kills": 659,
+          "enemies": 23
+        },
+        {
+          "time": 150,
+          "hp": 52,
+          "kills": 848,
+          "enemies": 21
+        },
+        {
+          "time": 180,
+          "hp": 11,
+          "kills": 1026,
+          "enemies": 27
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 227.98333333333332,
+      "hp": 16,
+      "kills": 1290,
+      "dashes": 32,
+      "perfects": 32,
+      "detonations": 453,
+      "procs": {
+        "phantom": 0,
+        "static": 11,
+        "charged": 149,
+        "ultimate": 89
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 17,
+          "healed": 0,
+          "perfects": 6
+        },
+        "later": {
+          "ticks": 8235,
+          "damage": 83,
+          "healed": 0,
+          "perfects": 20
+        },
+        "boss": {
+          "ticks": 428,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 2
+        }
+      },
+      "elite": 125,
+      "boss": 222.25,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "staticRiposte",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 100,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "deathEcho",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75,
+          "offers": [
+            "bloodReclaimer",
+            "catalyst",
+            "phantomEdge"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 60,
+          "offers": [
+            "staticRiposte",
+            "guardBreaker",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 32,
+          "offers": [
+            "volatileSoul",
+            "huntedVessel",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 42,
+          "offers": [
+            "echoChamber",
+            "berserker",
+            "guardBreaker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "kills": 283,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 68,
+          "kills": 471,
+          "enemies": 22
+        },
+        {
+          "time": 120,
+          "hp": 60,
+          "kills": 659,
+          "enemies": 23
+        },
+        {
+          "time": 150,
+          "hp": 51,
+          "kills": 857,
+          "enemies": 13
+        },
+        {
+          "time": 180,
+          "hp": 42,
+          "kills": 1039,
+          "enemies": 21
+        },
+        {
+          "time": 210,
+          "hp": 16,
+          "kills": 1205,
+          "enemies": 29
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 159,
+      "result": "victory",
+      "reason": null,
+      "time": 232.46666666666667,
+      "hp": 65,
+      "kills": 1304,
+      "dashes": 29,
+      "perfects": 29,
+      "detonations": 374,
+      "procs": {
+        "phantom": 0,
+        "static": 4,
+        "charged": 153,
+        "ultimate": 85
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 17,
+          "healed": 0,
+          "perfects": 6
+        },
+        "later": {
+          "ticks": 8230,
+          "damage": 54,
+          "healed": 40,
+          "perfects": 16
+        },
+        "boss": {
+          "ticks": 702,
+          "damage": 0,
+          "healed": 6,
+          "perfects": 3
+        }
+      },
+      "elite": 125,
+      "boss": 222.16666666666666,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "echoChamber",
+        "staticRiposte"
+      ],
+      "curses": [
+        "volatileSoul",
+        "parasiticMark"
+      ],
+      "damage": 71,
+      "healed": 46,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "ironOath",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 75,
+          "offers": [
+            "berserker",
+            "staticRiposte",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 52,
+          "offers": [
+            "staticRiposte",
+            "echoChamber",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 25,
+          "offers": [
+            "volatileSoul",
+            "bloodPact",
+            "parasiticMark"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 44,
+          "offers": [
+            "staticRiposte",
+            "aegisCore",
+            "soulAnchor"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "kills": 283,
+          "enemies": 15
+        },
+        {
+          "time": 90,
+          "hp": 68,
+          "kills": 471,
+          "enemies": 22
+        },
+        {
+          "time": 120,
+          "hp": 52,
+          "kills": 660,
+          "enemies": 23
+        },
+        {
+          "time": 150,
+          "hp": 32,
+          "kills": 848,
+          "enemies": 21
+        },
+        {
+          "time": 180,
+          "hp": 36,
+          "kills": 1038,
+          "enemies": 13
+        },
+        {
+          "time": 210,
+          "hp": 59,
+          "kills": 1224,
+          "enemies": 16
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 238.71666666666667,
+      "hp": 71,
+      "kills": 1317,
+      "dashes": 25,
+      "perfects": 25,
+      "detonations": 440,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 150,
+        "ultimate": 96
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 3
+        },
+        "later": {
+          "ticks": 8248,
+          "damage": 49,
+          "healed": 38,
+          "perfects": 13
+        },
+        "boss": {
+          "ticks": 1059,
+          "damage": 33,
+          "healed": 10,
+          "perfects": 5
+        }
+      },
+      "elite": 125,
+      "boss": 222.46666666666667,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 82,
+      "healed": 48,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 100,
+          "offers": [
+            "ironReversal",
+            "echoChamber",
+            "soulAnchor"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 100,
+          "offers": [
+            "staticRiposte",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100,
+          "offers": [
+            "parasiticMark",
+            "volatileSoul",
+            "ironOath"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 81,
+          "offers": [
+            "berserker",
+            "aegisCore",
+            "kineticBattery"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "kills": 285,
+          "enemies": 13
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "kills": 472,
+          "enemies": 21
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "kills": 663,
+          "enemies": 18
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "kills": 854,
+          "enemies": 15
+        },
+        {
+          "time": 180,
+          "hp": 75,
+          "kills": 1041,
+          "enemies": 16
+        },
+        {
+          "time": 210,
+          "hp": 86,
+          "kills": 1222,
+          "enemies": 17
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 231.83333333333334,
+      "hp": 54,
+      "kills": 1285,
+      "dashes": 14,
+      "perfects": 14,
+      "detonations": 515,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 149,
+        "ultimate": 101
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8246,
+          "damage": 27,
+          "healed": 0,
+          "perfects": 7
+        },
+        "boss": {
+          "ticks": 648,
+          "damage": 26,
+          "healed": 5,
+          "perfects": 3
+        }
+      },
+      "elite": 125,
+      "boss": 222.43333333333334,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "aegisCore",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 53,
+      "healed": 5,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "glassSoul",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75,
+          "offers": [
+            "catalyst",
+            "echoChamber",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 48,
+          "offers": [
+            "aegisCore",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 58,
+          "offers": [
+            "glassSoul",
+            "bloodPact",
+            "ghostStep"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 68,
+          "offers": [
+            "bloodReclaimer",
+            "phantomEdge",
+            "staticRiposte"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 283,
+          "enemies": 18
+        },
+        {
+          "time": 90,
+          "hp": 58,
+          "kills": 477,
+          "enemies": 16
+        },
+        {
+          "time": 120,
+          "hp": 48,
+          "kills": 670,
+          "enemies": 14
+        },
+        {
+          "time": 150,
+          "hp": 58,
+          "kills": 855,
+          "enemies": 14
+        },
+        {
+          "time": 180,
+          "hp": 68,
+          "kills": 1031,
+          "enemies": 21
+        },
+        {
+          "time": 210,
+          "hp": 75,
+          "kills": 1189,
+          "enemies": 30
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 238.45,
+      "hp": 40,
+      "kills": 1316,
+      "dashes": 30,
+      "perfects": 30,
+      "detonations": 361,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 151,
+        "ultimate": 88
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 3
+        },
+        "later": {
+          "ticks": 8248,
+          "damage": 8,
+          "healed": 8,
+          "perfects": 18
+        },
+        "boss": {
+          "ticks": 1043,
+          "damage": 66,
+          "healed": 6,
+          "perfects": 5
+        }
+      },
+      "elite": 125,
+      "boss": 222.46666666666667,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "kineticBattery",
+        "soulAnchor"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 74,
+      "healed": 14,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100,
+          "offers": [
+            "volatileSoul",
+            "parasiticMark",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 100,
+          "offers": [
+            "berserker",
+            "echoChamber",
+            "aegisCore"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100,
+          "offers": [
+            "berserker",
+            "staticRiposte",
+            "kineticBattery"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100,
+          "offers": [
+            "parasiticMark",
+            "deathEcho",
+            "huntedVessel"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 100,
+          "offers": [
+            "soulAnchor",
+            "phantomEdge",
+            "ironReversal"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "kills": 285,
+          "enemies": 13
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "kills": 472,
+          "enemies": 21
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "kills": 663,
+          "enemies": 18
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "kills": 841,
+          "enemies": 24
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "kills": 1036,
+          "enemies": 18
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "kills": 1226,
+          "enemies": 15
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 231.83333333333334,
+      "hp": 11,
+      "kills": 1303,
+      "dashes": 22,
+      "perfects": 22,
+      "detonations": 398,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 148,
+        "ultimate": 92
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8245,
+          "damage": 77,
+          "healed": 44,
+          "perfects": 15
+        },
+        "boss": {
+          "ticks": 649,
+          "damage": 59,
+          "healed": 8,
+          "perfects": 3
+        }
+      },
+      "elite": 125,
+      "boss": 222.41666666666666,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "bloodReclaimer",
+        "ironReversal"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 136,
+      "healed": 52,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 100,
+          "offers": [
+            "ghostStep",
+            "glassSoul",
+            "deathEcho"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 75,
+          "offers": [
+            "echoChamber",
+            "bloodReclaimer",
+            "staticRiposte"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 58,
+          "offers": [
+            "bloodReclaimer",
+            "berserker",
+            "phantomEdge"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 75,
+          "offers": [
+            "glassSoul",
+            "deathEcho",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 55,
+          "offers": [
+            "ironReversal",
+            "soulAnchor",
+            "berserker"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 283,
+          "enemies": 18
+        },
+        {
+          "time": 90,
+          "hp": 58,
+          "kills": 477,
+          "enemies": 16
+        },
+        {
+          "time": 120,
+          "hp": 58,
+          "kills": 658,
+          "enemies": 26
+        },
+        {
+          "time": 150,
+          "hp": 75,
+          "kills": 855,
+          "enemies": 18
+        },
+        {
+          "time": 180,
+          "hp": 50,
+          "kills": 1043,
+          "enemies": 19
+        },
+        {
+          "time": 210,
+          "hp": 75,
+          "kills": 1214,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 244.75,
+      "hp": 53,
+      "kills": 1318,
+      "dashes": 25,
+      "perfects": 24,
+      "detonations": 464,
+      "procs": {
+        "phantom": 0,
+        "static": 0,
+        "charged": 157,
+        "ultimate": 106
+      },
+      "windows": {
+        "opening": {
+          "ticks": 3000,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 4
+        },
+        "onePlusOne": {
+          "ticks": 2100,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 0
+        },
+        "later": {
+          "ticks": 8249,
+          "damage": 52,
+          "healed": 0,
+          "perfects": 14
+        },
+        "boss": {
+          "ticks": 1420,
+          "damage": 0,
+          "healed": 0,
+          "perfects": 6
+        }
+      },
+      "elite": 125,
+      "boss": 222.48333333333332,
+      "bossHp": null,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "aegisCore"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 52,
+      "healed": 0,
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100,
+          "offers": [
+            "aegisCore",
+            "bloodReclaimer",
+            "phantomEdge",
+            "detonationSpecialist"
+          ]
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 100,
+          "offers": [
+            "ghostStep",
+            "glassSoul",
+            "bloodPact"
+          ]
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75,
+          "offers": [
+            "berserker",
+            "catalyst",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 48,
+          "offers": [
+            "kineticBattery",
+            "phantomEdge",
+            "bloodReclaimer"
+          ]
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 40,
+          "offers": [
+            "glassSoul",
+            "bloodPact",
+            "parasiticMark"
+          ]
+        },
+        {
+          "time": 190,
+          "id": "aegisCore",
+          "hp": 43,
+          "offers": [
+            "aegisCore",
+            "soulAnchor",
+            "ironReversal"
+          ]
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "kills": 85,
+          "enemies": 24
+        },
+        {
+          "time": 60,
+          "hp": 75,
+          "kills": 283,
+          "enemies": 18
+        },
+        {
+          "time": 90,
+          "hp": 58,
+          "kills": 477,
+          "enemies": 16
+        },
+        {
+          "time": 120,
+          "hp": 48,
+          "kills": 670,
+          "enemies": 14
+        },
+        {
+          "time": 150,
+          "hp": 40,
+          "kills": 850,
+          "enemies": 19
+        },
+        {
+          "time": 180,
+          "hp": 43,
+          "kills": 1032,
+          "enemies": 23
+        },
+        {
+          "time": 210,
+          "hp": 53,
+          "kills": 1222,
+          "enemies": 16
+        },
+        {
+          "time": 240,
+          "hp": 53,
+          "kills": 1309,
+          "enemies": 7
+        }
+      ]
+    }
+  ]
+}

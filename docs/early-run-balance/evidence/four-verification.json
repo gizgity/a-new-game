@@ -1,0 +1,41 @@
+{
+  "holdout": {
+    "none": {
+      "wins": {
+        "tank": 15,
+        "sustain": 16,
+        "counter": 14,
+        "ranged": 12
+      },
+      "perRoute": 16,
+      "spread": 0.25,
+      "alive100": 64
+    },
+    "observed": {
+      "wins": {
+        "tank": 16,
+        "sustain": 16,
+        "counter": 14,
+        "ranged": 15
+      },
+      "perRoute": 16,
+      "spread": 0.125,
+      "alive100": 64
+    },
+    "reflex": {
+      "wins": {
+        "tank": 16,
+        "sustain": 16,
+        "counter": 14,
+        "ranged": 16
+      },
+      "perRoute": 16,
+      "spread": 0.125,
+      "alive100": 64
+    }
+  },
+  "primarySpreadLimit": 0.15,
+  "noDashSpreadLimit": 0.25,
+  "pass": true,
+  "humanWinRateVerified": false
+}

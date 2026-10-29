@@ -5,6 +5,7 @@ export class Barrier {
   value = 0;
   aegisDamage = 0;
   guardCooldown = 0;
+  specialistCooldown = 0;
   flash = 0;
   broken = false;
   lastGain = 0;
@@ -14,12 +15,14 @@ export class Barrier {
   reset(): void {
     this.value = this.aegisDamage = this.guardCooldown = this.flash = this.lastGain = 0;
     this.aegisWindow = this.aegisGranted = 0;
+    this.specialistCooldown = 0;
     this.broken = false;
   }
 
   step(dt: number): void {
     this.flash = Math.max(0, this.flash - dt);
     this.guardCooldown = Math.max(0, this.guardCooldown - dt);
+    this.specialistCooldown = Math.max(0, this.specialistCooldown - dt);
     this.aegisWindow = Math.max(0, this.aegisWindow - dt);
     if (this.aegisWindow <= 1e-9) this.aegisGranted = 0;
   }
@@ -61,5 +64,11 @@ export class Barrier {
     this.guardCooldown = BARRIER.guardCooldown;
     this.gain(BARRIER.guardGain, oath);
     return true;
+  }
+
+  chargedDetonation(oath: boolean): void {
+    if (this.specialistCooldown > 1e-9) return;
+    this.specialistCooldown = BARRIER.specialistCooldown;
+    this.gain(BARRIER.specialistGain, oath);
   }
 }

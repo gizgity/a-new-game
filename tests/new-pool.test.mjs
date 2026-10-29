@@ -15,16 +15,18 @@ test('Q5C has exactly12/8 unique IDs; new content defaults eligible without extr
 });
 test('Reclaimer sees consumed marks on Basic/Detonate kills, ignores unmarked and caps multikill',()=>{
  const w=world(['bloodReclaimer']);w.hp=50;const e=target(w,850,10);e.rupture=1;
- w.fire(800,500,0,false);step(w,1);assert.equal(w.hp,53);
- w.hitEnemy(target(w,860,1),2,0,0,0);assert.equal(w.hp,53);
- const marked=target(w,900,1);marked.rupture=1;w.hitEnemy(marked,2,0,0,0);assert.equal(w.hp,53);
- w.build.step(2);const a=target(w,880,10);a.rupture=1;w.chainSeen.clear();w.detonate(a,1);w.resolveExplosions();assert.equal(w.hp,56);
+ w.fire(800,500,0,false);step(w,1);assert.equal(w.hp,54);
+ w.hitEnemy(target(w,860,1),2,0,0,0);assert.equal(w.hp,54);
+ const marked=target(w,900,1);marked.rupture=1;w.hitEnemy(marked,2,0,0,0);assert.equal(w.hp,54);
+ w.build.step(2);const a=target(w,880,10);a.rupture=1;w.chainSeen.clear();w.detonate(a,1);w.resolveExplosions();assert.equal(w.hp,58);
 });
-test('all sustain shares8/10s; Blood keeps separate6 cap, cooldowns and fullHP do not waste budget',()=>{
- const w=world();w.hp=50;w.hp+=w.build.heal(w.hp,100);w.hp+=w.build.heal(w.hp,100,'reclaimerCooldown',3,2);w.hp+=w.build.heal(w.hp,100,'parasiticCooldown',2,2);
- w.build.step(2);w.hp+=w.build.heal(w.hp,100,'reclaimerCooldown',3,2);assert.equal(w.hp,58);assert.equal(w.build.bloodHealed,2);
- w.setCurses(['glassSoul']);assert.equal(w.build.healed,8);w.build.step(8);assert.equal(w.build.healed,0);
- const full=world();assert.equal(full.build.heal(100,100,'reclaimerCooldown',3,2),0);assert.equal(full.build.reclaimerCooldown,0);
+test('all sustain shares12/10s; Blood keeps separate9 cap, cooldowns and fullHP do not waste budget',()=>{
+ const w=world();w.hp=50;
+ w.hp+=w.build.heal(w.hp,100);w.hp+=w.build.heal(w.hp,100,'reclaimerCooldown',4,2);w.hp+=w.build.heal(w.hp,100,'parasiticCooldown',3,2);
+ w.build.step(2);w.hp+=w.build.heal(w.hp,100,'reclaimerCooldown',4,2);assert.equal(w.hp,62);assert.equal(w.build.bloodHealed,3);
+ w.build.step(2);assert.equal(w.build.heal(w.hp,100),0,'shared cap blocks another source');
+ w.setCurses(['glassSoul']);assert.equal(w.build.healed,12);w.build.step(6);assert.equal(w.build.healed,0);
+ const full=world();assert.equal(full.build.heal(100,100,'reclaimerCooldown',4,2),0);assert.equal(full.build.reclaimerCooldown,0);
 });
 test('Reversal needs enemy HP loss, expires, is not refreshed, consumes on Heavy start including cancellation',()=>{
  const w=world(['ironReversal']);w.barrier.gain(10,false);w.hurt(10,0);assert.equal(w.build.reversal,0);
@@ -71,10 +73,10 @@ test('Glass buffs only direct base at fire time, Static flat remains40; swap rem
  w.fire(800,500,0,false);w.setCurses(['ghostStep']);assert.equal(w.maxHp,100);assert.equal(w.hp,75);assert.equal(w.projectiles[0].damage,20);
 });
 test('Parasitic one heal/root, no empty/echo heal; Reclaimer priority then residual budget; draft5 versus10',()=>{
- const w=world(['bloodReclaimer'],'parasiticMark');w.hp=50;w.build.healed=4;w.build.healWindow=10;const a=target(w,850,10);a.rupture=1;const root=chainRoot();w.detonate(a,1,false,undefined,root);w.resolveExplosions();assert.equal(w.hp,54);assert.equal(w.build.lastHeal,1);assert.equal(root.healed,true);
- w.build.step(2);w.explosions.push({x:850,y:500,damage:20,radius:100,hostile:false,root,echo:true});w.resolveExplosions();assert.equal(w.hp,54);
- const r=new RunDirector(w);r.draftKind='curse';r.draft=[{id:'parasiticMark',role:'curseChoice'}];r.choose(0);assert.equal(w.hp,59);
- r.draft=[{id:'glassSoul',role:'curseChoice'}];r.choose(0);assert.equal(w.hp,64);r.draft=[{id:'ghostStep',role:'curseChoice',replaceSlot:0}];r.choose(0);assert.equal(w.hp,74);
+ const w=world(['bloodReclaimer'],'parasiticMark');w.hp=50;w.build.healed=7;w.build.healWindow=10;const a=target(w,850,10);a.rupture=1;const root=chainRoot();w.detonate(a,1,false,undefined,root);w.resolveExplosions();assert.equal(w.hp,55);assert.equal(w.build.lastHeal,1);assert.equal(root.healed,true);
+ w.build.step(2);w.explosions.push({x:850,y:500,damage:20,radius:100,hostile:false,root,echo:true});w.resolveExplosions();assert.equal(w.hp,55);
+ const r=new RunDirector(w);r.draftKind='curse';r.draft=[{id:'parasiticMark',role:'curseChoice'}];r.choose(0);assert.equal(w.hp,60);
+ r.draft=[{id:'glassSoul',role:'curseChoice'}];r.choose(0);assert.equal(w.hp,65);r.draft=[{id:'ghostStep',role:'curseChoice',replaceSlot:0}];r.choose(0);assert.equal(w.hp,75);
  const empty=world([],'parasiticMark');empty.hp=50;const dead=target(empty,850);dead.rupture=1;empty.detonate(dead,1);dead.hp=0;empty.resolveExplosions();assert.equal(empty.hp,50);assert.equal(empty.build.parasiticCooldown,0);
 });
 test('Hunted reward capped once/second, Barrier/Surge capped, keep Curse preserves cooldown; pause/hitstop freeze Q5C',()=>{

@@ -1,0 +1,5565 @@
+{
+  "method": "60 deterministic runs, 300ms nearest-target decisions, fresh-profile pools fixed at start, no Legacy/Anomaly/Ascension, no resource grants or offer injection. Stationary stress, approach/orbit without dash, scheduled dash every 3s, machine reflex control. Simulation ticks include hitstop; not human playtest or population win rate.",
+  "reports": [
+    {
+      "policy": "stationary",
+      "route": "tank",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 38.65,
+      "hp": 0,
+      "kills": 137,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 28,
+        "healed": 0,
+        "barrierGained": 28,
+        "hits": 14
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 28,
+          "healed": 0,
+          "barrierGained": 28,
+          "hits": 14,
+          "ticks": 2319
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 34,
+          "barrier": 8,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "tank",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 38.65,
+      "hp": 0,
+      "kills": 137,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 28,
+        "healed": 0,
+        "barrierGained": 28,
+        "hits": 14
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 28,
+          "healed": 0,
+          "barrierGained": 28,
+          "hits": 14,
+          "ticks": 2319
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 34,
+          "barrier": 8,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "tank",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 38.65,
+      "hp": 0,
+      "kills": 137,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 28,
+        "healed": 0,
+        "barrierGained": 28,
+        "hits": 14
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 28,
+          "healed": 0,
+          "barrierGained": 28,
+          "hits": 14,
+          "ticks": 2319
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 34,
+          "barrier": 8,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "sustain",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.45,
+      "hp": 0,
+      "kills": 128,
+      "dashes": 0,
+      "totals": {
+        "damage": 121,
+        "absorbed": 0,
+        "healed": 11,
+        "barrierGained": 0,
+        "hits": 13
+      },
+      "windows": {
+        "opening": {
+          "damage": 121,
+          "absorbed": 0,
+          "healed": 11,
+          "barrierGained": 0,
+          "hits": 13,
+          "ticks": 2127
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 28,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "sustain",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.45,
+      "hp": 0,
+      "kills": 128,
+      "dashes": 0,
+      "totals": {
+        "damage": 121,
+        "absorbed": 0,
+        "healed": 11,
+        "barrierGained": 0,
+        "hits": 13
+      },
+      "windows": {
+        "opening": {
+          "damage": 121,
+          "absorbed": 0,
+          "healed": 11,
+          "barrierGained": 0,
+          "hits": 13,
+          "ticks": 2127
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 28,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "sustain",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.45,
+      "hp": 0,
+      "kills": 128,
+      "dashes": 0,
+      "totals": {
+        "damage": 121,
+        "absorbed": 0,
+        "healed": 11,
+        "barrierGained": 0,
+        "hits": 13
+      },
+      "windows": {
+        "opening": {
+          "damage": 121,
+          "absorbed": 0,
+          "healed": 11,
+          "barrierGained": 0,
+          "hits": 13,
+          "ticks": 2127
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 28,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "counter",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.18333333333333,
+      "hp": 0,
+      "kills": 122,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 2111
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 89,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "counter",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.18333333333333,
+      "hp": 0,
+      "kills": 122,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 2111
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 89,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "counter",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 35.18333333333333,
+      "hp": 0,
+      "kills": 122,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 2111
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 89,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "ranged",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 31.183333333333334,
+      "hp": 0,
+      "kills": 99,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 1871
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "ranged",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 31.183333333333334,
+      "hp": 0,
+      "kills": 99,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 1871
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "stationary",
+      "route": "ranged",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 31.183333333333334,
+      "hp": 0,
+      "kills": 99,
+      "dashes": 0,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 110,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 1871
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 50
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 20,
+          "barrier": 0,
+          "kills": 90,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "tank",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 232.61666666666667,
+      "hp": 76,
+      "kills": 1219,
+      "dashes": 0,
+      "totals": {
+        "damage": 50,
+        "absorbed": 418,
+        "healed": 10,
+        "barrierGained": 483,
+        "hits": 41
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 20,
+          "healed": 0,
+          "barrierGained": 50,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 16,
+          "absorbed": 82,
+          "healed": 0,
+          "barrierGained": 60,
+          "hits": 7,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 34,
+          "absorbed": 316,
+          "healed": 10,
+          "barrierGained": 373,
+          "hits": 32,
+          "ticks": 8941
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 84
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 94
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 90,
+          "enemies": 22
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 4,
+          "kills": 271,
+          "enemies": 24
+        },
+        {
+          "time": 90,
+          "hp": 94,
+          "barrier": 20,
+          "kills": 461,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 94,
+          "barrier": 26,
+          "kills": 627,
+          "enemies": 30
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 11,
+          "kills": 807,
+          "enemies": 22
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 4,
+          "kills": 971,
+          "enemies": 23
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 21,
+          "kills": 1142,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "tank",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 249.95,
+      "hp": 12,
+      "kills": 1223,
+      "dashes": 0,
+      "totals": {
+        "damage": 97,
+        "absorbed": 366,
+        "healed": 8,
+        "barrierGained": 391,
+        "hits": 33
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 20,
+          "healed": 0,
+          "barrierGained": 50,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 0,
+          "absorbed": 65,
+          "healed": 0,
+          "barrierGained": 51,
+          "hits": 6,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 97,
+          "absorbed": 281,
+          "healed": 8,
+          "barrierGained": 290,
+          "hits": 25,
+          "ticks": 9981
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 99
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 90,
+          "enemies": 22
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 28,
+          "kills": 271,
+          "enemies": 22
+        },
+        {
+          "time": 90,
+          "hp": 99,
+          "barrier": 15,
+          "kills": 433,
+          "enemies": 24
+        },
+        {
+          "time": 120,
+          "hp": 99,
+          "barrier": 17,
+          "kills": 596,
+          "enemies": 28
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 763,
+          "enemies": 24
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 10,
+          "kills": 925,
+          "enemies": 27
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 1088,
+          "enemies": 24
+        },
+        {
+          "time": 240,
+          "hp": 58,
+          "barrier": 0,
+          "kills": 1217,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "tank",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 249.95,
+      "hp": 18,
+      "kills": 1223,
+      "dashes": 0,
+      "totals": {
+        "damage": 83,
+        "absorbed": 346,
+        "healed": 0,
+        "barrierGained": 407,
+        "hits": 30
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 20,
+          "healed": 0,
+          "barrierGained": 50,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 0,
+          "absorbed": 65,
+          "healed": 0,
+          "barrierGained": 51,
+          "hits": 6,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 83,
+          "absorbed": 261,
+          "healed": 0,
+          "barrierGained": 306,
+          "hits": 22,
+          "ticks": 9981
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 99
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 90,
+          "enemies": 22
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 28,
+          "kills": 271,
+          "enemies": 22
+        },
+        {
+          "time": 90,
+          "hp": 99,
+          "barrier": 15,
+          "kills": 433,
+          "enemies": 24
+        },
+        {
+          "time": 120,
+          "hp": 99,
+          "barrier": 28,
+          "kills": 596,
+          "enemies": 28
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 763,
+          "enemies": 24
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 10,
+          "kills": 925,
+          "enemies": 27
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 1088,
+          "enemies": 24
+        },
+        {
+          "time": 240,
+          "hp": 69,
+          "barrier": 0,
+          "kills": 1217,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "sustain",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 127.01666666666667,
+      "hp": 0,
+      "kills": 695,
+      "dashes": 0,
+      "totals": {
+        "damage": 179,
+        "absorbed": 0,
+        "healed": 59,
+        "barrierGained": 0,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 10,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 39,
+          "absorbed": 0,
+          "healed": 22,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 130,
+          "absorbed": 0,
+          "healed": 27,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 2521
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 83
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 22
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 87,
+          "barrier": 0,
+          "kills": 273,
+          "enemies": 25
+        },
+        {
+          "time": 90,
+          "hp": 85,
+          "barrier": 0,
+          "kills": 464,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 22,
+          "barrier": 0,
+          "kills": 639,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "sustain",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 91.31666666666666,
+      "hp": 0,
+      "kills": 471,
+      "dashes": 0,
+      "totals": {
+        "damage": 141,
+        "absorbed": 0,
+        "healed": 36,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 10,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 91,
+          "absorbed": 0,
+          "healed": 21,
+          "barrierGained": 0,
+          "hits": 7,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 40,
+          "absorbed": 0,
+          "healed": 5,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 379
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 30
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 274,
+          "enemies": 24
+        },
+        {
+          "time": 90,
+          "hp": 6,
+          "barrier": 0,
+          "kills": 464,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "sustain",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 147.8,
+      "hp": 0,
+      "kills": 811,
+      "dashes": 0,
+      "totals": {
+        "damage": 181,
+        "absorbed": 6,
+        "healed": 71,
+        "barrierGained": 96,
+        "hits": 18
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 10,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 91,
+          "absorbed": 0,
+          "healed": 21,
+          "barrierGained": 0,
+          "hits": 7,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 80,
+          "absorbed": 6,
+          "healed": 40,
+          "barrierGained": 96,
+          "hits": 10,
+          "ticks": 3768
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 30
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 15
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 274,
+          "enemies": 24
+        },
+        {
+          "time": 90,
+          "hp": 27,
+          "barrier": 0,
+          "kills": 464,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 15,
+          "barrier": 0,
+          "kills": 641,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "counter",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 89.48333333333333,
+      "hp": 0,
+      "kills": 453,
+      "dashes": 0,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 10
+      },
+      "windows": {
+        "opening": {
+          "damage": 26,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 74,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 20,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 269
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 74
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 10
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 68,
+          "barrier": 0,
+          "kills": 277,
+          "enemies": 18
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "counter",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 106.95,
+      "hp": 0,
+      "kills": 561,
+      "dashes": 0,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 12
+      },
+      "windows": {
+        "opening": {
+          "damage": 26,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 82,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 7,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 12,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 1317
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 74
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 2
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 58,
+          "barrier": 0,
+          "kills": 277,
+          "enemies": 18
+        },
+        {
+          "time": 90,
+          "hp": 12,
+          "barrier": 0,
+          "kills": 455,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "counter",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 109.96666666666667,
+      "hp": 0,
+      "kills": 577,
+      "dashes": 0,
+      "totals": {
+        "damage": 120,
+        "absorbed": 1,
+        "healed": 0,
+        "barrierGained": 24,
+        "hits": 12
+      },
+      "windows": {
+        "opening": {
+          "damage": 26,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 82,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 7,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 12,
+          "absorbed": 1,
+          "healed": 0,
+          "barrierGained": 24,
+          "hits": 2,
+          "ticks": 1498
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 74
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 2
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 58,
+          "barrier": 0,
+          "kills": 277,
+          "enemies": 18
+        },
+        {
+          "time": 90,
+          "hp": 12,
+          "barrier": 0,
+          "kills": 455,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "ranged",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 104.5,
+      "hp": 0,
+      "kills": 554,
+      "dashes": 0,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 9
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 39,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 71,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1170
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 61
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 273,
+          "enemies": 25
+        },
+        {
+          "time": 90,
+          "hp": 60,
+          "barrier": 0,
+          "kills": 463,
+          "enemies": 21
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "ranged",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 104.5,
+      "hp": 0,
+      "kills": 554,
+      "dashes": 0,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 9
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 39,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 71,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1170
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 61
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 273,
+          "enemies": 25
+        },
+        {
+          "time": 90,
+          "hp": 60,
+          "barrier": 0,
+          "kills": 463,
+          "enemies": 21
+        }
+      ]
+    },
+    {
+      "policy": "approach",
+      "route": "ranged",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 80.33333333333333,
+      "hp": 0,
+      "kills": 402,
+      "dashes": 0,
+      "totals": {
+        "damage": 85,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 7
+      },
+      "windows": {
+        "opening": {
+          "damage": 10,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 75,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 1820
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 59,
+          "barrier": 0,
+          "kills": 274,
+          "enemies": 24
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "tank",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 267.01666666666665,
+      "hp": 64,
+      "kills": 1181,
+      "dashes": 0,
+      "totals": {
+        "damage": 98,
+        "absorbed": 323,
+        "healed": 6,
+        "barrierGained": 397,
+        "hits": 44
+      },
+      "windows": {
+        "opening": {
+          "damage": 20,
+          "absorbed": 40,
+          "healed": 0,
+          "barrierGained": 48,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 36,
+          "absorbed": 56,
+          "healed": 0,
+          "barrierGained": 56,
+          "hits": 10,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 42,
+          "absorbed": 227,
+          "healed": 6,
+          "barrierGained": 293,
+          "hits": 28,
+          "ticks": 11005
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 64
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 74
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 94
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "barrier": 2,
+          "kills": 86,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 90,
+          "barrier": 8,
+          "kills": 266,
+          "enemies": 29
+        },
+        {
+          "time": 90,
+          "hp": 74,
+          "barrier": 12,
+          "kills": 416,
+          "enemies": 28
+        },
+        {
+          "time": 120,
+          "hp": 74,
+          "barrier": 4,
+          "kills": 552,
+          "enemies": 21
+        },
+        {
+          "time": 150,
+          "hp": 84,
+          "barrier": 23,
+          "kills": 690,
+          "enemies": 25
+        },
+        {
+          "time": 180,
+          "hp": 94,
+          "barrier": 30,
+          "kills": 842,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 12,
+          "kills": 996,
+          "enemies": 30
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 18,
+          "kills": 1152,
+          "enemies": 27
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "tank",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 263.56666666666666,
+      "hp": 0,
+      "kills": 1096,
+      "dashes": 0,
+      "totals": {
+        "damage": 140,
+        "absorbed": 444,
+        "healed": 6,
+        "barrierGained": 469,
+        "hits": 51
+      },
+      "windows": {
+        "opening": {
+          "damage": 20,
+          "absorbed": 40,
+          "healed": 0,
+          "barrierGained": 48,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 5,
+          "absorbed": 73,
+          "healed": 0,
+          "barrierGained": 82,
+          "hits": 8,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 115,
+          "absorbed": 331,
+          "healed": 6,
+          "barrierGained": 339,
+          "hits": 37,
+          "ticks": 10714
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "soulAnchor",
+          "hp": 95
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 91
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "barrier": 2,
+          "kills": 86,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 96,
+          "barrier": 10,
+          "kills": 262,
+          "enemies": 30
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 22,
+          "kills": 417,
+          "enemies": 29
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 555,
+          "enemies": 29
+        },
+        {
+          "time": 150,
+          "hp": 98,
+          "barrier": 0,
+          "kills": 676,
+          "enemies": 28
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 26,
+          "kills": 813,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 927,
+          "enemies": 29
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1066,
+          "enemies": 26
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "tank",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 276.93333333333334,
+      "hp": 0,
+      "kills": 1103,
+      "dashes": 0,
+      "totals": {
+        "damage": 125,
+        "absorbed": 426,
+        "healed": 0,
+        "barrierGained": 585,
+        "hits": 53
+      },
+      "windows": {
+        "opening": {
+          "damage": 20,
+          "absorbed": 40,
+          "healed": 0,
+          "barrierGained": 48,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 5,
+          "absorbed": 73,
+          "healed": 0,
+          "barrierGained": 82,
+          "hits": 8,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 100,
+          "absorbed": 313,
+          "healed": 0,
+          "barrierGained": 455,
+          "hits": 39,
+          "ticks": 11600
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 95
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 94,
+          "barrier": 2,
+          "kills": 86,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 96,
+          "barrier": 10,
+          "kills": 262,
+          "enemies": 30
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 417,
+          "enemies": 29
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 555,
+          "enemies": 29
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 17,
+          "kills": 676,
+          "enemies": 28
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 26,
+          "kills": 813,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 927,
+          "enemies": 29
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1066,
+          "enemies": 26
+        },
+        {
+          "time": 270,
+          "hp": 8,
+          "barrier": 24,
+          "kills": 1098,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "sustain",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 244.68333333333334,
+      "hp": 0,
+      "kills": 1143,
+      "dashes": 0,
+      "totals": {
+        "damage": 299,
+        "absorbed": 0,
+        "healed": 142,
+        "barrierGained": 0,
+        "hits": 31
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 16,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 28,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 215,
+          "absorbed": 0,
+          "healed": 102,
+          "barrierGained": 0,
+          "hits": 21,
+          "ticks": 9581
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 70
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 76
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 93
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 74
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 57
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 98,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 78,
+          "barrier": 0,
+          "kills": 254,
+          "enemies": 28
+        },
+        {
+          "time": 90,
+          "hp": 92,
+          "barrier": 0,
+          "kills": 389,
+          "enemies": 29
+        },
+        {
+          "time": 120,
+          "hp": 93,
+          "barrier": 0,
+          "kills": 538,
+          "enemies": 29
+        },
+        {
+          "time": 150,
+          "hp": 71,
+          "barrier": 0,
+          "kills": 689,
+          "enemies": 26
+        },
+        {
+          "time": 180,
+          "hp": 59,
+          "barrier": 0,
+          "kills": 831,
+          "enemies": 30
+        },
+        {
+          "time": 210,
+          "hp": 44,
+          "barrier": 0,
+          "kills": 962,
+          "enemies": 25
+        },
+        {
+          "time": 240,
+          "hp": 21,
+          "barrier": 0,
+          "kills": 1132,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "sustain",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 118.58333333333333,
+      "hp": 0,
+      "kills": 540,
+      "dashes": 0,
+      "totals": {
+        "damage": 184,
+        "absorbed": 0,
+        "healed": 64,
+        "barrierGained": 0,
+        "hits": 20
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 16,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 46,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 82,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 9,
+          "ticks": 2015
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 70
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 53
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 98,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 73,
+          "barrier": 0,
+          "kills": 252,
+          "enemies": 30
+        },
+        {
+          "time": 90,
+          "hp": 57,
+          "barrier": 0,
+          "kills": 406,
+          "enemies": 29
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "sustain",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 251.03333333333333,
+      "hp": 0,
+      "kills": 1016,
+      "dashes": 0,
+      "totals": {
+        "damage": 279,
+        "absorbed": 19,
+        "healed": 144,
+        "barrierGained": 212,
+        "hits": 34
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 16,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 46,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 177,
+          "absorbed": 19,
+          "healed": 104,
+          "barrierGained": 212,
+          "hits": 23,
+          "ticks": 9962
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 70
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 53
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 68
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 64
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 71
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 98,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 73,
+          "barrier": 0,
+          "kills": 252,
+          "enemies": 30
+        },
+        {
+          "time": 90,
+          "hp": 61,
+          "barrier": 0,
+          "kills": 403,
+          "enemies": 30
+        },
+        {
+          "time": 120,
+          "hp": 68,
+          "barrier": 0,
+          "kills": 536,
+          "enemies": 17
+        },
+        {
+          "time": 150,
+          "hp": 78,
+          "barrier": 5,
+          "kills": 626,
+          "enemies": 26
+        },
+        {
+          "time": 180,
+          "hp": 69,
+          "barrier": 6,
+          "kills": 743,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 70,
+          "barrier": 0,
+          "kills": 865,
+          "enemies": 27
+        },
+        {
+          "time": 240,
+          "hp": 58,
+          "barrier": 0,
+          "kills": 1005,
+          "enemies": 29
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "counter",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 103.45,
+      "hp": 0,
+      "kills": 476,
+      "dashes": 0,
+      "totals": {
+        "damage": 130,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 30,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 46,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 54,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 7,
+          "ticks": 1107
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 44
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 88,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 80,
+          "barrier": 0,
+          "kills": 259,
+          "enemies": 24
+        },
+        {
+          "time": 90,
+          "hp": 38,
+          "barrier": 0,
+          "kills": 406,
+          "enemies": 29
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "counter",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 119.8,
+      "hp": 0,
+      "kills": 580,
+      "dashes": 0,
+      "totals": {
+        "damage": 130,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 13
+      },
+      "windows": {
+        "opening": {
+          "damage": 30,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 86,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 8,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 14,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 2088
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 4
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 88,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 74,
+          "barrier": 0,
+          "kills": 258,
+          "enemies": 25
+        },
+        {
+          "time": 90,
+          "hp": 14,
+          "barrier": 0,
+          "kills": 419,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "counter",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 179.73333333333332,
+      "hp": 0,
+      "kills": 857,
+      "dashes": 0,
+      "totals": {
+        "damage": 150,
+        "absorbed": 30,
+        "healed": 0,
+        "barrierGained": 106,
+        "hits": 19
+      },
+      "windows": {
+        "opening": {
+          "damage": 30,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 86,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 8,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 34,
+          "absorbed": 30,
+          "healed": 0,
+          "barrierGained": 106,
+          "hits": 8,
+          "ticks": 5684
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 4
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 14
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 24
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 88,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 74,
+          "barrier": 0,
+          "kills": 258,
+          "enemies": 25
+        },
+        {
+          "time": 90,
+          "hp": 14,
+          "barrier": 0,
+          "kills": 419,
+          "enemies": 28
+        },
+        {
+          "time": 120,
+          "hp": 14,
+          "barrier": 7,
+          "kills": 573,
+          "enemies": 28
+        },
+        {
+          "time": 150,
+          "hp": 24,
+          "barrier": 6,
+          "kills": 684,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "ranged",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 112.85,
+      "hp": 0,
+      "kills": 495,
+      "dashes": 0,
+      "totals": {
+        "damage": 130,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 28,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 46,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1671
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 54
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 36
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 90,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 54,
+          "barrier": 0,
+          "kills": 254,
+          "enemies": 28
+        },
+        {
+          "time": 90,
+          "hp": 46,
+          "barrier": 0,
+          "kills": 388,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "ranged",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 112.85,
+      "hp": 0,
+      "kills": 495,
+      "dashes": 0,
+      "totals": {
+        "damage": 130,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 28,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 46,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1671
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 54
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 36
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 90,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 54,
+          "barrier": 0,
+          "kills": 254,
+          "enemies": 28
+        },
+        {
+          "time": 90,
+          "hp": 46,
+          "barrier": 0,
+          "kills": 388,
+          "enemies": 28
+        }
+      ]
+    },
+    {
+      "policy": "orbit",
+      "route": "ranged",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 95.85,
+      "hp": 0,
+      "kills": 465,
+      "dashes": 0,
+      "totals": {
+        "damage": 130,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 14
+      },
+      "windows": {
+        "opening": {
+          "damage": 56,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 63,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 11,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 651
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 54
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 1
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 90,
+          "barrier": 0,
+          "kills": 86,
+          "enemies": 27
+        },
+        {
+          "time": 60,
+          "hp": 54,
+          "barrier": 0,
+          "kills": 254,
+          "enemies": 28
+        },
+        {
+          "time": 90,
+          "hp": 1,
+          "barrier": 0,
+          "kills": 430,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "tank",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 237.61666666666667,
+      "hp": 88,
+      "kills": 1225,
+      "dashes": 80,
+      "totals": {
+        "damage": 25,
+        "absorbed": 363,
+        "healed": 3,
+        "barrierGained": 437,
+        "hits": 36
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 10,
+          "healed": 0,
+          "barrierGained": 40,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 0,
+          "absorbed": 78,
+          "healed": 0,
+          "barrierGained": 50,
+          "hits": 8,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 25,
+          "absorbed": 275,
+          "healed": 3,
+          "barrierGained": 347,
+          "hits": 27,
+          "ticks": 9241
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 93
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 97
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 86,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 266,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 18,
+          "kills": 442,
+          "enemies": 27
+        },
+        {
+          "time": 120,
+          "hp": 93,
+          "barrier": 2,
+          "kills": 623,
+          "enemies": 20
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 797,
+          "enemies": 23
+        },
+        {
+          "time": 180,
+          "hp": 97,
+          "barrier": 4,
+          "kills": 952,
+          "enemies": 24
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1129,
+          "enemies": 21
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "tank",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 248.91666666666666,
+      "hp": 42,
+      "kills": 1220,
+      "dashes": 79,
+      "totals": {
+        "damage": 80,
+        "absorbed": 317,
+        "healed": 8,
+        "barrierGained": 317,
+        "hits": 27
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 10,
+          "healed": 0,
+          "barrierGained": 40,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 9,
+          "absorbed": 61,
+          "healed": 0,
+          "barrierGained": 56,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 71,
+          "absorbed": 246,
+          "healed": 8,
+          "barrierGained": 221,
+          "hits": 21,
+          "ticks": 9919
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "soulAnchor",
+          "hp": 91
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 95
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 86,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 268,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 439,
+          "enemies": 25
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 605,
+          "enemies": 26
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 7,
+          "kills": 770,
+          "enemies": 30
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 28,
+          "kills": 938,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1084,
+          "enemies": 27
+        },
+        {
+          "time": 240,
+          "hp": 71,
+          "barrier": 5,
+          "kills": 1210,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "tank",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 248.91666666666666,
+      "hp": 49,
+      "kills": 1220,
+      "dashes": 79,
+      "totals": {
+        "damage": 60,
+        "absorbed": 293,
+        "healed": 0,
+        "barrierGained": 337,
+        "hits": 26
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 10,
+          "healed": 0,
+          "barrierGained": 40,
+          "hits": 1,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 9,
+          "absorbed": 61,
+          "healed": 0,
+          "barrierGained": 56,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 51,
+          "absorbed": 222,
+          "healed": 0,
+          "barrierGained": 241,
+          "hits": 20,
+          "ticks": 9919
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 91
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 24,
+          "kills": 86,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 268,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 439,
+          "enemies": 25
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 605,
+          "enemies": 26
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 7,
+          "kills": 770,
+          "enemies": 30
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 28,
+          "kills": 938,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1084,
+          "enemies": 27
+        },
+        {
+          "time": 240,
+          "hp": 71,
+          "barrier": 5,
+          "kills": 1210,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "sustain",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 167.36666666666667,
+      "hp": 0,
+      "kills": 923,
+      "dashes": 56,
+      "totals": {
+        "damage": 218,
+        "absorbed": 0,
+        "healed": 80,
+        "barrierGained": 0,
+        "hits": 18
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 8,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 67,
+          "absorbed": 0,
+          "healed": 19,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 135,
+          "absorbed": 0,
+          "healed": 53,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 4942
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 92
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 52
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 36
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 7
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 87,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 59,
+          "barrier": 0,
+          "kills": 460,
+          "enemies": 20
+        },
+        {
+          "time": 120,
+          "hp": 36,
+          "barrier": 0,
+          "kills": 638,
+          "enemies": 22
+        },
+        {
+          "time": 150,
+          "hp": 9,
+          "barrier": 0,
+          "kills": 821,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "sustain",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 234.15,
+      "hp": 0,
+      "kills": 1234,
+      "dashes": 79,
+      "totals": {
+        "damage": 245,
+        "absorbed": 230,
+        "healed": 120,
+        "barrierGained": 250,
+        "hits": 32
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 8,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 91,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 138,
+          "absorbed": 230,
+          "healed": 88,
+          "barrierGained": 250,
+          "hits": 24,
+          "ticks": 9033
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 92
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 30
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 7
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 14
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 43
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 87,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 35,
+          "barrier": 0,
+          "kills": 458,
+          "enemies": 22
+        },
+        {
+          "time": 120,
+          "hp": 7,
+          "barrier": 0,
+          "kills": 640,
+          "enemies": 18
+        },
+        {
+          "time": 150,
+          "hp": 19,
+          "barrier": 10,
+          "kills": 805,
+          "enemies": 22
+        },
+        {
+          "time": 180,
+          "hp": 35,
+          "barrier": 13,
+          "kills": 976,
+          "enemies": 25
+        },
+        {
+          "time": 210,
+          "hp": 27,
+          "barrier": 8,
+          "kills": 1150,
+          "enemies": 21
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "sustain",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 231.03333333333333,
+      "hp": 22,
+      "kills": 1239,
+      "dashes": 77,
+      "totals": {
+        "damage": 223,
+        "absorbed": -19,
+        "healed": 120,
+        "barrierGained": 140,
+        "hits": 20
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 8,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 91,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 6,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 116,
+          "absorbed": -19,
+          "healed": 88,
+          "barrierGained": 140,
+          "hits": 12,
+          "ticks": 8846
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 92
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 30
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 54
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 63
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 80
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 87,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 30,
+          "barrier": 0,
+          "kills": 457,
+          "enemies": 24
+        },
+        {
+          "time": 120,
+          "hp": 54,
+          "barrier": 1,
+          "kills": 632,
+          "enemies": 24
+        },
+        {
+          "time": 150,
+          "hp": 63,
+          "barrier": 0,
+          "kills": 818,
+          "enemies": 18
+        },
+        {
+          "time": 180,
+          "hp": 72,
+          "barrier": 0,
+          "kills": 986,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 99,
+          "barrier": 0,
+          "kills": 1159,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "counter",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 103.43333333333334,
+      "hp": 0,
+      "kills": 534,
+      "dashes": 35,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 13
+      },
+      "windows": {
+        "opening": {
+          "damage": 42,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 50,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 28,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 1106
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 58
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 18
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 81,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 58,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 16
+        },
+        {
+          "time": 90,
+          "hp": 17,
+          "barrier": 0,
+          "kills": 458,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "counter",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 104.98333333333333,
+      "hp": 0,
+      "kills": 553,
+      "dashes": 35,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 12
+      },
+      "windows": {
+        "opening": {
+          "damage": 42,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 40,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 38,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 1199
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 58
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 28
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 81,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 42,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 38,
+          "barrier": 0,
+          "kills": 456,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "counter",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 104.98333333333333,
+      "hp": 0,
+      "kills": 553,
+      "dashes": 35,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 12
+      },
+      "windows": {
+        "opening": {
+          "damage": 42,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 40,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 38,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 1199
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 58
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 28
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 81,
+          "enemies": 26
+        },
+        {
+          "time": 60,
+          "hp": 42,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 38,
+          "barrier": 0,
+          "kills": 456,
+          "enemies": 22
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "ranged",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 97.66666666666667,
+      "hp": 0,
+      "kills": 506,
+      "dashes": 33,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 67,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 37,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 760
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 27
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 78,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 31,
+          "barrier": 0,
+          "kills": 454,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "ranged",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 97.66666666666667,
+      "hp": 0,
+      "kills": 506,
+      "dashes": 33,
+      "totals": {
+        "damage": 120,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 67,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 37,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 760
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 27
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 78,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 31,
+          "barrier": 0,
+          "kills": 454,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "slowDash",
+      "route": "ranged",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 97.61666666666666,
+      "hp": 0,
+      "kills": 510,
+      "dashes": 33,
+      "totals": {
+        "damage": 101,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 8
+      },
+      "windows": {
+        "opening": {
+          "damage": 16,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 64,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 21,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 757
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 11
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 91,
+          "enemies": 18
+        },
+        {
+          "time": 60,
+          "hp": 59,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 21
+        },
+        {
+          "time": 90,
+          "hp": 11,
+          "barrier": 0,
+          "kills": 456,
+          "enemies": 27
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "tank",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 249.6,
+      "hp": 100,
+      "kills": 1228,
+      "dashes": 32,
+      "totals": {
+        "damage": 3,
+        "absorbed": 297,
+        "healed": 0,
+        "barrierGained": 332,
+        "hits": 18
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 30,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 3,
+          "absorbed": 78,
+          "healed": 0,
+          "barrierGained": 75,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 0,
+          "absorbed": 219,
+          "healed": 0,
+          "barrierGained": 227,
+          "hits": 13,
+          "ticks": 9960
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 97
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 20,
+          "kills": 93,
+          "enemies": 16
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 263,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 432,
+          "enemies": 25
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 601,
+          "enemies": 29
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 761,
+          "enemies": 28
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 925,
+          "enemies": 27
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1082,
+          "enemies": 28
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 25,
+          "kills": 1217,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "tank",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 247.61666666666667,
+      "hp": 61,
+      "kills": 1219,
+      "dashes": 33,
+      "totals": {
+        "damage": 45,
+        "absorbed": 241,
+        "healed": 3,
+        "barrierGained": 246,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 30,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 3,
+          "absorbed": 78,
+          "healed": 0,
+          "barrierGained": 75,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 42,
+          "absorbed": 163,
+          "healed": 3,
+          "barrierGained": 141,
+          "hits": 10,
+          "ticks": 9841
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "soulAnchor",
+          "hp": 97
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 20,
+          "kills": 93,
+          "enemies": 16
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 263,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 13,
+          "kills": 432,
+          "enemies": 28
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 600,
+          "enemies": 30
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 760,
+          "enemies": 30
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 4,
+          "kills": 935,
+          "enemies": 22
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1090,
+          "enemies": 30
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 7,
+          "kills": 1208,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "tank",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 247.61666666666667,
+      "hp": 68,
+      "kills": 1219,
+      "dashes": 33,
+      "totals": {
+        "damage": 35,
+        "absorbed": 235,
+        "healed": 0,
+        "barrierGained": 256,
+        "hits": 15
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 30,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 3,
+          "absorbed": 78,
+          "healed": 0,
+          "barrierGained": 75,
+          "hits": 5,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 32,
+          "absorbed": 157,
+          "healed": 0,
+          "barrierGained": 151,
+          "hits": 10,
+          "ticks": 9841
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 97
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 20,
+          "kills": 93,
+          "enemies": 16
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 263,
+          "enemies": 23
+        },
+        {
+          "time": 90,
+          "hp": 100,
+          "barrier": 13,
+          "kills": 432,
+          "enemies": 28
+        },
+        {
+          "time": 120,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 600,
+          "enemies": 30
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 760,
+          "enemies": 30
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 10,
+          "kills": 935,
+          "enemies": 22
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 1090,
+          "enemies": 30
+        },
+        {
+          "time": 240,
+          "hp": 100,
+          "barrier": 7,
+          "kills": 1208,
+          "enemies": 7
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "sustain",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 179.25,
+      "hp": 0,
+      "kills": 1010,
+      "dashes": 15,
+      "totals": {
+        "damage": 210,
+        "absorbed": 0,
+        "healed": 80,
+        "barrierGained": 0,
+        "hits": 14
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 48,
+          "absorbed": 0,
+          "healed": 22,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 162,
+          "absorbed": 0,
+          "healed": 58,
+          "barrierGained": 0,
+          "hits": 11,
+          "ticks": 5655
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 74
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 36
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 32
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 74,
+          "barrier": 0,
+          "kills": 281,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 86,
+          "barrier": 0,
+          "kills": 471,
+          "enemies": 15
+        },
+        {
+          "time": 120,
+          "hp": 36,
+          "barrier": 0,
+          "kills": 644,
+          "enemies": 25
+        },
+        {
+          "time": 150,
+          "hp": 30,
+          "barrier": 0,
+          "kills": 830,
+          "enemies": 17
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "sustain",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 232.98333333333332,
+      "hp": 100,
+      "kills": 1234,
+      "dashes": 26,
+      "totals": {
+        "damage": 69,
+        "absorbed": 124,
+        "healed": 59,
+        "barrierGained": 149,
+        "hits": 11
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 48,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 21,
+          "absorbed": 124,
+          "healed": 35,
+          "barrierGained": 149,
+          "hits": 8,
+          "ticks": 8963
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 76
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 85
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 76,
+          "barrier": 0,
+          "kills": 280,
+          "enemies": 20
+        },
+        {
+          "time": 90,
+          "hp": 81,
+          "barrier": 0,
+          "kills": 453,
+          "enemies": 27
+        },
+        {
+          "time": 120,
+          "hp": 85,
+          "barrier": 0,
+          "kills": 642,
+          "enemies": 20
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 810,
+          "enemies": 27
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 30,
+          "kills": 976,
+          "enemies": 30
+        },
+        {
+          "time": 210,
+          "hp": 100,
+          "barrier": 25,
+          "kills": 1144,
+          "enemies": 29
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "sustain",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 231.61666666666667,
+      "hp": 76,
+      "kills": 1258,
+      "dashes": 29,
+      "totals": {
+        "damage": 127,
+        "absorbed": 2,
+        "healed": 94,
+        "barrierGained": 120,
+        "hits": 12
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 48,
+          "absorbed": 0,
+          "healed": 24,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 79,
+          "absorbed": 2,
+          "healed": 70,
+          "barrierGained": 120,
+          "hits": 9,
+          "ticks": 8881
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 76
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 97
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 99
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 76,
+          "barrier": 0,
+          "kills": 280,
+          "enemies": 20
+        },
+        {
+          "time": 90,
+          "hp": 81,
+          "barrier": 0,
+          "kills": 453,
+          "enemies": 27
+        },
+        {
+          "time": 120,
+          "hp": 97,
+          "barrier": 0,
+          "kills": 636,
+          "enemies": 26
+        },
+        {
+          "time": 150,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 817,
+          "enemies": 26
+        },
+        {
+          "time": 180,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 1004,
+          "enemies": 19
+        },
+        {
+          "time": 210,
+          "hp": 90,
+          "barrier": 0,
+          "kills": 1177,
+          "enemies": 17
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "counter",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 113.88333333333334,
+      "hp": 0,
+      "kills": 609,
+      "dashes": 14,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 7
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 32,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 2,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 78,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1733
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 68
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 84,
+          "barrier": 0,
+          "kills": 276,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 44,
+          "barrier": 0,
+          "kills": 461,
+          "enemies": 23
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "counter",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 233.7,
+      "hp": 66,
+      "kills": 1233,
+      "dashes": 30,
+      "totals": {
+        "damage": 101,
+        "absorbed": 117,
+        "healed": 27,
+        "barrierGained": 118,
+        "hits": 16
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 41,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 60,
+          "absorbed": 117,
+          "healed": 27,
+          "barrierGained": 118,
+          "hits": 13,
+          "ticks": 9006
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 59
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 9
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 19
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 29
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 279,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 61,
+          "barrier": 0,
+          "kills": 464,
+          "enemies": 17
+        },
+        {
+          "time": 120,
+          "hp": 9,
+          "barrier": 0,
+          "kills": 644,
+          "enemies": 17
+        },
+        {
+          "time": 150,
+          "hp": 19,
+          "barrier": 30,
+          "kills": 819,
+          "enemies": 23
+        },
+        {
+          "time": 180,
+          "hp": 29,
+          "barrier": 30,
+          "kills": 991,
+          "enemies": 26
+        },
+        {
+          "time": 210,
+          "hp": 55,
+          "barrier": 30,
+          "kills": 1150,
+          "enemies": 21
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "counter",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 231.45,
+      "hp": 2,
+      "kills": 1249,
+      "dashes": 24,
+      "totals": {
+        "damage": 138,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 90,
+        "hits": 18
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 41,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 97,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 90,
+          "hits": 15,
+          "ticks": 8871
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 59
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 33
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 27
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 6
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 92,
+          "enemies": 20
+        },
+        {
+          "time": 60,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 279,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 61,
+          "barrier": 0,
+          "kills": 464,
+          "enemies": 17
+        },
+        {
+          "time": 120,
+          "hp": 33,
+          "barrier": 0,
+          "kills": 644,
+          "enemies": 17
+        },
+        {
+          "time": 150,
+          "hp": 27,
+          "barrier": 0,
+          "kills": 815,
+          "enemies": 20
+        },
+        {
+          "time": 180,
+          "hp": 6,
+          "barrier": 0,
+          "kills": 996,
+          "enemies": 19
+        },
+        {
+          "time": 210,
+          "hp": 7,
+          "barrier": 9,
+          "kills": 1170,
+          "enemies": 20
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "ranged",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 112.73333333333333,
+      "hp": 0,
+      "kills": 605,
+      "dashes": 15,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 7
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 48,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 62,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 1664
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 52
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 68,
+          "barrier": 0,
+          "kills": 281,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 45,
+          "barrier": 0,
+          "kills": 467,
+          "enemies": 19
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "ranged",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 112.73333333333333,
+      "hp": 0,
+      "kills": 605,
+      "dashes": 15,
+      "totals": {
+        "damage": 110,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 7
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 48,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 3,
+          "ticks": 2100
+        },
+        "later": {
+          "damage": 62,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 4,
+          "ticks": 1664
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 52
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 68,
+          "barrier": 0,
+          "kills": 281,
+          "enemies": 19
+        },
+        {
+          "time": 90,
+          "hp": 45,
+          "barrier": 0,
+          "kills": 467,
+          "enemies": 19
+        }
+      ]
+    },
+    {
+      "policy": "reflex",
+      "route": "ranged",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 80.98333333333333,
+      "hp": 0,
+      "kills": 411,
+      "dashes": 7,
+      "totals": {
+        "damage": 75,
+        "absorbed": 0,
+        "healed": 0,
+        "barrierGained": 0,
+        "hits": 5
+      },
+      "windows": {
+        "opening": {
+          "damage": 0,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 0,
+          "ticks": 3000
+        },
+        "onePlusOne": {
+          "damage": 75,
+          "absorbed": 0,
+          "healed": 0,
+          "barrierGained": 0,
+          "hits": 5,
+          "ticks": 1859
+        }
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 100
+        }
+      ],
+      "snapshots": [
+        {
+          "time": 30,
+          "hp": 100,
+          "barrier": 0,
+          "kills": 95,
+          "enemies": 17
+        },
+        {
+          "time": 60,
+          "hp": 43,
+          "barrier": 0,
+          "kills": 280,
+          "enemies": 20
+        }
+      ]
+    }
+  ]
+}

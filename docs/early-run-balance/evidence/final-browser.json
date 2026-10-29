@@ -1,0 +1,69 @@
+{
+  "method": "Explicit Specialist/ammo/enemy fixture; real touch or keyboard hold/release with controlled scene updates, not natural runs. Chromium softwareWebGL, no real-device/FPS claim.",
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "viEnDescription": true,
+      "holdRelease": true,
+      "fired": {
+        "ammo": 1,
+        "barrier": 6,
+        "hp": 100,
+        "cooldown": 1.783333333333334
+      },
+      "pauseFreeze": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "viEnDescription": true,
+      "holdRelease": true,
+      "fired": {
+        "ammo": 1,
+        "barrier": 6,
+        "hp": 100,
+        "cooldown": 1.783333333333334
+      },
+      "pauseFreeze": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "viEnDescription": true,
+      "holdRelease": true,
+      "fired": {
+        "ammo": 1,
+        "barrier": 6,
+        "hp": 100,
+        "cooldown": 1.783333333333334
+      },
+      "pauseFreeze": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "viEnDescription": true,
+      "holdRelease": true,
+      "fired": {
+        "ammo": 1,
+        "barrier": 6,
+        "hp": 100,
+        "cooldown": 1.783333333333334
+      },
+      "pauseFreeze": true,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

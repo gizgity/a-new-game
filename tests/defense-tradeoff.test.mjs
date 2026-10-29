@@ -21,7 +21,7 @@ test('stacked tank damage tax covers Heavy, Charged flat bonuses, Phantom and ex
 test('Frenzy remains useful but sustain gives up Blood Pact damage bonus; combined tank cannot heal through Barrier',()=>{
  const {w,e}=setup(['aegisCore','berserker'],'bloodPact');w.hp=50;w.barrier.gain(10,false);w.build.frenzy=4;w.beginAttack(false);
  near(w.attack.damage,18*1.25);w.hitEnemy(e,w.attack.damage,0,0,0,true,'light');near(50000-e.hp,18*1.25*.64);assert.equal(w.hp,50);assert.equal(w.build.healed,0);assert.equal(w.build.bloodCooldown,0);
- w.barrier.value=0;w.hitEnemy(e,1,0,0,0,true,'light');assert.equal(w.hp,52);
+ w.barrier.value=0;w.hitEnemy(e,1,0,0,0,true,'light');assert.equal(w.hp,53);
  const crossing=setup(['aegisCore'],'bloodPact');crossing.w.hp=50;crossing.w.barrier.aegisDamage=39;crossing.w.hitEnemy(crossing.e,10,0,0,0,true,'light');assert.equal(crossing.w.barrier.value,4);assert.equal(crossing.w.hp,50,'the hit which creates Barrier cannot also heal HP');
 });
 test('Aegis has a bounded4/s rate (5 with Oath) even on dense cleaves',()=>{

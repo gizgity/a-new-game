@@ -1,0 +1,450 @@
+{
+  "method": "Fresh isolated desktop Chromium1440x1000, production-generated ticket seed (not captured in this run; pre-click seed808 override was overwritten by normal start flow), real RAF, nearest-target keyboard/mouse policy sampled ~300ms; no dash; Heavy/Q every3 simulation seconds. Automated play, not human feel/device performance.",
+  "wallSeconds": 211.123,
+  "drafts": [
+    {
+      "time": 20,
+      "id": "bloodReclaimer"
+    },
+    {
+      "time": 50,
+      "id": "parasiticMark"
+    },
+    {
+      "time": 85,
+      "id": "phantomEdge"
+    },
+    {
+      "time": 120,
+      "id": "echoChamber"
+    },
+    {
+      "time": 155,
+      "id": "parasiticMark"
+    }
+  ],
+  "samples": [
+    {
+      "phase": "playing",
+      "time": 0,
+      "result": null,
+      "hp": 100,
+      "barrier": 0,
+      "kills": 0,
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 355.40182201522566,
+      "dy": -57.35455438112854,
+      "d": 359.99999999999994,
+      "aim": {
+        "x": 1012.8942424768212,
+        "y": 268.3976801247364
+      },
+      "draft": [],
+      "mutations": [],
+      "curses": []
+    },
+    {
+      "phase": "playing",
+      "time": 10.233333333333333,
+      "result": null,
+      "hp": 100,
+      "barrier": 0,
+      "kills": 20,
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -234.51324110503128,
+      "dy": -20.4417912432516,
+      "d": 235.4024789224175,
+      "aim": {
+        "x": 623.733804345925,
+        "y": 267.6053938173966
+      },
+      "draft": [],
+      "mutations": [],
+      "curses": []
+    },
+    {
+      "phase": "draft",
+      "time": 20,
+      "result": null,
+      "hp": 100,
+      "barrier": 0,
+      "kills": 44,
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -57.14316166202127,
+      "dy": 87.74495333882584,
+      "d": 104.71159325100838,
+      "aim": {
+        "x": 737.5035761781194,
+        "y": 346.4964949312974
+      },
+      "draft": [
+        "aegisCore",
+        "bloodReclaimer",
+        "phantomEdge",
+        "detonationSpecialist"
+      ],
+      "mutations": [],
+      "curses": []
+    },
+    {
+      "phase": "playing",
+      "time": 30.033333333333335,
+      "result": null,
+      "hp": 100,
+      "barrier": 0,
+      "kills": 95,
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -96.42088818712557,
+      "dy": -69.83152621717267,
+      "d": 119.05221431209856,
+      "aim": {
+        "x": 528.4679954991255,
+        "y": 260.53579083281755
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": []
+    },
+    {
+      "phase": "playing",
+      "time": 40.38333333333333,
+      "result": null,
+      "hp": 100,
+      "barrier": 0,
+      "kills": 159,
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 80.81514586444916,
+      "dy": -3.718115778734102,
+      "d": 80.90063155523735,
+      "aim": {
+        "x": 776.8019124457821,
+        "y": 345.73300328538073
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": []
+    },
+    {
+      "phase": "draft",
+      "time": 50,
+      "result": null,
+      "hp": 84,
+      "barrier": 0,
+      "kills": 221,
+      "damage": 16,
+      "healed": 0,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -3.2730141873901175,
+      "dy": 136.61144825523616,
+      "d": 136.65065099099937,
+      "aim": {
+        "x": 649.3175250914583,
+        "y": 523.7611780247468
+      },
+      "draft": [
+        "bloodPact",
+        "parasiticMark",
+        "ghostStep"
+      ],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": []
+    },
+    {
+      "phase": "playing",
+      "time": 60.21666666666667,
+      "result": null,
+      "hp": 81,
+      "barrier": 0,
+      "kills": 279,
+      "damage": 32,
+      "healed": 8,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -187.1207694430595,
+      "dy": -167.74518548475567,
+      "d": 251.30186949220592,
+      "aim": {
+        "x": 258.9453691530729,
+        "y": 285.9580869733016
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 70.11666666666666,
+      "result": null,
+      "hp": 57,
+      "barrier": 0,
+      "kills": 344,
+      "damage": 64,
+      "healed": 16,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -0.24970505714725277,
+      "dy": 103.46919262710173,
+      "d": 103.46949393671476,
+      "aim": {
+        "x": 557.5316641266288,
+        "y": 464.31761047270317
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 80.15,
+      "result": null,
+      "hp": 23,
+      "barrier": 0,
+      "kills": 405,
+      "damage": 106,
+      "healed": 24,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 78.47246425531938,
+      "dy": 0.9194061324234326,
+      "d": 78.4778500848406,
+      "aim": {
+        "x": 531.4936564274917,
+        "y": 358.93450203566107
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 90.11666666666666,
+      "result": null,
+      "hp": 19,
+      "barrier": 0,
+      "kills": 466,
+      "damage": 123,
+      "healed": 32,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 165.9341675277371,
+      "dy": -54.085501254962765,
+      "d": 174.52618542535015,
+      "aim": {
+        "x": 509.1291270859318,
+        "y": 224.91233008573883
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 100.05,
+      "result": null,
+      "hp": 19,
+      "barrier": 0,
+      "kills": 524,
+      "damage": 123,
+      "healed": 32,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 226.17030908645327,
+      "dy": 39.48459121865153,
+      "d": 229.59103130559308,
+      "aim": {
+        "x": 407.09335103915015,
+        "y": 449.0661456760771
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 110.21666666666667,
+      "result": null,
+      "hp": 10,
+      "barrier": 0,
+      "kills": 577,
+      "damage": 140,
+      "healed": 40,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -29.59721431468958,
+      "dy": 83.6725165155666,
+      "d": 88.75294426235915,
+      "aim": {
+        "x": 210.36560243583787,
+        "y": 458.7786750579521
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "draft",
+      "time": 120,
+      "result": null,
+      "hp": 4,
+      "barrier": 0,
+      "kills": 633,
+      "damage": 154,
+      "healed": 48,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -10.710007554777178,
+      "dy": 95.81753106633494,
+      "d": 96.41422883304853,
+      "aim": {
+        "x": 309.86392074663644,
+        "y": 554.9387021554944
+      },
+      "draft": [
+        "echoChamber",
+        "soulAnchor",
+        "guardBreaker"
+      ],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 130.28333333333333,
+      "result": null,
+      "hp": 17,
+      "barrier": 0,
+      "kills": 706,
+      "damage": 154,
+      "healed": 56,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -160.36997117985987,
+      "dy": -7.069759990908267,
+      "d": 160.52572741638062,
+      "aim": {
+        "x": 438.4798312296021,
+        "y": 281.29176126227236
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 140.26666666666668,
+      "result": null,
+      "hp": 22,
+      "barrier": 0,
+      "kills": 760,
+      "damage": 154,
+      "healed": 61,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": 98.20636402702189,
+      "dy": 88.88288340957786,
+      "d": 132.45624522312474,
+      "aim": {
+        "x": 482.20656965188044,
+        "y": 414.6353973191478
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    },
+    {
+      "phase": "playing",
+      "time": 150.18333333333334,
+      "result": null,
+      "hp": 13,
+      "barrier": 0,
+      "kills": 818,
+      "damage": 166,
+      "healed": 64,
+      "absorbed": 0,
+      "dashes": 0,
+      "dx": -5.3090096343639175,
+      "dy": 82.6049979432687,
+      "d": 82.77542671895564,
+      "aim": {
+        "x": 415.8140167606602,
+        "y": 432.2070956772087
+      },
+      "draft": [],
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ]
+    }
+  ],
+  "errors": []
+}

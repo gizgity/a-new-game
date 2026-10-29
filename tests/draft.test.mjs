@@ -81,8 +81,8 @@ test('dash/Perfect and Heavy counters measure started attempts and successful in
 test('enemy absorbed/HP loss and actual sustain exclude self-cost/hazard, invulnerability and draft heals',()=>{
  const w=world();w.hp=60;w.barrier.gain(10,false);w.hurt(20,0);assert.equal(w.draftSignals.absorbed,10);assert.equal(w.draftSignals.enemyHpDamage,10);
  w.invulnerable=0;w.hurt(8,0,false);w.payBloodMiss();assert.equal(w.draftSignals.enemyHpDamage,10);w.hurt(5,0);assert.equal(w.draftSignals.enemyHpDamage,10);
- w.setCurses(['bloodPact']);w.hitEnemy(target(w),1,0,0,0,true,'light');assert.equal(w.draftSignals.healed,2);
- const r=new RunDirector(w);r.draftKind='mutation';r.draft=[{id:'catalyst',role:'wildcard'}];r.choose(0);assert.equal(w.draftSignals.healed,2);
+ w.setCurses(['bloodPact']);w.hitEnemy(target(w),1,0,0,0,true,'light');assert.equal(w.draftSignals.healed,3);
+ const r=new RunDirector(w);r.draftKind='mutation';r.draft=[{id:'catalyst',role:'wildcard'}];r.choose(0);assert.equal(w.draftSignals.healed,3);
 });
 test('chain signals count marked triggers with executed relays/actual targets, never pending VFX/echo-only',()=>{
  const w=world();for(let i=0;i<3;i++)target(w,850+i*70).rupture=1;

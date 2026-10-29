@@ -1,0 +1,7059 @@
+{
+  "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate. bossSafe keeps330–420px from visible Boss; both baseline and final use the same policy.",
+  "policy": "bossSafe",
+  "set": "development",
+  "summary": [
+    {
+      "mode": "none",
+      "route": "tank",
+      "wins": 7,
+      "total": 8,
+      "rate": 0.875,
+      "alive100": 8,
+      "medianEnd": 233.93333333333334,
+      "boss": 8
+    },
+    {
+      "mode": "none",
+      "route": "sustain",
+      "wins": 3,
+      "total": 8,
+      "rate": 0.375,
+      "alive100": 8,
+      "medianEnd": 227.88333333333333,
+      "boss": 4
+    },
+    {
+      "mode": "none",
+      "route": "counter",
+      "wins": 3,
+      "total": 8,
+      "rate": 0.375,
+      "alive100": 8,
+      "medianEnd": 229.33333333333334,
+      "boss": 4
+    },
+    {
+      "mode": "none",
+      "route": "ranged",
+      "wins": 0,
+      "total": 8,
+      "rate": 0,
+      "alive100": 8,
+      "medianEnd": 116.31666666666666,
+      "boss": 1
+    },
+    {
+      "mode": "observed",
+      "route": "tank",
+      "wins": 8,
+      "total": 8,
+      "rate": 1,
+      "alive100": 8,
+      "medianEnd": 234.73333333333332,
+      "boss": 8
+    },
+    {
+      "mode": "observed",
+      "route": "sustain",
+      "wins": 2,
+      "total": 8,
+      "rate": 0.25,
+      "alive100": 8,
+      "medianEnd": 228.7,
+      "boss": 4
+    },
+    {
+      "mode": "observed",
+      "route": "counter",
+      "wins": 4,
+      "total": 8,
+      "rate": 0.5,
+      "alive100": 8,
+      "medianEnd": 230.35,
+      "boss": 5
+    },
+    {
+      "mode": "observed",
+      "route": "ranged",
+      "wins": 3,
+      "total": 8,
+      "rate": 0.375,
+      "alive100": 8,
+      "medianEnd": 224.03333333333333,
+      "boss": 4
+    },
+    {
+      "mode": "reflex",
+      "route": "tank",
+      "wins": 8,
+      "total": 8,
+      "rate": 1,
+      "alive100": 8,
+      "medianEnd": 234.71666666666667,
+      "boss": 8
+    },
+    {
+      "mode": "reflex",
+      "route": "sustain",
+      "wins": 8,
+      "total": 8,
+      "rate": 1,
+      "alive100": 8,
+      "medianEnd": 230.38333333333333,
+      "boss": 8
+    },
+    {
+      "mode": "reflex",
+      "route": "counter",
+      "wins": 7,
+      "total": 8,
+      "rate": 0.875,
+      "alive100": 8,
+      "medianEnd": 230.81666666666666,
+      "boss": 7
+    },
+    {
+      "mode": "reflex",
+      "route": "ranged",
+      "wins": 7,
+      "total": 8,
+      "rate": 0.875,
+      "alive100": 8,
+      "medianEnd": 250,
+      "boss": 8
+    }
+  ],
+  "reports": [
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 229.91666666666666,
+      "hp": 52,
+      "hp100": 100,
+      "boss": 222.48333333333332,
+      "kills": 1269,
+      "shots": 817,
+      "charged": 140,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "guardBreaker",
+        "kineticBattery",
+        "detonationSpecialist"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 76,
+      "healed": 0,
+      "absorbed": 266,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 92,
+        "damage": 28,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker",
+          "hp": 92
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "detonationSpecialist",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 230.2,
+      "hp": 79,
+      "hp100": 100,
+      "boss": 222.43333333333334,
+      "kills": 1261,
+      "shots": 813,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 49,
+      "healed": 0,
+      "absorbed": 226,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 92,
+        "damage": 28,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 92
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 234.5,
+      "hp": 0,
+      "hp100": 100,
+      "boss": 222.61666666666667,
+      "kills": 1220,
+      "shots": 825,
+      "charged": 136,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 126,
+      "healed": 0,
+      "absorbed": 255,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 94
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.93333333333334,
+      "hp": 79,
+      "hp100": 100,
+      "boss": 222.48333333333332,
+      "kills": 1271,
+      "shots": 823,
+      "charged": 134,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "kineticBattery"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 49,
+      "healed": 0,
+      "absorbed": 203,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 92,
+        "damage": 28,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 92
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 233.93333333333334,
+      "hp": 67,
+      "hp100": 100,
+      "boss": 222.43333333333334,
+      "kills": 1221,
+      "shots": 816,
+      "charged": 141,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "soulAnchor"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 62,
+      "healed": 0,
+      "absorbed": 313,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 94
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 97
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 232.9,
+      "hp": 89,
+      "hp100": 100,
+      "boss": 222.63333333333333,
+      "kills": 1241,
+      "shots": 815,
+      "charged": 142,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "berserker",
+        "guardBreaker",
+        "kineticBattery"
+      ],
+      "curses": [
+        "volatileSoul",
+        "ironOath"
+      ],
+      "damage": 46,
+      "healed": 0,
+      "absorbed": 293,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 92,
+        "damage": 28,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 92
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 85
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 95
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 234.93333333333334,
+      "hp": 11,
+      "hp100": 100,
+      "boss": 222.56666666666666,
+      "kills": 1214,
+      "shots": 818,
+      "charged": 139,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "soulAnchor",
+        "echoChamber"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 126,
+      "healed": 0,
+      "absorbed": 286,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 94
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 89
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 99
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "none",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 234.8,
+      "hp": 26,
+      "hp100": 100,
+      "boss": 222.46666666666667,
+      "kills": 1230,
+      "shots": 816,
+      "charged": 142,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "kineticBattery",
+        "guardBreaker"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 101,
+      "healed": 0,
+      "absorbed": 270,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 24
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 94,
+        "damage": 26,
+        "healed": 0,
+        "absorbed": 74
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 84
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 94
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 99
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 231.81666666666666,
+      "hp": 70,
+      "hp100": 100,
+      "boss": 222.66666666666666,
+      "kills": 1266,
+      "shots": 800,
+      "charged": 150,
+      "phantom": 0,
+      "dashes": 8,
+      "perfects": 8,
+      "mutations": [
+        "aegisCore",
+        "guardBreaker",
+        "ironReversal",
+        "staticRiposte"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 40,
+      "healed": 0,
+      "absorbed": 208,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 32
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 234.71666666666667,
+      "hp": 80,
+      "hp100": 100,
+      "boss": 222.48333333333332,
+      "kills": 1258,
+      "shots": 807,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 14,
+      "perfects": 14,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul",
+        "ironOath"
+      ],
+      "damage": 30,
+      "healed": 0,
+      "absorbed": 227,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 32
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 159,
+      "result": "victory",
+      "reason": null,
+      "time": 234.73333333333332,
+      "hp": 100,
+      "hp100": 100,
+      "boss": 222.45,
+      "kills": 1248,
+      "shots": 815,
+      "charged": 140,
+      "phantom": 0,
+      "dashes": 8,
+      "perfects": 8,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 17,
+      "healed": 0,
+      "absorbed": 179,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 93,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 71
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 93
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 232.26666666666668,
+      "hp": 90,
+      "hp100": 100,
+      "boss": 222.66666666666666,
+      "kills": 1266,
+      "shots": 801,
+      "charged": 150,
+      "phantom": 0,
+      "dashes": 8,
+      "perfects": 8,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "kineticBattery"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 20,
+      "healed": 0,
+      "absorbed": 228,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 32
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 236.08333333333334,
+      "hp": 100,
+      "hp100": 100,
+      "boss": 222.51666666666668,
+      "kills": 1244,
+      "shots": 825,
+      "charged": 137,
+      "phantom": 0,
+      "dashes": 12,
+      "perfects": 12,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 17,
+      "healed": 0,
+      "absorbed": 210,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 93,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 71
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 93
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 235.53333333333333,
+      "hp": 46,
+      "hp100": 100,
+      "boss": 222.58333333333334,
+      "kills": 1245,
+      "shots": 826,
+      "charged": 138,
+      "phantom": 0,
+      "dashes": 14,
+      "perfects": 14,
+      "mutations": [
+        "aegisCore",
+        "berserker",
+        "guardBreaker",
+        "kineticBattery"
+      ],
+      "curses": [
+        "volatileSoul",
+        "ironOath"
+      ],
+      "damage": 84,
+      "healed": 0,
+      "absorbed": 302,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 32
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 68
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 76
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 234.66666666666666,
+      "hp": 17,
+      "hp100": 100,
+      "boss": 222.53333333333333,
+      "kills": 1243,
+      "shots": 815,
+      "charged": 141,
+      "phantom": 0,
+      "dashes": 8,
+      "perfects": 8,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "soulAnchor",
+        "echoChamber"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 100,
+      "healed": 0,
+      "absorbed": 266,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 93,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 71
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 93
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "observed",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 234.95,
+      "hp": 59,
+      "hp100": 100,
+      "boss": 222.5,
+      "kills": 1232,
+      "shots": 817,
+      "charged": 137,
+      "phantom": 0,
+      "dashes": 14,
+      "perfects": 14,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "staticRiposte"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 58,
+      "healed": 0,
+      "absorbed": 213,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 93,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 71
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 93
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 234.71666666666667,
+      "hp": 25,
+      "hp100": 97,
+      "boss": 222.56666666666666,
+      "kills": 1255,
+      "shots": 807,
+      "charged": 150,
+      "phantom": 15,
+      "dashes": 26,
+      "perfects": 26,
+      "mutations": [
+        "aegisCore",
+        "phantomEdge",
+        "ironReversal",
+        "staticRiposte"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 78,
+      "healed": 0,
+      "absorbed": 206,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 65
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 97
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 232.9,
+      "hp": 35,
+      "hp100": 100,
+      "boss": 222.48333333333332,
+      "kills": 1287,
+      "shots": 820,
+      "charged": 147,
+      "phantom": 0,
+      "dashes": 21,
+      "perfects": 21,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 65,
+      "healed": 0,
+      "absorbed": 161,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 48
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "berserker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 159,
+      "result": "victory",
+      "reason": null,
+      "time": 235.95,
+      "hp": 56,
+      "hp100": 100,
+      "boss": 222.55,
+      "kills": 1252,
+      "shots": 825,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 25,
+      "perfects": 25,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 44,
+      "healed": 0,
+      "absorbed": 211,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 65
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.61666666666667,
+      "hp": 70,
+      "hp100": 100,
+      "boss": 222.4,
+      "kills": 1288,
+      "shots": 817,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 18,
+      "perfects": 18,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 46,
+      "healed": 0,
+      "absorbed": 138,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 48
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 66
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 60
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 234.41666666666666,
+      "hp": 70,
+      "hp100": 100,
+      "boss": 222.63333333333333,
+      "kills": 1261,
+      "shots": 818,
+      "charged": 143,
+      "phantom": 0,
+      "dashes": 19,
+      "perfects": 19,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "guardBreaker",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 33,
+      "healed": 3,
+      "absorbed": 207,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 65
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 234.1,
+      "hp": 100,
+      "hp100": 100,
+      "boss": 222.53333333333333,
+      "kills": 1265,
+      "shots": 821,
+      "charged": 146,
+      "phantom": 0,
+      "dashes": 20,
+      "perfects": 20,
+      "mutations": [
+        "aegisCore",
+        "guardBreaker",
+        "kineticBattery",
+        "soulAnchor"
+      ],
+      "curses": [
+        "volatileSoul",
+        "ironOath"
+      ],
+      "damage": 0,
+      "healed": 0,
+      "absorbed": 92,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 48
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "guardBreaker",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 236.11666666666667,
+      "hp": 64,
+      "hp100": 100,
+      "boss": 222.7,
+      "kills": 1267,
+      "shots": 827,
+      "charged": 139,
+      "phantom": 0,
+      "dashes": 21,
+      "perfects": 21,
+      "mutations": [
+        "aegisCore",
+        "ironReversal",
+        "soulAnchor",
+        "echoChamber"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 36,
+      "healed": 0,
+      "absorbed": 200,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 65
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "tank",
+      "mode": "reflex",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 234.93333333333334,
+      "hp": 38,
+      "hp100": 99,
+      "boss": 222.5,
+      "kills": 1239,
+      "shots": 826,
+      "charged": 135,
+      "phantom": 0,
+      "dashes": 21,
+      "perfects": 21,
+      "mutations": [
+        "aegisCore",
+        "detonationSpecialist",
+        "kineticBattery",
+        "guardBreaker"
+      ],
+      "curses": [
+        "ironOath"
+      ],
+      "damage": 63,
+      "healed": 0,
+      "absorbed": 320,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 65
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "aegisCore",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 99
+        },
+        {
+          "time": 155,
+          "id": "ironOath",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 144.9,
+      "hp": 0,
+      "hp100": 52,
+      "boss": null,
+      "kills": 821,
+      "shots": 524,
+      "charged": 94,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 196,
+      "healed": 80,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 90,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 48,
+        "damage": 107,
+        "healed": 43,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 48
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 39
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 120.71666666666667,
+      "hp": 0,
+      "hp100": 41,
+      "boss": null,
+      "kills": 663,
+      "shots": 438,
+      "charged": 80,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "catalyst",
+        "detonationSpecialist"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 199,
+      "healed": 67,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 90,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 48,
+        "damage": 107,
+        "healed": 43,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 48
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 8
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 227.88333333333333,
+      "hp": 0,
+      "hp100": 42,
+      "boss": 222.56666666666666,
+      "kills": 1285,
+      "shots": 803,
+      "charged": 147,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "soulAnchor",
+        "kineticBattery",
+        "berserker"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 267,
+      "healed": 132,
+      "absorbed": 126,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 85,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 37,
+        "damage": 123,
+        "healed": 45,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "soulAnchor",
+          "hp": 37
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 39
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 32
+        },
+        {
+          "time": 190,
+          "id": "berserker",
+          "hp": 25
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 229.3,
+      "hp": 35,
+      "hp100": 43,
+      "boss": 222.33333333333334,
+      "kills": 1292,
+      "shots": 819,
+      "charged": 146,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "guardBreaker",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 247,
+      "healed": 134,
+      "absorbed": 170,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 90,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 48,
+        "damage": 107,
+        "healed": 43,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 48
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 34
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 65
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 94
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 168.18333333333334,
+      "hp": 0,
+      "hp100": 42,
+      "boss": null,
+      "kills": 963,
+      "shots": 602,
+      "charged": 112,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "echoChamber",
+        "detonationSpecialist"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 226,
+      "healed": 96,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 85,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 37,
+        "damage": 123,
+        "healed": 45,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 37
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 39
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 7
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 229.35,
+      "hp": 40,
+      "hp100": 53,
+      "boss": 222.51666666666668,
+      "kills": 1290,
+      "shots": 811,
+      "charged": 150,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 225,
+      "healed": 135,
+      "absorbed": 140,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 85,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 37,
+        "damage": 123,
+        "healed": 45,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 37
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 61
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 86
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 228.98333333333332,
+      "hp": 5,
+      "hp100": 53,
+      "boss": 222.63333333333333,
+      "kills": 1282,
+      "shots": 804,
+      "charged": 151,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "ironReversal",
+        "catalyst"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 265,
+      "healed": 135,
+      "absorbed": 168,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 85,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 37,
+        "damage": 123,
+        "healed": 45,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 37
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 61
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 64
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 36
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "none",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 160.03333333333333,
+      "hp": 0,
+      "hp100": 42,
+      "boss": null,
+      "kills": 901,
+      "shots": 573,
+      "charged": 105,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "bloodReclaimer",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 223,
+      "healed": 93,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 85,
+        "damage": 52,
+        "healed": 22,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 37,
+        "damage": 123,
+        "healed": 45,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 80
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 80
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 37
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 39
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 21
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 169.91666666666666,
+      "hp": 0,
+      "hp100": 57,
+      "boss": null,
+      "kills": 966,
+      "shots": 610,
+      "charged": 103,
+      "phantom": 9,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 227,
+      "healed": 83,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 71,
+        "damage": 73,
+        "healed": 30,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 71
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 32
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 13
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 230.23333333333332,
+      "hp": 10,
+      "hp100": 46,
+      "boss": 222.21666666666667,
+      "kills": 1284,
+      "shots": 822,
+      "charged": 143,
+      "phantom": 0,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "bloodReclaimer",
+        "catalyst",
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 243,
+      "healed": 115,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 71,
+        "damage": 73,
+        "healed": 30,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 71
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 57
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 38
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 20
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 113.76666666666667,
+      "hp": 0,
+      "hp100": 19,
+      "boss": null,
+      "kills": 620,
+      "shots": 410,
+      "charged": 69,
+      "phantom": 0,
+      "dashes": 6,
+      "perfects": 6,
+      "mutations": [
+        "bloodReclaimer",
+        "detonationSpecialist"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 175,
+      "healed": 56,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 3,
+        "damage": 148,
+        "healed": 37,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 3
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 231.5,
+      "hp": 35,
+      "hp100": 76,
+      "boss": 222.43333333333334,
+      "kills": 1290,
+      "shots": 832,
+      "charged": 138,
+      "phantom": 0,
+      "dashes": 11,
+      "perfects": 11,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "staticRiposte",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 207,
+      "healed": 120,
+      "absorbed": 176,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 71,
+        "damage": 73,
+        "healed": 30,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 71
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 42
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 46
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 63
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 111.85,
+      "hp": 0,
+      "hp100": 19,
+      "boss": null,
+      "kills": 609,
+      "shots": 406,
+      "charged": 66,
+      "phantom": 0,
+      "dashes": 5,
+      "perfects": 5,
+      "mutations": [
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 175,
+      "healed": 56,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 3,
+        "damage": 148,
+        "healed": 37,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 3
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 1337,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 229.81666666666666,
+      "hp": 0,
+      "hp100": 19,
+      "boss": 222.45,
+      "kills": 1282,
+      "shots": 816,
+      "charged": 143,
+      "phantom": 0,
+      "dashes": 11,
+      "perfects": 11,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 262,
+      "healed": 128,
+      "absorbed": 140,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 3,
+        "damage": 148,
+        "healed": 37,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 3
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 19
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 32
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 22
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 228.7,
+      "hp": 0,
+      "hp100": 19,
+      "boss": 222.46666666666667,
+      "kills": 1279,
+      "shots": 819,
+      "charged": 134,
+      "phantom": 0,
+      "dashes": 12,
+      "perfects": 12,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "ironReversal",
+        "catalyst"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 262,
+      "healed": 128,
+      "absorbed": 152,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 3,
+        "damage": 148,
+        "healed": 37,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 3
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 19
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 4
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 33
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "observed",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 128.55,
+      "hp": 0,
+      "hp100": 13,
+      "boss": null,
+      "kills": 704,
+      "shots": 458,
+      "charged": 82,
+      "phantom": 0,
+      "dashes": 5,
+      "perfects": 5,
+      "mutations": [
+        "bloodReclaimer",
+        "berserker",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 188,
+      "healed": 64,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 30,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 3,
+        "damage": 148,
+        "healed": 37,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 90
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 96
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 3
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 19
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 229.71666666666667,
+      "hp": 58,
+      "hp100": 86,
+      "boss": 222.45,
+      "kills": 1300,
+      "shots": 817,
+      "charged": 148,
+      "phantom": 16,
+      "dashes": 27,
+      "perfects": 26,
+      "mutations": [
+        "bloodReclaimer",
+        "phantomEdge",
+        "echoChamber",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 135,
+      "healed": 87,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 8,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 82
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 78
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 66
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 228.03333333333333,
+      "hp": 17,
+      "hp100": 100,
+      "boss": 222.4,
+      "kills": 1300,
+      "shots": 813,
+      "charged": 151,
+      "phantom": 0,
+      "dashes": 19,
+      "perfects": 19,
+      "mutations": [
+        "bloodReclaimer",
+        "catalyst",
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 138,
+      "healed": 83,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 8,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 40
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 63
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 159,
+      "result": "victory",
+      "reason": null,
+      "time": 230.46666666666667,
+      "hp": 26,
+      "hp100": 71,
+      "boss": 222.5,
+      "kills": 1302,
+      "shots": 837,
+      "charged": 136,
+      "phantom": 0,
+      "dashes": 23,
+      "perfects": 22,
+      "mutations": [
+        "bloodReclaimer",
+        "detonationSpecialist",
+        "kineticBattery",
+        "soulAnchor"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 203,
+      "healed": 109,
+      "absorbed": 98,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 58,
+        "damage": 58,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 58
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 18
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 8
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 16
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.85,
+      "hp": 28,
+      "hp100": 100,
+      "boss": 222.4,
+      "kills": 1300,
+      "shots": 835,
+      "charged": 142,
+      "phantom": 0,
+      "dashes": 27,
+      "perfects": 27,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "staticRiposte",
+        "catalyst"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 133,
+      "healed": 61,
+      "absorbed": 96,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 8,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 81
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 96
+        },
+        {
+          "time": 190,
+          "id": "catalyst",
+          "hp": 58
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 228.83333333333334,
+      "hp": 1,
+      "hp100": 71,
+      "boss": 222.46666666666667,
+      "kills": 1288,
+      "shots": 819,
+      "charged": 147,
+      "phantom": 0,
+      "dashes": 17,
+      "perfects": 17,
+      "mutations": [
+        "bloodReclaimer",
+        "echoChamber",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 223,
+      "healed": 104,
+      "absorbed": 10,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 58,
+        "damage": 58,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 58
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 51
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 77
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 63
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 230.38333333333333,
+      "hp": 76,
+      "hp100": 71,
+      "boss": 222.43333333333334,
+      "kills": 1284,
+      "shots": 832,
+      "charged": 143,
+      "phantom": 0,
+      "dashes": 20,
+      "perfects": 20,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 117,
+      "healed": 75,
+      "absorbed": 72,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 58,
+        "damage": 58,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 58
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 75
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 94
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 97
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 229.63333333333333,
+      "hp": 63,
+      "hp100": 71,
+      "boss": 222.36666666666667,
+      "kills": 1287,
+      "shots": 827,
+      "charged": 145,
+      "phantom": 0,
+      "dashes": 23,
+      "perfects": 23,
+      "mutations": [
+        "bloodReclaimer",
+        "kineticBattery",
+        "ironReversal",
+        "soulAnchor"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 166,
+      "healed": 109,
+      "absorbed": 108,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 58,
+        "damage": 58,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "kineticBattery",
+          "hp": 58
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 75
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 93
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 92
+        }
+      ]
+    },
+    {
+      "route": "sustain",
+      "mode": "reflex",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 230.96666666666667,
+      "hp": 49,
+      "hp100": 71,
+      "boss": 222.31666666666666,
+      "kills": 1288,
+      "shots": 842,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 24,
+      "perfects": 24,
+      "mutations": [
+        "bloodReclaimer",
+        "berserker",
+        "kineticBattery",
+        "soulAnchor"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 180,
+      "healed": 109,
+      "absorbed": 100,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 58,
+        "damage": 58,
+        "healed": 16,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "bloodReclaimer",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 58
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 70
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 51
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 67
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 111.9,
+      "hp": 0,
+      "hp100": 51,
+      "boss": null,
+      "kills": 602,
+      "shots": 420,
+      "charged": 68,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "catalyst"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 110,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 68,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 68
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 229.33333333333334,
+      "hp": 21,
+      "hp100": 82,
+      "boss": 222.56666666666666,
+      "kills": 1256,
+      "shots": 831,
+      "charged": 130,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 205,
+      "healed": 88,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 68,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 68
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 92
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 50
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 62
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 189.15,
+      "hp": 0,
+      "hp100": 59,
+      "boss": null,
+      "kills": 1070,
+      "shots": 699,
+      "charged": 113,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 106,
+      "healed": 0,
+      "absorbed": 30,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 51
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 29
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.08333333333334,
+      "hp": 48,
+      "hp100": 68,
+      "boss": 222.55,
+      "kills": 1267,
+      "shots": 849,
+      "charged": 123,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "bloodReclaimer",
+        "kineticBattery"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 159,
+      "healed": 67,
+      "absorbed": 48,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 68,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 68
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 68
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 35
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 55
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 229.88333333333333,
+      "hp": 0,
+      "hp100": 60,
+      "boss": 222.53333333333333,
+      "kills": 1249,
+      "shots": 843,
+      "charged": 130,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "aegisCore",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 152,
+      "healed": 24,
+      "absorbed": 147,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 46
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 11
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 9
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 229.38333333333333,
+      "hp": 55,
+      "hp100": 71,
+      "boss": 222.5,
+      "kills": 1258,
+      "shots": 863,
+      "charged": 121,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 119,
+      "healed": 91,
+      "absorbed": 96,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 70
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 83
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 99
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 173.08333333333334,
+      "hp": 0,
+      "hp100": 60,
+      "boss": null,
+      "kills": 970,
+      "shots": 653,
+      "charged": 100,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "soulAnchor"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 114,
+      "healed": 0,
+      "absorbed": 12,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "soulAnchor",
+          "hp": 46
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 11
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "none",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 143.91666666666666,
+      "hp": 0,
+      "hp100": 58,
+      "boss": null,
+      "kills": 785,
+      "shots": 520,
+      "charged": 90,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "ironReversal"
+      ],
+      "curses": [
+        "bloodPact"
+      ],
+      "damage": 144,
+      "healed": 44,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 63,
+        "damage": 47,
+        "healed": 18,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "bloodPact",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 63
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 29
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 231.73333333333332,
+      "hp": 46,
+      "hp100": 74,
+      "boss": 222.46666666666667,
+      "kills": 1280,
+      "shots": 840,
+      "charged": 138,
+      "phantom": 8,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "phantomEdge",
+        "catalyst",
+        "kineticBattery",
+        "staticRiposte"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 94,
+      "healed": 0,
+      "absorbed": 88,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 64,
+        "damage": 36,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 64
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 74
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 67
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 69
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 230.81666666666666,
+      "hp": 34,
+      "hp100": 74,
+      "boss": 222.45,
+      "kills": 1266,
+      "shots": 848,
+      "charged": 129,
+      "phantom": 4,
+      "dashes": 7,
+      "perfects": 7,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "detonationSpecialist",
+        "staticRiposte"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 172,
+      "healed": 76,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 64,
+        "damage": 36,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 64
+        },
+        {
+          "time": 120,
+          "id": "detonationSpecialist",
+          "hp": 69
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 76
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 139.18333333333334,
+      "hp": 0,
+      "hp100": 62,
+      "boss": null,
+      "kills": 769,
+      "shots": 532,
+      "charged": 75,
+      "phantom": 0,
+      "dashes": 3,
+      "perfects": 3,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 88,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 20
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 314,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 184.38333333333333,
+      "hp": 0,
+      "hp100": 63,
+      "boss": null,
+      "kills": 1032,
+      "shots": 668,
+      "charged": 112,
+      "phantom": 12,
+      "dashes": 6,
+      "perfects": 6,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 173,
+      "healed": 43,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 64,
+        "damage": 36,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 64
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 45
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 26
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 175.25,
+      "hp": 0,
+      "hp100": 59,
+      "boss": null,
+      "kills": 989,
+      "shots": 658,
+      "charged": 106,
+      "phantom": 8,
+      "dashes": 6,
+      "perfects": 6,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 122,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 42
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 16
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 230.35,
+      "hp": 71,
+      "hp100": 70,
+      "boss": 222.46666666666667,
+      "kills": 1276,
+      "shots": 863,
+      "charged": 132,
+      "phantom": 13,
+      "dashes": 11,
+      "perfects": 11,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 119,
+      "healed": 70,
+      "absorbed": 52,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 66
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 94
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 230.35,
+      "hp": 20,
+      "hp100": 59,
+      "boss": 222.46666666666667,
+      "kills": 1276,
+      "shots": 863,
+      "charged": 132,
+      "phantom": 13,
+      "dashes": 11,
+      "perfects": 11,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "bloodReclaimer",
+        "soulAnchor"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 171,
+      "healed": 67,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 42
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 40
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 33
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "observed",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 230.68333333333334,
+      "hp": 0,
+      "hp100": 85,
+      "boss": 222.41666666666666,
+      "kills": 1257,
+      "shots": 844,
+      "charged": 130,
+      "phantom": 11,
+      "dashes": 8,
+      "perfects": 8,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "curses": [
+        "bloodPact"
+      ],
+      "damage": 176,
+      "healed": 70,
+      "absorbed": 24,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 0,
+        "healed": 4,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "bloodPact",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 56
+        },
+        {
+          "time": 155,
+          "id": "bloodPact",
+          "hp": 41
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 20
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 232.38333333333333,
+      "hp": 95,
+      "hp100": 93,
+      "boss": 222.41666666666666,
+      "kills": 1274,
+      "shots": 833,
+      "charged": 139,
+      "phantom": 24,
+      "dashes": 22,
+      "perfects": 22,
+      "mutations": [
+        "phantomEdge",
+        "staticRiposte",
+        "kineticBattery",
+        "aegisCore"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 38,
+      "healed": 0,
+      "absorbed": 57,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 83,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "staticRiposte",
+          "hp": 83
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 93
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 94
+        },
+        {
+          "time": 190,
+          "id": "aegisCore",
+          "hp": 85
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 230.81666666666666,
+      "hp": 65,
+      "hp100": 100,
+      "boss": 222.43333333333334,
+      "kills": 1281,
+      "shots": 827,
+      "charged": 137,
+      "phantom": 22,
+      "dashes": 20,
+      "perfects": 20,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "staticRiposte",
+        "echoChamber"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 120,
+      "healed": 63,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 83,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 83
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 98
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 83
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 194.7,
+      "hp": 0,
+      "hp100": 70,
+      "boss": null,
+      "kills": 1100,
+      "shots": 721,
+      "charged": 113,
+      "phantom": 10,
+      "dashes": 13,
+      "perfects": 13,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "staticRiposte",
+        "ironReversal"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 124,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 52
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 18
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 9
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 230.81666666666666,
+      "hp": 100,
+      "hp100": 93,
+      "boss": 222.43333333333334,
+      "kills": 1281,
+      "shots": 827,
+      "charged": 137,
+      "phantom": 22,
+      "dashes": 20,
+      "perfects": 20,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "bloodReclaimer",
+        "kineticBattery"
+      ],
+      "curses": [
+        "ghostStep"
+      ],
+      "damage": 84,
+      "healed": 55,
+      "absorbed": 36,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 83,
+        "damage": 17,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "ghostStep",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 83
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 93
+        },
+        {
+          "time": 155,
+          "id": "ghostStep",
+          "hp": 98
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 83
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 231.46666666666667,
+      "hp": 26,
+      "hp100": 70,
+      "boss": 222.6,
+      "kills": 1281,
+      "shots": 847,
+      "charged": 143,
+      "phantom": 13,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "guardBreaker",
+        "aegisCore"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 96,
+      "healed": 0,
+      "absorbed": 52,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "guardBreaker",
+          "hp": 53
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 55
+        },
+        {
+          "time": 190,
+          "id": "aegisCore",
+          "hp": 39
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 229.46666666666667,
+      "hp": 98,
+      "hp100": 84,
+      "boss": 222.53333333333333,
+      "kills": 1279,
+      "shots": 852,
+      "charged": 132,
+      "phantom": 12,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "phantomEdge",
+        "bloodReclaimer",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 63,
+      "healed": 76,
+      "absorbed": 24,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "bloodReclaimer",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 77
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 95
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 229.46666666666667,
+      "hp": 83,
+      "hp100": 70,
+      "boss": 222.53333333333333,
+      "kills": 1279,
+      "shots": 852,
+      "charged": 132,
+      "phantom": 12,
+      "dashes": 10,
+      "perfects": 10,
+      "mutations": [
+        "phantomEdge",
+        "ironReversal",
+        "bloodReclaimer",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 87,
+      "healed": 70,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 60,
+        "damage": 32,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "ironReversal",
+          "hp": 60
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 53
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 69
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 65
+        }
+      ]
+    },
+    {
+      "route": "counter",
+      "mode": "reflex",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 231.73333333333332,
+      "hp": 72,
+      "hp100": 82,
+      "boss": 222.56666666666666,
+      "kills": 1253,
+      "shots": 852,
+      "charged": 129,
+      "phantom": 12,
+      "dashes": 16,
+      "perfects": 15,
+      "mutations": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "ironReversal",
+        "kineticBattery"
+      ],
+      "curses": [
+        "bloodPact"
+      ],
+      "damage": 90,
+      "healed": 60,
+      "absorbed": 20,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 0,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 70,
+        "damage": 44,
+        "healed": 14,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "phantomEdge",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "bloodPact",
+          "hp": 100
+        },
+        {
+          "time": 85,
+          "id": "detonationSpecialist",
+          "hp": 70
+        },
+        {
+          "time": 120,
+          "id": "ironReversal",
+          "hp": 82
+        },
+        {
+          "time": 155,
+          "id": "bloodPact",
+          "hp": 88
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 127.21666666666667,
+      "hp": 0,
+      "hp100": 27,
+      "boss": null,
+      "kills": 705,
+      "shots": 497,
+      "charged": 73,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 126,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 50,
+        "damage": 60,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 50
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 16
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 136.48333333333332,
+      "hp": 0,
+      "hp100": 27,
+      "boss": null,
+      "kills": 746,
+      "shots": 531,
+      "charged": 80,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "aegisCore"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 130,
+      "healed": 0,
+      "absorbed": 16,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 50,
+        "damage": 60,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 50
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 16
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 116.31666666666666,
+      "hp": 0,
+      "hp100": 38,
+      "boss": null,
+      "kills": 628,
+      "shots": 457,
+      "charged": 68,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 50,
+        "damage": 60,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 50
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 314,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 108.6,
+      "hp": 0,
+      "hp100": 37,
+      "boss": null,
+      "kills": 571,
+      "shots": 423,
+      "charged": 66,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 144,
+      "healed": 34,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 55,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 35,
+        "damage": 90,
+        "healed": 20,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 35
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 808,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 115.86666666666666,
+      "hp": 0,
+      "hp100": 20,
+      "boss": null,
+      "kills": 621,
+      "shots": 449,
+      "charged": 70,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 10,
+        "damage": 100,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 10
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 1337,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 232.58333333333334,
+      "hp": 0,
+      "hp100": 22,
+      "boss": 222.28333333333333,
+      "kills": 1265,
+      "shots": 880,
+      "charged": 141,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 233,
+      "healed": 108,
+      "absorbed": 96,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 55,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 35,
+        "damage": 90,
+        "healed": 20,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 35
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 12
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 30
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 57
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 102.26666666666667,
+      "hp": 0,
+      "hp100": 9,
+      "boss": null,
+      "kills": 532,
+      "shots": 404,
+      "charged": 61,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 10,
+        "damage": 100,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 10
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "none",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 102.26666666666667,
+      "hp": 0,
+      "hp100": 9,
+      "boss": null,
+      "kills": 532,
+      "shots": 404,
+      "charged": 61,
+      "phantom": 0,
+      "dashes": 0,
+      "perfects": 0,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 120,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 60,
+        "damage": 50,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 10,
+        "damage": 100,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 50
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 10
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 17,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 170.58333333333334,
+      "hp": 0,
+      "hp100": 60,
+      "boss": null,
+      "kills": 947,
+      "shots": 654,
+      "charged": 94,
+      "phantom": 0,
+      "dashes": 13,
+      "perfects": 13,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul",
+        "glassSoul"
+      ],
+      "damage": 116,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 80,
+        "damage": 30,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 80
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 30
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 14
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 73,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 173.76666666666668,
+      "hp": 0,
+      "hp100": 60,
+      "boss": null,
+      "kills": 956,
+      "shots": 663,
+      "charged": 99,
+      "phantom": 0,
+      "dashes": 13,
+      "perfects": 13,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "staticRiposte"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 116,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 80,
+        "damage": 30,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 80
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 30
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 14
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 224.03333333333333,
+      "hp": 0,
+      "hp100": 79,
+      "boss": 222.28333333333333,
+      "kills": 1233,
+      "shots": 854,
+      "charged": 137,
+      "phantom": 0,
+      "dashes": 13,
+      "perfects": 13,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "echoChamber",
+        "staticRiposte"
+      ],
+      "curses": [
+        "volatileSoul",
+        "parasiticMark"
+      ],
+      "damage": 172,
+      "healed": 40,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 80,
+        "damage": 30,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 80
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 60
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 26
+        },
+        {
+          "time": 190,
+          "id": "staticRiposte",
+          "hp": 15
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 251.63333333333333,
+      "hp": 62,
+      "hp100": 86,
+      "boss": 222.18333333333334,
+      "kills": 1301,
+      "shots": 956,
+      "charged": 161,
+      "phantom": 0,
+      "dashes": 16,
+      "perfects": 16,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 140,
+      "healed": 87,
+      "absorbed": 44,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 95,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 16,
+        "healed": 11,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 85
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 84
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 234.73333333333332,
+      "hp": 14,
+      "hp100": 44,
+      "boss": 222.28333333333333,
+      "kills": 1269,
+      "shots": 883,
+      "charged": 144,
+      "phantom": 0,
+      "dashes": 15,
+      "perfects": 15,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "aegisCore",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 143,
+      "healed": 32,
+      "absorbed": 46,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 45,
+        "damage": 40,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 45
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 33
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 29
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 39
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 253.63333333333333,
+      "hp": 68,
+      "hp100": 97,
+      "boss": 222.23333333333332,
+      "kills": 1324,
+      "shots": 957,
+      "charged": 162,
+      "phantom": 0,
+      "dashes": 19,
+      "perfects": 19,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "echoChamber"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 84,
+      "healed": 47,
+      "absorbed": 106,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 95,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 16,
+        "healed": 11,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 2026,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 211.18333333333334,
+      "hp": 0,
+      "hp100": 55,
+      "boss": null,
+      "kills": 1196,
+      "shots": 798,
+      "charged": 133,
+      "phantom": 0,
+      "dashes": 7,
+      "perfects": 7,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "bloodReclaimer",
+        "ironReversal"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 184,
+      "healed": 59,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 45,
+        "damage": 40,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 45
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 11
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 25
+        },
+        {
+          "time": 190,
+          "id": "ironReversal",
+          "hp": 23
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "observed",
+      "seed": 4096,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 132.43333333333334,
+      "hp": 0,
+      "hp100": 44,
+      "boss": null,
+      "kills": 724,
+      "shots": 513,
+      "charged": 78,
+      "phantom": 0,
+      "dashes": 7,
+      "perfects": 7,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 105,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 45,
+        "damage": 40,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 45
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 33
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 17,
+      "result": "victory",
+      "reason": null,
+      "time": 250,
+      "hp": 57,
+      "hp100": 100,
+      "boss": 222.46666666666667,
+      "kills": 1312,
+      "shots": 939,
+      "charged": 167,
+      "phantom": 0,
+      "dashes": 41,
+      "perfects": 41,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "echoChamber",
+        "guardBreaker"
+      ],
+      "curses": [
+        "volatileSoul",
+        "glassSoul"
+      ],
+      "damage": 22,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "echoChamber",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 92
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 63
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 73,
+      "result": "victory",
+      "reason": null,
+      "time": 257.81666666666666,
+      "hp": 7,
+      "hp100": 100,
+      "boss": 222.06666666666666,
+      "kills": 1327,
+      "shots": 977,
+      "charged": 164,
+      "phantom": 0,
+      "dashes": 43,
+      "perfects": 43,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "staticRiposte",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul"
+      ],
+      "damage": 91,
+      "healed": 0,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "staticRiposte",
+          "hp": 100
+        },
+        {
+          "time": 155,
+          "id": "volatileSoul",
+          "hp": 80
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 66
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 159,
+      "result": "defeat",
+      "reason": "slain",
+      "time": 238.56666666666666,
+      "hp": 0,
+      "hp100": 100,
+      "boss": 222.2,
+      "kills": 1222,
+      "shots": 903,
+      "charged": 150,
+      "phantom": 0,
+      "dashes": 33,
+      "perfects": 32,
+      "mutations": [
+        "detonationSpecialist",
+        "berserker",
+        "catalyst",
+        "echoChamber"
+      ],
+      "curses": [
+        "volatileSoul",
+        "parasiticMark"
+      ],
+      "damage": 141,
+      "healed": 43,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "volatileSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "berserker",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 84
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 61
+        },
+        {
+          "time": 190,
+          "id": "echoChamber",
+          "hp": 88
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 314,
+      "result": "victory",
+      "reason": null,
+      "time": 235.8,
+      "hp": 100,
+      "hp100": 87,
+      "boss": 222.36666666666667,
+      "kills": 1296,
+      "shots": 885,
+      "charged": 158,
+      "phantom": 0,
+      "dashes": 26,
+      "perfects": 26,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "catalyst",
+        "kineticBattery"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 65,
+      "healed": 54,
+      "absorbed": 24,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 95,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 5,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "catalyst",
+          "hp": 99
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "kineticBattery",
+          "hp": 84
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 808,
+      "result": "victory",
+      "reason": null,
+      "time": 232.61666666666667,
+      "hp": 65,
+      "hp100": 58,
+      "boss": 222.43333333333334,
+      "kills": 1275,
+      "shots": 865,
+      "charged": 151,
+      "phantom": 0,
+      "dashes": 32,
+      "perfects": 32,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "aegisCore",
+        "bloodReclaimer"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 40,
+      "healed": 3,
+      "absorbed": 38,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75
+        },
+        {
+          "time": 120,
+          "id": "aegisCore",
+          "hp": 58
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 68
+        },
+        {
+          "time": 190,
+          "id": "bloodReclaimer",
+          "hp": 75
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 1337,
+      "result": "victory",
+      "reason": null,
+      "time": 258.8,
+      "hp": 78,
+      "hp100": 87,
+      "boss": 222.5,
+      "kills": 1294,
+      "shots": 988,
+      "charged": 166,
+      "phantom": 0,
+      "dashes": 43,
+      "perfects": 42,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "kineticBattery",
+        "soulAnchor"
+      ],
+      "curses": [
+        "parasiticMark"
+      ],
+      "damage": 73,
+      "healed": 45,
+      "absorbed": 92,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 95,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 100,
+        "damage": 10,
+        "healed": 5,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "parasiticMark",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 100
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 99
+        },
+        {
+          "time": 155,
+          "id": "parasiticMark",
+          "hp": 100
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 2026,
+      "result": "victory",
+      "reason": null,
+      "time": 236.81666666666666,
+      "hp": 25,
+      "hp100": 75,
+      "boss": 222.31666666666666,
+      "kills": 1230,
+      "shots": 913,
+      "charged": 150,
+      "phantom": 0,
+      "dashes": 35,
+      "perfects": 34,
+      "mutations": [
+        "detonationSpecialist",
+        "echoChamber",
+        "bloodReclaimer",
+        "soulAnchor"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 113,
+      "healed": 53,
+      "absorbed": 0,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "echoChamber",
+          "hp": 75
+        },
+        {
+          "time": 120,
+          "id": "bloodReclaimer",
+          "hp": 75
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 75
+        },
+        {
+          "time": 190,
+          "id": "soulAnchor",
+          "hp": 75
+        }
+      ]
+    },
+    {
+      "route": "ranged",
+      "mode": "reflex",
+      "seed": 4096,
+      "result": "victory",
+      "reason": null,
+      "time": 256.93333333333334,
+      "hp": 66,
+      "hp100": 58,
+      "boss": 222.5,
+      "kills": 1317,
+      "shots": 967,
+      "charged": 164,
+      "phantom": 0,
+      "dashes": 43,
+      "perfects": 43,
+      "mutations": [
+        "detonationSpecialist",
+        "catalyst",
+        "kineticBattery",
+        "guardBreaker"
+      ],
+      "curses": [
+        "glassSoul"
+      ],
+      "damage": 36,
+      "healed": 0,
+      "absorbed": 36,
+      "oneStart": {
+        "time": 50.016666666666666,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "oneEnd": {
+        "time": 85,
+        "hp": 75,
+        "damage": 10,
+        "healed": 0,
+        "absorbed": 0
+      },
+      "drafts": [
+        {
+          "time": 20,
+          "id": "detonationSpecialist",
+          "hp": 100
+        },
+        {
+          "time": 50,
+          "id": "glassSoul",
+          "hp": 90
+        },
+        {
+          "time": 85,
+          "id": "catalyst",
+          "hp": 75
+        },
+        {
+          "time": 120,
+          "id": "kineticBattery",
+          "hp": 58
+        },
+        {
+          "time": 155,
+          "id": "glassSoul",
+          "hp": 68
+        },
+        {
+          "time": 190,
+          "id": "guardBreaker",
+          "hp": 75
+        }
+      ]
+    }
+  ]
+}
