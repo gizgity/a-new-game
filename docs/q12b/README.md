@@ -1,6 +1,8 @@
 # Q12B — Hit Feel & Combat Feedback
 
-**AWAITING USER PLAYTEST APPROVAL Q12B.** User giao2026-10-29 hướng Punchy & Controlled. Baseline accepted Q12A `893d744`, runtime `c30248a` = `591fa0e`. Không DDR hoặc Q12C–E; Arrival gốc Q8C và toàn bộ audio giữ nguyên bytes.
+**ACCEPTED — USER PLAYTEST APPROVAL Q12B** — user xác nhận “ok ổn r đó” ngày2026-10-29 trên code/deploy **b2042e8** (bàn giao51faa2a), [Pages40908358381](https://github.com/gizgity/a-new-game/actions/runs/40908358381) SUCCESS. Nguồn: hội thoại task hiện tại, không có permalink. Approval gồm revision rung chỉ Heavy/Detonate vào Elite/Boss, ngoại lệ giữ hitstop simulation và toàn bộ feedback Q12B; không suy thêm coverage thiết bị/iOS/Safari/FPS/liveHTTP từ acceptance chung. Giữ Q12A/Arrival gốc Q8C và các approval trước. Không DDR hoặc tự mở Q12C–E.
+
+ User giao2026-10-29 hướng Punchy & Controlled. Baseline accepted Q12A `893d744`, runtime `c30248a` = `591fa0e`. Không DDR hoặc Q12C–E; Arrival gốc Q8C và toàn bộ audio giữ nguyên bytes.
 
 ## Audit và implementation
 
@@ -42,6 +44,6 @@ Giữ toàn bộ hitstop simulation kế thừa: Heavy85ms, L3 65ms, L2 45ms, Li
 
 User2026-10-29: “tăng lên đi, và cũng nên cân nhắc, nếu chém quái là rung thì chắc k bao giờ camera ngừng rung, hay chỉ làm cho elite và boss?”. Revision dùng threat+strength gate: chỉ confirmed player Heavy/blast (Detonate) lên Elite/Boss; amplitude6px desktop/2.4pxmobile, cosine1cycle/100ms và450ms giữa2lần bắt đầu. Giữ flash45/70/90ms trên mọi target. Không trigger từ hostile damage, miss/cancel/zero damage. Đây là tuning presentation theo yêu cầu mới, thay cap3px/0.9px và shake trên common ở bản đầu; không đổi simulation/audio/Arrival/ngoại lệ hitstop.
 
-PASS build/typecheck/29testfiles (thêmcase mọi loại target×7cue×player/hostile và spam120ticks ≤5burst/≥70%timeline đứng),15case full-world parity. Browser4viewport và movement/aim/resize evidence được cập nhật cho6px/2.4px. Evidence dist.md giữ snapshot bản đầu e631673, không giả là revision đã kiểm production. Chưa user feel/device/iOS/Safari; vẫn AWAITING USER PLAYTEST APPROVAL Q12B.
+PASS build/typecheck/29testfiles (thêmcase mọi loại target×7cue×player/hostile và spam120ticks ≤5burst/≥70%timeline đứng),15case full-world parity. Browser4viewport và movement/aim/resize evidence được cập nhật cho6px/2.4px. Evidence dist.md giữ snapshot bản đầu e631673, không giả là revision đã kiểm production. User đã duyệt playtest theo approval hiện hành ở đầu tài liệu; không suy coverage device/iOS/Safari từ approval chung.
 
 Revision **b2042e8** đã push main fast-forward; [Pages40908358381](https://github.com/gizgity/a-new-game/actions/runs/40908358381) **completed/SUCCESS** (build/typecheck/upload/Deploy). Chưa liveHTTP/hash verification. Bàn giao tiếp theo chỉ Markdown, không đổi runtime.
