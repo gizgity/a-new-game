@@ -2,10 +2,12 @@
 
 **AWAITING USER AUDIO/PLAYTEST APPROVAL Q12A.** Baseline `6ed8a96`; không tự nghiệm thu, ghi DDR, mở Q12B–E hoặc đổi balance/RNG/Boss/progression/artwork Q9A–Q9E.
 
+Code/deploy **7e74904** đã push main fast-forward. [Pages40791046554](https://github.com/gizgity/a-new-game/actions/runs/40791046554), job123176060022 SUCCESS (npmci/build/typecheck/upload/Deploy). Chưa liveHTTP/hash verification từ môi trường; không suy từ Pages success. Commit bàn giao chỉMarkdown, không redeploy.
+
 ## Nghe thử
 
-- [Audio Audition](https://gizgity.github.io/a-new-game/audition.html): entry riêng, không import main/profile, không đọc/ghi localStorage hay progression. Chạm/click bài để mở WebAudio; mặc định cùng volume100% như manager. Game thật vẫn dùng mute/volume Settings hiện hữu.
-- [Game review](https://gizgity.github.io/a-new-game/?playtest=chain): fixture memory hiện hữu, không ghi tiến trình thật. Desktop E/Shift giữ–thả; touch giữ–thả nút Charged/Heavy. Normal game tại [Pages](https://gizgity.github.io/a-new-game/).
+- [Audio Audition](https://gizgity.github.io/a-new-game/audition.html?v=7e74904): entry riêng, không import main/profile, không đọc/ghi localStorage hay progression. Chạm/click bài để mở WebAudio; mặc định cùng volume100% như manager. Game thật vẫn dùng mute/volume Settings hiện hữu.
+- [Game review](https://gizgity.github.io/a-new-game/?playtest=chain&v=7e74904): fixture memory hiện hữu, không ghi tiến trình thật. Desktop E/Shift giữ–thả; touch giữ–thả nút Charged/Heavy. Normal game tại [Pages](https://gizgity.github.io/a-new-game/).
 - Bài1: L1–3 swing rồi confirmed impact, Heavy, Basic, buildup/release/Charged hit/blast. Bài2: Dash/Perfect, stack1–3, Detonate/ticks/Hurt. Hai bài này là **cue mẫu độc lập**, không tuyên bố input/simulation đã hit; test event thật bên dưới kiểm riêng.
 - Bài3/4: CombatWorld thật với24quái được grant HP/mark để stress, hướng quay và Light/Basic liên tục; bài4 dùng countdown Arrival2s như simulation. Đây là fixture, không natural run/độ khó/Boss mới. Chọn lại bài để chạy lại warning. Mute, pause/resume không nối lại âm cũ; nút giữ buildup thả/cancel để dừng. Rời tab tự pause; bấm Pause/resume để tiếp tục từ clock hiện tại.
 - Đề nghị nghe loa điện thoại trước, rồi desktop ở volume vừa. Cần nhận ra L3/Heavy/Charged có lực hơn Basic; Perfect khác Dash; stack tăng rõ; Arrival vẫn dễ nhận ra trong spam; không gắt/mệt tai. Game thật: đánh hụt không impact; Charged giữ rồi pause/cancel không release/hit giả. Phản hồi bài/tình huống, âm quá nhỏ/gắt/lẫn, thiết bị/browser và loại loa.
