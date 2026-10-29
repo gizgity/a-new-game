@@ -1,3 +1,4 @@
+import type { ElementalCue } from './config/elementalAudio.js';
 import { ARENA, PLAYER_RADIUS } from './movement.js';
 import { LEGACY as L, validLegacy, type LegacyOffer } from './config/legacy.js';
 import { admitProc, legacyRoot, type ChainRoot, type ProcContext } from './BuildEffects.js';
@@ -47,6 +48,13 @@ export class LegacyEffects {
   equip(offer: LegacyOffer | null): boolean {
     if (this.selection || !validLegacy(offer)) return false;
     this.selection = Object.freeze({ sigil: offer.sigil, branch: offer.branch }); return true;
+  }
+  private sound(cue: ElementalCue, root?: ChainRoot, secondary = false): void {
+    this.world.elementalEvents.push({ cue, root: root?.id, secondary });
+  }
+  private audibleHit(e: Enemy, damage: number, ctx: ProcContext, cue: ElementalCue, secondary = false, bypass = false): void {
+    const before = e.hp; this.hit(e, damage, ctx, bypass);
+    if (e.hp < before) this.sound(cue, ctx.root, secondary);
   }
   private get branch() { return this.selection?.branch; }
   private ready(id: string) { return (this.clocks.get(id) ?? 0) <= 1e-9; }
@@ -112,12 +120,14 @@ export class LegacyEffects {
   }
   move(distance: number, dt: number): void {
     if (this.selection?.sigil !== 'wind') return;
+    const before = this.momentum;
     if (distance > 1e-6 && this.near(this.world.player.x, this.world.player.y, L.wind.proximity).length) {
       this.momentum = Math.min(L.wind.cap, this.momentum + distance / L.wind.distance); this.idle = 0;
     } else {
       this.idle += dt;
       if (this.idle > L.wind.grace) this.momentum = Math.max(0, this.momentum - L.wind.decay * dt);
     }
+    if (before < L.wind.threshold && this.momentum >= L.wind.threshold) this.sound('momentum');
   }
   prepareAttack(attack: Attack): void {
     this.furnaceTarget = null;
@@ -132,24 +142,28 @@ export class LegacyEffects {
   light(root: ChainRoot, angle: number): void {
     if (this.selection?.sigil !== 'wind' || this.momentum < L.wind.threshold || !this.ready('slash')) return;
     this.momentum = 0; this.cd('slash', L.wind.cooldown);
+    const tailwindActivation = this.branch === 'tailwind' && this.haste <= 0;
     if (this.branch === 'tailwind') this.haste = L.wind.hasteDuration;
+    const count = this.projectiles.length;
     this.projectile('wind', this.world.player.x, this.world.player.y, angle, root, 0);
+    if (tailwindActivation && this.projectiles.length > count) this.sound('tailwind', root, true);
   }
   perfect(): void {
     const sigil = this.selection?.sigil;
     if (sigil === 'water' && this.branch === 'flowState' && this.ready('flow') && this.world.heavyCharges < HEAVY.charges) {
+      this.sound('flowState');
       this.cd('flow', L.water.flowCooldown);
       this.world.heavyRecharge += L.water.refund;
       if (this.world.heavyRecharge >= HEAVY.recharge) { this.world.heavyCharges++; this.world.heavyRecharge = 0; }
     }
-    if (sigil === 'lightning' && this.ready('charge')) { this.charge = L.lightning.chargeDuration; this.cd('charge', L.lightning.grantCooldown); }
+    if (sigil === 'lightning' && this.ready('charge')) { if (this.charge <= 0) this.sound('staticCharge'); this.charge = L.lightning.chargeDuration; this.cd('charge', L.lightning.grantCooldown); }
     if (sigil === 'shadow') {
       if (this.ready('mark')) {
         const p = this.world.player;
         const enemy = this.near(p.x, p.y, L.shadow.range).find(e => Math.abs(angleDelta(Math.atan2(e.y - p.y, e.x - p.x), p.angle)) <= L.shadow.cone / 2);
-        if (enemy) { this.mark = { id: enemy.id, time: L.shadow.markDuration }; this.cd('mark', L.shadow.grantCooldown); }
+        if (enemy) { if (this.mark?.id !== enemy.id) this.sound('shadowMark'); this.mark = { id: enemy.id, time: L.shadow.markDuration }; this.cd('mark', L.shadow.grantCooldown); }
       }
-      if (this.branch === 'veilstep' && this.ready('veil')) { this.reposition = L.shadow.speedDuration; this.cd('veil', L.shadow.speedCooldown); }
+      if (this.branch === 'veilstep' && this.ready('veil')) { if (this.reposition <= 0) this.sound('veilstep', undefined, true); this.reposition = L.shadow.speedDuration; this.cd('veil', L.shadow.speedCooldown); }
     }
   }
   /** Called after primary accounting, using elemental state that has not yet been mutated by this hit. */
@@ -161,33 +175,34 @@ export class LegacyEffects {
     if (sigil === 'fire') {
       if (kind === 'heavy' && (this.furnaceTarget === null || this.furnaceTarget === e.id) && t.ignite && this.branch === 'furnace' && !root.furnace && this.ready('furnace')) {
         const { x, y } = snapshot;
-        if (this.enqueue(root, 0, 0, ctx => { for (const target of this.near(x, y, L.fire.furnaceRadius).slice(0, L.targetCap)) this.hit(target, L.fire.furnaceDamage, ctx); })) {
+        if (this.enqueue(root, 0, 0, ctx => { for (const target of this.near(x, y, L.fire.furnaceRadius).slice(0, L.targetCap)) this.audibleHit(target, L.fire.furnaceDamage, ctx, 'furnace'); })) {
           t.ignite = undefined; root.furnace = true; this.cd('furnace', L.fire.furnaceCooldown);
         }
       }
       if (kind === 'charged' && e.hp > 0) this.ignite(e, root, 0, 0);
     }
     if (sigil === 'water') {
-      if (t.soaked > 0 && this.branch === 'undertow' && t.knockCD <= 1e-9) { t.knockCD = L.water.knockCooldown; this.push(e, L.water.force); }
-      if (kind === 'heavy' && e.hp > 0 && (!this.soakTargets || this.soakTargets.has(e.id))) t.soaked = L.water.duration;
+      if (t.soaked > 0 && this.branch === 'undertow' && t.knockCD <= 1e-9) { t.knockCD = L.water.knockCooldown; this.push(e, L.water.force); if (e.hp > 0 && e.kind !== 'boss') this.sound('undertow', root, true); }
+      if (kind === 'heavy' && e.hp > 0 && (!this.soakTargets || this.soakTargets.has(e.id))) { if (t.soaked <= 0) this.sound('soaked', root); t.soaked = L.water.duration; }
     }
     if (sigil === 'lightning' && kind === 'basic' && this.charge > 0 && this.ready('discharge')) {
       this.charge = 0; this.cd('discharge', L.lightning.dischargeCooldown);
-      if (this.branch === 'overclock') this.haste = L.lightning.hasteDuration;
+      if (this.branch === 'overclock') { if (this.haste <= 0) this.sound('overclock', root, true); this.haste = L.lightning.hasteDuration; }
       const visited = new Set<number>([e.id]);
       const relay = (x: number, y: number, jumps: number, depth: number) => {
         if (!jumps) return;
         const next = this.near(x, y, L.lightning.range, visited)[0]; if (!next) return;
         visited.add(next.id);
-        this.enqueue(root, depth, L.lightning.delay, ctx => { this.hit(next, L.lightning.damage, ctx); relay(next.x, next.y, jumps - 1, ctx.depth); });
+        this.enqueue(root, depth, L.lightning.delay, ctx => { this.audibleHit(next, L.lightning.damage, ctx, this.branch === 'arcRelay' ? 'arcRelay' : 'discharge', true); relay(next.x, next.y, jumps - 1, ctx.depth); });
       };
-      this.enqueue(root, 0, 0, ctx => { this.hit(e, L.lightning.damage, ctx); relay(e.x, e.y, L.lightning.jumps + (this.branch === 'arcRelay' ? 1 : 0), ctx.depth); });
+      this.enqueue(root, 0, 0, ctx => { this.audibleHit(e, L.lightning.damage, ctx, 'discharge'); relay(e.x, e.y, L.lightning.jumps + (this.branch === 'arcRelay' ? 1 : 0), ctx.depth); });
     }
     if (sigil === 'ice') {
       if ((kind === 'heavy' || kind === 'charged') && t.frost >= L.ice.threshold && t.frostTime > 0 && t.shatterCD <= 1e-9) {
         t.frost = t.frostTime = 0; t.shatterCD = L.ice.shatterCooldown;
-        this.enqueue(root, 0, 0, ctx => this.hit(e, L.ice.damage, ctx, this.branch === 'brittle' && e.kind !== 'boss'));
+        this.enqueue(root, 0, 0, ctx => this.audibleHit(e, L.ice.damage, ctx, 'shatter', false, this.branch === 'brittle' && e.kind !== 'boss'));
         if (e.hp > 0 && this.branch === 'brittle' && e.kind !== 'boss') {
+          if (t.brittle <= 0) this.sound('brittle', root, true);
           t.brittle = L.ice.breakDuration;
           if (t.interruptCD <= 1e-9 && snapshot.windup > 0 && !this.world.anomaly.resists(e)) { e.windup = 0; e.cooldown = Math.max(e.cooldown, 0.45); t.interruptCD = Math.max(L.ice.interruptCooldown, e.kind === 'bulwark' ? L.eliteImmunity : 0); }
         }
@@ -197,20 +212,22 @@ export class LegacyEffects {
             if (next) this.projectile('ice', snapshot.x, snapshot.y, Math.atan2(next.y - snapshot.y, next.x - snapshot.x), root, ctx.depth, e.id);
           })) this.cd('crystal', L.ice.echoCooldown);
         }
-      } else if (e.hp > 0) { t.frost = Math.min(L.ice.threshold, t.frost + 1); t.frostTime = L.ice.window; }
+      } else if (e.hp > 0) { const before = t.frost; t.frost = Math.min(L.ice.threshold, t.frost + 1); t.frostTime = L.ice.window; if (before < L.ice.threshold && t.frost >= L.ice.threshold) this.sound('frostbite', root); }
     }
     if (sigil === 'shadow' && (kind === 'light' || kind === 'heavy') && this.mark?.id === e.id && this.ready('ambush')) {
+      this.sound('ambush', root); // Contract: lethal marked melee still confirms Ambush.
       this.mark = null; this.ambushes++; this.cd('ambush', L.shadow.ambushCooldown);
       this.enqueue(root, 0, 0, ctx => this.hit(e, L.shadow.damage, ctx));
       if (this.branch === 'nightfall' && this.ready('nightfall')) {
         if (this.enqueue(root, 0, L.shadow.nightDelay, ctx => {
-          if (e.hp > 0 && Math.hypot(e.x - this.world.player.x, e.y - this.world.player.y) <= L.shadow.nightRange) this.hit(e, L.shadow.nightDamage, ctx);
+          if (e.hp > 0 && Math.hypot(e.x - this.world.player.x, e.y - this.world.player.y) <= L.shadow.nightRange) this.audibleHit(e, L.shadow.nightDamage, ctx, 'nightfall', true);
         })) { this.nightfalls++; this.cd('nightfall', L.shadow.nightCooldown); }
       }
     }
   }
   private ignite(e: Enemy, root: ChainRoot, depth: number, generation: number): void {
     const t = this.target(e), tick = t.ignite?.tick ?? L.fire.interval;
+    if (!t.ignite || t.ignite.time <= 0) this.sound(generation ? 'wildfire' : 'ignite', root, generation > 0);
     t.ignite = { time: generation ? L.fire.spreadDuration : L.fire.duration, tick, root, depth, generation };
   }
   killed(e: Enemy, context: ProcContext): void {
@@ -230,6 +247,7 @@ export class LegacyEffects {
   private projectile(kind: 'ice' | 'wind', x: number, y: number, angle: number, root: ChainRoot, depth: number, sourceId?: number): void {
     legacyRoot(root);
     if (this.projectiles.length >= L.projectileCap || !admitProc(root, depth + 1)) return;
+    if (kind === 'wind') this.sound('windSlash', root);
     this.projectiles.push({ sourceId, kind, x, y, angle, speed: kind === 'ice' ? L.ice.echoSpeed : L.wind.speed, distance: 0,
       life: kind === 'ice' ? L.ice.echoLifetime : L.wind.lifetime, range: kind === 'ice' ? L.ice.echoRange : L.wind.range,
       damage: kind === 'ice' ? L.ice.echoDamage : L.wind.damage, pierce: kind === 'ice' ? 1 : L.wind.pierce,
@@ -247,8 +265,9 @@ export class LegacyEffects {
       for (const { e } of targets) {
         if (shot.visited.size >= shot.pierce) break;
         shot.visited.add(e.id); const hpBefore = e.hp; this.hit(e, shot.damage, shot.context);
+        if (shot.kind === 'ice' && e.hp < hpBefore) this.sound('crystalEcho', shot.context.root, true);
         if (e.hp > 0 && e.hp < hpBefore && shot.kind === 'wind' && this.branch === 'cyclone') {
-          const t = this.target(e); if (t.cycloneCD <= 1e-9) { this.push(e, L.wind.force); t.cycloneCD = L.wind.knockCooldown; }
+          const t = this.target(e); if (t.cycloneCD <= 1e-9) { this.push(e, L.wind.force); if (e.kind !== 'boss') this.sound('cyclone', shot.context.root, true); t.cycloneCD = L.wind.knockCooldown; }
         }
       }
     }

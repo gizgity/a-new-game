@@ -1,0 +1,656 @@
+{
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "result": {
+        "results": [
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "wildfire"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "furnace"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "undertow"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "flowState"
+            },
+            "enemies": 24,
+            "cues": [
+              "flowState"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "arcRelay"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "overclock"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "brittle"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "crystalEcho"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "nightfall"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "veilstep"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark",
+              "veilstep"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "tailwind"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash",
+              "tailwind"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "cyclone"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          }
+        ],
+        "stopped": true,
+        "storage": []
+      },
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "result": {
+        "results": [
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "wildfire"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "furnace"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "undertow"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "flowState"
+            },
+            "enemies": 24,
+            "cues": [
+              "flowState"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "arcRelay"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "overclock"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "brittle"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "crystalEcho"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "nightfall"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "veilstep"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark",
+              "veilstep"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "tailwind"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash",
+              "tailwind"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "cyclone"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          }
+        ],
+        "stopped": true,
+        "storage": []
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "result": {
+        "results": [
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": null
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "wildfire"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "fire",
+              "branch": "furnace"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "undertow"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "water",
+              "branch": "flowState"
+            },
+            "enemies": 24,
+            "cues": [
+              "flowState"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "arcRelay"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "lightning",
+              "branch": "overclock"
+            },
+            "enemies": 24,
+            "cues": [
+              "staticCharge"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "brittle"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "ice",
+              "branch": "crystalEcho"
+            },
+            "enemies": 24,
+            "cues": [],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "nightfall"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "shadow",
+              "branch": "veilstep"
+            },
+            "enemies": 24,
+            "cues": [
+              "shadowMark",
+              "veilstep"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "tailwind"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash",
+              "tailwind"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          },
+          {
+            "loadout": {
+              "sigil": "wind",
+              "branch": "cyclone"
+            },
+            "enemies": 24,
+            "cues": [
+              "momentum",
+              "windSlash"
+            ],
+            "maxVoices": 8,
+            "arrival": true
+          }
+        ],
+        "stopped": true,
+        "storage": []
+      },
+      "errors": []
+    }
+  ],
+  "limits": "Accelerated software Chromium simulation, 18 loadouts + Fractured Storm + Arrival; synthetic audition resources. Scheduling/cap only, not human listening or device performance."
+}

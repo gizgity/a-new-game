@@ -306,7 +306,7 @@ export class ArenaScene extends Phaser.Scene {
       this.audio.arrival(this.run.bossWarning);
       if (!bossBefore && this.run.bossDue) this.audio.transition('boss');
       else if (!eliteBefore && this.combat.enemies.some(enemy => enemy.kind === 'bulwark')) this.audio.transition('elite');
-      else this.audio.play(this.combat.audioEvents);
+      else { this.audio.play(this.combat.audioEvents); this.audio.elemental(this.combat.elementalEvents); }
       this.pressed.clear();
       this.releaseAim = {};
       this.touch.consume();

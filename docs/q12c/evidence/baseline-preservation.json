@@ -1,0 +1,15 @@
+{
+  "oldTones": {
+    "identical": true,
+    "sha256": "e0e3986eb8530615a55b47668fc02d884eb1a34f03bed7c599e1001e98dcafe6"
+  },
+  "oldSynthesis": {
+    "identical": true,
+    "sha256": "a6bdeebcc2990f6df7f94105cd3ad6e4c61ff0f32b464c6f12618c209a644ae4"
+  },
+  "ActorPose.ts": "unchanged",
+  "EnemySprites.ts": "unchanged",
+  "impactMotion.ts": "unchanged",
+  "config/feedback.ts": "unchanged",
+  "BuildEffects.ts": "unchanged"
+}

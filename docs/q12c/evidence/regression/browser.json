@@ -1,0 +1,54 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "touch": true,
+    "worldPure": true,
+    "warningVisible": true,
+    "flashDurations": true,
+    "screenPixels": 2.4000015258788494,
+    "aimRestored": true,
+    "lifecycle": true,
+    "crowd": 24,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "worldPure": true,
+    "warningVisible": true,
+    "flashDurations": true,
+    "screenPixels": 2.4000015997117403,
+    "aimRestored": true,
+    "lifecycle": true,
+    "crowd": 24,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "touch": true,
+    "worldPure": true,
+    "warningVisible": true,
+    "flashDurations": true,
+    "screenPixels": 2.4000015258789347,
+    "aimRestored": true,
+    "lifecycle": true,
+    "crowd": 24,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "worldPure": true,
+    "warningVisible": true,
+    "flashDurations": true,
+    "screenPixels": 5.999999928697245,
+    "aimRestored": true,
+    "lifecycle": true,
+    "crowd": 24,
+    "errors": []
+  }
+]

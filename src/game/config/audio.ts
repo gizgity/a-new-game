@@ -1,6 +1,8 @@
+import { ELEMENTAL_TONES } from './elementalAudio.js';
 /** Presentation budgets only; no gameplay clocks or RNG. 2 frame slots reserved for danger. */
 export const AUDIO = { voiceCap: 8, perFrame: 5, regularPerFrame: 3, combatGain: 0.4, bufferPeak: 0.22, rootHistory: 512, trebleCutoff: 1800, impactBody: 0.055, regularBody: 0.018 } as const;
 export function cuePolicy(cue: string): { priority: number; cooldown: number } {
+  if (Object.hasOwn(ELEMENTAL_TONES, cue)) return { priority: ['ignite', 'soaked', 'staticCharge', 'discharge', 'frostbite', 'shatter', 'shadowMark', 'ambush', 'momentum', 'windSlash'].includes(cue) ? 1 : 0, cooldown: 100 };
   switch (cue) {
     case 'arrival': return { priority: 5, cooldown: 0 };
     case 'hurt': return { priority: 4, cooldown: 85 };

@@ -1,3 +1,4 @@
+import type { ElementalSoundEvent } from './elementalAudio.js';
 import { FEEDBACK, impactTier, type ImpactTier } from './config/feedback.js';
 import { ASCENSION_VFX } from './config/ascensionVfx.js';
 import { AscensionEffects } from './AscensionEffects.js';
@@ -76,6 +77,7 @@ export function segmentHitsCircle(
 export class CombatWorld {
   soundEvents: SoundCue[] = [];
   audioEvents: CombatSoundEvent[] = [];
+  elementalEvents: ElementalSoundEvent[] = [];
   hp: number = COMBAT.maxHp;
   readonly barrier = new Barrier();
   mutations: MutationId[] = [];
@@ -222,6 +224,7 @@ export class CombatWorld {
     Object.assign(this.player, { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 });
     this.soundEvents = [];
     this.audioEvents = [];
+    this.elementalEvents = [];
     this.feedback = null;
     this.clearInput();
     this.lastShot = { angle: 0, charged: false };
@@ -289,6 +292,7 @@ export class CombatWorld {
   step(input: CombatInput, dt: number): void {
     this.soundEvents = [];
     this.audioEvents = [];
+    this.elementalEvents = [];
     this.feedback = null;
     if (this.hp <= 0) { this.clearInput(); return; }
     if (this.bossTransforming) {

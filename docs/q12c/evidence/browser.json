@@ -1,0 +1,969 @@
+{
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "identities": [
+          {
+            "cue": "ignite",
+            "played": true,
+            "duration": 0.12,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "wildfire",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "furnace",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "soaked",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "undertow",
+            "played": true,
+            "duration": 0.2,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "flowState",
+            "played": true,
+            "duration": 0.22,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "staticCharge",
+            "played": true,
+            "duration": 0.04501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "discharge",
+            "played": true,
+            "duration": 0.07501133786848073,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "arcRelay",
+            "played": true,
+            "duration": 0.06501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "overclock",
+            "played": true,
+            "duration": 0.24,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "frostbite",
+            "played": true,
+            "duration": 0.15,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shatter",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "brittle",
+            "played": true,
+            "duration": 0.08501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "crystalEcho",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shadowMark",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "ambush",
+            "played": true,
+            "duration": 0.11,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "nightfall",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "veilstep",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "momentum",
+            "played": true,
+            "duration": 0.1,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "windSlash",
+            "played": true,
+            "duration": 0.16,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "tailwind",
+            "played": true,
+            "duration": 0.13,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "cyclone",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          }
+        ],
+        "flood": 1,
+        "arrivalWithProc": true,
+        "noElementReplay": true,
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.12348201125860214,
+            "rms": 0.02181847010368233
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.13189496099948883,
+            "rms": 0.02799342219137719
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.16590376198291779,
+            "rms": 0.03446720003862467
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.04942291795476595
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.19346395134925842,
+            "rms": 0.05988794549981609
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.06266179753437455
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.1592462956905365,
+            "rms": 0.03611434775994578
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.1385578066110611,
+            "rms": 0.03438958871411274
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.1464558243751526,
+            "rms": 0.03461158279674469
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.14706411957740784,
+            "rms": 0.034371209771332456
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.05811183184692692
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3152748942375183,
+            "rms": 0.04709908781744513
+          }
+        },
+        "peakBound": 0.9312748942375184,
+        "bufferCount": 52,
+        "afterBuffers": 52,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "identities": [
+          {
+            "cue": "ignite",
+            "played": true,
+            "duration": 0.12,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "wildfire",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "furnace",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "soaked",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "undertow",
+            "played": true,
+            "duration": 0.2,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "flowState",
+            "played": true,
+            "duration": 0.22,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "staticCharge",
+            "played": true,
+            "duration": 0.04501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "discharge",
+            "played": true,
+            "duration": 0.07501133786848073,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "arcRelay",
+            "played": true,
+            "duration": 0.06501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "overclock",
+            "played": true,
+            "duration": 0.24,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "frostbite",
+            "played": true,
+            "duration": 0.15,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shatter",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "brittle",
+            "played": true,
+            "duration": 0.08501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "crystalEcho",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shadowMark",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "ambush",
+            "played": true,
+            "duration": 0.11,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "nightfall",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "veilstep",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "momentum",
+            "played": true,
+            "duration": 0.1,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "windSlash",
+            "played": true,
+            "duration": 0.16,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "tailwind",
+            "played": true,
+            "duration": 0.13,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "cyclone",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          }
+        ],
+        "flood": 1,
+        "arrivalWithProc": true,
+        "noElementReplay": true,
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.10567546635866165,
+            "rms": 0.020901248173004594
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.10926224291324615,
+            "rms": 0.02822089976318437
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.12011013180017471,
+            "rms": 0.03187814130604511
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.048748991999039794
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.1822250336408615,
+            "rms": 0.059071902282992673
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.06168583912283871
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.1592462956905365,
+            "rms": 0.03611434775994578
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.1385578066110611,
+            "rms": 0.03438958871411274
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.1464558243751526,
+            "rms": 0.03461158279674469
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.14706411957740784,
+            "rms": 0.034371209771332456
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.05811183184692692
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3171006739139557,
+            "rms": 0.04712800110383078
+          }
+        },
+        "peakBound": 0.9331006739139558,
+        "bufferCount": 52,
+        "afterBuffers": 52,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "identities": [
+          {
+            "cue": "ignite",
+            "played": true,
+            "duration": 0.12,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "wildfire",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "furnace",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "soaked",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "undertow",
+            "played": true,
+            "duration": 0.2,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "flowState",
+            "played": true,
+            "duration": 0.22,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "staticCharge",
+            "played": true,
+            "duration": 0.04501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "discharge",
+            "played": true,
+            "duration": 0.07501133786848073,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "arcRelay",
+            "played": true,
+            "duration": 0.06501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "overclock",
+            "played": true,
+            "duration": 0.24,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "frostbite",
+            "played": true,
+            "duration": 0.15,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shatter",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "brittle",
+            "played": true,
+            "duration": 0.08501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "crystalEcho",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shadowMark",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "ambush",
+            "played": true,
+            "duration": 0.11,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "nightfall",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "veilstep",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "momentum",
+            "played": true,
+            "duration": 0.1,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "windSlash",
+            "played": true,
+            "duration": 0.16,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "tailwind",
+            "played": true,
+            "duration": 0.13,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "cyclone",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          }
+        ],
+        "flood": 1,
+        "arrivalWithProc": true,
+        "noElementReplay": true,
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.11186733096837997,
+            "rms": 0.0207819036037336
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.10243471711874008,
+            "rms": 0.026911579638091463
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.15075863897800446,
+            "rms": 0.035002114834649635
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.048687992855155876
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.19437278807163239,
+            "rms": 0.06104249794559117
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.06280207843553397
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.1592462956905365,
+            "rms": 0.03611434775994578
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.1385578066110611,
+            "rms": 0.03438958871411274
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.1464558243751526,
+            "rms": 0.03461158279674469
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.14706411957740784,
+            "rms": 0.034371209771332456
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.05811183184692692
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3120637536048889,
+            "rms": 0.047147326615569106
+          }
+        },
+        "peakBound": 0.928063753604889,
+        "bufferCount": 52,
+        "afterBuffers": 52,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "errors": [],
+      "pause": {
+        "paused": true,
+        "voices": 0,
+        "enemies": 24
+      },
+      "saved": [],
+      "report": {
+        "identities": [
+          {
+            "cue": "ignite",
+            "played": true,
+            "duration": 0.12,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "wildfire",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "furnace",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "soaked",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "undertow",
+            "played": true,
+            "duration": 0.2,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "flowState",
+            "played": true,
+            "duration": 0.22,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "staticCharge",
+            "played": true,
+            "duration": 0.04501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "discharge",
+            "played": true,
+            "duration": 0.07501133786848073,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "arcRelay",
+            "played": true,
+            "duration": 0.06501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "overclock",
+            "played": true,
+            "duration": 0.24,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "frostbite",
+            "played": true,
+            "duration": 0.15,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shatter",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "brittle",
+            "played": true,
+            "duration": 0.08501133786848072,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "crystalEcho",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "shadowMark",
+            "played": true,
+            "duration": 0.18,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "ambush",
+            "played": true,
+            "duration": 0.11,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "nightfall",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "veilstep",
+            "played": true,
+            "duration": 0.14002267573696145,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "momentum",
+            "played": true,
+            "duration": 0.1,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "windSlash",
+            "played": true,
+            "duration": 0.16,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "tailwind",
+            "played": true,
+            "duration": 0.13,
+            "peak": 0.2199999988079071
+          },
+          {
+            "cue": "cyclone",
+            "played": true,
+            "duration": 0.23,
+            "peak": 0.2199999988079071
+          }
+        ],
+        "flood": 1,
+        "arrivalWithProc": true,
+        "noElementReplay": true,
+        "filled": 8,
+        "warningPlaying": true,
+        "cap": 8,
+        "protectedWarning": true,
+        "bounded": 0,
+        "charge": true,
+        "cancel": true,
+        "mute": true,
+        "noReplay": true,
+        "locked": true,
+        "suspended": true,
+        "rootPlays": [
+          {
+            "cue": "chain",
+            "volume": 0.26
+          },
+          {
+            "cue": "chain",
+            "volume": 0.16900000000000004
+          }
+        ],
+        "buffers": {
+          "swing": {
+            "duration": 0.07501133786848073,
+            "peak": 0.09586356580257416,
+            "rms": 0.020253263784713003
+          },
+          "swing2": {
+            "duration": 0.09501133786848072,
+            "peak": 0.10336266458034515,
+            "rms": 0.026287436284921275
+          },
+          "swing3": {
+            "duration": 0.16,
+            "peak": 0.15846756100654602,
+            "rms": 0.03548887502289876
+          },
+          "heavy": {
+            "duration": 0.22,
+            "peak": 0.2199999988079071,
+            "rms": 0.05080674461405293
+          },
+          "gun": {
+            "duration": 0.055011337868480725,
+            "peak": 0.18338650465011597,
+            "rms": 0.060755237123106605
+          },
+          "chargedGun": {
+            "duration": 0.16,
+            "peak": 0.2199999988079071,
+            "rms": 0.06538034877346388
+          },
+          "perfect": {
+            "duration": 0.16,
+            "peak": 0.1592462956905365,
+            "rms": 0.03611434775994578
+          },
+          "stack1": {
+            "duration": 0.055011337868480725,
+            "peak": 0.1385578066110611,
+            "rms": 0.03438958871411274
+          },
+          "stack2": {
+            "duration": 0.07002267573696146,
+            "peak": 0.1464558243751526,
+            "rms": 0.03461158279674469
+          },
+          "stack3": {
+            "duration": 0.1,
+            "peak": 0.14706411957740784,
+            "rms": 0.034371209771332456
+          },
+          "hurt": {
+            "duration": 0.12,
+            "peak": 0.2199999988079071,
+            "rms": 0.05811183184692692
+          },
+          "arrival": {
+            "duration": 0.38,
+            "peak": 0.3150787353515625,
+            "rms": 0.047169784558717724
+          }
+        },
+        "peakBound": 0.9310787353515626,
+        "bufferCount": 52,
+        "afterBuffers": 52,
+        "cleanup": 0,
+        "owned": 0,
+        "context": "running"
+      }
+    }
+  ],
+  "unsupported": {
+    "available": false,
+    "track": 1
+  },
+  "limits": "Chromium software WebGL, technical WebAudio scheduling only; no real speaker/headphone listening or iOS/Safari acceptance."
+}

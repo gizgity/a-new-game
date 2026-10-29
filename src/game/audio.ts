@@ -1,12 +1,14 @@
+import { ELEMENTAL_TONES, type ElementalCue } from './config/elementalAudio';
+import { ElementalAdmission, synthesizeElemental, type ElementalSoundEvent } from './elementalAudio';
 import Phaser from 'phaser';
 import { arrivalPulse } from './arrival';
 import { AUDIO, cuePolicy } from './config/audio';
 import type { CombatSoundEvent, SoundCue } from './combat';
 
 type PresentationCue = 'start' | 'draft' | 'choice' | 'elite' | 'boss' | 'defeat';
-export type AudioCue = SoundCue | PresentationCue | 'arrival' | 'charge';
+export type AudioCue = SoundCue | PresentationCue | 'arrival' | 'charge' | ElementalCue;
 
-const tones: Record<AudioCue, [number, number, number]> = {
+const tones: Record<Exclude<AudioCue, ElementalCue>, [number, number, number]> = {
   arrival: [76, 0.38, 0],
   charge: [280, 1.2, 0], stack1: [520, 0.055, 0.1], stack2: [680, 0.07, 0.1], stack3: [860, 0.10, 0.1], chain: [1100, 0.055, 0.16],
   start: [440, 0.20, 0], draft: [660, 0.24, 0], choice: [880, 0.15, 0],
@@ -21,6 +23,7 @@ const tones: Record<AudioCue, [number, number, number]> = {
 };
 
 export class ProceduralAudio {
+  private elementalAdmission = new ElementalAdmission();
   private last = new Map<AudioCue, number>();
   private available = false;
   private sounds = new Map<AudioCue, Phaser.Sound.WebAudioSound>();
@@ -114,7 +117,14 @@ export class ProceduralAudio {
       }
       scene.cache.audio.add(`sfx-${cue}`, buffer);
     }
-    for (const cue of Object.keys(tones) as AudioCue[]) this.sounds.set(cue, scene.sound.add(`sfx-${cue}`) as Phaser.Sound.WebAudioSound);
+    for (const cue of Object.keys(ELEMENTAL_TONES) as ElementalCue[]) {
+      if (!scene.cache.audio.exists(`sfx-${cue}`)) {
+        const samples = synthesizeElemental(cue, context.sampleRate);
+        const buffer = context.createBuffer(1, samples.length, context.sampleRate);
+        buffer.getChannelData(0).set(samples); scene.cache.audio.add(`sfx-${cue}`, buffer);
+      }
+    }
+    for (const cue of [...Object.keys(tones), ...Object.keys(ELEMENTAL_TONES)] as AudioCue[]) this.sounds.set(cue, scene.sound.add(`sfx-${cue}`) as Phaser.Sound.WebAudioSound);
     this.available = true;
   }
   /** No wall-clock timers or replay on resume/unmute; at most one sound per reached beat. */
@@ -145,7 +155,7 @@ export class ProceduralAudio {
     for (const [key, sound] of this.sounds) if (!(cue === 'elite' && key === 'arrival')) sound.stop();
     this.charging = false;
     this.last.clear();
-    if (cue === 'start' || cue === 'victory' || cue === 'defeat') this.roots.clear();
+    if (cue === 'start' || cue === 'victory' || cue === 'defeat') { this.roots.clear(); this.elementalAdmission.reset(); }
     if (cue) this.play([cue]);
   }
 
@@ -174,6 +184,13 @@ export class ProceduralAudio {
     this.last.set(cue, now); this.frameCount++;
     if (policy.priority < 4) this.regularCount++;
     return true;
+  }
+
+  elemental(events: readonly ElementalSoundEvent[]): void {
+    for (const event of [...events].sort((a, b) => Number(!!a.secondary) - Number(!!b.secondary))) {
+      const gain = this.elementalAdmission.admit(event, performance.now());
+      if (gain) this.emit(event.cue, gain);
+    }
   }
 
   play(cues: readonly (AudioCue | CombatSoundEvent)[]): void {
