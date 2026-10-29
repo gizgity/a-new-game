@@ -1,0 +1,58 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "touch": true,
+    "baseline": {
+      "x": 813.0000000000001,
+      "y": 500,
+      "angle": -0.7853981633974483,
+      "expected": -0.7853981633974483,
+      "projectiles": 1,
+      "manual": -0.7853981633974483
+    },
+    "q12b": {
+      "x": 813.0000000000001,
+      "y": 500,
+      "angle": -0.7853981633974483,
+      "expected": -0.7853981633974483,
+      "projectiles": 1,
+      "manual": -0.7853981633974483
+    },
+    "identical": true,
+    "resized": {
+      "zoom": 0.775,
+      "tailCleared": true,
+      "aimStable": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "touch": false,
+    "baseline": {
+      "x": 809.192388155425,
+      "y": 490.80761184457486,
+      "angle": -0.430907880366674,
+      "expected": -0.4261779149497052,
+      "projectiles": 1,
+      "manual": null
+    },
+    "q12b": {
+      "x": 809.192388155425,
+      "y": 490.80761184457486,
+      "angle": -0.430907880366674,
+      "expected": -0.4261779149497052,
+      "projectiles": 1,
+      "manual": null
+    },
+    "identical": true,
+    "resized": {
+      "zoom": 0.9171428571428571,
+      "tailCleared": true,
+      "aimStable": true
+    },
+    "errors": []
+  }
+]

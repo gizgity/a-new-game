@@ -1,5 +1,5 @@
 {
-  "baseline": "893d744 / runtime c30248a=591fa0e; compiled from 71fe428 with identical runtime source",
+  "baseline": "893d744 / runtime c30248a=591fa0e (same compiled runtime as initial 71fe428)",
   "method": "Full serialized combat state excluding only feedback/feedbackFlash presentation metadata (audio included) at300tick intervals, seeded Draft+combat, up to180s or natural defeat. No HP grants; not balance or human input evidence.",
   "cases": [
     {

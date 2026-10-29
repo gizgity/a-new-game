@@ -1,3 +1,4 @@
+import { FEEDBACK } from './config/feedback';
 import type Phaser from 'phaser';
 import type { CombatWorld, Enemy } from './combat';
 import { BOSS_ATTACK, BOSS_PHASE, GRUNT_LEAP } from './config/balance';
@@ -94,7 +95,7 @@ export class EnemySprites {
         .setPosition(enemy.x + Math.cos(enemy.angle) * lean, enemy.y - height + bob + Math.sin(enemy.angle) * lean - transformPulse * 6)
         .setScale(1 + transformPulse * 0.14, pose === 'windup' ? 1 - progress * 0.035 : 1 + transformPulse * 0.08)
         .setDepth(1.2 + enemy.y / 100000).setVisible(true).setAlpha(1);
-      if (baseline && enemy.flash > 0) body.image.setTintFill(0xffffff); else if (flash > 0 && enemy.windup <= 0 && enemy.active <= 0 && enemy.transform <= 0) body.image.setTint(0xe5fff7); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
+      if (baseline && enemy.flash > 0) body.image.setTintFill(0xffffff); else if (flash > 0 && enemy.windup <= 0 && enemy.active <= 0 && enemy.transform <= 0) body.image.setTint(FEEDBACK.flashTint); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
     }
   }
 }

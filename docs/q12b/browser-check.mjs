@@ -22,10 +22,24 @@ for(const [width,height,touch] of [[320,740,true],[390,844,true],[844,390,true],
   game.events.emit('postrender');const restored=c.getWorldPoint(100,100);
   if(Math.abs(restored.x-point.x)>1e-4||c.scrollX!==logical.x||c.scrollY!==logical.y)throw Error('aim/logical camera drift');
   if(JSON.stringify(w)!==snapshot)throw Error('camera mutated world');
+  for(const enemy of w.enemies.slice(0,2)) {
+   const saved={windup:enemy.windup,active:enemy.active,transform:enemy.transform};
+   for(const phase of ['windup','active',...(enemy.kind==='boss'?['transform']:[])]) {
+    enemy.windup=enemy.active=enemy.transform=0;enemy[phase]=.2;a.drawCombat();
+    if(a.enemySprites.bodies.get(enemy.id).image.tintFill)throw Error('warning tint '+phase);
+   }
+   Object.assign(enemy,saved);
+  }
+  const flashed=w.enemies[2],fb=a.enemySprites.bodies.get(flashed.id);
+  for(const [cue,seconds] of [['light',.045],['light3',.07],['heavy',.09]]) {
+   w.hitEnemy(flashed,1,0,0,0,true,cue);a.drawCombat();
+   if(fb.flash!==seconds)throw Error('flash duration');
+   a.enemySprites.stepFeedback(seconds+.001);a.drawCombat();if(fb.flash!==0)throw Error('flash prolonged by simulation hitstop');
+  }
   a.setPhase('paused');if(a.impactTier!==null)throw Error('pause tail');a.setPhase('playing');if(a.impactTier!==null)throw Error('resume replay');
   a.impactTier='heavy';a.impactAge=.1;if((await import('/a-new-game/src/game/impactMotion.ts')).impactOffset(a.impactTier,a.impactAge,a.touch.enabled)!==0)throw Error('decay');
   c.centerOn(w.player.x,w.player.y);a.drawCombat();a.vessel.render(w,a.cosmetic);
-  return {worldPure:true,warningVisible:true,screenPixels:Math.abs(offset*c.zoom),aimRestored:true,lifecycle:true,crowd:w.enemies.length};
+  return {worldPure:true,warningVisible:true,flashDurations:true,screenPixels:Math.abs(offset*c.zoom),aimRestored:true,lifecycle:true,crowd:w.enemies.length};
  });
  for(const baseline of [true,false]){
   await p.evaluate(async baseline=>{const {arena:a,game}=await import('/a-new-game/src/main.ts');a.feedbackBaseline=baseline;a.drawCombat();a.vessel.render(a.combat,a.cosmetic);game.renderer.preRender();a.cameras.main.preRender();game.renderer.render(a,a.children.list,a.cameras.main);game.renderer.postRender();game.events.emit('postrender');},baseline);

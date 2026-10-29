@@ -353,7 +353,7 @@ export class ArenaScene extends Phaser.Scene {
     }
     const perfectAge = this.feedbackBaseline ? 0.65 - world.perfectFlash : this.perfectAge;
     if (world.perfectFlash > 0 && (this.feedbackBaseline || perfectAge < FEEDBACK.perfectDuration)) {
-      const radius = this.feedbackBaseline ? 28 + perfectAge * 45 : FEEDBACK.perfectRadius + perfectAge * 45;
+      const radius = this.feedbackBaseline ? 28 + perfectAge * 45 : FEEDBACK.perfectRadius + perfectAge * FEEDBACK.perfectExpansion;
       g.lineStyle(2, FEEDBACK.perfectColor, this.feedbackBaseline ? world.perfectFlash / 0.65 : 1 - perfectAge / FEEDBACK.perfectDuration);
       for (let i = 0; i < 4; i++) {
         const a = i * Math.PI / 2;

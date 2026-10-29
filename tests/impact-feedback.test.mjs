@@ -19,6 +19,8 @@ test('crowd coalesces max tier and envelopes never accumulate displacement',()=>
  const w=world();w.spawnEnemy('grunt',850,500);const e=w.enemies[0];e.hp=10000;
  for(let i=0;i<100;i++)w.hitEnemy(e,1,0,0,0,true,i===1?'heavy':'light');
  assert.equal(w.feedback,'heavy');assert.ok(w.impacts.length<=24);
+ // User chose the legacy simulation exception: max, never additive.
+ assert.equal(w.hitstop,0.085);
  for(const mobile of [false,true])for(const tier of ['light','medium','heavy']){
   for(let i=0;i<1000;i++)assert.ok(Math.abs(impactOffset(tier,i/1000,mobile))<=FEEDBACK[tier].pixels*(mobile?FEEDBACK.mobileScale:1));
   assert.equal(impactOffset(tier,0.1,mobile),0);
