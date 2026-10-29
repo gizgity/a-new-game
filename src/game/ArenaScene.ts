@@ -1,5 +1,5 @@
 import { FEEDBACK, type ImpactTier } from './config/feedback';
-import { impactOffset } from './impactMotion';
+import { impactOffset, canStartImpact } from './impactMotion';
 import { TrailVisual } from './TrailVisual';
 import type { SigilId } from './config/legacy';
 import { AscensionVisual } from './AscensionVisual';
@@ -49,7 +49,7 @@ export class ArenaScene extends Phaser.Scene {
   private reticle!: Phaser.GameObjects.Graphics;
   private keys!: Record<'W' | 'A' | 'S' | 'D' | 'SHIFT' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
   private accumulator = 0;
-  private impactAge = FEEDBACK.decay as number;
+  private impactAge = FEEDBACK.cooldown as number;
   private impactTier: ImpactTier | null = null;
   private perfectAge = FEEDBACK.perfectDuration as number;
   private perfectCount = 0;
@@ -200,7 +200,7 @@ export class ArenaScene extends Phaser.Scene {
     this.perfectAge = FEEDBACK.perfectDuration; this.perfectCount = this.combat.perfectDodges;
     if (phase !== 'playing') this.enemySprites.stepFeedback(1);
     this.phase = phase;
-    this.impactTier = null; this.impactAge = FEEDBACK.decay;
+    this.impactTier = null; this.impactAge = FEEDBACK.cooldown;
     if (phase === 'victory') {
       this.victoryRevealing = true;
       this.resultVisual.victory(this.combat.bossDeathPosition ?? this.player, () => {
@@ -230,7 +230,7 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   private resize(size: Phaser.Structs.Size): void {
-    this.impactTier = null; this.impactAge = FEEDBACK.decay;
+    this.impactTier = null; this.impactAge = FEEDBACK.cooldown;
     const compact = this.touch.enabled || size.width < 700;
     const zoom = compact
       ? Phaser.Math.Clamp(Math.min(size.width / 480, size.height / 400), 0.75, 1.3)
@@ -292,8 +292,8 @@ export class ArenaScene extends Phaser.Scene {
       if (this.combat.perfectDodges > this.perfectCount) this.perfectAge = 0;
       this.perfectCount = this.combat.perfectDodges;
       const tier = this.combat.feedback;
-      // One envelope; repeated equal/lower-priority hits cannot prolong a burst.
-      if (tier && (this.impactAge >= FEEDBACK.decay || !this.impactTier || FEEDBACK[tier].pixels > FEEDBACK[this.impactTier].pixels)) {
+      // Never restart or queue a burst during the envelope or its quiet interval.
+      if (canStartImpact(tier, this.impactAge)) {
         this.impactTier = tier; this.impactAge = 0;
       }
       if (!frozen) {

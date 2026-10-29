@@ -550,7 +550,8 @@ export class CombatWorld {
     if (actualDamage > 0) {
       const tier = impactTier(sound);
       enemy.feedbackFlash = FEEDBACK[tier].flash;
-      if (!this.feedback || FEEDBACK[tier].pixels > FEEDBACK[this.feedback].pixels) this.feedback = tier;
+      // Camera accents are reserved for strong player hits on priority threats.
+      if (playerSource && tier === 'heavy' && (enemy.kind === 'boss' || enemy.kind === 'bulwark')) this.feedback = tier;
     }
     enemy.flash = 0.12; // Legacy simulation marker; Q12B uses its own render duration.
     if (sound !== 'legacy' && sound !== 'anomaly' && sound !== 'blast') this.cue(sound === 'phantom' ? 'light' : sound);

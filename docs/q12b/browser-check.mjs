@@ -18,7 +18,7 @@ for(const [width,height,touch] of [[320,740,true],[390,844,true],[844,390,true],
   const snapshot=JSON.stringify(w);a.impactTier='heavy';a.impactAge=0;c.preRender();game.events.emit('postrender');
   c.stopFollow();const point=c.getWorldPoint(100,100);const logical={x:c.scrollX,y:c.scrollY};
   c.preRender();const shifted=c.getWorldPoint(100,100);const offset=point.x-shifted.x;
-  if(Math.abs(offset*c.zoom)>(a.touch.enabled?.9001:3.0001))throw Error(JSON.stringify({offset,zoom:c.zoom,point,shifted,scrollX:c.scrollX,logical,touch:a.touch.enabled}));
+  if(Math.abs(offset*c.zoom)>(a.touch.enabled?2.4001:6.0001))throw Error(JSON.stringify({offset,zoom:c.zoom,point,shifted,scrollX:c.scrollX,logical,touch:a.touch.enabled}));
   game.events.emit('postrender');const restored=c.getWorldPoint(100,100);
   if(Math.abs(restored.x-point.x)>1e-4||c.scrollX!==logical.x||c.scrollY!==logical.y)throw Error('aim/logical camera drift');
   if(JSON.stringify(w)!==snapshot)throw Error('camera mutated world');

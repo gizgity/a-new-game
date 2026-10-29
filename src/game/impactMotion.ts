@@ -6,3 +6,8 @@ export function impactOffset(tier: ImpactTier | null, age: number, mobile: boole
   return FEEDBACK[tier].pixels * (mobile ? FEEDBACK.mobileScale : 1)
     * (1 - t) * Math.cos(t * Math.PI * 2 * FEEDBACK.cycles);
 }
+
+/** Require a quiet interval after each burst, including crowd relays. */
+export function canStartImpact(tier: ImpactTier | null, age: number): boolean {
+  return tier === 'heavy' && age >= FEEDBACK.cooldown;
+}
