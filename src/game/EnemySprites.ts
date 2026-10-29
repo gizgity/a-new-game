@@ -4,7 +4,7 @@ import { BOSS_ATTACK, BOSS_PHASE, GRUNT_LEAP } from './config/balance';
 import { ACTOR_TEXTURE, actorFrame } from './ActorArt';
 import { enemyArtPose } from './ActorPose';
 
-type Body = { image: Phaser.GameObjects.Image; enemy: Enemy; x: number; y: number; stride: number; moving: boolean };
+type Body = { image: Phaser.GameObjects.Image; enemy: Enemy; x: number; y: number; stride: number; moving: boolean; hp: number; flash: number };
 
 /** Body art only. Core ownership, ground cues, marks, bars and effects stay separate. */
 export class EnemySprites {
@@ -49,7 +49,11 @@ export class EnemySprites {
     }
   }
 
-  render(world: CombatWorld): void {
+  stepFeedback(dt: number): void {
+    for (const body of this.bodies.values()) body.flash = Math.max(0, body.flash - dt);
+  }
+
+  render(world: CombatWorld, baseline = false): void {
     // Retain the previous core object only to distinguish actual death from Boss cleanup.
     for (const [id, body] of this.bodies) {
       if (world.enemies.includes(body.enemy)) continue;
@@ -65,10 +69,13 @@ export class EnemySprites {
     for (const enemy of world.enemies) {
       let body = this.bodies.get(enemy.id);
       if (!body) {
-        body = { image: this.free.pop() ?? this.image(), enemy, x: enemy.x, y: enemy.y, stride: 0, moving: false };
+        body = { image: this.free.pop() ?? this.image(), enemy, x: enemy.x, y: enemy.y, stride: 0, moving: false, hp: enemy.maxHp, flash: 0 };
         this.bodies.set(enemy.id, body);
       }
-      const pose = enemyArtPose(enemy, body.moving);
+      if (enemy.hp < body.hp) body.flash = enemy.feedbackFlash ?? 0;
+      body.hp = enemy.hp;
+      const flash = baseline ? enemy.flash : body.flash;
+      const pose = enemyArtPose(enemy, body.moving, flash);
       const phase = pose === 'move' && Math.sin(body.stride) < 0 ? 'idle' : pose;
       const pattern = enemy.kind === 'boss' && ['windup', 'attack', 'recovery'].includes(pose)
         ? `${['sweep', 'ring', 'slam'][enemy.attackAction] ?? 'sweep'}-${pose}` : phase;
@@ -87,7 +94,7 @@ export class EnemySprites {
         .setPosition(enemy.x + Math.cos(enemy.angle) * lean, enemy.y - height + bob + Math.sin(enemy.angle) * lean - transformPulse * 6)
         .setScale(1 + transformPulse * 0.14, pose === 'windup' ? 1 - progress * 0.035 : 1 + transformPulse * 0.08)
         .setDepth(1.2 + enemy.y / 100000).setVisible(true).setAlpha(1);
-      if (enemy.flash > 0) body.image.setTintFill(0xffffff); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
+      if (baseline && enemy.flash > 0) body.image.setTintFill(0xffffff); else if (flash > 0 && enemy.windup <= 0 && enemy.active <= 0 && enemy.transform <= 0) body.image.setTint(0xe5fff7); else if (enemy.enraged) body.image.setTint(0xffbb99); else body.image.clearTint();
     }
   }
 }

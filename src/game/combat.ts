@@ -1,3 +1,4 @@
+import { FEEDBACK, impactTier, type ImpactTier } from './config/feedback.js';
 import { ASCENSION_VFX } from './config/ascensionVfx.js';
 import { AscensionEffects } from './AscensionEffects.js';
 import { ASCENSION } from './config/ascension.js';
@@ -39,7 +40,7 @@ export interface Enemy {
   leapCooldown: number; leapFromX: number; leapFromY: number;
   enraged: boolean; transform: number; followup: boolean; comboFinish: boolean;
   recovery: number; active: number; windupDuration: number; attackAction: number;
-  angle: number; stagger: number; flash: number; rupture: number; action: number; targetX: number; targetY: number;
+  angle: number; stagger: number; flash: number; feedbackFlash?: number; rupture: number; action: number; targetX: number; targetY: number;
 }
 export interface Projectile {
   x: number; y: number; vx: number; vy: number; hostile: boolean; life: number; charged?: boolean; anomaly?: boolean; damage?: number; staticBonus?: number; glassBoost?: boolean; root?: ChainRoot;
@@ -168,6 +169,8 @@ export class CombatWorld {
   comboWindow = 0;
   shotCooldown = 0;
   hitstop = 0;
+  // Confirmed damage only; coalesced per simulation tick, independent of VFX pool.
+  feedback: ImpactTier | null = null;
   attack: Attack | null = null;
   enemies: Enemy[] = [];
   projectiles: Projectile[] = [];
@@ -219,6 +222,7 @@ export class CombatWorld {
     Object.assign(this.player, { x: ARENA.width / 2, y: ARENA.height / 2, angle: 0 });
     this.soundEvents = [];
     this.audioEvents = [];
+    this.feedback = null;
     this.clearInput();
     this.lastShot = { angle: 0, charged: false };
     this.mutations = [];
@@ -245,6 +249,7 @@ export class CombatWorld {
     this.projectiles = [];
     this.enemies = [];
     this.impacts = [];
+    this.feedback = null;
     this.gruntLeapGap = 0;
     this.nextId = 0;
     this.replacement = 1.5;
@@ -284,6 +289,7 @@ export class CombatWorld {
   step(input: CombatInput, dt: number): void {
     this.soundEvents = [];
     this.audioEvents = [];
+    this.feedback = null;
     if (this.hp <= 0) { this.clearInput(); return; }
     if (this.bossTransforming) {
       const boss = this.enemies.find(enemy => enemy.kind === 'boss' && enemy.hp > 0)!;
@@ -541,9 +547,14 @@ export class CombatWorld {
       enemy.windup = 0;
       enemy.cooldown = Math.max(enemy.cooldown, 0.45);
     }
-    enemy.flash = 0.12;
+    if (actualDamage > 0) {
+      const tier = impactTier(sound);
+      enemy.feedbackFlash = FEEDBACK[tier].flash;
+      if (!this.feedback || FEEDBACK[tier].pixels > FEEDBACK[this.feedback].pixels) this.feedback = tier;
+    }
+    enemy.flash = 0.12; // Legacy simulation marker; Q12B uses its own render duration.
     if (sound !== 'legacy' && sound !== 'anomaly' && sound !== 'blast') this.cue(sound === 'phantom' ? 'light' : sound);
-    this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
+    if (actualDamage > 0) this.impact(contactX, contactY, sound === 'heavy' || sound === 'chargedHit' ? 0xffcc80 : sound === 'light2' ? 0x80e8ff : 0xe5fff7,
       22, sound === 'blast' || sound === 'phantom' || sound === 'legacy' || sound === 'anomaly' ? undefined : sound, angle);
     if (sealCue) this.impact(contactX, contactY, 0xffedce, 30, 'anomalySeal', angle);
     const stop = sound === 'blast' ? (damage >= 48 ? 0.05 : 0.025) : sound === 'heavy' ? 0.085 : sound === 'light3' ? 0.065 : sound === 'light2' ? 0.045 : sound === 'chargedHit' ? 0.04 : sound === 'shotHit' ? 0.012 : 0.033;

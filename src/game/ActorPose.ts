@@ -9,13 +9,13 @@ export function artDirection(angle: number): ArtDirection {
   return Math.abs(x) >= Math.abs(y) ? (x >= 0 ? 'east' : 'west') : (y >= 0 ? 'south' : 'north');
 }
 
-export function enemyArtPose(enemy: Enemy, moving: boolean): ArtPose {
+export function enemyArtPose(enemy: Enemy, moving: boolean, flash = enemy.flash): ArtPose {
   if (enemy.hp <= 0) return 'death';
   // A hit flash must not hide preparation or an active attack (especially Boss).
   if (enemy.windup > 0) return 'windup';
   if (enemy.active > 0) return 'attack';
   if (enemy.recovery > 0) return 'recovery';
-  if (enemy.flash > 0) return 'hit';
+  if (flash > 0) return 'hit';
   return moving ? 'move' : 'idle';
 }
 

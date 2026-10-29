@@ -1,3 +1,5 @@
+import { FEEDBACK, type ImpactTier } from './config/feedback';
+import { impactOffset } from './impactMotion';
 import { TrailVisual } from './TrailVisual';
 import type { SigilId } from './config/legacy';
 import { AscensionVisual } from './AscensionVisual';
@@ -47,6 +49,12 @@ export class ArenaScene extends Phaser.Scene {
   private reticle!: Phaser.GameObjects.Graphics;
   private keys!: Record<'W' | 'A' | 'S' | 'D' | 'SHIFT' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
   private accumulator = 0;
+  private impactAge = FEEDBACK.decay as number;
+  private impactTier: ImpactTier | null = null;
+  private perfectAge = FEEDBACK.perfectDuration as number;
+  private perfectCount = 0;
+  // Review baseline is allowed only inside an existing memory-only playtest.
+  readonly feedbackBaseline = new URLSearchParams(location.search).has('playtest') && new URLSearchParams(location.search).get('feedback') === 'baseline';
   private pressed = new Set<CombatAction>();
   private armedSpecials = new Set<'heavy' | 'charged'>();
   private releaseAim: NonNullable<CombatInput['specialAim']> = {};
@@ -135,6 +143,25 @@ export class ArenaScene extends Phaser.Scene {
     this.input.mouse!.disableContextMenu();
     this.cameras.main.setBounds(0, 0, ARENA.width, ARENA.height);
     this.cameras.main.startFollow(this.vessel.body, true, 0.12, 0.12);
+    // Apply only to the render matrix. Restore before any input/world conversion.
+    const camera = this.cameras.main as Phaser.Cameras.Scene2D.Camera & { matrix: Phaser.GameObjects.Components.TransformMatrix }, preRender = camera.preRender.bind(camera);
+    let renderedOffset = 0;
+    camera.preRender = () => {
+      preRender();
+      renderedOffset = this.feedbackBaseline ? 0 : impactOffset(this.impactTier, this.impactAge, this.touch.enabled);
+      camera.matrix.e += renderedOffset;
+      this.reticle.x -= renderedOffset / camera.zoom;
+    };
+    const restoreMatrix = () => {
+      camera.matrix.e -= renderedOffset;
+      this.reticle.x += renderedOffset / camera.zoom;
+      renderedOffset = 0;
+    };
+    this.game.events.on(Phaser.Core.Events.POST_RENDER, restoreMatrix);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.game.events.off(Phaser.Core.Events.POST_RENDER, restoreMatrix);
+      camera.preRender = preRender;
+    });
     this.resize(this.scale.gameSize);
     this.scale.on(Phaser.Scale.Events.RESIZE, this.resize, this);
     this.game.events.on(Phaser.Core.Events.BLUR, this.handleBlur, this);
@@ -170,7 +197,10 @@ export class ArenaScene extends Phaser.Scene {
       : phase === 'playing' && previous !== 'paused' ? 'start' : undefined);
     this.meleeHeld = this.shootHeld = false;
     this.touch.reset();
+    this.perfectAge = FEEDBACK.perfectDuration; this.perfectCount = this.combat.perfectDodges;
+    if (phase !== 'playing') this.enemySprites.stepFeedback(1);
     this.phase = phase;
+    this.impactTier = null; this.impactAge = FEEDBACK.decay;
     if (phase === 'victory') {
       this.victoryRevealing = true;
       this.resultVisual.victory(this.combat.bossDeathPosition ?? this.player, () => {
@@ -200,6 +230,7 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   private resize(size: Phaser.Structs.Size): void {
+    this.impactTier = null; this.impactAge = FEEDBACK.decay;
     const compact = this.touch.enabled || size.width < 700;
     const zoom = compact
       ? Phaser.Math.Clamp(Math.min(size.width / 480, size.height / 400), 0.75, 1.3)
@@ -224,6 +255,9 @@ export class ArenaScene extends Phaser.Scene {
       return;
     }
 
+    this.impactAge += Math.min(delta / 1000, 0.1);
+    this.perfectAge += Math.min(delta / 1000, 0.1);
+    this.enemySprites.stepFeedback(Math.min(delta / 1000, 0.1));
     const touch = this.touch.sample();
     if (this.touch.enabled && !this.combat.bossTransforming) {
       this.player.angle = touchAim(this.player, this.combat.enemies, touch.manualAimAngle, touch.aimAngle ?? this.player.angle);
@@ -255,6 +289,13 @@ export class ArenaScene extends Phaser.Scene {
       const bossBefore = this.run.bossDue;
       const eliteBefore = this.combat.enemies.some(enemy => enemy.kind === 'bulwark');
       this.run.step(input, FIXED_STEP);
+      if (this.combat.perfectDodges > this.perfectCount) this.perfectAge = 0;
+      this.perfectCount = this.combat.perfectDodges;
+      const tier = this.combat.feedback;
+      // One envelope; repeated equal/lower-priority hits cannot prolong a burst.
+      if (tier && (this.impactAge >= FEEDBACK.decay || !this.impactTier || FEEDBACK[tier].pixels > FEEDBACK[this.impactTier].pixels)) {
+        this.impactTier = tier; this.impactAge = 0;
+      }
       if (!frozen) {
         this.vessel.step(this.combat, FIXED_STEP);
         this.trailVisual.step(this.combat, FIXED_STEP, this.trail);
@@ -299,7 +340,7 @@ export class ArenaScene extends Phaser.Scene {
     for (const enemy of world.enemies) drawEnemyTelegraph(ground, enemy, world);
     drawBuildCues(ground, world);
     drawLegacy(ground, world);
-    this.enemySprites.render(world);
+    this.enemySprites.render(world, this.feedbackBaseline);
     for (const enemy of world.enemies) drawEnemyStatus(g, enemy);
     for (const shot of world.projectiles) {
       if (shot.anomaly) continue;
@@ -310,9 +351,10 @@ export class ArenaScene extends Phaser.Scene {
       g.lineBetween(shot.x, shot.y, shot.x - shot.vx / speed * 16, shot.y - shot.vy / speed * 16);
       g.fillStyle(color).fillCircle(shot.x, shot.y, shot.hostile || shot.charged ? 5 : 3);
     }
-    if (world.perfectFlash > 0) {
-      const radius = 28 + (0.65 - world.perfectFlash) * 45;
-      g.lineStyle(2, 0x9dffe2, world.perfectFlash / 0.65);
+    const perfectAge = this.feedbackBaseline ? 0.65 - world.perfectFlash : this.perfectAge;
+    if (world.perfectFlash > 0 && (this.feedbackBaseline || perfectAge < FEEDBACK.perfectDuration)) {
+      const radius = this.feedbackBaseline ? 28 + perfectAge * 45 : FEEDBACK.perfectRadius + perfectAge * 45;
+      g.lineStyle(2, FEEDBACK.perfectColor, this.feedbackBaseline ? world.perfectFlash / 0.65 : 1 - perfectAge / FEEDBACK.perfectDuration);
       for (let i = 0; i < 4; i++) {
         const a = i * Math.PI / 2;
         const point = (angle: number, r: number) => ({ x: this.player.x + Math.cos(angle) * r, y: this.player.y + Math.sin(angle) * r });

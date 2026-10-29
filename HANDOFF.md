@@ -10,7 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**ACCEPTED — USER AUDIO/PLAYTEST APPROVAL Q12A** — user ngày2026-10-29: “t đổi ý lại r, giữa lại tiếng arrival cũ để dễ phân biệt, làm xong là 12a ok r đó” (hội thoại task hiện tại, không permalink). Điều kiện khôi phục Arrival cũ đã hoàn tất trên code/deploy **c30248a**. Giữ combat giảm treble/tăng bass của591fa0e và Arrival gốc Q8C; thử nghiệm Arrival mềm d3fbc1c đã hủy. Đây là approval trực tiếp có điều kiện đã thực hiện, không suy từ build/tests/deploy. Không DDR, không Q12B–E hoặc tune gameplay/progression/artwork.
+Q12B — Hit Feel & Combat Feedback, user giao2026-10-29, Punchy & Controlled. Goal: reuse feedback hiện hữu, confirmed-hit contract, giữ sound Q12A/Arrival Q8C, gameplay/progression/artwork và input precision. Không DDR/Q12C–E.
+
+## Q12B STATUS
+**IN PROGRESS — BLOCKED ON HITSTOP CONTRACT CHOICE.** Baseline đã fast-forward main893d744 (Q12A accepted; runtimec30248a=591fa0e). Đã triển khai config flash45/70/90ms, confirmed-damage metadata/priority, render-only camera≤1.5/3px desktop và0.45/0.9mobile/100ms, preserve telegraph tint/ActorPose, Perfect100ms, fixture A/B baseline. Audio không thay. [Audit/code/test/review checklist](docs/q12b/README.md).
+Build/typecheck/29testfiles và15case full-world parity (gồm audio, trừ2metadata mới) PASS. Browser4viewport/crowd/Boss/renderpure/aim matrix restore/pause/resume/storage, input390touch+1440keyboard hold/cancel/release PASS; evidence docs/q12b. Chưa user/device/iOS/Safari/FPS/naturalrun, resize/manualmovement thêm còn pending.
+Xung đột: Heavy baseline85ms/L3 65ms freeze simulation; hạ≤35ms không thể giữ wallclock world-state parity/cooldown/movement/AI/Boss timing. Đã hỏi user: giữ simulation+ghi ngoại lệ, hoặc cho phép thay simulation+parity active ticks. Chưa có câu trả lời; **chưa sửa legacy hitstop**, cap35ms chưa hiệu lực. Không tự coi complete/AWAITING PLAYTEST, chưa deploy Q12B.
 
 ## Q12A STATUS
 Khôi phục `src/game/audio.ts` đúng591fa0e; toànruntime `src/`, Vite config và audition entry không khác591fa0e. Build/typecheck và28testfiles chạy lại PASS. [Pages40882653011](https://github.com/gizgity/a-new-game/actions/runs/40882653011) **completed/SUCCESS**; build/typecheck/upload/Deploy. Chưa liveHTTP/hash verification. Commit bàn giao tiếp theo chỉMarkdown, không redeploy.
@@ -150,7 +155,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Dừng sau Q12A ACCEPTED theo lời user và Arrival cũ đã khôi phục. Chờ task mới; không tự Q12B–E/tune gameplay/DDR hoặc yêu cầu duyệt lại.
+Chờ user chọn policy hitstop Q12B đã hỏi; sau đó hoàn tất phần phụ thuộc, kiểm bổ sung resize/movement/aim, commit/push main fast-forward và Pages review theo scope, cập nhật evidence rồi dừng AWAITING USER PLAYTEST APPROVAL Q12B. Không tự Q12C–E/DDR.
 
 ## VALIDATION APPROVAL Q9E
 Chỉ sửa Markdown ghi nhận approval trực tiếp; kiểm diff, nguồn/version, links và tính nhất quán. Không chạy lại build/tests hoặc deploy. Giữ27testfiles, typecheck/build, renderer/input/flow/dist và Pages2fcdfd2 đã PASS; không suy coverage thiết bị mới từ acceptance chung. DD-0003 append-only và Art Bible không đổi.
