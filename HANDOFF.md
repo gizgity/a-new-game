@@ -10,13 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**READY TO DEPLOY — cân bằng4hướng, 2026-10-29.** User: “làm theo đề xuất, đảm bảo cần bằng ở cả 4 hướng chơi, tỉ lệ thắng nên gần bằng nhau, hiện tại range hơi hụt”. Đã đồng bộmain3c8203f, bảo toàn Q12A/B/C accepted. [Thông số, evidence, review](docs/early-run-balance/implementation.md). Không Q12D–E/art/audio/DDR.
+**DEPLOYED — AWAITING USER PLAYTEST APPROVAL — cân bằng4hướng, 2026-10-29.** User: “làm theo đề xuất, đảm bảo cần bằng ở cả 4 hướng chơi, tỉ lệ thắng nên gần bằng nhau, hiện tại range hơi hụt”. Đã đồng bộmain3c8203f, bảo toàn Q12A/B/C accepted. [Thông số, evidence, review](docs/early-run-balance/implementation.md). Không Q12D–E/art/audio/DDR.
 
 Đã triển khai commondamage9/8/12, Leap5; heal12HP/10s, Blood9; dash2.2/Oath1.15; Archer commit250ms/đạn280; Specialist actual Charged Detonate damage cấp6Barrier/CD2s/cap30. Giữ damage đạn/Boss/Elite/spawn/growth, Aegis và các damage tax. Các biến thể output/Glass/Leap/waves không giúp đã bỏ, raw giữ lịch sử.
 
 Acceptance kỹ thuật PASS trên holdout16seed ghi trước tuning: observed300ms Tank16/16, Sustain16/16, Counter14/16, Ranged15/16, spread12.5điểm%≤15. Baseline cùng policy100/50/50/56.25%, spread50. Khôngdash15/16,16/16,14/16,12/16, spread25điểm%, Ranged baseline2/16; chưa hoàn toàn ngang nếu bỏdash. Reflex16/16,16/16,14/16,16/16, Counter baseline15/16→14/16 làregression1trajectory, Tanknone16→15. Không gọibotrate làwinrate người; seed chủyếuđổi draft, aimtheotọađộ thật. Natural first-run progression/unlocks/drafts/resources, khônggrants; Ranged giữxaBoss330–420px, cảbaseline/final rerun cùngquytắc.
 
-Validation:30testfilesPASS gồm Archercommit/walkingdodge, Specialistactualdamage/multihit/cap/Oath/freeze/reset/empty/noMutation; typecheck/buildPASS. Chromium320/390/844touch+1440desktop fixture inputthậtCharged/vi-en/BarrierHUD/pause/nooverflow/noerror. Natural2contextseed80891swall→33.8srun, Counter/Ranged100HP/108–106kills/1dash, khôngerror; chưaCurse/Boss, khôngnaturalfullrun/browser/deviceFPS/iOS/Safari/humanfeel. BuildPhaser>500KB warningcũ. Awaitingdeploy rồiuserplaytest, không tựaccepted. Scope thử tại implementation.md: runmới20–100s cả4hướng, RangedChargednổtrúngcụmcấp6Barrier/CD2s, hụt/rỗngkhôngkhiên; báo build/mốc/tìnhhuống/device.
+Validation:30testfilesPASS gồm Archercommit/walkingdodge, Specialistactualdamage/multihit/cap/Oath/freeze/reset/empty/noMutation; typecheck/buildPASS. Chromium320/390/844touch+1440desktop fixture inputthậtCharged/vi-en/BarrierHUD/pause/nooverflow/noerror. Natural2contextseed80891swall→33.8srun, Counter/Ranged100HP/108–106kills/1dash, khôngerror; chưaCurse/Boss, khôngnaturalfullrun/browser/deviceFPS/iOS/Safari/humanfeel. BuildPhaser>500KB warningcũ. Code/deploy81f5ec6 đã pushmain fast-forward3c8203f; [Pages40917071241](https://github.com/gizgity/a-new-game/actions/runs/40917071241) completed/SUCCESS. [Chơi](https://gizgity.github.io/a-new-game/?v=81f5ec6). Chưa liveHTTP/hash verification; chờ userplaytest, không tựaccepted. Pushreview từchối lầnđầu vìquyềndeploy; đãđọc lại AGENTS88–91/HANDOFFpermission vàreviewlại chophép đúngcommand, khôngcònblocker. Scope thử tại implementation.md: runmới20–100s cả4hướng, RangedChargednổtrúngcụmcấp6Barrier/CD2s, hụt/rỗngkhôngkhiên; báo build/mốc/tìnhhuống/device.
 
 ## Q12C STATUS
 Q12C đã được user duyệt theo ACTIVE TASK; gate chờ audio/playtest hoàn tất. Lượt ghi nhận này chỉ Markdown, không runtime/build/tests/deploy.
@@ -118,7 +118,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-Cân bằng4hướng đã technicalPASS, READY TO DEPLOY, chưauserplaytestaccepted; scope/giới hạn tại ACTIVE TASK và docs/early-run-balance/implementation.md. Q12A/Q12B/Q12C và Q9A–Q9E accepted giữnguyên. Không Q12D–E/DDR.
+Cân bằng4hướng technicalPASS/deployed81f5ec6, Pages40917071241SUCCESS, chưauserplaytestaccepted; scope/giới hạn tại ACTIVE TASK và docs/early-run-balance/implementation.md. Q12A/Q12B/Q12C và Q9A–Q9E accepted giữnguyên. Không Q12D–E/DDR.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -169,7 +169,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Commit/push main fast-forward, theo dõi Pages tới completed; cập nhật link/version rồi bàn giao user thử scope cân bằng4hướng. Không tự mở milestone khác.
+Chờ user thử bản81f5ec6: run mới20–100s cả4hướng, RangedCharged nổtrúngcụm cấp6Barrier/CD2s, hụt/rỗng khôngkhiên; sustain bùlỗi nhỏ vàdash2.2s. Mongđợi cơhộisống gầnnhau nhưngvẫn cần di chuyển/đánh; báo build/mốc/tìnhhuống/device. Browserfixtures/bot khôngthay human acceptance. Không tự mở milestone khác. Commit bàn giao sau chỉMarkdown, không redeploy.
 
 ## VALIDATION APPROVAL Q12C
 Chỉ sửa Markdown ghi nhận quote/version/approval và kiểm diff/tính nhất quán. Giữ build/typecheck/30testfiles, parity126/126, browser/input/crowd và Pages3013c9d đã PASS; không chạy lại tests/build hoặc redeploy, không suy coverage mới từ approval chung.

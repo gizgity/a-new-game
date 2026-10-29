@@ -57,6 +57,12 @@ Các thử nghiệm chưa đạt được giữ evidence: tăng DPS/Glass, tăng
 - [Browser fixtures4viewport](evidence/final-browser.json):320×740,390×844,844×390touch và1440×1000desktop; vi/en mô tả, input Charged giữ→thả thật, cấp6Barrier đúngHUD, khôngtựheal, pause đóngbăng cooldown, khôngoverflow/pageerror. Có grant Mutation/ammo/target rõ ràng để kiểm cơ chế, **không phải natural run**. [Script](browser-final-check.mjs), ảnh `final-*.png` trongevidence.
 - Playtest ngắn input thật ở [script](browser-routes.mjs), final-natural Counter/Ranged: seed808, mỗi91s wall đạt33,8s simulation, Counter/Ranged cùng100HP,108/106kills, mỗi lượt1dash, khôngpageerror. Đã chọn Mutation tự nhiên20s, chưa Curse/Boss/kết thúc run; chỉ là smoke đầu run, không chứng minh natural full-run acceptance. Raw/ảnh `final-natural-*.json/png`. Không chứng nhận iOS/Safari/thiết bị thật/FPS/human feel từ Chromium softwareWebGL.
 
+## Deploy và user playtest
+
+Code **81f5ec600146b3553707842124633e41771a96f4** đã push main fast-forward từ3c8203f. [Pages40917071241](https://github.com/gizgity/a-new-game/actions/runs/40917071241) **completed/SUCCESS**, build/typecheck/upload/Deploy. [Chơi bản cân bằng](https://gizgity.github.io/a-new-game/?v=81f5ec6). **AWAITING USER PLAYTEST APPROVAL**; deploy không là experience acceptance. Chưa liveHTTP/hash verification từ môi trường.
+
+Push lần đầu bị auto-review từ chối vì chưa nhận diện quyền deploy; đã kiểm AGENTS.md:88–91 (quyền tựdeploy sau checksPASS) và HANDOFF lờiuser “làm xong deploy luôn nha”, rồi review lại cho phép push cùng command, không workaround. Không còn blocker quyền deploy.
+
 ## Thử sau deploy
 
 Mở run mới (tab ẩn danh để thử progression mới hoàn toàn). Tại20–30s chọn từng hướng; Curse đầu50–60s, quan sát đến85–100s khi còn1Mutation+1Curse. Đi bộ + Melee/Basic, dùng Heavy/Charged kiếm được; Dash để thoát cụm, không cần spam đúng từng telegraph. Ranged: giữ khoảng cách, tích đạn bằng Basic rồi giữ/thả E hoặc nút Charged bắn vào cụm; nổ gây damage được6Barrier, tối đa một lần/2s. Bắn hụt/nổ rỗng không tạo khiên; Barrier không tự hồi HP.
