@@ -29,12 +29,12 @@ Giữ toàn bộ hitstop simulation kế thừa: Heavy85ms, L3 65ms, L2 45ms, Li
 
 ## A/B và checklist review
 
-**Bản đầu e631673 (lịch sử; revision bên dưới supersede tuning shake)**, [Pages40889132551](https://github.com/gizgity/a-new-game/actions/runs/40889132551) **completed/SUCCESS**, gồm npmci/build/typecheck/upload/Deploy. Chưa liveHTTP/hash verification; local dist không thay live verification. Các URL dùng fixture memory riêng; `feedback=baseline` chỉ được đọc khi có `playtest`. Không ghi progression thật; thêm `draftSeed=808` để cố định RNG, thao tác tay vẫn có thể khác.
+**Revision b2042e8**, [Pages40908358381](https://github.com/gizgity/a-new-game/actions/runs/40908358381) **completed/SUCCESS**, gồm npmci/build/typecheck/upload/Deploy. Chưa liveHTTP/hash verification; local dist không thay live verification. Các URL dùng fixture memory riêng; `feedback=baseline` chỉ được đọc khi có `playtest`. Không ghi progression thật; thêm `draftSeed=808` để cố định RNG, thao tác tay vẫn có thể khác.
 
-- [Baseline A](https://gizgity.github.io/a-new-game/?playtest=chain&draftSeed=808&feedback=baseline&v=e631673) / [Q12B B](https://gizgity.github.io/a-new-game/?playtest=chain&draftSeed=808&v=e631673). Baseline giữ120ms/tintFill/Perfect cũ và không impulse, cùng audio/simulation.
+- [Baseline A](https://gizgity.github.io/a-new-game/?playtest=chain&draftSeed=808&feedback=baseline&v=b2042e8) / [Q12B B](https://gizgity.github.io/a-new-game/?playtest=chain&draftSeed=808&v=b2042e8). Baseline giữ120ms/tintFill/Perfect cũ và không impulse, cùng audio/simulation.
 - Light1–2/Basic: đánh trúng thấy accent ngắn, camera đứng; đánh hụt/cancel/không đủresource không impact giả.
 - L3/Charged và dọn crowd thường: flash/VFX nhưng camera đứng. Heavy/marked Detonate/Chain trúng Elite/Boss: rung rõ hơn, có khoảng nghỉ và không giật cộng dồn. Touch giữ–kéo–thả Heavy/Charged; desktop WASD+mouse/Shift/E phải chính xác, reticle luôn sát pointer.
-- [Boss B](https://gizgity.github.io/a-new-game/?playtest=boss&v=e631673) / [Boss A](https://gizgity.github.io/a-new-game/?playtest=boss&feedback=baseline&v=e631673); tới warning/Boss, spam hit lúc windup, cue vẫn đọc rõ. Elite/Bulwark còn armor/telegraph như cũ; damage bị giảm vẫn là confirmed damage.
+- [Boss B](https://gizgity.github.io/a-new-game/?playtest=boss&v=b2042e8) / [Boss A](https://gizgity.github.io/a-new-game/?playtest=boss&feedback=baseline&v=b2042e8); tới warning/Boss, spam hit lúc windup, cue vẫn đọc rõ. Elite/Bulwark còn armor/telegraph như cũ; damage bị giảm vẫn là confirmed damage.
 - Perfect Dodge accent ngắn, không stop mới. Pause/resume/rotate/resize/Replay không replay camera tail hoặc kẹt aim.
 - Phản hồi: tình huống/thao tác, thấy gì, thiết bị/browser; cảm giác hit đủ rõ/đủ nhẹ, có lệch aim hoặc warning bị che không.
 
@@ -43,3 +43,5 @@ Giữ toàn bộ hitstop simulation kế thừa: Heavy85ms, L3 65ms, L2 45ms, Li
 User2026-10-29: “tăng lên đi, và cũng nên cân nhắc, nếu chém quái là rung thì chắc k bao giờ camera ngừng rung, hay chỉ làm cho elite và boss?”. Revision dùng threat+strength gate: chỉ confirmed player Heavy/blast (Detonate) lên Elite/Boss; amplitude6px desktop/2.4pxmobile, cosine1cycle/100ms và450ms giữa2lần bắt đầu. Giữ flash45/70/90ms trên mọi target. Không trigger từ hostile damage, miss/cancel/zero damage. Đây là tuning presentation theo yêu cầu mới, thay cap3px/0.9px và shake trên common ở bản đầu; không đổi simulation/audio/Arrival/ngoại lệ hitstop.
 
 PASS build/typecheck/29testfiles (thêmcase mọi loại target×7cue×player/hostile và spam120ticks ≤5burst/≥70%timeline đứng),15case full-world parity. Browser4viewport và movement/aim/resize evidence được cập nhật cho6px/2.4px. Evidence dist.md giữ snapshot bản đầu e631673, không giả là revision đã kiểm production. Chưa user feel/device/iOS/Safari; vẫn AWAITING USER PLAYTEST APPROVAL Q12B.
+
+Revision **b2042e8** đã push main fast-forward; [Pages40908358381](https://github.com/gizgity/a-new-game/actions/runs/40908358381) **completed/SUCCESS** (build/typecheck/upload/Deploy). Chưa liveHTTP/hash verification. Bàn giao tiếp theo chỉ Markdown, không đổi runtime.
