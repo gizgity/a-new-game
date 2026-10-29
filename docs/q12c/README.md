@@ -2,6 +2,8 @@
 
 Direction user: **Pure Synth / Retro Arcade + Punchy & Controlled**. Baseline `91490f1`, Q12B runtime `b2042e8` accepted; Q12A/Arrival Q8C giữ nguyên. **AWAITING USER AUDIO/PLAYTEST APPROVAL Q12C**. Không DDR/Q12D–E/balance/artwork/combat mới.
 
+Code/deploy **3013c9d** đã push main; [Pages40911173801](https://github.com/gizgity/a-new-game/actions/runs/40911173801) **completed/SUCCESS**, job123579227760: npmci/build/typecheck/upload/Deploy và cleanup SUCCESS. Xác minh qua GitHub connector vì gh API từ CLI trả Forbidden; không còn blocker deploy. Chưa liveHTTP/hash verification; local Chromium không thay coverage live/thiết bị thật. Commit bàn giao sau chỉMarkdown, khôngredeploy.
+
 ## Architecture / audit
 
 Extend `ProceduralAudio`: thêm22 cached mono PCM buffers, cùng Phaser WebAudio manager, gain/mute/lifecycle/voice allocator. Không mixer/engine/dependency/assets ngoài. `SoundCue`, `BuildEffects`, resolver, root ID/admission, damage/RNG/cooldown/budget không đổi. `SoundCue` cũ tham gia combat accounting nên không thêm elemental vào đó. `CombatWorld.elementalEvents` là typed output presentation-only, clear mỗi simulation step/reset; consumer chỉ đọc sau confirmed step. Audio không gọi ngược gameplay. Hooks trong `LegacyEffects` đọc state transitions hoặc so HP trước/sau đường damage cũ.
@@ -39,7 +41,7 @@ Không apply sound khi refresh, tick/expire/consume tự thân; không DoT tick/
 
 ## Review nghe thử / playtest
 
-[Phòng nghe Q12C](https://gizgity.github.io/a-new-game/audition.html): bấm6nút Sigil để nghe tuần tự Core/Branch, hoặc22nút tên cue để nghe riêng. Dropdown18loadout bắt đầu combat24quái; nút4 thêm Arrival, có thể Pause/Mute/Stop và đổi VI/EN. Đây là fixture riêng, cấp resource audition trong memory, không import main/profile/progression và không ghi save thật. Synthetic sample buttons không đại diện gameplay event.
+[Phòng nghe Q12C](https://gizgity.github.io/a-new-game/audition.html?v=3013c9d): bấm6nút Sigil để nghe tuần tự Core/Branch, hoặc22nút tên cue để nghe riêng. Dropdown18loadout bắt đầu combat24quái; nút4 thêm Arrival, có thể Pause/Mute/Stop và đổi VI/EN. Đây là fixture riêng, cấp resource audition trong memory, không import main/profile/progression và không ghi save thật. Synthetic sample buttons không đại diện gameplay event.
 
 [Gameplay6Core/12Branch](../q9a/README.md): các URL `?playtest=legacy-<sigil>-core` hoặc `?playtest=legacy-<sigil>-<branch>` dùng profile memory riêng. Bắt đầu → chờ1s → chọn bộ. Không dùng save thật để cấp unlock. Muốn so với baseline nghe lại audition Q12A controls1–4 hiện có; không đổi feedback Q12B.
 
