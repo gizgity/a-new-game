@@ -6,6 +6,14 @@
 
 Baseline triển khai Q12A **7e74904** đã push main fast-forward. [Pages40791046554](https://github.com/gizgity/a-new-game/actions/runs/40791046554), job123176060022 SUCCESS (npmci/build/typecheck/upload/Deploy). Chưa liveHTTP/hash verification từ môi trường; không suy từ Pages success. Commit bàn giao chỉMarkdown, không redeploy.
 
+## Follow-up Arrival — tiếng gõ trong hai giây đầu bài4
+
+User “2 giây đầu bài 4 vẫn còn tiếng gõ thuỷ tinh” (2026-10-29) mở scope sửa riêng timbre Arrival đã giữ ở hai revision trước. Bỏ các partial ngân1187/1921/2857Hz, thay accent228/342Hz và noise low-pass; attack8→12ms. Giữ body76/152Hz, duration.38s, **bốnnhịp ở0.1/0.6/1.1/1.6s**, gain.32/.46/.66/.9, priority và toàn bộ Boss warning2s/gameplay. Không sửa cuecombat khác hoặc DDR.
+
+[PCM/cadence](arrival/evidence/comparison.json), baseline591fa0e: năng lượng>2kHz Arrival giảm31.8dB, vùng60–300Hz lệch−0.075dB; các cuecombat đo còn lại giống baseline. Đây là evidence tín hiệu, chưa là cảm nhận loa thật. [Browser](arrival/evidence/browser.json) cap/warning giữa spam/lifecycle4sizes và build/typecheck/28testfiles PASS. Script so sánh dùng baseline tạm từ `git show 591fa0e:src/game/audio.ts` tại `src/game/audioBaseline.ts`, chạy `node docs/q12a/arrival/compare-check.mjs`, xóa file tạm trước build.
+
+Các ghi chú “Arrival waveform giữ nguyên/exact” bên dưới là evidence lịch sử trước feedback này; từ follow-up chỉ **cadence/gain/timing** được giữ nguyên. Chưa user audio approval; nghe lại đúng2giây đầu bài4 và khả năng nhận ra warning khi spam.
+
 ## Revision theo feedback 2026-10-29
 
 User nghe bản7e74904: “nghe hơi gắt tai, giảm treb, tăng bass thêm 1 tí. hiện tại nghe như tiếng thuỷ tinh gõ z”. Revision này chỉ tune cached PCM, không scheduling/event/gameplay/UI:
@@ -31,7 +39,7 @@ User nghe bản7e74904: “nghe hơi gắt tai, giảm treb, tăng bass thêm 1 
 
 ## Audit và event map
 
-Giữ ProceduralAudio, cache Phaser và WebAudioSoundManager; không mixer/framework song song. Giữ tần số/duration và identity cơ bản của các cue cũ, âm transition/victory. Có lý do sửa: noise cũ rộng/gắt → low-pass recurrence (revision:2pole1800Hz +4ms attack/4ms tail); Hurt cũ gần impact → double gated dissonant pulse; Perfect → harmonic chime riêng; thêm stack/chaining/buildup do thiếu identity. Arrival **giữ nguyên công thức, gain4nhịp, duration.38s và cadence**; không thêm warning giả. Các cue ngoài Arrival được giới hạn peak và gain để giữ headroom.
+Giữ ProceduralAudio, cache Phaser và WebAudioSoundManager; không mixer/framework song song. Giữ tần số/duration và identity cơ bản của các cue cũ, âm transition/victory. Có lý do sửa: noise cũ rộng/gắt → low-pass recurrence (revision:2pole1800Hz +4ms attack/4ms tail); Hurt cũ gần impact → double gated dissonant pulse; Perfect → harmonic chime riêng; thêm stack/chaining/buildup do thiếu identity. Arrival **giữ gain4nhịp, duration.38s và cadence**, timbre thay theo follow-up phía trên; không thêm warning giả. Các cue ngoài Arrival được giới hạn peak và gain để giữ headroom.
 
 | Sự kiện thật | Cue | Identity / thời điểm |
 | --- | --- | --- |
@@ -45,7 +53,7 @@ Giữ ProceduralAudio, cache Phaser và WebAudioSoundManager; không mixer/frame
 | Rupture thật tăng1/2/3 | stack1/2/3 |520/680/860Hz, .055/.07/.10s; cap3 không accent giả; gồm phantom/Catalyst/Charged mark |
 | Explosion resolved | detonate/chargedBlast +root ID/hop | Một primary/root; các resolution cùngroot thành chain ticks1100Hz, gain giảm0.65^hop, sàn.15 |
 | Player hurt xác nhận | hurt |190/287Hz, double pulse riêng; priority cao |
-| Arrival warning simulation | arrival | Q8C waveform/cadence giữ nguyên |
+| Arrival warning simulation | arrival | Cadence Q8C giữ nguyên; timbre thấp theo follow-up Q12A |
 
 `SoundCue[]` không đủ root/hop: thêm `audioEvents: CombatSoundEvent[]` chỉ ở presentation, reset mỗi step/reset. Resolver không đổi geometry/damage/timing/queue/RNG; chỉ ghi metadata ở đúng nơi đã resolve. Loại bỏ impact Light dư từ blast lên từng victim vì primary root/tick đã đại diện tiếng nổ. Không thêm kill/proc âm giả cho Legacy/Anomaly.
 
@@ -59,7 +67,7 @@ Priority: Arrival5 > Hurt/Boss/Defeat4 > Heavy/L3/Charged/Detonate/Perfect3 > re
 
 30buffer mono cache một lần/context +30WebAudioSound tái sử dụng. Source node của WebAudio một lần phát là one-shot theo Phaser, tối đa8đang hoạt động; không synth/createBuffer trong combat. Shutdown destroy sound objects/listener, cache game giữ để scene sau dùng lại, context thuộc Phaser không tự close. Không có stereo dependency/pitch RNG trong combat. Noise dùng Math.random presentation lúc cache, không chạm seeded gameplay RNG.
 
-Peak buffer ngoài Arrival≤.22, playback gain.4; Arrival không normalize và gain4beat như cũ. Biên bảo thủ đo từ buffer cache: `7*.22*.4 + peakArrival < 1` (bằng evidence browser). Volume manager0–1 nhân tiếp; không compressor/mixer mới. Mute event dừng voice ngay (không chỉ đọc gain getter có thể chậm một audio quantum). Locked/unsupported/suspended/hidden drop ngay, không queue/replay. Phaser giữ mobile gesture unlock; audition gọi resume trực tiếp trong gesture và vẫn drop nếu chưa running.
+Peak buffer ngoài Arrival≤.22, playback gain.4; Arrival timbre sửa riêng theo follow-up, không normalize và gain4beat như cũ. Biên bảo thủ đo từ buffer cache: `7*.22*.4 + peakArrival < 1` (bằng evidence browser). Volume manager0–1 nhân tiếp; không compressor/mixer mới. Mute event dừng voice ngay (không chỉ đọc gain getter có thể chậm một audio quantum). Locked/unsupported/suspended/hidden drop ngay, không queue/replay. Phaser giữ mobile gesture unlock; audition gọi resume trực tiếp trong gesture và vẫn drop nếu chưa running.
 
 ## Validation / evidence
 

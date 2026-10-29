@@ -46,13 +46,14 @@ export class ProceduralAudio {
       for (let i = 0; i < samples.length; i++) {
         const t = i / context.sampleRate, progress = i / samples.length;
         if (cue === 'arrival') {
-          // Approved2s preview timbre, one beat at a time; warning simulation schedules it.
-          const attack = Math.min(1, t / 0.008);
+          // User feedback Q12A: remove glass-like ringing; retain four simulation-scheduled beats.
+          const attack = Math.min(1, t / 0.012);
           const body = (Math.sin(2 * Math.PI * (76 * t - 24 * t * t)) * 0.20
             + Math.sin(2 * Math.PI * 152 * t) * 0.055) * Math.exp(-t * 12);
-          const chain = (Math.sin(2 * Math.PI * 1187 * t) * 0.07 + Math.sin(2 * Math.PI * 1921 * t) * 0.05
-            + Math.sin(2 * Math.PI * 2857 * t) * 0.025) * Math.exp(-t * 25);
-          samples[i] = attack * (body + chain + (Math.random() * 2 - 1) * 0.025 * Math.exp(-t * 40));
+          const accent = (Math.sin(2 * Math.PI * 228 * t) * 0.045
+            + Math.sin(2 * Math.PI * 342 * t) * 0.020) * Math.exp(-t * 22);
+          filteredNoise += 0.08 * ((Math.random() * 2 - 1) - filteredNoise);
+          samples[i] = attack * (body + accent + filteredNoise * 0.018 * Math.exp(-t * 30));
           continue;
         }
         if (['start', 'draft', 'choice', 'elite', 'boss', 'defeat'].includes(cue)) {
