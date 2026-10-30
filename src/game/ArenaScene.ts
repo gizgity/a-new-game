@@ -337,7 +337,8 @@ export class ArenaScene extends Phaser.Scene {
     const boss = this.combat.enemies.find(enemy => enemy.kind === 'boss' && enemy.hp > 0);
     this.music?.update(musicState({ phase: this.phase, elapsed: this.run.elapsed,
       anomaly: !!this.combat.anomaly.active, boss: !!boss, enraged: !!boss?.enraged }),
-      !['playing', 'victory', 'defeat'].includes(this.phase) || this.sound.locked);
+      !['playing', 'victory', 'defeat'].includes(this.phase) || this.sound.locked
+        || this.phase === 'playing' && (this.combat.hitstop > 0 || this.combat.bossTransforming));
   }
 
   private updateDesktopAim(): void {

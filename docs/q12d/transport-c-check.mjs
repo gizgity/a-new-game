@@ -12,7 +12,10 @@ try{
   const m=new AdaptiveMusic(c,c.destination,'/a-new-game/assets/music/');
   async function play(state){m.update(state,false);for(let i=0;i<100 && (m.loading || !m.group);i++)await wait(30);m.update(state,false);await wait(10);}
   await play('early');m.update('anomaly',false);
-  const first=starts.slice();const position=m.stats().position;
+  m.update('anomaly',true);m.update('anomaly',false);await wait(50);
+  const pendingResume=m.voices.filter(v=>v.piece!=='arena-base').map(v=>v.gain.gain.value);
+  if(pendingResume.some(v=>v!==0))throw Error('Pending overlay activated before bar on resume');
+  const first=starts.slice(0,3);const position=m.stats().position;
   // Real 2 core cycles, native BufferSource looping with no JS beat scheduler.
   await wait(50000);const loops=m.stats();
   for(let i=0;i<12;i++){m.update('anomaly',true);const before=m.stats().position;await wait(10);m.update('anomaly',false);if(Math.abs(m.stats().position-before)>.01)throw Error('pause drift');}
@@ -26,7 +29,7 @@ try{
   // Real WAV fallback via decode rejection for the FLAC attempt, without changing file bytes.
   let attempts=0;const decode=c.decodeAudioData.bind(c);c.decodeAudioData=bytes=>{attempts++;if(new Uint8Array(bytes)[0]===102)return Promise.reject(Error('injected FLAC unsupported'));return decode(bytes);};
   const fallback=new AdaptiveMusic(c,c.destination,'/a-new-game/assets/music/');await (async()=>{fallback.update('early',false);for(let i=0;i<100&&fallback.loading;i++)await wait(30);fallback.update('early',false);})();const fallbackStats=fallback.stats();fallback.destroy();
-  await c.close();return {rate:48000,first,position,loops,pause,hidden,boss,duck,gains,oneShot,cleanup,attempts,fallbackStats,bar:MUSIC.bar};
+  await c.close();return {rate:48000,first,pendingResume,position,loops,pause,hidden,boss,duck,gains,oneShot,cleanup,attempts,fallbackStats,bar:MUSIC.bar};
  });
  assert.equal(report.first.length,3);assert.ok(report.first.every(x=>x.when===report.first[0].when));assert.equal(report.first[0].loopEnd,2*report.first[1].loopEnd);
  assert.equal(report.loops.sources,3);assert.ok(report.loops.position>49);assert.equal(report.hidden.sources,0);assert.equal(report.boss.sources,2);assert.ok(report.gains[0]<.5);assert.ok(report.gains[1]>.99);assert.ok(report.oneShot);assert.equal(report.cleanup.sources,0);assert.equal(report.attempts,6);assert.equal(report.fallbackStats.sources,3);

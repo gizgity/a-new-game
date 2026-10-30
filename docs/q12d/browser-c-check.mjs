@@ -29,6 +29,11 @@ try {
    assert.equal(after.sources,0);assert.equal(after.position,before.position);freezes.push({phase,position:after.position});
    await p.evaluate(()=>window.musicFixture.arena.setPhase('playing'));
   }
+  const combatFreeze=await p.evaluate(()=>{const a=window.musicFixture.arena;
+   a.combat.hitstop=.1;a.updateMusic();const hitstop=a.musicStats();a.combat.hitstop=0;
+   const boss=a.combat.enemies.find(e=>e.kind==='boss');boss.transform=.5;a.updateMusic();const transform=a.musicStats();
+   boss.transform=0;a.updateMusic();return {hitstop,transform,resumed:a.musicStats()};});
+  assert.equal(combatFreeze.hitstop.sources,0);assert.equal(combatFreeze.transform.sources,0);assert.equal(combatFreeze.resumed.sources,2);
   await p.evaluate(()=>{const input=document.querySelector('#mute');input.checked=true;input.dispatchEvent(new Event('change'));});
   await p.waitForTimeout(100);
   const muted=await p.evaluate(()=>window.musicFixture.arena.sound.masterMuteNode.gain.value);assert.equal(muted,0);
@@ -51,7 +56,7 @@ try {
   const cleanup=await p.evaluate(()=>{const a=window.musicFixture.arena;a.music.destroy();return a.musicStats();});assert.equal(cleanup.sources,0);assert.equal(cleanup.cacheEntries,0);
   assert.equal(await p.evaluate(()=>JSON.stringify({...localStorage})),storage);assert.deepEqual(errors,[]);
   const overflow=await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflow,false);
-  reports.push({width,height,touch,stages,freezes,muted,sfx,result,cleanup,errors,storageUnchanged:true,overflow});
+  reports.push({width,height,touch,stages,freezes,combatFreeze,muted,sfx,result,cleanup,errors,storageUnchanged:true,overflow});
   await p.screenshot({path:`docs/q12d/c-${width}.png`});await p.close();
  }
  fs.writeFileSync('docs/q12d/browser-c.json',JSON.stringify({coverage:'Chromium emulation; controlled fixture grants, not listening/device approval',reports},null,2));

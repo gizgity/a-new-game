@@ -26,6 +26,7 @@ export class AdaptiveMusic {
   private duckBus: GainNode;
   private cache = new Map<Piece, AudioBuffer>();
   private voices: Voice[] = [];
+  private levels = new Map<Piece, number>();
   private loading: Group | null = null;
   private group: Group | null = null;
   private failed = new Set<Group>();
@@ -53,7 +54,7 @@ export class AdaptiveMusic {
   }
   reset(): void {
     this.generation++; this.abort.abort(); this.abort = new AbortController();
-    this.stop(); this.cache.clear(); this.failed.clear(); this.loading = this.group = null;
+    this.stop(); this.levels.clear(); this.cache.clear(); this.failed.clear(); this.loading = this.group = null;
     this.position = 0; this.running = false; this.frozen = true;
     this.state = this.applied = 'silent'; this.resultClaimed = this.resultDone = false;
     this.duckBus.gain.cancelScheduledValues(this.context.currentTime); this.duckBus.gain.value = 1;
@@ -107,7 +108,7 @@ export class AdaptiveMusic {
         for (const voice of [...this.voices]) if (voice.piece !== 'arena-base') this.remove(voice);
         this.fadeOut();
       } else if (group !== this.group && group !== 'results') this.stop();
-      if (group !== this.group) { this.running = false; this.position = 0; }
+      if (group !== this.group) { this.running = false; this.position = 0; this.levels.clear(); }
       this.cache = decoded; this.group = group;
     } catch { if (!signal.aborted) { this.errors++; this.failed.add(group); this.fadeOut(); this.cache.clear(); this.group = null; } }
     finally { if (generation === this.generation && this.loading === group) this.loading = null; }
@@ -125,8 +126,11 @@ export class AdaptiveMusic {
     // A family change starts its own downbeat; pause/resume preserves the same offset.
     this.epoch = now - this.position;
     const wanted = musicLayers(this.state);
-    for (const piece of groups[group]) this.add(piece, now, this.position, true, wanted.includes(piece) ? 1 : 0);
+    for (const piece of groups[group]) this.add(piece, now, this.position, true, this.levels.get(piece) ?? (wanted.includes(piece) ? 1 : 0));
     this.running = true; this.applied = this.state;
+    // A pending overlay activation must still wait for its bar after resume.
+    if (this.levels.size) this.mix(this.state, true);
+    this.levels.clear();
   }
   private add(piece: Piece, when: number, offset: number, loop: boolean, level: number): void {
     const buffer = this.cache.get(piece); if (!buffer) return;
@@ -135,19 +139,19 @@ export class AdaptiveMusic {
     // Explicit common range avoids one-frame resampling differences accumulating each loop.
     source.loopEnd = piece === 'arena-base' || piece === 'boss-core' ? MUSIC.bar * 16 : MUSIC.bar * 8;
     gain.gain.setValueAtTime(loop ? 0 : level, when);
-    if (loop) gain.gain.linearRampToValueAtTime(level, when + .02);
+    if (loop) gain.gain.linearRampToValueAtTime(level, when + .004);
     source.connect(gain); gain.connect(this.bus);
     const voice = { piece, source, gain }; this.voices.push(voice);
     this.peakSources = Math.max(this.peakSources, this.voices.length);
     source.onended = () => this.remove(voice);
     source.start(when, offset % (loop ? source.loopEnd : buffer.duration));
   }
-  private mix(state: MusicState): void {
+  private mix(state: MusicState, preserveAttack = false): void {
     const now = this.context.currentTime;
     const boundary = this.epoch + Math.ceil((now - this.epoch + .005) / MUSIC.bar) * MUSIC.bar;
     const wanted = musicLayers(state);
     for (const voice of this.voices) {
-      voice.gain.gain.cancelAndHoldAtTime(now);
+      if (!preserveAttack) voice.gain.gain.cancelAndHoldAtTime(now);
       voice.gain.gain.setValueAtTime(wanted.includes(voice.piece) ? 1 : 0, boundary);
     }
     this.applied = state;
@@ -162,7 +166,10 @@ export class AdaptiveMusic {
   }
   private freeze(): void {
     if (this.resultClaimed) this.resultDone = true;
-    if (this.running) this.position = Math.max(0, this.context.currentTime - this.epoch);
+    if (this.running) {
+      this.position = Math.max(0, this.context.currentTime - this.epoch);
+      this.levels = new Map(this.voices.map(v => [v.piece, v.gain.gain.value]));
+    }
     this.stop(); this.running = false;
   }
   private remove(voice: Voice): void {

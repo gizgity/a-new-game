@@ -20,6 +20,7 @@ export function musicPlaytest(arena: ArenaScene): void {
   };
   for (const stage of stages) {
     const button = document.createElement('button'); button.textContent = t(`music_${stage}`);
+    button.style.cssText = 'min-height:44px;min-width:44px';
     button.dataset.music = stage; button.onclick = () => select(stage); panel.append(button);
   }
   document.querySelector('#app')?.prepend(panel);

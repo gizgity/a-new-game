@@ -2,26 +2,30 @@
   "rate": 48000,
   "first": [
     {
-      "when": 0.10133333333333333,
+      "when": 0.112,
       "offset": 0,
       "loopEnd": 24.615374149659864
     },
     {
-      "when": 0.10133333333333333,
+      "when": 0.112,
       "offset": 0,
       "loopEnd": 12.307687074829932
     },
     {
-      "when": 0.10133333333333333,
+      "when": 0.112,
       "offset": 0,
       "loopEnd": 12.307687074829932
     }
   ],
-  "position": 0.02133333333333333,
+  "pendingResume": [
+    0,
+    0
+  ],
+  "position": 0.05866666666666666,
   "loops": {
     "state": "anomaly",
     "applied": "anomaly",
-    "position": 50.01333333333333,
+    "position": 50.064,
     "networkBytes": 789074,
     "decodedBytes": 9452292,
     "cacheEntries": 3,
@@ -33,7 +37,7 @@
   "pause": {
     "state": "anomaly",
     "applied": "anomaly",
-    "position": 50.01333333333333,
+    "position": 50.064,
     "networkBytes": 789074,
     "decodedBytes": 9452292,
     "cacheEntries": 3,
@@ -45,7 +49,7 @@
   "hidden": {
     "state": "anomaly",
     "applied": "anomaly",
-    "position": 50.01333333333333,
+    "position": 50.064,
     "networkBytes": 789074,
     "decodedBytes": 9452292,
     "cacheEntries": 3,
