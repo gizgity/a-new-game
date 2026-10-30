@@ -10,6 +10,9 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
+**Q13 — Full Game Completeness Audit — Q13 AUDIT COMPLETE — AWAITING USER REVIEW.** Audit-only trên latest main `0472c4af6240f0afabbff959eefd27118a4144ce`, nhánh `q13-audit`. [Báo cáo](docs/q13/AUDIT.md), [findings](docs/q13/FINDINGS.md), [test matrix](docs/q13/TEST-MATRIX.md), [roadmap](docs/q13/ROADMAP.md). Verdict **FEATURE-COMPLETE, NOT RELEASE-READY**; proven P0/P1/P2 = **0/2/1**, UNKNOWN ảnh hưởng cao **5**. Chỉ docs/HANDOFF; không runtime/assets/config/DDR/balance, không merge/deploy/Q14/Q15. Giữ Q12A–E/Q9/Q8C accepted và gate balance50% riêng. Build/typecheck/32testfiles, Settings4viewport và audio priority/cleanup PASS; input/mapping retry timeout nên chưa có PASS mới; natural Defeat32.133s/104kills/result/history/replay100HP PASS, chưa natural Boss/Victory.
+
+## Q12E STATUS — GIỮ ACCEPTED
 **ACCEPTED — USER PLAYTEST APPROVAL — Q12E**. User xác nhận **“oki r”** ngày 2026-10-30 trong hội thoại hiện tại (không có permalink), sau bàn giao code/deploy **0859d08** (handoff **08d7a11**), [Pages41081881459](https://github.com/gizgity/a-new-game/actions/runs/41081881459) completed/SUCCESS. Approval cho Final Audio Mix, Settings & Performance: Master/Music/SFX realtime, Mute All, Reduce Camera Shake, persistence/migration và integration/lifecycle trong scope Q12E. Đây là approval trực tiếp của user, không suy từ tests/deploy; không suy thêm Safari/iOS/thiết bị thật hoặc từng bước nghe/checklist từ xác nhận chung. Giữ Q12A–D accepted và gate balance651e3bf riêng. Không DDR/Q13 hoặc thay runtime/balance/artwork.
 
 Q12E là checkpoint cuối Q12 đã được user duyệt. Lượt ghi nhận chỉ Markdown; không runtime/assets/build/tests/deploy. Chi tiết approval và giới hạn tại [docs/q12e](docs/q12e/README.md).
@@ -181,7 +184,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Dừng sau **Q12E ACCEPTED — USER PLAYTEST APPROVAL**. Chờ yêu cầu mới của user; không tự mở Q13, đổi nhạc/SFX/balance/progression/artwork hoặc ghi DDR. Không yêu cầu duyệt lại Q12A–E; giữ gate balance651e3bf riêng. [Bản đã duyệt0859d08](https://gizgity.github.io/a-new-game/?v=0859d08), [scope/approval/evidence](docs/q12e/README.md). Lượt approval chỉMarkdown, khôngredeploy; chưa liveHTTP/hashverification hoặc thêmcoverage thiết bị.
+Dừng **Q13 AUDIT COMPLETE — AWAITING USER REVIEW**. User review [Q13](docs/q13/AUDIT.md) và quyết định scope sửa hướng dẫn/packaging hoặc verification-only; chưa được phép fix. Không yêu cầu duyệt lại Q12A–E, không tự tune balance50%, không mở Q14/Q15/DDR/merge/deploy.
 
 ## VALIDATION APPROVAL Q12D PHASE B
 Chỉ sửa README/HANDOFF ghi quote/ngày/commit/artifact và kiểm diff/tính nhất quán. Giữ signal/deterministic/grid/FLAC exactPCM/hash/protected paths/4×peak, typecheck/build/reviewbuild và Chromium PASS từ fe7438d; không chạy lại tests/build hoặc deploy, không suy coverage mới từ approval chung.

@@ -1,0 +1,17 @@
+{
+  text: '◇\n' +
+    'Tiếng Việt\n' +
+    'English\n' +
+    'HP\n' +
+    'Barrier\n' +
+    'Thử chain · Có sẵn build, không lưu tiến độ\n' +
+    '◇\n' +
+    '\n' +
+    'Bước vào vòng ấn\n' +
+    '\n' +
+    'Đánh thức vòng ấn.\n' +
+    '\n' +
+    'Tự ngắm quái gần nhất; giữ nút combat rồi kéo để tự chọn hướng,',
+  canvas: true,
+  primary: false
+}

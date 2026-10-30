@@ -1,0 +1,530 @@
+{
+  "method": "Normal URL, disposable browser context, real keyboard/mouse only; nearest aim policy, circular movement, first offered draft. No grants/time acceleration/world mutation. Automated operator, not human.",
+  "viewport": "1440x900",
+  "wallSeconds": 556.936,
+  "terminal": null,
+  "replay": null,
+  "checkpoints": [
+    {
+      "phase": "playing",
+      "seconds": 0,
+      "hp": 100,
+      "kills": 0,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 1025.201314655575,
+        "y": 418.25302642520586
+      },
+      "wall": 0.06
+    },
+    {
+      "phase": "playing",
+      "seconds": 5.716666666666667,
+      "hp": 95,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 426.1308935412644,
+        "y": 550.5824503158699
+      },
+      "wall": 13.095
+    },
+    {
+      "phase": "playing",
+      "seconds": 17.783333333333335,
+      "hp": 72,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 1128.2787310892986,
+        "y": 610.4099395989235
+      },
+      "wall": 25.607
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 38.503
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 52.906
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 68.501
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 83.805
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 101.919
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 118.261
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 136.997
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 164.798
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 180.595
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 195.804
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 210.595
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 225.202
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 240.348
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 255.303
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 272.914
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 289.022
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 304.503
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 321.003
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 338.315
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 360.853
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 388.511
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 416.002
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 432.112
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 453.202
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 469.056
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 495.117
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 510.553
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 525.157
+    },
+    {
+      "phase": "draft",
+      "seconds": 30,
+      "hp": 47,
+      "kills": 4,
+      "reason": null,
+      "mutations": [],
+      "curses": [],
+      "aim": {
+        "x": 948.1702310892991,
+        "y": 265.7
+      },
+      "wall": 539.803
+    }
+  ],
+  "saved": {
+    "version": 3,
+    "collection": {
+      "version": 1,
+      "lastRunId": 0,
+      "sigilWins": [],
+      "anomalyWins": [],
+      "history": []
+    },
+    "legacy": {
+      "ascension": {
+        "version": 1,
+        "highest": 0,
+        "selected": 0,
+        "clears": []
+      },
+      "version": 2,
+      "nextRunId": 2,
+      "victories": 0,
+      "pity": 0,
+      "receipt": null,
+      "unlocks": [
+        "fracturedStorm",
+        "bloodMoon"
+      ],
+      "previous": [],
+      "previousAnomalies": [],
+      "ticket": {
+        "seal": 0,
+        "anomalyOffers": [],
+        "anomalySelected": null,
+        "runId": 1,
+        "seed": 436315549,
+        "started": true,
+        "firstRun": true,
+        "offers": [],
+        "selected": null
+      }
+    },
+    "settings": {
+      "locale": "vi",
+      "muted": false,
+      "volume": 0.4,
+      "musicVolume": 1,
+      "sfxVolume": 1,
+      "reduceCameraShake": false,
+      "cosmetic": "mint",
+      "trail": null,
+      "desktopAutoAim": false,
+      "autoAimPriority": "nearest"
+    },
+    "totals": {
+      "kills": 4,
+      "detonations": 3,
+      "perfectDodges": 0,
+      "victories": 0,
+      "runs": 1
+    },
+    "unlocks": [
+      "firstBlood"
+    ],
+    "drafts": {
+      "previous": [],
+      "current": [
+        "phantomEdge",
+        "detonationSpecialist",
+        "aegisCore",
+        "bloodReclaimer"
+      ],
+      "active": true
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,10 @@
+natural {
+  phase: 'defeat',
+  seconds: 32.13333333333333,
+  hp: 0,
+  kills: 104,
+  reason: 'slain',
+  mutations: [ 'aegisCore' ],
+  curses: [],
+  aim: { x: 594.5862699413061, y: 415.40129778207256 }
+} errors []

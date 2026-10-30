@@ -1,0 +1,44 @@
+
+> a-new-game@0.0.0 test
+> tsc src/game/AdaptiveMusic.ts src/game/impactMotion.ts src/game/arrival.ts src/game/ActorPose.ts src/game/config/playtests.ts src/game/combat.ts src/game/movement.ts src/game/run.ts src/game/progression.ts --target ES2022 --module ES2022 --moduleResolution bundler --strict --skipLibCheck --outDir .test-build && tsc src/ui/HUDFeedback.ts --target ES2022 --module ES2022 --strict --outDir .test-build/hud && tsc src/game/touchAim.ts --target ES2022 --module ES2022 --strict --outDir .test-build/touch && node --test tests/*.test.mjs
+
+✔ tests/actor-art.test.mjs (191.825943ms)
+✔ tests/adaptive-music.test.mjs (130.660038ms)
+✔ tests/anomalies.test.mjs (606.125864ms)
+✔ tests/anomaly-vfx.test.mjs (122.689645ms)
+✔ tests/arrival.test.mjs (83.713797ms)
+✔ tests/ascension-vfx.test.mjs (102.060917ms)
+✔ tests/ascension.test.mjs (155.10566ms)
+✔ tests/audio-events.test.mjs (111.881836ms)
+✔ tests/audio-settings.test.mjs (80.093865ms)
+✔ tests/auto-aim.test.mjs (72.689046ms)
+✔ tests/barrier.test.mjs (136.741635ms)
+✔ tests/boss-phase.test.mjs (119.530344ms)
+✔ tests/builds.test.mjs (205.039262ms)
+✔ tests/chain.test.mjs (193.797787ms)
+✔ tests/collection.test.mjs (150.575601ms)
+✔ tests/combat.test.mjs (359.671194ms)
+✔ tests/curse-stacking.test.mjs (202.041236ms)
+✔ tests/defense-tradeoff.test.mjs (116.880273ms)
+✔ tests/draft.test.mjs (724.820059ms)
+✔ tests/elemental-audio.test.mjs (154.628869ms)
+✔ tests/elemental-combat.test.mjs (206.375056ms)
+✔ tests/enemies.test.mjs (144.987661ms)
+✔ tests/hud-feedback.test.mjs (79.911276ms)
+✔ tests/impact-feedback.test.mjs (123.189884ms)
+✔ tests/legacy.test.mjs (246.989956ms)
+✔ tests/new-pool.test.mjs (104.291843ms)
+✔ tests/progression.test.mjs (87.135994ms)
+✔ tests/routes.test.mjs (98.065576ms)
+✔ tests/run.test.mjs (580.239443ms)
+✔ tests/spawn-density.test.mjs (222.99702ms)
+✔ tests/touch-aim.test.mjs (69.382485ms)
+✔ tests/victory-rewards.test.mjs (258.5152ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6291.891038

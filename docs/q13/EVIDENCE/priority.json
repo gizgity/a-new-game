@@ -1,0 +1,87 @@
+{
+  "method": "Controlled Enraged boss + 24 crowd + Fractured Storm; Fire/Lightning emissions + each admitted priority cue. Scheduling/duck checks, not human listening.",
+  "report": {
+    "danger": [
+      {
+        "cue": "boss",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      },
+      {
+        "cue": "arrival",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      },
+      {
+        "cue": "hurt",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      },
+      {
+        "cue": "heavy",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      },
+      {
+        "cue": "chargedBlast",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      },
+      {
+        "cue": "detonate",
+        "playing": true,
+        "duck": 0.3981071710586548,
+        "voices": 3
+      }
+    ],
+    "rate": 44100,
+    "sfxCache": {
+      "entries": 52,
+      "decodedBytes": 1914864,
+      "policy": "Shared Phaser cache retained for scene reuse, no resynthesis per hit; owned sound nodes destroyed on shutdown"
+    },
+    "before": {
+      "state": "enraged",
+      "applied": "enraged",
+      "position": 3.480090702947846,
+      "networkBytes": 738282,
+      "decodedBytes": 6513228,
+      "cacheEntries": 2,
+      "sources": 2,
+      "peakSources": 2,
+      "errors": 0,
+      "resultDone": false
+    },
+    "reset": {
+      "state": "silent",
+      "applied": "silent",
+      "position": 0,
+      "networkBytes": 738282,
+      "decodedBytes": 0,
+      "cacheEntries": 0,
+      "sources": 0,
+      "peakSources": 2,
+      "errors": 0,
+      "resultDone": false
+    },
+    "shutdown": {
+      "state": "silent",
+      "applied": "silent",
+      "position": 0,
+      "networkBytes": 738282,
+      "decodedBytes": 0,
+      "cacheEntries": 0,
+      "sources": 0,
+      "peakSources": 2,
+      "errors": 0,
+      "resultDone": false
+    },
+    "ownedSfx": 0
+  },
+  "errors": []
+}
