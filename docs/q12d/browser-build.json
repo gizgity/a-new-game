@@ -7,65 +7,65 @@
       "decode": [
         {
           "id": "arena-base",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "tension",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "anomaly",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "boss-core",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "enraged",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "victory",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         },
         {
           "id": "defeat",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         }
       ],
       "errors": [],
       "storageWrites": 0,
       "alignedCombinations": 4,
-      "realSfxStarts": 18,
+      "realSfxStarts": 16,
       "passedOverlayBoundary": true
     },
     {
@@ -74,59 +74,59 @@
       "decode": [
         {
           "id": "arena-base",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "tension",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "anomaly",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "boss-core",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "enraged",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "victory",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         },
         {
           "id": "defeat",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         }
       ],
       "errors": [],
@@ -141,65 +141,65 @@
       "decode": [
         {
           "id": "arena-base",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "tension",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "anomaly",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "boss-core",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "enraged",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "victory",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         },
         {
           "id": "defeat",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         }
       ],
       "errors": [],
       "storageWrites": 0,
       "alignedCombinations": 4,
-      "realSfxStarts": 18,
+      "realSfxStarts": 19,
       "passedOverlayBoundary": false
     },
     {
@@ -208,59 +208,59 @@
       "decode": [
         {
           "id": "arena-base",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "tension",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "anomaly",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "boss-core",
-          "length": 1209600,
+          "length": 1085538,
           "rate": 44100,
           "channels": 1,
-          "duration": 27.428571428571427,
-          "expected": 27.428571428571427
+          "duration": 24.615374149659864,
+          "expected": 24.615374149659864
         },
         {
           "id": "enraged",
-          "length": 604800,
+          "length": 542769,
           "rate": 44100,
           "channels": 1,
-          "duration": 13.714285714285714,
-          "expected": 13.714285714285714
+          "duration": 12.307687074829932,
+          "expected": 12.307687074829932
         },
         {
           "id": "victory",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         },
         {
           "id": "defeat",
-          "length": 226800,
+          "length": 203538,
           "rate": 44100,
           "channels": 1,
-          "duration": 5.142857142857143,
-          "expected": 5.142857142857143
+          "duration": 4.615374149659864,
+          "expected": 4.615374149659864
         }
       ],
       "errors": [],

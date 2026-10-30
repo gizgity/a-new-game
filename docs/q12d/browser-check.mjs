@@ -26,10 +26,10 @@ try {
   }
   for(const label of ['arena-base + tension','arena-base + anomaly','arena-base + tension + anomaly','boss-core + enraged']){
    await page.getByRole('button',{name:label,exact:true}).click();await page.waitForFunction(label=>document.querySelector('#status').textContent===`Đang phát: ${label}`,label);
-   const count=label.split(' + ').length,starts=await page.evaluate(n=>window.reviewSources.slice(-n),count);assert.ok(starts.every(s=>s.when===starts[0].when&&s.loop));
+   const count=label.split(' + ').length,starts=await page.evaluate(n=>window.reviewSources.slice(-n),count);assert.ok(starts.every(s=>s.when===starts[0].when&&s.loop));for(const s of starts.slice(1))assert.ok(Math.abs(starts[0].loopEnd-2*s.loopEnd)<=1/s.rate,'8-bar overlay must align with 16-bar core');
   }
   // Let Boss/Enraged pass one overlay boundary; do once, no human listening claim.
-  if(width===390) await page.waitForTimeout(14500);
+  if(width===390) await page.waitForTimeout(13000);
   await page.locator('#combat').click();await page.waitForTimeout(150);
   await page.locator('#arrival').click();await page.waitForTimeout(2100);
   const sfx=await page.locator('#sfx').evaluate(el=>({calls:el.contentWindow.reviewSources,storage:el.contentWindow.reviewStorage}));

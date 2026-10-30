@@ -1,5 +1,8 @@
 {
-  "bpm": 140,
+  "revision": "V2 synth-rock",
+  "bpm": 156,
+  "cycleFrames": 542769,
+  "actualBpm": 156.00006632655882,
   "rate": 44100,
   "channels": 1,
   "format": "PCM s16le WAV",
@@ -8,64 +11,64 @@
       "id": "arena-base",
       "bars": 16,
       "loop": true,
-      "frames": 1209600,
-      "seconds": 27.428571428571427,
-      "bytes": 2419244,
-      "decodedMonoBytes": 4838400
+      "frames": 1085538,
+      "seconds": 24.615374149659864,
+      "bytes": 2171120,
+      "decodedMonoBytes": 4342152
     },
     {
       "id": "tension",
       "bars": 8,
       "loop": true,
-      "frames": 604800,
-      "seconds": 13.714285714285714,
-      "bytes": 1209644,
-      "decodedMonoBytes": 2419200
+      "frames": 542769,
+      "seconds": 12.307687074829932,
+      "bytes": 1085582,
+      "decodedMonoBytes": 2171076
     },
     {
       "id": "anomaly",
       "bars": 8,
       "loop": true,
-      "frames": 604800,
-      "seconds": 13.714285714285714,
-      "bytes": 1209644,
-      "decodedMonoBytes": 2419200
+      "frames": 542769,
+      "seconds": 12.307687074829932,
+      "bytes": 1085582,
+      "decodedMonoBytes": 2171076
     },
     {
       "id": "boss-core",
       "bars": 16,
       "loop": true,
-      "frames": 1209600,
-      "seconds": 27.428571428571427,
-      "bytes": 2419244,
-      "decodedMonoBytes": 4838400
+      "frames": 1085538,
+      "seconds": 24.615374149659864,
+      "bytes": 2171120,
+      "decodedMonoBytes": 4342152
     },
     {
       "id": "enraged",
       "bars": 8,
       "loop": true,
-      "frames": 604800,
-      "seconds": 13.714285714285714,
-      "bytes": 1209644,
-      "decodedMonoBytes": 2419200
+      "frames": 542769,
+      "seconds": 12.307687074829932,
+      "bytes": 1085582,
+      "decodedMonoBytes": 2171076
     },
     {
       "id": "victory",
       "bars": 3,
       "loop": false,
-      "frames": 226800,
-      "seconds": 5.142857142857143,
-      "bytes": 453644,
-      "decodedMonoBytes": 907200
+      "frames": 203538,
+      "seconds": 4.615374149659864,
+      "bytes": 407120,
+      "decodedMonoBytes": 814152
     },
     {
       "id": "defeat",
       "bars": 3,
       "loop": false,
-      "frames": 226800,
-      "seconds": 5.142857142857143,
-      "bytes": 453644,
-      "decodedMonoBytes": 907200
+      "frames": 203538,
+      "seconds": 4.615374149659864,
+      "bytes": 407120,
+      "decodedMonoBytes": 814152
     }
   ]
 }
