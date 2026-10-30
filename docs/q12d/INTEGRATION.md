@@ -10,7 +10,7 @@ Sửa riêng điều kiện Scene: `draft` tiếp tục nhạc trên cùng nativ
 
 `continuity-check.mjs` / [continuity.json](continuity.json): Chromium390touch/1440desktop, mở Mutation/Curse thật bằng fixture memory và bấm card DOM sau guard; musical position tăng >1s trong mỗi dialog, run ticks không tăng, source identity giữ nguyên qua mở/chọn/đóng. 180simulationticks với melee thật tạo180damage/23hitstopframes mỗi viewport, music sources không thay; Pause vẫn giữ vị trí/0sources. Không ghi storage, page errors0. Typecheck/build/31testfiles PASS; Chromium320/390/844/1440 regression state/selection/pause/Boss transform/mute/SFX/result/cleanup/no storage/console/overflow PASS trên bản sửa. Cần user nghe/chơi lại, Safari/iOS/thiết bị thật chưa kiểm.
 
-Bản trước `dc9ea84`: [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) completed/SUCCESS. Bản sửa đang chờ commit/push/deploy; chưa ghi SUCCESS cho bản sửa. Chưa liveHTTP/hash verification.
+Bản trước `dc9ea84`: [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) completed/SUCCESS. Bản sửa **7ead766** đã push main/branchq12d-phase-c; [Pages41075785933](https://github.com/gizgity/a-new-game/actions/runs/41075785933) job124131460941 **completed/SUCCESS**, build/typecheck/upload/Deploy PASS; xác minh qua GitHub connector. Bàn giao cuối chỉ Markdown, không đổi runtime/redeploy. Chưa liveHTTP/hash verification.
 
 ## State và lifecycle
 
@@ -52,7 +52,7 @@ WAV fallback toàn bộ8413226bytes; hai format production10064752bytes. Cache c
 
 ## Fixtures và cách nghe/chơi
 
-[Chơi tích hợp](https://gizgity.github.io/a-new-game/?playtest=music&v=dc9ea84) — panel Early/Áp lực/Anomaly/Boss/Enraged/Thắng/Thua phía trên; fixture grants dùng world thật và profile memory, không ghi progression. Chọn Early→Áp lực→Anomaly: chờ tối đa1bar sau activation; Boss→Enraged; thử Pause/Resume, Restart, đổi tab. Các nút stage là grants phục vụ review, không chứng minh natural threshold/selection/combat khó dễ. Anomaly grant trực tiếp chỉ có trong fixture; production cần lựa chọn hợp lệ. `window.musicFixture.stats()` dùng để inspect, chỉ expose khi `playtest=music`.
+[Chơi tích hợp](https://gizgity.github.io/a-new-game/?playtest=music&v=7ead766) — panel Early/Áp lực/Anomaly/Boss/Enraged/Thắng/Thua phía trên; fixture grants dùng world thật và profile memory, không ghi progression. Chọn Early→Áp lực→Anomaly: chờ tối đa1bar sau activation; Boss→Enraged; thử Pause/Resume, Restart, đổi tab. Các nút stage là grants phục vụ review, không chứng minh natural threshold/selection/combat khó dễ. Anomaly grant trực tiếp chỉ có trong fixture; production cần lựa chọn hợp lệ. `window.musicFixture.stats()` dùng để inspect, chỉ expose khi `playtest=music`.
 
 Bản thường không panel: [game](https://gizgity.github.io/a-new-game/). Rising pressure từ60s active; Anomaly sau chọn; Boss thật sau Arrival; phase2 khi≤50%HP. [SFX audition](https://gizgity.github.io/a-new-game/audition.html) vẫn giữ nguyên. Muốn nghe phối hợp hãy thử Boss fixture trong game, dùng Heavy/Detonate/Perfect Dodge, nghe Arrival khi encounter đến tự nhiên hoặc shortcut `?playtest=boss`.
 
