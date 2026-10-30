@@ -1,14 +1,18 @@
 # Q12D Phase C — Adaptive Music Integration
 
-Triển khai theo yêu cầu user2026-10-30; Phase A V2 và Phase B đã được duyệt. **AWAITING USER PLAYTEST APPROVAL — Q12D PHASE C**; chưa nghiệm thu Phase C, không mở Q12E/DDR. Main fetch mới nhất `162066d`, balance `651e3bf` được bảo toàn; Phase B `15f24af` nối trực tiếp main, production baseline `fe7438d`. Không checkout branch cũ đè runtime. Không render/chỉnh composition/mix/SFX/art/balance/progression.
+Triển khai theo yêu cầu user2026-10-30; Phase A V2 và Phase B đã được duyệt. **ACCEPTED — USER AUDIO/PLAYTEST APPROVAL — Q12D PHASE C**; không mở Q12E/DDR. Baseline main khi tích hợp ban đầu `162066d`, balance `651e3bf` được bảo toàn; Phase B `15f24af` nối trực tiếp main, production baseline `fe7438d`. Không checkout branch cũ đè runtime. Không render/chỉnh composition/mix/SFX/art/balance/progression.
+
+## User approval
+
+**ACCEPTED — USER AUDIO/PLAYTEST APPROVAL — Q12D PHASE C**. User xác nhận **“oki r nha”** ngày 2026-10-30 trong hội thoại hiện tại (không có permalink), sau bàn giao bản sửa **7ead766** (handoff **ca4105a**), [Pages41075785933](https://github.com/gizgity/a-new-game/actions/runs/41075785933) completed/SUCCESS. Approval cho Adaptive Music Integration gồm giữ nhạc qua dialog Mutation/Curse và bỏ stop/restart transport theo combat hitstop. Đây là approval trực tiếp của user, không suy từ tests/deploy. Giữ approval Phase A V2/B và Q12A–C; không suy thêm Safari/iOS, thiết bị thật, từng bước nghe nhiều vòng hoặc latency/FPS/thermal từ xác nhận chung. Không tự mở Q12E hoặc thay đổi gate balance651e3bf riêng. Lượt ghi nhận chỉ Markdown, không runtime/assets/DDR/build/tests/deploy. Gate chờ duyệt Phase C đã hoàn tất; không yêu cầu duyệt lại.
 
 ## Follow-up — giữ nhạc qua Draft và hitstop
 
 User2026-10-30 yêu cầu giữ nhạc khi dialog Mutation/Curse và báo nhạc giật khi chém. Bản `dc9ea84` đã freeze transport theo mọi combat hitstop, khiến sources bị stop/tạo lại sau mỗi hit; đây là nguyên nhân gián đoạn có thể xác định từ integration. Không kết luận acoustic mix/SFX bị chồng từ automation.
 
-Sửa riêng điều kiện Scene: `draft` tiếp tục nhạc trên cùng native sources; combat hitstop không freeze transport. Clock simulation, draft guard/chọn card, damage/cooldown/RNG, waveform/gain/cap SFX, ducking8dB và music assets/mix giữ nguyên. Yêu cầu mới supersede freeze Draft/hitstop của Phase C trước trong đúng scope này. Pause, Legacy/Anomaly Selection, Boss transform, hidden/suspend vẫn freeze như trước. Phase C vẫn **AWAITING USER PLAYTEST APPROVAL**, không Q12E.
+Sửa riêng điều kiện Scene: `draft` tiếp tục nhạc trên cùng native sources; combat hitstop không freeze transport. Clock simulation, draft guard/chọn card, damage/cooldown/RNG, waveform/gain/cap SFX, ducking8dB và music assets/mix giữ nguyên. Yêu cầu mới supersede freeze Draft/hitstop của Phase C trước trong đúng scope này. Pause, Legacy/Anomaly Selection, Boss transform, hidden/suspend vẫn freeze như trước. Phase C đã được user duyệt theo ghi nhận ở trên; không Q12E.
 
-`continuity-check.mjs` / [continuity.json](continuity.json): Chromium390touch/1440desktop, mở Mutation/Curse thật bằng fixture memory và bấm card DOM sau guard; musical position tăng >1s trong mỗi dialog, run ticks không tăng, source identity giữ nguyên qua mở/chọn/đóng. 180simulationticks với melee thật tạo180damage/23hitstopframes mỗi viewport, music sources không thay; Pause vẫn giữ vị trí/0sources. Không ghi storage, page errors0. Typecheck/build/31testfiles PASS; Chromium320/390/844/1440 regression state/selection/pause/Boss transform/mute/SFX/result/cleanup/no storage/console/overflow PASS trên bản sửa. Cần user nghe/chơi lại, Safari/iOS/thiết bị thật chưa kiểm.
+`continuity-check.mjs` / [continuity.json](continuity.json): Chromium390touch/1440desktop, mở Mutation/Curse thật bằng fixture memory và bấm card DOM sau guard; musical position tăng >1s trong mỗi dialog, run ticks không tăng, source identity giữ nguyên qua mở/chọn/đóng. 180simulationticks với melee thật tạo180damage/23hitstopframes mỗi viewport, music sources không thay; Pause vẫn giữ vị trí/0sources. Không ghi storage, page errors0. Typecheck/build/31testfiles PASS; Chromium320/390/844/1440 regression state/selection/pause/Boss transform/mute/SFX/result/cleanup/no storage/console/overflow PASS trên bản sửa. User đã duyệt sau bản sửa; Safari/iOS/thiết bị thật chưa được xác minh riêng.
 
 Bản trước `dc9ea84`: [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) completed/SUCCESS. Bản sửa **7ead766** đã push main/branchq12d-phase-c; [Pages41075785933](https://github.com/gizgity/a-new-game/actions/runs/41075785933) job124131460941 **completed/SUCCESS**, build/typecheck/upload/Deploy PASS; xác minh qua GitHub connector. Bàn giao cuối chỉ Markdown, không đổi runtime/redeploy. Chưa liveHTTP/hash verification.
 
@@ -56,7 +60,7 @@ WAV fallback toàn bộ8413226bytes; hai format production10064752bytes. Cache c
 
 Bản thường không panel: [game](https://gizgity.github.io/a-new-game/). Rising pressure từ60s active; Anomaly sau chọn; Boss thật sau Arrival; phase2 khi≤50%HP. [SFX audition](https://gizgity.github.io/a-new-game/audition.html) vẫn giữ nguyên. Muốn nghe phối hợp hãy thử Boss fixture trong game, dùng Heavy/Detonate/Perfect Dodge, nghe Arrival khi encounter đến tự nhiên hoặc shortcut `?playtest=boss`.
 
-Mobile giữ joystick+Shoot và bấm Heavy/Dash, pause rồi tiếp tục không kẹt/nhảy nhạc. Desktop WASD+mouse/Shift/E/Space, giữ-thả và pause; nghe Arrival/Perfect/Heavy/Detonate khi Boss music chạy có bị che không. Phản hồi stage/bước/âm nghe được/thiết bị-browser. Cần user nghe nhiều vòng8→9/16→1 và xác nhận cảm giác phối SFX, không suy sound quality từ assertions.
+Mobile giữ joystick+Shoot và bấm Heavy/Dash, pause rồi tiếp tục không kẹt/nhảy nhạc. Desktop WASD+mouse/Shift/E/Space, giữ-thả và pause; nghe Arrival/Perfect/Heavy/Detonate khi Boss music chạy có bị che không. Phản hồi stage/bước/âm nghe được/thiết bị-browser. Checklist giữ để tham khảo; user đã duyệt theo ghi nhận ở trên. Không suy coverage nghe từng vòng8→9/16→1 hoặc sound quality từ assertions.
 
 ## Evidence và giới hạn
 
