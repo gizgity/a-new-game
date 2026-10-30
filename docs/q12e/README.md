@@ -1,6 +1,12 @@
 # Q12E — Final Audio Mix, Settings & Performance
 
-**AWAITING USER PLAYTEST APPROVAL — Q12E**. User giao ngày 2026-10-30. Baseline fetch/fast-forward `04640b4`, giữ Q12D Phase C accepted `7ead766`, composition156BPM/Phase A V2/B, balance `651e3bf` và Q12A–C. Không DDR/Q13/artwork/combat/balance mới.
+**ACCEPTED — USER PLAYTEST APPROVAL — Q12E**. User giao ngày 2026-10-30. Baseline fetch/fast-forward `04640b4`, giữ Q12D Phase C accepted `7ead766`, composition156BPM/Phase A V2/B, balance `651e3bf` và Q12A–C. Không DDR/Q13/artwork/combat/balance mới.
+
+## User approval
+
+**ACCEPTED — USER PLAYTEST APPROVAL — Q12E**. User xác nhận **“oki r”** ngày 2026-10-30 trong hội thoại hiện tại (không có permalink), sau bàn giao code/deploy **0859d08** (handoff **08d7a11**), [Pages41081881459](https://github.com/gizgity/a-new-game/actions/runs/41081881459) completed/SUCCESS. Approval cho Final Audio Mix, Settings & Performance: Master/Music/SFX realtime, Mute All, Reduce Camera Shake, persistence/migration và integration/lifecycle trong scope Q12E. Đây là approval trực tiếp của user, không suy từ tests/deploy; không suy thêm Safari/iOS/thiết bị thật hoặc từng bước nghe/checklist từ xác nhận chung. Giữ Q12A–D accepted và gate balance651e3bf riêng. Không DDR/Q13 hoặc thay runtime/balance/artwork.
+
+Lượt ghi nhận chỉ Markdown; không build/tests/redeploy. Gate chờ Q12E đã hoàn tất; checklist bên dưới giữ để tham khảo, không yêu cầu duyệt lại.
 
 ## Kiến trúc và defaults
 
@@ -51,4 +57,4 @@ Code/deploy `0859d08`, push main fast-forward từ04640b4. [Chơi bản Q12E](ht
 3. [Boss fixture](https://gizgity.github.io/a-new-game/?playtest=boss): Heavy/Detonate vào Elite/Boss, thử Reduce Camera Shake off/on ở Pause; on hết rung nhưng flash/telegraph/warning còn rõ, aim và hitstop không đổi. Thử Fire/Lightning nếu có build tương ứng, kiểm warning trong crowd.
 4. Nếu có iPhone/Safari thật: unlock bằng Start, mute/reload, đổi tab/quay lại/resume; báo decode/nhạc mất/khựng dù workaround có hiệu quả.
 
-Phản hồi ngắn: bước/tình huống, quan sát hoặc âm bị che/giật, thiết bị/browser/loa. Dừng **AWAITING USER PLAYTEST APPROVAL — Q12E**; không tự accepted/DDR/Q13.
+Phản hồi ngắn: bước/tình huống, quan sát hoặc âm bị che/giật, thiết bị/browser/loa. Q12E đã được user duyệt theo nguồn ở đầu tài liệu; dừng sau checkpoint cuối Q12, không tự mở Q13 hoặc ghi DDR.
