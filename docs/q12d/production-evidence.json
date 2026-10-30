@@ -1,0 +1,70 @@
+{
+  "baseline": "a7ba63c",
+  "phaseABytesMatchRenderer": true,
+  "rerenderWavFlacHashesIdentical": {
+    "anomaly.flac": "6c7b823f7a96f94850648d96319e79623ccda737c5d6e34326241927e74d4b98",
+    "anomaly.wav": "098cac406116c2c251224acf2794be81d39cfd2cd11e63aef5d70eac66c02c22",
+    "arena-base.flac": "c5fdd61bd937347a9a856ed5cde4dd6c1dac0a097cce8f92136324b78b1e5c90",
+    "arena-base.wav": "58add45db2e53ba0bc3a45edd404990aa90ba482cd5280c2ad537b838453e86c",
+    "boss-core.flac": "2323cedc7417cde63f355e3742c36cafd585f2315a1946d7d2b48fe32a790291",
+    "boss-core.wav": "2a6532e2cff37d015a3d1e2e9ec3d2b3d1273164d734a97ccfb5eaed03378a6c",
+    "defeat.flac": "231895133cb0deae317c2863d7c9f64aefa481af8325f51868dd684f8c994e58",
+    "defeat.wav": "e82b1f24cee91e028215ebc1f74199beda53b9a154daa80108719c6e4f5cd398",
+    "enraged.flac": "3c336c63c6ae4b8dd5f29319bbd18a9e4f30f6f3accc3ce2de35373154c4261b",
+    "enraged.wav": "d341ed2d9b30d4895051138d50f74e491c8ca6a6461c0fd7faa7b89286741d65",
+    "tension.flac": "07dc9016d533e40da1306db760dfd590cf56eda96c178a1f00831fa06f30efe5",
+    "tension.wav": "99624c6d57e612499d57a27fa80ee090306e964ab1c0cc86c35fa78c0389d05d",
+    "victory.flac": "82b5c778c7c184c471409f9396dbdd132cb62528ef7d4df60d9d279265ce4649",
+    "victory.wav": "0e985235393e0355049b5ac7fa3b04727bd903c5a8fe3f669429df99f766e864"
+  },
+  "protectedPathsUnchanged": [
+    "src",
+    "public",
+    "audition.html",
+    "vite.config.ts",
+    "package.json",
+    "package-lock.json",
+    ".github",
+    "DESIGN_DECISIONS.md",
+    "ART_BIBLE.md",
+    "docs/q12d/score.mjs",
+    "docs/q12d/events.json",
+    "docs/q12d/audio"
+  ],
+  "combinations": [
+    {
+      "ids": [
+        "arena-base",
+        "tension"
+      ],
+      "oversampled4xPeak": 0.36755064129829407,
+      "oversampled4xPeakDbFS": -8.693656303230187
+    },
+    {
+      "ids": [
+        "arena-base",
+        "anomaly"
+      ],
+      "oversampled4xPeak": 0.36755064129829407,
+      "oversampled4xPeakDbFS": -8.693656303230187
+    },
+    {
+      "ids": [
+        "arena-base",
+        "tension",
+        "anomaly"
+      ],
+      "oversampled4xPeak": 0.36755064129829407,
+      "oversampled4xPeakDbFS": -8.693656303230187
+    },
+    {
+      "ids": [
+        "boss-core",
+        "enraged"
+      ],
+      "oversampled4xPeak": 0.42279303073883057,
+      "oversampled4xPeakDbFS": -7.477443603101812
+    }
+  ],
+  "note": "4x FFmpeg resampled sample peaks; not a certified true-peak meter. Human listening and Safari pending."
+}

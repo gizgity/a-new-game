@@ -1,0 +1,927 @@
+{
+  "bpm": 156,
+  "actualBpm": 156.00006632655882,
+  "cycleFrames": 542769,
+  "rate": 44100,
+  "reports": [
+    {
+      "id": "arena-base",
+      "peak": 0.36754773997797985,
+      "rms": 0.06570621626062903,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.08490915322646012,
+      "sha256": "58add45db2e53ba0bc3a45edd404990aa90ba482cd5280c2ad537b838453e86c",
+      "peakDbFS": -8.693724866972662,
+      "rmsDbFS": -23.6478708249442,
+      "headroomDb": 8.693724866972662,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.013944079698576506,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055865429435951804
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.013646752859761855,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054344023464041595
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.013944079698576506,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055865429435951804
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.013646752859761855,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054344023464041595
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.013944079698576506,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055865429435951804
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.013646752859761855,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054344023464041595
+        }
+      ]
+    },
+    {
+      "id": "tension",
+      "peak": 0.06570993667226552,
+      "rms": 0.004974004367208178,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.005603504522500597,
+      "sha256": "99624c6d57e612499d57a27fa80ee090306e964ab1c0cc86c35fa78c0389d05d",
+      "peakDbFS": -23.647379027183113,
+      "rmsDbFS": -46.06587675505072,
+      "headroomDb": 23.647379027183113,
+      "boundaries": [
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.0003124593923884634,
+          "postRms": 0,
+          "maxAdjacentStep": 0.003998452318128319
+        }
+      ]
+    },
+    {
+      "id": "anomaly",
+      "peak": 0.030715551771627197,
+      "rms": 0.0023234597803452124,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.003618371312802312,
+      "sha256": "098cac406116c2c251224acf2794be81d39cfd2cd11e63aef5d70eac66c02c22",
+      "peakDbFS": -30.252833572885045,
+      "rmsDbFS": -52.67729681726643,
+      "headroomDb": 30.252833572885045,
+      "boundaries": [
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0,
+          "postRms": 0,
+          "maxAdjacentStep": 0
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.005818032868813982,
+          "postRms": 0,
+          "maxAdjacentStep": 0.002929403223312661
+        }
+      ]
+    },
+    {
+      "id": "boss-core",
+      "peak": 0.4227481024640066,
+      "rms": 0.06429235861324924,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.08477153591460075,
+      "sha256": "2a6532e2cff37d015a3d1e2e9ec3d2b3d1273164d734a97ccfb5eaed03378a6c",
+      "peakDbFS": -7.478366661772272,
+      "rmsDbFS": -23.836812830569013,
+      "headroomDb": 7.478366661772272,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.0004557337394967587,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.01302390744343038,
+          "postRms": 0.1064255383215615,
+          "maxAdjacentStep": 0.048702370815774824
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.00039457684417708083,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.013583111442320132,
+          "postRms": 0.1059151847952456,
+          "maxAdjacentStep": 0.049760925469898964
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.0004557337394967587,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.01302390744343038,
+          "postRms": 0.1064255383215615,
+          "maxAdjacentStep": 0.048702370815774824
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.00039457684417708083,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.013583111442320132,
+          "postRms": 0.1059151847952456,
+          "maxAdjacentStep": 0.049760925469898964
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.0004557337394967587,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.01302390744343038,
+          "postRms": 0.1064255383215615,
+          "maxAdjacentStep": 0.048702370815774824
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.00039457684417708083,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.013583111442320132,
+          "postRms": 0.1059151847952456,
+          "maxAdjacentStep": 0.049760925469898964
+        }
+      ]
+    },
+    {
+      "id": "enraged",
+      "peak": 0.07027312671895063,
+      "rms": 0.006011787005296929,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.03675448769820536,
+      "sha256": "d341ed2d9b30d4895051138d50f74e491c8ca6a6461c0fd7faa7b89286741d65",
+      "peakDbFS": -23.064214452358847,
+      "rmsDbFS": -44.41992829311595,
+      "headroomDb": 23.064214452358847,
+      "boundaries": [
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 0,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.000045568076757591414,
+          "postRms": 0,
+          "maxAdjacentStep": 0.00027032890530818857
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.009366203582153908,
+          "postRms": 0.0015667763456530493,
+          "maxAdjacentStep": 0.036192198071783324
+        }
+      ]
+    },
+    {
+      "id": "victory",
+      "peak": 0.3058093823740607,
+      "rms": 0.02675212300723376,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.031728628233174475,
+      "sha256": "0e985235393e0355049b5ac7fa3b04727bd903c5a8fe3f669429df99f766e864",
+      "peakDbFS": -10.29098388725265,
+      "rmsDbFS": -31.45283494669353,
+      "headroomDb": 10.29098388725265,
+      "boundaries": []
+    },
+    {
+      "id": "defeat",
+      "peak": 0.11227107415354626,
+      "rms": 0.018905441048058545,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.008978412116855914,
+      "sha256": "e82b1f24cee91e028215ebc1f74199beda53b9a154daa80108719c6e4f5cd398",
+      "peakDbFS": -18.994642444434003,
+      "rmsDbFS": -34.46826372915637,
+      "headroomDb": 18.994642444434003,
+      "boundaries": []
+    }
+  ],
+  "harmonicChecks": [
+    {
+      "id": "tension",
+      "rootFifthOrWrittenNeighbour": true,
+      "responsesInLeadRests": true
+    },
+    {
+      "id": "anomaly",
+      "rootFifthOrWrittenNeighbour": true,
+      "responsesInLeadRests": true
+    },
+    {
+      "id": "enraged",
+      "rootFifthOrWrittenNeighbour": true,
+      "responsesInLeadRests": true
+    }
+  ],
+  "combinations": [
+    {
+      "ids": [
+        "arena-base",
+        "tension"
+      ],
+      "peak": 0.36754773997797985,
+      "peakDbFS": -8.693724866972662,
+      "rmsDbFS": -23.57440276019989,
+      "headroomDb": 8.693724866972662,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.013943924617146063,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055146649273414554
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.013647757166905078,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05464666148372768
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.013943924617146063,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055146649273414554
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.013647757166905078,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05464666148372768
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.013943924617146063,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.055146649273414554
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.013647757166905078,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05464666148372768
+        }
+      ]
+    },
+    {
+      "ids": [
+        "arena-base",
+        "anomaly"
+      ],
+      "peak": 0.36754773997797985,
+      "peakDbFS": -8.693724866972662,
+      "rmsDbFS": -23.64264162226833,
+      "headroomDb": 8.693724866972662,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.014981331136668403,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05540319960363868
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.014662469802217113,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054620873298535474
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.014981331136668403,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05540319960363868
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.014662469802217113,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054620873298535474
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.014981331136668403,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05540319960363868
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.014662469802217113,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.054620873298535474
+        }
+      ]
+    },
+    {
+      "ids": [
+        "arena-base",
+        "tension",
+        "anomaly"
+      ],
+      "peak": 0.36754773997797985,
+      "peakDbFS": -8.693724866972662,
+      "rmsDbFS": -23.569260974823813,
+      "headroomDb": 8.693724866972662,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.014981042385151778,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05468441944110143
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.014663257005287898,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05492351131822156
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.014981042385151778,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05468441944110143
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.014663257005287898,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05492351131822156
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.00041145730060716075,
+          "postRms": 0.15199847170191502,
+          "maxAdjacentStep": 0.028915723688792777
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.014981042385151778,
+          "postRms": 0.10681655838375363,
+          "maxAdjacentStep": 0.05468441944110143
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.000426964693245669,
+          "postRms": 0.15125922430056257,
+          "maxAdjacentStep": 0.028587586494456516
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.014663257005287898,
+          "postRms": 0.1061778361386848,
+          "maxAdjacentStep": 0.05492351131822156
+        }
+      ]
+    },
+    {
+      "ids": [
+        "boss-core",
+        "enraged"
+      ],
+      "peak": 0.4227481024640066,
+      "peakDbFS": -7.478366661772272,
+      "rmsDbFS": -23.79873017980088,
+      "headroomDb": 7.478366661772272,
+      "boundaries": [
+        {
+          "atFrame": 1085538,
+          "windowMs": 20,
+          "preRms": 0.0004609097465336783,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 1085538,
+          "windowMs": 100,
+          "preRms": 0.018832636345262662,
+          "postRms": 0.10642365448783128,
+          "maxAdjacentStep": 0.07339814812602014
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 20,
+          "preRms": 0.00039962681886858935,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 542769,
+          "windowMs": 100,
+          "preRms": 0.01950719517609983,
+          "postRms": 0.10591137087711541,
+          "maxAdjacentStep": 0.0657951498414999
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 20,
+          "preRms": 0.0004609097465336783,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 2171076,
+          "windowMs": 100,
+          "preRms": 0.018832636345262662,
+          "postRms": 0.10642365448783128,
+          "maxAdjacentStep": 0.07339814812602014
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 20,
+          "preRms": 0.00039962681886858935,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 1628307,
+          "windowMs": 100,
+          "preRms": 0.01950719517609983,
+          "postRms": 0.10591137087711541,
+          "maxAdjacentStep": 0.0657951498414999
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 20,
+          "preRms": 0.0004609097465336783,
+          "postRms": 0.14891280008987576,
+          "maxAdjacentStep": 0.02687703039420722
+        },
+        {
+          "atFrame": 3256614,
+          "windowMs": 100,
+          "preRms": 0.018832636345262662,
+          "postRms": 0.10642365448783128,
+          "maxAdjacentStep": 0.07339814812602014
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 20,
+          "preRms": 0.00039962681886858935,
+          "postRms": 0.1486500593413127,
+          "maxAdjacentStep": 0.027594859762301624
+        },
+        {
+          "atFrame": 2713845,
+          "windowMs": 100,
+          "preRms": 0.01950719517609983,
+          "postRms": 0.10591137087711541,
+          "maxAdjacentStep": 0.0657951498414999
+        }
+      ]
+    }
+  ],
+  "totalBytes": 8413226,
+  "compressedBytes": 1651526,
+  "decodedBytes": 16825836,
+  "decoded48kBytes": 18313835,
+  "compositionSourceSha256": "3e5c3b893e2e8caa5be30ae2a25c45932bb622e51a29ebcef6cc29cb8518e188",
+  "note": "Signal checks only; human listening remains required."
+}

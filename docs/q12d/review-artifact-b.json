@@ -1,0 +1,14 @@
+{
+  "artifactId": "3d61fd6a-f60a-4c4e-9aeb-a2bc6c5f47d7",
+  "versionId": "b2859408-03cb-4c33-8eed-1ec9b36b59a6",
+  "shareUrl": "https://av-run.ngantnk.workers.dev/s/5Vpnib8BraJBZAWL5Jhi-A",
+  "expiresAt": "2026-11-29T13:57:28.941Z",
+  "collectSubmissions": false,
+  "zipBytes": 10049562,
+  "unpackedBytes": 19872206,
+  "files": 30,
+  "zipSha256": "21389acbaff4e4e43d0728756e462d1855389bba2b0e4d139c7710816e50b51c",
+  "upload": "SUCCESS",
+  "hostPlayback": "NOT RUN",
+  "note": "README snapshot precedes addition of hosting link; code and audio match final review build. Separate artifact, no Pages deploy."
+}

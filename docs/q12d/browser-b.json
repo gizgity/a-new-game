@@ -1,0 +1,780 @@
+{
+  "url": "http://localhost:5174/docs/q12d/index.html",
+  "browser": "154.0.8037.57",
+  "reports": [
+    {
+      "width": 320,
+      "height": 740,
+      "label": "arena-base + tension + anomaly",
+      "decoded": [
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        }
+      ],
+      "secondsScheduled": 49.25950113378685,
+      "aligned": true,
+      "soloMute": true,
+      "rapidSwitchStop": true,
+      "hiddenEventStops": true,
+      "noAutoResume": true,
+      "gesture": true,
+      "fallback": "WAV decoded after FLAC decode failure",
+      "sfx": [],
+      "isolated": {
+        "storage": [],
+        "idb": 0,
+        "overflow": false
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "label": "arena-base + anomaly",
+      "decoded": [
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        }
+      ],
+      "secondsScheduled": 49.26820861678004,
+      "aligned": true,
+      "soloMute": true,
+      "rapidSwitchStop": true,
+      "hiddenEventStops": true,
+      "noAutoResume": true,
+      "gesture": true,
+      "fallback": "WAV decoded after FLAC decode failure",
+      "sfx": [],
+      "isolated": {
+        "storage": [],
+        "idb": 0,
+        "overflow": false
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "label": "arena-base + tension",
+      "decoded": [
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        }
+      ],
+      "secondsScheduled": 49.25950113378685,
+      "aligned": true,
+      "soloMute": true,
+      "rapidSwitchStop": true,
+      "hiddenEventStops": true,
+      "noAutoResume": true,
+      "gesture": true,
+      "fallback": "WAV decoded after FLAC decode failure",
+      "sfx": [],
+      "isolated": {
+        "storage": [],
+        "idb": 0,
+        "overflow": false
+      },
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "label": "boss-core + enraged",
+      "decoded": [
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 1085538
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 542769
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 44100,
+          "frames": 203538
+        },
+        {
+          "id": "arena-base",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "arena-base",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "tension",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "tension",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "anomaly",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "boss-core",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "boss-core",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 1181537
+        },
+        {
+          "id": "enraged",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "enraged",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 590768
+        },
+        {
+          "id": "victory",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "victory",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "wav",
+          "rate": 48000,
+          "frames": 221537
+        },
+        {
+          "id": "defeat",
+          "ext": "flac",
+          "rate": 48000,
+          "frames": 221537
+        }
+      ],
+      "secondsScheduled": 49.27111111111111,
+      "aligned": true,
+      "soloMute": true,
+      "rapidSwitchStop": true,
+      "hiddenEventStops": true,
+      "noAutoResume": true,
+      "gesture": true,
+      "fallback": "WAV decoded after FLAC decode failure",
+      "sfx": [
+        {
+          "id": "combat",
+          "starts": 2
+        },
+        {
+          "id": "perfect",
+          "starts": 6
+        },
+        {
+          "id": "arrival",
+          "starts": 24
+        }
+      ],
+      "isolated": {
+        "storage": [],
+        "idb": 0,
+        "overflow": false
+      },
+      "errors": []
+    }
+  ],
+  "note": "Headless Chromium only; simulated visibility event; no human listening, Safari, iOS or physical speaker test."
+}

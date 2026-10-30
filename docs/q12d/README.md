@@ -1,4 +1,83 @@
-# Q12D Phase A — V2 synth-rock
+# Q12D Phase B — Production & Mixing
+
+**AWAITING USER MUSIC PRODUCTION APPROVAL — Q12D PHASE B**. User đã duyệt Phase A V2 (`a7ba63c`) và giao Phase B riêng ngày 2026-10-30. Review branch `q12d-phase-b` từ `bc54edd`; không thay main/Pages. Các gate “không Phase B” trong hồ sơ Phase A bên dưới đã được yêu cầu mới supersede, chỉ trong scope production này. Không Phase C/Q12E/integration/DDR. Balance `651e3bf` vẫn chờ playtest riêng.
+
+## Phạm vi và thiết kế bất biến
+
+`score.mjs`, `events.json`, WAV trong `audio/` giữ nguyên bytes baseline; `phase-a-render.mjs` giữ renderer A để tái tạo/so sánh. Giữ 156 BPM, 4/4, D minor, motif D–F–E–A, đủ 7 pieces và mọi note/harmony/rhythm/velocity/fill/gate. Production không thêm track hoặc counterline. Root/fifth, reply rests và Eb→D ngắn giữ nguyên; không detune hoặc pitched loop echo. Không sửa src/, public/, SFX/Arrival/Q12A–C, config, save, artwork, DDR hoặc workflows.
+
+## Production B
+
+`production.mjs` chứa presets riêng. Bass HP32/LP780Hz, riff HP175/LP1950Hz; duck bass tối đa42%, riff20% theo kick hiện hữu, hồi exponential32ms/cửa sổ90ms. Không thay timing kick hoặc nốt bass. Riff saturation per voice: Arena drive1.7, Boss2.3 tạo màu dày hơn; Boss không tăng master gain. Snare gain.28 với noise/body decay22/28, HP130/LP3400Hz; hats HP4500/LP6200Hz, gain.022 và attack1.5ms thay bypass LP của A. Lead HP240/LP2350Hz, gain.125; giảm vùng cao để chừa chỗ cho SFX. Các release giữ theo approved presets, không kéo harmony qua bar.
+
+Fixed output×.85 cho mọi stem, không normalize riêng, không master limiter/compressor. Gain audition mặc định.7 (~−3.10dB thêm). Không tuyên bố professional mastering hoặc đã chứng minh cảm giác Boss/tension bằng phép đo. Filter/ducking là thay đổi sound design, cần nghe trên loa/tai nghe để đánh giá bass, snare, motif và fatigue.
+
+## Export và metrics thực tế
+
+WAV master mono PCM16/44100Hz trong `audio-b/`; FLAC lossless cùng PCM, nén bằng FFmpeg có sẵn, không dependency mới. Decode FFmpeg kiểm từng sample bằng WAV, không silence/padding/crossfade/trim. Grid nguyên V2: 8bar542769frames, 16bar1085538, sting203538; actual156.0000663BPM. Loops full buffer, overlays8bar lặp chính xác2lần/core16bar. Audition chọn FLAC và thử WAV nếu fetch/decode thất bại, hiển thị lỗi nếu cả hai không được. Không fallback bằng codec có padding chưa đo.
+
+| Stem | Peak dBFS | RMS dBFS (toàn file) |
+| --- | ---: | ---: |
+| Arena Base |−8.69|−23.65|
+| Tension |−23.65|−46.07|
+| Anomaly |−30.25|−52.68|
+| Boss Core |−7.48|−23.84|
+| Enraged |−23.06|−44.42|
+| Victory |−10.29|−31.45|
+| Defeat |−18.99|−34.47|
+
+| Tổ hợp | Peak dBFS | RMS dBFS | Headroom dB |
+| --- | ---: | ---: | ---: |
+| Base + Tension |−8.69|−23.57|8.69|
+| Base + Anomaly |−8.69|−23.64|8.69|
+| Base + Tension + Anomaly |−8.69|−23.57|8.69|
+| Boss Core + Enraged |−7.48|−23.80|7.48|
+
+RMS overlay thấp vì đáp/stab thưa có chủ đích; không kéo gain để bằng RMS core. Peak4×resample FFmpeg tương ứng−8.694/−7.477dBFS; không gọi là certified true peak. Đây là headroom nhạc, không đảm bảo mọi tổ hợp SFX cực hạn đều không clip ở thiết bị thật. Không đổi gain accepted của SFX.
+
+FLAC7file = **1,651,526bytes (1.58MiB)**; WAV7file =8,413,226bytes. Production cả hai format10,064,752bytes; review thêm WAV A8,413,226bytes. Decoded7mono Float32=16,825,836bytes (16.05MiB)@44.1kHz, ~18,313,835bytes@48kHz. Cache tải lazy, xóa khi đổi A/B; tối đa7entries phiên bản hiện tại. Không tính temporary fetch/decode, bản buffer chờ GC, Phaser/SFX, browser overhead hoặc RSS; không preload vào gameplay.
+
+`manifest-b.json`: từng file/bytes/SHA256. `validation-b.json`: deterministic render→WAV, finite, durations/grid, harmonic contract, combo peak/RMS/headroom và cửa sổ20/100ms trước/sau biên8/16bar qua3chu kỳ. `production-evidence.json`: render lại WAV+FLAC hash giống hệt, A khớp renderer cũ, protected paths và oversampled peaks. Cửa sổ loop cho thấy chuyển năng lượng xuống/upbeat thực, không chỉ seam sample; chưa thay thế nghe nhiều vòng.
+
+## Audition A/B và cách kiểm
+
+[Nghe review Phase B A/B](https://av-run.ngantnk.workers.dev/s/5Vpnib8BraJBZAWL5Jhi-A) — Artifact Vault riêng version1 (`b2859408-03cb-4c33-8eed-1ec9b36b59a6`), không thu submission, link hạn2026-11-29. Upload/share SUCCESS; chưa kiểm playback host thật. Snapshot README trong bundle là bản trước khi thêm link hosting; assets/code giống review build cuối. Hoặc chạy local:
+
+```sh
+node docs/q12d/render.mjs
+node docs/q12d/validate.mjs
+node docs/q12d/production-check.mjs
+npm run build
+npx vite build --config docs/q12d/vite.config.mjs
+python3 -m http.server 5174 --directory /tmp/cursebreak-q12d-review
+node docs/q12d/browser-b-check.mjs
+```
+
+URL `http://localhost:5174/docs/q12d/index.html`. Production check rerender B để so hash. Không dùng `phase-a-render.mjs` CLI để tránh ghi đè export A. Build review dùng config riêng, không deploy production dist.
+
+A/B selector đổi presets/export và restart cùng downbeat, không loudness matching; nghe cùng slider. Nút tên stem solo playback; controls Mute/Solo độc lập cho từng stem trong combo, hỗ trợ nhiều solo. Stop all dừng nhạc và SFX; tab hidden/pagehide dừng và không tự resume. Combat, Perfect Dodge (chuỗi proc gốc có dash→perfect), Arrival Q8C+crowd chạy accepted fixture gốc, không viết progression/localStorage/IndexedDB.
+
+Checklist nghe production, không yêu cầu duyệt lại composition A:
+
+- [ ] Cùng slider A→B: Base riêng, kiểm bass/kick tách rõ, snare/backbeat và hats không mệt; motif còn rõ.
+- [ ] Mỗi tổ hợp Base+Tension, Base+Anomaly, đủ3layer, Boss+Enraged nghe **ít nhất2vòng core (~50s/tổ hợp)**. Chú ý biên8→9 và16→1; không click/hụt/drift, không layer che nhau.
+- [ ] Solo/mute từng stem trong combo; bỏ solo trở về đúng mix. Nghe Boss mạnh hơn Arena về texture/attack dù RMS không cao hơn, Enraged căng hơn mà không rối.
+- [ ] Boss+Enraged, lần lượt bật Combat, Perfect Dodge, Arrival; warning và phản hồi chiến đấu vẫn rõ. Nghe cả Victory/Defeat.
+- [ ] Play/Stop, đổi A/B/đổi bài nhanh, mute, chuyển tab rồi quay lại phải đứng im; phát lại cần gesture. Kiểm Safari/iPhone thật: FLAC hoặc WAV fallback decode, không drift qua2vòng.
+
+Phản hồi: bài/tổ hợp, A/B, bar/timestamp, điều nghe được và loa/browser. **Human multi-loop listening, Safari/iOS, Firefox và thiết bị thật chưa thực hiện trong môi trường này**. Các ô trên để trống có chủ đích; không suy sound quality từ signal/automation.
+
+## Validation và giới hạn browser
+
+Typecheck/game build và isolated review build PASS (warning Phaser chunk lớn kế thừa). Focused checks là validator, production-check và browser-b-check; không chạy gameplay regression vì không đổi gameplay. Chromium kiểm WAV/FLAC7piece ở44.1/48kHz sample-equivalent, A/B7piece, 4combo cùng timestamp/ratio2:1, mỗi combo chạy>2coreloops, WAV fallback sau FLAC decode lỗi, solo/mute, rapid switch/Stop, user gesture/no autoplay, hidden-event stop/no resume, SFX thật, vi/en,4viewport/no overflow/pageerror/storage writes. Visibility được phát event có kiểm soát; tab inactive/device background thực vẫn cần manual review. Headless chạy transport không phải nghe âm thanh.
+
+Web Audio + FLAC được hỗ trợ trong Chromium và Safari hiện đại theo format; WAV PCM là fallback dự kiến cho Safari. **Safari NOT RUN, không PASS**; không có Safari/WebKit/device để xác nhận decode fallback/gesture/background. Không đo latency/FPS/thermal, acoustic loudness hay LUFS; RMS không phải perceived loudness. Chờ user music production approval rồi dừng, không Phase C/Q12E.
+
+---
+
+## Hồ sơ Phase A đã duyệt (lịch sử)
+
+### Q12D Phase A — V2 synth-rock
 
 **ACCEPTED — USER MUSIC APPROVAL — Q12D PHASE A V2**. [Nghe trực tiếp](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A). Artifacts review riêng; không runtime integration, không production music build, không Phase B/C/Q12E/DDR/artwork. Branch `q12d-phase-a`, baseline main162066d gồm balance651e3bf đang chờ user playtest; giữ nguyên gameplay, combat SFX, Arrival Q8C, elemental sounds, Q12B, gameplay RNG/Boss/balance và Pages.
 
