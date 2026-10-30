@@ -65,4 +65,4 @@ npm run build
 node docs/early-run-balance/browser-half-check.mjs
 ```
 
-Live HTTP/hash verification và thiết bị thật chưa thực hiện. Trạng thái deploy sẽ cập nhật sau workflow.
+Live HTTP/hash verification và thiết bị thật chưa thực hiện. Code **651e3bfe1f4b087c5f98d5e2909a93cfba35b406** đã push main fast-forward từ5be7194. [Pages40980017891](https://github.com/gizgity/a-new-game/actions/runs/40980017891) **completed/SUCCESS**, build/typecheck/upload/Deploy. [Chơi bản mới](https://gizgity.github.io/a-new-game/?v=651e3bf). **AWAITING USER PLAYTEST APPROVAL**; chưa tựaccepted trải nghiệm.

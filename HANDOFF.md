@@ -10,13 +10,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**READY TO DEPLOY — win rate quanh50%, 2026-10-30.** User yêu cầu “tỉ lệ thắng quá cao khoảng 8/16 là đc”, sau đó chốt không cần giữ balance cũ; Archer nhắm theo player, số lượng quái giữ nguyên, cân HP/nhịp quái và damage/chống chịu player; Tank giảm damage, Ranged tăng Barrier/cơ động. Baseline81f5ec6/bàn giao5be7194. [Thông số/evidence](docs/early-run-balance/win-rate-50.md). Không Q12D–E/art/audio/DDR.
+**DEPLOYED — AWAITING USER PLAYTEST APPROVAL — win rate quanh50%, 2026-10-30.** User yêu cầu “tỉ lệ thắng quá cao khoảng 8/16 là đc”, sau đó chốt không cần giữ balance cũ; Archer nhắm theo player, số lượng quái giữ nguyên, cân HP/nhịp quái và damage/chống chịu player; Tank giảm damage, Ranged tăng Barrier/cơ động. Baseline81f5ec6/bàn giao5be7194. [Thông số/evidence](docs/early-run-balance/win-rate-50.md). Không Q12D–E/art/audio/DDR.
 
 Bản cuối: Boss2400HP, sweep46/slam50/đạn18; Aegis outgoing×.75, Oath×.7, kết hợp×.525 thay×.6. Specialist18Barrier/CD2/cap30, đi bộ×1.2, hồiDash×.8 (1.76s), Charged trực tiếp×1.1; Glassmax90; sharedheal/Bloodcap8/10s. Archer liveaim cả cuốiwindup/stagger, không aimLock; đạn giữ hướng sau release. Không sửa count/spawn/limits/RunDirector, timing attack hoặc damage common. Đã sửa BossHUD đọc maxHp thật. Các trial Phantom mitigation, attack/growth/HP khác đã bỏ; final không thêm mitigation Phantom.
 
 Kết quả final256run =64seed/hướng, observed300ms cùng policy/draft/progression thật: Tank38/64=59.38%, Sustain33/64=51.56%, Counter34/64=53.13%, Ranged37/64=57.81%; tổng55.47%, spread7.81điểm%. Quy đổi8.25–9.5thắng/16, trongmục tiêu6–10/16 vàspread≤3/16 trên tỷlệgộp. Hai nhóm32 đã được xem khi chỉnh, không gọi làholdout độc lập; Ranged nhóm23/32 so14/32 cho thấy dao động, không ép mỗi nhóm16 đúng8, không là winrate người. [Raw cuối/verification](docs/early-run-balance/evidence/half-verification.json);56trial summary giữ cả lầnchưađạt.
 
-30testfiles/typecheck/build PASS, focused liveaim cuối/stagger/projectileheading, mobility thực, Charged/Static/blast khôngdoublebuff, bossdamage15projectile, sharedcaps/cost/freeze/reset. Chromium320/390/844touch+1440desktop PASS vi/en, input Charged thật18Barrier/pause, walk×1.2/Dash1.76, BossHUD2400/1800. Fixture cógrant để kiểm cơchế, khôngnaturalrun. Playtest ngắn Ranged sourcecuối46.3swall→33.1srun,97kills/100HP/0dash, Specialist đạt tự nhiên20s, khôngpageerror, chưaCurse/Boss; khôngdevice/iOS/Safari/FPS/humanacceptance. Q12A/B/C accepted/audio/art/DDR giữ nguyên. Chờ push/deploy rồi user thử, không tựaccepted.
+30testfiles/typecheck/build PASS, focused liveaim cuối/stagger/projectileheading, mobility thực, Charged/Static/blast khôngdoublebuff, bossdamage15projectile, sharedcaps/cost/freeze/reset. Chromium320/390/844touch+1440desktop PASS vi/en, input Charged thật18Barrier/pause, walk×1.2/Dash1.76, BossHUD2400/1800. Fixture cógrant để kiểm cơchế, khôngnaturalrun. Playtest ngắn Ranged sourcecuối46.3swall→33.1srun,97kills/100HP/0dash, Specialist đạt tự nhiên20s, khôngpageerror, chưaCurse/Boss; khôngdevice/iOS/Safari/FPS/humanacceptance. Q12A/B/C accepted/audio/art/DDR giữ nguyên. Code651e3bf đã push main fast-forward5be7194; [Pages40980017891](https://github.com/gizgity/a-new-game/actions/runs/40980017891) completed/SUCCESS, build/typecheck/upload/Deploy. [Chơi](https://gizgity.github.io/a-new-game/?v=651e3bf). Chưa liveHTTP/hash verification; chờ user thử, không tựaccepted.
 
 ## Q12C STATUS
 Q12C đã được user duyệt theo ACTIVE TASK; gate chờ audio/playtest hoàn tất. Lượt ghi nhận này chỉ Markdown, không runtime/build/tests/deploy.
@@ -118,7 +118,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-Bản win-rate50% technicalPASS, READY TO DEPLOY, chưa user playtest accepted. Mức8/16 là mục tiêu xác suất gần50%, không kết quả ép theo từngrun/seed. Bản81f5ec6 đã bị user yêu cầu giảm độ dễ. Q12A/B/C và các approval art/audio khác giữ nguyên.
+Bản win-rate50% technicalPASS/deploy651e3bf/Pages40980017891SUCCESS, chưa user playtest accepted. Mức8/16 là mục tiêu xác suất gần50%, không kết quả ép theo từngrun/seed. Bản81f5ec6 đã bị user yêu cầu giảm độ dễ. Q12A/B/C và các approval art/audio khác giữ nguyên.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -169,7 +169,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Commit/push main fast-forward, theo dõi Pages tới completed; bàn giao user thử Archer liveaim, Tank giết chậm hơn, Ranged di chuyển/Dash nhanh và18Barrier khi Chargedblast trúng; Boss2400HP nguyhiểm hơn. Không mở milestone khác; không tự accepted trải nghiệm.
+Chờ user thử bản651e3bf:20–100s Tank damage thấp hơn, Ranged18Barrier/Chargedblast, đi bộ+20%, Dash1.76s, Glass90; Archer liveaim tới release. Boss220–240s:2400HP, sweep46/slam50/đạn18, vẫn cần né/phản công. Báo hướng/build/mốc chết/thắng/device. Tỷ lệ đo64seed/hướng52–59% không là winrate người hay ép8/16 mọi nhóm. Không mở milestone khác; commit bàn giao sau chỉMarkdown, không redeploy.
 
 ## VALIDATION APPROVAL Q12C
 Chỉ sửa Markdown ghi nhận quote/version/approval và kiểm diff/tính nhất quán. Giữ build/typecheck/30testfiles, parity126/126, browser/input/crowd và Pages3013c9d đã PASS; không chạy lại tests/build hoặc redeploy, không suy coverage mới từ approval chung.
