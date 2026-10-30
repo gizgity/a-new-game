@@ -2,6 +2,8 @@
 
 Triển khai theo yêu cầu user2026-10-30; Phase A V2 và Phase B đã được duyệt. **AWAITING USER PLAYTEST APPROVAL — Q12D PHASE C**; chưa nghiệm thu Phase C, không mở Q12E/DDR. Main fetch mới nhất `162066d`, balance `651e3bf` được bảo toàn; Phase B `15f24af` nối trực tiếp main, production baseline `fe7438d`. Không checkout branch cũ đè runtime. Không render/chỉnh composition/mix/SFX/art/balance/progression.
 
+Code/deploy **dc9ea84**, đãpushmain/branchq12d-phase-c. [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) **completed/SUCCESS**, job124118094997 build/typecheck/upload/DeploySUCCESS. Chưa liveHTTP/hash verification. BàngiaoMarkdown sau khôngđổiruntime/redeploy.
+
 ## State và lifecycle
 
 | State thật | Music nghe được |
@@ -41,7 +43,7 @@ WAV fallback toàn bộ8413226bytes; hai format production10064752bytes. Cache c
 
 ## Fixtures và cách nghe/chơi
 
-[Chơi tích hợp](https://gizgity.github.io/a-new-game/?playtest=music) — panel Early/Áp lực/Anomaly/Boss/Enraged/Thắng/Thua phía trên; fixture grants dùng world thật và profile memory, không ghi progression. Chọn Early→Áp lực→Anomaly: chờ tối đa1bar sau activation; Boss→Enraged; thử Pause/Resume, Restart, đổi tab. Các nút stage là grants phục vụ review, không chứng minh natural threshold/selection/combat khó dễ. Anomaly grant trực tiếp chỉ có trong fixture; production cần lựa chọn hợp lệ. `window.musicFixture.stats()` dùng để inspect, chỉ expose khi `playtest=music`.
+[Chơi tích hợp](https://gizgity.github.io/a-new-game/?playtest=music&v=dc9ea84) — panel Early/Áp lực/Anomaly/Boss/Enraged/Thắng/Thua phía trên; fixture grants dùng world thật và profile memory, không ghi progression. Chọn Early→Áp lực→Anomaly: chờ tối đa1bar sau activation; Boss→Enraged; thử Pause/Resume, Restart, đổi tab. Các nút stage là grants phục vụ review, không chứng minh natural threshold/selection/combat khó dễ. Anomaly grant trực tiếp chỉ có trong fixture; production cần lựa chọn hợp lệ. `window.musicFixture.stats()` dùng để inspect, chỉ expose khi `playtest=music`.
 
 Bản thường không panel: [game](https://gizgity.github.io/a-new-game/). Rising pressure từ60s active; Anomaly sau chọn; Boss thật sau Arrival; phase2 khi≤50%HP. [SFX audition](https://gizgity.github.io/a-new-game/audition.html) vẫn giữ nguyên. Muốn nghe phối hợp hãy thử Boss fixture trong game, dùng Heavy/Detonate/Perfect Dodge, nghe Arrival khi encounter đến tự nhiên hoặc shortcut `?playtest=boss`.
 
@@ -54,4 +56,5 @@ Mobile giữ joystick+Shoot và bấm Heavy/Dash, pause rồi tiếp tục khôn
 - `browser-c-check.mjs` / `browser-c.json`: Chromium320/390portrait,844landscape,1440desktop, state/freeze/mute/SFX/input/cleanup/no storage/console/overflow. Controlled scene fixture, không natural run hoặc human listening.
 - `input-c-check.mjs` / `input-c.json`: real CDP touch390 và keyboard1440 Charged hold→pause cancel→fresh press/release, resource2→1 và chargeSFX đúng khi3music sources đang chạy.
 - `transport-c-check.mjs` / `transport-c.json`: real48kHz,2coreloops,pendingoverlay pause/resume trước downbeat,12pause/resume, controlled visibility event, context suspend, duck/release/result và injected FLAC-unsupported→realWAV fallback. Không phải tabOSbackground thật hoặc acoustic test.
+- [shutdown-c.md](shutdown-c.md): actual Phaser Scene.stop giải phóng3sources/3cache về0, page errors0.
 - Safari/iOS/Firefox/thiết bị thật **NOT RUN**. Chưa đo FPS/thermal/latency/RSS, chưa nghe bằng loa/tai nghe trong môi trường này. Chromium checks không là sound-quality approval; cần user playtest. Không thay approval Phase A/B hoặc Q12A–C; balance651e3bf vẫn có gate playtest riêng.
