@@ -552,7 +552,7 @@ test('Charged Detonate visual uses the unchanged damage radius, including Specia
     state.chargedShots = 1;
     state.step({ ...idle, charged: true }, FIXED_STEP);
     const damage = 72 * (specialist ? 1.25 : 1);
-    assert.equal(direct.hp, 500 - 84 - damage);
+    assert.equal(direct.hp, 500 - 84 * (specialist ? 1.1 : 1) - damage);
     assert.equal(inside.hp, 500 - damage);
     assert.equal(outside.hp, 500);
     const effect = state.impacts.find(i => i.kind === 'chargedBlast');
@@ -704,6 +704,6 @@ test('ranged-only hits earn Charged ammo, Catalyst speeds it up, and Charged ena
   assert.equal(state.stats.melee,0);assert.equal(state.chargedShots,catalyst?2:1);
   assert.equal(enemy.hp,940);state.mutations.push('detonationSpecialist');state.setCurses(['volatileSoul']);
   Object.assign(enemy,{x:850,y:500,stagger:999});state.step({...idle,charged:true},FIXED_STEP);
-  assert.equal(state.detonations,1);assert.equal(enemy.hp,940-84-24*1.25*1.4);
+  assert.equal(state.detonations,1);assert.equal(enemy.hp,940-84*1.1-24*1.25*1.4);
  }
 });

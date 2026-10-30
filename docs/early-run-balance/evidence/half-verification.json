@@ -1,0 +1,46 @@
+{
+  "summary": [
+    {
+      "route": "tank",
+      "wins": 38,
+      "total": 64,
+      "rate": 0.59375,
+      "equivalentPer16": 9.5
+    },
+    {
+      "route": "sustain",
+      "wins": 33,
+      "total": 64,
+      "rate": 0.515625,
+      "equivalentPer16": 8.25
+    },
+    {
+      "route": "counter",
+      "wins": 34,
+      "total": 64,
+      "rate": 0.53125,
+      "equivalentPer16": 8.5
+    },
+    {
+      "route": "ranged",
+      "wins": 37,
+      "total": 64,
+      "rate": 0.578125,
+      "equivalentPer16": 9.25
+    }
+  ],
+  "overall": 0.5546875,
+  "spread": 0.078125,
+  "pass": true,
+  "spawnConfigUnchanged": true,
+  "attackTimingsUnchanged": true,
+  "archerAimLockRemoved": true,
+  "pooledAcceptance": {
+    "eachRoute": [
+      0.375,
+      0.625
+    ],
+    "maxSpread": 0.1875
+  },
+  "humanWinRateVerified": false
+}

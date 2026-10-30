@@ -9,7 +9,7 @@ import { AnomalyEffects } from './AnomalyEffects.js';
 import { ANOMALY } from './config/anomalies.js';
 import { LegacyEffects, type PrimaryHit } from './LegacyEffects.js';
 import { LEGACY } from './config/legacy.js';
-import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD, DASH, ENEMY_DAMAGE, ARCHER } from './config/balance.js';
+import { ENEMY_HP, LIGHT_COMBO, HEAVY, ENEMY_GROWTH, RANGED, ENEMY_ATTACK, BOSS_ATTACK, BOSS_DAMAGE, BOSS_PHASE, CHAIN, BARRIER, GRUNT_LEAP, BUILD, DASH, ENEMY_DAMAGE, ARCHER } from './config/balance.js';
 import { BuildEffects, chainRoot, type ChainRoot, type ProcContext, admitProc, legacyRoot } from './BuildEffects.js';
 import { draftSignals } from './DraftSignals.js';
 import { Barrier } from './barrier.js';
@@ -139,7 +139,7 @@ export class CombatWorld {
   stats: CombatStats = { melee: 0, shots: 0, dashes: 0 };
   practice = true;
   get maxHp(): number { return this.hasCurse('glassSoul') ? BUILD.glassMaxHp : COMBAT.maxHp; }
-  get rechargeDuration(): number { return COMBAT.dashRecharge * (this.hasCurse('ironOath') ? BARRIER.oathDashMultiplier : 1); }
+  get rechargeDuration(): number { return COMBAT.dashRecharge * (this.hasCurse('ironOath') ? BARRIER.oathDashMultiplier : 1) * (this.mutations.includes('detonationSpecialist') ? BUILD.specialistDashMultiplier : 1); }
   get outgoingDamageMultiplier(): number {
     return (this.mutations.includes('aegisCore') ? BARRIER.aegisDamageMultiplier : 1) *
       (this.hasCurse('ironOath') ? BARRIER.oathDamageMultiplier : 1) *
@@ -374,7 +374,7 @@ export class CombatWorld {
       clampPosition(this.player);
       this.dashTime = Math.max(0, this.dashTime - dt);
     } else {
-      movePlayer(this.player, input.dx, input.dy, dt * (this.attack?.heavy ? 0.45 : 1) * this.legacy.movementSpeed);
+      movePlayer(this.player, input.dx, input.dy, dt * (this.attack?.heavy ? 0.45 : 1) * this.legacy.movementSpeed * (this.mutations.includes('detonationSpecialist') ? BUILD.specialistMovement : 1));
       const pending = this.buffered?.action;
       if (!this.attack && (pending === 'heavy' && this.heavyCharges > 0 || pending === 'melee' || input.melee)) {
         const heavy = pending === 'heavy' && this.heavyCharges > 0;
@@ -736,7 +736,7 @@ export class CombatWorld {
     enemy.active = Math.max(0, enemy.active - dt);
     enemy.leapCooldown = Math.max(0, enemy.leapCooldown - dt);
     enemy.stagger = Math.max(0, enemy.stagger - dt);
-    if (enemy.kind === 'archer' && enemy.windup > ARCHER.aimLock) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
+    if (enemy.kind === 'archer' && enemy.windup > 0) enemy.angle = Math.atan2(this.player.y - enemy.y, this.player.x - enemy.x);
     if (enemy.stagger > 0) return;
     const spec = ENEMY_ATTACK[enemy.kind];
     if (enemy.recovery > 0) {
@@ -847,14 +847,14 @@ export class CombatWorld {
       if (boss.windup === 0) {
         if (boss.attackAction === 0) {
           const dx = this.player.x - boss.x, dy = this.player.y - boss.y;
-          if (Math.hypot(dx, dy) < BOSS_ATTACK.range && Math.abs(angleDifference(Math.atan2(dy, dx), boss.angle)) < 0.85) this.hurt(26, boss.angle);
+          if (Math.hypot(dx, dy) < BOSS_ATTACK.range && Math.abs(angleDifference(Math.atan2(dy, dx), boss.angle)) < 0.85) this.hurt(BOSS_DAMAGE.sweep, boss.angle);
         } else if (boss.attackAction === 1) {
-          for (let i = 0; i < 12; i++) this.fire(boss.x, boss.y, i * Math.PI / 6 + boss.angle, true, false, 10, BOSS_ATTACK.projectileSpeed);
-          for (const offset of [-0.16, 0, 0.16]) this.fire(boss.x, boss.y, boss.angle + offset, true, false, 10, BOSS_ATTACK.projectileSpeed);
+          for (let i = 0; i < 12; i++) this.fire(boss.x, boss.y, i * Math.PI / 6 + boss.angle, true, false, BOSS_DAMAGE.projectile, BOSS_ATTACK.projectileSpeed);
+          for (const offset of [-0.16, 0, 0.16]) this.fire(boss.x, boss.y, boss.angle + offset, true, false, BOSS_DAMAGE.projectile, BOSS_ATTACK.projectileSpeed);
         } else {
           this.impact(boss.targetX, boss.targetY, 0xffcc80, 110);
           if (Math.hypot(this.player.x - boss.targetX, this.player.y - boss.targetY) < BOSS_ATTACK.slamRadius) {
-            this.hurt(28, Math.atan2(this.player.y - boss.y, this.player.x - boss.x));
+            this.hurt(BOSS_DAMAGE.slam, Math.atan2(this.player.y - boss.y, this.player.x - boss.x));
           }
         }
         boss.action = (boss.action + 1) % 3;
@@ -893,7 +893,7 @@ export class CombatWorld {
     const staticBonus = !hostile && charged && this.build.staticCharge > 0 && this.mutations.includes('staticRiposte') ? BUILD.staticDamage : 0;
     if (staticBonus) this.build.staticCharge = 0;
     const glassBoost = !hostile && this.hasCurse('glassSoul');
-    if (!hostile) damage = (charged ? RANGED.chargedDamage : RANGED.basicDamage) * (glassBoost ? BUILD.glassMultiplier : 1);
+    if (!hostile) damage = (charged ? RANGED.chargedDamage * (this.mutations.includes('detonationSpecialist') ? BUILD.specialistChargedMultiplier : 1) : RANGED.basicDamage) * (glassBoost ? BUILD.glassMultiplier : 1);
     this.projectiles.push({ anomaly, glassBoost, root: hostile ? undefined : chainRoot(), staticBonus, x: x + Math.cos(angle) * 24, y: y + Math.sin(angle) * 24,
       vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, hostile, charged, damage, life: hostile ? 3 : 1.3 });
   }

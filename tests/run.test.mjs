@@ -112,7 +112,7 @@ test('opening spawns bounded Grunt packs, preserves HP ramp and resets cleanly',
 });
 test('standard enemy HP follows kind, independent of spawn order; Elite/Boss health unchanged',()=>{
  const {world}=setup();world.enemies=[];
- for(const [kind,hp] of [['archer',48],['grunt',66],['grunt',66],['volatile',48],['bulwark',220],['boss',1500]]) {
+ for(const [kind,hp] of [['archer',48],['grunt',66],['grunt',66],['volatile',48],['bulwark',220],['boss',2400]]) {
   world.spawnEnemy(kind);assert.equal(world.enemies.at(-1).hp,hp);assert.equal(world.enemies.at(-1).maxHp,hp);
  }
 });
@@ -131,7 +131,7 @@ test('new common enemies grow in health, damage and speed over time; survivors a
  }
  assert.equal(samples[0].maxHp,36);assert.ok(samples.at(-1).maxHp<=106);
  run.start();run.draftIndex=DRAFT_MILESTONES.length;run.ticks=14399;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
- finishWarning(world,run);const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,1500);assert.equal(boss.damageScale,1);
+ finishWarning(world,run);const boss=world.enemies.find(e=>e.kind==='boss');assert.equal(boss.maxHp,2400);assert.equal(boss.damageScale,1);
 });
 
 test('each milestone triggers on kills after its floor or fallback time, once, including simultaneous thresholds',()=>{
@@ -192,7 +192,7 @@ test('Elite and Boss use gated kills OR fallback time, once; no late Elite after
  run.step(idle,1/60);finishWarning(world,run);assert.equal(run.bossDue,true);assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
  run.ticks=13201;world.enemies.forEach(e=>e.stagger=999);run.step(idle,1/60);
  assert.equal(world.enemies.some(e=>e.kind==='bulwark'),false);
- assert.equal(world.enemies.find(e=>e.kind==='boss').maxHp,1500);
+ assert.equal(world.enemies.find(e=>e.kind==='boss').maxHp,2400);
 });
 
 test('no-kill pressure continues past the old cap, resets on kills and freezes in draft/hitstop',()=>{

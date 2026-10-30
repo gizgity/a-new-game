@@ -9,7 +9,7 @@ function world(){const w=new CombatWorld({x:800,y:500,angle:0});w.practice=false
 function target(w,x=860,hp=1000){w.spawnEnemy('grunt',hp);const e=w.enemies.at(-1);Object.assign(e,{x,y:500,stagger:999,cooldown:999});return e;}
 function ticks(w,n){for(let i=0;i<n;i++)w.step(idle,dt);}
 function light(w,combo){w.hitstop=0;w.attack=null;w.combo=combo-1;w.comboWindow=1;w.clearInput();w.step({...idle,melee:true},dt);ticks(w,11);}
-function shot(w,e,charged=false,staticBonus=0){w.hitstop=0;w.projectiles.push({x:e.x-10,y:e.y,vx:850,vy:0,hostile:false,charged,staticBonus,life:1});w.step(idle,dt);}
+function shot(w,e,charged=false,staticBonus=0){w.hitstop=0;w.fire(e.x-34,e.y,0,false,charged);if(staticBonus)w.projectiles.at(-1).staticBonus=staticBonus;w.step(idle,dt);}
 
 test('Perfect readies Phantom and Static once per cooldown; Light miss keeps Phantom, proc adds mark but no Aegis/charge/Frenzy',()=>{
  const w=world();w.mutations=['phantomEdge','staticRiposte','aegisCore','berserker'];w.perfectAvailable=true;w.rewardPerfectDodge();
@@ -17,7 +17,7 @@ test('Perfect readies Phantom and Static once per cooldown; Light miss keeps Pha
  light(w,1);assert.ok(w.build.phantom>0);assert.equal(w.build.phantoms.length,0);
  const e=target(w);light(w,1);assert.equal(w.build.phantom,0);assert.equal(w.build.phantoms.length,1);
  const charge=w.chargePoints+w.chargedShots*3,damage=w.barrier.aegisDamage,stage=w.build.comboStage,hp=e.hp;
- w.hitstop=0;ticks(w,9);assert.ok(Math.abs(e.hp-(hp-18*.8))<1e-9);assert.equal(e.rupture,2);
+ w.hitstop=0;ticks(w,9);assert.ok(Math.abs(e.hp-(hp-18*.75))<1e-9);assert.equal(e.rupture,2);
  assert.equal(w.chargePoints+w.chargedShots*3,charge);assert.equal(w.barrier.aegisDamage,damage);assert.equal(w.build.comboStage,stage);
  w.perfectAvailable=true;w.rewardPerfectDodge();assert.equal(w.build.phantom,0,'cooldown blocks refresh');
 });
@@ -57,7 +57,7 @@ test('Catalyst excludes pending marked relays and dead neighbours, keeps two-see
 
 test('Specialist buffs only primary Charged blast, marks surviving targets Fracture and next Heavy consumes flat20 once',()=>{
  const w=world();w.mutations=['detonationSpecialist'];const a=target(w,850),b=target(w,975);a.rupture=1;
- shot(w,a,true);assert.equal(a.hp,1000-84-60);assert.equal(b.hp,940);assert.ok(b.fracture>0);
+ shot(w,a,true);assert.equal(a.hp,1000-84*1.1-60);assert.equal(b.hp,940);assert.ok(b.fracture>0);
  w.hitEnemy(b,20,0,0,0,false,'shotHit');assert.ok(b.fracture>0);
  w.hitEnemy(b,100,0,0,0,true,'heavy');assert.equal(b.hp,800);assert.equal(b.fracture,0);
  w.chainSeen.clear();w.lastChain=0;b.rupture=1;w.detonate(b,1);assert.equal(w.explosions.at(-1).radius,105);assert.equal(w.explosions.at(-1).damage,12);
@@ -66,9 +66,9 @@ test('Specialist buffs only primary Charged blast, marks surviving targets Fract
 test('Blood Pact heals direct melee under cooldown/shared budget, no Light cost, Heavy miss and dash-cancel cost HP through Barrier',()=>{
  const w=world();w.setCurses(['bloodPact']);w.hp=50;const e=target(w);light(w,1);assert.equal(w.hp,53);assert.equal(w.attack.damage,18);
  w.hitEnemy(e,20,0,0,0,false,'light');assert.equal(w.hp,53);
- for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,59);
- w.barrier.gain(30,false);w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,55);assert.equal(w.barrier.value,30);
- w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,51);
+ for(let i=0;i<5;i++){w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'heavy');}assert.equal(w.hp,58);
+ w.barrier.gain(30,false);w.enemies=[];w.attack=null;w.clearInput();w.hitstop=0;w.step({...idle,heavy:true},dt);ticks(w,15);assert.equal(w.hp,54);assert.equal(w.barrier.value,30);
+ w.attack=null;w.clearInput();w.hitstop=0;w.heavyCharges=1;w.step({...idle,heavy:true},dt);w.step({...idle,dash:true},dt);assert.equal(w.hp,50);
  w.hp=2;w.payBloodMiss();assert.equal(w.hp,1);
  const full=world();full.setCurses(['bloodPact']);const t=target(full);full.hitEnemy(t,1,0,0,0,false,'light');assert.equal(full.build.healed,0);assert.equal(full.build.bloodCooldown,0);
 });
@@ -123,7 +123,7 @@ test('all build clocks and deferred effects freeze in hitstop/draft and reset re
  run.start();assert.equal(w.build.phantom,0);assert.equal(w.build.staticCharge,0);assert.equal(w.build.phantoms.length,0);assert.equal(w.build.hazards.length,0);
 });
 
-test('Blood Pact sustain is capped at9HP/10s for both single-target hits and crowded cleaves',()=>{
+test('Blood Pact sustain is capped at8HP/10s for both single-target hits and crowded cleaves',()=>{
  for(const count of [1,24]){
   const w=world();w.setCurses(['bloodPact']);w.hp=40;
   const enemies=Array.from({length:count},(_,i)=>target(w,850+i*.1,10000));
@@ -131,8 +131,8 @@ test('Blood Pact sustain is capped at9HP/10s for both single-target hits and cro
    w.build.step(dt);
    for(const e of enemies)w.hitEnemy(e,1,0,0,0,false,'light');
   }
-  assert.equal(w.hp,49);assert.equal(w.build.bloodHealed,9);assert.equal(w.build.healed,9);
-  w.build.step(.1);w.hitEnemy(enemies[0],1,0,0,0,false,'light');assert.equal(w.hp,52,'new window starts with a new real hit');
+  assert.equal(w.hp,48);assert.equal(w.build.bloodHealed,8);assert.equal(w.build.healed,8);
+  w.build.step(.1);w.hitEnemy(enemies[0],1,0,0,0,false,'light');assert.equal(w.hp,51,'new window starts with a new real hit');
  }
 });
 
@@ -140,7 +140,7 @@ test('Blood Pact cannot bypass its cap by switching Curse; cooldown is2s and ful
  const w=world();const e=target(w);w.setCurses(['bloodPact']);w.hp=50;w.hitEnemy(e,1,0,0,0,false,'light');
  w.build.step(1.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,53);
  w.build.step(.5);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,56);
- w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,59);
- w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,59);
+ w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,58);
+ w.setCurses(['ghostStep']);w.setCurses(['bloodPact']);w.build.step(2);w.hitEnemy(e,1,0,0,0,false,'light');assert.equal(w.hp,58);
  w.reset();assert.equal(w.build.bloodHealed,0);
 });

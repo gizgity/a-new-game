@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const {chromium}=await import('/opt/codex/cua_node/lib/node_modules/playwright/index.mjs');
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-const reports=[];
+const reports=[];const evidencePrefix=process.env.BALANCE_BROWSER_PREFIX||'final';
 try{for(const [width,height,touch]of [[390,844,true],[1440,1000,false],[320,740,true],[844,390,true]]){
  const p=await browser.newPage({viewport:{width,height},hasTouch:touch}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto('http://127.0.0.1:5173/a-new-game/');await p.locator('#primary:enabled').click();
@@ -21,7 +21,7 @@ try{for(const [width,height,touch]of [[390,844,true],[1440,1000,false],[320,740,
  await up();const fired=await p.evaluate(async()=>{const {arena:a}=await import('/a-new-game/src/main.ts');for(let i=0;i<18;i++)a.update(0,17);return {ammo:a.combat.chargedShots,barrier:a.combat.barrier.value,hp:a.combat.hp,cooldown:a.combat.barrier.specialistCooldown};});assert.equal(fired.ammo,1);assert.equal(fired.barrier,6);assert.equal(fired.hp,100);
  const frozen=await p.evaluate(async()=>{const {arena:a}=await import('/a-new-game/src/main.ts');a.setPhase('paused');const before=a.combat.barrier.specialistCooldown;for(let i=0;i<60;i++)a.update(0,17);const after=a.combat.barrier.specialistCooldown;a.setPhase('playing');return before===after;});assert.equal(frozen,true);
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
- await p.screenshot({path:`docs/early-run-balance/evidence/final-${width}.png`});
+ await p.screenshot({path:`docs/early-run-balance/evidence/${evidencePrefix}-${width}.png`});
  assert.deepEqual(errors,[]);reports.push({width,height,touch,viEnDescription:true,holdRelease:true,fired,pauseFreeze:frozen,overflow:false,errors});await p.close();
 }}finally{await browser.close();}
-fs.writeFileSync('docs/early-run-balance/evidence/final-browser.json',JSON.stringify({method:'Explicit Specialist/ammo/enemy fixture; real touch or keyboard hold/release with controlled scene updates, not natural runs. Chromium softwareWebGL, no real-device/FPS claim.',reports},null,2));console.log('PASS four viewports: vi/en, Charged hold/release, actual Barrier/HUD, pause freeze');
+fs.writeFileSync(`docs/early-run-balance/evidence/${evidencePrefix}-browser.json`,JSON.stringify({method:'Explicit Specialist/ammo/enemy fixture; real touch or keyboard hold/release with controlled scene updates, not natural runs. Chromium softwareWebGL, no real-device/FPS claim.',reports},null,2));console.log('PASS four viewports: vi/en, Charged hold/release, actual Barrier/HUD, pause freeze');

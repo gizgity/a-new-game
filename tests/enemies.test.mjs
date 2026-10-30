@@ -72,22 +72,16 @@ test('Archer tracks early windup including stagger, then projectile keeps releas
  w.player.y+=300;w.step(idle,dt);assert.deepEqual([shot.vx,shot.vy],heading);assert.deepEqual([e.x,e.y],[x,y]);
 });
 
-test('Archer commits its visible aim for the final window, including stagger, and fires that heading',()=>{
- const {w,e}=setup('archer',300);w.step(idle,dt);
- w.player.y+=100;w.step(idle,dt);const committed=e.angle;
- e.windup=ARCHER.aimLock;e.stagger=.1;w.player.y-=240;
- w.step(idle,dt);assert.equal(e.angle,committed,'stagger cannot reopen committed aim');
- e.stagger=0;step(w,ARCHER.aimLock+dt);
- const shot=w.projectiles.find(p=>p.hostile);assert.ok(shot);
- assert.ok(Math.abs(Math.atan2(shot.vy,shot.vx)-committed)<1e-9);
+test('Archer tracks even the final windup window and stagger, then releases along the latest aim',()=>{
+ const {w,e}=setup('archer',300);w.step(idle,dt);e.windup=.02;
+ e.stagger=.1;w.player.y+=120;w.step(idle,dt);
+ assert.equal(e.angle,Math.atan2(w.player.y-e.y,w.player.x-e.x));
+ e.stagger=0;w.player.y-=240;w.step(idle,dt);
+ const finalAim=Math.atan2(w.player.y-e.y,w.player.x-e.x);assert.equal(e.angle,finalAim);
+ step(w,.02);const shot=w.projectiles.find(p=>p.hostile);assert.ok(shot);
+ assert.ok(Math.abs(Math.atan2(shot.vy,shot.vx)-finalAim)<1e-9);
  assert.ok(Math.abs(Math.hypot(shot.vx,shot.vy)-ARCHER.projectileSpeed)<1e-9);
-});
-
-test('ordinary perpendicular walking can evade a committed Archer shot without spending dash',()=>{
- const {w,e}=setup('archer',300);w.step(idle,dt);
- e.windup=ARCHER.aimLock;
- for(let i=0;i<100;i++)w.step({...idle,dy:1},dt);
- assert.equal(w.hp,100);assert.equal(w.stats.dashes,0);
+ const heading=[shot.vx,shot.vy];w.player.y+=400;w.step(idle,dt);assert.deepEqual([shot.vx,shot.vy],heading);
 });
 
 test('Boss cadence is faster in both phases while retaining a readable windup and recovery',()=>{

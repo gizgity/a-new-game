@@ -59,7 +59,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div class="arena-top"><div><span class="eyebrow" data-i18n="stage"></span><p data-i18n="arena"></p></div>
       <span class="status"><i></i><span id="status"></span></span>
     </div>
-    <div id="boss-hud" class="boss-hud" hidden><span id="boss-label" data-i18n="bossName"></span><progress aria-labelledby="boss-label" id="boss-health" max="1500" value="1500"></progress></div>
+    <div id="boss-hud" class="boss-hud" hidden><span id="boss-label" data-i18n="bossName"></span><progress aria-labelledby="boss-label" id="boss-health" max="1" value="1"></progress></div>
     <span id="run-clock" class="run-clock"></span>
     ${combatHUDMarkup()}
     <div id="overlay" class="overlay">
@@ -324,7 +324,11 @@ function renderCombatHUD(world: CombatWorld): void {
   }
   const boss = world.enemies.find(enemy => enemy.kind === 'boss');
   document.querySelector<HTMLElement>('#boss-hud')!.hidden = !boss;
-  if (boss) document.querySelector<HTMLProgressElement>('#boss-health')!.value = boss.hp;
+  if (boss) {
+    const health = document.querySelector<HTMLProgressElement>('#boss-health')!;
+    health.max = boss.maxHp;
+    health.value = boss.hp;
+  }
   const seconds = Math.floor(arena.run.elapsed);
   document.querySelector('#run-clock')!.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} / 5:00`;
   const dt = currentPhase === 'playing' && world.hitstop <= 0 ? Math.min(game.loop.delta / 1000, 0.1) : 0;

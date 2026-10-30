@@ -7,7 +7,7 @@ const prefix=process.env.BALANCE_BROWSER_PREFIX||'browser';
 const budget=Number(process.env.BALANCE_BROWSER_BUDGET||180000);
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 try{
- await Promise.all(['counter','ranged'].map(async route=>{
+ await Promise.all((process.env.BALANCE_BROWSER_ROUTES?.split(',')||['counter','ranged']).map(async route=>{
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[],samples=[],drafts=[];
   page.on('pageerror',e=>errors.push(e.message));
   // Persist only an ordinary first-run ticket with explicit seed, no unlocks/resources.

@@ -1,0 +1,2829 @@
+{
+  "note": "Condensed trial results including failed sets. Final two 32-seed groups remain as full raw trajectories.",
+  "trials": [
+    {
+      "name": "half-audit",
+      "set": "audit50",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 32,
+          "rate": 0.3125,
+          "alive100": 32,
+          "medianEnd": 247.13333333333333,
+          "boss": 32
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 20,
+          "total": 32,
+          "rate": 0.625,
+          "alive100": 32,
+          "medianEnd": 234.98333333333332,
+          "boss": 32
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 21,
+          "total": 32,
+          "rate": 0.65625,
+          "alive100": 32,
+          "medianEnd": 237.55,
+          "boss": 31
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 23,
+          "total": 32,
+          "rate": 0.71875,
+          "alive100": 32,
+          "medianEnd": 273.71666666666664,
+          "boss": 32
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-1900",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 237.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 232.65,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 231.88333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 255.01666666666668,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-2300",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 239.93333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 234.9,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 263.6333333333333,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-2700",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 243.73333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 237.33333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 14,
+          "total": 16,
+          "rate": 0.875,
+          "alive100": 16,
+          "medianEnd": 271.48333333333335,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-damage-1.5",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 234.71666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 231.48333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 230.16666666666666,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 251.7,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-damage-2.5",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 233.68333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 14,
+          "total": 16,
+          "rate": 0.875,
+          "alive100": 16,
+          "medianEnd": 231.35,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 230.16666666666666,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 239.46666666666667,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-boss-damage-2",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 234.71666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 231.48333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 230.16666666666666,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 239.46666666666667,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-calibration-v2",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 282.53333333333336,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-confirm",
+      "set": "confirm50",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "none",
+          "route": "tank",
+          "wins": 0,
+          "total": 16,
+          "rate": 0,
+          "alive100": 16,
+          "medianEnd": 234.26666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "none",
+          "route": "sustain",
+          "wins": 0,
+          "total": 16,
+          "rate": 0,
+          "alive100": 16,
+          "medianEnd": 224.73333333333332,
+          "boss": 9
+        },
+        {
+          "mode": "none",
+          "route": "counter",
+          "wins": 0,
+          "total": 16,
+          "rate": 0,
+          "alive100": 16,
+          "medianEnd": 227.96666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "none",
+          "route": "ranged",
+          "wins": 2,
+          "total": 16,
+          "rate": 0.125,
+          "alive100": 16,
+          "medianEnd": 245.73333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 241.8,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 3,
+          "total": 16,
+          "rate": 0.1875,
+          "alive100": 16,
+          "medianEnd": 233.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 232.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 3,
+          "total": 16,
+          "rate": 0.1875,
+          "alive100": 16,
+          "medianEnd": 270.1166666666667,
+          "boss": 16
+        },
+        {
+          "mode": "reflex",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 241.71666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "reflex",
+          "route": "sustain",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 234.83333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "reflex",
+          "route": "counter",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 236.18333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "reflex",
+          "route": "ranged",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 282,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-expanded",
+      "set": "combined50",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 17,
+          "total": 32,
+          "rate": 0.53125,
+          "alive100": 32,
+          "medianEnd": 242.53333333333333,
+          "boss": 32
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 14,
+          "total": 32,
+          "rate": 0.4375,
+          "alive100": 32,
+          "medianEnd": 233.93333333333334,
+          "boss": 32
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 19,
+          "total": 32,
+          "rate": 0.59375,
+          "alive100": 32,
+          "medianEnd": 234.06666666666666,
+          "boss": 32
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 14,
+          "total": 32,
+          "rate": 0.4375,
+          "alive100": 32,
+          "medianEnd": 270.1166666666667,
+          "boss": 32
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-final-calibration",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 236.8,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-final-validation",
+      "set": "validation50",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 234.73333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 234.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 264.23333333333335,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-growth-2.5",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 231.48333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 230.16666666666666,
+          "boss": 14
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 255.55,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-growth-2",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 234.71666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 231.48333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 230.16666666666666,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 255.55,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-growth-3",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 16,
+          "total": 16,
+          "rate": 1,
+          "alive100": 16,
+          "medianEnd": 231.48333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 229.81666666666666,
+          "boss": 14
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 15,
+          "total": 16,
+          "rate": 0.9375,
+          "alive100": 16,
+          "medianEnd": 255.55,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-live-aim-calibration",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 240.7,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.65,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 234.61666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 4,
+          "total": 16,
+          "rate": 0.25,
+          "alive100": 16,
+          "medianEnd": 246.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-live-light",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 239.6,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 233.83333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 259.56666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-live-mobile",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 239.41666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 233.83333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 259.98333333333335,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-live-tankcost",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 242.36666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.18333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 4,
+          "total": 16,
+          "rate": 0.25,
+          "alive100": 16,
+          "medianEnd": 263.3,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-a",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 239.3,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 14,
+          "total": 16,
+          "rate": 0.875,
+          "alive100": 16,
+          "medianEnd": 234.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.8,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-b",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 242.58333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 262.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-c",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 236.63333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 231.96666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 247.21666666666667,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-d",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 238.56666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 234.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.8,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-e",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 238.56666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.73333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.8,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-f",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 237.76666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 234.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.8,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-g",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 240.5,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 262.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-h",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 240.5,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 262.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-i",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 240.5,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 262.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-j",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 241.15,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 252.63333333333333,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-k",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 241.15,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 252.63333333333333,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-l",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 243.68333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 235.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 236.53333333333333,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 262.81666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-m",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 245.88333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 237.11666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 236.93333333333334,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 258.7,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-n",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 245.88333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 237.11666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 236.93333333333334,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 263.93333333333334,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-o",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 245.83333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 238.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 237.7,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 259.85,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-p",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 246.65,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.76666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.43333333333334,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 262.75,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-q",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 246.65,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 237.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.43333333333334,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 262.75,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-r",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 245.73333333333332,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.78333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 236.76666666666668,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 267.8666666666667,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-s",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 245.2,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 238.71666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.61666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 275.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-t",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 245.2,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 13,
+          "total": 16,
+          "rate": 0.8125,
+          "alive100": 16,
+          "medianEnd": 238.86666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 237.61666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 275.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-v",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 237.33333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.86666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-w",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 237.33333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 233.86666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 248.66666666666666,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-mix-y",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 239.2,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 233.95,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 233.86666666666667,
+          "boss": 15
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 247.13333333333333,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-a",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 242.36666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 273.85,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-b",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 242.36666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.18333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 273.85,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-c",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 9,
+          "total": 16,
+          "rate": 0.5625,
+          "alive100": 16,
+          "medianEnd": 242.36666666666667,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 273.85,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-d",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 241.05,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 232.51666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 258.7,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-e",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 241.05,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.18333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 7,
+          "total": 16,
+          "rate": 0.4375,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 254.48333333333332,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-f",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.28333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 12,
+          "total": 16,
+          "rate": 0.75,
+          "alive100": 16,
+          "medianEnd": 259.1333333333333,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-g",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-h",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 241.56666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 282.53333333333336,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-i",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.08333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-j",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 234.08333333333334,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 6,
+          "total": 16,
+          "rate": 0.375,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-k",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-l",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 5,
+          "total": 16,
+          "rate": 0.3125,
+          "alive100": 16,
+          "medianEnd": 232.85,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-m",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    },
+    {
+      "name": "half-user-n",
+      "set": "holdout",
+      "policy": "bossSafe",
+      "summary": [
+        {
+          "mode": "observed",
+          "route": "tank",
+          "wins": 11,
+          "total": 16,
+          "rate": 0.6875,
+          "alive100": 16,
+          "medianEnd": 242.53333333333333,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "sustain",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 234.01666666666668,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "counter",
+          "wins": 8,
+          "total": 16,
+          "rate": 0.5,
+          "alive100": 16,
+          "medianEnd": 234.06666666666666,
+          "boss": 16
+        },
+        {
+          "mode": "observed",
+          "route": "ranged",
+          "wins": 10,
+          "total": 16,
+          "rate": 0.625,
+          "alive100": 16,
+          "medianEnd": 273.4,
+          "boss": 16
+        }
+      ],
+      "method": "Four natural first-run routes, identical300ms aim/action cadence, same seeds and mode, live achievement pool updates, earned resources; no grants/offer replacement/Legacy/Anomaly/Ascension. Ranged190–260px vs melee routes approach65px, same wall steering/Charged/Surge. bossSafe additionally keeps330–420px from a visible Boss without changing aim or reaction cadence. Reflex is machine control. Development8 seeds; holdout16 chosen before tuning. Not human win rate.",
+      "note": "Calibration/trial only; not deployed, raw trajectories condensed after final release evidence was retained."
+    }
+  ]
+}

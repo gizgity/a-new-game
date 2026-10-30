@@ -1,5 +1,7 @@
 # Cân bằng bốn hướng chơi — bản triển khai 2026-10-29
 
+> **Bản81f5ec6 là lịch sử, đã bị user yêu cầu giảm tỷ lệ thắng.** Bản hiện hành và việc khôi phục Archer live aim tại [win-rate-50.md](win-rate-50.md).
+
 User cho phép triển khai: “làm theo đề xuất, đảm bảo cần bằng ở cả 4 hướng chơi, tỉ lệ thắng nên gần bằng nhau, hiện tại range hơi hụt”. Baseline mới nhất đã đồng bộ **3c8203f**, giữ Q12B/Q12C được duyệt. Các khảo sát trên893d744 ở README/remaining-routes là lịch sử, không phải thông số production sau lượt này.
 
 ## Thay đổi cuối

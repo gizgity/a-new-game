@@ -70,7 +70,7 @@ test('combat signals use actual direct damage after armor/cost and overkill, exc
  const e=target(w);e.fracture=3;w.hitEnemy(e,124,0,0,0,true,'chargedHit',undefined,true,40);near(w.draftSignals.rangedDamage,84);
  w.hitEnemy(e,50,0,0,0,true,'phantom');w.hitEnemy(e,50,0,0,0,true,'blast');w.hitEnemy(e,10,0,0,0,true,'light',undefined,false);
  near(w.draftSignals.meleeDamage,60);near(w.draftSignals.rangedDamage,84);assert.equal(w.draftSignals.rangedHits,1);
- w.mutations=['aegisCore'];w.hitEnemy(e,10,0,0,0,true,'shotHit');near(w.draftSignals.rangedDamage,92);
+ w.mutations=['aegisCore'];w.hitEnemy(e,10,0,0,0,true,'shotHit');near(w.draftSignals.rangedDamage,91.5);
 });
 test('dash/Perfect and Heavy counters measure started attempts and successful interrupts once per cleave, not presses',()=>{
  const w=world();w.step({...idle,dash:true},dt);assert.equal(w.draftSignals.dashes,1);assert.equal(w.draftSignals.perfects,0);w.rewardPerfectDodge();w.rewardPerfectDodge();assert.equal(w.draftSignals.perfects,1);

@@ -29,11 +29,11 @@ test('Barrier absorbs after curse damage, preserves hurt immunity/knockback and 
 
 test('Aegis uses actual direct melee damage, excludes overkill, shots, blasts and armor loss',()=>{
  const w=world();w.mutations=['aegisCore'];const e=target(w,'bulwark');
- w.hitEnemy(e,40,0,0,0,false,'light');assert.equal(w.barrier.aegisDamage,17.6);assert.equal(w.barrier.value,0);
+ w.hitEnemy(e,40,0,0,0,false,'light');assert.equal(w.barrier.aegisDamage,16.5);assert.equal(w.barrier.value,0);
  w.hitEnemy(e,40,0,0,0,false,'shotHit');w.hitEnemy(e,40,0,0,0,true,'blast');
- assert.equal(w.barrier.aegisDamage,17.6);
- e.hp=5;w.hitEnemy(e,100,0,0,0,true,'heavy');assert.equal(w.barrier.aegisDamage,22.6);
- e.hp=100;w.hitEnemy(e,22,0,0,0,true,'light2');assert.equal(w.barrier.value,4);assert.equal(w.barrier.aegisDamage,0);
+ assert.equal(w.barrier.aegisDamage,16.5);
+ e.hp=5;w.hitEnemy(e,100,0,0,0,true,'heavy');assert.equal(w.barrier.aegisDamage,21.5);
+ e.hp=100;w.hitEnemy(e,28,0,0,0,true,'light2');assert.equal(w.barrier.value,4);assert.equal(w.barrier.aegisDamage,0);
 });
 
 test('Aegis caps bursts, drops overflow and never banks progress at full Barrier',()=>{
@@ -106,13 +106,34 @@ test('Specialist defense needs actual Charged detonation damage, caps multihits,
  const w=world();w.mutations=['detonationSpecialist'];
  const blast=(charged=true)=>{const e=target(w,'grunt',1000);e.rupture=1;w.chainSeen.clear();w.detonate(e,1,charged);w.resolveExplosions();};
  blast(false);assert.equal(w.barrier.value,0,'Basic detonation grants nothing');
- blast();assert.equal(w.barrier.value,6);assert.equal(w.hp,100);
- blast();assert.equal(w.barrier.value,6,'another target/cleave cannot bypass cooldown');
+ blast();assert.equal(w.barrier.value,18);assert.equal(w.hp,100);
+ blast();assert.equal(w.barrier.value,18,'another target/cleave cannot bypass cooldown');
  const clock=w.barrier.specialistCooldown;w.hitstop=1;w.step(idle,1/60);assert.equal(w.barrier.specialistCooldown,clock);
  const r=new RunDirector(w);r.draft=[{id:'catalyst',role:'wildcard'}];r.step(idle,1);assert.equal(w.barrier.specialistCooldown,clock);
  w.barrier.step(2);w.barrier.value=29;blast();assert.equal(w.barrier.value,30);
- w.barrier.step(2);w.barrier.value=0;w.setCurses(['ironOath']);blast();assert.equal(w.barrier.value,7.5,'Oath is applied once');
+ w.barrier.step(2);w.barrier.value=0;w.setCurses(['ironOath']);blast();assert.equal(w.barrier.value,22.5,'Oath is applied once');
  w.reset();assert.equal(w.barrier.specialistCooldown,0);assert.equal(w.barrier.value,0);
  const empty=world();empty.mutations=['detonationSpecialist'];const e=target(empty,'grunt',0);e.rupture=1;empty.detonate(e,1,true);empty.resolveExplosions();assert.equal(empty.barrier.value,0);
  const plain=world();const t=target(plain);t.rupture=1;plain.detonate(t,1,true);plain.resolveExplosions();assert.equal(plain.barrier.value,0,'requires the mutation');
+});
+
+test('Specialist improves actual walk and dash recharge without adding dash charges or invulnerability',()=>{
+ const base=world(),ranged=world();ranged.mutations=['detonationSpecialist'];
+ base.step({...idle,dx:1},1/60);ranged.step({...idle,dx:1},1/60);
+ assert.ok(Math.abs((ranged.player.x-800)/(base.player.x-800)-1.2)<1e-9);
+ assert.ok(Math.abs(ranged.rechargeDuration-1.76)<1e-9);
+ ranged.setCurses(['ironOath']);assert.ok(Math.abs(ranged.rechargeDuration-1.76*1.15)<1e-9);
+ ranged.setCurses([]);ranged.step({...idle,dash:true},1/60);
+ assert.equal(ranged.dashCharges,1);assert.ok(ranged.dashTime<=.18);
+ ranged.reset();assert.equal(ranged.rechargeDuration,2.2);assert.equal(ranged.dashCharges,2);
+});
+
+test('Specialist and Glass boost direct Charged base once while Static and blast keep separate values',()=>{
+ const w=world();w.mutations=['detonationSpecialist','staticRiposte'];w.setCurses(['glassSoul']);
+ const e=target(w,'grunt',1000);e.x=850;w.build.staticCharge=4;
+ w.fire(800,500,0,false,true);const shot=w.projectiles[0];
+ assert.ok(Math.abs(shot.damage-84*1.1*1.3)<1e-9);assert.equal(shot.staticBonus,40);
+ w.stepProjectiles(1/60);w.resolveExplosions();
+ assert.ok(Math.abs(e.hp-(1000-84*1.1*1.3-40-24*1.25))<1e-9);
+ assert.equal(w.barrier.value,18);assert.equal(w.hp,90);
 });

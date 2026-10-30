@@ -39,10 +39,10 @@ test('slot capacity, duplicates, immutable ownership and explicit full-slot repl
 for(const reverse of [false,true]){
  const pair=(a,b)=>reverse?[b,a]:[a,b];
  test(`C: Oath+Blood shared caps/cost and sustain risks, reversed=${reverse}`,()=>{
-  const w=world(pair('ironOath','bloodPact'));w.mutations=['aegisCore','bloodReclaimer'];near(w.outgoingDamageMultiplier,.8*.75*.8);near(w.rechargeDuration,COMBAT.dashRecharge*BARRIER.oathDashMultiplier);
+  const w=world(pair('ironOath','bloodPact'));w.mutations=['aegisCore','bloodReclaimer'];near(w.outgoingDamageMultiplier,.75*.7*.8);near(w.rechargeDuration,COMBAT.dashRecharge*BARRIER.oathDashMultiplier);
   w.barrier.gain(100,true);assert.equal(w.barrier.value,30);w.hp=40;const e=target(w);w.hitEnemy(e,10,0,0,0,false,'light');assert.equal(w.hp,40);
-  w.barrier.value=0;for(let i=0;i<5;i++){w.hitEnemy(e,1,0,0,0,false,'light');w.build.step(2);}assert.equal(w.hp,49);
-  w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',3,2);assert.equal(w.build.healed<=12,true);
+  w.barrier.value=0;for(let i=0;i<5;i++){w.hitEnemy(e,1,0,0,0,false,'light');w.build.step(2);}assert.equal(w.hp,48);
+  w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',3,2);assert.equal(w.build.healed<=8,true);
   w.build.bloodCooldown=1;w.setCurses(['ironOath']);w.addCurse('bloodPact');assert.equal(w.build.bloodCooldown,1);
   w.barrier.value=30;w.hp=100;for(let i=0;i<12;i++){w.invulnerable=0;w.hurt(20,0);}assert.ok(w.hp<=0,'standing still is mortal');
  });
@@ -56,9 +56,9 @@ for(const reverse of [false,true]){
   const haste=world(pair('deathEcho','huntedVessel')),plain=world();const a=target(haste,10000,1000),b=target(plain,10000,1000);a.stagger=b.stagger=0;a.echoHaste=3;haste.stepEnemy(a,dt);plain.stepEnemy(b,dt);near(1000-a.x,(1000-b.x)*BUILD.hasteMultiplier);
  });
  test(`E: Glass+Ghost HP, direct projectile and Perfect/zeroDash risk, reversed=${reverse}`,()=>{
-  const w=world(pair('glassSoul','ghostStep'));assert.equal(w.maxHp,75);assert.equal(w.hp,75);assert.equal(w.rechargeDuration,COMBAT.dashRecharge);
+  const w=world(pair('glassSoul','ghostStep'));assert.equal(w.maxHp,90);assert.equal(w.hp,90);assert.equal(w.rechargeDuration,COMBAT.dashRecharge);
   w.fire(800,500,0,false);near(w.projectiles[0].damage,20*BUILD.glassMultiplier);w.dashCharges=0;w.dashRecharge=.5;w.perfectAvailable=true;w.rewardPerfectDodge();near(w.dashRecharge,1.5);
-  w.invulnerable=0;w.dashTime=0;w.hurt(10,0);near(w.hp,63);w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',100,2);assert.ok(w.hp<=75);
+  w.invulnerable=0;w.dashTime=0;w.hurt(10,0);near(w.hp,78);w.hp+=w.build.heal(w.hp,w.maxHp,'reclaimerCooldown',100,2);assert.ok(w.hp<=90);
  });
  test(`Hunted+Parasitic both trigger with shared heal/capped kill reward, reversed=${reverse}`,()=>{
   const w=world(pair('huntedVessel','parasiticMark'));w.hp=50;const a=target(w,1);a.rupture=1;w.detonate(a,1);w.resolveExplosions();assert.equal(w.hp,53);assert.equal(w.barrier.value,2);assert.equal(w.build.huntedCooldown,1);assert.equal(w.build.parasiticCooldown,2);
@@ -75,5 +75,5 @@ test('adding slot2 retains queued Glass/Volatile/Blood effects and clocks; remov
  const w=world(['volatileSoul']);const e=target(w);e.rupture=1;w.detonate(e,1);const damage=w.explosions[0].damage;w.build.hazards.push({x:1,y:1,time:.8});w.build.hazardCooldown=2;
  w.addCurse('glassSoul');w.fire(800,500,0,false);const shot=w.projectiles.at(-1);near(shot.damage,26);assert.equal(w.explosions[0].damage,damage);assert.equal(w.build.hazards.length,1);assert.equal(w.build.hazardCooldown,2);
  w.setCurses(['glassSoul','bloodPact']);near(shot.damage,26);near(w.explosions[0].damage,damage/BUILD.volatileMultiplier);assert.equal(w.build.hazards.length,0);
- w.beginAttack(true);assert.equal(w.attack.bloodPact,true);w.setCurses(['bloodPact','ghostStep']);assert.equal(w.attack.bloodPact,true);near(shot.damage,20);assert.equal(w.maxHp,100);assert.equal(w.hp,75);
+ w.beginAttack(true);assert.equal(w.attack.bloodPact,true);w.setCurses(['bloodPact','ghostStep']);assert.equal(w.attack.bloodPact,true);near(shot.damage,20);assert.equal(w.maxHp,100);assert.equal(w.hp,90);
 });
