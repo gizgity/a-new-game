@@ -10,7 +10,7 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**Q12E — Final Audio Mix, Settings & Performance — technical PASS, chuẩn bị push/deploy.** User giao2026-10-30; baseline fetch/fast-forward04640b4. Goal: hoàn thiện3volume buses/Mute/Reduce Camera Shake trong Settings/save hiện có, giữ Q12A–D và latest balance; tests/evidence/deploy rồi dừng chờ user. Không DDR/Q13/artwork/resolver/AI/RNG/Boss/progression/balance tuning.
+**Q12E — Final Audio Mix, Settings & Performance — DEPLOYED — AWAITING USER PLAYTEST APPROVAL — Q12E, code0859d08, Pages41081881459 SUCCESS.** User giao2026-10-30; baseline fetch/fast-forward04640b4. Goal: hoàn thiện3volume buses/Mute/Reduce Camera Shake trong Settings/save hiện có, giữ Q12A–D và latest balance; tests/evidence/deploy rồi dừng chờ user. Không DDR/Q13/artwork/resolver/AI/RNG/Boss/progression/balance tuning.
 
 Master40% legacy, Music/SFX100% tương đương accepted; realtime gain10ms khôngrestart/decode, mute giữ transport/khôngreplaySFX; additive savev3 migration, corrupt defaults, OS reduced-motion chỉ default khi chưa explicit. ReduceCameraShake tắt render offset, giữhitstop/flash/telegraph/aim. Reuse duck8dB/priority/cap/PCM; không remix khi chưa A/B listening evidence. Shutdown nhả source.buffer và SFX bus/owned nodes; shared cached SFX giữ theo baseline.
 
@@ -128,7 +128,7 @@ User yêu cầu “làm xong deploy luôn nha”. gh workflow dispatch bị Forb
 **HOÀN TẤT — RELEASE v0.1.0**. Đã tạo/push annotated tag `v0.1.0` (tag objectea53dc6), peeled commit `4770bf617f292c407685c4fbed1ebf5d3c6cb84f` khớp bản Q8D đã duyệt. GitHub Release published2026-10-26T16:46:46Z, không draft/prerelease, đặt latest: https://github.com/gizgity/a-new-game/releases/tag/v0.1.0 . Release notes tiếng Việt có scope/approval/link chơi/evidence/giới hạn coverage. Không đổi runtime/package hoặc tái deploy; Pagescbdb131 giữ nguyên. Commit bàn giao release sau tag chỉMarkdown, không dời tag sang commit mới.
 
 ## ACCEPTANCE / CURRENT STATUS
-Q12E technical PASS đang deploy, **chưa user accepted**; dừng AWAITING USER PLAYTEST APPROVAL — Q12E. Giữ Q12A–D và các approval cũ; balance651e3bf giữ gate riêng. Không DDR/Q13.
+Q12E technical PASS/deploy0859d08/Pages41081881459SUCCESS, **chưa user accepted**; dừng AWAITING USER PLAYTEST APPROVAL — Q12E. Giữ Q12A–D và các approval cũ; balance651e3bf giữ gate riêng. Không DDR/Q13.
 
 ## BASELINE ACCEPTANCE — Q8D (LỊCH SỬ)
 **ACCEPTED — USER PLAYTEST APPROVAL** — user xác nhận “q8d đạt” ngày2026-10-26 trên bản deploy `cbdb131` (handoff `4791b27`), Pages40360458461 SUCCESS. Đây là approval trực tiếp của user, không suy ra từ bot/tests/build/deploy. Giữ baseline và lịch sử approval Q2–Q8C, cùng giới hạn coverage kỹ thuật. Dừng, không mở Q9.
@@ -179,7 +179,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Commit/push main không force, theo dõi Pages tới kết thúc và cập nhật link/version. Sau deploy dừng **AWAITING USER PLAYTEST APPROVAL — Q12E**. User thử menu/Pause3slider/Mute/reload, ReduceCameraShake ởElite/Boss và nghe priority warning/Arrival/Hurt/major impacts trongcrowd. Không tự accepted/Q13/DDR hoặc đổi balance.
+Dừng **AWAITING USER PLAYTEST APPROVAL — Q12E**. [Chơi0859d08](https://gizgity.github.io/a-new-game/?v=0859d08), [Pages41081881459](https://github.com/gizgity/a-new-game/actions/runs/41081881459) completed/SUCCESS build/typecheck/upload/Deploy; xác minh qua GitHub connector, chưa liveHTTP/hashverification. Bàn giao sau chỉMarkdown, không redeploy. User thử menu/Pause3slider/Mute/reload, ReduceCameraShake ởElite/Boss và nghe priority warning/Arrival/Hurt/major impacts trongcrowd. [Checklist/cách vào fixture/giới hạn](docs/q12e/README.md). Phản hồi bước/tìnhhuống/quan sát/thiếtbị-browser. Không tự accepted/Q13/DDR hoặc đổi balance; không yêu cầu duyệt lại Q12A–D.
 
 ## VALIDATION APPROVAL Q12D PHASE B
 Chỉ sửa README/HANDOFF ghi quote/ngày/commit/artifact và kiểm diff/tính nhất quán. Giữ signal/deterministic/grid/FLAC exactPCM/hash/protected paths/4×peak, typecheck/build/reviewbuild và Chromium PASS từ fe7438d; không chạy lại tests/build hoặc deploy, không suy coverage mới từ approval chung.
