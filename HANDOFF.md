@@ -10,6 +10,15 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
+**Q12D Phase A — Original Synth Soundtrack, 2026-10-30 — AWAITING USER MUSIC APPROVAL — Q12D PHASE A.** User giao riêng composition/offline renderer/7preview/audition/docs, commit/push review artifacts; supersede gate khôngQ12D trong đúng Phase A. Baseline main162066d/balance651e3bf được giữ nguyên, balance vẫn chờ userplaytest. Branch review `q12d-phase-a`, không main/Pages/production music build. Không PhaseB/C/Q12E/DDR/artwork/runtime integration.
+
+Goal/acceptance: nhạc nguyên bản140BPM/4-4/Dminor, motifD–F–E–A; Base/Boss16bar, Tension/Anomaly/Enraged8bar và Victory/Defeat3bar; editable score riêng renderer, PCM nghe được, review isolated so với combat/ArrivalQ8C, exact lengths/seams/budget/checks. Implementation và checklist nghe tại [docs/q12d/README.md](docs/q12d/README.md). `score.mjs` + Node renderer không dependency,7WAV44100mono16bit, ledger/manifest và signal validation. Tổ hợp cùng timestamp WebAudio, layer8bar lặp trên core16bar; chưa runtime adaptive transitions.
+
+Validation: Node syntax, signal finite/deterministic/frame/bar/quiet sting tails/combinations/budget PASS; peak tổ hợp≤.3393FS, seam≤.00025FS, tổng8.94MiB/decoded17.88MiB@44.1kHz. Game typecheck/build và isolated review build PASS, warning Phaser chunk cũ. Chromium dev+isolatedbuild mỗi4viewport PASS decode7file,4tổ hợp cùng timestamp,1overlay boundary,Stop/rapid-stop,SFX thật,khôngstorage/overflow/pageerror; browser evidence tại docs/q12d, không suy quality/mastering/real-device/Safari/iOS từ tests. Toàn runtime/config/public/workflows không khác baseline. Không cần chạy gameplay regression vì không thay gameplay.
+
+Review local: `npm run dev` → `/a-new-game/docs/q12d/index.html`; build độc lập/cách chạy tại README. Nghe Base2vòng, từng overlay/tổ hợp3layer, Boss2vòng+Enraged,2sting rồi Combat/Arrival overlay. Chú ý phrase, seam, masking, fatigue; phản hồi bài/bar/timestamp + browser/loa. Chưa user music approval; không tự accepted.
+
+## BALANCE STATUS — giữ nguyên chờ user playtest
 **DEPLOYED — AWAITING USER PLAYTEST APPROVAL — win rate quanh50%, 2026-10-30.** User yêu cầu “tỉ lệ thắng quá cao khoảng 8/16 là đc”, sau đó chốt không cần giữ balance cũ; Archer nhắm theo player, số lượng quái giữ nguyên, cân HP/nhịp quái và damage/chống chịu player; Tank giảm damage, Ranged tăng Barrier/cơ động. Baseline81f5ec6/bàn giao5be7194. [Thông số/evidence](docs/early-run-balance/win-rate-50.md). Không Q12D–E/art/audio/DDR.
 
 Bản cuối: Boss2400HP, sweep46/slam50/đạn18; Aegis outgoing×.75, Oath×.7, kết hợp×.525 thay×.6. Specialist18Barrier/CD2/cap30, đi bộ×1.2, hồiDash×.8 (1.76s), Charged trực tiếp×1.1; Glassmax90; sharedheal/Bloodcap8/10s. Archer liveaim cả cuốiwindup/stagger, không aimLock; đạn giữ hướng sau release. Không sửa count/spawn/limits/RunDirector, timing attack hoặc damage common. Đã sửa BossHUD đọc maxHp thật. Các trial Phantom mitigation, attack/growth/HP khác đã bỏ; final không thêm mitigation Phantom.
@@ -169,7 +178,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Chờ user thử bản651e3bf:20–100s Tank damage thấp hơn, Ranged18Barrier/Chargedblast, đi bộ+20%, Dash1.76s, Glass90; Archer liveaim tới release. Boss220–240s:2400HP, sweep46/slam50/đạn18, vẫn cần né/phản công. Báo hướng/build/mốc chết/thắng/device. Tỷ lệ đo64seed/hướng52–59% không là winrate người hay ép8/16 mọi nhóm. Không mở milestone khác; commit bàn giao sau chỉMarkdown, không redeploy.
+Chờ user nghe review Q12D PhaseA theo [checklist5bước](docs/q12d/README.md#human-review-bắt-buộc), phản hồi bài/tổ hợp/bar hoặc timestamp, browser/loa. Dừng **AWAITING USER MUSIC APPROVAL — Q12D PHASE A**; không PhaseB/C/Q12E hoặc deploy production music. Balance651e3bf vẫn chờ playtest riêng, không suy acceptance từ task nhạc.
 
 ## VALIDATION APPROVAL Q12C
 Chỉ sửa Markdown ghi nhận quote/version/approval và kiểm diff/tính nhất quán. Giữ build/typecheck/30testfiles, parity126/126, browser/input/crowd và Pages3013c9d đã PASS; không chạy lại tests/build hoặc redeploy, không suy coverage mới từ approval chung.

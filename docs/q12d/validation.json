@@ -1,0 +1,95 @@
+{
+  "rate": 44100,
+  "reports": [
+    {
+      "id": "arena-base",
+      "peak": 0.33371719305649455,
+      "rms": 0.043642624840070754,
+      "seamStep": 0.00021428226292929346,
+      "maxAdjacentStep": 0.0398021365999561,
+      "sha256": "ab9829674656058185276443acd78a29bb85024e4286bb41e7043683a8c2c3a2"
+    },
+    {
+      "id": "tension",
+      "peak": 0.027479764794281568,
+      "rms": 0.004606355117430468,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.027681766493029815,
+      "sha256": "a5e76e58b5415ca093e4e0016f8479bb75f33b917ed491d8a0523324cffe08f1"
+    },
+    {
+      "id": "anomaly",
+      "peak": 0.03356306905868901,
+      "rms": 0.00765173538603781,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.010193245897153607,
+      "sha256": "bd73d9dedf6187a09293ee9405245e6d5240fda7b784d61cc0138fccd357ca91"
+    },
+    {
+      "id": "boss-core",
+      "peak": 0.30423687957481826,
+      "rms": 0.045137139147208155,
+      "seamStep": 0.0002496386115888149,
+      "maxAdjacentStep": 0.04409107039657552,
+      "sha256": "519cff5e78c40fde459b2d2ff9cf46603d9858192fd7245dc9398714012b5873"
+    },
+    {
+      "id": "enraged",
+      "peak": 0.05745284191805385,
+      "rms": 0.00799872615223057,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.020284493151949197,
+      "sha256": "f43fe179499e9a32054bdd476fd7a223f38473ffa0dc3468e6fb4dd49e5f7034"
+    },
+    {
+      "id": "victory",
+      "peak": 0.23480444635352138,
+      "rms": 0.029974030065887666,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.02412108595197348,
+      "sha256": "4210d8c0f373cbc1d81ecf12af33669b17d50e0ce73e8b3d13be8f6cf10ab202"
+    },
+    {
+      "id": "defeat",
+      "peak": 0.12340630906711224,
+      "rms": 0.024260581857138776,
+      "seamStep": 0,
+      "maxAdjacentStep": 0.01274393233928526,
+      "sha256": "bc340f9129b859cda27ebbd96106143ed5da5ebfc455efcf1951670fc535ce2d"
+    }
+  ],
+  "combinations": [
+    {
+      "ids": [
+        "arena-base",
+        "tension"
+      ],
+      "peak": 0.33371719305649455
+    },
+    {
+      "ids": [
+        "arena-base",
+        "anomaly"
+      ],
+      "peak": 0.3392733919251025
+    },
+    {
+      "ids": [
+        "arena-base",
+        "tension",
+        "anomaly"
+      ],
+      "peak": 0.3392733919251025
+    },
+    {
+      "ids": [
+        "boss-core",
+        "enraged"
+      ],
+      "peak": 0.30604189492896144
+    }
+  ],
+  "totalBytes": 9374708,
+  "decodedBytes": 18748800,
+  "note": "Signal checks only; human listening remains required."
+}

@@ -1,0 +1,71 @@
+{
+  "bpm": 140,
+  "rate": 44100,
+  "channels": 1,
+  "format": "PCM s16le WAV",
+  "pieces": [
+    {
+      "id": "arena-base",
+      "bars": 16,
+      "loop": true,
+      "frames": 1209600,
+      "seconds": 27.428571428571427,
+      "bytes": 2419244,
+      "decodedMonoBytes": 4838400
+    },
+    {
+      "id": "tension",
+      "bars": 8,
+      "loop": true,
+      "frames": 604800,
+      "seconds": 13.714285714285714,
+      "bytes": 1209644,
+      "decodedMonoBytes": 2419200
+    },
+    {
+      "id": "anomaly",
+      "bars": 8,
+      "loop": true,
+      "frames": 604800,
+      "seconds": 13.714285714285714,
+      "bytes": 1209644,
+      "decodedMonoBytes": 2419200
+    },
+    {
+      "id": "boss-core",
+      "bars": 16,
+      "loop": true,
+      "frames": 1209600,
+      "seconds": 27.428571428571427,
+      "bytes": 2419244,
+      "decodedMonoBytes": 4838400
+    },
+    {
+      "id": "enraged",
+      "bars": 8,
+      "loop": true,
+      "frames": 604800,
+      "seconds": 13.714285714285714,
+      "bytes": 1209644,
+      "decodedMonoBytes": 2419200
+    },
+    {
+      "id": "victory",
+      "bars": 3,
+      "loop": false,
+      "frames": 226800,
+      "seconds": 5.142857142857143,
+      "bytes": 453644,
+      "decodedMonoBytes": 907200
+    },
+    {
+      "id": "defeat",
+      "bars": 3,
+      "loop": false,
+      "frames": 226800,
+      "seconds": 5.142857142857143,
+      "bytes": 453644,
+      "decodedMonoBytes": 907200
+    }
+  ]
+}

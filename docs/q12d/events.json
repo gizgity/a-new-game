@@ -1,0 +1,6834 @@
+[
+  {
+    "id": "arena-base",
+    "bars": 16,
+    "loop": true,
+    "events": [
+      {
+        "beat": 0,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 1.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 2.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 1,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 3,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 0.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 1.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 2.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 3.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 0,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 0.75,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 1.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 2,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 3.25,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 0,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.65,
+        "velocity": 0.84
+      },
+      {
+        "beat": 1,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.4,
+        "velocity": 0.73
+      },
+      {
+        "beat": 1.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.2,
+        "velocity": 0.6
+      },
+      {
+        "beat": 2.5,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.85,
+        "velocity": 0.8
+      },
+      {
+        "beat": 3.5,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 0.5,
+        "velocity": 0
+      },
+      {
+        "beat": 4,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 5.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 6.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 7,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 4.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 5.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 6.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 7.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 4,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 4.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 5.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 6.25,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 7,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 4.5,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 5.25,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.5,
+        "velocity": 0.65
+      },
+      {
+        "beat": 6,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.4,
+        "velocity": 0.65
+      },
+      {
+        "beat": 7,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.6,
+        "velocity": 0.76
+      },
+      {
+        "beat": 8,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 9.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 10.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 9,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 11,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 8.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 9.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 10.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 11.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 8,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 8.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 9.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 10,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 11.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 8,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.7,
+        "velocity": 0.78
+      },
+      {
+        "beat": 9.5,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 10.25,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.45,
+        "velocity": 0.75
+      },
+      {
+        "beat": 11,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.6,
+        "velocity": 0.65
+      },
+      {
+        "beat": 12,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 13.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 14.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 13,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 15,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 12.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 13.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 14.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 15.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 15.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 12,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 12.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 13.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 14.5,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 15.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 12.5,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.45,
+        "velocity": 0.7
+      },
+      {
+        "beat": 13.25,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.45,
+        "velocity": 0.6
+      },
+      {
+        "beat": 14.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.65,
+        "velocity": 0.7
+      },
+      {
+        "beat": 16,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 17.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 18.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 17,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 19,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 16.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 17.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 18.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 19.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 16,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 16.75,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 17.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 18,
+        "instrument": "bass",
+        "pitch": 48,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 19.25,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 48,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 16,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.6,
+        "velocity": 0.78
+      },
+      {
+        "beat": 17,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.65
+      },
+      {
+        "beat": 17.75,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.2,
+        "velocity": 0.62
+      },
+      {
+        "beat": 18.5,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.8,
+        "velocity": 0.74
+      },
+      {
+        "beat": 20,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 21.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 22.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 21,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 23,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 20.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 21.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 22.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 23.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 20,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 20.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 21.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 22.25,
+        "instrument": "bass",
+        "pitch": 48,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 23,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 48,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 20.5,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.5,
+        "velocity": 0.68
+      },
+      {
+        "beat": 21.5,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.4,
+        "velocity": 0.6
+      },
+      {
+        "beat": 22.5,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 23.25,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.35,
+        "velocity": 0.6
+      },
+      {
+        "beat": 24,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 25.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 26.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 27,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 24.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 25.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 26.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 27.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 24,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 24.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 25.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 26,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 27.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 52,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 24,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.6,
+        "velocity": 0.78
+      },
+      {
+        "beat": 25,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.35,
+        "velocity": 0.7
+      },
+      {
+        "beat": 25.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.2,
+        "velocity": 0.62
+      },
+      {
+        "beat": 26.5,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.7,
+        "velocity": 0.8
+      },
+      {
+        "beat": 28,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 29.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 30.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 29,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 31,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 28.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 29.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 30.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 31.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 31.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 31.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 31.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 28,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 28.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 29.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 30.5,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 31.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 28,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.35,
+        "velocity": 0.65
+      },
+      {
+        "beat": 28.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.4,
+        "velocity": 0.64
+      },
+      {
+        "beat": 29.5,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.4,
+        "velocity": 0.62
+      },
+      {
+        "beat": 30.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.5,
+        "velocity": 0.75
+      },
+      {
+        "beat": 31.5,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 0.5,
+        "velocity": 0
+      },
+      {
+        "beat": 32,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 33.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 34.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 33,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 35,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 32.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 33.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 34.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 35.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 32,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 32.75,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 33.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 34,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 35.25,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 32,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.65,
+        "velocity": 0.756
+      },
+      {
+        "beat": 33,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.4,
+        "velocity": 0.657
+      },
+      {
+        "beat": 33.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.2,
+        "velocity": 0.54
+      },
+      {
+        "beat": 34.5,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.85,
+        "velocity": 0.7200000000000001
+      },
+      {
+        "beat": 35.5,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 0.5,
+        "velocity": 0
+      },
+      {
+        "beat": 36,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 37.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 38.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 37,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 39,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 36.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 37.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 38.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 39.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 36,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 36.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 37.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 38.25,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 39,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 36.5,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 37.25,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.5,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 38,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.4,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 39,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.6,
+        "velocity": 0.684
+      },
+      {
+        "beat": 40,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 41.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 42.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 41,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 43,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 40.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 41.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 42.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 43.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 40,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 40.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 41.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 42,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 43.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 40,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.7,
+        "velocity": 0.7020000000000001
+      },
+      {
+        "beat": 41.5,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 42.25,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.45,
+        "velocity": 0.675
+      },
+      {
+        "beat": 43,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.6,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 44,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 45.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 46.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 45,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 47,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 44.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 45.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 46.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 47.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 47.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 44,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 44.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 45.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 46.5,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 47.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 44.5,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.45,
+        "velocity": 0.63
+      },
+      {
+        "beat": 45.25,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.45,
+        "velocity": 0.54
+      },
+      {
+        "beat": 46.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.65,
+        "velocity": 0.63
+      },
+      {
+        "beat": 47.5,
+        "instrument": "bell",
+        "pitch": 86,
+        "duration": 0.2,
+        "velocity": 0.55
+      },
+      {
+        "beat": 48,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 49.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 50.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 49,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 51,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 48.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 49.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 50.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 51.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 48,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 48.75,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 49.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 50,
+        "instrument": "bass",
+        "pitch": 48,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 51.25,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 48,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 48,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.6,
+        "velocity": 0.7020000000000001
+      },
+      {
+        "beat": 49,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 49.75,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.2,
+        "velocity": 0.558
+      },
+      {
+        "beat": 50.5,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.8,
+        "velocity": 0.666
+      },
+      {
+        "beat": 52,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 53.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 54.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 53,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 55,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 52.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 53.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 54.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 55.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 52,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 52.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 53.5,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 54.25,
+        "instrument": "bass",
+        "pitch": 48,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 55,
+        "instrument": "bass",
+        "pitch": 36,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 48,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 52.5,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.5,
+        "velocity": 0.6120000000000001
+      },
+      {
+        "beat": 53.5,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.4,
+        "velocity": 0.54
+      },
+      {
+        "beat": 54.5,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 55.25,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.35,
+        "velocity": 0.54
+      },
+      {
+        "beat": 56,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 57.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 58.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 57,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 59,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 56.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 57.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 58.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 59.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 56,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 56.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 57.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 58,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 59.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 52,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 56,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.6,
+        "velocity": 0.7020000000000001
+      },
+      {
+        "beat": 57,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.35,
+        "velocity": 0.63
+      },
+      {
+        "beat": 57.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.2,
+        "velocity": 0.558
+      },
+      {
+        "beat": 58.5,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.7,
+        "velocity": 0.7200000000000001
+      },
+      {
+        "beat": 60,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 61.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 62.5,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 61,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 63,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 60.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 61.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 62.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 63.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 63.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 63.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 63.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 60,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 60.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 61.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 62.5,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 63.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 55,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 60,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.35,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 60.75,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.4,
+        "velocity": 0.5760000000000001
+      },
+      {
+        "beat": 61.5,
+        "instrument": "lead",
+        "pitch": 72,
+        "duration": 0.4,
+        "velocity": 0.558
+      },
+      {
+        "beat": 62.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.5,
+        "velocity": 0.675
+      },
+      {
+        "beat": 63.5,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 0.5,
+        "velocity": 0
+      },
+      {
+        "beat": 63.5,
+        "instrument": "bell",
+        "pitch": 86,
+        "duration": 0.2,
+        "velocity": 0.55
+      }
+    ]
+  },
+  {
+    "id": "tension",
+    "bars": 8,
+    "loop": true,
+    "events": [
+      {
+        "beat": 0.5,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 1.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 2.5,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 3.5,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 4.5,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 5.75,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 6.5,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 7.5,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 8.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 9.75,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 10.5,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 11.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 12.5,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 13.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 14.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.18,
+        "velocity": 0.48
+      },
+      {
+        "beat": 15.5,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.18,
+        "velocity": 0.384
+      },
+      {
+        "beat": 14.75,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.4
+      },
+      {
+        "beat": 15.25,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.46
+      },
+      {
+        "beat": 15.75,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.52
+      },
+      {
+        "beat": 16.5,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 17.75,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 18.5,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 19.5,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 20.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 21.75,
+        "instrument": "stab",
+        "pitch": 60,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 22.5,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 23.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 24.5,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 25.75,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 26.5,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 27.5,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 28.5,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 29.75,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 30.5,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.18,
+        "velocity": 0.62
+      },
+      {
+        "beat": 31.5,
+        "instrument": "stab",
+        "pitch": 67,
+        "duration": 0.18,
+        "velocity": 0.496
+      },
+      {
+        "beat": 30.75,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.4
+      },
+      {
+        "beat": 31.25,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.46
+      },
+      {
+        "beat": 31.75,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.06,
+        "velocity": 0.52
+      }
+    ]
+  },
+  {
+    "id": "anomaly",
+    "bars": 8,
+    "loop": true,
+    "events": [
+      {
+        "beat": 0.25,
+        "instrument": "bell",
+        "pitch": 81,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 1.75,
+        "instrument": "bell",
+        "pitch": 89,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 3.25,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 0.75,
+        "instrument": "bell",
+        "pitch": 69,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 4.25,
+        "instrument": "bell",
+        "pitch": 81,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 5.75,
+        "instrument": "bell",
+        "pitch": 88,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 7.25,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 6.5,
+        "instrument": "bell",
+        "pitch": 69,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 8.25,
+        "instrument": "bell",
+        "pitch": 77,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 9.75,
+        "instrument": "bell",
+        "pitch": 86,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 11.25,
+        "instrument": "bell",
+        "pitch": 70,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 8.75,
+        "instrument": "bell",
+        "pitch": 65,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 12.25,
+        "instrument": "bell",
+        "pitch": 81,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 13.75,
+        "instrument": "bell",
+        "pitch": 86,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 15.25,
+        "instrument": "bell",
+        "pitch": 70,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 14.5,
+        "instrument": "bell",
+        "pitch": 65,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 16.25,
+        "instrument": "bell",
+        "pitch": 79,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 17.75,
+        "instrument": "bell",
+        "pitch": 88,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 19.25,
+        "instrument": "bell",
+        "pitch": 72,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 16.75,
+        "instrument": "bell",
+        "pitch": 67,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 20.25,
+        "instrument": "bell",
+        "pitch": 79,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 21.75,
+        "instrument": "bell",
+        "pitch": 86,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 23.25,
+        "instrument": "bell",
+        "pitch": 72,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 22.5,
+        "instrument": "bell",
+        "pitch": 67,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 24.25,
+        "instrument": "bell",
+        "pitch": 76,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 25.75,
+        "instrument": "bell",
+        "pitch": 84,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 27.25,
+        "instrument": "bell",
+        "pitch": 69,
+        "duration": 0.22,
+        "velocity": 0.72
+      },
+      {
+        "beat": 24.75,
+        "instrument": "bell",
+        "pitch": 64,
+        "duration": 0.15,
+        "velocity": 0.37
+      },
+      {
+        "beat": 28.25,
+        "instrument": "bell",
+        "pitch": 79,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 29.75,
+        "instrument": "bell",
+        "pitch": 84,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 31.25,
+        "instrument": "bell",
+        "pitch": 69,
+        "duration": 0.22,
+        "velocity": 0.58
+      },
+      {
+        "beat": 30.5,
+        "instrument": "bell",
+        "pitch": 64,
+        "duration": 0.15,
+        "velocity": 0.37
+      }
+    ]
+  },
+  {
+    "id": "boss-core",
+    "bars": 16,
+    "loop": true,
+    "events": [
+      {
+        "beat": 0,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 0.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 2,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 2.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 1,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 3,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 0.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 1.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 2.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 3.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 0,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 0.75,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 1.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 2,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 3.25,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 3.25,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 0,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.75,
+        "velocity": 0.95
+      },
+      {
+        "beat": 1.5,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.3,
+        "velocity": 0.7
+      },
+      {
+        "beat": 2,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.8
+      },
+      {
+        "beat": 2.75,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.3,
+        "velocity": 0.7
+      },
+      {
+        "beat": 3.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.87
+      },
+      {
+        "beat": 4,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 4.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 6,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 6.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 7,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 4.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 5.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 6.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 7.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 4,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 4.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 5.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 6.25,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 7,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 6.75,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 4,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 1,
+        "velocity": 0
+      },
+      {
+        "beat": 5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 6.5,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.4,
+        "velocity": 0.65
+      },
+      {
+        "beat": 7.25,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 8,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 8.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 10,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 10.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 9,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 11,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 8.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 9.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 10.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 11.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 8,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 8.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 9.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 10,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 11.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 11.25,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 8,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.85,
+        "velocity": 0.9
+      },
+      {
+        "beat": 9.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.4,
+        "velocity": 0.75
+      },
+      {
+        "beat": 10.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.6,
+        "velocity": 0.85
+      },
+      {
+        "beat": 12,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 12.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 14,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 14.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 13,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 15,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 12.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 13.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 14.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 15.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 15.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 12,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 12.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 13.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 14.5,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 15.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 12,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 14.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 12.5,
+        "instrument": "lead",
+        "pitch": 70,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 13.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.4,
+        "velocity": 0.75
+      },
+      {
+        "beat": 14.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.7,
+        "velocity": 0.85
+      },
+      {
+        "beat": 16,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 16.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 18,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 18.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 17,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 19,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 16.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 17.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 18.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 19.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 16,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 16.75,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 17.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 18,
+        "instrument": "bass",
+        "pitch": 43,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 19.25,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 43,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 16,
+        "instrument": "pad",
+        "pitch": 58,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 19.25,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 16,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.7,
+        "velocity": 0.85
+      },
+      {
+        "beat": 17.25,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.7
+      },
+      {
+        "beat": 18,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.7,
+        "velocity": 0.9
+      },
+      {
+        "beat": 20,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 20.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 22,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 22.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 21,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 23,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 20.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 21.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 22.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 23.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 20,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 20.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 21.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 22.25,
+        "instrument": "bass",
+        "pitch": 43,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 23,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 43,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 20,
+        "instrument": "pad",
+        "pitch": 58,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 22.75,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 20.5,
+        "instrument": "lead",
+        "pitch": 70,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 21.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 22.5,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.5,
+        "velocity": 0.8
+      },
+      {
+        "beat": 23.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.2,
+        "velocity": 0.65
+      },
+      {
+        "beat": 24,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 24.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 26,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 26.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 27,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 24.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 25.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 26.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 27.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 24,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 24.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 25.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 26,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 27.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 24,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 27.25,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 24,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.6,
+        "velocity": 0.88
+      },
+      {
+        "beat": 25,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.78
+      },
+      {
+        "beat": 25.75,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.72
+      },
+      {
+        "beat": 26.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.8,
+        "velocity": 0.9
+      },
+      {
+        "beat": 28,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 28.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 30,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 30.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 29,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 31,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 28.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 29.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 30.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 31.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 31.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 31.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 31.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 28,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 28.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 29.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 30.5,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 31.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 52,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 28,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 30.75,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 28.5,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.35,
+        "velocity": 0.78
+      },
+      {
+        "beat": 29.25,
+        "instrument": "lead",
+        "pitch": 61,
+        "duration": 0.4,
+        "velocity": 0.7
+      },
+      {
+        "beat": 30,
+        "instrument": "lead",
+        "pitch": 57,
+        "duration": 0.65,
+        "velocity": 0.82
+      },
+      {
+        "beat": 31,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 1,
+        "velocity": 0
+      },
+      {
+        "beat": 32,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 32.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 34,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 34.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 33,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 35,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 32.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 33.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 34.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 35.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 32,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 32.75,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 33.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 34,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 35.25,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 32,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 35.25,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 32,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.75,
+        "velocity": 0.855
+      },
+      {
+        "beat": 33.5,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.3,
+        "velocity": 0.63
+      },
+      {
+        "beat": 34,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.7200000000000001
+      },
+      {
+        "beat": 34.75,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.3,
+        "velocity": 0.63
+      },
+      {
+        "beat": 35.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.783
+      },
+      {
+        "beat": 36,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 36.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 38,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 38.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 37,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 39,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 36.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 37.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 38.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 39.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 36,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 36.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 37.5,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 38.25,
+        "instrument": "bass",
+        "pitch": 50,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 39,
+        "instrument": "bass",
+        "pitch": 38,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 36,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 38.75,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 36,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 1,
+        "velocity": 0
+      },
+      {
+        "beat": 37,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.9,
+        "velocity": 0.765
+      },
+      {
+        "beat": 38.5,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.4,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 39.25,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 40,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 40.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 42,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 42.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 41,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 43,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 40.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 41.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 42.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 43.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 40,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 40.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 41.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 42,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 43.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 40,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 43.25,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 40,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.85,
+        "velocity": 0.81
+      },
+      {
+        "beat": 41.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.4,
+        "velocity": 0.675
+      },
+      {
+        "beat": 42.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.6,
+        "velocity": 0.765
+      },
+      {
+        "beat": 44,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 44.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 46,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 46.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 45,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 47,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 44.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 45.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 46.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 47.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 47.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 44,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 44.75,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 45.5,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 46.5,
+        "instrument": "bass",
+        "pitch": 46,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 47.25,
+        "instrument": "bass",
+        "pitch": 34,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 46,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 44,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 46.75,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 44.5,
+        "instrument": "lead",
+        "pitch": 70,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 45.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.4,
+        "velocity": 0.675
+      },
+      {
+        "beat": 46.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.7,
+        "velocity": 0.765
+      },
+      {
+        "beat": 47.5,
+        "instrument": "bell",
+        "pitch": 81,
+        "duration": 0.2,
+        "velocity": 0.55
+      },
+      {
+        "beat": 48,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 48.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 50,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 50.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 49,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 51,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 48.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 49.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 50.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 51.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 48,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 48.75,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 49.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 50,
+        "instrument": "bass",
+        "pitch": 43,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 51.25,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 43,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 48,
+        "instrument": "pad",
+        "pitch": 58,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 51.25,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 48,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.7,
+        "velocity": 0.765
+      },
+      {
+        "beat": 49.25,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.63
+      },
+      {
+        "beat": 50,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.7,
+        "velocity": 0.81
+      },
+      {
+        "beat": 52,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 52.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 54,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 54.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 53,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 55,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 52.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 53.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 54.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 55.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 52,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 52.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 53.5,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 54.25,
+        "instrument": "bass",
+        "pitch": 43,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 55,
+        "instrument": "bass",
+        "pitch": 31,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 43,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 52,
+        "instrument": "pad",
+        "pitch": 58,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 54.75,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 52.5,
+        "instrument": "lead",
+        "pitch": 70,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 53.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 54.5,
+        "instrument": "lead",
+        "pitch": 67,
+        "duration": 0.5,
+        "velocity": 0.7200000000000001
+      },
+      {
+        "beat": 55.5,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.2,
+        "velocity": 0.5850000000000001
+      },
+      {
+        "beat": 56,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 56.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 58,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 58.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 57,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 59,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 56.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 57.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 58.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 59.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 56,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 56.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 57.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 58,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 59.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 56,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 59.25,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 56,
+        "instrument": "lead",
+        "pitch": 62,
+        "duration": 0.6,
+        "velocity": 0.792
+      },
+      {
+        "beat": 57,
+        "instrument": "lead",
+        "pitch": 65,
+        "duration": 0.35,
+        "velocity": 0.7020000000000001
+      },
+      {
+        "beat": 57.75,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.648
+      },
+      {
+        "beat": 58.5,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 0.8,
+        "velocity": 0.81
+      },
+      {
+        "beat": 60,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.95
+      },
+      {
+        "beat": 60.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 62,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 62.75,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.35,
+        "velocity": 0.72
+      },
+      {
+        "beat": 61,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 63,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.22,
+        "velocity": 0.76
+      },
+      {
+        "beat": 60.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 61.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.45
+      },
+      {
+        "beat": 62.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 63.5,
+        "instrument": "hat",
+        "pitch": 42,
+        "duration": 0.08,
+        "velocity": 0.64
+      },
+      {
+        "beat": 63.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 63.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.34
+      },
+      {
+        "beat": 63.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.57
+      },
+      {
+        "beat": 60,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.92
+      },
+      {
+        "beat": 60.75,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 61.5,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 62.5,
+        "instrument": "bass",
+        "pitch": 45,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 63.25,
+        "instrument": "bass",
+        "pitch": 33,
+        "duration": 0.28,
+        "velocity": 0.67
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 52,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 60,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.65
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 62.75,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.25,
+        "velocity": 0.55
+      },
+      {
+        "beat": 60.5,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.35,
+        "velocity": 0.7020000000000001
+      },
+      {
+        "beat": 61.25,
+        "instrument": "lead",
+        "pitch": 61,
+        "duration": 0.4,
+        "velocity": 0.63
+      },
+      {
+        "beat": 62,
+        "instrument": "lead",
+        "pitch": 57,
+        "duration": 0.65,
+        "velocity": 0.738
+      },
+      {
+        "beat": 63,
+        "instrument": "lead",
+        "pitch": null,
+        "duration": 1,
+        "velocity": 0
+      },
+      {
+        "beat": 63.5,
+        "instrument": "bell",
+        "pitch": 81,
+        "duration": 0.2,
+        "velocity": 0.55
+      }
+    ]
+  },
+  {
+    "id": "enraged",
+    "bars": 8,
+    "loop": true,
+    "events": [
+      {
+        "beat": 0,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 0.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 1.5,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 2.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 3,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 3.5,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 2.75,
+        "instrument": "bell",
+        "pitch": 75,
+        "duration": 0.12,
+        "velocity": 0.65
+      },
+      {
+        "beat": 3,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.32,
+        "velocity": 0.6
+      },
+      {
+        "beat": 4,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 4.75,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 5.5,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 6.25,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 7,
+        "instrument": "stab",
+        "pitch": 69,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 7.5,
+        "instrument": "stab",
+        "pitch": 77,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 6.75,
+        "instrument": "bell",
+        "pitch": 75,
+        "duration": 0.12,
+        "velocity": 0.65
+      },
+      {
+        "beat": 7,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.32,
+        "velocity": 0.6
+      },
+      {
+        "beat": 8,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 8.75,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 9.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 10.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 11,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 11.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 12,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 12.75,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 13.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 14.25,
+        "instrument": "stab",
+        "pitch": 58,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 15,
+        "instrument": "stab",
+        "pitch": 65,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 15.5,
+        "instrument": "stab",
+        "pitch": 74,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 14.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      },
+      {
+        "beat": 15.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      },
+      {
+        "beat": 15.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      },
+      {
+        "beat": 16,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 16.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 17.5,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 18.25,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 19,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 19.5,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 18.75,
+        "instrument": "bell",
+        "pitch": 75,
+        "duration": 0.12,
+        "velocity": 0.65
+      },
+      {
+        "beat": 19,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.32,
+        "velocity": 0.6
+      },
+      {
+        "beat": 20,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 20.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 21.5,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 22.25,
+        "instrument": "stab",
+        "pitch": 55,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 23,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 23.5,
+        "instrument": "stab",
+        "pitch": 70,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 22.75,
+        "instrument": "bell",
+        "pitch": 75,
+        "duration": 0.12,
+        "velocity": 0.65
+      },
+      {
+        "beat": 23,
+        "instrument": "bell",
+        "pitch": 74,
+        "duration": 0.32,
+        "velocity": 0.6
+      },
+      {
+        "beat": 24,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 24.75,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 25.5,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 26.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 27,
+        "instrument": "stab",
+        "pitch": 62,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 27.5,
+        "instrument": "stab",
+        "pitch": 76,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 28,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 28.75,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 29.5,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 30.25,
+        "instrument": "stab",
+        "pitch": 57,
+        "duration": 0.16,
+        "velocity": 0.74
+      },
+      {
+        "beat": 31,
+        "instrument": "stab",
+        "pitch": 64,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 31.5,
+        "instrument": "stab",
+        "pitch": 72,
+        "duration": 0.16,
+        "velocity": 0.48
+      },
+      {
+        "beat": 30.5,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      },
+      {
+        "beat": 31.25,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      },
+      {
+        "beat": 31.75,
+        "instrument": "snare",
+        "pitch": 38,
+        "duration": 0.13,
+        "velocity": 0.45
+      }
+    ]
+  },
+  {
+    "id": "victory",
+    "bars": 3,
+    "loop": false,
+    "events": [
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 58,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 64,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 67,
+        "duration": 2.9,
+        "velocity": 0.85
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 2.3,
+        "velocity": 0.85
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 2.3,
+        "velocity": 0.85
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 62,
+        "duration": 2.3,
+        "velocity": 0.85
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 2.3,
+        "velocity": 0.85
+      },
+      {
+        "beat": 0,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.7,
+        "velocity": 0.9
+      },
+      {
+        "beat": 1,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.5,
+        "velocity": 0.8
+      },
+      {
+        "beat": 2,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 0.4,
+        "velocity": 0.75
+      },
+      {
+        "beat": 3,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.6,
+        "velocity": 0.9
+      },
+      {
+        "beat": 4,
+        "instrument": "lead",
+        "pitch": 79,
+        "duration": 0.7,
+        "velocity": 0.8
+      },
+      {
+        "beat": 5.5,
+        "instrument": "lead",
+        "pitch": 84,
+        "duration": 0.7,
+        "velocity": 0.85
+      },
+      {
+        "beat": 7,
+        "instrument": "lead",
+        "pitch": 81,
+        "duration": 0.6,
+        "velocity": 0.8
+      },
+      {
+        "beat": 8,
+        "instrument": "lead",
+        "pitch": 86,
+        "duration": 1.5,
+        "velocity": 0.9
+      },
+      {
+        "beat": 0,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.4,
+        "velocity": 0.8
+      },
+      {
+        "beat": 8,
+        "instrument": "kick",
+        "pitch": 36,
+        "duration": 0.4,
+        "velocity": 0.9
+      }
+    ]
+  },
+  {
+    "id": "defeat",
+    "bars": 3,
+    "loop": false,
+    "events": [
+      {
+        "beat": 0,
+        "instrument": "lead",
+        "pitch": 74,
+        "duration": 0.8,
+        "velocity": 0.8
+      },
+      {
+        "beat": 1.25,
+        "instrument": "lead",
+        "pitch": 77,
+        "duration": 0.55,
+        "velocity": 0.7
+      },
+      {
+        "beat": 2.25,
+        "instrument": "lead",
+        "pitch": 76,
+        "duration": 1,
+        "velocity": 0.65
+      },
+      {
+        "beat": 4,
+        "instrument": "lead",
+        "pitch": 69,
+        "duration": 1.25,
+        "velocity": 0.65
+      },
+      {
+        "beat": 6,
+        "instrument": "lead",
+        "pitch": 64,
+        "duration": 0.6,
+        "velocity": 0.5
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 50,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 57,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 0,
+        "instrument": "pad",
+        "pitch": 65,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 52,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 4,
+        "instrument": "pad",
+        "pitch": 60,
+        "duration": 3,
+        "velocity": 0.6
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 38,
+        "duration": 2.2,
+        "velocity": 0.7
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 45,
+        "duration": 2.2,
+        "velocity": 0.7
+      },
+      {
+        "beat": 8,
+        "instrument": "pad",
+        "pitch": 53,
+        "duration": 2.2,
+        "velocity": 0.7
+      },
+      {
+        "beat": 8,
+        "instrument": "bass",
+        "pitch": 26,
+        "duration": 2,
+        "velocity": 0.6
+      }
+    ]
+  }
+]
