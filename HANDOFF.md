@@ -16,6 +16,8 @@ Goal/acceptance: nhạc nguyên bản140BPM/4-4/Dminor, motifD–F–E–A; Base
 
 Validation: Node syntax, signal finite/deterministic/frame/bar/quiet sting tails/combinations/budget PASS; peak tổ hợp≤.3393FS, seam≤.00025FS, tổng8.94MiB/decoded17.88MiB@44.1kHz. Game typecheck/build và isolated review build PASS, warning Phaser chunk cũ. Chromium dev+isolatedbuild mỗi4viewport PASS decode7file,4tổ hợp cùng timestamp,1overlay boundary,Stop/rapid-stop,SFX thật,khôngstorage/overflow/pageerror; browser evidence tại docs/q12d, không suy quality/mastering/real-device/Safari/iOS từ tests. Toàn runtime/config/public/workflows không khác baseline. Không cần chạy gameplay regression vì không thay gameplay.
 
+Review web theo yêu cầu user không chạy local được: https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A — Artifact Vault bundle từ e430cc5/version1; public share đến2026-11-29, không đổi Pages/gameplay, không thu submission; upload/share SUCCESS, chưa kiểm playback host thật. Auto-review upload ban đầu chặn vì giả định private repo; sau GitHub get_repo xác nhận visibility public, retry được phép.
+
 Review local: `npm run dev` → `/a-new-game/docs/q12d/index.html`; build độc lập/cách chạy tại README. Nghe Base2vòng, từng overlay/tổ hợp3layer, Boss2vòng+Enraged,2sting rồi Combat/Arrival overlay. Chú ý phrase, seam, masking, fatigue; phản hồi bài/bar/timestamp + browser/loa. Chưa user music approval; không tự accepted.
 
 ## BALANCE STATUS — giữ nguyên chờ user playtest

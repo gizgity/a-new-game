@@ -10,6 +10,8 @@ Score, voicings, rhythm và synth code được viết nguyên bản cho task n�
 
 ## Nghe thử và build
 
+[Nghe trực tiếp trên web — Phase A review](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A). User yêu cầu link do không chạy local được; bundle build từ e430cc5 được host riêng qua Artifact Vault, version1, không đổi GitHub Pages/gameplay. Link public hoạt động đến2026-11-29 theo dịch vụ; không thu submission. Host đã xác nhận upload/share, chưa kiểm lại playback trên host thật.
+
 Từ repo root:
 
 ```sh
