@@ -43,6 +43,7 @@ export class ArenaScene extends Phaser.Scene {
   trail: SigilId | null = null;
   private trailVisual!: TrailVisual;
   cosmetic: 'mint' | 'prism' = 'mint';
+  reduceCameraShake = false;
   desktopAutoAim = false;
   autoAimPriority: AutoAimPriority = 'nearest';
   private meleeHeld = false;
@@ -154,7 +155,7 @@ export class ArenaScene extends Phaser.Scene {
     let renderedOffset = 0;
     camera.preRender = () => {
       preRender();
-      renderedOffset = this.feedbackBaseline ? 0 : impactOffset(this.impactTier, this.impactAge, this.touch.enabled);
+      renderedOffset = this.feedbackBaseline || this.reduceCameraShake ? 0 : impactOffset(this.impactTier, this.impactAge, this.touch.enabled);
       camera.matrix.e += renderedOffset;
       this.reticle.x -= renderedOffset / camera.zoom;
     };
@@ -331,6 +332,9 @@ export class ArenaScene extends Phaser.Scene {
     if (this.run.result) this.vessel.finish();
   }
 
+  setAudioVolumes(music: number, sfx: number): void {
+    this.music?.setVolume(music); this.audio?.setVolume(sfx);
+  }
   musicStats() { return this.music?.stats(); }
 
   private updateMusic(): void {

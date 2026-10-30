@@ -52,6 +52,11 @@ export class AdaptiveMusic {
     document.addEventListener('visibilitychange', this.visibility);
     context.addEventListener('statechange', this.contextChange);
   }
+  setVolume(value: number): void {
+    const now = this.context.currentTime;
+    this.bus.gain.cancelAndHoldAtTime(now);
+    this.bus.gain.setTargetAtTime(MUSIC.gain * value, now, .01);
+  }
   reset(): void {
     this.generation++; this.abort.abort(); this.abort = new AbortController();
     this.stop(); this.levels.clear(); this.cache.clear(); this.failed.clear(); this.loading = this.group = null;
@@ -176,7 +181,7 @@ export class AdaptiveMusic {
     if (!this.voices.includes(voice)) return;
     voice.source.onended = null;
     try { voice.source.stop(); } catch { /* already ended */ }
-    voice.source.disconnect(); voice.gain.disconnect();
+    voice.source.disconnect(); voice.source.buffer = null; voice.gain.disconnect();
     this.voices.splice(this.voices.indexOf(voice), 1);
   }
   private stop(): void { for (const voice of [...this.voices]) this.remove(voice); }

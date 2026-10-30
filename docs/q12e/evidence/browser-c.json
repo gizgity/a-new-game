@@ -1,0 +1,901 @@
+{
+  "coverage": "Chromium emulation; controlled fixture grants, not listening/device approval",
+  "reports": [
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "stages": [
+        {
+          "state": "early",
+          "applied": "early",
+          "position": 0.5514739229024941,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "tension",
+          "applied": "tension",
+          "position": 0.9694331065759636,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "anomaly",
+          "applied": "anomaly",
+          "position": 1.4106122448979592,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "boss",
+          "applied": "boss",
+          "position": 0.2902494331065766,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.6907936507936512,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      ],
+      "freezes": [
+        {
+          "phase": "anomaly",
+          "position": 0.6907936507936512
+        },
+        {
+          "phase": "legacy",
+          "position": 0.6907936507936512
+        },
+        {
+          "phase": "paused",
+          "position": 0.7024036281179145
+        }
+      ],
+      "combatFreeze": {
+        "hitstop": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7111111111111121,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "transform": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7111111111111121,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "resumed": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7111111111111121,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "muted": 0,
+      "sfx": {
+        "out": [
+          {
+            "cue": "arrival",
+            "playing": true
+          },
+          {
+            "cue": "perfect",
+            "playing": true
+          },
+          {
+            "cue": "heavy",
+            "playing": true
+          },
+          {
+            "cue": "detonate",
+            "playing": true
+          }
+        ],
+        "music": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.9229931972789123,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "sfxVoices": 4
+      },
+      "result": [
+        {
+          "stage": "victory",
+          "before": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.2422675736961457,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.3728798185941056,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        },
+        {
+          "stage": "defeat",
+          "before": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.6428117913832212,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.7937414965986402,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        }
+      ],
+      "cleanup": {
+        "state": "silent",
+        "applied": "silent",
+        "position": 0,
+        "networkBytes": 2564770,
+        "decodedBytes": 0,
+        "cacheEntries": 0,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "stages": [
+        {
+          "state": "early",
+          "applied": "early",
+          "position": 0.4818140589569162,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "tension",
+          "applied": "tension",
+          "position": 0.8910657596371883,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "anomaly",
+          "applied": "anomaly",
+          "position": 1.3119274376417234,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "boss",
+          "applied": "boss",
+          "position": 0.3279818594104311,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7691609977324263,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      ],
+      "freezes": [
+        {
+          "phase": "anomaly",
+          "position": 0.7778684807256235
+        },
+        {
+          "phase": "legacy",
+          "position": 0.7865759637188208
+        },
+        {
+          "phase": "paused",
+          "position": 0.7865759637188208
+        }
+      ],
+      "combatFreeze": {
+        "hitstop": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8156009070294785,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "transform": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8156009070294785,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "resumed": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8156009070294785,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "muted": 0,
+      "sfx": {
+        "out": [
+          {
+            "cue": "arrival",
+            "playing": true
+          },
+          {
+            "cue": "perfect",
+            "playing": true
+          },
+          {
+            "cue": "heavy",
+            "playing": true
+          },
+          {
+            "cue": "detonate",
+            "playing": true
+          }
+        ],
+        "music": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 1.0361904761904763,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "sfxVoices": 4
+      },
+      "result": [
+        {
+          "stage": "victory",
+          "before": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.3351473922902497,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.4744671201814064,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        },
+        {
+          "stage": "defeat",
+          "before": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.8169614512471655,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.9446712018140588,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        }
+      ],
+      "cleanup": {
+        "state": "silent",
+        "applied": "silent",
+        "position": 0,
+        "networkBytes": 2564770,
+        "decodedBytes": 0,
+        "cacheEntries": 0,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true,
+      "overflow": false
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "stages": [
+        {
+          "state": "early",
+          "applied": "early",
+          "position": 0.4789115646258504,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "tension",
+          "applied": "tension",
+          "position": 0.9404081632653061,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "anomaly",
+          "applied": "anomaly",
+          "position": 1.338049886621315,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "boss",
+          "applied": "boss",
+          "position": 0.3279818594104307,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7894784580498868,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      ],
+      "freezes": [
+        {
+          "phase": "anomaly",
+          "position": 0.7894784580498868
+        },
+        {
+          "phase": "legacy",
+          "position": 0.7894784580498868
+        },
+        {
+          "phase": "paused",
+          "position": 0.7894784580498868
+        }
+      ],
+      "combatFreeze": {
+        "hitstop": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7894784580498868,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "transform": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7894784580498868,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "resumed": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7894784580498868,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "muted": 0,
+      "sfx": {
+        "out": [
+          {
+            "cue": "arrival",
+            "playing": true
+          },
+          {
+            "cue": "perfect",
+            "playing": true
+          },
+          {
+            "cue": "heavy",
+            "playing": true
+          },
+          {
+            "cue": "detonate",
+            "playing": true
+          }
+        ],
+        "music": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.9897505668934241,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "sfxVoices": 4
+      },
+      "result": [
+        {
+          "stage": "victory",
+          "before": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.4019047619047624,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.5412244897959182,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        },
+        {
+          "stage": "defeat",
+          "before": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.7792290249433114,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 1.9098412698412703,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        }
+      ],
+      "cleanup": {
+        "state": "silent",
+        "applied": "silent",
+        "position": 0,
+        "networkBytes": 2564770,
+        "decodedBytes": 0,
+        "cacheEntries": 0,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "touch": false,
+      "stages": [
+        {
+          "state": "early",
+          "applied": "early",
+          "position": 0.5311564625850345,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "tension",
+          "applied": "tension",
+          "position": 1.0303854875283447,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "anomaly",
+          "applied": "anomaly",
+          "position": 1.7705215419501137,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "boss",
+          "applied": "boss",
+          "position": 0.2989569160997734,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.7981859410430845,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      ],
+      "freezes": [
+        {
+          "phase": "anomaly",
+          "position": 0.7981859410430845
+        },
+        {
+          "phase": "legacy",
+          "position": 0.8068934240362813
+        },
+        {
+          "phase": "paused",
+          "position": 0.8185034013605454
+        }
+      ],
+      "combatFreeze": {
+        "hitstop": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8301133786848078,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "transform": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8301133786848078,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "resumed": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 0.8301133786848078,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "muted": 0,
+      "sfx": {
+        "out": [
+          {
+            "cue": "arrival",
+            "playing": true
+          },
+          {
+            "cue": "perfect",
+            "playing": true
+          },
+          {
+            "cue": "heavy",
+            "playing": true
+          },
+          {
+            "cue": "detonate",
+            "playing": true
+          }
+        ],
+        "music": {
+          "state": "enraged",
+          "applied": "enraged",
+          "position": 1.0100680272108855,
+          "networkBytes": 1527356,
+          "decodedBytes": 6513228,
+          "cacheEntries": 2,
+          "sources": 2,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "sfxVoices": 4
+      },
+      "result": [
+        {
+          "stage": "victory",
+          "before": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.4802721088435389,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "victory",
+            "applied": "victory",
+            "position": 1.6282993197278914,
+            "networkBytes": 1651526,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 2,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        },
+        {
+          "stage": "defeat",
+          "before": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 2.310385487528346,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          },
+          "after": {
+            "state": "defeat",
+            "applied": "defeat",
+            "position": 2.4090702947845815,
+            "networkBytes": 2564770,
+            "decodedBytes": 1628304,
+            "cacheEntries": 2,
+            "sources": 1,
+            "peakSources": 3,
+            "errors": 0,
+            "resultDone": true
+          }
+        }
+      ],
+      "cleanup": {
+        "state": "silent",
+        "applied": "silent",
+        "position": 0,
+        "networkBytes": 2564770,
+        "decodedBytes": 0,
+        "cacheEntries": 0,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true,
+      "overflow": false
+    }
+  ]
+}

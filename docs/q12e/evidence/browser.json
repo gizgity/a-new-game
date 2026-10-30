@@ -1,0 +1,597 @@
+{
+  "method": "Chromium native WebAudio, real touch tap / keyboard slider, persistence reload and existing Pause settings; controlled output-only checks. No acoustic assertion.",
+  "reports": [
+    {
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "ui": [
+        {
+          "id": "volume",
+          "value": 0.4,
+          "height": 44,
+          "label": "Âm lượng tổng40%",
+          "output": "40%"
+        },
+        {
+          "id": "music-volume",
+          "value": 0.32,
+          "height": 44,
+          "label": "Nhạc32%",
+          "output": "32%"
+        },
+        {
+          "id": "sfx-volume",
+          "value": 1,
+          "height": 44,
+          "label": "Hiệu ứng âm thanh100%",
+          "output": "100%"
+        }
+      ],
+      "saved": {
+        "locale": "vi",
+        "muted": true,
+        "volume": 0.4,
+        "musicVolume": 0.32,
+        "sfxVolume": 1,
+        "reduceCameraShake": true,
+        "cosmetic": "mint",
+        "trail": null,
+        "desktopAutoAim": false,
+        "autoAimPriority": "nearest"
+      },
+      "gains": {
+        "cases": [
+          {
+            "master": 0.4,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.2799999994039535,
+            "sfxGain": 0.4000000059604645,
+            "sameSources": true
+          },
+          {
+            "master": 0.5,
+            "music": 0.3,
+            "sfx": 0.7,
+            "musicGain": 0.10499999672174454,
+            "sfxGain": 0.3499999940395355,
+            "sameSources": true
+          },
+          {
+            "master": 0,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 0,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 1,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 0,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 1,
+            "sameSources": true
+          }
+        ],
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 0.179954648526077,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 1.4976870748299318,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "duck": 1,
+        "ducked": 0.3981071710586548,
+        "mutedSources": 3,
+        "playingMuted": 0,
+        "same": true,
+        "noReplay": true,
+        "simulationUnchanged": true,
+        "reset": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "shutdown": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "ui": [
+        {
+          "id": "volume",
+          "value": 0.4,
+          "height": 44,
+          "label": "Âm lượng tổng40%",
+          "output": "40%"
+        },
+        {
+          "id": "music-volume",
+          "value": 0.32,
+          "height": 44,
+          "label": "Nhạc32%",
+          "output": "32%"
+        },
+        {
+          "id": "sfx-volume",
+          "value": 1,
+          "height": 44,
+          "label": "Hiệu ứng âm thanh100%",
+          "output": "100%"
+        }
+      ],
+      "saved": {
+        "locale": "vi",
+        "muted": true,
+        "volume": 0.4,
+        "musicVolume": 0.32,
+        "sfxVolume": 1,
+        "reduceCameraShake": true,
+        "cosmetic": "mint",
+        "trail": null,
+        "desktopAutoAim": false,
+        "autoAimPriority": "nearest"
+      },
+      "gains": {
+        "cases": [
+          {
+            "master": 0.4,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.2799999994039535,
+            "sfxGain": 0.4000000059604645,
+            "sameSources": true
+          },
+          {
+            "master": 0.5,
+            "music": 0.3,
+            "sfx": 0.7,
+            "musicGain": 0.10499999672174454,
+            "sfxGain": 0.3499999940395355,
+            "sameSources": true
+          },
+          {
+            "master": 0,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 0,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 1,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 0,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 1,
+            "sameSources": true
+          }
+        ],
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 0.02031746031746029,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 1.3293424036281178,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "duck": 1,
+        "ducked": 0.3981071710586548,
+        "mutedSources": 3,
+        "playingMuted": 0,
+        "same": true,
+        "noReplay": true,
+        "simulationUnchanged": true,
+        "reset": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "shutdown": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "ui": [
+        {
+          "id": "volume",
+          "value": 0.4,
+          "height": 44,
+          "label": "Âm lượng tổng40%",
+          "output": "40%"
+        },
+        {
+          "id": "music-volume",
+          "value": 0.32,
+          "height": 44,
+          "label": "Nhạc32%",
+          "output": "32%"
+        },
+        {
+          "id": "sfx-volume",
+          "value": 1,
+          "height": 44,
+          "label": "Hiệu ứng âm thanh100%",
+          "output": "100%"
+        }
+      ],
+      "saved": {
+        "locale": "vi",
+        "muted": true,
+        "volume": 0.4,
+        "musicVolume": 0.32,
+        "sfxVolume": 1,
+        "reduceCameraShake": true,
+        "cosmetic": "mint",
+        "trail": null,
+        "desktopAutoAim": false,
+        "autoAimPriority": "nearest"
+      },
+      "gains": {
+        "cases": [
+          {
+            "master": 0.4,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.2799999994039535,
+            "sfxGain": 0.4000000059604645,
+            "sameSources": true
+          },
+          {
+            "master": 0.5,
+            "music": 0.3,
+            "sfx": 0.7,
+            "musicGain": 0.10499999672174454,
+            "sfxGain": 0.3499999940395355,
+            "sameSources": true
+          },
+          {
+            "master": 0,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 0,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 1,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 0,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 1,
+            "sameSources": true
+          }
+        ],
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 0.02031746031746029,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 1.340952380952381,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "duck": 1,
+        "ducked": 0.3981071710586548,
+        "mutedSources": 3,
+        "playingMuted": 0,
+        "same": true,
+        "noReplay": true,
+        "simulationUnchanged": true,
+        "reset": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "shutdown": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "touch": false,
+      "ui": [
+        {
+          "id": "volume",
+          "value": 0.4,
+          "height": 44,
+          "label": "Âm lượng tổng40%",
+          "output": "40%"
+        },
+        {
+          "id": "music-volume",
+          "value": 0.01,
+          "height": 44,
+          "label": "Nhạc1%",
+          "output": "1%"
+        },
+        {
+          "id": "sfx-volume",
+          "value": 1,
+          "height": 44,
+          "label": "Hiệu ứng âm thanh100%",
+          "output": "100%"
+        }
+      ],
+      "saved": {
+        "locale": "vi",
+        "muted": true,
+        "volume": 0.4,
+        "musicVolume": 0.01,
+        "sfxVolume": 1,
+        "reduceCameraShake": true,
+        "cosmetic": "mint",
+        "trail": null,
+        "desktopAutoAim": false,
+        "autoAimPriority": "nearest"
+      },
+      "gains": {
+        "cases": [
+          {
+            "master": 0.4,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.2799999994039535,
+            "sfxGain": 0.4000000059604645,
+            "sameSources": true
+          },
+          {
+            "master": 0.5,
+            "music": 0.3,
+            "sfx": 0.7,
+            "musicGain": 0.10499999672174454,
+            "sfxGain": 0.3499999940395355,
+            "sameSources": true
+          },
+          {
+            "master": 0,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 0,
+            "sfx": 1,
+            "musicGain": 0,
+            "sfxGain": 1,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 0,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 0,
+            "sameSources": true
+          },
+          {
+            "master": 1,
+            "music": 1,
+            "sfx": 1,
+            "musicGain": 0.699999988079071,
+            "sfxGain": 1,
+            "sameSources": true
+          }
+        ],
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 0.031927437641723344,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 1.340952380952381,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "duck": 1,
+        "ducked": 0.3981071710586548,
+        "mutedSources": 3,
+        "playingMuted": 0,
+        "same": true,
+        "noReplay": true,
+        "simulationUnchanged": true,
+        "reset": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "shutdown": {
+          "state": "silent",
+          "applied": "silent",
+          "position": 0,
+          "networkBytes": 789074,
+          "decodedBytes": 0,
+          "cacheEntries": 0,
+          "sources": 0,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        }
+      },
+      "errors": []
+    }
+  ]
+}

@@ -84,7 +84,8 @@ kbd { font: 10px "Segoe UI", Arial, sans-serif; letter-spacing: .06em; color: #d
 .setting-controls label:first-child { justify-content: flex-start; }
 .setting-controls select { min-width: 0; max-width: 70%; }
 .setting-controls input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); }
-.setting-controls input[type="range"] { width: 135px; min-height: 44px; accent-color: var(--accent); }
+.setting-controls input[type="range"] { width: 110px; min-width: 60px; flex-shrink: 1; min-height: 44px; accent-color: var(--accent); }
+.setting-controls output { min-width: 4ch; text-align: right; }
 #unlock-list { padding-left: 16px; }
 #unlock-list li { margin: 8px 0; }
 #unlock-list .unlocked { color: var(--accent); }

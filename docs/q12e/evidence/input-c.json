@@ -1,0 +1,74 @@
+[
+  {
+    "width": 390,
+    "touch": true,
+    "initial": {
+      "phase": "playing",
+      "charged": 2,
+      "context": "running"
+    },
+    "hold": {
+      "charge": true,
+      "resource": 2,
+      "music": {
+        "state": "early",
+        "applied": "early",
+        "position": 0.519546485260771,
+        "networkBytes": 789074,
+        "decodedBytes": 8684304,
+        "cacheEntries": 3,
+        "sources": 3,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      }
+    },
+    "cancelled": {
+      "voices": 0,
+      "resource": 2,
+      "replayed": false
+    },
+    "release": {
+      "resource": 1,
+      "release": true,
+      "hit": false
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "touch": false,
+    "initial": {
+      "phase": "playing",
+      "charged": 2,
+      "context": "running"
+    },
+    "hold": {
+      "charge": true,
+      "resource": 2,
+      "music": {
+        "state": "early",
+        "applied": "early",
+        "position": 0.029024943310657608,
+        "networkBytes": 789074,
+        "decodedBytes": 8684304,
+        "cacheEntries": 3,
+        "sources": 3,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      }
+    },
+    "cancelled": {
+      "voices": 0,
+      "resource": 2,
+      "replayed": false
+    },
+    "release": {
+      "resource": 1,
+      "release": true,
+      "hit": false
+    },
+    "errors": []
+  }
+]

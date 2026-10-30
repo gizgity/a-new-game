@@ -12,7 +12,7 @@ export interface Profile {
   version: 3;
   collection: CollectionProgress;
   legacy: LegacyProgress;
-  settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; cosmetic: 'mint' | 'prism'; trail: SigilId | null; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
+  settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; musicVolume: number; sfxVolume: number; reduceCameraShake: boolean; cosmetic: 'mint' | 'prism'; trail: SigilId | null; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
   totals: { kills: number; detonations: number; perfectDodges: number; victories: number; runs: number };
   unlocks: UnlockId[];
   drafts: { previous: BuildId[]; current: BuildId[]; active: boolean };
@@ -21,7 +21,7 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, cosmetic: 'mint', trail: null, desktopAutoAim: false, autoAimPriority: 'nearest' },
+  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, musicVolume: 1, sfxVolume: 1, reduceCameraShake: typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches, cosmetic: 'mint', trail: null, desktopAutoAim: false, autoAimPriority: 'nearest' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
@@ -36,6 +36,11 @@ export function validateProfile(value: unknown): Profile {
   result.settings.desktopAutoAim = settings.desktopAutoAim === true;
   result.settings.autoAimPriority = settings.autoAimPriority === 'archer' || settings.autoAimPriority === 'elite' ? settings.autoAimPriority : 'nearest';
   result.settings.volume = typeof settings.volume === 'number' && Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : 0.4;
+  for (const key of ['musicVolume', 'sfxVolume'] as const) {
+    const value = settings[key];
+    result.settings[key] = typeof value === 'number' && Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : 1;
+  }
+  if (typeof settings.reduceCameraShake === 'boolean') result.settings.reduceCameraShake = settings.reduceCameraShake;
   for (const key of Object.keys(result.totals) as (keyof Profile['totals'])[]) result.totals[key] = counter(totals[key]);
   result.unlocks = UNLOCKS.filter((id) => Array.isArray(raw.unlocks) && raw.unlocks.includes(id));
   const drafts = object(raw.drafts), ids: readonly BuildId[] = [...MUTATIONS, ...CURSES];

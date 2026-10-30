@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AdaptiveMusic, MUSIC, musicLayers, musicState } from '../.test-build/AdaptiveMusic.js';
 const flush = async()=>{for(let i=0;i<30;i++)await Promise.resolve();};
-class Param { value=1; events=[]; setValueAtTime(v,t){this.value=v;this.events.push([v,t]);} linearRampToValueAtTime(v,t){this.setValueAtTime(v,t);} cancelScheduledValues(){} cancelAndHoldAtTime(){} }
+class Param { setTargetAtTime(v,t){this.setValueAtTime(v,t);} value=1; events=[]; setValueAtTime(v,t){this.value=v;this.events.push([v,t]);} linearRampToValueAtTime(v,t){this.setValueAtTime(v,t);} cancelScheduledValues(){} cancelAndHoldAtTime(){} }
 class Node { gain=new Param(); connect(){} disconnect(){} }
 class Context extends EventTarget { currentTime=0;state='running';sources=[];createGain(){return new Node();}createBufferSource(){const s=new Node();s.start=(t,o)=>{s.at=t;s.offset=o;};s.stop=t=>{s.until=t;};this.sources.push(s);return s;}async decodeAudioData(){return {length:1085538,numberOfChannels:1,duration:1085538/44100};} }
 globalThis.document=Object.assign(new EventTarget(),{hidden:false});
@@ -39,4 +39,11 @@ test('FLAC decode failure falls back once, cached transitions do not decode; fai
 
 test('result reached while locked/suspended is dropped, never replayed on resume',async()=>{
  const [m,c]=setup();c.state='suspended';m.update('defeat',true);c.state='running';await play(m,'defeat');assert.equal(c.sources.length,0);m.reset();await play(m,'early');m.destroy();
+});
+
+test('live music gain has one accepted .7 factor and preserves sources, epoch, cache and ducking',async()=>{
+ const [m,c]=setup();await play(m,'early');c.currentTime=2;
+ const sources=[...c.sources],before=m.stats();m.duck();
+ for(const volume of [0,.25,1,0,1]){m.setVolume(volume);assert.equal(m.bus.gain.value,MUSIC.gain*volume);assert.deepEqual(c.sources,sources);assert.equal(m.stats().position,before.position);assert.equal(m.stats().networkBytes,before.networkBytes);}
+ assert.ok(m.duckBus.gain.events.some(([v])=>v===10**(-8/20)));m.destroy();assert.ok(sources.every(s=>s.buffer===null));
 });

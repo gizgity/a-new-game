@@ -1,0 +1,62 @@
+{
+  "files": [
+    {
+      "file": "anomaly.flac",
+      "bytes": 30500
+    },
+    {
+      "file": "anomaly.wav",
+      "bytes": 1085582
+    },
+    {
+      "file": "arena-base.flac",
+      "bytes": 706502
+    },
+    {
+      "file": "arena-base.wav",
+      "bytes": 2171120
+    },
+    {
+      "file": "boss-core.flac",
+      "bytes": 653496
+    },
+    {
+      "file": "boss-core.wav",
+      "bytes": 2171120
+    },
+    {
+      "file": "defeat.flac",
+      "bytes": 53158
+    },
+    {
+      "file": "defeat.wav",
+      "bytes": 407120
+    },
+    {
+      "file": "enraged.flac",
+      "bytes": 84786
+    },
+    {
+      "file": "enraged.wav",
+      "bytes": 1085582
+    },
+    {
+      "file": "tension.flac",
+      "bytes": 52072
+    },
+    {
+      "file": "tension.wav",
+      "bytes": 1085582
+    },
+    {
+      "file": "victory.flac",
+      "bytes": 71012
+    },
+    {
+      "file": "victory.wav",
+      "bytes": 407120
+    }
+  ],
+  "flacBytes": 1651526,
+  "wavBytes": 8413226
+}

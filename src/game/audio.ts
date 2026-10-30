@@ -26,6 +26,7 @@ export class ProceduralAudio {
   private elementalAdmission = new ElementalAdmission();
   private last = new Map<AudioCue, number>();
   private available = false;
+  private bus?: GainNode;
   private sounds = new Map<AudioCue, Phaser.Sound.WebAudioSound>();
   private roots = new Set<number>();
   private frameCount = 0;
@@ -40,6 +41,8 @@ export class ProceduralAudio {
   constructor(private readonly scene: Phaser.Scene, private readonly onPriority?: () => void) {
     if (!(scene.sound instanceof Phaser.Sound.WebAudioSoundManager)) return;
     const context = scene.sound.context;
+    this.bus = context.createGain();
+    this.bus.connect(scene.sound.destination);
     this.muted = scene.sound.mute;
     scene.sound.on(Phaser.Sound.Events.GLOBAL_MUTE, this.onMute);
     if (!scene.cache.audio.exists('sfx-charge')) for (const [cue, [frequency, duration, noise]] of Object.entries(tones)) {
@@ -124,9 +127,20 @@ export class ProceduralAudio {
         buffer.getChannelData(0).set(samples); scene.cache.audio.add(`sfx-${cue}`, buffer);
       }
     }
-    for (const cue of [...Object.keys(tones), ...Object.keys(ELEMENTAL_TONES)] as AudioCue[]) this.sounds.set(cue, scene.sound.add(`sfx-${cue}`) as Phaser.Sound.WebAudioSound);
+    for (const cue of [...Object.keys(tones), ...Object.keys(ELEMENTAL_TONES)] as AudioCue[]) {
+      const sound = scene.sound.add(`sfx-${cue}`) as Phaser.Sound.WebAudioSound;
+      sound.volumeNode.disconnect(); sound.volumeNode.connect(this.bus);
+      this.sounds.set(cue, sound);
+    }
     this.available = true;
   }
+  setVolume(value: number): void {
+    if (!this.bus) return;
+    const now = this.bus.context.currentTime;
+    this.bus.gain.cancelAndHoldAtTime(now);
+    this.bus.gain.setTargetAtTime(value, now, .01);
+  }
+
   /** No wall-clock timers or replay on resume/unmute; at most one sound per reached beat. */
   arrival(remaining: number): void {
     if (remaining <= 0) { this.arrivalBeat = -1; return; }
@@ -163,6 +177,7 @@ export class ProceduralAudio {
     this.available = false;
     this.scene.sound.off(Phaser.Sound.Events.GLOBAL_MUTE, this.onMute);
     for (const sound of this.sounds.values()) sound.destroy();
+    this.bus?.disconnect();
     this.sounds.clear(); this.roots.clear(); this.last.clear();
   }
 

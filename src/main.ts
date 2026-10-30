@@ -87,7 +87,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <details id="settings" class="settings"><summary data-i18n="settings"></summary>
           <div class="setting-controls">
             <label><input id="mute" type="checkbox"><span data-i18n="mute"></span></label>
-            <label><span data-i18n="volume"></span><input id="volume" type="range" min="0" max="1" step="0.05"></label>
+            <label><span data-i18n="volume"></span><input id="volume" type="range" min="0" max="1" step="0.01"><output id="volume-value"></output></label>
+            <label><span data-i18n="musicVolume"></span><input id="music-volume" type="range" min="0" max="1" step="0.01"><output id="music-volume-value"></output></label>
+            <label><span data-i18n="sfxVolume"></span><input id="sfx-volume" type="range" min="0" max="1" step="0.01"><output id="sfx-volume-value"></output></label>
+            <label><input id="reduce-camera-shake" type="checkbox"><span data-i18n="reduceCameraShake"></span></label>
             <label><input id="desktop-auto-aim" type="checkbox" aria-describedby="auto-aim-hint"><span data-i18n="desktopAutoAim"></span></label>
             <label id="auto-aim-priority-row" hidden><span data-i18n="autoAimPriority"></span><select id="auto-aim-priority" aria-describedby="auto-aim-hint"><option value="nearest" data-i18n="autoAimNearest"></option><option value="archer" data-i18n="autoAimArcher"></option><option value="elite" data-i18n="autoAimElite"></option></select></label>
             <p id="auto-aim-hint" data-i18n="autoAimHint" hidden></p>
@@ -292,6 +295,12 @@ function renderSettings(): void {
   document.querySelector<HTMLSelectElement>('#auto-aim-priority')!.value = profile.settings.autoAimPriority;
   document.querySelector<HTMLInputElement>('#mute')!.checked = profile.settings.muted;
   document.querySelector<HTMLInputElement>('#volume')!.value = String(profile.settings.volume);
+  for (const [id, value] of [['volume', profile.settings.volume], ['music-volume', profile.settings.musicVolume], ['sfx-volume', profile.settings.sfxVolume]] as const) {
+    const slider = document.querySelector<HTMLInputElement>(`#${id}`)!;
+    slider.value = String(value); slider.setAttribute('aria-valuetext', `${Math.round(value * 100)}%`);
+    document.querySelector(`#${id}-value`)!.textContent = `${Math.round(value * 100)}%`;
+  }
+  document.querySelector<HTMLInputElement>('#reduce-camera-shake')!.checked = profile.settings.reduceCameraShake;
   document.querySelector<HTMLOptionElement>('#cosmetic option[value="prism"]')!.disabled = !profile.unlocks.includes('wardenBreaker');
   document.querySelector<HTMLSelectElement>('#cosmetic')!.value = profile.settings.cosmetic;
   const values = [profile.totals.kills, profile.totals.detonations, profile.totals.perfectDodges, profile.totals.victories];
@@ -303,6 +312,8 @@ function renderSettings(): void {
 function applySettings(): void {
   game.sound.mute = profile.settings.muted;
   game.sound.volume = profile.settings.volume;
+  arena.setAudioVolumes(profile.settings.musicVolume, profile.settings.sfxVolume);
+  arena.reduceCameraShake = profile.settings.reduceCameraShake;
   arena.cosmetic = profile.settings.cosmetic;
   arena.trail = profile.settings.trail;
   arena.desktopAutoAim = profile.settings.desktopAutoAim;
@@ -469,8 +480,11 @@ document.querySelector('#elemental-trail')!.addEventListener('change', event=>{
   applySettings();persist();
 });
 
-for (const id of ['mute', 'volume', 'cosmetic', 'desktop-auto-aim', 'auto-aim-priority']) {
-  document.querySelector(`#${id}`)!.addEventListener('change', () => {
+for (const id of ['mute', 'volume', 'music-volume', 'sfx-volume', 'reduce-camera-shake', 'cosmetic', 'desktop-auto-aim', 'auto-aim-priority']) {
+  document.querySelector(`#${id}`)!.addEventListener(id.includes('volume') ? 'input' : 'change', () => {
+    profile.settings.musicVolume = Number(document.querySelector<HTMLInputElement>('#music-volume')!.value);
+    profile.settings.sfxVolume = Number(document.querySelector<HTMLInputElement>('#sfx-volume')!.value);
+    profile.settings.reduceCameraShake = document.querySelector<HTMLInputElement>('#reduce-camera-shake')!.checked;
     profile.settings.desktopAutoAim = document.querySelector<HTMLInputElement>('#desktop-auto-aim')!.checked;
     const priority = document.querySelector<HTMLSelectElement>('#auto-aim-priority')!.value;
     profile.settings.autoAimPriority = priority === 'archer' || priority === 'elite' ? priority : 'nearest';

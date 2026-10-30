@@ -1,0 +1,279 @@
+{
+  "method": "Controlled memory-only fixtures; real Mutation/Curse card DOM clicks and real CombatWorld hitstop. Source identity checked, no acoustic quality assertion.",
+  "reports": [
+    {
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "dialogs": [
+        {
+          "kind": "mutation",
+          "before": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 0.008707482993197263,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 2
+          },
+          "during": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 1.0710204081632653,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 2,
+            "sameSources": true
+          },
+          "after": {
+            "phase": "playing",
+            "sameSources": true,
+            "mutations": [
+              "aegisCore"
+            ],
+            "curses": []
+          }
+        },
+        {
+          "kind": "curse",
+          "before": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 1.1406802721088436,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 2
+          },
+          "during": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 2.200090702947846,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 2,
+            "sameSources": true
+          },
+          "after": {
+            "phase": "playing",
+            "sameSources": true,
+            "mutations": [
+              "aegisCore"
+            ],
+            "curses": [
+              "ironOath"
+            ]
+          }
+        }
+      ],
+      "combat": {
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 2.249433106575964,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 3.1985487528344674,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "hitstopFrames": 23,
+        "damage": 180,
+        "sameSources": true,
+        "duck": 1
+      },
+      "paused": {
+        "state": "early",
+        "applied": "early",
+        "position": 3.21015873015873,
+        "networkBytes": 789074,
+        "decodedBytes": 8684304,
+        "cacheEntries": 3,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "touch": false,
+      "dialogs": [
+        {
+          "kind": "mutation",
+          "before": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 0.03192743764172337,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 0
+          },
+          "during": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 1.1116553287981858,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 0,
+            "sameSources": true
+          },
+          "after": {
+            "phase": "playing",
+            "sameSources": true,
+            "mutations": [
+              "aegisCore"
+            ],
+            "curses": []
+          }
+        },
+        {
+          "kind": "curse",
+          "before": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 1.1900226757369614,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 0
+          },
+          "during": {
+            "music": {
+              "state": "early",
+              "applied": "early",
+              "position": 2.240725623582766,
+              "networkBytes": 789074,
+              "decodedBytes": 8684304,
+              "cacheEntries": 3,
+              "sources": 3,
+              "peakSources": 3,
+              "errors": 0,
+              "resultDone": false
+            },
+            "ticks": 0,
+            "sameSources": true
+          },
+          "after": {
+            "phase": "playing",
+            "sameSources": true,
+            "mutations": [
+              "aegisCore"
+            ],
+            "curses": [
+              "ironOath"
+            ]
+          }
+        }
+      ],
+      "combat": {
+        "before": {
+          "state": "early",
+          "applied": "early",
+          "position": 2.3016780045351473,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "after": {
+          "state": "early",
+          "applied": "early",
+          "position": 3.259501133786848,
+          "networkBytes": 789074,
+          "decodedBytes": 8684304,
+          "cacheEntries": 3,
+          "sources": 3,
+          "peakSources": 3,
+          "errors": 0,
+          "resultDone": false
+        },
+        "hitstopFrames": 23,
+        "damage": 180,
+        "sameSources": true,
+        "duck": 1
+      },
+      "paused": {
+        "state": "early",
+        "applied": "early",
+        "position": 3.259501133786848,
+        "networkBytes": 789074,
+        "decodedBytes": 8684304,
+        "cacheEntries": 3,
+        "sources": 0,
+        "peakSources": 3,
+        "errors": 0,
+        "resultDone": false
+      },
+      "errors": [],
+      "storageUnchanged": true
+    }
+  ]
+}
