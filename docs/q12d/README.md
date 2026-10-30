@@ -1,10 +1,14 @@
 # Q12D Phase A — V2 synth-rock
 
-**AWAITING USER MUSIC APPROVAL — Q12D PHASE A**. [Nghe trực tiếp](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A). Artifacts review riêng; không runtime integration, không production music build, không Phase B/C/Q12E/DDR/artwork. Branch `q12d-phase-a`, baseline main162066d gồm balance651e3bf đang chờ user playtest; giữ nguyên gameplay, combat SFX, Arrival Q8C, elemental sounds, Q12B, gameplay RNG/Boss/balance và Pages.
+**ACCEPTED — USER MUSIC APPROVAL — Q12D PHASE A V2**. [Nghe trực tiếp](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A). Artifacts review riêng; không runtime integration, không production music build, không Phase B/C/Q12E/DDR/artwork. Branch `q12d-phase-a`, baseline main162066d gồm balance651e3bf đang chờ user playtest; giữ nguyên gameplay, combat SFX, Arrival Q8C, elemental sounds, Q12B, gameplay RNG/Boss/balance và Pages.
+
+## User music approval
+
+User xác nhận **“oki đc r”** ngày2026-10-30 trong hội thoại hiện tại (không có permalink), sau khi nghe V2 ở link review bên trên. Approval cho composition/prototype Phase A V2,156BPM synth-rock và các layer đã sửa, code`a7ba63c`/bàn giao`1b5e7b6`, hosted artifact version2 (`61e90b4a-1c1a-4f90-9b5c-16f7cd8fcc29`). Đây là approval trực tiếp, không suy từ tests. Gate chờ music approval đã hoàn tất; không yêu cầu duyệt lại. Không tự mở Phase B/C/Q12E, không runtime integration/deploy gameplay hoặc DDR. Giữ giới hạn coverage thiết bị/browser, balance mới vẫn chờ playtest riêng. Lượt ghi nhận này chỉ Markdown; không build/test lại hoặc thay bundle audio. Dòng chờ duyệt trong snapshot audition V2 là nhãn trước approval này.
 
 ## Feedback và thay đổi V2
 
-User nghe V1 và yêu cầu: “game fast pace nên nhạc hơi thiếu chất, thêm xíu rock n roll và tăng tempo, khi tổ hợp nhạc vẫn chưa thực sự khớp với nhau, nghe chênh phô” (hội thoại hiện tại,2026-10-30). Đây là yêu cầu sửa Phase A, chưa phải music approval. Tempo156 thay140BPM theo yêu cầu mới; 4/4/Dminor và motifD–F–E–A giữ nguyên.
+User nghe V1 và yêu cầu: “game fast pace nên nhạc hơi thiếu chất, thêm xíu rock n roll và tăng tempo, khi tổ hợp nhạc vẫn chưa thực sự khớp với nhau, nghe chênh phô” (hội thoại hiện tại,2026-10-30). Đây là yêu cầu sửa Phase A trước approval V2 được ghi ở trên. Tempo156 thay140BPM theo yêu cầu mới; 4/4/Dminor và motifD–F–E–A giữ nguyên.
 
 V2 thêm straight-eighth bass/palm-muted power riff bằng synth, kick dồn hơn, snare backbeat rõ và fills cuối4/8bar. Đây là màu synth-rock, không dùng guitar/drum sample. Viết lại melody/voicings và layer phụ cùng progression, không chỉ tăng playback speed của WAV cũ.
 
@@ -105,4 +109,4 @@ Web Audio + PCM WAV tương thích Chrome/Edge/Firefox/Safari hiện đại theo
 3. Boss rồi Boss+Enraged2vòng: motif thấp riêng, Eb→D cuối b1/5 có chủ đích nhưng nếu vẫn khó chịu hãy chỉ rõ.
 4. Hai sting, Stop/đổi tab; sau đó bật Combat/Arrival khi nhạc chạy, nghe Heavy/Charged/Perfect/warning có bị che.
 
-Phản hồi bài/tổ hợp, timestamp/bar, loa/browser và độ nhanh/lực/hòa âm/mệt tai. Dừng **AWAITING USER MUSIC APPROVAL — Q12D PHASE A**.
+Phản hồi bài/tổ hợp, timestamp/bar, loa/browser và độ nhanh/lực/hòa âm/mệt tai. **Phase A V2 đã được user duyệt theo ghi nhận ở trên.** Checklist giữ để tham khảo; dừng sau Phase A, chỉ mở Phase B/C khi user giao riêng.
