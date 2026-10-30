@@ -56,7 +56,7 @@ WAV44100Hz mono signed16-bit LE PCM, không lossy encoding/dither/encoder paddin
 
 ## Chạy và audition
 
-[Link web hiện tại](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A) dùng Artifact Vault riêng theo yêu cầu user không chạy local được; không thay Pages. Link public không thu submission, hạn2026-11-29 theo service. Source repo public đã xác nhận bằng GitHub metadata. Upload/share xác nhận bằng tool; chưa kiểm playback trên host thật, Chromium kiểm local build tương ứng.
+[Link web hiện tại](https://av-run.ngantnk.workers.dev/s/r3Vl6hay3Lg3q2QnTsS32A) dùng Artifact Vault riêng theo yêu cầu user không chạy local được; không thay Pages. Link public không thu submission, hạn2026-11-29 theo service. Source repo public đã xác nhận bằng GitHub metadata. V2 code`a7ba63c` đãpush reviewbranch; ArtifactVault version2 uploadSUCCESS (version ID61e90b4a-1c1a-4f90-9b5c-16f7cd8fcc29), sharelink theo current. Upload/share xác nhận bằng tool; chưa kiểm playback trên host thật, Chromium kiểm local build tương ứng.
 
 Từ repo root:
 
