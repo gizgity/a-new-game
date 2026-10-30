@@ -20,9 +20,9 @@ try {
    await p.waitForTimeout(350);
    const stats=await p.evaluate(()=>window.musicFixture.stats());stages.push(stats);assert.ok(stats.sources<=3);assert.ok(stats.cacheEntries<=3);
   }
-  // Preserve actual musical position, no hidden advancement through draft/selection/pause.
+  // Preserve musical position through explicit selection/pause. Draft keeps playing.
   const freezes=[];
-  for(const phase of ['draft','anomaly','legacy','paused']){
+  for(const phase of ['anomaly','legacy','paused']){
    const before=await p.evaluate(phase=>{const a=window.musicFixture.arena;a.phase=phase;a.updateMusic();return a.musicStats();},phase);
    await p.waitForTimeout(120);
    const after=await p.evaluate(()=>window.musicFixture.stats());
@@ -33,7 +33,7 @@ try {
    a.combat.hitstop=.1;a.updateMusic();const hitstop=a.musicStats();a.combat.hitstop=0;
    const boss=a.combat.enemies.find(e=>e.kind==='boss');boss.transform=.5;a.updateMusic();const transform=a.musicStats();
    boss.transform=0;a.updateMusic();return {hitstop,transform,resumed:a.musicStats()};});
-  assert.equal(combatFreeze.hitstop.sources,0);assert.equal(combatFreeze.transform.sources,0);assert.equal(combatFreeze.resumed.sources,2);
+  assert.equal(combatFreeze.hitstop.sources,2);assert.equal(combatFreeze.transform.sources,0);assert.equal(combatFreeze.resumed.sources,2);
   await p.evaluate(()=>{const input=document.querySelector('#mute');input.checked=true;input.dispatchEvent(new Event('change'));});
   await p.waitForTimeout(100);
   const muted=await p.evaluate(()=>window.musicFixture.arena.sound.masterMuteNode.gain.value);assert.equal(muted,0);

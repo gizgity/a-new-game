@@ -2,13 +2,22 @@
 
 Triển khai theo yêu cầu user2026-10-30; Phase A V2 và Phase B đã được duyệt. **AWAITING USER PLAYTEST APPROVAL — Q12D PHASE C**; chưa nghiệm thu Phase C, không mở Q12E/DDR. Main fetch mới nhất `162066d`, balance `651e3bf` được bảo toàn; Phase B `15f24af` nối trực tiếp main, production baseline `fe7438d`. Không checkout branch cũ đè runtime. Không render/chỉnh composition/mix/SFX/art/balance/progression.
 
-Code/deploy **dc9ea84**, đãpushmain/branchq12d-phase-c. [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) **completed/SUCCESS**, job124118094997 build/typecheck/upload/DeploySUCCESS. Chưa liveHTTP/hash verification. BàngiaoMarkdown sau khôngđổiruntime/redeploy.
+## Follow-up — giữ nhạc qua Draft và hitstop
+
+User2026-10-30 yêu cầu giữ nhạc khi dialog Mutation/Curse và báo nhạc giật khi chém. Bản `dc9ea84` đã freeze transport theo mọi combat hitstop, khiến sources bị stop/tạo lại sau mỗi hit; đây là nguyên nhân gián đoạn có thể xác định từ integration. Không kết luận acoustic mix/SFX bị chồng từ automation.
+
+Sửa riêng điều kiện Scene: `draft` tiếp tục nhạc trên cùng native sources; combat hitstop không freeze transport. Clock simulation, draft guard/chọn card, damage/cooldown/RNG, waveform/gain/cap SFX, ducking8dB và music assets/mix giữ nguyên. Yêu cầu mới supersede freeze Draft/hitstop của Phase C trước trong đúng scope này. Pause, Legacy/Anomaly Selection, Boss transform, hidden/suspend vẫn freeze như trước. Phase C vẫn **AWAITING USER PLAYTEST APPROVAL**, không Q12E.
+
+`continuity-check.mjs` / [continuity.json](continuity.json): Chromium390touch/1440desktop, mở Mutation/Curse thật bằng fixture memory và bấm card DOM sau guard; musical position tăng >1s trong mỗi dialog, run ticks không tăng, source identity giữ nguyên qua mở/chọn/đóng. 180simulationticks với melee thật tạo180damage/23hitstopframes mỗi viewport, music sources không thay; Pause vẫn giữ vị trí/0sources. Không ghi storage, page errors0. Typecheck/build/31testfiles PASS; Chromium320/390/844/1440 regression state/selection/pause/Boss transform/mute/SFX/result/cleanup/no storage/console/overflow PASS trên bản sửa. Cần user nghe/chơi lại, Safari/iOS/thiết bị thật chưa kiểm.
+
+Bản trước `dc9ea84`: [Pages41071953432](https://github.com/gizgity/a-new-game/actions/runs/41071953432) completed/SUCCESS. Bản sửa đang chờ commit/push/deploy; chưa ghi SUCCESS cho bản sửa. Chưa liveHTTP/hash verification.
 
 ## State và lifecycle
 
 | State thật | Music nghe được |
 | --- | --- |
 | Main menu | Silent |
+| Dialog Mutation/Curse | Giữ nhạc chạy liên tục, không reset transport |
 | Active run <60s | Arena Base |
 | Active run ≥60s (`run.elapsed`) | Base + Tension |
 | `combat.anomaly.active` sau lựa chọn hợp lệ | Base + Tension + Anomaly |
@@ -16,7 +25,7 @@ Code/deploy **dc9ea84**, đãpushmain/branchq12d-phase-c. [Pages41071953432](htt
 | Boss `enraged` thật | Boss Core + Enraged |
 | Victory / Defeat | Fade300ms → sting tương ứng một lần |
 
-Scene chỉ đọc state rồi gọi `AdaptiveMusic.update`; không thay combat resolver/clock/RNG/input. `run.bossDue` hoặc timer không dùng để suy Boss. Draft/Legacy/Anomaly Selection/Pause dừng sources, ghi offset theo `AudioContext.currentTime`; resume dựng lại tất cả lanes tại cùng timestamp/offset. Restart/New Run gọi reset tại cùng chỗ `run.start`, một lần; legacy→playing không reset lại. Shutdown abort request, stop/disconnect sources/buses, clear cache/listeners.
+Scene chỉ đọc state rồi gọi `AdaptiveMusic.update`; không thay combat resolver/clock/RNG/input. `run.bossDue` hoặc timer không dùng để suy Boss. Draft giữ nguyên sources và nhạc tiếp tục dù simulation dừng. Legacy/Anomaly Selection/Pause dừng sources, ghi offset theo `AudioContext.currentTime`; resume dựng lại tất cả lanes tại cùng timestamp/offset. Restart/New Run gọi reset tại cùng chỗ `run.start`, một lần; legacy→playing không reset lại. Shutdown abort request, stop/disconnect sources/buses, clear cache/listeners.
 
 Menu không fetch. Khi audio locked/suspended/hidden không start; context state/visibility listener chụp vị trí và stop ngay, Scene giữ pause hiện hữu khi blur. Trở về cần resume flow có sẵn; không replay SFX/cue đã qua. Sting đã claim khi bị ngắt không replay. Audio failure không chặn run; fetch/decode từng group fail thì bỏ nhạc group đó, không retry mỗi frame; New Run cho phép retry.
 
@@ -26,7 +35,7 @@ Reuse Phaser3/WebAudio, không dependency mới. Bus riêng gain`.7` như auditi
 
 Common grid chính xác export:8bar542769frames@44100, core16bar1085538frames, bar=542769/44100/8s, actual156.0000663BPM (~156),4/4. Native looping BufferSource, explicit common loopEnd, overlay8bars lặp2lần/core; không JS beat timer/setInterval. Cả3Arena lanes chạy chung timestamp/offset, overlays gain0 trước activation; Boss2lanes tương tự. Các lanes im vẫn tính vào source cap. Gain đổi ở next bar (~≤1.539s), không chờ16bars; thay đổi nhanh cancel automation chưa tới, không queue cue.
 
-Boss load xong crossfade300ms ngay, không đợi bar và không trì hoãn gameplay. Dừng overlay Arena, giữ1core fading +2Boss sources (≤3). Family mới mở downbeat riêng. Results giữ1core fade rồi one-shot; không restart sting vì nhiều frame/result callback. Pause giữ offset và mức gain từng lane; pending overlay vẫn đợi đúng bar sau resume, lanes đã bật không bị tắt tới bar kế. Attack4ms khi dựng sources lại; không reset musical position. Scene cũng freeze transport trong hitstop/Boss transform khi simulation frozen; run-time60s chỉ đọc clock thật. Draft/Selection/Pause được freeze đầy đủ. Combat hitstop có thể tạo ngắt nhạc rất ngắn; cần nghe user playtest, không tự đổi hitstop để làm nhạc mượt.
+Boss load xong crossfade300ms ngay, không đợi bar và không trì hoãn gameplay. Dừng overlay Arena, giữ1core fading +2Boss sources (≤3). Family mới mở downbeat riêng. Results giữ1core fade rồi one-shot; không restart sting vì nhiều frame/result callback. Pause giữ offset và mức gain từng lane; pending overlay vẫn đợi đúng bar sau resume, lanes đã bật không bị tắt tới bar kế. Attack4ms khi dựng sources lại; không reset musical position. Scene freeze transport trong Boss transform; combat hitstop giữ nhạc liên tục, không tạo lại sources. Run-time60s chỉ đọc clock thật; nhạc chạy trong Draft không làm tăng run time hoặc tự kích Tension. Legacy/Anomaly Selection/Pause vẫn freeze.
 
 ## Assets, network và memory
 

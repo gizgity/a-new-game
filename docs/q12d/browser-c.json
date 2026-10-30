@@ -9,7 +9,7 @@
         {
           "state": "early",
           "applied": "early",
-          "position": 0.6095238095238091,
+          "position": 0.47020408163265337,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
@@ -21,11 +21,11 @@
         {
           "state": "tension",
           "applied": "tension",
-          "position": 0.8301133786848074,
+          "position": 0.9200907029478458,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -33,11 +33,11 @@
         {
           "state": "anomaly",
           "applied": "anomaly",
-          "position": 0.8591383219954651,
+          "position": 1.3902947845804992,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -45,7 +45,7 @@
         {
           "state": "boss",
           "applied": "boss",
-          "position": 0.31927437641723344,
+          "position": 0.31056689342403665,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -57,7 +57,7 @@
         {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.7691609977324259,
+          "position": 0.7314285714285722,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -69,31 +69,27 @@
       ],
       "freezes": [
         {
-          "phase": "draft",
-          "position": 0.7691609977324259
-        },
-        {
           "phase": "anomaly",
-          "position": 0.7807709750566882
+          "position": 0.740136054421769
         },
         {
           "phase": "legacy",
-          "position": 0.7981859410430827
+          "position": 0.7517460317460323
         },
         {
           "phase": "paused",
-          "position": 0.8068934240362795
+          "position": 0.76045351473923
         }
       ],
       "combatFreeze": {
         "hitstop": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8156009070294772,
+          "position": 0.7691609977324267,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
-          "sources": 0,
+          "sources": 2,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -101,7 +97,7 @@
         "transform": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8156009070294772,
+          "position": 0.7691609977324267,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -113,7 +109,7 @@
         "resumed": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8156009070294772,
+          "position": 0.7691609977324267,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -146,7 +142,7 @@
         "music": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 1.0274829931972773,
+          "position": 0.9781405895691613,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -163,7 +159,7 @@
           "before": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.3554648526077084,
+            "position": 1.248072562358277,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -175,7 +171,7 @@
           "after": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.5151020408163252,
+            "position": 1.3902947845804992,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -190,7 +186,7 @@
           "before": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 1.8053514739229009,
+            "position": 1.6399092970521547,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -202,7 +198,7 @@
           "after": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 1.947573696145123,
+            "position": 1.7908390022675738,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -237,7 +233,7 @@
         {
           "state": "early",
           "applied": "early",
-          "position": 0.4905215419501132,
+          "position": 0.5079365079365079,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
@@ -249,11 +245,11 @@
         {
           "state": "tension",
           "applied": "tension",
-          "position": 0.7285260770975055,
+          "position": 0.9491156462585033,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -261,11 +257,11 @@
         {
           "state": "anomaly",
           "applied": "anomaly",
-          "position": 0.748843537414966,
+          "position": 1.390294784580499,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -285,7 +281,7 @@
         {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8794557823129252,
+          "position": 0.7691609977324263,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -297,31 +293,27 @@
       ],
       "freezes": [
         {
-          "phase": "draft",
-          "position": 0.891065759637188
-        },
-        {
           "phase": "anomaly",
-          "position": 0.891065759637188
+          "position": 0.7691609977324263
         },
         {
           "phase": "legacy",
-          "position": 0.891065759637188
+          "position": 0.7807709750566896
         },
         {
           "phase": "paused",
-          "position": 0.8997732426303857
+          "position": 0.7894784580498868
         }
       ],
       "combatFreeze": {
         "hitstop": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8997732426303857,
+          "position": 0.8010884353741501,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
-          "sources": 0,
+          "sources": 2,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -329,7 +321,7 @@
         "transform": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8997732426303857,
+          "position": 0.8010884353741501,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -341,7 +333,7 @@
         "resumed": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.8997732426303857,
+          "position": 0.8010884353741501,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -374,7 +366,7 @@
         "music": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 1.1087528344671203,
+          "position": 0.9897505668934246,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -391,7 +383,7 @@
           "before": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.5383219954648526,
+            "position": 1.3409523809523813,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -403,11 +395,11 @@
           "after": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.7095691609977326,
+            "position": 1.4715646258503403,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
-            "sources": 1,
+            "sources": 2,
             "peakSources": 3,
             "errors": 0,
             "resultDone": true
@@ -418,7 +410,7 @@
           "before": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 1.9707936507936505,
+            "position": 1.7211791383219959,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -430,7 +422,7 @@
           "after": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 2.098503401360544,
+            "position": 1.8517913832199548,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -465,7 +457,7 @@
         {
           "state": "early",
           "applied": "early",
-          "position": 0.5282539682539682,
+          "position": 0.44988662131519286,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
@@ -477,11 +469,11 @@
         {
           "state": "tension",
           "applied": "tension",
-          "position": 0.7894784580498866,
+          "position": 0.8881632653061224,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -489,11 +481,11 @@
         {
           "state": "anomaly",
           "applied": "anomaly",
-          "position": 0.8214058956916099,
+          "position": 1.3380498866213153,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -501,7 +493,7 @@
         {
           "state": "boss",
           "applied": "boss",
-          "position": 0.3076643990929706,
+          "position": 0.2960544217687078,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -513,7 +505,7 @@
         {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.7894784580498868,
+          "position": 0.7256235827664401,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -525,31 +517,27 @@
       ],
       "freezes": [
         {
-          "phase": "draft",
-          "position": 0.798185941043084
-        },
-        {
           "phase": "anomaly",
-          "position": 0.8097959183673469
+          "position": 0.7459410430839002
         },
         {
           "phase": "legacy",
-          "position": 0.830113378684807
+          "position": 0.7459410430839002
         },
         {
           "phase": "paused",
-          "position": 0.850430839002267
+          "position": 0.757551020408163
         }
       ],
       "combatFreeze": {
         "hitstop": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.850430839002267,
+          "position": 0.7662585034013603,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
-          "sources": 0,
+          "sources": 2,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -557,7 +545,7 @@
         "transform": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.850430839002267,
+          "position": 0.7662585034013603,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -569,7 +557,7 @@
         "resumed": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.850430839002267,
+          "position": 0.7662585034013603,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -602,7 +590,7 @@
         "music": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 1.0390929705215406,
+          "position": 0.9462131519274375,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -619,7 +607,7 @@
           "before": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.4309297052154184,
+            "position": 1.2161451247165531,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -631,7 +619,7 @@
           "after": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.549931972789115,
+            "position": 1.3670748299319722,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -646,7 +634,7 @@
           "before": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 1.8604988662131507,
+            "position": 1.6457142857142855,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -658,7 +646,7 @@
           "after": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 1.9911111111111097,
+            "position": 1.7966439909297054,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -693,7 +681,7 @@
         {
           "state": "early",
           "applied": "early",
-          "position": 0.5601814058956922,
+          "position": 0.5195464852607712,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
@@ -705,11 +693,11 @@
         {
           "state": "tension",
           "applied": "tension",
-          "position": 0.9578231292517012,
+          "position": 1.0390929705215424,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -717,11 +705,11 @@
         {
           "state": "anomaly",
           "applied": "anomaly",
-          "position": 1.0274829931972809,
+          "position": 1.7298866213151927,
           "networkBytes": 789074,
           "decodedBytes": 8684304,
           "cacheEntries": 3,
-          "sources": 0,
+          "sources": 3,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -729,7 +717,7 @@
         {
           "state": "boss",
           "applied": "boss",
-          "position": 0.31056689342403665,
+          "position": 0.33088435374149583,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -741,7 +729,7 @@
         {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.891065759637188,
+          "position": 0.8620408163265303,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -753,31 +741,27 @@
       ],
       "freezes": [
         {
-          "phase": "draft",
-          "position": 0.891065759637188
-        },
-        {
           "phase": "anomaly",
-          "position": 0.891065759637188
+          "position": 0.8620408163265303
         },
         {
           "phase": "legacy",
-          "position": 0.8997732426303848
+          "position": 0.8620408163265303
         },
         {
           "phase": "paused",
-          "position": 0.905578231292516
+          "position": 0.8736507936507927
         }
       ],
       "combatFreeze": {
         "hitstop": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.9142857142857128,
+          "position": 0.8823582766439895,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
-          "sources": 0,
+          "sources": 2,
           "peakSources": 3,
           "errors": 0,
           "resultDone": false
@@ -785,7 +769,7 @@
         "transform": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.9142857142857128,
+          "position": 0.8823582766439895,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -797,7 +781,7 @@
         "resumed": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 0.9142857142857128,
+          "position": 0.8823582766439895,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -830,7 +814,7 @@
         "music": {
           "state": "enraged",
           "applied": "enraged",
-          "position": 1.1348752834467106,
+          "position": 1.0826303854875263,
           "networkBytes": 1527356,
           "decodedBytes": 6513228,
           "cacheEntries": 2,
@@ -847,7 +831,7 @@
           "before": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.625396825396825,
+            "position": 1.523809523809522,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -859,7 +843,7 @@
           "after": {
             "state": "victory",
             "applied": "victory",
-            "position": 1.7850340136054417,
+            "position": 1.6834467120181387,
             "networkBytes": 1651526,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -874,7 +858,7 @@
           "before": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 2.4642176870748287,
+            "position": 2.002721088435372,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
@@ -886,7 +870,7 @@
           "after": {
             "state": "defeat",
             "applied": "defeat",
-            "position": 2.586122448979591,
+            "position": 2.1420408163265297,
             "networkBytes": 2564770,
             "decodedBytes": 1628304,
             "cacheEntries": 2,
