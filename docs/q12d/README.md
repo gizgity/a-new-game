@@ -1,3 +1,7 @@
+# Q12D Phase C — Integration
+
+User giao Phase C ngày2026-10-30 sau khi duyệt Phase A V2/B. Scope và evidence hiện hành tại [INTEGRATION.md](INTEGRATION.md). **AWAITING USER PLAYTEST APPROVAL — Q12D PHASE C**. Không Q12E. Các gate không Phase C bên dưới là lịch sử đã được yêu cầu hiện tại supersede; approval A/B giữ nguyên.
+
 # Q12D Phase B — Production & Mixing
 
 **ACCEPTED — USER MUSIC PRODUCTION APPROVAL — Q12D PHASE B**. User đã duyệt Phase A V2 (`a7ba63c`) và giao Phase B riêng ngày 2026-10-30. Review branch `q12d-phase-b` từ `bc54edd`; không thay main/Pages. Các gate “không Phase B” trong hồ sơ Phase A bên dưới đã được yêu cầu mới supersede, chỉ trong scope production này. Không Phase C/Q12E/integration/DDR. Balance `651e3bf` vẫn chờ playtest riêng.

@@ -1,0 +1,101 @@
+{
+  "rate": 48000,
+  "first": [
+    {
+      "when": 0.10133333333333333,
+      "offset": 0,
+      "loopEnd": 24.615374149659864
+    },
+    {
+      "when": 0.10133333333333333,
+      "offset": 0,
+      "loopEnd": 12.307687074829932
+    },
+    {
+      "when": 0.10133333333333333,
+      "offset": 0,
+      "loopEnd": 12.307687074829932
+    }
+  ],
+  "position": 0.02133333333333333,
+  "loops": {
+    "state": "anomaly",
+    "applied": "anomaly",
+    "position": 50.01333333333333,
+    "networkBytes": 789074,
+    "decodedBytes": 9452292,
+    "cacheEntries": 3,
+    "sources": 3,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "pause": {
+    "state": "anomaly",
+    "applied": "anomaly",
+    "position": 50.01333333333333,
+    "networkBytes": 789074,
+    "decodedBytes": 9452292,
+    "cacheEntries": 3,
+    "sources": 0,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "hidden": {
+    "state": "anomaly",
+    "applied": "anomaly",
+    "position": 50.01333333333333,
+    "networkBytes": 789074,
+    "decodedBytes": 9452292,
+    "cacheEntries": 3,
+    "sources": 0,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "boss": {
+    "state": "enraged",
+    "applied": "enraged",
+    "position": 0.3706666666666649,
+    "networkBytes": 1527356,
+    "decodedBytes": 7089220,
+    "cacheEntries": 2,
+    "sources": 2,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "duck": 1,
+  "gains": [
+    0.3981071710586548,
+    1
+  ],
+  "oneShot": true,
+  "cleanup": {
+    "state": "silent",
+    "applied": "silent",
+    "position": 0,
+    "networkBytes": 1651526,
+    "decodedBytes": 0,
+    "cacheEntries": 0,
+    "sources": 0,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "attempts": 6,
+  "fallbackStats": {
+    "state": "early",
+    "applied": "early",
+    "position": 0,
+    "networkBytes": 5131358,
+    "decodedBytes": 9452292,
+    "cacheEntries": 3,
+    "sources": 3,
+    "peakSources": 3,
+    "errors": 0,
+    "resultDone": false
+  },
+  "bar": 1.5384608843537415
+}

@@ -1,0 +1,1266 @@
+{
+  "baseline": "162066d / latest main balance651e3bf",
+  "method": "Full serialized combat world including Q12A audio + Q12B feedback. Include every serialized world field. Same seed808/input at300tick snapshots up to10800ticks or natural defeat. 18loadouts x7Anomaly variants, distributed Seal0–4, four Mutations + two Curses. No HP grants; not balance/feel evidence.",
+  "cases": [
+    {
+      "seal": 0,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "fire",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "water",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "ice",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "wind",
+        "branch": null
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "wildfire"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "fire",
+        "branch": "furnace"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "water",
+        "branch": "undertow"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "water",
+        "branch": "flowState"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "arcRelay"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "lightning",
+        "branch": "overclock"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "brittle"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 3,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "ice",
+        "branch": "crystalEcho"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 4,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "nightfall"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 0,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "shadow",
+        "branch": "veilstep"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 1,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "tailwind"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": null,
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "fracturedStorm",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "bloodMoon",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "volatileGround",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "staticField",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "brokenSeal",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    },
+    {
+      "seal": 2,
+      "anomaly": "echoChamber",
+      "loadout": {
+        "sigil": "wind",
+        "branch": "cyclone"
+      },
+      "snapshots": 36,
+      "identical": true
+    }
+  ]
+}

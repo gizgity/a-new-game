@@ -37,7 +37,7 @@ export class ProceduralAudio {
     if (muted) this.transition();
   };
   private arrivalBeat = -1;
-  constructor(private readonly scene: Phaser.Scene) {
+  constructor(private readonly scene: Phaser.Scene, private readonly onPriority?: () => void) {
     if (!(scene.sound instanceof Phaser.Sound.WebAudioSoundManager)) return;
     const context = scene.sound.context;
     this.muted = scene.sound.mute;
@@ -181,6 +181,7 @@ export class ProceduralAudio {
       victim[1].stop();
     }
     sound.play({ volume: volume * (cue === 'arrival' ? 1 : AUDIO.combatGain) });
+    if (['arrival', 'boss', 'hurt', 'heavy', 'chargedBlast', 'detonate', 'light3', 'chargedGun'].includes(cue)) this.onPriority?.();
     this.last.set(cue, now); this.frameCount++;
     if (policy.priority < 4) this.regularCount++;
     return true;

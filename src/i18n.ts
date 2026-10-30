@@ -1,4 +1,5 @@
 const vi = {
+  music_early: 'Đầu trận', music_tension: 'Áp lực', music_anomaly: 'Anomaly', music_boss: 'Boss', music_enraged: 'Enraged', music_victory: 'Thắng', music_defeat: 'Thua',
   audio_ignite: 'Ignite',
   audio_wildfire: 'Wildfire',
   audio_furnace: 'Furnace',
@@ -385,6 +386,7 @@ export type TranslationKey = keyof typeof vi;
 export type Locale = 'vi' | 'en';
 
 const en: Record<TranslationKey, string> = {
+  music_early: 'Early', music_tension: 'Tension', music_anomaly: 'Anomaly', music_boss: 'Boss', music_enraged: 'Enraged', music_victory: 'Victory', music_defeat: 'Defeat',
   audio_ignite: 'Ignite',
   audio_wildfire: 'Wildfire',
   audio_furnace: 'Furnace',

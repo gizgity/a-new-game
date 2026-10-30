@@ -1,3 +1,4 @@
+import { AdaptiveMusic, musicState } from './AdaptiveMusic';
 import { FEEDBACK, type ImpactTier } from './config/feedback';
 import { impactOffset, canStartImpact } from './impactMotion';
 import { TrailVisual } from './TrailVisual';
@@ -35,6 +36,7 @@ export class ArenaScene extends Phaser.Scene {
   private enemySprites!: EnemySprites;
   private combatGraphics!: Phaser.GameObjects.Graphics;
   private audio!: ProceduralAudio;
+  private music?: AdaptiveMusic;
   private arrival!: BossArrival;
   private resultVisual!: RunResultVisual;
   victoryRevealing = false;
@@ -79,7 +81,11 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.audio = new ProceduralAudio(this);
+    if (this.sound instanceof Phaser.Sound.WebAudioSoundManager) {
+      try { this.music = new AdaptiveMusic(this.sound.context, this.sound.masterMuteNode, `${import.meta.env.BASE_URL}assets/music/`); }
+      catch { /* Audio is optional; keep the run playable. */ }
+    }
+    this.audio = new ProceduralAudio(this, () => this.music?.duck());
     this.drawArena();
     this.arrival = new BossArrival(this);
     this.anomalyVisual = new AnomalyVisual(this);
@@ -168,6 +174,7 @@ export class ArenaScene extends Phaser.Scene {
     this.game.events.on(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.audio.destroy();
+      this.music?.destroy();
       this.scale.off(Phaser.Scale.Events.RESIZE, this.resize, this);
       this.game.events.off(Phaser.Core.Events.BLUR, this.handleBlur, this);
       this.game.events.off(Phaser.Core.Events.HIDDEN, this.handleBlur, this);
@@ -182,6 +189,7 @@ export class ArenaScene extends Phaser.Scene {
       this.victoryRevealing = false;
       this.resultVisual.reset();
       this.run.start();
+      this.music?.reset();
       this.vessel.reset(this.combat);
       this.trailVisual.reset(this.combat);
       this.enemySprites.reset();
@@ -200,6 +208,7 @@ export class ArenaScene extends Phaser.Scene {
     this.perfectAge = FEEDBACK.perfectDuration; this.perfectCount = this.combat.perfectDodges;
     if (phase !== 'playing') this.enemySprites.stepFeedback(1);
     this.phase = phase;
+    this.updateMusic();
     this.impactTier = null; this.impactAge = FEEDBACK.cooldown;
     if (phase === 'victory') {
       this.victoryRevealing = true;
@@ -247,6 +256,7 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number): void {
+    this.updateMusic();
     this.audio.beginFrame();
     this.audio.charge(this.phase === 'playing' && !this.combat.bossTransforming && this.combat.hp > 0 && this.combat.chargedShots > 0 && (this.touch.enabled ? this.touch.charging : this.armedSpecials.has('charged')));
     this.reticle.setVisible(this.phase === 'playing' && (this.touch.enabled || this.input.isOver));
@@ -319,6 +329,15 @@ export class ArenaScene extends Phaser.Scene {
     this.onCombatChange(this.combat);
     this.vessel.render(this.combat, this.cosmetic);
     if (this.run.result) this.vessel.finish();
+  }
+
+  musicStats() { return this.music?.stats(); }
+
+  private updateMusic(): void {
+    const boss = this.combat.enemies.find(enemy => enemy.kind === 'boss' && enemy.hp > 0);
+    this.music?.update(musicState({ phase: this.phase, elapsed: this.run.elapsed,
+      anomaly: !!this.combat.anomaly.active, boss: !!boss, enraged: !!boss?.enraged }),
+      !['playing', 'victory', 'defeat'].includes(this.phase) || this.sound.locked);
   }
 
   private updateDesktopAim(): void {

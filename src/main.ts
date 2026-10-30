@@ -1,3 +1,4 @@
+import { musicPlaytest } from './musicPlaytest';
 import { renderCodex, challengeMarkup, summaryMarkup, nextGoal } from './ui/CollectionPanels';
 import { ascensionAvailable } from './game/ascension';
 import { beginLegacy, chooseLegacy, chooseAnomaly } from './game/legacy';
@@ -481,3 +482,5 @@ for (const id of ['mute', 'volume', 'cosmetic', 'desktop-auto-aim', 'auto-aim-pr
   });
 }
 window.addEventListener('pagehide', () => { if (!buildTrial) progression.observe(arena.combat, arena.run.result, runSummary()); persist(); });
+
+if (new URLSearchParams(location.search).get('playtest') === 'music') musicPlaytest(arena);
