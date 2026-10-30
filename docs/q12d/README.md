@@ -1,6 +1,12 @@
 # Q12D Phase B — Production & Mixing
 
-**AWAITING USER MUSIC PRODUCTION APPROVAL — Q12D PHASE B**. User đã duyệt Phase A V2 (`a7ba63c`) và giao Phase B riêng ngày 2026-10-30. Review branch `q12d-phase-b` từ `bc54edd`; không thay main/Pages. Các gate “không Phase B” trong hồ sơ Phase A bên dưới đã được yêu cầu mới supersede, chỉ trong scope production này. Không Phase C/Q12E/integration/DDR. Balance `651e3bf` vẫn chờ playtest riêng.
+**ACCEPTED — USER MUSIC PRODUCTION APPROVAL — Q12D PHASE B**. User đã duyệt Phase A V2 (`a7ba63c`) và giao Phase B riêng ngày 2026-10-30. Review branch `q12d-phase-b` từ `bc54edd`; không thay main/Pages. Các gate “không Phase B” trong hồ sơ Phase A bên dưới đã được yêu cầu mới supersede, chỉ trong scope production này. Không Phase C/Q12E/integration/DDR. Balance `651e3bf` vẫn chờ playtest riêng.
+
+## User production approval
+
+User xác nhận **“oki dc r”** ngày2026-10-30 trong hội thoại hiện tại (không có permalink), sau bàn giao production commit `fe7438d` trên `q12d-phase-b` và [artifact A/B Phase B](https://av-run.ngantnk.workers.dev/s/5Vpnib8BraJBZAWL5Jhi-A), version1 `b2859408-03cb-4c33-8eed-1ec9b36b59a6`. Đây là approval trực tiếp cho production/mixing Phase B, không suy từ tests; giữ approval composition Phase A V2 `a7ba63c`. Gate chờ production approval đã hoàn tất, không yêu cầu duyệt lại.
+
+Lượt ghi nhận chỉ sửa README/HANDOFF, không đổi renderer/presets/assets/audition hoặc artifact. Nhãn chờ duyệt trong audition/bundle là snapshot trước approval này. Không chạy lại build/tests hoặc deploy; không suy thêm coverage Safari/iOS, thiết bị thật, số vòng nghe hoặc từng mục checklist từ xác nhận chung. Không tích hợp runtime, không mở Phase C/Q12E, không ghi DDR Approved; balance `651e3bf` vẫn chờ playtest riêng.
 
 ## Phạm vi và thiết kế bất biến
 
@@ -57,7 +63,7 @@ URL `http://localhost:5174/docs/q12d/index.html`. Production check rerender B đ
 
 A/B selector đổi presets/export và restart cùng downbeat, không loudness matching; nghe cùng slider. Nút tên stem solo playback; controls Mute/Solo độc lập cho từng stem trong combo, hỗ trợ nhiều solo. Stop all dừng nhạc và SFX; tab hidden/pagehide dừng và không tự resume. Combat, Perfect Dodge (chuỗi proc gốc có dash→perfect), Arrival Q8C+crowd chạy accepted fixture gốc, không viết progression/localStorage/IndexedDB.
 
-Checklist nghe production, không yêu cầu duyệt lại composition A:
+Checklist tham khảo của lượt review production đã được user duyệt ở trên; không yêu cầu duyệt lại Phase A/B:
 
 - [ ] Cùng slider A→B: Base riêng, kiểm bass/kick tách rõ, snare/backbeat và hats không mệt; motif còn rõ.
 - [ ] Mỗi tổ hợp Base+Tension, Base+Anomaly, đủ3layer, Boss+Enraged nghe **ít nhất2vòng core (~50s/tổ hợp)**. Chú ý biên8→9 và16→1; không click/hụt/drift, không layer che nhau.
@@ -65,13 +71,13 @@ Checklist nghe production, không yêu cầu duyệt lại composition A:
 - [ ] Boss+Enraged, lần lượt bật Combat, Perfect Dodge, Arrival; warning và phản hồi chiến đấu vẫn rõ. Nghe cả Victory/Defeat.
 - [ ] Play/Stop, đổi A/B/đổi bài nhanh, mute, chuyển tab rồi quay lại phải đứng im; phát lại cần gesture. Kiểm Safari/iPhone thật: FLAC hoặc WAV fallback decode, không drift qua2vòng.
 
-Phản hồi: bài/tổ hợp, A/B, bar/timestamp, điều nghe được và loa/browser. **Human multi-loop listening, Safari/iOS, Firefox và thiết bị thật chưa thực hiện trong môi trường này**. Các ô trên để trống có chủ đích; không suy sound quality từ signal/automation.
+Phản hồi: bài/tổ hợp, A/B, bar/timestamp, điều nghe được và loa/browser. **Human multi-loop listening, Safari/iOS, Firefox và thiết bị thật chưa thực hiện trong môi trường này**. Các ô trên giữ trống vì chưa có báo cáo từng bước/device; approval production trực tiếp đã được ghi ở trên, không suy chi tiết coverage từ approval chung.
 
 ## Validation và giới hạn browser
 
 Typecheck/game build và isolated review build PASS (warning Phaser chunk lớn kế thừa). Focused checks là validator, production-check và browser-b-check; không chạy gameplay regression vì không đổi gameplay. Chromium kiểm WAV/FLAC7piece ở44.1/48kHz sample-equivalent, A/B7piece, 4combo cùng timestamp/ratio2:1, mỗi combo chạy>2coreloops, WAV fallback sau FLAC decode lỗi, solo/mute, rapid switch/Stop, user gesture/no autoplay, hidden-event stop/no resume, SFX thật, vi/en,4viewport/no overflow/pageerror/storage writes. Visibility được phát event có kiểm soát; tab inactive/device background thực vẫn cần manual review. Headless chạy transport không phải nghe âm thanh.
 
-Web Audio + FLAC được hỗ trợ trong Chromium và Safari hiện đại theo format; WAV PCM là fallback dự kiến cho Safari. **Safari NOT RUN, không PASS**; không có Safari/WebKit/device để xác nhận decode fallback/gesture/background. Không đo latency/FPS/thermal, acoustic loudness hay LUFS; RMS không phải perceived loudness. Chờ user music production approval rồi dừng, không Phase C/Q12E.
+Web Audio + FLAC được hỗ trợ trong Chromium và Safari hiện đại theo format; WAV PCM là fallback dự kiến cho Safari. **Safari NOT RUN, không PASS**; không có Safari/WebKit/device để xác nhận decode fallback/gesture/background. Không đo latency/FPS/thermal, acoustic loudness hay LUFS; RMS không phải perceived loudness. User đã duyệt production theo ghi nhận ở trên; dừng sau Phase B, không Phase C/Q12E.
 
 ---
 
