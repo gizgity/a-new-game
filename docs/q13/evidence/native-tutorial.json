@@ -1,0 +1,26 @@
+[
+  {
+    "touch": true,
+    "completed": true,
+    "errors": [],
+    "totals": {
+      "kills": 0,
+      "detonations": 0,
+      "perfectDodges": 0,
+      "victories": 0,
+      "runs": 0
+    }
+  },
+  {
+    "touch": false,
+    "completed": true,
+    "errors": [],
+    "totals": {
+      "kills": 0,
+      "detonations": 0,
+      "perfectDodges": 0,
+      "victories": 0,
+      "runs": 0
+    }
+  }
+]

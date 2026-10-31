@@ -11,9 +11,9 @@ for(const [width,height,touch]of(process.env.FIXTURES_ONLY?[]:[[320,740,true],[3
  await p.locator('#primary').click();await read(p);const before=await read(p);assert.equal(before.profile.legacy.ticket.firstRun,false);
  // Hold before transition: entering choice cancels armed release and requires a fresh selection.
  const cdp=await p.context().newCDPSession(p);
- if(touch){const box=await p.locator('[data-action=heavy]').boundingBox();await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:box.x+box.width/2,y:box.y+box.height/2,id:1}]});}else await p.keyboard.down('Shift');
+ if(touch){const box=await p.locator('[data-action=heavy]').boundingBox();await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:box.x+box.width/2,y:box.y+box.height/2,id:1}]});}else await p.keyboard.down('r');
  await reach(p);assert.equal((await read(p)).phase,'anomaly');assert.equal(await p.locator('[data-choice]').count(),2);assert.equal(await p.locator('#pause').isDisabled(),true);
- if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});else await p.keyboard.up('Shift');
+ if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});else await p.keyboard.up('r');
  const paused=await read(p);await p.evaluate(async()=>{const {arena}=await import('/a-new-game/src/main.ts');for(let i=0;i<60;i++)arena.update(0,1000/60);});assert.equal((await read(p)).ticks,paused.ticks);assert.equal((await read(p)).hp,paused.hp);
  await p.keyboard.press('Escape');assert.equal((await read(p)).phase,'anomaly');
  await p.selectOption('#locale','en');assert.match(await p.locator('#draft-panel').textContent(),/Benefit:/);await p.selectOption('#locale','vi');

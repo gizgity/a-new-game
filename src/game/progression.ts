@@ -10,6 +10,7 @@ export const UNLOCKS = ['firstBlood', 'chainApprentice', 'dodgeMaster', 'wardenB
 export type UnlockId = typeof UNLOCKS[number];
 export interface Profile {
   version: 3;
+  tutorialDone: boolean;
   collection: CollectionProgress;
   legacy: LegacyProgress;
   settings: { locale: 'vi' | 'en'; muted: boolean; volume: number; musicVolume: number; sfxVolume: number; reduceCameraShake: boolean; cosmetic: 'mint' | 'prism'; trail: SigilId | null; desktopAutoAim: boolean; autoAimPriority: AutoAimPriority };
@@ -21,7 +22,7 @@ type StorageAccess = Pick<Storage, 'getItem' | 'setItem'>;
 const object = (value: unknown): Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const counter = (value: unknown): number => typeof value === 'number' && Number.isInteger(value) && value >= 0 ? Math.min(value, 1_000_000) : 0;
 export function defaultProfile(): Profile {
-  return { version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, musicVolume: 1, sfxVolume: 1, reduceCameraShake: typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches, cosmetic: 'mint', trail: null, desktopAutoAim: false, autoAimPriority: 'nearest' },
+  return { tutorialDone: false, version: 3, collection: emptyCollection(), legacy: emptyLegacy(), settings: { locale: 'vi', muted: false, volume: 0.4, musicVolume: 1, sfxVolume: 1, reduceCameraShake: typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches, cosmetic: 'mint', trail: null, desktopAutoAim: false, autoAimPriority: 'nearest' },
     totals: { kills: 0, detonations: 0, perfectDodges: 0, victories: 0, runs: 0 }, unlocks: [], drafts: { previous: [], current: [], active: false } };
 }
 export function validateProfile(value: unknown): Profile {
@@ -46,6 +47,8 @@ export function validateProfile(value: unknown): Profile {
   const drafts = object(raw.drafts), ids: readonly BuildId[] = [...MUTATIONS, ...CURSES];
   const offered = (value: unknown) => ids.filter(id => Array.isArray(value) && value.includes(id));
   result.drafts = { previous: offered(drafts.previous), current: offered(drafts.current), active: drafts.active === true };
+  // Existing players are grandfathered in; new saves retain the explicit flag.
+  result.tutorialDone = raw.tutorialDone === true || result.totals.runs > 0 || result.totals.kills > 0 || result.legacy.nextRunId > 1;
   awardUnlocks(result);
   result.settings.cosmetic = settings.cosmetic === 'prism' && result.unlocks.includes('wardenBreaker') ? 'prism' : 'mint';
   return result;

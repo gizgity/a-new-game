@@ -46,7 +46,7 @@ for (const [width,height,touch] of [[1440,1000,false],[390,844,true]]) {
   else {
     assert.equal(result.marked,-Math.PI/2); assert.equal(result.archer,Math.PI/2);assert.equal(result.elite,Math.PI);assert.equal(result.nearest,0);
     // Actual keyboard events: hold does not attack, release captures fresh target.
-    for(const [key,action] of [['Shift','heavy'],['e','charged']]) {
+    for(const [key,action] of [['r','heavy'],['e','charged']]) {
       await page.keyboard.down(key);
       assert.equal(await page.evaluate(action=>window.a.pressed.has(action),action),false);
       await page.keyboard.up(key);

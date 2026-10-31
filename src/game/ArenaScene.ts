@@ -1,3 +1,4 @@
+import { Tutorial } from './Tutorial';
 import { AdaptiveMusic, musicState } from './AdaptiveMusic';
 import { FEEDBACK, type ImpactTier } from './config/feedback';
 import { impactOffset, canStartImpact } from './impactMotion';
@@ -30,6 +31,23 @@ export class ArenaScene extends Phaser.Scene {
   phase: Phase = 'ready';
   readonly combat = new CombatWorld(this.player);
   readonly run = new RunDirector(this.combat);
+  tutorial: Tutorial | null = null;
+  private tutorialStarting = false;
+
+  startTutorial(): void {
+    this.setPhase('ready');
+    this.tutorialStarting = true;
+    this.setPhase('playing');
+    this.tutorialStarting = false;
+  }
+
+  endTutorial(): void {
+    // Reset practice counters before observers can see the menu again.
+    this.run.start();
+    this.combat.enemies = [];
+    this.tutorial = null;
+    this.setPhase('ready');
+  }
   private anomalyVisual!: AnomalyVisual;
   private ascensionVisual!: AscensionVisual;
   private groundGraphics!: Phaser.GameObjects.Graphics;
@@ -50,7 +68,7 @@ export class ArenaScene extends Phaser.Scene {
   private shootHeld = false;
   private vessel!: PlayerVisual;
   private reticle!: Phaser.GameObjects.Graphics;
-  private keys!: Record<'W' | 'A' | 'S' | 'D' | 'SHIFT' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
+  private keys!: Record<'W' | 'A' | 'S' | 'D' | 'R' | 'SPACE' | 'E' | 'Q', Phaser.Input.Keyboard.Key>;
   private accumulator = 0;
   private impactAge = FEEDBACK.cooldown as number;
   private impactTier: ImpactTier | null = null;
@@ -106,21 +124,21 @@ export class ArenaScene extends Phaser.Scene {
     }
 
     this.touch.onCancel = () => this.combat.clearInput();
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,SHIFT,SPACE,E,Q') as typeof this.keys;
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D,R,SPACE,E,Q') as typeof this.keys;
     this.input.keyboard!.on('keydown-ESC', (event: KeyboardEvent) => {
       if (!event.repeat && (this.phase === 'playing' || this.phase === 'paused')) {
         this.setPhase(this.phase === 'playing' ? 'paused' : 'playing');
       }
     });
-    this.input.keyboard!.addCapture(['SPACE', 'SHIFT']);
-    for (const [key, action] of [['SPACE', 'dash'], ['SHIFT', 'heavy'], ['E', 'charged'], ['Q', 'ultimate']] as const) {
+    this.input.keyboard!.addCapture(['SPACE', 'R']);
+    for (const [key, action] of [['SPACE', 'dash'], ['R', 'heavy'], ['E', 'charged'], ['Q', 'ultimate']] as const) {
       this.input.keyboard!.on(`keydown-${key}`, (event: KeyboardEvent) => {
         if (event.repeat || this.phase !== 'playing') return;
         if (action === 'heavy' || action === 'charged') this.armedSpecials.add(action);
         else this.pressed.add(action);
       });
     }
-    for (const [key, action] of [['SHIFT', 'heavy'], ['E', 'charged']] as const) {
+    for (const [key, action] of [['R', 'heavy'], ['E', 'charged']] as const) {
       this.input.keyboard!.on(`keyup-${key}`, () => {
         if (!this.armedSpecials.delete(action) || this.phase !== 'playing') return;
         const pointer = this.input.activePointer;
@@ -190,6 +208,7 @@ export class ArenaScene extends Phaser.Scene {
       this.victoryRevealing = false;
       this.resultVisual.reset();
       this.run.start();
+      if (this.tutorialStarting) this.tutorial = new Tutorial(this.combat);
       this.music?.reset();
       this.vessel.reset(this.combat);
       this.trailVisual.reset(this.combat);
@@ -299,7 +318,8 @@ export class ArenaScene extends Phaser.Scene {
       const frozen = this.combat.hitstop > 0 || this.combat.bossTransforming;
       const bossBefore = this.run.bossDue;
       const eliteBefore = this.combat.enemies.some(enemy => enemy.kind === 'bulwark');
-      this.run.step(input, FIXED_STEP);
+      if (this.tutorial) this.tutorial.step(input, FIXED_STEP);
+      else this.run.step(input, FIXED_STEP);
       if (this.combat.perfectDodges > this.perfectCount) this.perfectAge = 0;
       this.perfectCount = this.combat.perfectDodges;
       const tier = this.combat.feedback;

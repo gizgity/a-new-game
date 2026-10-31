@@ -1,0 +1,37 @@
+{
+  "method": "Simulation only, seed808, production first-run pools refreshed through real progression, policy observed every300ms; no HP/resources/build/clock/offer grants. Not browser/human play.",
+  "result": "defeat",
+  "time": 232,
+  "hp": 0,
+  "kills": 1267,
+  "boss": {
+    "time": 222.45,
+    "kills": 1261
+  },
+  "drafts": [
+    {
+      "time": 20,
+      "id": "phantomEdge"
+    },
+    {
+      "time": 50,
+      "id": "volatileSoul"
+    },
+    {
+      "time": 85,
+      "id": "ironReversal"
+    },
+    {
+      "time": 120,
+      "id": "bloodReclaimer"
+    },
+    {
+      "time": 155,
+      "id": "volatileSoul"
+    },
+    {
+      "time": 190,
+      "id": "guardBreaker"
+    }
+  ]
+}

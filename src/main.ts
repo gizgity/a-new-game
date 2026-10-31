@@ -36,6 +36,7 @@ if (trailTrial) { profile.collection.sigilWins = [...SIGILS]; profile.settings.t
 const progression = new Progression(profile);
 setLocale(profile.settings.locale);
 let saveOK = true;
+let tutorialUIReady = false;
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <header class="masthead">
@@ -54,6 +55,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </button>
     </div>
   </header>
+    <aside id="tutorial" class="tutorial" hidden><p id="tutorial-text" role="status" aria-live="polite"></p><button id="tutorial-skip" class="secondary" data-i18n="tutorialSkip"></button></aside>
   <section class="arena-shell">
     <div id="game"></div>
     <div id="touch-controls" class="touch-controls" hidden></div>
@@ -77,6 +79,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <section id="run-recap"></section>
         <div id="seal-picker"></div><p id="seal-result" role="status"></p>
         <button id="primary" class="primary" disabled></button>
+        <button id="tutorial-menu-skip" class="secondary" data-i18n="tutorialSkip" hidden></button>
+        <button id="tutorial-replay" class="secondary" data-i18n="tutorialReplay" disabled></button>
         <button id="menu-build" class="secondary" data-i18n="hudBuildDetails" hidden></button>
         <details id="collection" class="collection"><summary data-i18n="legacyCollection"></summary><label><span data-i18n="qFilter"></span><select id="codex-filter"><option value="all" data-i18n="q_all"></option><option value="sigils" data-i18n="q_sigils"></option><option value="branches" data-i18n="q_branches"></option><option value="anomalies" data-i18n="q_anomalies"></option><option value="seals" data-i18n="q_seals"></option></select></label><div id="collection-list"></div></details>
         <details class="collection"><summary data-i18n="qChallenges"></summary><div id="challenge-list"></div></details>
@@ -164,6 +168,9 @@ function renderUI(phase: Phase = currentPhase): void {
   localeSelect.setAttribute('aria-label', t('language'));
   localeSelect.parentElement!.title = t('language');
   pause.disabled = phase !== 'playing' && phase !== 'paused';
+  document.querySelector<HTMLElement>('#tutorial-replay')!.hidden = phase === 'paused';
+  document.querySelector<HTMLElement>('#tutorial-menu-skip')!.hidden = !tutorialUIReady || !arena.tutorial || phase !== 'paused';
+  renderTutorial();
   document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || phase === 'anomaly' || buildDetailsOpen;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
   draftPanel.hidden = phase !== 'draft' && phase !== 'legacy' && phase !== 'anomaly';
@@ -330,8 +337,30 @@ document.querySelector('#history-reset')!.addEventListener('click',()=>{
   profile.collection.history=[];persist();renderCollection(currentPhase);
 });
 
+function renderTutorial(): void {
+  if (!tutorialUIReady) return;
+  const tutorial = arena.tutorial;
+  document.querySelector<HTMLElement>('#tutorial')!.hidden = !tutorial || currentPhase !== 'playing';
+  document.querySelector('#tutorial-text')!.textContent = tutorial && !tutorial.complete
+    ? `${tutorial.stepIndex + 1}/5 · ${t(`tutorial${tutorial.stepIndex}${touchControls.enabled ? 'Touch' : 'Desktop'}` as TranslationKey)}` : '';
+  document.querySelector<HTMLElement>('#run-clock')!.hidden = !!tutorial;
+  document.querySelector<HTMLElement>('.arena-shell')!.classList.toggle('in-tutorial', !!tutorial);
+}
+function finishTutorial(): void {
+  profile.tutorialDone = true;
+  arena.endTutorial();
+  persist();
+  renderUI('ready');
+  document.querySelector('#panel-body')!.textContent = t('tutorialDone');
+  primary.focus();
+}
+for (const id of ['tutorial-skip', 'tutorial-menu-skip']) document.querySelector(`#${id}`)!.addEventListener('click', finishTutorial);
+document.querySelector('#tutorial-replay')!.addEventListener('click', () => { arena.startTutorial(); });
+
 function renderCombatHUD(world: CombatWorld): void {
-  if (!buildTrial && progression.observe(world, arena.run.result, runSummary())) {
+  renderTutorial();
+  if (arena.tutorial?.complete) { finishTutorial(); return; }
+  if (!buildTrial && !arena.tutorial && currentPhase !== 'ready' && progression.observe(world, arena.run.result, runSummary())) {
     applySettings(); renderSettings(); persist();
   }
   const boss = world.enemies.find(enemy => enemy.kind === 'boss');
@@ -350,7 +379,7 @@ function renderCombatHUD(world: CombatWorld): void {
 }
 
 export const arena = new ArenaScene((phase) => {
-  if ((phase === 'playing' || phase === 'legacy') && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
+  if (!arena.tutorial && (phase === 'playing' || phase === 'legacy') && (currentPhase === 'ready' || currentPhase === 'victory' || currentPhase === 'defeat')) {
     hud.reset();
     if (trialBoss) {
       arena.combat.mutations = [...BOSS_PLAYTEST.mutations];
@@ -381,7 +410,7 @@ export const arena = new ArenaScene((phase) => {
   }
   if (phase === 'draft' || phase === 'victory' || phase === 'defeat') {
     if (phase === 'draft' && trialRoute) arena.run.draft = routeDraft(trialRoute, arena.run.draftKind, arena.combat.mutations, arena.combat.curses, arena.run.draft);
-    if (!buildTrial) {
+    if (!buildTrial && !arena.tutorial) {
       progression.observe(arena.combat, arena.run.result, runSummary());
       if (phase === 'draft') progression.offerDraft(arena.run.draft.map(o => o.id));
     }
@@ -391,7 +420,9 @@ export const arena = new ArenaScene((phase) => {
   renderUI(phase);
   persist();
 }, () => {
+  tutorialUIReady = true;
   primary.disabled = false;
+  document.querySelector<HTMLButtonElement>('#tutorial-replay')!.disabled = false;
   document.querySelector('canvas')?.setAttribute('aria-label', t(touchControls.enabled ? 'touchArenaLabel' : 'arenaLabel'));
   applySettings();
   renderSettings();
@@ -443,6 +474,7 @@ document.querySelector('#build-resume')!.addEventListener('click', () => {
 });
 
 primary.addEventListener('click', () => {
+  if (!buildTrial && !profile.tutorialDone && currentPhase === 'ready') { arena.startTutorial(); primary.blur(); return; }
   if (!buildTrial && currentPhase !== 'paused') {
     // Never leave a result before a complete durable snapshot exists.
     persist();

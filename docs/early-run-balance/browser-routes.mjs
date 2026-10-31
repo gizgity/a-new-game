@@ -38,7 +38,7 @@ try{
     if(!right){await page.mouse.down({button:'right'});right=true;}
     if(input.dash){await page.keyboard.down('Space');await page.waitForTimeout(80);await page.keyboard.up('Space');}
     if(Math.floor(s.time)>lastSpecial){
-     const key=s.charged>0?'e':s.surge>=100&&input.d<260?'q':s.heavy>0&&input.d<155?'Shift':null;
+     const key=s.charged>0?'e':s.surge>=100&&input.d<260?'q':s.heavy>0&&input.d<155?'r':null;
      if(key){await page.keyboard.down(key);await page.waitForTimeout(100);await page.keyboard.up(key);}lastSpecial=Math.floor(s.time);
     }
    }

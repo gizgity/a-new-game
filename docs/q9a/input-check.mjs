@@ -13,7 +13,7 @@ for(const touch of [true,false]){
  async function point(selector){const r=await p.locator(selector).boundingBox();return {x:r.x+r.width/2,y:r.y+r.height/2};}
  const before=await read();
  if(touch){const h=await point('[data-action=heavy]');await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...h,id:1}]});await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
- else {await p.keyboard.down('Shift');await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await p.keyboard.up('Shift');}
+ else {await p.keyboard.down('r');await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await p.keyboard.up('r');}
  await p.waitForTimeout(400);assert.equal((await read()).heavy,before.heavy-1);
  // Wait until Heavy recovery has ended, then exercise simultaneous movement and Basic fire.
  await p.waitForFunction(()=>!window.__q9Arena.combat.attack);const start=await read();
@@ -31,7 +31,7 @@ for(const touch of [true,false]){
   const lane=await p.evaluate(()=>{const a=document.querySelector('canvas').getBoundingClientRect(),b=document.querySelector('#combat-hud').getBoundingClientRect();return a.bottom<=b.top+1||a.top>=b.bottom-1||a.right<=b.left||a.left>=b.right;});assert.equal(lane,true);corners.push({x,y,hudOutsideCanvas:true});
  }
  await p.locator('#pause').click();const held=await read();
- if(!touch){await p.keyboard.down('Shift');await p.keyboard.up('Shift');}
+ if(!touch){await p.keyboard.down('r');await p.keyboard.up('r');}
  await p.locator('#primary').click();await p.waitForTimeout(200);assert.equal((await read()).heavy,held.heavy);
  assert.deepEqual(errors,[]);reports.push({touch,heavyHoldRelease:true,moveAndBasicFire:true,manualAim:!touch,pauseReleaseNoExtraHeavy:true,corners,errors});await p.close();
 }

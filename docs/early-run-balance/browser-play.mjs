@@ -27,7 +27,7 @@ while(Date.now()-started<210000){
   for(const key of held)if(!keys.has(key))await page.keyboard.up(key);for(const key of keys)if(!held.has(key))await page.keyboard.down(key);held=keys;
   if(s.aim){const rect=await page.locator('canvas').boundingBox();await page.mouse.move(Math.max(rect.x+2,Math.min(rect.x+rect.width-2,rect.x+s.aim.x)),Math.max(rect.y+2,Math.min(rect.y+rect.height-2,rect.y+s.aim.y)));}
   if(!mouseHeld){await page.mouse.down({button:'left'});await page.mouse.down({button:'right'});mouseHeld=true;}
-  if(Math.floor(s.time/3)>lastSpecial){await page.keyboard.press('Shift');await page.keyboard.press('q');lastSpecial=Math.floor(s.time/3);}
+  if(Math.floor(s.time/3)>lastSpecial){await page.keyboard.press('r');await page.keyboard.press('q');lastSpecial=Math.floor(s.time/3);}
  }
  await page.waitForTimeout(300);
 }

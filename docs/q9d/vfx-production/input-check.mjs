@@ -13,7 +13,7 @@ for(const touch of [true,false]){
  const point=async selector=>{const r=await p.locator(selector).boundingBox();return {x:r.x+r.width/2,y:r.y+r.height/2};};
  const before=await read();assert.equal(before.active,'staticField');
  if(touch){const h=await point('[data-action=heavy]');await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...h,id:1}]});await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
- else{await p.keyboard.down('Shift');await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await p.keyboard.up('Shift');}
+ else{await p.keyboard.down('r');await p.waitForTimeout(150);assert.equal((await read()).heavy,before.heavy);await p.keyboard.up('r');}
  await p.waitForFunction(n=>fixture.combat.heavyCharges===n,before.heavy-1);await p.waitForFunction(()=>!fixture.combat.attack);
  const start=await read();
  if(touch){const s=await point('[data-action=shoot]'),pad=await point('#move-stick');await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...s,id:2},{...pad,id:3}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{...s,id:2},{x:pad.x+35,y:pad.y,id:3}]});await p.waitForFunction(({x,shots})=>fixture.player.x>x&&fixture.combat.stats.shots>shots,start);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}

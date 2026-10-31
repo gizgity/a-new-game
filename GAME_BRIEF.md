@@ -64,7 +64,7 @@ Chưa tự PASS từ yêu cầu này; kiểm khi user giao implementation/milest
 Chưa tự PASS vì game boot hoặc mobile đã đạt:
 
 - Viewport desktop1440 và cửa sổ nhỏ/resized: HUD/layout tận dụng không gian desktop, chữ/resource/target/cue đọc rõ; không kéo giãn nút mobile lên, không overlay canvas/cắt panel. Kiểm camera follow/bounds và player4góc, crowd/Boss như mobile.
-- WASD + mouse aim đồng thời chính xác theo tọa độ world; left/right hold, E/Shift giữ–thả, Space/Q/Esc phản hồi đúng thời điểm input và resource, không thêm delay/deadzone theo touch. Mouse hướng tay/manual aim không bị auto-aim ghi đè; không kẹt phím/chuột sau focus loss/pause/Draft hoặc giữ phím qua transition.
+- WASD + mouse aim đồng thời chính xác theo tọa độ world; left/right hold, E/R giữ–thả, Space/Q/Esc phản hồi đúng thời điểm input và resource, không thêm delay/deadzone theo touch. Mouse hướng tay/manual aim không bị auto-aim ghi đè; không kẹt phím/chuột sau focus loss/pause/Draft hoặc giữ phím qua transition.
 - Kiểm riêng click/release/cancel/fresh-press và keyboard focus trong menu/Draft; cùng target selection/range, geometry telegraph, VFX, readability và Boss timing như luật chung. Không suy precision/feel từ việc render được canvas.
 - Có evidence keyboard/mouse playtest và responsiveness/performance trên desktop/browser thực được ghi rõ; screenshot chỉ chứng minh bố cục, không chứng minh độ trễ/FPS/combat feel. Kết luận experience acceptance desktop riêng với mobile, do user xác nhận trong scope thử.
 
@@ -95,7 +95,7 @@ Dùng cùng seed/fixture/state và input gameplay tương đương để so lu�
 | Left Click | Melee combo |
 | Right Click | Infinite Basic Shot |
 | Giữ/thả E | Ngắm / bắn một Charged Shot |
-| Giữ/thả Shift | Ngắm / dùng một lượt Heavy |
+| Giữ/thả R | Ngắm / dùng một lượt Heavy |
 | Space | Dash |
 | Q | Surge Ultimate |
 | Esc | Pause |
@@ -405,7 +405,7 @@ Triển khai **tuần tự Q5A→Q5B→Q5C→Q5D→Q5E**, không làm song song 
 | Q5D — Weighted Adaptive Draft + anti-repetition | Triển khai sampling, signals, seed debug, offered-history và lý do vi/en; không đổi hiệu ứng build để chữa phân bố draft. | Chơi run thiên melee, ranged, Perfect và Juggernaut; ở các draft theo bảng Q8B hiện hành (lịch sử Q5D OR cũ superseded), lý do phù hợp hiệu quả; wildcard mở hướng khác. Run kế ít lặp hơn nhưng không loại sạch pool. Kiểm giữ/đổi Curse và pool nhỏ; user xác nhận có lựa chọn đáng cân nhắc, không còn cảm giác ba option cố định. |
 | Q5E — Playtest build diversity & balance | Tuning **chỉ defaults Q5** dựa feedback, không thêm nội dung; giữ checkpoints đã accepted trừ chỉnh Q5 được user đồng ý. | Thử ít nhất bốn build đại diện: Juggernaut; Catalyst+Reclaimer/Parasitic sustain; Phantom/Static+Ghost phản công; Specialist/Echo+Glass hoặc Volatile ranged/chain. Mỗi build đi từ draft tới Elite/Boss hoặc ghi rõ lý do chết; có điểm mạnh/yếu khác nhau, baseline run không build không bị sửa. User duyệt survivability, rủi ro, nhịp build và readability mobile/desktop; không yêu cầu mọi build thắng mọi run. |
 
-Bàn giao từng checkpoint phải có version/link và cách vào build/tình huống cụ thể: fixture có seed/build preset riêng chỉ phục vụ kiểm tương tác; run thật theo milestone để kiểm draft/độ khó. Hướng dẫn mobile (Chém/Bắn giữ, Heavy/Charged giữ-thả, Dash) và desktop (chuột trái/phải, Shift/E giữ-thả, Space) chỉ các thao tác cần cho scenario. Ghi rõ phần đã kiểm tự động, phần cần cảm nhận/thiết bị thật; nhận feedback theo bước gặp lỗi, quan sát, thiết bị/browser. Không yêu cầu duyệt lại Q1–Q4.
+Bàn giao từng checkpoint phải có version/link và cách vào build/tình huống cụ thể: fixture có seed/build preset riêng chỉ phục vụ kiểm tương tác; run thật theo milestone để kiểm draft/độ khó. Hướng dẫn mobile (Chém/Bắn giữ, Heavy/Charged giữ-thả, Dash) và desktop (chuột trái/phải, R/E giữ-thả, Space) chỉ các thao tác cần cho scenario. Ghi rõ phần đã kiểm tự động, phần cần cảm nhận/thiết bị thật; nhận feedback theo bước gặp lỗi, quan sát, thiết bị/browser. Không yêu cầu duyệt lại Q1–Q4.
 
 ### Các quyết định được duyệt cùng contract (defaults còn cần playtest)
 
