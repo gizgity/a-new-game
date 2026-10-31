@@ -1,6 +1,12 @@
 # Q13 Follow-up — Tutorial + Heavy R
 
-**AWAITING USER PLAYTEST APPROVAL** — revision feedback `26b9736`, [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) **completed/SUCCESS**, job124407972879 build/typecheck/upload/Deploy SUCCESS. Bản trước `a722d03`, Pages41151759487 SUCCESS, chưa được user accepted. Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
+**ACCEPTED — USER PLAYTEST APPROVAL** — revision feedback `26b9736`, [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) **completed/SUCCESS**, job124407972879 build/typecheck/upload/Deploy SUCCESS. Bản trước `a722d03`, Pages41151759487 SUCCESS, chưa được user accepted. Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
+
+## User approval — 2026-10-31
+
+User xác nhận **“q đã đạt”** ngày **2026-10-31** trong hội thoại hiện tại (không có permalink), ngay sau bàn giao Q13 revision **26b9736** (handoff **a94d98d**), [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) completed/SUCCESS.
+
+Đây là approval trực tiếp cho Q13 và bản sửa feedback Dash, không suy từ tests/deploy. Giữ giới hạn browser run chưaBoss/Victory, simulationthuaBoss, device/iOS/Safari/latency/FPS và liveHTTP/hashverification như báo cáo; không suy user đã kiểm từng mục/device riêng. Giữ Q12A–E/các approval cũ và gate balance651e3bf riêng. Lượt ghi nhận chỉ Markdown, không runtime/build/tests/deploy.
 
 ## Feedback — Dash trở về menu quá đột ngột (2026-10-31)
 
@@ -45,8 +51,8 @@ Revision feedback `26b9736`:
 - Chưa liveHTTP/hash verification của Pages từ môi trường; preview dist PASS không thay live verification.
 - Chưa thiết bị thật, Safari/iOS/Firefox, FPS/thermal/latency hoặc acoustic listening; software WebGL không chứng minh các mục này. Build/deploy không là user acceptance.
 
-## User playtest
+## Checklist playtest đã bàn giao (tham chiếu)
 
 Bản gốc đã push main fast-forward `a722d03`; [Pages41151759487](https://github.com/gizgity/a-new-game/actions/runs/41151759487) **completed/SUCCESS**, job124389653424 npmci/build/typecheck/upload/Deploy. [Chơi bản sửa26b9736](https://gizgity.github.io/a-new-game/?v=26b9736) — Pages41157677678 SUCCESS. Trên save cũ chọn **Chơi lại hướng dẫn / Replay Tutorial** trong menu; save mới Bắt đầu tự vào bài. Thử 5 bước bằng WASD/chuột/R/Space hoặc joystick/nút cảm ứng: chỉ hành động đúng chuyển bài, R/nút Heavy thả mới ra đòn, Shift không Heavy; bài Dash có hướng dẫn Perfect Dodge. Sau Dash, đợi động tác kết thúc→bảng Hoàn tất vẫn hiện; Space/Esc không đóng bảng, chỉ Hoàn tất · Về menu mới rời bài. Thử Skip/Replay/refresh, kiểm bài tập không tăng runs/rewards/history và run thật chỉ bắt đầu sau khi kết thúc bài. Xác nhận cảm giác thao tác/readability trên thiết bị thật; phản hồi bước/tình huống, quan sát và thiết bị/browser.
 
-Dừng **AWAITING USER PLAYTEST APPROVAL**. Không tự mở milestone mới.
+Q13 **ACCEPTED — USER PLAYTEST APPROVAL**. Dừng, chờ yêu cầu mới; không tự mở milestone tiếp theo.
