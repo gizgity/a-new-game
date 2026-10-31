@@ -8,13 +8,20 @@ try { for(const [width,height,touch] of [[320,740,true],[390,844,true],[844,390,
  const p=await browser.newPage({viewport:{width,height},hasTouch:touch});const errors=[];p.on('pageerror',e=>errors.push(e.stack));
  await p.goto('http://localhost:5173/a-new-game/');await p.locator('#primary:enabled').waitFor();
  await p.locator('#primary').click();assert.equal((await read(p)).step,0);
- const before=(await read(p)).profile;
+ const before=(await read(p)).profile;let lessonHeight;
  // UI and layout in both languages at each step; controlled real CombatWorld inputs.
  for(let step=0;step<5;step++){
-  for(const locale of ['vi','en']){await p.selectOption('#locale',locale);const box=await p.locator('#tutorial').boundingBox(),canvas=await p.locator('canvas').boundingBox();assert.ok(box.y+box.height<=canvas.y+1);assert.ok(box.x>=0&&box.x+box.width<=width);assert.ok((await p.locator('#tutorial-text').textContent()).startsWith(`${step+1}/5`));await p.screenshot({path:`docs/q13/evidence/${width}-${step}-${locale}.png`});}
+  for(const locale of ['vi','en']){await p.selectOption('#locale',locale);const box=await p.locator('#tutorial').boundingBox(),canvas=await p.locator('canvas').boundingBox();if(lessonHeight===undefined)lessonHeight=box.height;assert.equal(box.height,lessonHeight,'Lesson/locale must keep canvas height stable');assert.ok(box.y+box.height<=canvas.y+1);assert.ok(box.x>=0&&box.x+box.width<=width);assert.ok((await p.locator('#tutorial-title').textContent()).startsWith(`${step+1}/5`));await p.screenshot({path:`docs/q13/evidence/${width}-${step}-${locale}.png`});}
   await p.evaluate(async(step)=>{const {arena:a,game}=await import('/a-new-game/src/main.ts');game.loop.sleep();const idle={dx:0,dy:0,melee:false,shoot:false,heavy:false,dash:false};const field=['dx','melee','shoot','heavy','dash'][step];for(let i=0;i<180&&a.tutorial?.stepIndex===step;i++){const e=a.combat.enemies[0];if(e)a.player.angle=Math.atan2(e.y-a.player.y,e.x-a.player.x);a.tutorial?.step({...idle,[field]:field==='dx'?1:true},1/60);}a.update(0,1000/60);game.loop.wake();},step);
   if(step<4)assert.equal((await read(p)).step,step+1);
  }
+ await p.locator('#tutorial-complete').waitFor({state:'visible'});
+ assert.equal(await p.locator('#menu-panel').isVisible(),false);
+ assert.equal((await read(p)).step,5);assert.equal((await read(p)).phase,'paused');
+ for(const locale of ['vi','en']){await p.selectOption('#locale',locale);assert.ok((await p.locator('#tutorial-complete-title').textContent()).length>0);await p.screenshot({path:`docs/q13/evidence/completion-${width}-${locale}.png`});}
+ await p.keyboard.press('Escape');await p.keyboard.press('Space');await p.waitForTimeout(350);
+ assert.equal((await read(p)).phase,'paused');assert.equal((await read(p)).step,5);
+ await p.locator('#tutorial-finish').click();
  const finished=await read(p);assert.equal(finished.step,undefined);assert.equal(finished.profile.tutorialDone,true);for(const key of ['totals','legacy','drafts','collection','unlocks'])assert.deepEqual(finished.profile[key],before[key]);
  await p.reload();await p.locator('#primary:enabled').waitFor();await p.locator('#tutorial-replay').click();await p.locator('#tutorial-skip').click();assert.equal((await read(p)).profile.totals.runs,0);
  await p.locator('#primary').click();assert.equal((await read(p)).step,undefined);assert.equal((await read(p)).profile.totals.runs,1);

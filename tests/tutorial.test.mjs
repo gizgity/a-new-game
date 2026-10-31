@@ -12,7 +12,11 @@ test('tutorial uses real movement, melee mark, shot detonation, Heavy and Dash i
  ticks({melee:true},15);assert.equal(t.stepIndex,2);
  ticks({},30);ticks({shoot:true},40);assert.equal(t.stepIndex,3);
  ticks({heavy:true},1);assert.equal(t.stepIndex,4);
- ticks({dash:true},1);assert.ok(t.complete);
+ const beforeDash={x:w.player.x,y:w.player.y};
+ ticks({dash:true},1);assert.equal(t.complete,false);assert.equal(t.stepIndex,5);assert.ok(w.dashTime>0);
+ ticks({},20);assert.ok(t.complete);assert.equal(w.dashTime,0);
+ assert.ok(Math.hypot(w.player.x-beforeDash.x,w.player.y-beforeDash.y)>80);
+ const done=JSON.stringify(w);ticks({melee:true,shoot:true},60);assert.equal(JSON.stringify(w),done);
  assert.equal(w.practice,false);
 });
 test('death restarts current practice step without advancing',()=>{

@@ -39,6 +39,8 @@ export class ArenaScene extends Phaser.Scene {
     this.tutorialStarting = true;
     this.setPhase('playing');
     this.tutorialStarting = false;
+    // Apply the banner layout now, before the first held input (not at the next scale poll).
+    if (this.scale.getParentBounds()) this.scale.refresh();
   }
 
   endTutorial(): void {
@@ -47,6 +49,7 @@ export class ArenaScene extends Phaser.Scene {
     this.combat.enemies = [];
     this.tutorial = null;
     this.setPhase('ready');
+    if (this.scale.getParentBounds()) this.scale.refresh();
   }
   private anomalyVisual!: AnomalyVisual;
   private ascensionVisual!: AscensionVisual;
@@ -204,6 +207,7 @@ export class ArenaScene extends Phaser.Scene {
   }
 
   setPhase(phase: Phase): void {
+    if (this.tutorial?.complete && phase === 'playing') return;
     if ((phase === 'playing' || phase === 'legacy') && (this.phase === 'ready' || this.phase === 'victory' || this.phase === 'defeat')) {
       this.victoryRevealing = false;
       this.resultVisual.reset();

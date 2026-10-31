@@ -55,7 +55,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </button>
     </div>
   </header>
-    <aside id="tutorial" class="tutorial" hidden><p id="tutorial-text" role="status" aria-live="polite"></p><button id="tutorial-skip" class="secondary" data-i18n="tutorialSkip"></button></aside>
+    <aside id="tutorial" class="tutorial" hidden><div role="status" aria-live="polite"><strong id="tutorial-title"></strong><p id="tutorial-text"></p></div><button id="tutorial-skip" class="secondary" data-i18n="tutorialSkip"></button></aside>
   <section class="arena-shell">
     <div id="game"></div>
     <div id="touch-controls" class="touch-controls" hidden></div>
@@ -67,6 +67,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     ${combatHUDMarkup()}
     <div id="overlay" class="overlay">
       ${buildPanelMarkup()}
+      <section class="panel" id="tutorial-complete" aria-labelledby="tutorial-complete-title" hidden>
+        <h2 id="tutorial-complete-title" tabindex="-1" data-i18n="tutorialCompleteTitle"></h2>
+        <p class="panel-body" data-i18n="tutorialCompleteBody"></p>
+        <p class="panel-body" data-i18n="tutorialPerfectReminder"></p>
+        <button id="tutorial-finish" class="primary" data-i18n="tutorialReturnMenu"></button>
+      </section>
       <section class="panel" id="menu-panel" aria-labelledby="panel-title">
         <p id="result-banner" class="result-banner" hidden></p>
         <span class="panel-sigil" aria-hidden="true">◇</span>
@@ -167,11 +173,13 @@ function renderUI(phase: Phase = currentPhase): void {
   const localeSelect = document.querySelector<HTMLSelectElement>('#locale')!;
   localeSelect.setAttribute('aria-label', t('language'));
   localeSelect.parentElement!.title = t('language');
-  pause.disabled = phase !== 'playing' && phase !== 'paused';
+  const tutorialComplete = tutorialUIReady && !!arena.tutorial?.complete;
+  pause.disabled = tutorialComplete || phase !== 'playing' && phase !== 'paused';
+  document.querySelector<HTMLElement>('#tutorial-complete')!.hidden = !tutorialComplete;
   document.querySelector<HTMLElement>('#tutorial-replay')!.hidden = phase === 'paused';
   document.querySelector<HTMLElement>('#tutorial-menu-skip')!.hidden = !tutorialUIReady || !arena.tutorial || phase !== 'paused';
   renderTutorial();
-  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || phase === 'anomaly' || buildDetailsOpen;
+  document.querySelector<HTMLDivElement>('#menu-panel')!.hidden = phase === 'draft' || phase === 'legacy' || phase === 'anomaly' || buildDetailsOpen || tutorialComplete;
   const draftPanel = document.querySelector<HTMLDivElement>('#draft-panel')!;
   draftPanel.hidden = phase !== 'draft' && phase !== 'legacy' && phase !== 'anomaly';
   if (phase === 'draft') renderDraft();
@@ -183,11 +191,11 @@ function renderUI(phase: Phase = currentPhase): void {
   touchControls.translate();
   touchControls.setActive(phase === 'playing');
   // Only a newly visible panel resets scroll/focus; locale/settings rerenders retain it.
-  const panel = overlay.hidden ? null : buildDetailsOpen ? 'build' : phase;
+  const panel = overlay.hidden ? null : tutorialComplete ? 'tutorial-complete' : buildDetailsOpen ? 'build' : phase;
   if (panel !== visiblePanel) {
     visiblePanel = panel;
     if (panel && panel !== 'build') {
-      const container = document.querySelector<HTMLElement>(phase === 'draft' || phase === 'legacy' || phase === 'anomaly' ? '#draft-panel' : '#menu-panel')!;
+      const container = document.querySelector<HTMLElement>(tutorialComplete ? '#tutorial-complete' : phase === 'draft' || phase === 'legacy' || phase === 'anomaly' ? '#draft-panel' : '#menu-panel')!;
       container.scrollTop = 0;
       const title = container.querySelector<HTMLElement>('h2')!;
       title.tabIndex = -1;
@@ -341,8 +349,15 @@ function renderTutorial(): void {
   if (!tutorialUIReady) return;
   const tutorial = arena.tutorial;
   document.querySelector<HTMLElement>('#tutorial')!.hidden = !tutorial || currentPhase !== 'playing';
-  document.querySelector('#tutorial-text')!.textContent = tutorial && !tutorial.complete
-    ? `${tutorial.stepIndex + 1}/5 · ${t(`tutorial${tutorial.stepIndex}${touchControls.enabled ? 'Touch' : 'Desktop'}` as TranslationKey)}` : '';
+  const step = tutorial ? Math.min(tutorial.stepIndex, 4) : 0;
+  document.querySelector('#tutorial-title')!.textContent = tutorial
+    ? `${step + 1}/5 · ${t(`tutorialStep${step}` as TranslationKey)}` : '';
+  document.querySelector('#tutorial-text')!.textContent = tutorial
+    ? t(`tutorial${step}${touchControls.enabled ? 'Touch' : 'Desktop'}` as TranslationKey) : '';
+  const selector = ['#move-stick', '[data-action=melee]', '[data-action=shoot]', '[data-action=heavy]', '[data-action=dash]'][step];
+  document.querySelectorAll<HTMLElement>('#touch-controls button').forEach(button => {
+    button.classList.toggle('tutorial-target', !!tutorial && !tutorial.complete && currentPhase === 'playing' && button.matches(selector));
+  });
   document.querySelector<HTMLElement>('#run-clock')!.hidden = !!tutorial;
   document.querySelector<HTMLElement>('.arena-shell')!.classList.toggle('in-tutorial', !!tutorial);
 }
@@ -354,12 +369,19 @@ function finishTutorial(): void {
   document.querySelector('#panel-body')!.textContent = t('tutorialDone');
   primary.focus();
 }
-for (const id of ['tutorial-skip', 'tutorial-menu-skip']) document.querySelector(`#${id}`)!.addEventListener('click', finishTutorial);
+for (const id of ['tutorial-skip', 'tutorial-menu-skip', 'tutorial-finish']) document.querySelector(`#${id}`)!.addEventListener('click', finishTutorial);
 document.querySelector('#tutorial-replay')!.addEventListener('click', () => { arena.startTutorial(); });
 
 function renderCombatHUD(world: CombatWorld): void {
   renderTutorial();
-  if (arena.tutorial?.complete) { finishTutorial(); return; }
+  if (arena.tutorial?.complete) {
+    if (currentPhase === 'playing') {
+      profile.tutorialDone = true;
+      persist();
+      arena.setPhase('paused');
+    }
+    return;
+  }
   if (!buildTrial && !arena.tutorial && currentPhase !== 'ready' && progression.observe(world, arena.run.result, runSummary())) {
     applySettings(); renderSettings(); persist();
   }

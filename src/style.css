@@ -511,6 +511,16 @@ footer { display: none; }
 /* Tutorial lives in its own layout row, outside the gameplay viewport/HUD. */
 .in-tutorial .hud-milestones { display: none; }
 .tutorial { position: relative; flex-shrink: 0; z-index: 4; display: flex; gap: 8px; align-items: center; padding: 8px 12px; background: #101c29; border: 1px solid #66817f; }
-.tutorial p { margin: 0; flex: 1; font-size: 13px; line-height: 1.4; }
+.tutorial > div { flex: 1; min-width: 0; }
+.tutorial strong { display: block; margin-bottom: 3px; font-size: 13px; color: #9dffe2; }
+.tutorial p { margin: 0; font-size: 13px; line-height: 1.4; }
 .tutorial button { width: auto; min-height: 44px; margin: 0; }
 .tutorial[hidden] { display: none; }
+
+.touch-controls .tutorial-target { outline: 3px solid #9dffe2; outline-offset: 2px; }
+#tutorial-complete .panel-body + .panel-body { margin-top: 12px; }
+/* Keep lesson/locale changes from resizing the canvas and cancelling held input. */
+.tutorial { min-height: 168px; }
+@media (min-width: 360px) { .tutorial { min-height: 140px; } }
+@media (orientation: landscape) and (max-height: 600px) { .tutorial { min-height: 94px; } }
+@media (min-width: 900px) and (pointer: fine) { .tutorial { min-height: 88px; } }

@@ -25,6 +25,11 @@ export class Tutorial {
     const { x, y } = this.world.player;
     const detonations = this.world.detonations, heavy = this.world.heavyCharges, dashes = this.world.stats.dashes;
     this.world.step(input, dt);
+    // Let the final dash visibly finish before showing its completion screen.
+    if (this.stepIndex === 5) {
+      this.complete = this.world.dashTime <= 0;
+      return;
+    }
     this.distance += Math.hypot(this.world.player.x - x, this.world.player.y - y);
     const correct = [
       this.distance >= 65 && !!(input.dx || input.dy),
@@ -35,9 +40,8 @@ export class Tutorial {
     ][this.stepIndex];
     if (correct) {
       this.stepIndex++;
-      this.complete = this.stepIndex === 5;
       // Keep the melee mark so the next step can detonate it with a real shot.
-      if (!this.complete && this.stepIndex !== 2) this.resetStage();
+      if (this.stepIndex < 5 && this.stepIndex !== 2) this.resetStage();
       this.world.clearInput();
     } else if (this.world.hp <= 0) this.resetStage();
     else if (this.stepIndex > 0 && !this.world.enemies.length) this.target();
