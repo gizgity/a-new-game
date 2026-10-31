@@ -1,18 +1,18 @@
 # Q13 Follow-up — Tutorial + Heavy R
 
-**AWAITING USER PLAYTEST APPROVAL** — revision feedback đang chốt deploy. Bản trước `a722d03`, Pages41151759487 SUCCESS, chưa được user accepted. Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
+**AWAITING USER PLAYTEST APPROVAL** — revision feedback `26b9736`, [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) **completed/SUCCESS**, job124407972879 build/typecheck/upload/Deploy SUCCESS. Bản trước `a722d03`, Pages41151759487 SUCCESS, chưa được user accepted. Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
 
 ## Feedback — Dash trở về menu quá đột ngột (2026-10-31)
 
 User: “hướng dẫn chưa rõ ràng, vừa bấm nút dash đã văng trở lại menu”. Đây là lỗi flow của bản a722d03: Dash vừa được nhận đã đánh dấu hoàn tất rồi callback tự kết thúc tutorial trước khi người chơi thấy hết động tác.
 
-Revision feedback (đang chốt deploy):
+Revision feedback `26b9736`:
 
 - Đợi Dash thật chạy hết (`dashTime = 0`), sau đó freeze tutorial và mở **bảng Hoàn tất hướng dẫn riêng**. Bảng tổng kết5bài, nhắc cách Perfect Dodge và bài tập không tính progression.
 - Lưu `tutorialDone` khi đủ5bài và mở bảng, nên reload ở bảng hoàn tất không bắt học lại; không tạo run/reward/history.
 - Chỉ nút **Hoàn tất · Về menu / Finish · Return to menu** mới rời bảng. Space/Esc không đóng bảng hay resume combat; không tự đẩy về menu hoặc bắt đầu run. Skip vẫn chủ động thoát như trước.
 - Mỗi bài có số/tên riêng, nêu thao tác và dấu hiệu đạt; nút/joystick cần dùng trên touch có viền sáng. Vi/en đủ cả instructions và bảng kết thúc, reuse panel/CSS/control/art hiện hữu.
-- Regression focused: Dash chưa xong thì chưa complete, nhân vật di chuyển hết quãng Dash, world đứng sau complete. 33testfiles/typecheck/build PASS. Matrix320/390/844touch+1440desktop vi/en PASS, gồm chiều cao banner không đổi trên5bài×2locale, Dash→bảng riêng→Space/Esc vẫn ở bảng→click mới về menu. Native390touch/1440desktop vàdist390/1440 PASS; sau sync scale kiểm thêm single-hold ngay sau Bắt đầu.
+- Regression focused: Dash chưa xong thì chưa complete, nhân vật di chuyển hết quãng Dash, world đứng sau complete. 33testfiles/typecheck/build PASS. Matrix320/390/844touch+1440desktop vi/en PASS, gồm chiều cao banner không đổi trên5bài×2locale, Dash→bảng riêng→Space/Esc vẫn ở bảng→click mới về menu. Native390touch/1440desktop vàdist390/1440 PASS; sau sync scale single-hold ngay sau Bắt đầu cũng PASS, completion được lưu trước khi bấm rời bảng.
 - Native regression phát hiện đổi bài làm banner đổi chiều cao, canvas resize hủy Heavy giữ-thả. Cố định chiều cao banner theo breakpoint, kiểm chiều cao bằng nhau trên đủ5bài×2locale; giữ cancel/fresh-press cho resize thật. Lượt WASD giữ đầu tiên cũng từng bị scale poll trễ hủy khi mở banner: đồng bộ parent bounds/scale ngay trong start/end tutorial, trước input đầu tiên. Bỏ workaround nhấn/drag lại trong native test, kiểm single-hold ngay sau click bắt đầu. Không ghi các lượt native lỗi thành PASS.
 - Giữ balance/combat/audio/progression/DDR và mọi giới hạn full-run/device từ bản trước. Không gọi bản trước đã được user accepted.
 
@@ -47,6 +47,6 @@ Revision feedback (đang chốt deploy):
 
 ## User playtest
 
-Code đã push main fast-forward `a722d03`; [Pages41151759487](https://github.com/gizgity/a-new-game/actions/runs/41151759487) **completed/SUCCESS**, job124389653424 npmci/build/typecheck/upload/Deploy. [Chơi thử](https://gizgity.github.io/a-new-game/?v=a722d03). Trên save cũ chọn **Chơi lại hướng dẫn / Replay Tutorial** trong menu; save mới Bắt đầu tự vào bài. Thử 5 bước bằng WASD/chuột/R/Space hoặc joystick/nút cảm ứng: chỉ hành động đúng chuyển bài, R/nút Heavy thả mới ra đòn, Shift không Heavy; bài Dash có hướng dẫn Perfect Dodge. Thử Skip/Replay/refresh, kiểm bài tập không tăng runs/rewards/history và run thật chỉ bắt đầu sau khi kết thúc bài. Xác nhận cảm giác thao tác/readability trên thiết bị thật; phản hồi bước/tình huống, quan sát và thiết bị/browser.
+Bản gốc đã push main fast-forward `a722d03`; [Pages41151759487](https://github.com/gizgity/a-new-game/actions/runs/41151759487) **completed/SUCCESS**, job124389653424 npmci/build/typecheck/upload/Deploy. [Chơi bản sửa26b9736](https://gizgity.github.io/a-new-game/?v=26b9736) — Pages41157677678 SUCCESS. Trên save cũ chọn **Chơi lại hướng dẫn / Replay Tutorial** trong menu; save mới Bắt đầu tự vào bài. Thử 5 bước bằng WASD/chuột/R/Space hoặc joystick/nút cảm ứng: chỉ hành động đúng chuyển bài, R/nút Heavy thả mới ra đòn, Shift không Heavy; bài Dash có hướng dẫn Perfect Dodge. Sau Dash, đợi động tác kết thúc→bảng Hoàn tất vẫn hiện; Space/Esc không đóng bảng, chỉ Hoàn tất · Về menu mới rời bài. Thử Skip/Replay/refresh, kiểm bài tập không tăng runs/rewards/history và run thật chỉ bắt đầu sau khi kết thúc bài. Xác nhận cảm giác thao tác/readability trên thiết bị thật; phản hồi bước/tình huống, quan sát và thiết bị/browser.
 
 Dừng **AWAITING USER PLAYTEST APPROVAL**. Không tự mở milestone mới.
