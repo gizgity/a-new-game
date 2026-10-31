@@ -1,6 +1,6 @@
 # Q13 Follow-up — Tutorial + Heavy R
 
-**AWAITING USER PLAYTEST APPROVAL** (đang chốt deploy/SHA). Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
+**AWAITING USER PLAYTEST APPROVAL** — code `a722d03`, Pages41151759487 **completed/SUCCESS**, job124389653424 npmci/build/typecheck/upload/Deploy SUCCESS. Baseline latest main `0472c4a` ngày 2026-10-31. `docs/q13/` không tồn tại trên baseline; không có issue report Q13 cũ để đọc. Q13-001/002 được xử lý theo mô tả user và đối chiếu runtime.
 
 ## Thay đổi
 
@@ -28,10 +28,11 @@
 - Harness gọi Phaser `loop.start()` thiếu callback gây lỗi `this.callback is not a function`: sửa harness dùng sleep/wake, kiểm lại PASS. Controlled desktop aim từng bị pointer hiện tại ghi đè: sửa harness hướng đúng mục tiêu; native kiểm riêng.
 - Lượt natural browser đang chạy bị Vite reload khi source thay đổi, mất execution context; chạy lại sau khi source ổn định. Không ghi lượt gián đoạn thành PASS.
 - Native touch drag đầu bị lifecycle resize hủy contact (đúng cancel contract); harness thử lại swipe và chờ layout ổn định. Kết quả cuối ghi dưới, không coi controlled matrix thay cho native input.
+- Chưa liveHTTP/hash verification của Pages từ môi trường; preview dist PASS không thay live verification.
 - Chưa thiết bị thật, Safari/iOS/Firefox, FPS/thermal/latency hoặc acoustic listening; software WebGL không chứng minh các mục này. Build/deploy không là user acceptance.
 
 ## User playtest
 
-Link/SHA/deploy sẽ ghi cuối sau workflow. Trên save cũ chọn **Chơi lại hướng dẫn / Replay Tutorial** trong menu; save mới Bắt đầu tự vào bài. Thử 5 bước bằng WASD/chuột/R/Space hoặc joystick/nút cảm ứng: chỉ hành động đúng chuyển bài, R/nút Heavy thả mới ra đòn, Shift không Heavy; bài Dash có hướng dẫn Perfect Dodge. Thử Skip/Replay/refresh, kiểm bài tập không tăng runs/rewards/history và run thật chỉ bắt đầu sau khi kết thúc bài. Xác nhận cảm giác thao tác/readability trên thiết bị thật; phản hồi bước/tình huống, quan sát và thiết bị/browser.
+Code đã push main fast-forward `a722d03`; [Pages41151759487](https://github.com/gizgity/a-new-game/actions/runs/41151759487) **completed/SUCCESS**, job124389653424 npmci/build/typecheck/upload/Deploy. [Chơi thử](https://gizgity.github.io/a-new-game/?v=a722d03). Trên save cũ chọn **Chơi lại hướng dẫn / Replay Tutorial** trong menu; save mới Bắt đầu tự vào bài. Thử 5 bước bằng WASD/chuột/R/Space hoặc joystick/nút cảm ứng: chỉ hành động đúng chuyển bài, R/nút Heavy thả mới ra đòn, Shift không Heavy; bài Dash có hướng dẫn Perfect Dodge. Thử Skip/Replay/refresh, kiểm bài tập không tăng runs/rewards/history và run thật chỉ bắt đầu sau khi kết thúc bài. Xác nhận cảm giác thao tác/readability trên thiết bị thật; phản hồi bước/tình huống, quan sát và thiết bị/browser.
 
 Dừng **AWAITING USER PLAYTEST APPROVAL**. Không tự mở milestone mới.

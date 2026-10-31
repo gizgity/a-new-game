@@ -10,9 +10,9 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**Q13 Follow-up — Tutorial + Heavy R — đang validation/deploy, dừng AWAITING USER PLAYTEST APPROVAL.** User giao ngày2026-10-31, baseline latest main0472c4a. Goal: Heavy desktop Shift→R giữ-thả; tutorial gameplay thật5bước, Skip/Replay, lưu trạng thái bằng save hiện hữu, không run/reward/history/progression; sửa hướng dẫn Boss/Perfect Dodge vi/en mobile/desktop. Không balance/combat mechanics/art/framework/audioQ12/progression economy/DDR/milestone mới.
+**Q13 Follow-up — Tutorial + Heavy R — **DEPLOYED — AWAITING USER PLAYTEST APPROVAL**, code a722d03, [Pages41151759487](https://github.com/gizgity/a-new-game/actions/runs/41151759487) completed/SUCCESS (job124389653424, npmci/build/typecheck/upload/Deploy). [Chơi thử](https://gizgity.github.io/a-new-game/?v=a722d03).** User giao ngày2026-10-31, baseline latest main0472c4a. Goal: Heavy desktop Shift→R giữ-thả; tutorial gameplay thật5bước, Skip/Replay, lưu trạng thái bằng save hiện hữu, không run/reward/history/progression; sửa hướng dẫn Boss/Perfect Dodge vi/en mobile/desktop. Không balance/combat mechanics/art/framework/audioQ12/progression economy/DDR/milestone mới.
 
-Đã triển khai; build/typecheck và33testfiles PASS. Chromium320/390/844touch+1440desktop vi/en5bài/Skip/Replay/reload/isolation/Rrelease-cancel/Shiftnegative/touchHeavy PASS. Native tutorial390touch/1440desktop5bài bằng input thật PASS, totals0; dist390/1440 PASS. Browser run tự nhiên thua79.417s/384kills,2Draft/1Perfect, chưaBoss/Victory; simulation tự nhiên tớiBoss222.45s rồi thua232s, chưaVictory. Baseline không códocs/q13, đã tạo [FOLLOWUP](docs/q13/FOLLOWUP.md) ghi implementation/evidence/lỗi và checklistplaytest. Chưa devices/iOS/Safari/humanfeel.
+Đã triển khai; build/typecheck và33testfiles PASS. Chromium320/390/844touch+1440desktop vi/en5bài/Skip/Replay/reload/isolation/Rrelease-cancel/Shiftnegative/touchHeavy PASS. Native tutorial390touch/1440desktop5bài bằng input thật PASS, totals0; dist390/1440 PASS. Browser run tự nhiên thua79.417s/384kills,2Draft/1Perfect, chưaBoss/Victory; simulation tự nhiên tớiBoss222.45s rồi thua232s, chưaVictory. Baseline không códocs/q13, đã tạo [FOLLOWUP](docs/q13/FOLLOWUP.md) ghi implementation/evidence/lỗi và checklistplaytest. Chưa devices/iOS/Safari/humanfeel hoặc liveHTTP/hashverification. Lỗi/workaround đều ghi FOLLOWUP; commit bàn giao cuối chỉMarkdown, khôngredeploy.
 
 Q12E vẫn **ACCEPTED — USER PLAYTEST APPROVAL**, user “oki r”2026-10-30 trên0859d08/08d7a11, Pages41081881459SUCCESS. Giữ Q12A–D accepted và gatebalance651e3bf riêng. Scope mới của user supersede gate lịch sử “không Q13” chỉ trong follow-up đã giao.
 
@@ -179,7 +179,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Hoàn tất native tutorial/full-run attempt, ghi kết quả thật và lỗi vào docs/q13/FOLLOWUP.md; commit/push main không force, theo dõi Pages đến kết thúc, cập nhật link/version rồi dừng **AWAITING USER PLAYTEST APPROVAL**. Không tự mở milestone mới.
+Dừng **AWAITING USER PLAYTEST APPROVAL**. User mở menu→Chơi lại hướng dẫn (save cũ), hoặc Bắt đầu (save mới), thử5bước vàSkip/Replay; R giữ-thả/ShiftkhôngHeavy, touch tương đương, tutorial không tăng runs/rewards/history. Gửi bước/quan sát/thiếtbị-browser nếu lỗi. Chưa full-run browser tớiBoss/Victory hoặc coverage thiết bị thật; không tựaccepted. Không tự mở milestone mới.
 
 ## VALIDATION APPROVAL Q12D PHASE B
 Chỉ sửa README/HANDOFF ghi quote/ngày/commit/artifact và kiểm diff/tính nhất quán. Giữ signal/deterministic/grid/FLAC exactPCM/hash/protected paths/4×peak, typecheck/build/reviewbuild và Chromium PASS từ fe7438d; không chạy lại tests/build hoặc deploy, không suy coverage mới từ approval chung.
