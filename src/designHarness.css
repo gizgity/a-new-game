@@ -17,3 +17,7 @@ iframe { display: block; border: 0; width: 100%; height: 100vh; height: 100dvh; 
   .previews { grid-template-columns: minmax(0, 1fr); padding: 0; gap: 16px; }
   h2, .metadata { padding-left: 12px; padding-right: 12px; }
 }
+
+.playback { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 0 8px; }
+.playback [aria-pressed="true"] { border-color: #9dffe2; background: #243b42; }
+@media (max-width: 900px) { .playback { padding: 0 12px 8px; } }
