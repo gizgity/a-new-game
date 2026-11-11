@@ -10,9 +10,12 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
-**V2-02 — Harness Playback & Autoplay ONLY — IMPLEMENTED — CHỜ PAGES**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
+**V2-02 — Harness Playback & Autoplay ONLY — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
+
+Đã commit/push main **f81f33e**; [Pages43067036347](https://github.com/gizgity/a-new-game/actions/runs/43067036347) **completed/SUCCESS**, job130684650371 gồm npm ci/build/typecheck/upload/Deploy. [Review V2-02](https://gizgity.github.io/a-new-game/design-harness.html?v=f81f33e). Livecurl bị proxy CONNECT403 nên chưa liveHTTP/hash verification; xác nhận deploy qua GitHub connector. Commit bàn giao sau chỉ Markdown, không redeploy. DỪNG V2-02, không redesign; không tự gán user acceptance.
 
 ### V2-02 implementation / validation
+
 - Entry riêng `harness-preview.html` + `src/harnessPreview.ts` ép memory-only/seed808 trước khi import bootstrap production. Combat là run mới, bỏ build cấp sẵn chain; Boss giữ preset V2-01 và ghi rõ trên harness: 3:40/1150 kills/4 Mutation + 2 Curse. Không cấp thêm HP, tài nguyên hoặc buff trong run. `harnessAutoplay.ts` chỉ gửi CombatInput/aim: tiếp cận/di chuyển vòng/tránh biên, Light chain, Basic, Heavy finisher, Charged khi đủ charge, Dash trước đe dọa, Surge/Detonate khi đủ tài nguyên. Chọn offer0 bằng `run.choose`, không sửa offers/RNG/balance.
 - Preview dừng native Phaser loop, RAF tích lũy fixed tick và gọi toàn bộ `game.step` với delta1/60s, gồm Scene/animation/VFX/feedback/tweens; thay riêng tween wall-clock delta bằng fixed delta. Pause không gọi step; Step gọi đúng một lần rồi giữ Pause. Mute âm review vì native audio không time-stretch. Xử lý focus chỉ ở entry preview để toolbar/sibling không làm ngừng autoplay. Playback độc lập, không claim frame sync. Restart/đổi scenario reload hai iframe → autoplay/1×/ready sạch.
 - PASS typecheck/build và33 testfiles; warning Phaser chunk>500kB có sẵn. Simulation seed808/policy thật: Combat6 Draft,1229 kills, gặp Boss, defeat237.18s; Boss preset defeat243.25s. Combat có impact Light1/2/3/Heavy/Charged/chainBlast,925 shots/49 dashes/395 detonations; không phải winrate/human balance.
@@ -202,7 +205,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Theo dõi Pages V2-02 tới trạng thái kết thúc và ghi link review; sau đó DỪNG V2-02, không redesign hoặc milestone mới. Giữ Q13 accepted và gate balance651e3bf riêng.
+V2-02 đã triển khai/deploy, link/cách review tại ACTIVE TASK. DỪNG, chờ phản hồi hoặc yêu cầu mới; không redesign/milestone mới. Giữ Q13 accepted và gate balance651e3bf riêng.
 
 ## VALIDATION APPROVAL Q13
 Lượt ghi nhận chỉ sửa Markdown (AGENTS/HANDOFF/FOLLOWUP): kiểm quote/version/link/diff; không chạy lại build/tests hoặc deploy. Giữ evidence33testfiles/build/typecheck/4viewport/native/dist và lỗi/workaround tại FOLLOWUP; approval chung không mở rộng coverage kỹ thuật.
