@@ -12,22 +12,29 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 **Giới hạn giai đoạn thiết kế:** giữ gameplay hiện hành cho tới khi có đề xuất balance/gameplay riêng được duyệt. Bảo toàn input, hitbox, RNG/progression, run 5 phút, telegraph, mobile-first + desktop-equivalent; FPS/readability/hiệu năng KISS. Không suy rằng ảnh concept là sprite production hoặc animation frame đã duyệt.
 
-## 1. Trạng thái thực tế khi lập plan
+## 1. Trạng thái thực tế và định nghĩa bắt buộc (sửa theo user 2026-11-12)
 
-- V2-01: Design Review Harness (Combat/Boss, hai preview) đã triển khai; commit `b96e52b`.
-- V2-02: harness autoplay, playback 0.25×/0.5×/1×, Pause, Step, manual, Draft/Boss; commit `f81f33e`, Pages workflow 43067036347 SUCCESS. Có báo cáo kỹ thuật trong HANDOFF; **chưa có user visual/experience acceptance**.
-- Harness BASELINE và CANDIDATE hiện cùng runtime. **Chưa có bất kỳ production redesign V2 nào**.
-- Art Bible hiện hữu là baseline được duyệt của các giai đoạn trước, không tự thay thành V2.
-- Khác biệt quan trọng: harness chỉ dùng để review; **spec + refs đã duyệt mới là design contract**.
+**DESIGN HARNESS ≠ PREVIEW APP.** Design Harness là **bộ khung thiết kế có hiệu lực bắt buộc đối với Codex**: quy tắc thực thi, nguồn sự thật, thiết kế đã duyệt, mẫu task, references, scope constraints, acceptance gate và cơ chế ghi nhận/đối chiếu sai lệch. Preview app chỉ là **một công cụ quan sát**; nó không thể ép Codex tuân theo thiết kế.
+
+- V2-01: tạo **preview app**, nhầm gọi “Design Review Harness” trong lịch sử; commit `b96e52b`.
+- V2-02: bổ sung autoplay/playback cho **preview app**; commit `f81f33e`, Pages workflow 43067036347 SUCCESS, chưa user visual/experience acceptance.
+- **Design Harness đúng nghĩa: NOT CREATED, NOT APPROVED, NOT ENFORCED.** MASTER_PLAN là roadmap dự thảo, chưa phải harness.
+- Preview BASELINE và CANDIDATE đang cùng runtime; chưa có redesign V2 production.
+- `ART_BIBLE.md` và DDR là các baseline/ràng buộc đã có, **chưa đủ** làm Design Harness V2.
+- Tên file lịch sử `design-harness.html` được giữ để tránh phá URL; tên kỹ thuật cũ **không quyết định định nghĩa**.
 
 ## 2. Đường đi bắt buộc: HIGH LEVEL → LOW LEVEL → PRODUCTION
 
-### Phase A — Program & Design Contract (trước mọi redesign)
+### Phase A — Xây dựng Design Harness bắt buộc (trước mọi redesign)
 **A0 — MASTER PLAN**: tài liệu này. User duyệt/sửa thứ tự, phạm vi, cổng nghiệm thu. Không auto-chốt Proposed.
+**A-H1 — HARNESS CONTRACT**: thiết lập quy tắc bắt buộc Codex: thứ tự nguồn sự thật, design lock, scope/anti-scope, approved-reference binding, 1 prompt = 1 thay đổi, stop condition, checklist audit, format approval, conflict/escalation. Chỉ tài liệu, chưa code/art. Không gọi đây là hoàn tất harness cho tới khi các phần H1–H4 được duyệt.
 **A1 — Vision/Experience Contract**: mô tả mục tiêu cảm giác, power fantasy, 3 thời điểm run, ưu tiên mắt nhìn, quy tắc không đổi máu fodder, mục tiêu Elite/Boss; đưa tình huống chứng minh được và anti-goals.
 **A2 — Visual Language Contract**: kế thừa Art Bible, làm rõ silhouette, vật liệu, palette, camera, animation grammar, effects hierarchy, độ lớn ở runtime, giới hạn màu/flash/shake, cách phân biệt concept và production.
-**A3 — Reference & Evidence Protocol**: nơi đặt refs, định danh, nguồn artwork, baseline screenshot thật (mobile/desktop, crowd, gray), mẫu keyframes, checklist kiểm đúng thiết kế. Tạo assets/file chỉ khi cần thực tế.
-**Gate A:** user duyệt concept/contract ở cấp cao. Không yêu cầu Codex tự đoán nội dung chưa chốt.
+**A3 — Reference & Evidence Protocol**: nơi đặt refs, định danh, nguồn artwork, baseline screenshot thật (mobile/desktop, crowd, grayscale), mẫu keyframes, checklist kiểm đúng thiết kế.
+**A-H2 — DESIGN CARD TEMPLATE**: contract cho đúng 1 thay đổi: task ID, approved spec revision, reference IDs, scope/forbidden, output observable, platform, acceptance, evidence, status và stop.
+**A-H3 — ENFORCEMENT/HANDOFF**: quy tắc trong AGENTS.md trỏ tới Harness; trước code phải kiểm status APPROVED, refs, task card; nếu thiếu phải STOP, không tự suy; TASK LOG/HANDOFF chỉ ra đúng 1 NEXT ACTION. Không được tự sửa spec để hợp thức hóa implementation.
+**A-H4 — DRY RUN**: chọn một task minh họa *không sửa code*, thử đi qua contract → approved refs → prompt nhỏ → audit/stop; kiểm tra tính khép kín, sửa lỗ hổng ở tài liệu. Không coi dry run là duyệt art.
+**Gate A:** user duyệt **Design Harness (H1–H4)**, vision/visual language, phương thức refs và template. Khi đó mới có quyền bắt đầu **thiết kế cụ thể B1**; riêng sản xuất art B1 vẫn cần user visual approval.
 
 ### Phase B — Combat Core: nhỏ nhưng cảm giác đã tay
 Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move**, **B4 Dash**, **B5 L1**, **B6 L2**, **B7 L3**, **B8 Heavy**, **B9 Basic/Charged shot**, **B10 hit confirmation / impact / feedback**, **B11 Grunt hit/death**, **B12 Bulwark armor/reaction**. Tên task là thứ tự gợi ý, **mỗi task một thay đổi thực sự**; nếu cần tách concept và implementation thì dùng hậu tố -DESIGN / -IMPLEMENT.
@@ -35,7 +42,7 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 
 ### Phase C — Evolution / Power Progression
 **C1 Evolution design matrix:** lập danh sách 12 Mutation + 8 Curse hiện hành và 6 Sigil/12 Branch + Anomaly nếu còn áp dụng; audit trigger thật, phân loại VFX cơ thể / vũ khí / event / arena / HUD; tránh phát biểu hiệu ứng không có trong combat.
-**C2–... Theo từng effect:** mỗi effect nhận một design card (before/after, keyframe, trigger, visual priority, constraints) → user duyệt → một task integration → harness A/B. Dùng asset layers có giới hạn, không tạo biến thể toàn thân tổ hợp vô hạn.
+**C2–... Theo từng effect:** mỗi effect nhận một design card (before/after, keyframe, trigger, visual priority, constraints) → user duyệt → một task integration → preview app A/B. Dùng asset layers có giới hạn, không tạo biến thể toàn thân tổ hợp vô hạn.
 **C3 Mutation/Curse acquisition:** transition khi nhận, UI cập nhật, khác biệt tác động thực tế, không chỉ icon; triển khai mỗi thay đổi riêng.
 **C4 Cross-build readability:** nhiều effect cùng kích hoạt; đề xuất ngân sách VFX/ưu tiên/overlap và suppression; kiểm đông quái/mobile.
 **Gate C:** cùng nhân vật ở 0:30/2:00/4:00 nhận biết mạnh lên bằng cảnh chiến đấu không cần HUD; hiệu ứng phải gắn với trigger/kết quả thật; không đổi balance ngầm.
@@ -49,7 +56,7 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 ### Phase E — HUD, Audio, Full-run & Acceptance
 **E1 HUD phản ứng build/proc (không HUD chỉ icon)**, **E2 audio + feedback hierarchy**, **E3 full-run power curve & pacing review**, **E4 mobile/desktop readability + VFX budget**, **E5 final compare / cleanup / documentation closure**.
 Đề xuất balance sau khi quan sát mới được tách thành task khác, không trộn vào task art.
-**Gate E:** so sánh baseline/candidate trên harness và chơi tay ngắn có cùng hoàn cảnh; chốt rõ art approval, integration approval, playtest acceptance độc lập.
+**Gate E:** so sánh baseline/candidate trên preview app và chơi tay ngắn có cùng hoàn cảnh; chốt rõ art approval, integration approval, playtest acceptance độc lập.
 
 ## 3. Các loại công việc / mô hình lặp cho MỌI thay đổi
 
@@ -59,9 +66,11 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 3. Tạo refs phù hợp (concept / storyboard / keyframe / overlay trên screenshot runtime), kiểm **chính xác hướng/top-down ¾/scale/asset identity**. Đặt vào `docs/combat-v2/references/` khi đã có và user chọn; source/metadata/approval rõ.
 4. **AWAITING USER VISUAL APPROVAL** cho art mới. Concept không được tự auto-integrate.
 5. Codex implement duy nhất design card được duyệt; không sửa logic unrelated; typecheck/build và focused tests nếu cần.
-6. Harness: cùng scenario/seed, baseline **pin phiên bản trước** và candidate mới để so sánh khi khả thi; nói rõ nếu không deterministic; snapshot mobile & desktop; xét 0.25×/Step; kiểm crowd và telegraph.
+6. Preview app: cùng scenario/seed, baseline **pin phiên bản trước** và candidate mới để so sánh khi khả thi; nói rõ nếu không deterministic; snapshot mobile & desktop; xét 0.25×/Step; kiểm crowd và telegraph.
 7. User đánh giá, phản hồi, sửa một thay đổi hoặc duyệt. **Approval không suy từ commit/deploy/CI**.
 8. Cập nhật task log/trạng thái, đường dẫn refs, commit/deploy, known limitations, Next Action. Chỉ mở task kế tiếp khi gate cần thiết đạt.
+
+**ENFORCEMENT:** nếu design card, approved ref, revision hoặc gate đang thiếu/không nhất quán, Codex chỉ được báo blocker và **STOP**, không phỏng đoán, không tự duyệt. Tài liệu/ảnh đề xuất phải ghi PROPOSED cho đến khi user chốt scope. Preview app không phải bằng chứng design compliance nếu không có đối chiếu với spec.
 
 **Mẫu một prompt Codex:** `TASK-ID + source docs/refs/approved revision + DO exact one change + DON'T + observable acceptance + checks + commit/deploy rule + STOP`. Prompt ngắn để agent follow; spec chi tiết nằm ở repo, không nhồi lại trong prompt.
 
@@ -69,13 +78,14 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 
 Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ thể mới tạo:
 - `docs/combat-v2/MASTER_PLAN.md`: **roadmap, trạng thái high-level, dependency, gate** (file này).
-- `docs/combat-v2/DESIGN_BIBLE.md`: design vision/visual contract **sau Gate A**, gắn nhãn trạng thái từng mục.
+- `docs/combat-v2/HARNESS.md`: **contract bắt buộc cho Codex** sau A-H1; tiếp tục bổ sung H2–H4 theo từng task và chờ duyệt. Đây là Design Harness thật; không được coi MASTER_PLAN hoặc preview app là HARNESS.
+- `docs/combat-v2/DESIGN_BIBLE.md`: design vision/visual contract từ A1–A2, phải duyệt trước khi cho production; có trạng thái từng mục.
 - `docs/combat-v2/tasks/<TASK-ID>.md`: **một task đã bắt đầu** gồm scope, refs, outcome, acceptance, implementation, evidence, trạng thái. Không tự tạo hàng chục file rỗng.
 - `docs/combat-v2/references/`: concept/screenshots/approved assets khi thực sự có, có nguồn và scope duyệt.
 - `HANDOFF.md`: active task, completed latest, blocker, **NEXT ACTION 1 task duy nhất** và links. Không phải nơi chép toàn bộ Bible.
 - `ART_BIBLE.md`: chuẩn cũ; giữ nguyên trừ khi user approve update theo quy trình. `DESIGN_DECISIONS.md`: chỉ cập nhật theo quy tắc `$design-decision` của repo, không suy approval từ master plan.
 
-**Trình tự đọc mỗi session:** AGENTS → HANDOFF (ACTIVE TASK/NEXT ACTION) → MASTER_PLAN → DESIGN_BIBLE (nếu đã duyệt) → đúng task card + approved refs → source code liên quan. Agent không tự mở phase tiếp hoặc biến PROPOSED thành APPROVED.
+**Trình tự đọc mỗi session:** AGENTS → HANDOFF (ACTIVE TASK/NEXT ACTION) → MASTER_PLAN → HARNESS (khi được tạo/duyệt) → DESIGN_BIBLE (khi được tạo/duyệt) → đúng task card + approved refs → source code liên quan. Agent không tự mở phase tiếp hoặc biến PROPOSED thành APPROVED.
 
 ## 5. High-level acceptance & rủi ro cần giải quyết
 
@@ -90,10 +100,12 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 | Mã | Kết quả | Trạng thái tại 2026-11-12 | Gate |
 | --- | --- | --- | --- |
-| V2-01 | Harness A/B preview | Implemented; technical PASS, user acceptance chưa xác nhận | Đã làm |
-| V2-02 | Harness playback/autoplay | Implemented/deployed; technical PASS, user acceptance chưa xác nhận | Đã làm |
+| V2-01 | Preview app: hai khung A/B | Implemented; technical PASS, user acceptance chưa xác nhận | Đã làm |
+| V2-02 | Preview app: playback/autoplay | Implemented/deployed; technical PASS, user acceptance chưa xác nhận | Đã làm |
 | A0 | MASTER_PLAN | PROPOSED — awaiting user review | **STOP** |
-| A1 | Experience vision | NOT STARTED | User duyệt A0 trước |
+| A-H1 | Design Harness contract | NOT STARTED | User duyệt A0 trước |
+| A1 | Experience vision | NOT STARTED | A-H1 |
+| A-H2/H3/H4 | Card template / enforcement / dry run | NOT STARTED | Hoàn thiện trong Phase A |
 | A2 | Visual language | NOT STARTED | A1 |
 | A3 | Reference protocol | NOT STARTED | A2 |
 | B | Combat core | NOT STARTED | Gate A |
@@ -103,9 +115,13 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/điều chỉnh và duyệt A0 — MASTER PLAN.** Sau approval, tách **A1 — Experience Vision** thành design-only task; chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/điều chỉnh và duyệt A0 — MASTER PLAN với định nghĩa Design Harness đã sửa.** Sau approval, bước đầu tiên là **A-H1 — Design Harness Contract**, chỉ docs; chưa làm A1/B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
 
-## 8. Nguồn ý định và ranh giới approval
+## 8. Sửa lỗi thuật ngữ (2026-11-12)
+
+User đính chính nguyên văn: “harness là bộ khung bắt buộc codex tuân theo, k phải preview, chưa có 1 harness nào đc tạo ở thời điểm hiện tại, chỉ có 1 app preview”. Các đề cập trước về “harness đã hoàn tất” là **sai khái niệm**. Không thay lịch sử commit; mọi báo cáo sau phải gọi V2-01/V2-02 là preview app, còn Design Harness là **NOT STARTED** cho đến khi được xây dựng và user duyệt.
+
+## 9. Nguồn ý định và ranh giới approval
 
 - User (hội thoại, không permalink, 2026-11-12): “trước khi bắt đầu, t muốn m rõ ràng về các step sẽ làm, vì m đã làm thiếu nên t k còn tin nữa t muốn kế hoạch chi tiết high level, sao đó mới vào low level từ chi tiết, phải đc doc lại, để m có thể đọc và nhớ m đã làm j”.
 - User đã nhấn mạnh giữ quái thường máu giấy, thể hiện tăng sức mạnh qua clear và Mutation/Curse; một prompt một thay đổi; design reference rõ ràng; harness autoplay.
