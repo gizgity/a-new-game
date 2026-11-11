@@ -9,6 +9,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
+## COMBAT EXPERIENCE V2 — KẾ HOẠCH ĐỀ XUẤT (2026-11-12)
+
+Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 PROPOSED — đang chờ user review/duyệt; chưa triển khai Design Bible, artwork, gameplay hoặc V2-03.** Thứ tự: A0 roadmap → A1 Experience Vision → A2 Visual Language → A3 References/Review Contract (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → harness review → acceptance & handoff. V2-01/V2-02 đã implemented nhưng chưa user acceptance. **NEXT ACTION DUY NHẤT: user review/chốt A0; không tự mở A1/B1.**
+
 ## ACTIVE TASK
 **V2-02 — Harness Playback & Autoplay ONLY — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
 
