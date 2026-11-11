@@ -10,7 +10,15 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
 ## ACTIVE TASK
+**V2-01 — Design Review Harness ONLY — VALIDATION PASS, chuẩn bị push/Pages**, user giao 2026-11-11, baseline main694162e. Goal/acceptance: `/design-harness.html` với Combat/Boss, BASELINE/CANDIDATE cùng runtime/assets production, fixture chain/boss + draftSeed808, desktop cạnh nhau/mobile xếp dọc, viewport/revision thật, clock/input độc lập, memory-only progression. Không gameplay/balance/HUD/sprite/VFX/camera/input/framework/dependency/redesign. Kiểm390×844/1920×1080, typecheck/build/production regression; commit/push main/Pages và dừng.
+
 **Q13 ACCEPTED — USER PLAYTEST APPROVAL**. User xác nhận **“q đã đạt”** ngày **2026-10-31** trong hội thoại hiện tại (không có permalink), ngay sau bàn giao Q13 revision **26b9736** (handoff **a94d98d**), [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) completed/SUCCESS. Approval gồm Tutorial5bước/HeavyR, Skip/Replay/saveisolation, hướng dẫnBoss/PerfectDodge và revision flowDash→bảng hoàn tất→nút Về menu. Không suy thêm full-run browser Boss/Victory, device/iOS/Safari/FPS/latency hoặc liveHTTP/hashverification; giữ gatebalance651e3bf riêng.
+
+### V2-01 validation / cách review
+- Entry riêng `design-harness.html` + `src/designHarness.ts/.css`; thêm Vite input và build revision từ GITHUB_SHA (local có thể dùng VITE_REVIEW_REVISION, mặc định local-unversioned). Hai preview cùng URL production `?playtest=chain|boss&draftSeed=808`; không dùng feedback=baseline cũ, không pin baseline lịch sử. Revision hiển thị là bản build đang deploy của cả hai.
+- PASS typecheck/build; Chromium trên dist390×844 và1920×1080, cảchain/boss, layoutstack/side-by-side, khônghorizontaloverflow, canvasnativepixels bằngdisplaypixels, Start/Pause/Resume/keyboardD+R, reloadhaiiframe vàlocalStorage sentinel khôngđổi; production boot/tutorial cả2viewport, 0pageerror. Preview thật390×844mobile; desktop936×1080mỗiiframe (viewportngoài1920×1080). Header ở ngoàiiframe; chiều cao preview bằngviewportngoài, trang cóscroll chủý, không scale đểnhét.
+- Source production/gameplay/HUD/input/assets khôngsửa; so build baseline: main/audition logic khớp sau chuẩn hóaimport/hash; Vite tách preloadpolyfill vàminifier đổi tênlocalởsharedchunk do thêm entry. Khôngclaim toànbundle byte-identical. Không thêmdependency/testsframework. Screenshot/temporarybrowsercheck ở /tmp/harness-{390,1920}-{chain,boss}.png và /tmp/check-harness.cjs (khôngcommit).
+- Cách thử: chọnCombat/Boss→Bắtđầu ở từngpreview→click/chạmđểfocus, chơi bằnginputhiệnhữu; đổifocus cóthểpause theo production. Hai clock/inputđộclập, draftSeed808 chỉseedbuild, khôngsync/replaytấtđịnh; fixtureBoss bắtđầu3:40/1150kills theo preset cũ. Reloadhai preview đểresetmemory. Chưa humanfeel/device/iOS/Safari/fullrun; khôngsuy useracceptance từkiểmkỹthuật. Khôngredesign hoặc mởmilestone mới.
 
 Q13 feedback2026-10-31: user báo “hướng dẫn chưa rõ ràng, vừa bấm nút dash đã văng trở lại menu”. Đã sửa, push/deploy **26b9736**, [Pages41157677678](https://github.com/gizgity/a-new-game/actions/runs/41157677678) **completed/SUCCESS**, job124407972879 build/typecheck/upload/Deploy. [Chơi bản sửa](https://gizgity.github.io/a-new-game/?v=26b9736). **Đã được user duyệt theo nguồn phía trên**. Thay đổi: Dash chạy hết→bảng hoàn tất riêng→nút chủ động Về menu; thêm tên bài/viền control/hướng dẫn hành động-kết quả vi/en; giữ chiều cao banner ổn định để đổi bài không resize/hủy Heavy; đồng bộ canvas ngay khi start/end để không hủy input đầu tiên trễ. PASS build/typecheck/33testfiles, matrix4viewportvi/en, banner5bài×2locale khôngđổichiềucao, native390touch/1440desktop single-hold ngay sauBắtđầu vàHeavy/Dash thật, dist390/1440. Bảng hoàn tất giữđếnclick, Space/Esc khôngđóng, totals/history/rewardkhôngtăng; tutorialDone lưu ngay khi đủ5bài.
 
@@ -183,7 +191,7 @@ M0–M6 là functional implementation, không phải chứng nhận chất lư�
 | Q9E — Codex / Cosmetics / Challenges / History–Recap | ACCEPTED — USER PLAYTEST APPROVAL | User “duyệt 9e” ngày2026-10-28 trên2fcdfd2, bàn giao44e202f; Pages40671706957 SUCCESS; giữ giới hạn coverage kỹ thuật, không Q10 |
 
 ## NEXT ACTION
-Q13 đã được user duyệt. Dừng và chờ yêu cầu mới; không yêu cầu duyệt lại hoặc tự mở milestone tiếp theo. Giữ giới hạn full-run browser/device và gate balance651e3bf riêng.
+Push/deploy V2-01 và theo dõi Pages tới kết thúc; sau bàn giao dừng, không redesign. Giữ Q13 accepted và gate balance651e3bf riêng.
 
 ## VALIDATION APPROVAL Q13
 Lượt ghi nhận chỉ sửa Markdown (AGENTS/HANDOFF/FOLLOWUP): kiểm quote/version/link/diff; không chạy lại build/tests hoặc deploy. Giữ evidence33testfiles/build/typecheck/4viewport/native/dist và lỗi/workaround tại FOLLOWUP; approval chung không mở rộng coverage kỹ thuật.
