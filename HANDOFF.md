@@ -9,6 +9,16 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
+## CURRENT — COMBAT V2 DOCUMENT AUDIT / A-H2 REVIEW (2026-11-12)
+
+**Ưu tiên mục này hơn mọi NEXT ACTION lịch sử bên dưới.** Theo user yêu cầu sửa lỗi sau audit và rà lại một lượt:
+- `docs/combat-v2/HARNESS.md` A-H1 APPROVED: đã bỏ NEXT ACTION/trạng thái tiến độ cũ khỏi harness cố định; Harness chỉ là process/boundaries/verify, camera/art/style/balance chỉ là baseline có thể thay (commit `ec05156`).
+- `AGENTS.md`: **đã thêm chỉ dẫn bắt buộc cho task V2** đọc Harness/spec/refs, gate/STOP/audit; không khóa art direction (commit `1630896`).
+- `docs/combat-v2/MASTER_PLAN.md`: bỏ câu four facings/phase 50% như tiêu chí cứng; đồng bộ DOC → ART → CODE → REVIEW, trạng thái A-H3 linked (commit `edb212b`).
+- A1/A2/A3 được user chấp nhận theo từng lượt; **A-H2 TASK_CARD_TEMPLATE.md vẫn PROPOSED**, user chưa duyệt template. **A-H4 dry run chưa làm; Gate A chưa hoàn tất.**
+- V2-01/02 là **Preview App**, không phải Harness. Chưa production redesign, chưa B1 concept/implementation; sửa tài liệu chỉ docs, không chạy build/deploy.
+- **NEXT ACTION DUY NHẤT:** user rà/duyệt A-H2 task template; sau đó A-H4 dry run (A-H3 đã nối AGENTS). Nếu audit thấy lỗi thì sửa trong scope tài liệu, không tự nhận đã đạt Gate A.
+
 ## COMBAT EXPERIENCE V2 — KẾ HOẠCH ĐỀ XUẤT (2026-11-12)
 
 Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 APPROVED TO PROCEED — user cho bắt đầu A-H1 ngày 2026-11-12; chưa duyệt Design Bible, artwork, gameplay.** Thứ tự (đã sửa): A0 roadmap → A-H1 Harness Contract → A1 Experience Vision → A2 Visual Language → A3 Reference Protocol → A-H2/H3/H4 Design Card / Enforcement / Dry Run (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → preview app review → acceptance & handoff. V2-01/V2-02 là preview app implemented, chưa user acceptance; Design Harness thực sự chưa tạo. **A-H1 đã được duyệt ở Revision 2; chuyển sang A1 PROPOSED, chờ user duyệt, không mở A2/B1.**
