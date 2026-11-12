@@ -18,7 +18,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 - V2-01: tạo **preview app**, nhầm gọi “Design Review Harness” trong lịch sử; commit `b96e52b`.
 - V2-02: bổ sung autoplay/playback cho **preview app**; commit `f81f33e`, Pages workflow 43067036347 SUCCESS, chưa user visual/experience acceptance.
-- **Design Harness đúng nghĩa: contract A-H1 đã user duyệt (Revision 2) và liên kết AGENTS (A-H3); A-H2 APPROVED v1; A-H4 PASS ở mức dry run tài liệu, xem `DRY_RUN_REPORT.md`; Gate A READY FOR USER REVIEW, chưa được user duyệt.** MASTER_PLAN là roadmap, không phải harness.
+- **Design Harness đúng nghĩa: contract A-H1 đã user duyệt (Revision 2) và liên kết AGENTS (A-H3); A-H2 APPROVED v1; A-H4 PASS ở mức dry run tài liệu, xem `DRY_RUN_REPORT.md`; Gate A APPROVED để mở B1 DESIGN-ONLY theo user “ok, tiếp theo” sau đề nghị chốt Gate A và bắt đầu B1; KHÔNG duyệt B1 visual target/code.** MASTER_PLAN là roadmap, không phải harness.
 - Preview BASELINE và CANDIDATE đang cùng runtime; chưa có redesign V2 production.
 - `ART_BIBLE.md` và DDR là các baseline/ràng buộc đã có, **chưa đủ** làm Design Harness V2.
 - Tên file lịch sử `design-harness.html` được giữ để tránh phá URL; tên kỹ thuật cũ **không quyết định định nghĩa**.
@@ -34,7 +34,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 **A-H2 — DESIGN CARD TEMPLATE**: contract cho đúng 1 thay đổi: task ID, approved spec revision, reference IDs, scope/forbidden, output observable, platform, acceptance, evidence, status và stop.
 **A-H3 — ENFORCEMENT/HANDOFF**: quy tắc trong AGENTS.md trỏ tới Harness; trước code phải kiểm status APPROVED, refs, task card; nếu thiếu phải STOP, không tự suy; TASK LOG/HANDOFF chỉ ra đúng 1 NEXT ACTION. Không được tự sửa spec để hợp thức hóa implementation.
 **A-H4 — DRY RUN**: chọn một task minh họa *không sửa code*, thử đi qua contract → approved refs → prompt nhỏ → audit/stop; kiểm tra tính khép kín, sửa lỗ hổng ở tài liệu. Không coi dry run là duyệt art.
-**Gate A:** user duyệt **Design Harness (H1–H4)**, vision/visual language, phương thức refs và template. Khi đó mới có quyền bắt đầu **thiết kế cụ thể B1**; riêng sản xuất art B1 vẫn cần user visual approval.
+**Gate A:** user duyệt **Design Harness (H1–H4)**, vision/visual language, phương thức refs và template. **APPROVED để mở B1 DESIGN ONLY** ngày 2026-11-12 (“ok, tiếp theo” sau kết quả A-H4). Sản xuất art/code B1 vẫn cần user visual approval đúng spec/reference.
 
 ### Phase B — Combat Core: nhỏ nhưng cảm giác đã tay
 Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move**, **B4 Dash**, **B5 L1**, **B6 L2**, **B7 L3**, **B8 Heavy**, **B9 Basic/Charged shot**, **B10 hit confirmation / impact / feedback**, **B11 Grunt hit/death**, **B12 Bulwark armor/reaction**. Tên task là thứ tự gợi ý, **mỗi task một thay đổi thực sự**; nếu cần tách concept và implementation thì dùng hậu tố -DESIGN / -IMPLEMENT.
@@ -110,14 +110,14 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
-| B | Combat core | NOT STARTED | Gate A |
+| B | Combat core | B1 DESIGN OPEN — `tasks/B1-PLAYER-BASE.md`, no approved target/code | USER VISUAL APPROVAL NEEDED |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
 | E | Polish/final | NOT STARTED | Gate D |
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**DỪNG tại A-H4; chờ user review báo cáo A-H4 và quyết định Gate A.** Báo cáo: [DRY_RUN_REPORT.md](DRY_RUN_REPORT.md), 2026-11-12, theo TASK A-H4 trong hội thoại (không permalink). TC-01–04 và audit sau sửa đều PASS ở mức tài liệu; A-H4 chưa được user nghiệm thu. **Gate A: READY FOR USER REVIEW**, chưa APPROVED; B1 chưa mở. Lượt này chỉ tài liệu Harness/báo cáo/trạng thái, không build/deploy hoặc sửa production.
+**B1 Player Base — DESIGN ONLY**: [tasks/B1-PLAYER-BASE.md](tasks/B1-PLAYER-BASE.md). User đã cho tiếp sau A-H4 PASS và đề nghị chốt Gate A → mở B1; ghi Gate A approved cho thiết kế, không duyệt visual target hay implementation. Next action: **user review concept Player Base B1**, ghi đúng ảnh/spec revision được duyệt rồi mới giao Codex code riêng. Không sửa production trước approval.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
