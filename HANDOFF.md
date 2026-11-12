@@ -11,13 +11,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 
 ## COMBAT EXPERIENCE V2 — KẾ HOẠCH ĐỀ XUẤT (2026-11-12)
 
-Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 APPROVED TO PROCEED — user cho bắt đầu A-H1 ngày 2026-11-12; chưa duyệt Design Bible, artwork, gameplay.** Thứ tự (đã sửa): A0 roadmap → A-H1 Harness Contract → A1 Experience Vision → A2 Visual Language → A3 Reference Protocol → A-H2/H3/H4 Design Card / Enforcement / Dry Run (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → preview app review → acceptance & handoff. V2-01/V2-02 là preview app implemented, chưa user acceptance; Design Harness thực sự chưa tạo. **NEXT ACTION DUY NHẤT: user review/chốt A-H1 HARNESS.md; không tự mở A1/B1.**
+Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 APPROVED TO PROCEED — user cho bắt đầu A-H1 ngày 2026-11-12; chưa duyệt Design Bible, artwork, gameplay.** Thứ tự (đã sửa): A0 roadmap → A-H1 Harness Contract → A1 Experience Vision → A2 Visual Language → A3 Reference Protocol → A-H2/H3/H4 Design Card / Enforcement / Dry Run (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → preview app review → acceptance & handoff. V2-01/V2-02 là preview app implemented, chưa user acceptance; Design Harness thực sự chưa tạo. **A-H1 đã được duyệt ở Revision 2; chuyển sang A1 PROPOSED, chờ user duyệt, không mở A2/B1.**
 
 ## ĐÍNH CHÍNH V2 — DESIGN HARNESS KHÁC PREVIEW APP (2026-11-12)
 
 User: “harness là bộ khung bắt buộc codex tuân theo, k phải preview, chưa có 1 harness nào đc tạo ở thời điểm hiện tại, chỉ có 1 app preview”. **Nguồn đúng:** [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), revision `297c126`. V2-01/02 là **PREVIEW APP** đã triển khai, không phải Design Harness. **Design Harness = NOT CREATED / NOT APPROVED**: hệ contract Codex phải theo (spec, refs đã duyệt, 1 task 1 thay đổi, gate, compliance, stop, handoff). Giữ tên file/URL `design-harness.html` lịch sử để tránh breaking change, nhưng không dùng tên ấy để tuyên bố có Design Harness.
 
-**A0 đã được user cho phép tiếp tục. A-H1 HARNESS.md đang PROPOSED, chờ duyệt; chưa làm enforcement hoặc A1.** A1/B1/artwork/gameplay chưa mở. Không tự ghi decision DDR hoặc coi preview success là approval.
+**Lịch sử:** A0 cho phép tiếp tục; A-H1 đã được duyệt Revision 2 và A1 hiện PROPOSED (xem CURRENT ở dưới). Chưa enforcement. A1/B1/artwork/gameplay chưa mở. Không tự ghi decision DDR hoặc coi preview success là approval.
 
 ## ACTIVE COMBAT-V2 WORK — A-H1 DESIGN HARNESS CONTRACT (2026-11-12)
 
@@ -28,6 +28,10 @@ User “ok, bắt đầu lại đi” cho phép tiến từ A0 roadmap sang A-H1
 ## A-H1 REVISION 2 — PROCESS-ONLY HARNESS (2026-11-12)
 
 Theo phản hồi user, đã sửa [HARNESS.md](docs/combat-v2/HARNESS.md) revision `463ce59`: **Harness chỉ khóa phương thức làm việc, boundaries, quyền approval, STOP và verify; không khóa top-down ¾, 4 hướng, art direction, palette, silhouette, HP hay VFX**. Những thứ này là baseline fallback trong Art Bible/brief cho tới khi một design mới được user duyệt thay đổi scope tương ứng; được phép đổi ý, phải ghi revision/supersedes và impact. **A-H1 PROPOSED — awaiting user review**; chưa enforce AGENTS, chưa A1 hoặc production. **NEXT ACTION: user duyệt/chỉnh A-H1 revision 2.**
+
+## COMBAT-V2 CURRENT — A1 EXPERIENCE VISION (2026-11-12)
+
+User “ok, làm tiếp đi” sau A-H1 Revision 2 cho phép chốt **A-H1 process-only contract**, không chốt art/gameplay. [HARNESS.md](docs/combat-v2/HARNESS.md) đã ghi A-H1 APPROVED ở commit `aa4f1e9`; **Design Harness tổng thể chưa hoàn chỉnh** (A-H2/H3/H4, A2/A3 còn thiếu; chưa nối AGENTS). Đã tạo **A1 Experience Vision — PROPOSED** tại [EXPERIENCE_VISION.md](docs/combat-v2/EXPERIENCE_VISION.md), commit `f0ba7bd`; [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) cập nhật `da80eae`. Đây là outcome/anti-goal và mốc quan sát đầu/giữa/cuối run, không khóa art style, góc nhìn, camera, damage hoặc animation; không sửa production, balance, preview, DDR. **NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A1; chưa mở A2 hoặc B1.** Docs-only, không build/deploy.
 
 ## ACTIVE TASK
 **V2-02 — Preview App Playback & Autoplay (tên task lịch sử: Harness Playback & Autoplay) — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
