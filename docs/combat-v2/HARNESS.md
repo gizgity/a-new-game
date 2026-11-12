@@ -1,108 +1,112 @@
-# CURSEBREAK — Design Harness V2 (A-H1: Contract)
+# CURSEBREAK V2 — Design Harness Contract (A-H1)
 
-> **TRẠNG THÁI: PROPOSED — CHƯA CÓ HIỆU LỰC THỰC THI V2.** Ngày 2026-11-12.
-> Đây là bản đầu của **bộ khung bắt buộc Codex tuân theo**, không phải `design-harness.html` (preview app). Cần user duyệt A-H1; sau đó bổ sung Design Bible, reference protocol, task template, enforcement trong AGENTS và dry run (A1/A2/A3/A-H2/A-H3/A-H4) trước Gate A.
-> **Không tự suy visual approval, không mở production redesign.**
+> **PROPOSED · Revision 2 · 2026-11-12 · chưa user approved / chưa nối AGENTS.**
+> Harness là **quy trình và biên giới bắt buộc Codex tuân thủ**, không phải preview app. Tài liệu này **không khóa** camera, art style, palette, sprite, loại VFX, combat balance hoặc ý tưởng gameplay cụ thể. Các lựa chọn đó thuộc design specs/decisions theo từng phiên bản và **có thể đổi theo ý user**.
+> A-H1 chỉ tạo contract. A1–A3, A-H2–H4 và Gate A chưa hoàn tất, không được khởi động redesign production.
 
-## 1. Mục đích và phạm vi
+## 1. Vai trò và nguyên tắc bất biến của HARNESS
 
-Harness làm cho từng thay đổi Combat Experience V2 **có thể truy nguồn, bị giới hạn phạm vi và kiểm chứng được** trước khi Codex sửa game. Quy tắc lõi: `1 prompt = 1 thay đổi`; thiết kế/ảnh phải duyệt trước khi tích hợp; thiếu dữ kiện thì **STOP**, không tự sáng tác rồi sửa tài liệu cho khớp code.
+Harness quy định **CÁCH làm và CÁCH kiểm chứng**, không quy định cứng **game phải trông thế nào**.
 
-Mục tiêu trải nghiệm đã trao đổi: quái thường máu giấy, clear nhiều để tạo cảm giác mạnh, tiến hóa nhận ra qua quy mô diệt quái/chain reaction/ngoại hình, và combat có lực; không dùng tăng HP fodder như cách giải quyết chung. Chi tiết animation, palette, pattern, HP và VFX **chưa mặc nhiên được chốt** ở tài liệu này.
+1. **Một prompt = một thay đổi** có phạm vi và tiêu chí nghiệm thu cụ thể. Đừng gộp nhiều hệ thống, kể cả khi cùng một milestone.
+2. **Design before implementation**: yêu cầu thay hình ảnh phải có spec + reference phù hợp, được user duyệt đúng revision/scope trước khi Codex tạo/tích hợp asset production.
+3. **Không tự quyết định thay user**: Codex được đề xuất các hướng design đánh dấu `PROPOSED`; không tự chuyển thành `APPROVED`, không tự đổi gameplay/art direction hoặc mở task tiếp.
+4. **Traceability**: mỗi task có ID, nguồn yêu cầu, design revision, reference version, thay đổi trong diff, evidence, trạng thái và một next action.
+5. **Boundary first**: scope và anti-scope là bắt buộc; không sửa file/hệ thống khác để tiện implementation. Cần đổi scope thì trình user.
+6. **Verification over self-report**: build PASS không chứng minh hình đúng; demo đẹp không chứng minh gameplay giữ nguyên; technical PASS không phải user visual/playtest approval.
+7. **STOP là kết quả hợp lệ** khi thiếu hoặc mâu thuẫn yêu cầu, reference, quyền phê duyệt, tool hoặc evidence. Nêu rõ blocker, không giả định và không sửa tài liệu cho khớp output.
 
-## 2. Nguồn sự thật — thứ tự xử lý
+Những nguyên tắc này chỉ thay khi user **chủ động sửa Harness**; việc đổi camera/palette/visual identity bình thường không cần sửa Harness.
 
-1. Yêu cầu/approval cụ thể **mới nhất của user** trong phạm vi task, ghi nguyên văn/ngày/nguồn nếu có.
-2. `AGENTS.md` và `GAME_BRIEF.md`: quy tắc repo, platform, gameplay contract.
-3. `DESIGN_DECISIONS.md`: các quyết định Approved còn hiệu lực theo quy tắc append-only của repo; không ghi tự động.
-4. `ART_BIBLE.md` cùng refs đã approved trước đây: baseline mặc định cho phần chưa thay thế.
-5. `docs/combat-v2/MASTER_PLAN.md`: phase, dependency, thứ tự và gate.
-6. `docs/combat-v2/DESIGN_BIBLE.md` (khi được duyệt): art/experience contract V2, chỉ áp dụng scope được duyệt.
-7. `docs/combat-v2/tasks/<TASK-ID>.md` và refs có trạng thái approved: contract cụ thể cho một thay đổi.
-8. `HANDOFF.md`: tiến độ thực tế và NEXT ACTION, **không tự tạo quyền sửa design**.
-9. Source code/runtime và preview app: bằng chứng implementation/quan sát, **không phải nguồn phê duyệt design**.
+## 2. Design có thể đổi: baseline fallback, không phải luật cố định
 
-Nếu hai nguồn xung đột, **không tự chọn nguồn tiện hơn**: ghi rõ xung đột và dừng; chỉ áp dụng ưu tiên yêu cầu mới khi phạm vi/ý định thay thế rõ. Tài liệu PROPOSED không ghi đè approval hiện hữu.
+- `ART_BIBLE.md`, `GAME_BRIEF.md`, `DESIGN_DECISIONS.md`, code/assets hiện hành là **baseline/history và approved scope trước đó**; khi chưa có approved spec mới cho hạng mục đang làm, lấy làm tham khảo mặc định.
+- Những đặc tính như **top-down ¾, 4 facings, màu sắc, silhouette, vật liệu, animation, VFX, bố cục HUD, HP, nhịp boss** đều **không được đặt thành invariant của Harness**. User có thể yêu cầu thay toàn bộ hoặc một phần.
+- Nếu user muốn đổi: tạo **design-change proposal** nêu current → proposed, phần bị thay (scope), tác động liên quan, ref/ảnh mới, điều cần kiểm; user duyệt thì áp dụng **chỉ cho scope đó**, giữ nguyên lịch sử source cũ.
+- Nếu directive mới rõ ràng nhưng mâu thuẫn approved spec cũ, **không bác bỏ chỉ vì cũ đã approved**: ghi phạm vi supersede và hỏi/nhận user approval đối với thay đổi; kiểm tra migration/impact rồi mới triển khai.
+- Nếu chưa có quyết định mới, **không tự suy được quyền thay đổi** baseline. Dùng fallback không đồng nghĩa khóa vĩnh viễn. `ART_BIBLE.md` chỉ sửa theo quy trình approval của repo; `DESIGN_DECISIONS.md` giữ quy tắc `$design-decision` riêng.
+- Mọi tiêu chí định tính/định lượng về visual/gameplay phải nằm trong `DESIGN_BIBLE.md` hoặc **task design card phiên bản được duyệt**, không ghi cứng ở Harness.
 
-## 3. Cổng bắt buộc của một task
+## 3. Nguồn thông tin và cách xử lý xung đột
 
-- **G0 — PLAN:** task ID trong roadmap đã được phép mở; chỉ đúng một thay đổi quan sát được.
-- **G1 — DESIGN:** spec mô tả before → after, mục tiêu nhìn thấy, role, trạng thái gameplay đúng, desktop/mobile, giới hạn và anti-goals.
-- **G2 — REFERENCES:** visual task phải có ảnh/keyframe/mockup tương ứng, ID/version/nguồn, chụp trong runtime scale khi cần. *Concept*, *runtime screenshot*, *production asset* phải phân biệt; không xem ảnh minh họa chung là approved.
-- **G3 — USER VISUAL APPROVAL:** user duyệt rõ **đúng spec revision + reference IDs + phạm vi**; chưa duyệt thì chỉ được làm design, không production.
-- **G4 — IMPLEMENTATION:** Codex sửa đúng phạm vi đã duyệt, giữ gameplay/balance/input/collider/progression trừ khi user cho phép rõ. Không tự đổi Art Bible hoặc design card để hợp thức hóa output.
-- **G5 — VERIFICATION:** kiểm đối chiếu từng acceptance theo spec, không chỉ build PASS; dùng preview app như công cụ quan sát, không xem autoplay là bằng chứng design compliance. Ghi ngoại lệ, hạn chế của A/B không đồng bộ, mobile/desktop/crowd/grayscale nếu áp dụng.
-- **G6 — USER ACCEPTANCE & HANDOFF:** ghi user visual approval, technical PASS và human/playtest acceptance **tách biệt**; commit/revision/evidence/next action, rồi mới mở task tiếp theo.
+Đọc: `AGENTS.md` → `HANDOFF.md` → `MASTER_PLAN.md` → `HARNESS.md` → `DESIGN_BIBLE.md` nếu có → task card + refs → các source/DDR/Art Bible liên quan.
 
-Chỉ phase tài liệu (A-H1, A1, A2, A3, A-H2, A-H3, A-H4) được làm khi chưa đủ visual refs; tài liệu vẫn phải tuân G0/G1 và không tự khai approved. Gate A tổng thể chỉ đạt sau khi user chấp thuận và enforcement được nối vào workflow.
+Phân biệt:
+- **User approval mới, rõ phạm vi**: cơ sở cho thay đổi thiết kế.
+- **Approved contract/spec + refs theo task**: mục tiêu implementation.
+- **Baseline/historical docs**: fallback cho phần chưa được thay.
+- **Source/runtime**: trạng thái đã code, không tự chứng minh là thiết kế đã duyệt.
+- **Handoff/preview app**: trạng thái và công cụ review, không cấp quyền đổi design.
 
-## 4. Luật STOP — không tự quyết
+Khi hai tài liệu khác nhau, tìm revision, scope và approval có bằng chứng; **chỉ phần superseded cụ thể mới bị thay**. Không suy từ chữ “mới nhất” rằng được tự loại bỏ tất cả giới hạn cũ. Nếu không phân định được, STOP báo xung đột để user quyết.
 
-Dừng, nêu blocker cụ thể và đề nghị đúng một quyết định tiếp theo nếu:
-- Không tìm thấy approved spec/reference hoặc reference không khớp target/hướng/tỷ lệ/silhouette.
-- Task yêu cầu nhiều thay đổi (ví dụ: thay Player + Attack + HUD trong cùng prompt) mà chưa được tách.
-- Đề xuất sửa gameplay/balance/AI/input để che lỗi hình ảnh mà không có approval.
-- Art direction V2 xung đột với Art Bible/DDR chưa có quyết định thay thế.
-- Codex không thể minh chứng thay đổi đạt observable acceptance, hoặc tool không truy cập được file tham chiếu.
-- Autoplay/preview không tạo được trạng thái để review: báo thiếu fixture, không fake proc/damage.
-- Test/preview FAIL: không ghi ACCEPTED; sửa trong đúng task hoặc ghi blocker.
+## 4. Gate bắt buộc cho một thay đổi
 
-Codex **được** đưa ra phương án cụ thể khi đang ở giai đoạn design và đánh dấu PROPOSED, **không được** tự chọn phương án đó để sản xuất trước khi user duyệt.
+| Gate | Phải có trước khi đi tiếp |
+| --- | --- |
+| **G0 — Scope** | Task ID được mở, đúng một thay đổi, objective, anti-scope, dependency và loại task (design/implementation) |
+| **G1 — Design** | Desired outcome quan sát được, before/after, các trạng thái/viewport liên quan, phần giữ lại, phần được phép thay |
+| **G2 — References** | Với visual task: ảnh/keyframe/mockup đúng đối tượng, path/ID/revision/nguồn và cách so ở runtime scale; phân biệt concept, source art, production và screenshot thật |
+| **G3 — Approval** | User duyệt **đúng phiên bản design và đúng reference/scope** trước production; chỉ phê duyệt thiết kế không tự đồng nghĩa phê duyệt gameplay hoặc art đã tích hợp |
+| **G4 — Implementation** | Diff theo scope, không tự refactor/sửa balance/AI/input/HUD ngoài task; nếu design mới yêu cầu đổi gameplay, phải có task và approval tương ứng |
+| **G5 — Verification** | Kiểm theo acceptance của task, evidence thực tế, build/test phù hợp; preview app A/B chỉ là một công cụ, không phải Harness |
+| **G6 — Acceptance/Handoff** | Tách technical result / visual approval / experience playtest; lưu gaps, commit, link evidence, trạng thái và đúng một next action |
 
-## 5. Một prompt, một thay đổi
+**Task design-only** được phép chuẩn bị spec/references để xin approval G3, không cần tự có ảnh approved từ trước. **Task implementation visual** thiếu G3 thì STOP.
 
-Mỗi prompt Codex tối đa có các thành phần:
-`TASK-ID | READ (approved docs+refs) | DO (one exact observable change) | DON'T | ACCEPTANCE | CHECKS | COMMIT/HANDOFF | STOP`.
+## 5. Quy tắc STOP và quyền đề xuất
 
-Chi tiết nằm trong task file và reference, không nhồi nhiều quyết định mới vào prompt. Nếu một animation cần nhiều asset/pose cùng tạo thành một thay đổi duy nhất, task phải chỉ rõ đơn vị acceptance; không mặc nhiên gộp hệ thống khác.
+Dừng và báo blocker nếu:
+- Thiếu approved design/references cho việc chuẩn bị triển khai, hoặc ảnh không thể sử dụng/không xác định revision.
+- Task đòi nhiều thay đổi độc lập mà chưa tách, diff vượt scope, hoặc phát hiện phải đổi gameplay/balance ngoài scope.
+- Nguồn/approval mâu thuẫn mà chưa rõ phần nào thay thế.
+- Không kiểm được acceptance quan trọng, preview fixture sai, thiếu assets, tool không truy cập được hoặc output không bám spec.
+- Build/test thất bại: không tuyên bố đạt, không tự nới acceptance.
 
-**Design và implementation là hai lượt giao riêng** khi có hình ảnh mới. Implementation không được “vừa thiết kế vừa tự duyệt”.
+Codex **được** đưa proposal/design alternatives có lý do và ghi `PROPOSED`. Codex **không được** tự duyệt một alternative, thay ref đã duyệt hay chuyển sang production khi thiếu approval.
 
-## 6. Quy tắc visual và gameplay để không lạc hướng
+## 6. Phạm vi kiểm chứng (không khóa creative direction)
 
-- Giữ **visual hierarchy P0–P3** trong `ART_BIBLE.md` cho tới khi được duyệt thay, đặc biệt Player/threat cue > enemy role > proc/VFX > floor.
-- Actor vẫn top-down ¾, 4 hướng, mask/giáp/core/handedness theo Art Bible hiện hành trừ khi một V2 design card đã approved rõ phần thay.
-- Mọi particle/flash, afterimage, chain, explosion phải diễn tả **trigger và damage/area thật**; không tạo nguy hiểm hay hitbox giả.
-- Không làm quái thường trâu hơn chỉ để trưng animation; muốn chỉnh cân bằng phải là một task độc lập với mục tiêu và approval rõ.
-- Không khiến mutation/curse thành những icon vô nghĩa; yêu cầu visual logic: trạng thái bền vững hoặc event khi proc, liên hệ với tác động thực tế.
-- Giữ mobile-first + desktop-equivalent, hạn chế overlap, readability ở crowd và grayscale, hiệu năng browser, free/open-source, KISS.
+Acceptance được định nghĩa **theo task**; Harness chỉ bắt buộc cách kiểm:
+- So sánh thực tế với approved ref/spec, không chấm bằng cảm giác chung “đẹp”.
+- Kiểm đúng trạng thái/trigger/timing và kết quả gameplay thực nếu task có phụ thuộc vào logic.
+- Kiểm mobile và desktop theo phạm vi user duyệt; readability / crowd / overlapping threats / performance khi liên quan; không tạo báo cáo nặng khi không cần.
+- Nếu dùng preview app, chỉ khẳng định A/B khi thực sự có hai revision khác nhau; ghi rõ seed/sync limitations và việc autoplay không thay thế playtest tay.
+- Tách **not checked** khỏi **PASS**. Dùng focused tests, typecheck/build đủ phạm vi; không tạo hệ thống automation nặng chỉ để hợp thức hóa thay đổi.
 
-## 7. Quy trình audit ngắn gọn cho Codex
+Không áp đặt camera, màu, pixel-art, hiệu ứng hay con số cụ thể ở phần này.
 
-Trước sửa:
-- [ ] Đã đọc AGENTS → HANDOFF → MASTER_PLAN → HARNESS (bản approved) → DESIGN_BIBLE (nếu có) → task card → ref.
-- [ ] Task ID, đúng **một thay đổi**, approved revision và scope rõ ràng.
-- [ ] Không có mâu thuẫn chưa được giải quyết; biết trước/after, tiêu chí nhận biết, anti-scope.
+## 7. Audit checklist trước/sau task
 
-Sau sửa:
-- [ ] Diff không vượt scope; không tự đổi gameplay/balance/art approvals.
-- [ ] Ảnh/animation thực tế so với *đúng* reference đã duyệt, ở tỷ lệ chơi.
-- [ ] Kiểm tối thiểu build/typecheck khi có code; focused tests nếu đụng logic rủi ro.
-- [ ] Preview app A/B khi thực sự có candidate (không gọi hai iframe cùng code là A/B đã chứng minh khác biệt).
-- [ ] Handoff ghi revision, commit, link refs/evidence, kết quả kỹ thuật, hạn chế, gate cần user duyệt, **NEXT ACTION duy nhất**.
-- [ ] Không claim approval từ screenshot/build/deploy.
+**Trước:**
+- [ ] Có task ID, một mục tiêu, source docs/ref đúng revision, trạng thái và phạm vi đã duyệt nếu chuẩn bị code.
+- [ ] Biết rõ điều được thay, điều không được thay, các tiêu chí pass/fail, quyền đổi thiết kế và next gate.
+- [ ] Nếu ref chưa approved và nhiệm vụ là implementation visual: STOP.
 
-## 8. Quy tắc approval và thay đổi thiết kế
+**Sau:**
+- [ ] Diff đúng scope; không lén sửa design record, baseline hay gameplay.
+- [ ] Evidence thật đối chiếu từng acceptance; ghi phần chưa kiểm/điểm khác biệt.
+- [ ] Typecheck/build/focused test khi code liên quan; preview app chỉ khi hữu ích.
+- [ ] Lưu task ID, revision, refs, commit, technical result, user review status và đúng một next action; không suy approval từ CI hoặc deploy.
 
-Mọi proposal/asset phải ghi `PROPOSED` cho tới khi user duyệt rõ scope. Chỉ ghi `APPROVED` cho đúng hạng mục, revision và ảnh user đã duyệt. Thay một phần design V1 cần nêu phần được thay và phần giữ lại; không sửa lịch sử approval để xóa khác biệt.
+## 8. Approval, version và handoff
 
-`DESIGN_DECISIONS.md` chỉ được cập nhật khi đáp ứng quy tắc invocation `$design-decision` của repo; HARNESS không tự ghi DDR, không tự nhận quyền sửa ART_BIBLE. Phần pháp lý/nguồn ảnh phải rõ, không crop mockup từ bên thứ ba thành asset production.
+Mọi thiết kế: `PROPOSED → AWAITING USER VISUAL APPROVAL → APPROVED FOR IMPLEMENTATION → IMPLEMENTED/NEEDS REVIEW → ACCEPTED`. Các trạng thái tương ứng phải có evidence; được phép dừng/đổi ý/đánh dấu superseded bằng revision mới, không sửa ngược lịch sử.
 
-## 9. Hình thức bàn giao từng lượt
+Mỗi prompt Codex ngắn, dạng:
+`TASK ID | READ approved spec/ref | DO 1 change | DON'T | ACCEPTANCE | CHECK | COMMIT + HANDOFF | STOP`.
 
-Mỗi task trả gọn:
-`Task ID | Status (PROPOSED / AWAITING VISUAL APPROVAL / IMPLEMENTED-NEEDS-REVIEW / ACCEPTED) | Design ref IDs | Changed files | Commit/deploy | Validation vs acceptance | Known gaps | One next action`.
+Mỗi lần bàn giao: `Task ID | status | approved design/ref revision | changed files | evidence | checks | commit/deploy | blockers | next action`. Design-only không có ref approved thì ghi rõ `NOT YET APPROVED`.
 
-Nếu chưa có refs thì ghi `NONE — DESIGN ONLY`, không để người đọc suy rằng đã duyệt.
+## 9. Tình trạng A-H1 và phần còn thiếu
 
-## 10. Còn thiếu để Harness thật sự có hiệu lực
+Đây là **contract dự thảo**. Chưa enforce trong `AGENTS.md`, chưa có Design Bible, reference protocol, task template và dry run. Hoàn thiện lần lượt theo `MASTER_PLAN.md`:
+- A1 Experience Vision; A2 Visual Language; A3 Reference Protocol.
+- A-H2 task card template; A-H3 nối quy tắc vào AGENTS/HANDOFF; A-H4 dry run tuân thủ/STOP.
+- Gate A: user duyệt Harness + các nguồn thiết kế liên quan, mới được mở task production đầu tiên.
 
-- **A1:** Experience Vision (mục tiêu cụ thể, anti-goals, 3 thời điểm của run).
-- **A2:** Visual Language + Design Bible, có hình mẫu khi cần, user duyệt.
-- **A3:** quản lý nguồn/ID/version/trạng thái hình tham chiếu và evidence.
-- **A-H2:** mẫu task card chi tiết, gồm negative references và phân biệt role/trigger/timing.
-- **A-H3:** nối AGENTS/HANDOFF với các gate, phương thức kiểm việc tuân thủ.
-- **A-H4:** dry run một task design-only, chứng minh đúng dừng khi thiếu approval.
-- **GATE A:** user duyệt bộ contract và các thành phần; khi đó bắt đầu thiết kế B1, không auto implement.
+**NEXT ACTION DUY NHẤT:** user review và duyệt/chỉnh revision A-H1. Không bắt đầu A1, không tạo art hoặc sửa gameplay.
 
-**NEXT ACTION tại A-H1:** user review/điều chỉnh/duyệt contract này, sau đó mới tạo A1 Experience Vision. Không được tự triển khai A1, artwork hay gameplay.
+## 10. Nguồn sửa đổi
+
+User ngày 2026-11-12, hội thoại hiện tại không permalink: “cũng khá ổn, nhưng mà t thấy nó bỏ vô quy định về top 3/4 vâng vâng, cái này chỉ nên là ref nếu chưa có j thay thế, k set cứng như vậy, có thể trong quá trình làm t sẽ đổi ý thì sao? harness này là bộ khung quy định những thứ bắt buộc follow, boundaries, verify, …”. Đây là phản hồi sửa contract, **không tự suy ra approval cuối cho A-H1**.
