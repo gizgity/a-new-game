@@ -9,6 +9,17 @@
 - Chỉ dẫn mới nhất của người dùng được ưu tiên khi có xung đột giữa các tài liệu này và yêu cầu của người dùng.
 - Không tự ý thay đổi project goal, task goal, scope hoặc quyết định đã khóa; chỉ thay đổi khi người dùng yêu cầu.
 
+## Combat Experience V2 — Design Harness bắt buộc
+
+**Chỉ áp dụng cho task thuộc Combat Experience V2.** Trước khi lập spec, tạo artwork hoặc sửa code V2, agent phải đọc `HANDOFF.md` (mục CURRENT mới nhất), `docs/combat-v2/MASTER_PLAN.md`, `docs/combat-v2/HARNESS.md`, `docs/combat-v2/DESIGN_BIBLE.md` và `docs/combat-v2/REFERENCE_PROTOCOL.md` khi liên quan; sau đó đọc đúng task card/reference đã được duyệt. Dùng `docs/combat-v2/TASK_CARD_TEMPLATE.md` khi task template được duyệt; chưa chốt template không được tự suy quyền production.
+
+- **Một prompt = một thay đổi**, ghi rõ scope/anti-scope, outcome kiểm được, task ID, revision, approval, evidence.
+- **Design trước code**: visual implementation cần đúng spec + target reference + scope được user duyệt; thiếu thì STOP, không tự đoán/chọn hướng, không tự coi commit/CI/deploy là nghiệm thu.
+- **Harness chỉ điều khiển quy trình/boundaries/verify, KHÔNG khóa thiết kế**. Góc nhìn top-down ¾, 4 hướng, palette, silhouette, HUD, VFX, HP, nhịp Boss và các mục trong Art Bible/Game Brief là baseline/historical fallback khi chưa có quyết định thay thế được user duyệt cho scope đó; không biến thành luật không thể sửa.
+- User có thể đổi ý: nêu baseline → candidate → phạm vi supersede → ảnh/approval → tác động; chia task nếu thay đổi độc lập. Không tự đổi ART_BIBLE/DDR hoặc xóa lịch sử approval.
+- Codex phải đối chiếu actual với approved target ở trạng thái và scale chơi thật; kỹ thuật PASS, user visual approval và user playtest acceptance là ba kết quả khác nhau. Preview app chỉ để quan sát, không phải Design Harness.
+- **Gate A chưa hoàn tất thì không tự implement redesign V2**. Các bước tiếp theo chỉ đọc `MASTER_PLAN.md` và mục CURRENT của `HANDOFF.md`; **không lấy lịch sử NEXT ACTION cũ làm lệnh**.
+
 ## Ngôn ngữ
 - Ngôn ngữ mặc định của repository là tiếng Việt. Trao đổi, tài liệu, báo cáo, task notes và handoff dùng tiếng Việt.
 - Code identifiers (variables, functions, classes, filenames) dùng tiếng Anh theo chuẩn lập trình.
