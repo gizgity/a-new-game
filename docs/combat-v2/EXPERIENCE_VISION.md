@@ -1,6 +1,6 @@
 # CURSEBREAK V2 — A1 EXPERIENCE VISION
 
-> **PROPOSED · Revision 1 · 2026-11-12 · AWAITING USER REVIEW.**
+> **A1 USER ACCEPTED · Revision 1 · 2026-11-12.** User: “phần này thì được r á”, theo nguồn đã ghi trong MASTER_PLAN/HANDOFF; chỉ chốt mục tiêu trải nghiệm, không cấp approval production.
 > Tài liệu thiết kế trải nghiệm cấp cao, **không phải luật bất biến của Harness**, cũng không phải approval artwork/gameplay/balance. Mọi phương án cụ thể có thể được thay thế theo yêu cầu user, được version và ghi scope. A1 chỉ chốt **người chơi cần cảm nhận điều gì**; A2 mới đề xuất **ngôn ngữ hình ảnh thể hiện điều đó như thế nào**.
 > Nguồn: yêu cầu redesign combat, quái máu giấy và cảm nhận mạnh lên; dùng `HARNESS.md` Revision 2 đã user duyệt làm quy trình. Mốc gameplay hiện hành trong `GAME_BRIEF.md`, không tự tạo mechanics.
 
@@ -10,7 +10,7 @@
 
 Đích cảm giác: **Mass Slaughter + Stylish Combat + Explosive Chain Reactions**. Đây là mục tiêu trải nghiệm/creative direction cấp cao, không ấn định camera, sprite style, palette, VFX grammar hay một loại attack mới.
 
-## 2. Các trụ trải nghiệm (proposed)
+## 2. Các trụ trải nghiệm
 
 | Trụ | Người chơi cảm nhận | Tín hiệu quan sát được (không khóa cách vẽ) | Anti-goal |
 | --- | --- | --- | --- |
@@ -71,12 +71,9 @@ A1 đạt khi user xác nhận cả bốn câu hỏi:
 
 Khi được duyệt A1, **A2 — Visual Language** có nhiệm vụ tạo lựa chọn cụ thể hơn: cách thể hiện silhouette/shape, palette/motion/impact/VFX, hierarchy và các ví dụ minh họa; không ép phải trung thành vĩnh viễn với Art Bible cũ. Mọi alternative vẫn có thể được user chọn/đổi.
 
-## 9. Ranh giới, trạng thái và next action
+## 9. Ranh giới và trạng thái
 
-- **A-H1**: process-only HARNESS Revision 2 đã được user cho phép tiến tiếp (2026-11-12); chưa có enforcement nối AGENTS, còn A-H2/H3/H4.
-- **A1**: tài liệu này **PROPOSED**, chưa acceptance, không có artwork/production permission.
-- **A2/A3/H2/H3/H4**: chưa bắt đầu.
-- **Preview App**: công cụ review có sẵn, không phải Design Harness.
-- Không sửa `ART_BIBLE.md`, `DESIGN_DECISIONS.md`, `GAME_BRIEF.md`, gameplay, balance, code hoặc assets; không chạy build/deploy với docs-only.
-
-**NEXT ACTION duy nhất:** user review/chỉnh/duyệt A1 Experience Vision; chỉ sau đó mới bắt đầu A2.
+- **A1: USER ACCEPTED Revision 1**, nguồn approval nêu ở đầu tài liệu; không có artwork/production permission.
+- Tiến độ toàn dự án, Gate A và NEXT ACTION: xem `MASTER_PLAN.md` + mục CURRENT mới nhất của `HANDOFF.md`; không lấy hướng dẫn chuyển bước trước approval làm lệnh hiện hành.
+- **Preview App** là công cụ review, không phải Design Harness.
+- Không sửa `ART_BIBLE.md`, `DESIGN_DECISIONS.md`, `GAME_BRIEF.md`, gameplay, balance, code hoặc assets trong công việc tài liệu này; không chạy build/deploy với docs-only.

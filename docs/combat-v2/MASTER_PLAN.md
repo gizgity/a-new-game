@@ -18,7 +18,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 - V2-01: tạo **preview app**, nhầm gọi “Design Review Harness” trong lịch sử; commit `b96e52b`.
 - V2-02: bổ sung autoplay/playback cho **preview app**; commit `f81f33e`, Pages workflow 43067036347 SUCCESS, chưa user visual/experience acceptance.
-- **Design Harness đúng nghĩa: contract A-H1 đã user duyệt (Revision 2) và liên kết AGENTS (A-H3); A-H2 còn chờ duyệt, A-H4 chưa chạy; Gate A chưa hoàn tất.** MASTER_PLAN là roadmap, không phải harness.
+- **Design Harness đúng nghĩa: contract A-H1 đã user duyệt (Revision 2) và liên kết AGENTS (A-H3); A-H2 APPROVED v1; A-H4 PASS ở mức dry run tài liệu, xem `DRY_RUN_REPORT.md`; Gate A READY FOR USER REVIEW, chưa được user duyệt.** MASTER_PLAN là roadmap, không phải harness.
 - Preview BASELINE và CANDIDATE đang cùng runtime; chưa có redesign V2 production.
 - `ART_BIBLE.md` và DDR là các baseline/ràng buộc đã có, **chưa đủ** làm Design Harness V2.
 - Tên file lịch sử `design-harness.html` được giữ để tránh phá URL; tên kỹ thuật cũ **không quyết định định nghĩa**.
@@ -63,7 +63,7 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 **DESIGN CARD → VISUAL GATE → IMPLEMENT → REVIEW GATE**:
 1. Bắt đầu một task ID, xác định scope đúng 1 thay đổi, liệt kê file hiện trạng và source of truth.
 2. Chốt *outcome observable*: người xem phải nhận ra điều gì, trước/sau khác ở đâu; không mô tả kiểu “đẹp hơn” đơn thuần.
-3. Tạo refs phù hợp (concept / storyboard / keyframe / overlay trên screenshot runtime), kiểm **chính xác hướng/top-down ¾/scale/asset identity**. Đặt vào `docs/combat-v2/references/` khi đã có và user chọn; source/metadata/approval rõ.
+3. Tạo refs phù hợp (concept / storyboard / keyframe / overlay trên screenshot runtime), kiểm **đúng góc nhìn/hướng/scale/asset identity theo spec từng task được duyệt**. Đặt vào `docs/combat-v2/references/` khi đã có và user chọn; source/metadata/approval rõ.
 4. **AWAITING USER VISUAL APPROVAL** cho art mới. Concept không được tự auto-integrate.
 5. Codex implement duy nhất design card được duyệt; không sửa logic unrelated; typecheck/build và focused tests nếu cần.
 6. Preview app: cùng scenario/seed, baseline **pin phiên bản trước** và candidate mới để so sánh khi khả thi; nói rõ nếu không deterministic; snapshot mobile & desktop; xét 0.25×/Step; kiểm crowd và telegraph.
@@ -78,7 +78,7 @@ Thiết kế lần lượt **B1 Player base silhouette**, **B2 Idle**, **B3 Move
 
 Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ thể mới tạo:
 - `docs/combat-v2/MASTER_PLAN.md`: **roadmap, trạng thái high-level, dependency, gate** (file này).
-- `docs/combat-v2/HARNESS.md`: **contract bắt buộc cho Codex** sau A-H1; tiếp tục bổ sung H2–H4 theo từng task và chờ duyệt. Đây là Design Harness thật; không được coi MASTER_PLAN hoặc preview app là HARNESS.
+- `docs/combat-v2/HARNESS.md`: **contract bắt buộc cho Codex** A-H1 đã chốt; tiến độ H2–H4 nằm ở roadmap/handoff, không ghi vào contract. Đây là Design Harness thật; không được coi MASTER_PLAN hoặc preview app là HARNESS.
 - `docs/combat-v2/DESIGN_BIBLE.md`: design vision/visual contract từ A1–A2, phải duyệt trước khi cho production; có trạng thái từng mục.
 - `docs/combat-v2/tasks/<TASK-ID>.md`: **một task đã bắt đầu** gồm scope, refs, outcome, acceptance, implementation, evidence, trạng thái. Không tự tạo hàng chục file rỗng.
 - `docs/combat-v2/references/`: concept/screenshots/approved assets khi thực sự có, có nguồn và scope duyệt.
@@ -106,8 +106,8 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
 | A1 | Experience vision | USER ACCEPTED — 2026-11-12, “phần này thì được r á” | Đã mở A2 |
 | A-H2 | Task card template | APPROVED v1 — user “uh chốt h2”, 2026-11-12 | Đã chốt |
-| A-H3 | AGENTS enforcement | LINKED IN AGENTS.md — commit `1630896`; audit integration còn A-H4 | Chưa thay thế Gate A |
-| A-H4 | Dry run compliance | NOT STARTED | A-H3 |
+| A-H3 | AGENTS enforcement | LINKED IN AGENTS.md — commit `1630896`; audit integration PASS trong A-H4 (tài liệu) | Chưa thay thế Gate A |
+| A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
 | B | Combat core | NOT STARTED | Gate A |
@@ -117,11 +117,11 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**Thực hiện A-H4 — Dry Run Compliance** theo Harness và template A-H2 đã chốt, chỉ kiểm tình huống mẫu, không sản xuất art/code game. A-H3 đã gắn AGENTS; Gate A chưa hoàn tất và B1 chưa mở. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**DỪNG tại A-H4; chờ user review báo cáo A-H4 và quyết định Gate A.** Báo cáo: [DRY_RUN_REPORT.md](DRY_RUN_REPORT.md), 2026-11-12, theo TASK A-H4 trong hội thoại (không permalink). TC-01–04 và audit sau sửa đều PASS ở mức tài liệu; A-H4 chưa được user nghiệm thu. **Gate A: READY FOR USER REVIEW**, chưa APPROVED; B1 chưa mở. Lượt này chỉ tài liệu Harness/báo cáo/trạng thái, không build/deploy hoặc sửa production.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
-1. **DOC (hiện tại):** A2 Design Bible (APPROVED) → A3 references protocol (APPROVED) → A-H2 task card template (APPROVED) → A-H3 AGENTS enforcement (LINKED) → A-H4 dry-run compliance (NOT STARTED). **Gate A: user duyệt quy trình và design direction cấp cao.**
+1. **DOC (hiện tại):** A2 Design Bible (APPROVED) → A3 references protocol (APPROVED) → A-H2 task card template (APPROVED) → A-H3 AGENTS enforcement (LINKED) → A-H4 dry-run compliance (PASS tài liệu, chờ user review). **Gate A: user duyệt quy trình và design direction cấp cao.**
 2. **DESIGN/ART đầu tiên:** B1 Player Base spec + before/after references/keyframes ở tỷ lệ chơi thật; user duyệt đúng revision.
 3. **CODE đầu tiên:** chỉ B1 Player Base được duyệt; typecheck/build + focused regression.
 4. **REVIEW đầu tiên:** preview app hiển thị baseline revision cũ và candidate mới; desktop/mobile; user ACCEPT hoặc yêu cầu chỉnh.
@@ -131,10 +131,10 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 8. Sửa lỗi thuật ngữ (2026-11-12)
 
-User đính chính nguyên văn: “harness là bộ khung bắt buộc codex tuân theo, k phải preview, chưa có 1 harness nào đc tạo ở thời điểm hiện tại, chỉ có 1 app preview”. Các đề cập trước về “harness đã hoàn tất” là **sai khái niệm**. Không thay lịch sử commit; mọi báo cáo sau phải gọi V2-01/V2-02 là preview app, còn Design Harness là **NOT STARTED** cho đến khi được xây dựng và user duyệt.
+User đính chính nguyên văn: “harness là bộ khung bắt buộc codex tuân theo, k phải preview, chưa có 1 harness nào đc tạo ở thời điểm hiện tại, chỉ có 1 app preview”. Các đề cập trước về “harness đã hoàn tất” là **sai khái niệm**. Không thay lịch sử commit; mọi báo cáo sau phải gọi V2-01/V2-02 là preview app, còn Design Harness ở thời điểm đính chính là **NOT STARTED**. Đây là lịch sử trước A-H1; trạng thái hiện hành đọc ở mục 6–7.
 
 ## 9. Nguồn ý định và ranh giới approval
 
 - User (hội thoại, không permalink, 2026-11-12): “trước khi bắt đầu, t muốn m rõ ràng về các step sẽ làm, vì m đã làm thiếu nên t k còn tin nữa t muốn kế hoạch chi tiết high level, sao đó mới vào low level từ chi tiết, phải đc doc lại, để m có thể đọc và nhớ m đã làm j”.
 - User đã nhấn mạnh giữ quái thường máu giấy, thể hiện tăng sức mạnh qua clear và Mutation/Curse; một prompt một thay đổi; design reference rõ ràng; harness autoplay.
-- Đây là **planning proposal** để user duyệt; không ghi vào DDR, không tuyên bố có approval mới cho gameplay/art.
+- Roadmap được chấp thuận tiến theo A0 và approval từng phần ở mục 6; các phần B–E vẫn là **planning proposal**, không phải quyền triển khai. Không ghi vào DDR, không tuyên bố có approval mới cho gameplay/art.

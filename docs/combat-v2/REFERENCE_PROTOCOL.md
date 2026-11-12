@@ -84,4 +84,4 @@ Không tự tạo sprite “theo cảm giác”, không biến hình minh họa 
 
 A3 hoàn thành ở mức DOC khi protocol này giải thích được: loại ảnh, version, approval, binding, lưu trữ và evidence; **chưa có refs B1 thật** vì chưa bắt đầu B1. Thử nghiệm việc tuân thủ theo A-H4 với task minh họa, không build/deploy hoặc tạo artwork trong A3.
 
-**A3 status: APPROVED v1.** Đã tạo A-H2 [TASK_CARD_TEMPLATE.md](TASK_CARD_TEMPLATE.md) ở trạng thái PROPOSED, đang chờ user duyệt. Chưa sửa production.
+**A3 status: APPROVED v1.** Template liên quan: [TASK_CARD_TEMPLATE.md](TASK_CARD_TEMPLATE.md). Tiến độ các bước, Gate A và NEXT ACTION xem `MASTER_PLAN.md` + mục CURRENT mới nhất của `HANDOFF.md`. Protocol approval không cấp quyền production.

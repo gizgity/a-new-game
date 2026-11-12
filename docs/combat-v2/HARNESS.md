@@ -2,7 +2,6 @@
 
 > **A-H1 APPROVED (contract Revision 2) · 2026-11-12 · áp dụng qua AGENTS.md trong A-H3 (2026-11-12).** User xác nhận “ok, làm tiếp đi” ngay sau khi được đề nghị duyệt A-H1 Revision 2; chỉ áp dụng **quy trình/biên giới/verify**, không duyệt bất kỳ design visual/gameplay mới nào.
 > Harness là **quy trình và biên giới bắt buộc Codex tuân thủ**, không phải preview app. Tài liệu này **không khóa** camera, art style, palette, sprite, loại VFX, combat balance hoặc ý tưởng gameplay cụ thể. Các lựa chọn đó thuộc design specs/decisions theo từng phiên bản và **có thể đổi theo ý user**.
-> Contract A-H1 đã chốt; A1/A2/A3 đã duyệt, A-H2 đang chờ review, A-H3 liên kết AGENTS, A-H4 dry run chưa làm. Gate A vẫn chưa hoàn tất: không khởi động redesign production.
 
 ## 1. Vai trò và nguyên tắc bất biến của HARNESS
 

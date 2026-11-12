@@ -9,9 +9,16 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — COMBAT V2 A-H2 APPROVED (2026-11-12)
+## CURRENT — COMBAT V2 A-H4 DRY RUN (2026-11-12)
 
-User “uh chốt h2” xác nhận A-H2 Task Card Template v1. [TASK_CARD_TEMPLATE.md](docs/combat-v2/TASK_CARD_TEMPLATE.md) APPROVED commit `d2d2b4a`. [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) đồng bộ A-H2 APPROVED / A-H3 linked / A-H4 NOT STARTED, commit `c7ccbc2`. **NEXT ACTION DUY NHẤT: A-H4 dry run compliance (chỉ docs/verify, không production art hoặc code).** Gate A chưa hoàn tất, B1 chưa mở. Đây là trạng thái ưu tiên hơn các NEXT ACTION lịch sử bên dưới.
+**A-H4: PASS — kiểm tình huống trên tài liệu, chưa user acceptance.** [DRY_RUN_REPORT.md](docs/combat-v2/DRY_RUN_REPORT.md): TC-01/02/03/04 PASS, audit consistency sau sửa PASS. Không chứng minh tuân thủ trong implementation thực tế.
+- A-H1 Revision 2, A1 Revision 1, A2 Revision 1, A3 v1, A-H2 v1 đã được user duyệt; A-H3 nối AGENTS ở `1630896`. Giữ approval cũ; không tự cấp approval mới.
+- Sửa nhãn approval/tiến độ cũ trong Experience Vision, Design Bible, Reference Protocol, Master Plan; bỏ tiến độ cũ ở đầu Harness, giữ nguyên contract. Chi tiết/evidence tại báo cáo.
+- Validation: đọc lại bốn TC và audit toàn bộ sau sửa, kiểm links cục bộ/diff/scope Markdown; không chạy game/build/tests/deploy, không tạo refs/assets/task B1, không sửa ART_BIBLE/DDR.
+- **Gate A: READY FOR USER REVIEW**, chưa APPROVED. B1 chưa mở; A-H4 chưa được user nghiệm thu. Commit của lượt này chứa báo cáo và snapshot CURRENT này; SHA được bàn giao trong phản hồi cuối.
+- **NEXT ACTION DUY NHẤT: DỪNG, chờ user review A-H4 và quyết định Gate A.** Mục CURRENT này ưu tiên hơn mọi trạng thái/NEXT ACTION lịch sử bên dưới; không tự bắt đầu B1 kể cả sau resume.
+
+## LỊCH SỬ COMBAT V2 — không phải chỉ thị hiện hành
 
 ## CURRENT — COMBAT V2 DOCUMENT AUDIT / A-H2 REVIEW (2026-11-12)
 

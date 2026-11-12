@@ -99,10 +99,6 @@ Tất cả = **TBD**, chỉ được giải quyết bằng design card/ref có a
 
 ## 8. Status
 
-- A-H1: Approved Revision 2, harness tổng thể chưa enforce.
-- A1: user chấp nhận Experience Vision ngày 2026-11-12; cập nhật nguồn trong MASTER_PLAN/HANDOFF.
-- **A2: APPROVED Revision 1 — creative direction only.**
-- A3/H2/H3/H4: not started.
-- Không sửa `AGENTS.md`, `ART_BIBLE.md`, `GAME_BRIEF.md`, `DESIGN_DECISIONS.md`, game code/assets; docs-only, không build/deploy.
-
-**NEXT ACTION:** user review/chỉnh/duyệt A2. Sau đó mới A3.
+- **A2: APPROVED Revision 1 — creative direction only**, không duyệt artwork/production hoặc gameplay cụ thể.
+- A1 đã được user chấp nhận; tiến độ A3/H2/H3/H4, Gate A và NEXT ACTION xem `MASTER_PLAN.md` + mục CURRENT mới nhất của `HANDOFF.md`.
+- Phạm vi lượt A2 là tài liệu; không sửa `AGENTS.md`, `ART_BIBLE.md`, `GAME_BRIEF.md`, `DESIGN_DECISIONS.md`, game code/assets; không build/deploy. Đây không phải giới hạn cho task docs khác đã được user giao.
