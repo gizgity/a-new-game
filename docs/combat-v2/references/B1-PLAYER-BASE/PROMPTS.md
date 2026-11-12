@@ -1,4 +1,20 @@
-# B1-SOUL — Exact prompts v1 / spec revision3
+# B1-SOUL — Exact prompts / active spec revision4
+
+## B1-SOUL — separated visual prototype v1 / spec revision4
+
+ImageGen original text-to-image, no image inputs (không lấy ảnh game bên thứ ba làm input). transparent_background=false. Output B1-SOUL-separated-v1.png. Model/seed không cung cấp; output theo điều khoản dịch vụ, không khẳng định CC0/độc quyền. Không model3D/runtime.
+
+```text
+Create an ORIGINAL playable main protagonist visual prototype for CURSEBREAK, CONCEPT ONLY. Single character, single neutral poised stance, full body LARGE, plain dark warm grey background. This is an ancient sovereign SOUL that has mastered its energy prison and commands separated crystals into a combat presence. The previous connected rock humanoid/golem and giant vertical prison pillar were rejected. Invent a NEW elegant silhouette based on DISCONNECTED FORMS AND GENEROUS NEGATIVE SPACE, not stone muscles, armor or a golem.
+
+Critical topology: show approximately NINE substantial free-floating crystal masses, EACH PHYSICALLY DETACHED from its neighbors by plainly visible empty background gaps. NO pieces touching at joints, NO stone upper arms, NO stone thighs, NO fingers, NO connecting glow tubes. One small off-center clear asymmetrical wedge near the top gives a directed head-like focus without a face or mask; two slim offset shoulder crystals float well apart; two substantial angular forearm/hand crystals hang lower and slightly forward, with a full forearm-width gap where upper arms would be; one single low curved pelvic crystal floats under the soul with a clear empty gap; two elongated lower-leg/foot crystals hover below it with large empty gaps where thighs/knees would be; one small rear balancing crystal behind the pelvis. No tiny orbiting shards or jewelry. The soul is a compact three-dimensional enclosed pale blue-white volume between these arranged masses, like a contained dense translucent geometric force with a subtle internal knot of awareness, not a chest jewel on a humanoid torso. There is NO solid torso, NO ribs, NO giant head-to-waist prism. Soul's energy is bounded, quiet and faint, not a luminous anatomy mannequin; empty joint gaps remain dark visibly. The invisible will holds everything; do NOT draw tether lines or an outline body filling gaps.
+
+Main-character agency through composition and pose: an elegant upright heroic line, lifted head-like wedge oriented toward viewer down-right, composed asymmetry, one floating hand slightly forward and palm-like plane open, other relaxed; balanced, calm, intelligent and confident, not a bulky hulking enemy, robot, spider or monster. Do not copy any existing game character. General research lesson is separated parts can remain a coherent charismatic protagonist; NOT any recognizable character design. No face, eyes, hair, chibi, knight, cape, scarf, crown, weapon, sword, gun, chest core, big shoulder armor, humanoid muscle armor, purple/pink neon, jade/ivory mask or reliquary.
+
+Crystal material: mostly opaque translucent smoky blue-grey quartz with smooth broad planar surfaces and a few worn edges, restrained pale mineral highlights, selective gentle translucency only at edges. NO rocky granular noise, no metal or human joints. Each piece a unique designed functional mass rather than repeated diamonds. Clear warm key light / cool shadow creates stylized 2.5D GAME volume, low material noise, not photoreal jewelry render. See tops of masses from elevated three-quarter game camera about40degrees downward; legs foreshortened, strong separation of front/back masses, no eye-level portrait. No arena, HUD, dramatic scene, effects, smoke, aura, particles, pedestal or ground ring. Soft restrained contact shadow only to locate the character. Footer exactly 'CONCEPT — PROPOSED — NOT PRODUCTION'. Output one beautiful designed character, not infographic, sheet or multi pose board.
+```
+
+## Lịch sử prompts revision3
 
 ## B1-SOUL — graphic study v1 / spec revision3
 

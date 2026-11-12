@@ -9,18 +9,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1 ANCIENT SOUL / 2.5D EXPLORATION (2026-11-12)
+## CURRENT — B1 SOUL / SEPARATED VISUAL PROTOTYPE (2026-11-12)
 
-User từ chối cả ba A/B/C (“cả 3 không đạt ... giống quái hơn là nhân vật chính”), chọn ý tưởng linh hồn cổ xưa đã làm chủ khối năng lượng giam giữ, tập hợp tinh thể thành cơ thể chiến đấu. Kiếm/súng có thể là hướng evolution, gameplay redesign để sau. User cho thử2.5D và hỏi Three.js; chưa cho implementation/engine migration.
+User: “các tinh thể dính nhau quá, chưa đẹp, có thể tham khảo các game có cùng phong cách thiết kế để ra đc prototype”. B1 revision3 NEEDS REVISION; A/B/C vẫn REJECTED. Hướng soul đã làm chủ/crystal assembly giữ; gameplay redesign để sau, chưa Three.js implementation.
 
-[B1 card revision3](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/hai SOUL studies](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompts đã lưu. Hai ảnh graphic/2.5D look cùng neutral design, **PROPOSED / AWAITING USER REVIEW**, không TARGET. Ảnh2.5D là ImageGen illustration, không Three.js/runtime3D evidence. Quan sát: bớt noise, planes/depth rõ hơn; hình vẫn giống crystal golem/trụ quá dài, chưa đạt hero identity theo user. Không tự PASS.
+[B1 revision4](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [research](docs/combat-v2/references/B1-PLAYER-BASE/RESEARCH.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md): nghiên cứu Xerath/LoL, Knack, Rayman để tách bài học energy/material, assembly và pose/negative space. Không phải cùng toàn bộ art direction; external images chỉ research, không repo/InputGen/production. Một visual prototype mới B1-SOUL-separated-v1.png, PROPOSED / AWAITING USER REVIEW; original ImageGen, không executable3D/model/runtime screenshot.
 
-Three.js: có lý do khảo sát nếu cần realtime crystal reassembly; hiện Phaser3.90 quản sprite/VFX/camera/audio/input. CombatWorld2D có phần tách presentation nhưng chưa audit migration/benchmark. Có thể giữ gameplay plane2D với renderer3D; không cần đổi mechanics để có depth. Chưa chọn engine, chưa technical spike. Mobile transparency/overdraw/shadows/drawcalls còn chưa đo.
+Observed: gaps thật lớn, bỏ anatomy dính/trụ dài, energy compact và material ít noise. Gaps có thể quá rộng/mất unity, shoulder/head focus yếu, chưa chứng minh protagonist hoặc đẹp; không tự PASS. Camera/gameplay scale/mobile/desktop/crowd/telegraph/grayscale/performance chưa verified, comparison hợp lệ vẫn0/3. Không tái dùng montage sai scale.
 
-Validation: PNG/path/prompts/metadata/diff; chỉ docs/design refs, không build/deploy/code/production/Bibles/Harness/DDR/B2. Baseline approvals và Gate A giữ nguyên. Comparisons runtime hợp lệ vẫn0/3; gameplay-scale/mobile/desktop/crowd/telegraph chưa verified. Lịch sử B1 reset ở git/manifest, không tái dùng ba hướng bị từ chối.
+Validation: PNG/path/prompts/metadata/diff; chỉ docs/design references; không build/deploy/code/production/Bibles/Harness/DDR/B2. Gate A/baseline approvals giữ nguyên. Chưa approve ảnh/spec/engine.
 
 **FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW**, full acceptance còn thiếu game-scale comparison.
-**ONE NEXT ACTION: User đánh giá hướng linh hồn/tinh thể và chiều sâu trong hai study để chọn/chỉnh; chưa chọn engine.**
+**ONE NEXT ACTION: User đánh giá visual prototype tách khối để chọn/chỉnh mức độ khoảng hở, silhouette và phong thái.**
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 

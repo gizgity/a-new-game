@@ -1,6 +1,6 @@
 # B1 — Reference manifest (A3)
 
-CONCEPT — PROPOSED — NOT PRODUCTION (hai SOUL studies). Task: B1-PLAYER-BASE; active spec revision3; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
+CONCEPT — PROPOSED — NOT PRODUCTION (SOUL separated study hiện hành). Task: B1-PLAYER-BASE; active spec revision4; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -12,7 +12,7 @@ CONCEPT — PROPOSED — NOT PRODUCTION (hai SOUL studies). Task: B1-PLAYER-BASE
 
 Mọi ảnh concept có nhãn CONCEPT — PROPOSED — NOT PRODUCTION trong ảnh. Metadata baseline PROPOSED nói việc bind vào B1 chưa duyệt, không phủ định approval Q7C lịch sử.
 
-## Active exploration — spec revision3
+## Historical exploration — spec revision3 / NEEDS REVISION
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -20,6 +20,14 @@ Mọi ảnh concept có nhãn CONCEPT — PROPOSED — NOT PRODUCTION trong ản
 | B1-SOUL-25D | B1-PLAYER-BASE | CONCEPT | image1/spec3 | [B1-SOUL-25d-v1.png](B1-SOUL-25d-v1.png) | ImageGen edit từ SOUL graphic, PROMPTS SOUL2.5D | 1024×1536, cùng neutral/view; look study, không Three.js render | So planes/light/material; không khóa silhouette/engine/camera/gameplay | PROPOSED | NONE |
 
 Ba study A/B/C ở bảng trên là lịch sử REJECTED; approval “cả 3 không đạt, concept k có chất game, giống quái hơn là nhân vật chính”, 2026-11-12, hội thoại hiện tại không permalink. Không tái dùng làm design input.
+
+## Active exploration — spec revision4
+
+| ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1-SOUL-SEPARATED | B1-PLAYER-BASE | CONCEPT | image1/spec4 | [B1-SOUL-separated-v1.png](B1-SOUL-separated-v1.png) | ImageGen original text, no image input; exact prompt in PROMPTS | 1199×1312, một neutral figure, nền study, không game-scale/runtime | Detached masses/compact soul intent; gap/pose/identity còn cần chỉnh; không suy code/3D/flight/timing | PROPOSED | NONE |
+
+[Research có nguồn và review](RESEARCH.md). Hai SOUL studies revision3 cần sửa theo user “các tinh thể dính nhau quá, chưa đẹp”; không phải TARGET. Study mới không sửa/tiếp nối A/B/C đã REJECTED. Ảnh reference game bên thứ ba chỉ xem qua web, không lưu/dùng ImageGen input/asset.
 
 ## Sources / review
 
@@ -45,3 +53,5 @@ SHA256:
 
 Desktop/grayscale/crowd/telegraph/4góc của candidate chưa verified. Không có approved target. Ba hướng A/B/C bị REJECTED bởi user, không phát triển tiếp. Hai SOUL studies mới PROPOSED, chưa runtime comparison.
 
+
+Separated prototype SHA256: `61a0a488ac6a4ccd004efc3021bb2aa8bbafb17c13b64a799ab85d3754767cee`. Original: `exec-742c157e-57c8-4d56-b9cd-57ccd4eb3367.png` (copy nguyên ảnh; original giữ ngoài repo).
