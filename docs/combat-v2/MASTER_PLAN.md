@@ -10,7 +10,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 **Đích trải nghiệm:** mass slaughter + stylish combat + explosive chain reactions; đầu run giết nhanh, càng về cuối càng giết được nhiều hơn/diện rộng/lan truyền và thay đổi rõ ngoại hình; Elite/Boss có nhịp riêng, không biến fodder thành bao cát HP.
 
-**Giới hạn giai đoạn thiết kế:** giữ gameplay hiện hành cho tới khi có đề xuất balance/gameplay riêng được duyệt. Bảo toàn input, hitbox, RNG/progression, run 5 phút, telegraph, mobile-first + desktop-equivalent; FPS/readability/hiệu năng KISS. Không suy rằng ảnh concept là sprite production hoặc animation frame đã duyệt.
+**Giới hạn giai đoạn thiết kế:** gameplay, input, hitbox, RNG/progression, run pacing và telegraph hiện hành là **baseline**, không phải ràng buộc vĩnh viễn; chỉ thay phần user duyệt trong design-change có scope và regression rõ. Tiêu chuẩn thiết bị, FPS/readability, KISS cần kiểm cho mỗi đề xuất liên quan. Không suy rằng ảnh concept là sprite production hoặc animation frame đã duyệt.
 
 ## 1. Trạng thái thực tế và định nghĩa bắt buộc (sửa theo user 2026-11-12)
 
@@ -18,7 +18,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 - V2-01: tạo **preview app**, nhầm gọi “Design Review Harness” trong lịch sử; commit `b96e52b`.
 - V2-02: bổ sung autoplay/playback cho **preview app**; commit `f81f33e`, Pages workflow 43067036347 SUCCESS, chưa user visual/experience acceptance.
-- **Design Harness đúng nghĩa: contract A-H1 đã được user chốt (Revision 2); toàn bộ harness chưa hoàn thiện/enforce.** A-H2/H3/H4 còn thiếu. MASTER_PLAN là roadmap, không phải harness.
+- **Design Harness đúng nghĩa: contract A-H1 đã user duyệt (Revision 2) và liên kết AGENTS (A-H3); A-H2 còn chờ duyệt, A-H4 chưa chạy; Gate A chưa hoàn tất.** MASTER_PLAN là roadmap, không phải harness.
 - Preview BASELINE và CANDIDATE đang cùng runtime; chưa có redesign V2 production.
 - `ART_BIBLE.md` và DDR là các baseline/ràng buộc đã có, **chưa đủ** làm Design Harness V2.
 - Tên file lịch sử `design-harness.html` được giữ để tránh phá URL; tên kỹ thuật cũ **không quyết định định nghĩa**.
@@ -89,11 +89,11 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 5. High-level acceptance & rủi ro cần giải quyết
 
-- **Cảm giác đánh:** 4 đòn melee thể hiện chuẩn bị/tiếp xúc/hậu đòn khác nhau, phản ứng mục tiêu rõ; không dùng rung màn hình để che thiếu động tác.
+- **Cảm giác đánh:** các đòn melee hiện hành phải phân biệt được chuẩn bị/tiếp xúc/hậu đòn, phản ứng mục tiêu rõ; không dùng rung màn hình để che thiếu động tác.
 - **Power growth:** 3 đoạn run phân biệt được trong playback **không cần HUD**; crowd kill/chain reaction rộng hơn nhưng quái cơ bản vẫn giấy máu.
 - **Mutation/Curse:** chọn xong thấy thay đổi bền vững và rõ khi trigger, không spam aura/flash vô nghĩa; Curse có risk cue hợp lệ.
-- **Boss:** phase 50% là tình huống đọc được từ silhouette, sound/visual/pattern; transformation không phá logic/telegraph.
-- **Kỹ thuật:** desktop và mobile, nhiều quái, four facings, grayscale, pause/step, no fake gameplay/HP grants, không regress.
+- **Boss:** phase transition theo trigger của design/gameplay version được duyệt phải đọc được từ silhouette, sound/visual/pattern; transformation không phá logic/telegraph.
+- **Kỹ thuật:** desktop và mobile, nhiều quái, đúng số hướng theo design được duyệt (hiện tại baseline 4 hướng), grayscale khi phù hợp, pause/step, không fake gameplay/HP grants, không regress ngoài scope.
 - **Rủi ro:** baseline/candidate hiện same-version; hai run không đồng bộ frame; auto-run có thể chết trước đoạn cần review; review muted audio; legacy approved art constraints; ảnh concept dễ sai hướng/góc/scale. Giải quyết theo task riêng khi trở thành blocker, không tạo framework mới trước.
 
 ## 6. Bảng phase status (cập nhật khi có bằng chứng)
@@ -106,7 +106,7 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
 | A1 | Experience vision | USER ACCEPTED — 2026-11-12, “phần này thì được r á” | Đã mở A2 |
 | A-H2 | Task card template | PROPOSED — `TASK_CARD_TEMPLATE.md`, commit `b1c82aa` | **AWAIT USER REVIEW** |
-| A-H3 | AGENTS enforcement | NOT STARTED | A-H2 |
+| A-H3 | AGENTS enforcement | LINKED IN AGENTS.md — commit `1630896`; audit integration còn A-H4 | Chưa thay thế Gate A |
 | A-H4 | Dry run compliance | NOT STARTED | A-H3 |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
@@ -117,17 +117,17 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/chỉnh/duyệt A-H2 — [`TASK_CARD_TEMPLATE.md`](TASK_CARD_TEMPLATE.md).** User duyệt A3 qua “ok, tiếp đi” ngày 2026-11-12; A-H2 đã tạo PROPOSED, A-H3 chưa mở trước approval. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/chỉnh/duyệt A-H2 — [`TASK_CARD_TEMPLATE.md`](TASK_CARD_TEMPLATE.md).** A-H2 vẫn PROPOSED vì user yêu cầu sửa/audit, chưa duyệt template. Đã sửa nguồn tài liệu stale và gắn Harness vào AGENTS theo yêu cầu sửa lỗi; A-H4 dry run chưa thực hiện. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
-1. **DOC (hiện tại):** A2 Design Bible (APPROVED) → A3 references protocol (APPROVED) → A-H2 task card template (PROPOSED) → A-H3 AGENTS enforcement (DOC) → A-H4 dry-run compliance (VERIFY). **Gate A: user duyệt quy trình và design direction cấp cao.**
+1. **DOC (hiện tại):** A2 Design Bible (APPROVED) → A3 references protocol (APPROVED) → A-H2 task card template (PROPOSED) → A-H3 AGENTS enforcement (LINKED) → A-H4 dry-run compliance (NOT STARTED). **Gate A: user duyệt quy trình và design direction cấp cao.**
 2. **DESIGN/ART đầu tiên:** B1 Player Base spec + before/after references/keyframes ở tỷ lệ chơi thật; user duyệt đúng revision.
 3. **CODE đầu tiên:** chỉ B1 Player Base được duyệt; typecheck/build + focused regression.
 4. **REVIEW đầu tiên:** preview app hiển thị baseline revision cũ và candidate mới; desktop/mobile; user ACCEPT hoặc yêu cầu chỉnh.
 5. **LOOP:** B2 Idle, B3 Move,... mỗi thay đổi độc lập lặp DESIGN → APPROVAL → CODE → VERIFY → USER ACCEPT; không phải chờ viết xong docs B/C/D/E trước khi code B1.
 
-**Harness chỉ quy định cách làm; các quyết định camera, style, palette, gameplay là baseline có thể supersede bằng approval riêng.**
+**Harness chỉ quy định cách làm; các lựa chọn camera, số hướng, style, palette, gameplay là baseline có thể supersede bằng approval riêng; ví dụ trong roadmap không tự là thiết kế đã duyệt.**
 
 ## 8. Sửa lỗi thuật ngữ (2026-11-12)
 
