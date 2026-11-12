@@ -9,16 +9,16 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1 ARMOR FRAGMENTS + MASK (2026-11-12)
+## CURRENT — B1 VISIBLE SOUL + ARMOR BINDING (2026-11-12)
 
-User “trông hiền quá ... thay vì tinh thể sẽ là những mảnh giáp ... chiến binh? vs mặt nạ?” mở exploration đổi crystal sang armor rỗng + mask. Giữ ancient soul làm chủ; không artwork approval, không khôi phục Q7C/Fractured Vessel/Rift Reliquary/A-B-C rejected.
+User “uh nhưng chưa thể hiện đc linh hồn, chưa có j kết nối các mảnh giáp” yêu cầu refinement, không visual approval. [B1 spec7](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompt/review lưu. B1-ARMOR-soul-binding-v1 edit từ armor-mask-v1, giữ armor/mask/stance, soul volume trong thân và routes nối tới mask/tay/eo/chân. Structural energy links thay smoke-only/no-link của proposal trước theo feedback user, không aura ngoài cơ thể.
 
-[B1 spec6](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md), prompts/review đã lưu. B1-ARMOR-study-v1 original quá knight/helmet kín; correction B1-ARMOR-mask-v1 có faceplate rời, torso mảng hở, không upper-arm/thigh filler. Tất cả PROPOSED / AWAITING USER REVIEW, target/approval NONE. Quan sát: fists/mask/metal tạo ý đồ warrior; mask vẫn nhọn hơn intent, dark armor/gap rộng chưa kiểm arena. Concept tĩnh, không renderer/model3D evidence.
+Observed: routes rõ ở ảnh lớn, plate che soul cho depth; links limb còn giống gân/dây, mask sáng như mắt. Không quality/readability PASS, chưa chứng minh ancient agency/menace ở scale thật. PROPOSED / AWAITING USER REVIEW, không TARGET/artwork approval, concept tĩnh không renderer/model3D.
 
-Validation: PNG/path/hash/metadata/prompts/diff, chỉ docs/design references. Native-scale comparisons vẫn0/3, chưa mobile/desktop/crowd/telegraph/grayscale/animation/performance. Không gameplay/Three.js/code/B2/build/deploy/production/Bibles/Harness/DDR; giữ Gate A/baseline approvals.
+Validation: PNG/path/hash/metadata/prompts/diff; chỉ docs/design refs. Native-scale comparisons vẫn0/3, chưa mobile/desktop/crowd/telegraph/grayscale/motion/performance. Không gameplay/Three.js/code/B2/build/deploy/production/Bibles/Harness/DDR; giữ Gate A/baseline approvals và không reuse rejected concepts.
 
 **FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW.**
-**ONE NEXT ACTION: User review hướng armor rỗng + mask rời, đánh giá khí chất/identity/spacing để chọn hoặc chỉnh.**
+**ONE NEXT ACTION: User review soul volume và connection giữa các mảnh giáp, chọn/chỉnh mức độ hiện diện và hierarchy.**
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 

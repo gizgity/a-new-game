@@ -110,14 +110,14 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
-| B | Combat core | B1 revision6: armor fragments + detached mask PROPOSED; A/B/C REJECTED; comparisons0/3 | AWAITING USER REVIEW; B2 CLOSED |
+| B | Combat core | B1 revision7: visible soul + armor-binding concept PROPOSED; A/B/C REJECTED; comparisons0/3 | AWAITING USER REVIEW; B2 CLOSED |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
 | E | Polish/final | NOT STARTED | Gate D |
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**B1 Ancient Soul — DESIGN ONLY**, revision6, user đề xuất armor fragments + mask vì crystal hiền. [Card](tasks/B1-PLAYER-BASE.md), [manifest](references/B1-PLAYER-BASE/README.md): initial armor/helmet và correction mặt nạ rời/torso hở, đều PROPOSED, chưa target approval. Giữ soul làm chủ nhưng không khôi phục Q7C/rejected concepts; armor+mask chỉ direction exploration. Giáp tối/gap rộng/identity cần review; native-scale comparisons0/3, không readability PASS. Không gameplay/Three.js/production/B2. **ONE NEXT ACTION: User review hướng armor rỗng + mask rời, đánh giá khí chất/identity/spacing để chọn hoặc chỉnh.**
+**B1 Ancient Soul — DESIGN ONLY**, revision7, feedback user thiếu soul/connection. [Card](tasks/B1-PLAYER-BASE.md), [manifest](references/B1-PLAYER-BASE/README.md): soul volume trong torso, structural links vào mask/tay/eo/chân, giữ armor/pose, không external aura. PROPOSED, không target approval; links/mask intensity/native-scale còn review. Comparisons0/3, không readability PASS; không gameplay/Three.js/production/B2. **ONE NEXT ACTION: User review soul volume và connection giữa các mảnh giáp, chọn/chỉnh mức độ hiện diện và hierarchy.**
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 

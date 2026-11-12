@@ -34,3 +34,9 @@ Lượt cohesion cải thiện stance nhưng thêm filler bắp tay/đùi và he
 User thấy crystal hiền và đề xuất mảnh giáp + mặt nạ. Đây là đổi direction được phép thăm dò, không tự quay lại approved/rejected Player cũ. Giữ ancient soul đã làm chủ, detached body; thay crystal planes/head wedge bằng hollow forged armor/mask. Mặt nạ nhận diện, forearm/fist/stance thể hiện combat intent; không aura hay chest core.
 
 Initial original generation quá knight/closed helmet; correction từ chính initial tháo helmet thành faceplate rời, mở torso thành mảng, bỏ upper-arm/thigh shells. Mask còn nhọn hơn intent, khe có thể như mắt, giáp tối và gap chân rộng — không tự PASS. Tone menace/hero identity cần user review; runtime scale/crowd/cue/mobile/desktop chưa checked. Không source game mới hay external image input; references Xerath/Knack/Rayman vẫn chỉ structural lessons lịch sử.
+
+## Visible soul binding — spec revision7
+
+Feedback user: chưa thấy linh hồn, chưa có kết nối. Edit từ chính armor-mask-v1 giữ shape/pose, thay faint smoke bằng một thể energy có volume trong torso và đường liên kết vào mặt trong mask/shoulders/bracers/pelvis/greaves. Structural identity khác external aura; không particle/field/attack cue. Intent soul có một mạng liên tục, central volume đọc mạnh hơn joint links.
+
+Observed: liên kết từ torso tới mask, tay và chân có thật trong ảnh; plate occlude soul cho depth. Limbs vẫn hơi dây/gân thay folded ribbon, mask apertures sáng như mắt; chưa claim native-scale/menace/agency PASS. Source game research cũ không cấp approval và không có external image input mới.

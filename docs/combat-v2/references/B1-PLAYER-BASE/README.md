@@ -1,6 +1,6 @@
 # B1 — Reference manifest (A3)
 
-CONCEPT — PROPOSED — NOT PRODUCTION (armor + mask exploration hiện hành). Task: B1-PLAYER-BASE; active spec revision6; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
+CONCEPT — PROPOSED — NOT PRODUCTION (soul-binding refinement hiện hành). Task: B1-PLAYER-BASE; active spec revision7; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ Ba study A/B/C ở bảng trên là lịch sử REJECTED; approval “cả 3 kh�
 
 User “gần hơn r, nhưng xem có cải thiện được j nữa k” chỉ cho refinement; không approval ảnh/spec4/spec5. Hai ảnh mới đều CONCEPT — PROPOSED — NOT PRODUCTION. Xem review trong task/research. Không tự so game-scale hoặc gọi renderer3D evidence.
 
-## Active direction — spec revision6 / armor + mask
+## Before refinement — spec revision6 / armor + mask
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -46,6 +46,14 @@ User “gần hơn r, nhưng xem có cải thiện được j nữa k” chỉ c
 | B1-ARMOR-MASK | B1-PLAYER-BASE | CONCEPT | image1/spec6 | [B1-ARMOR-mask-v1.png](B1-ARMOR-mask-v1.png) | ImageGen edit từ armor-study; PROMPTS correction | 1024×1536, một neutral warrior; không native-scale/runtime | Mask rời/torso hở là intent; vẫn mask nhọn/giáp tối/gap rộng, cần review, không mechanics | PROPOSED | NONE |
 
 Source direction user: “trông hiền quá ... thay vì tinh thể sẽ là những mảnh giáp ... chiến binh? vs mặt nạ?”, 2026-11-12, hội thoại không permalink. Cho exploration armor+mask, không artwork approval. Không sử dụng Q7C/Fractured Vessel/Rift Reliquary hoặc A/B/C rejected làm input. Không TARGET, không production/model3D.
+
+## Active refinement — spec revision7 / visible soul binding
+
+| ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1-ARMOR-SOUL-BINDING | B1-PLAYER-BASE | CONCEPT | image1/spec7 | [B1-ARMOR-soul-binding-v1.png](B1-ARMOR-soul-binding-v1.png) | ImageGen edit from B1-ARMOR-mask-v1.png, PROMPTS soul binding | 1024×1536, same neutral armor/mask study, không gameplay scale/runtime | Soul volume/route đến mask/tay/eo/chân là intent; không suy body collision/HP/animation/engine | PROPOSED | NONE |
+
+User “uh nhưng chưa thể hiện đc linh hồn, chưa có j kết nối các mảnh giáp”, 2026-11-12, hội thoại không permalink: yêu cầu refinement, không approval. Structural links là proposal mới thay cách smoke-only trước; không external aura. Routes nhìn rõ ở ảnh lớn, chưa native-scale readability. Model/seed không cung cấp, không TARGET/production.
 
 ## Sources / review
 
@@ -83,3 +91,5 @@ Original generated sources (giữ ngoài repo, copies nguyên ảnh): cohesion `
 SHA256 B1-ARMOR-study-v1.png: `60fd885a6cf1f8ae9189e32d8a782927bef5812ab00f628cf3091efbb2b67810`. Original: `exec-4fecb1db-89bb-4bd2-81a5-7e447e77d423.png` (copy nguyên ảnh, original giữ ngoài repo).
 
 SHA256 B1-ARMOR-mask-v1.png: `a3b727b90a944921483b9b617f9786327391070f307a932227f24d828df8ccc2`. Original: `exec-cdc5c7a9-fe3b-4c2c-b519-dba1a97921fa.png` (copy nguyên ảnh, original giữ ngoài repo).
+
+Soul-binding SHA256: `b4414a2c0c1db3e0ff430b1e293e5fbf163fb13c4928095ce3ab43cc2c9010d6`. Original `exec-07b78d41-bda5-4366-bb04-4ec377335958.png` (copy nguyên ảnh; original giữ ngoài repo).

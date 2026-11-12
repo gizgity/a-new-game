@@ -1,4 +1,27 @@
-# B1 — Exact prompts / active spec revision6
+# B1 — Exact prompts / active spec revision7
+
+## B1-ARMOR — visible soul binding / spec revision7
+
+ImageGen edit: input thực B1-ARMOR-mask-v1.png đã xem, output B1-ARMOR-soul-binding-v1.png. transparent_background=false. Model/seed không cung cấp; theo điều khoản dịch vụ, không khẳng định CC0/độc quyền. CONCEPT — PROPOSED — NOT PRODUCTION, không runtime/model3D/production.
+
+```text
+Edit the ATTACHED CURSEBREAK armor-fragments protagonist concept. Keep the SAME armor plate shapes, detached thin mask, dark gunmetal/copper/steel material, exact stance, silhouette and camera, same full-body framing and charcoal background. ONE character in ONE neutral combat-ready pose. Footer exactly 'CONCEPT — PROPOSED — NOT PRODUCTION'. Do not redesign armor or add weapons. The specific correction: the ANCIENT SOUL MUST BE VISIBLE as the ONE living coherent presence that actively binds and commands ALL armor fragments. Current tiny faint chest smoke and unsupported disconnected parts fail this.
+
+Replace the faint chest smoke with a compact CLEAR VOLUMETRIC SOUL PRESENCE inside the open torso. It is an intentional folded translucent pale blue-white energy mass with dense interior and a definite bounded edge, like weightless luminous silk under tension, NOT vapor that disappears, NOT a round chest jewel, orb, core, blue spiral, face, skeleton, muscular ghost or humanoid anatomy mannequin. It spans the torso interior as a narrow oblique flowing presence, partly hidden by existing armor to show it lives INSIDE. The soul is calm and controlled, ancient and dangerous, not raging or leaking.
+
+From that central soul make a SMALL NUMBER of coherent tensioned energy connections physically link EVERY floating armor region:
+- One short luminous neck connection goes upward INSIDE and behind the existing mask. A compact soul volume behind faceplate subtly shows through the narrow mask apertures and hollow sides, NO new human eyes/face or bright eye laser.
+- Two narrow folded energy bands branch to the INSIDE of the shoulder shells and continue through missing upper-arm space into hollow bracers and gauntlets. Follow implied arm positions; keep portions hidden behind plates for real depth.
+- One central narrow connection flows through the open waist INTO the pelvic shell.
+- Two slender bands continue from inside pelvis through missing thigh space INTO the top hollow openings of both greaves, with tiny short continuation at ankle where there is a gap. Existing feet grounded.
+This is ONE connected soul, coherent path throughout the body. Do NOT attach random glowing strings between arbitrary outer corners. Every band ends into INSIDE surfaces rather than surrounding the armor. Bands have restrained slight twisting/folding and intentional direction, NOT jagged electricity, external chains, many wires, laser beams or noisy branches. Keep energy bands only about one-quarter of adjacent limb width; dark negative space stays visible on both sides, armor pieces remain clearly detached, not fused or filled with a glowing humanoid body.
+
+Brightness hierarchy: mask silhouette and armored forearm still legible, central soul softly brightest, joint bands lower luminance, no competing hotspots everywhere. Energy is opaque enough to be seen clearly against charcoal and has a quiet pale ice-blue/pearl-white palette with slate-blue body; NO cyan neon coating, purple/pink, halo, bloom, fog, particles, trails, aura, ground circles, sparks, fire, lightning or smoke cloud. Absolutely NO energy outside the bounds of the body except short anatomically aligned gap bridges. Metal stays MOSTLY DARK and is never replaced by energy skin, use only very subtle local reflection on nearest INNER edges. Main silhouette remains forged armor even if glow were removed; the soul adds living unity and agency, not the only reason the character can be found.
+
+The visual question: 'I see a single ancient intelligence inhabiting and holding this dangerous armor warrior together', not 'I see a suit with decorative VFX'. This is CONCEPT look development, not runtime/production/animation. Preserve original identity and all object positions, no portrait, extra figures, infographic, multi-panel, environment or UI.
+```
+
+## Lịch sử revision6 — armor + mask
 
 ## B1-ARMOR — material + mask direction / spec revision6
 
