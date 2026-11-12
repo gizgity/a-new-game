@@ -1,6 +1,6 @@
 # A-H2 — Task Card Template (Combat V2)
 
-> **PROPOSED v1 · 2026-11-12 · chờ user duyệt.** Mẫu để copy cho **một thay đổi duy nhất** vào `docs/combat-v2/tasks/<TASK-ID>.md`. Không tự tạo hàng loạt task. Không khóa camera, style, palette, animation, gameplay hay balance; các giá trị đó thuộc spec đã duyệt từng task. Tuân thủ `HARNESS.md` (A-H1) và `REFERENCE_PROTOCOL.md` (A3).
+> **APPROVED v1 · 2026-11-12.** User xác nhận “uh chốt h2” cho đúng A-H2 Task Card Template. Không phải approval hình ảnh hoặc gameplay. Mẫu để copy cho **một thay đổi duy nhất** vào `docs/combat-v2/tasks/<TASK-ID>.md`. Không tự tạo hàng loạt task. Không khóa camera, style, palette, animation, gameplay hay balance; các giá trị đó thuộc spec đã duyệt từng task. Tuân thủ `HARNESS.md` (A-H1) và `REFERENCE_PROTOCOL.md` (A3).
 
 ## Mẫu task card (copy đúng một task khi bắt đầu)
 
@@ -94,6 +94,6 @@ NEXT ACTION (exactly one): <một task/decision tiếp theo hoặc STOP>
 
 ## A-H2 gate / next action
 
-A-H2 hoàn thành ở mức DOC khi mẫu chứa đủ: scope, anti-scope, before/after, ref bindings, approval, AC/evidence, changed files, commit, status, next action. **A-H2 PROPOSED**, chờ user duyệt.
+A-H2 hoàn thành ở mức DOC khi mẫu chứa đủ: scope, anti-scope, before/after, ref bindings, approval, AC/evidence, changed files, commit, status, next action. **A-H2 APPROVED v1**, được user chốt ngày 2026-11-12.
 
-**NEXT ACTION:** user review/chỉnh/duyệt A-H2; sau đó **A-H3 — AGENTS enforcement** (docs-only). Không sửa production trong A-H2.
+A-H3 đã liên kết `AGENTS.md`. Tình trạng toàn dự án và bước tiếp theo được theo dõi ở `MASTER_PLAN.md` và `HANDOFF.md`, không tự mở production.
