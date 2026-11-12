@@ -11,13 +11,19 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 
 ## COMBAT EXPERIENCE V2 — KẾ HOẠCH ĐỀ XUẤT (2026-11-12)
 
-Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 PROPOSED — đang chờ user review/duyệt; chưa triển khai Design Bible, artwork, gameplay hoặc V2-03.** Thứ tự (đã sửa): A0 roadmap → A-H1 Harness Contract → A1 Experience Vision → A2 Visual Language → A3 Reference Protocol → A-H2/H3/H4 Design Card / Enforcement / Dry Run (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → preview app review → acceptance & handoff. V2-01/V2-02 là preview app implemented, chưa user acceptance; Design Harness thực sự chưa tạo. **NEXT ACTION DUY NHẤT: user review/chốt A0; không tự mở A1/B1.**
+Master roadmap: [docs/combat-v2/MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), commit `fd38cba`. **A0 APPROVED TO PROCEED — user cho bắt đầu A-H1 ngày 2026-11-12; chưa duyệt Design Bible, artwork, gameplay.** Thứ tự (đã sửa): A0 roadmap → A-H1 Harness Contract → A1 Experience Vision → A2 Visual Language → A3 Reference Protocol → A-H2/H3/H4 Design Card / Enforcement / Dry Run (Gate A) → B Combat Core → C Evolution → D Enemies/Boss → E HUD/Audio/Full-run. Mỗi thay đổi: design card → visual approval → một task implementation → preview app review → acceptance & handoff. V2-01/V2-02 là preview app implemented, chưa user acceptance; Design Harness thực sự chưa tạo. **NEXT ACTION DUY NHẤT: user review/chốt A-H1 HARNESS.md; không tự mở A1/B1.**
 
 ## ĐÍNH CHÍNH V2 — DESIGN HARNESS KHÁC PREVIEW APP (2026-11-12)
 
 User: “harness là bộ khung bắt buộc codex tuân theo, k phải preview, chưa có 1 harness nào đc tạo ở thời điểm hiện tại, chỉ có 1 app preview”. **Nguồn đúng:** [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md), revision `297c126`. V2-01/02 là **PREVIEW APP** đã triển khai, không phải Design Harness. **Design Harness = NOT CREATED / NOT APPROVED**: hệ contract Codex phải theo (spec, refs đã duyệt, 1 task 1 thay đổi, gate, compliance, stop, handoff). Giữ tên file/URL `design-harness.html` lịch sử để tránh breaking change, nhưng không dùng tên ấy để tuyên bố có Design Harness.
 
-**A0 roadmap vẫn PROPOSED. NEXT ACTION DUY NHẤT: user xem/chốt A0 đã sửa; sau đó làm A-H1 (Harness Contract) design-only.** A1/B1/artwork/gameplay chưa mở. Không tự ghi decision DDR hoặc coi preview success là approval.
+**A0 đã được user cho phép tiếp tục. A-H1 HARNESS.md đang PROPOSED, chờ duyệt; chưa làm enforcement hoặc A1.** A1/B1/artwork/gameplay chưa mở. Không tự ghi decision DDR hoặc coi preview success là approval.
+
+## ACTIVE COMBAT-V2 WORK — A-H1 DESIGN HARNESS CONTRACT (2026-11-12)
+
+User “ok, bắt đầu lại đi” cho phép tiến từ A0 roadmap sang A-H1, **không phải duyệt Harness/visual**. A0: [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) revised `4356c10`. Đã tạo [HARNESS.md](docs/combat-v2/HARNESS.md) **DRAFT PROPOSED**, commit `de07e03`: source priority, 1 prompt/1 change, design/reference/approval/implementation/review gates, STOP cases, audit/acceptance, separation preview app. **A-H1 mới là tài liệu đề xuất; chưa nối AGENTS/enforce; A1/A2/A3/A-H2/H3/H4 và artwork chưa bắt đầu.**
+
+**NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A-H1 HARNESS.md.** Không mở A1 Experience Vision hoặc B1 cho tới khi A-H1 được chốt. V2-01/02 vẫn là preview app, không phải Design Harness. Lượt này docs-only; không build/deploy/DDR.
 
 ## ACTIVE TASK
 **V2-02 — Preview App Playback & Autoplay (tên task lịch sử: Harness Playback & Autoplay) — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
