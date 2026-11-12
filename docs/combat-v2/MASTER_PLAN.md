@@ -18,7 +18,7 @@ Vấn đề người dùng nêu: gameplay cơ bản đã có nhưng hình ảnh 
 
 - V2-01: tạo **preview app**, nhầm gọi “Design Review Harness” trong lịch sử; commit `b96e52b`.
 - V2-02: bổ sung autoplay/playback cho **preview app**; commit `f81f33e`, Pages workflow 43067036347 SUCCESS, chưa user visual/experience acceptance.
-- **Design Harness đúng nghĩa: NOT CREATED, NOT APPROVED, NOT ENFORCED.** MASTER_PLAN là roadmap dự thảo, chưa phải harness.
+- **Design Harness đúng nghĩa: contract A-H1 đã được user chốt (Revision 2); toàn bộ harness chưa hoàn thiện/enforce.** A-H2/H3/H4 còn thiếu. MASTER_PLAN là roadmap, không phải harness.
 - Preview BASELINE và CANDIDATE đang cùng runtime; chưa có redesign V2 production.
 - `ART_BIBLE.md` và DDR là các baseline/ràng buộc đã có, **chưa đủ** làm Design Harness V2.
 - Tên file lịch sử `design-harness.html` được giữ để tránh phá URL; tên kỹ thuật cũ **không quyết định định nghĩa**.
@@ -103,8 +103,8 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | V2-01 | Preview app: hai khung A/B | Implemented; technical PASS, user acceptance chưa xác nhận | Đã làm |
 | V2-02 | Preview app: playback/autoplay | Implemented/deployed; technical PASS, user acceptance chưa xác nhận | Đã làm |
 | A0 | MASTER_PLAN | APPROVED TO PROCEED (2026-11-12) | Đã mở A-H1 |
-| A-H1 | Design Harness contract | DRAFT PROPOSED: `HARNESS.md`, commit `de07e03`; awaiting user review | **STOP trước A1** |
-| A1 | Experience vision | NOT STARTED | A-H1 |
+| A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
+| A1 | Experience vision | DRAFT PROPOSED — `EXPERIENCE_VISION.md`, commit `f0ba7bd` | **AWAIT USER REVIEW** |
 | A-H2/H3/H4 | Card template / enforcement / dry run | NOT STARTED | Hoàn thiện trong Phase A |
 | A2 | Visual language | NOT STARTED | A1 |
 | A3 | Reference protocol | NOT STARTED | A2 |
@@ -115,7 +115,7 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/điều chỉnh và duyệt A-H1 — [`HARNESS.md`](HARNESS.md).** A0 được phép tiếp tục qua lời user “ok, bắt đầu lại đi” 2026-11-12. A-H1 mới ở trạng thái PROPOSED, chưa enforce AGENTS; chỉ sau approval A-H1 mới bắt đầu A1 Experience Vision. Chưa làm A1/B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/điều chỉnh và duyệt A1 — [`EXPERIENCE_VISION.md`](EXPERIENCE_VISION.md).** User cho phép tiếp tục từ A-H1 revision 2 bằng “ok, làm tiếp đi” ngày 2026-11-12; contract A-H1 đã approved, nhưng enforcement A-H3 chưa làm. A1 là design PROPOSED; chỉ sau khi được user duyệt mới làm A2 Visual Language. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
 
 ## 8. Sửa lỗi thuật ngữ (2026-11-12)
 
