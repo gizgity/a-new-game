@@ -1,6 +1,6 @@
 # CURSEBREAK V2 — A2 Visual Language / Design Bible
 
-> **PROPOSED · revision 1 · 2026-11-12 · CHỜ USER DUYỆT A2.**  
+> **A2 APPROVED · revision 1 · 2026-11-12.** User: “ok tiếp đi” sau khi được đề nghị duyệt A2; chỉ chấp thuận creative direction cấp cao, không duyệt hình/asset hay gameplay cụ thể.  
 > Đây là **creative direction có thể thay đổi**, KHÔNG phải luật của `HARNESS.md`. A1 Experience Vision đã được user chấp nhận ngày 2026-11-12. Đề xuất này chưa cho phép sản xuất sprite/gameplay. Không thay `ART_BIBLE.md` hoặc decision đã được duyệt.
 >
 > **Quy tắc đọc:** `HARNESS.md` quản lý workflow/boundaries/verification; tài liệu này mô tả lựa chọn nghệ thuật **để đề xuất và xin duyệt**. Baseline từ `ART_BIBLE.md` và gameplay hiện hành chỉ là reference fallback khi chưa có thiết kế mới thay thế.
@@ -101,7 +101,7 @@ Tất cả = **TBD**, chỉ được giải quyết bằng design card/ref có a
 
 - A-H1: Approved Revision 2, harness tổng thể chưa enforce.
 - A1: user chấp nhận Experience Vision ngày 2026-11-12; cập nhật nguồn trong MASTER_PLAN/HANDOFF.
-- **A2: PROPOSED Revision 1 — AWAITING USER REVIEW.**
+- **A2: APPROVED Revision 1 — creative direction only.**
 - A3/H2/H3/H4: not started.
 - Không sửa `AGENTS.md`, `ART_BIBLE.md`, `GAME_BRIEF.md`, `DESIGN_DECISIONS.md`, game code/assets; docs-only, không build/deploy.
 
