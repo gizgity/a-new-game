@@ -1,6 +1,6 @@
 # CURSEBREAK V2 — Design Harness Contract (A-H1)
 
-> **PROPOSED · Revision 2 · 2026-11-12 · chưa user approved / chưa nối AGENTS.**
+> **A-H1 APPROVED (contract Revision 2) · 2026-11-12 · chưa nối AGENTS.** User xác nhận “ok, làm tiếp đi” ngay sau khi được đề nghị duyệt A-H1 Revision 2; chỉ áp dụng **quy trình/biên giới/verify**, không duyệt bất kỳ design visual/gameplay mới nào.
 > Harness là **quy trình và biên giới bắt buộc Codex tuân thủ**, không phải preview app. Tài liệu này **không khóa** camera, art style, palette, sprite, loại VFX, combat balance hoặc ý tưởng gameplay cụ thể. Các lựa chọn đó thuộc design specs/decisions theo từng phiên bản và **có thể đổi theo ý user**.
 > A-H1 chỉ tạo contract. A1–A3, A-H2–H4 và Gate A chưa hoàn tất, không được khởi động redesign production.
 
@@ -100,12 +100,12 @@ Mỗi lần bàn giao: `Task ID | status | approved design/ref revision | change
 
 ## 9. Tình trạng A-H1 và phần còn thiếu
 
-Đây là **contract dự thảo**. Chưa enforce trong `AGENTS.md`, chưa có Design Bible, reference protocol, task template và dry run. Hoàn thiện lần lượt theo `MASTER_PLAN.md`:
+Contract A-H1 đã được user duyệt; **Harness tổng thể chưa hoàn chỉnh**. Chưa enforce trong `AGENTS.md`, chưa có Design Bible, reference protocol, task template và dry run. Hoàn thiện lần lượt theo `MASTER_PLAN.md`:
 - A1 Experience Vision; A2 Visual Language; A3 Reference Protocol.
 - A-H2 task card template; A-H3 nối quy tắc vào AGENTS/HANDOFF; A-H4 dry run tuân thủ/STOP.
 - Gate A: user duyệt Harness + các nguồn thiết kế liên quan, mới được mở task production đầu tiên.
 
-**NEXT ACTION DUY NHẤT:** user review và duyệt/chỉnh revision A-H1. Không bắt đầu A1, không tạo art hoặc sửa gameplay.
+**NEXT ACTION DUY NHẤT:** A1 — Experience Vision design-only; tạo và xin duyệt `EXPERIENCE_VISION.md` trước A2. Không tạo art hoặc sửa gameplay.
 
 ## 10. Nguồn sửa đổi
 
