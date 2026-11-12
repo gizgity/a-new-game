@@ -104,9 +104,9 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | V2-02 | Preview app: playback/autoplay | Implemented/deployed; technical PASS, user acceptance chưa xác nhận | Đã làm |
 | A0 | MASTER_PLAN | APPROVED TO PROCEED (2026-11-12) | Đã mở A-H1 |
 | A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
-| A1 | Experience vision | DRAFT PROPOSED — `EXPERIENCE_VISION.md`, commit `f0ba7bd` | **AWAIT USER REVIEW** |
+| A1 | Experience vision | USER ACCEPTED — 2026-11-12, “phần này thì được r á” | Đã mở A2 |
 | A-H2/H3/H4 | Card template / enforcement / dry run | NOT STARTED | Hoàn thiện trong Phase A |
-| A2 | Visual language | NOT STARTED | A1 |
+| A2 | Visual language | PROPOSED — `DESIGN_BIBLE.md`, commit `90ba5e6` | **AWAIT USER REVIEW** |
 | A3 | Reference protocol | NOT STARTED | A2 |
 | B | Combat core | NOT STARTED | Gate A |
 | C | Evolution | NOT STARTED | Gate B |
@@ -115,7 +115,17 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/điều chỉnh và duyệt A1 — [`EXPERIENCE_VISION.md`](EXPERIENCE_VISION.md).** User cho phép tiếp tục từ A-H1 revision 2 bằng “ok, làm tiếp đi” ngày 2026-11-12; contract A-H1 đã approved, nhưng enforcement A-H3 chưa làm. A1 là design PROPOSED; chỉ sau khi được user duyệt mới làm A2 Visual Language. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/chỉnh/duyệt A2 — [`DESIGN_BIBLE.md`](DESIGN_BIBLE.md).** User chấp nhận A1 (“phần này thì được r á”), yêu cầu làm ngay A2 ngày 2026-11-12. A2 đã tạo bản PROPOSED, chưa được duyệt, không mở A3 trước user review. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+
+## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
+
+1. **DOC (hiện tại):** A2 Design Bible (PROPOSED) → A3 references protocol (DOC) → A-H2 task card template (DOC) → A-H3 AGENTS enforcement (DOC) → A-H4 dry-run compliance (VERIFY). **Gate A: user duyệt quy trình và design direction cấp cao.**
+2. **DESIGN/ART đầu tiên:** B1 Player Base spec + before/after references/keyframes ở tỷ lệ chơi thật; user duyệt đúng revision.
+3. **CODE đầu tiên:** chỉ B1 Player Base được duyệt; typecheck/build + focused regression.
+4. **REVIEW đầu tiên:** preview app hiển thị baseline revision cũ và candidate mới; desktop/mobile; user ACCEPT hoặc yêu cầu chỉnh.
+5. **LOOP:** B2 Idle, B3 Move,... mỗi thay đổi độc lập lặp DESIGN → APPROVAL → CODE → VERIFY → USER ACCEPT; không phải chờ viết xong docs B/C/D/E trước khi code B1.
+
+**Harness chỉ quy định cách làm; các quyết định camera, style, palette, gameplay là baseline có thể supersede bằng approval riêng.**
 
 ## 8. Sửa lỗi thuật ngữ (2026-11-12)
 
