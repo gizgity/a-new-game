@@ -9,7 +9,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — COMBAT V2 A-H4 DRY RUN (2026-11-12)
+## CURRENT — GATE A APPROVED; B1 PLAYER BASE DESIGN OPEN (2026-11-12)
+
+User “ok, tiếp theo” sau khi được đề nghị **chốt Gate A → bắt đầu B1 thiết kế Player Base bằng hình ảnh**. Xem như duyệt Gate A để mở **B1 DESIGN ONLY**, không phải duyệt B1 production/code. A-H4 dry-run PASS tài liệu tại [DRY_RUN_REPORT.md](docs/combat-v2/DRY_RUN_REPORT.md); quy trình Harness liên kết AGENTS, giữ baseline art có thể thay. Đã tạo [B1 design card](docs/combat-v2/tasks/B1-PLAYER-BASE.md) (commit `ad1bdb1`), chưa có target ref hoặc user visual approval. [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) cập nhật Gate A/B1 (commit `d7ef01d`). Concept do ImageGen tạo trong chat ngày 2026-11-12 nhưng **lệch baseline** (forest/anime hero, đưa cả animation trong bảng), chỉ là exploratory image **NOT APPROVED, NOT REPO-BACKED**, không được xem là target hay sản xuất theo hình đó. Không sửa game assets/code, chưa build/deploy.
+
+**NEXT ACTION DUY NHẤT: thay concept B1 không đúng direction bằng concept bám đúng runtime/Art Bible hoặc hướng mới do user chọn, tại đúng tỷ lệ gameplay; trình user duyệt đúng image/spec trước production.**
+
+## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 
 **A-H4: PASS — kiểm tình huống trên tài liệu, chưa user acceptance.** [DRY_RUN_REPORT.md](docs/combat-v2/DRY_RUN_REPORT.md): TC-01/02/03/04 PASS, audit consistency sau sửa PASS. Không chứng minh tuân thủ trong implementation thực tế.
 - A-H1 Revision 2, A1 Revision 1, A2 Revision 1, A3 v1, A-H2 v1 đã được user duyệt; A-H3 nối AGENTS ở `1630896`. Giữ approval cũ; không tự cấp approval mới.
