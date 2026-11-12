@@ -1,8 +1,8 @@
 # CURSEBREAK V2 — Design Harness Contract (A-H1)
 
-> **A-H1 APPROVED (contract Revision 2) · 2026-11-12 · chưa nối AGENTS.** User xác nhận “ok, làm tiếp đi” ngay sau khi được đề nghị duyệt A-H1 Revision 2; chỉ áp dụng **quy trình/biên giới/verify**, không duyệt bất kỳ design visual/gameplay mới nào.
+> **A-H1 APPROVED (contract Revision 2) · 2026-11-12 · áp dụng qua AGENTS.md trong A-H3 (2026-11-12).** User xác nhận “ok, làm tiếp đi” ngay sau khi được đề nghị duyệt A-H1 Revision 2; chỉ áp dụng **quy trình/biên giới/verify**, không duyệt bất kỳ design visual/gameplay mới nào.
 > Harness là **quy trình và biên giới bắt buộc Codex tuân thủ**, không phải preview app. Tài liệu này **không khóa** camera, art style, palette, sprite, loại VFX, combat balance hoặc ý tưởng gameplay cụ thể. Các lựa chọn đó thuộc design specs/decisions theo từng phiên bản và **có thể đổi theo ý user**.
-> A-H1 chỉ tạo contract. A1–A3, A-H2–H4 và Gate A chưa hoàn tất, không được khởi động redesign production.
+> Contract A-H1 đã chốt; A1/A2/A3 đã duyệt, A-H2 đang chờ review, A-H3 liên kết AGENTS, A-H4 dry run chưa làm. Gate A vẫn chưa hoàn tất: không khởi động redesign production.
 
 ## 1. Vai trò và nguyên tắc bất biến của HARNESS
 
@@ -98,15 +98,12 @@ Mỗi prompt Codex ngắn, dạng:
 
 Mỗi lần bàn giao: `Task ID | status | approved design/ref revision | changed files | evidence | checks | commit/deploy | blockers | next action`. Design-only không có ref approved thì ghi rõ `NOT YET APPROVED`.
 
-## 9. Tình trạng A-H1 và phần còn thiếu
+## 9. Phạm vi hiệu lực
 
-Contract A-H1 đã được user duyệt; **Harness tổng thể chưa hoàn chỉnh**. Chưa enforce trong `AGENTS.md`, chưa có Design Bible, reference protocol, task template và dry run. Hoàn thiện lần lượt theo `MASTER_PLAN.md`:
-- A1 Experience Vision; A2 Visual Language; A3 Reference Protocol.
-- A-H2 task card template; A-H3 nối quy tắc vào AGENTS/HANDOFF; A-H4 dry run tuân thủ/STOP.
-- Gate A: user duyệt Harness + các nguồn thiết kế liên quan, mới được mở task production đầu tiên.
+**A-H1 contract Revision 2: APPROVED.** Các quy tắc ở trên có hiệu lực với Combat V2 khi được viện dẫn từ `AGENTS.md`; không chờ hoặc ghi `NEXT ACTION` trong Harness đã chốt. **Tiến độ các bước A1/A2/A3/A-H2/A-H3/A-H4, gate và NEXT ACTION nằm duy nhất ở `MASTER_PLAN.md` + mục CURRENT của `HANDOFF.md`.** Task riêng vẫn phải có NEXT ACTION theo mục 8.
 
-**NEXT ACTION DUY NHẤT:** A1 — Experience Vision design-only; tạo và xin duyệt `EXPERIENCE_VISION.md` trước A2. Không tạo art hoặc sửa gameplay.
+Baseline visual/gameplay chỉ tham khảo khi chưa có user-approved replacement trong scope. Gate A chưa xong thì không production redesign.
 
 ## 10. Nguồn sửa đổi
 
-User ngày 2026-11-12, hội thoại hiện tại không permalink: “cũng khá ổn, nhưng mà t thấy nó bỏ vô quy định về top 3/4 vâng vâng, cái này chỉ nên là ref nếu chưa có j thay thế, k set cứng như vậy, có thể trong quá trình làm t sẽ đổi ý thì sao? harness này là bộ khung quy định những thứ bắt buộc follow, boundaries, verify, …”. Đây là phản hồi sửa contract, **không tự suy ra approval cuối cho A-H1**.
+User ngày 2026-11-12, hội thoại hiện tại không permalink: “cũng khá ổn, nhưng mà t thấy nó bỏ vô quy định về top 3/4 vâng vâng, cái này chỉ nên là ref nếu chưa có j thay thế, k set cứng như vậy, có thể trong quá trình làm t sẽ đổi ý thì sao? harness này là bộ khung quy định những thứ bắt buộc follow, boundaries, verify, …”. Đây là phản hồi tạo Revision 2; A-H1 sau đó đã được user duyệt bằng “ok, làm tiếp đi” trong lượt kế tiếp.
