@@ -43,6 +43,10 @@ User chấp nhận A1 Experience Vision: “phần này thì được r á”; t
 
 User “ok tiếp đi” duyệt **A2 Visual Language revision 1**, chỉ creative direction, không duyệt production artwork. [DESIGN_BIBLE.md](docs/combat-v2/DESIGN_BIBLE.md) đánh dấu APPROVED. Đã tạo [REFERENCE_PROTOCOL.md](docs/combat-v2/REFERENCE_PROTOCOL.md) **A3 PROPOSED revision 1**, commit `51c3933`; quy định loại ref, metadata, trạng thái approval, binding và đối chiếu target/runtime. **NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A3; kế tiếp A-H2 task template.** Chưa tạo asset/code, chưa nối AGENTS, không build/deploy.
 
+## CURRENT V2 — A-H2 TASK CARD TEMPLATE (2026-11-12)
+
+User “ok, tiếp đi” duyệt **A3 Reference Protocol v1**, chỉ protocol quản lý refs, không phê duyệt artwork/gameplay. [REFERENCE_PROTOCOL.md](docs/combat-v2/REFERENCE_PROTOCOL.md) được cập nhật commit `122b2c9`. Đã tạo [TASK_CARD_TEMPLATE.md](docs/combat-v2/TASK_CARD_TEMPLATE.md) **A-H2 PROPOSED v1**, commit `b1c82aa`; mẫu một task/một thay đổi: approved target/spec, scope/anti-scope, binding, acceptance, evidence, status và one NEXT ACTION. [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) đã cập nhật commit `21210b2`. Docs-only, không sửa game/code/art/AGENTS/DDR, không build/deploy. **NEXT ACTION DUY NHẤT: user duyệt/chỉnh A-H2; sau đó A-H3 — AGENTS enforcement.**
+
 ## ACTIVE TASK
 **V2-02 — Preview App Playback & Autoplay (tên task lịch sử: Harness Playback & Autoplay) — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
 
