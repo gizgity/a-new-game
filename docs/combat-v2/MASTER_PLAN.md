@@ -110,14 +110,14 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
-| B | Combat core | B1-RESET revision2: 3 candidates PROPOSED; BLOCKED comparisons (0/3 valid), no target/code | AWAITING USER REVIEW; B2 CLOSED |
+| B | Combat core | B1 revision3: ancient soul + graphic/2.5D studies PROPOSED; A/B/C REJECTED; comparisons0/3, no target/code | AWAITING USER REVIEW; B2 CLOSED |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
 | E | Polish/final | NOT STARTED | Gate D |
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**B1-RESET — DESIGN ONLY**, user giao creative reset 2026-11-12, thay rationale B1 cũ; không thay Gate A approval. [Card revision2](tasks/B1-PLAYER-BASE.md), [manifest/3 studies](references/B1-PLAYER-BASE/README.md): A Press Saint / B Tuning Talon / C Seal Crab, tất cả PROPOSED. **B1 DESIGN BLOCKED:** 0/3 gameplay comparisons hợp lệ vì ImageGen tái vẽ screenshot/đổi scale; có screenshot nguồn thật, không fake arena. Không runtime readability PASS, không target approval, không code/production/B2. **ONE NEXT ACTION: User xem và chọn/chỉnh một phương án.**
+**B1 Ancient Soul — DESIGN ONLY**, revision3, theo brainstorm user 2026-11-12. Ba hướng A/B/C bị REJECTED; hướng mới: linh hồn cổ xưa đã làm chủ, tập hợp tinh thể thành thân thể; hai graphic/2.5D studies PROPOSED tại [manifest](references/B1-PLAYER-BASE/README.md), [card](tasks/B1-PLAYER-BASE.md). Three.js chỉ đánh giá sơ bộ, không implementation/engine decision/gameplay redesign. So sánh gameplay hợp lệ0/3, không readability PASS. **ONE NEXT ACTION: User đánh giá hướng linh hồn/tinh thể và chiều sâu trong hai study để chọn/chỉnh; chưa chọn engine.** Không production/B2.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 

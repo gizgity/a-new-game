@@ -1,4 +1,24 @@
-# B1-RESET — Exact prompts v1
+# B1-SOUL — Exact prompts v1 / spec revision3
+
+## B1-SOUL — graphic study v1 / spec revision3
+
+Source: ImageGen original generation, no image input. transparent_background=false. Model/seed không cung cấp. Output B1-SOUL-graphic-v1.png. Chỉ proposal; không production/runtime.
+
+```text
+Original CURSEBREAK protagonist exploration, ANCIENT SOUL SOVEREIGN. One single full-body character in one calm neutral standing pose, no other figures, no animation frames. The player's idea: an ancient soul imprisoned in a dense block of energy has MASTERED its prison and consciously assembles crystals into a combat body. Convey lucid personal agency, ancient dignity and quiet confidence, a playable main character, NOT a monster, robot, pet, crystal golem enemy or fantasy knight. Upright elegant grounded biped, two arms and two legs with clear joints and negative spaces, mature proportions, weight balanced, slight purposeful asymmetry. No human face/hair, no ivory mask, no jade armor, no chest jewel/core, no floating fragmented armor of a humanoid warrior. Instead one continuous elongated smoky transparent crystal prism encloses a compressed luminous soul volume, acting as the continuous head-and-upper-body axis (NOT a little core in an armored chest). No eyes or mouth: a quietly directed dense white-blue inner light conveys awareness. A restrained handful of large solid smoky quartz crystal forms creates hips, substantial lower legs and forearms around this axis, precisely arranged and visibly controlled, never a cloud of shards. No conventional anatomical muscle armor. Broad uneven worn crystal faces with depth, chipped ancient edges but no rune engraving clutter. Dark slate blue quartz with opaque shadows and pale mineral edges; controlled pearl-white energy inside the prison block, no bloom, no aura or particles. Hands relaxed, one slightly open, both unarmed: sword/gun are possible future reorganizations of the same substance, do NOT depict a weapon. Design should feel like a sovereign reclaiming its existence, NOT struggling to hold together. Player silhouette clear without lighting effects. Render as GRAPHIC PAINTED GAME CHARACTER art with clear broad lit plane / half tone / shadow plane and deliberate thick solid volumes, understated surface texture, not pixel art, not photoreal. High camera looking down about 40 degrees, see top of prism, shoulder masses and feet; front three-quarter facing down-right, foreshorten consistently. Plain neutral dark background, only soft contact shadow for grounding. Large isolated character occupies most image but fully in frame. Small footer 'CONCEPT — PROPOSED — NOT PRODUCTION'. No scene, UI, infographic, ornamental cloak, scarf, spikes, oversized pauldrons, purple/pink neon, tendrils, tentacles, aura, floating crown or halo. This is new exploration, never reuse Press Saint, Tuning Talon, Seal Crab, Q7C, Fractured Vessel or Rift Reliquary shapes.
+```
+
+## B1-SOUL — 2.5D look study v1 / spec revision3
+
+Source: ImageGen edit, input B1-SOUL-graphic-v1.png (đã xem). transparent_background=false. Model/seed không cung cấp. Output B1-SOUL-25d-v1.png. Không phải render Three.js; không xác nhận performance/mesh/shader/transparency.
+
+```text
+Use the attached original concept as the ONLY character design reference. Make a controlled alternate rendering of EXACTLY THE SAME CHARACTER in EXACTLY THE SAME neutral pose, camera angle, proportions, silhouette, crystal count, limb layout, facial absence, colors and framing. One single full body character on same plain charcoal background. This is a 2.5D GAME LOOK DEVELOPMENT study, NOT an actual Three.js render or runtime evidence. Preserve the long central soul-prison prism and same blue-white soul enclosed inside. Render as a stylized real-time 3D game model with clean restrained low-poly volumetric crystal forms: strong clear top/side/bottom planes, directional key light from upper left, broad soft ambient fill, subtle ambient occlusion where crystals meet, contact shadow, limited specular highlights, visible THICKNESS and depth in the central prism. Less surface noise than original. Most limb crystals are opaque smoky slate blue quartz, only the central prison and a few tips are partially translucent; do not make the whole character glass. Soul is contained inside prism, no aura, bloom, particle or exterior energy. Maintain game-readable painted material rather than polished photoreal product crystal or raytraced cinematic. DO NOT redesign, add weapons, armor, mask, chest core, cloak, pedestal or environment; do not turn pose or lighting into action spectacle. Large character fully in frame. Footer 'CONCEPT — PROPOSED — NOT PRODUCTION'. The goal is to judge whether lighting, occlusion and material thickness improve volume on this SAME proposed design; no implication of approval or production engine choice.
+```
+
+---
+
+## Lịch sử B1-RESET — ba hướng đã bị user REJECTED
 
 CONCEPT — PROPOSED — NOT PRODUCTION. 2026-11-12.
 

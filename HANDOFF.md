@@ -9,15 +9,18 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1-RESET DESIGN / BLOCKED COMPARISONS (2026-11-12)
+## CURRENT — B1 ANCIENT SOUL / 2.5D EXPLORATION (2026-11-12)
 
-User yêu cầu “B1-RESET — Redesign Player Base V2 From Zero”: bỏ mọi hướng Player cũ, chỉ design. Gate A approval trên main41407d5 giữ nguyên. Đã thay [B1 card](docs/combat-v2/tasks/B1-PLAYER-BASE.md) bằng revision2: A Press Saint (không đầu/khối vai ngang/hai chân ngắn), B Tuning Talon (cao cong/đầu U/chân dài), C Seal Crab (phi humanoid/vỏ ngang/bốn chân). [Manifest + 3 character studies](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompts/nguồn/rights/hash đã lưu; mọi candidate **PROPOSED / AWAITING USER REVIEW**, target/approval NONE.
+User từ chối cả ba A/B/C (“cả 3 không đạt ... giống quái hơn là nhân vật chính”), chọn ý tưởng linh hồn cổ xưa đã làm chủ khối năng lượng giam giữ, tập hợp tinh thể thành cơ thể chiến đấu. Kiếm/súng có thể là hướng evolution, gameplay redesign để sau. User cho thử2.5D và hỏi Three.js; chưa cho implementation/engine migration.
 
-**FINAL STATUS: BLOCKED — B1 DESIGN.** Có 3 character studies, nhưng **0/3 gameplay-scale comparisons hợp lệ**. Screenshot renderer Q7C390/1440 thật có sẵn và đã xem; ba phép edit ImageGen tái vẽ HUD/đổi panel scale nên bị loại, không commit ảnh sai. Thiếu composite bảo toàn screenshot/identity/scale, không thiếu runtime screenshot. Readability mobile/desktop/crowd/telegraph/grayscale chưa verified; không PASS từ hình minh họa. Ảnh A/C quá công nghiệp, B view còn đứng và mảnh; xem review intent/observed/unverified trong card.
+[B1 card revision3](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/hai SOUL studies](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompts đã lưu. Hai ảnh graphic/2.5D look cùng neutral design, **PROPOSED / AWAITING USER REVIEW**, không TARGET. Ảnh2.5D là ImageGen illustration, không Three.js/runtime3D evidence. Quan sát: bớt noise, planes/depth rõ hơn; hình vẫn giống crystal golem/trụ quá dài, chưa đạt hero identity theo user. Không tự PASS.
 
-Validation: kiểm PNG thật/path/hash/manifest, ba cấu trúc khác nhau, diff chỉ docs/design references trên41407d5. Không sửa Bibles/Harness/DDR/game code/production assets; không build/deploy, không B2/implementation. Q7C và các approvals trước giữ nguyên. Checkout ban đầu785ec7c đã được fast-forward bảo toàn bốn remote commits trước khi chốt deliverable.
+Three.js: có lý do khảo sát nếu cần realtime crystal reassembly; hiện Phaser3.90 quản sprite/VFX/camera/audio/input. CombatWorld2D có phần tách presentation nhưng chưa audit migration/benchmark. Có thể giữ gameplay plane2D với renderer3D; không cần đổi mechanics để có depth. Chưa chọn engine, chưa technical spike. Mobile transparency/overdraw/shadows/drawcalls còn chưa đo.
 
-**ONE NEXT ACTION: User xem và chọn/chỉnh một phương án.** Không tự winner/approve/production; comparisons thiếu vẫn là gate chưa đạt.
+Validation: PNG/path/prompts/metadata/diff; chỉ docs/design refs, không build/deploy/code/production/Bibles/Harness/DDR/B2. Baseline approvals và Gate A giữ nguyên. Comparisons runtime hợp lệ vẫn0/3; gameplay-scale/mobile/desktop/crowd/telegraph chưa verified. Lịch sử B1 reset ở git/manifest, không tái dùng ba hướng bị từ chối.
+
+**FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW**, full acceptance còn thiếu game-scale comparison.
+**ONE NEXT ACTION: User đánh giá hướng linh hồn/tinh thể và chiều sâu trong hai study để chọn/chỉnh; chưa chọn engine.**
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 
