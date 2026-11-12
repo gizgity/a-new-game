@@ -9,16 +9,13 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1 VISIBLE SOUL + ARMOR BINDING (2026-11-12)
+## CURRENT — B1 REVERTED / PAUSED BY USER (2026-11-12)
 
-User “uh nhưng chưa thể hiện đc linh hồn, chưa có j kết nối các mảnh giáp” yêu cầu refinement, không visual approval. [B1 spec7](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompt/review lưu. B1-ARMOR-soul-binding-v1 edit từ armor-mask-v1, giữ armor/mask/stance, soul volume trong thân và routes nối tới mask/tay/eo/chân. Structural energy links thay smoke-only/no-link của proposal trước theo feedback user, không aura ngoài cơ thể.
+User: “revert hết đi, k đúng ý t, để t suy nghĩ lại”, hội thoại hiện tại, không permalink. Đã hoàn tác toàn bộ sáu commit exploration B1 của phiên (e298978,8c9a76c,aa531cc,bff03d8,788a941,78bc558) về baseline41407d5; gỡ toàn bộ concept/research/prompts mới khỏi cây hiện hành. Giữ lịch sử git và các thay đổi/approval đã có trước phiên, gồm Gate A cho design. Không có artwork/spec nào của phiên được approved.
 
-Observed: routes rõ ở ảnh lớn, plate che soul cho depth; links limb còn giống gân/dây, mask sáng như mắt. Không quality/readability PASS, chưa chứng minh ancient agency/menace ở scale thật. PROPOSED / AWAITING USER REVIEW, không TARGET/artwork approval, concept tĩnh không renderer/model3D.
+B1 **PAUSED BY USER**. Task card cũ được khôi phục để giữ lịch sử, không phải lệnh tiếp tục hoặc hướng đã chọn. Không tạo concept mới, không khôi phục proposal vừa bỏ, không gameplay/Three.js/production/B2. Game code/production assets chưa từng thay trong phiên; không build/deploy ở lượt hoàn tác. Chỉ thêm snapshot tạm dừng vào tài liệu đã khôi phục.
 
-Validation: PNG/path/hash/metadata/prompts/diff; chỉ docs/design refs. Native-scale comparisons vẫn0/3, chưa mobile/desktop/crowd/telegraph/grayscale/motion/performance. Không gameplay/Three.js/code/B2/build/deploy/production/Bibles/Harness/DDR; giữ Gate A/baseline approvals và không reuse rejected concepts.
-
-**FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW.**
-**ONE NEXT ACTION: User review soul volume và connection giữa các mảnh giáp, chọn/chỉnh mức độ hiện diện và hierarchy.**
+**ONE NEXT ACTION: DỪNG, chờ user suy nghĩ và đưa chỉ dẫn mới.**
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 

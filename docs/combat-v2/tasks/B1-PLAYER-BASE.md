@@ -1,69 +1,68 @@
-# B1 — Ancient Soul / Armor Fragments + Mask
+# B1 — Player Base V2 (DESIGN ONLY)
 
-Status: PROPOSED — AWAITING USER REVIEW
+Status: PAUSED BY USER — session exploration reverted
 Kind: DESIGN
-Revision: 7, 2026-11-12
-Owner approval: NONE for artwork / implementation
-Related phase: B; previous revision6 armor/mask chưa approved
-Source: user “uh nhưng chưa thể hiện đc linh hồn, chưa có j kết nối các mảnh giáp”, 2026-11-12, hội thoại hiện tại không permalink. Đây là feedback yêu cầu sửa, không visual approval.
-Docs/skills: nguồn V2/AGENTS/Art Bible/reference protocol/template, game-art/handoff đã đọc trong cùng task; CURRENT đọc trước lượt mới. Ưu tiên Experience Vision → Design Bible → world/material baseline; Q7C chỉ context/scale.
+Revision: 1
+Owner approval: NONE
+Last updated: 2026-11-12
+Related phase: B — Combat Core
+Source request: User “ok, tiếp theo” sau khi nhận audit A-H4 PASS và đề nghị “Chốt Gate A → bắt đầu B1 — thiết kế Player Base V2 bằng hình ảnh để bạn duyệt”, 2026-11-12 (conversation, no permalink).
+Docs read: AGENTS.md, HANDOFF.md, MASTER_PLAN.md, HARNESS.md, TASK_CARD_TEMPLATE.md, EXPERIENCE_VISION.md, DESIGN_BIBLE.md, REFERENCE_PROTOCOL.md, ART_BIBLE.md, docs/art-reference/README.md.
 
-## 1. One change / Outcome
+## Pause / rollback — 2026-11-12
 
-Before: armor/mask spec6 có giáp rỗng tách rời nhưng chỉ khói ngực mờ; user chưa thấy linh hồn và kết nối.
-After PROPOSED: một thể linh hồn hiện rõ trong thân, phân nhánh có trật tự vào sau mask/shoulders/bracers/pelvis/greaves, giữ các mảnh giáp thành một cơ thể. Giữ armor/mask/stance, không đổi luật combat.
-Why: cho thấy chủ thể điều khiển vật chất và sự thống nhất cơ thể; linh hồn là phần structural identity, không khói/aura trang trí.
+User “revert hết đi, k đúng ý t, để t suy nghĩ lại”. Toàn bộ exploration trong phiên đã revert về41407d5; phần card baseline dưới đây chỉ là lịch sử, không hướng đang được triển khai. Không target approved, không tự tiếp tục design/implementation/B2.
 
-Scope IN: một edit neutral concept visible soul/links từ armor-mask-v1, review và docs/references.
-Scope OUT: code/Three.js/model3D/dependency, gameplay redesign, animation/action/VFX/production, camera runtime/B2/build/deploy; không sửa Bibles/Harness/DDR.
-Dependency: Gate A mở DESIGN, chưa TARGET/implementation approval.
+## 1. One change / outcome
+Before: Player Q7C accepted base, existing sprite atlas and runtime. See [approved Player source](../../q7c/source/player-production-v1.png), [actions source](../../q7c/source/player-actions-production-v1.png), [atlas](../../../public/assets/actors/occult-actors.png), [Art Reference Board](../../art-reference/README.md). Runtime accepted visuals are historical baseline; no production V2 change yet.
+After (PROPOSED): a more striking, immediately legible Player **base silhouette and design identity** at actual game scale. Must remain recognizable when many enemies/VFX overlap; support later distinct melee/ranged/dash/Mutation states without specifying those assets in B1.
+Why: Experience Vision Immediate Power + Visible Evolution + Distinct Actions.
 
-## 2. Design choices — material / identity proposal
+**Scope IN:** player base appearance/silhouette/material/value groups/readability only, design-only concept and target proposal.
+**Scope OUT:** code, texture atlas changes, animations/moves/attacks, projectile/VFX, camera/angle/facing-count decisions, hitbox/input/damage/balance, enemies/Boss/HUD/environment, actual production art.
+Dependency: Gate A accepted for **opening design task** (user “ok, tiếp theo”); implementation requires separate user approval of exact B1 design revision+references.
 
-Supersedes: cách thể hiện soul bằng faint smoke và chủ ý không vẽ connection trong exploration trước, theo feedback mới của user. Cho structural energy links, vẫn không external aura/particle cloud. Không khôi phục Q7C/Fractured Vessel/Rift Reliquary/A-B-C rejected; không thay lịch sử approval.
-Keep: ancient soul đã làm chủ, armor/mask/stance và khoảng hở, unarmed base; weapon evolution chưa chốt mechanics.
-Direction refinement PROPOSED: khói ngực mờ → thể soul có thể tích và đường liên kết xuyên thân. Năng lượng có ranh giới, phần lớn ở trong vỏ giáp và chỉ bắc cầu qua khớp; giáp vẫn giữ silhouette, không cần aura để nổi.
-Intent: soul liên tục từ torso tới mặt nạ/tay/eo/chân, thấy nó chui vào mặt trong các shell thay vì sợi sáng trang trí bám góc ngoài. Dải chính trong torso rõ, nhánh khớp mảnh hơn, còn khoảng tối hai bên.
-Neutral: head hơi hạ hướng đối thủ, vai bất đối xứng, tay thấp/nắm vừa, hai chân có điểm tựa; không gesture palm-up mage hiền.
-Materials: cold iron/charcoal, cạnh pale steel có chủ đích, dull copper inner cuts; không jade/ivory/neon phủ.
-Rationale: identity vẫn đọc khi tắt glow, combat agency từ silhouette/pose chứ không VFX hoặc runes dán lên knight.
-Trade-offs: links quá mảnh có thể mất ở game scale, quá sáng có thể thành neon mannequin; cần giữ armor/material/mask có hierarchy. Body links không tự chứng minh agency/menace hoặc chất cổ xưa.
+## 2. Design choices — not locked
+Baseline fallback: [Art Bible](../../../ART_BIBLE.md), [Q7C Player](../../q7c/source/player-production-v1.png), default top-down three-quarter/fractured occult pixel as a **starting reference**, not law.
+Proposed change: increase distinctiveness of silhouette with clearer large-scale armor/mask/core and asymmetric weapon readable at runtime scale; preserve agile combat identity.
+Keep: player's melee/ranged hybrid identity and gameplay mapping; all baseline gameplay untouched.
+Supersedes: NONE yet. User may accept one concept or request a different style/angle; exact superseded features identified after approval.
+Unknown/TBD: approved style, camera angle/facings, visual details, asset resolution, animation compatibility and exact target PNG.
+Platform/context: mobile portrait and 16:9 desktop at actual gameplay size; crowd/telegraph overlap for verification, not just zoomed character study.
 
-## 3. Reference bindings
+## 3. References
+Baseline: [Q7C Player source](../../q7c/source/player-production-v1.png) (accepted legacy, NOT B1 TARGET), [Q7C runtime crowd 390](../../q7c/runtime/after-crowd-390.png), [runtime crowd 1440](../../q7c/runtime/after-crowd-1440.png).
+Concept refs: first exploratory concept displayed in conversation 2026-11-12 — **NOT YET REPOSITORY-BACKED**, pending selected image to be supplied/saved. Do not invent ref ID/path or grant approval.
+Target ref: NONE — NOT APPROVED.
+Reference manifest: NONE — create only when selected image actually exists in repo.
+Must match: TBD after user selects design.
+Flexible: TBD after user approval.
+Must not infer: gameplay mechanics, animation timing, hitbox, camera perspective or hard-coded palette from generic concept.
+Source/rights: concept may be AI-assisted and must be labeled as such if saved; no external image crop into production.
 
-Manifest: [README](../references/B1-PLAYER-BASE/README.md).
-Before ref: B1-ARMOR-MASK image1/spec6.
-Concept: B1-ARMOR-SOUL-BINDING image1/spec7, [soul binding](../references/B1-PLAYER-BASE/B1-ARMOR-soul-binding-v1.png), edit từ armor-mask-v1; PROPOSED. Studies cũ giữ trong manifest để trace.
-Baseline refs: B1-BASE-M390 / D1440 trong manifest, Q7C renderer thật, chỉ before/context/scale.
-Target/approved spec/refs: NONE. Các concept đều PROPOSED.
-Must match (intent chưa approval): soul volume và links liên tục vào bên trong từng nhóm shell, còn negative space ở khớp, giữ armor/mask/neutral stance; không aura ngoài silhouette, jewel/core ngực, muscle ghost, body người hoặc jade/ivory.
-Flexible: link thickness/opacity/folds, soul volume/contrast/material tint, tổng hierarchy theo user; chưa khóa intensity/renderer/pose cuối.
-Must not infer: giáp=armor stat, mask=weakpoint/HP, floating=flight, gap=hitbox, arm edge=melee mechanics, weapon mapping/evolution/timing/animation/3D renderer/camera cuối.
-Source/rights: [exact prompts](../references/B1-PLAYER-BASE/PROMPTS.md); ImageGen, model/seed không cung cấp, theo điều khoản dịch vụ, không khẳng định CC0/độc quyền; không external artwork input.
+## 4. Acceptance
+- [ ] AC1: User clearly prefers/approves a specific B1 design revision and image.
+- [ ] AC2: Base silhouette recognizable at actual game scale against crowd, separate from telegraph.
+- [ ] AC3: Feasible for later states / mobile and desktop.
+- [ ] AC4: No gameplay/input/physics or other system changed.
+Evidence plan: approved concept file/revision + before and scaled game-context comparison after concept is accepted, then candidate runtime evidence after code.
+Non-goals: animation or production asset acceptance, gameplay modifications.
 
-## 4. Acceptance / review
+## 5. Approval gate
+Approval status: AWAITING USER VISUAL APPROVAL.
+Approved scope: NONE.
+Approved spec revision: NONE.
+Approved refs: NONE.
+Approval quote/date/source: NONE.
+STOP if: attempting production without approved target, or changing sprite logic/angle/gameplay while only B1 design is open.
 
-- [x] AC1: một edit, một character/neutral pose, nhãn CONCEPT — PROPOSED — NOT PRODUCTION, source/input/path thật.
-- [x] AC2: trong ảnh lớn thấy soul volume trong thân, links tới mask/tay/eo/chân; không tự kết luận gameplay readability.
-- [ ] AC3: character identity/menace/không generic knight — AWAITING USER, không visual PASS.
-- [ ] AC4: native-scale/crowd/telegraph/mobile/desktop/grayscale — NOT VERIFIED; valid comparisons vẫn0/3.
-- [x] AC5: chỉ docs/design references, không code/production/Bibles/Harness/DDR/build/deploy.
+## 6. Implementation
+NOT STARTED. No code or production art permission.
 
-Intent: một ý chí cổ xưa nối và điều khiển giáp, thấy volume/route mà vẫn đọc armor rời. Không cần thêm aura/particle hoặc VFX action.
-Observed: thân có dải soul nhiều lớp, cổ nối sau mask; routes qua vai xuống bracers/gauntlets và qua eo/pelvis xuống greaves/ankles. Giáp/pose gần như giữ, soul bị plate che một phần tạo depth. Không chest orb/spiral hoặc haze phủ arena.
-Remaining deviations: links limb trông hơi như gân/dây tròn hơn folded bands intent; ánh qua mask thành hai khe mắt sáng hơn dự định. Soul thân khá đầy và phần cánh tay/chân mảnh; chưa kiểm silhouette/brightness ở40worldpx/crowd. Agency/cổ xưa/menace vẫn user review, không quality PASS.
-Unverified: runtime readability/lighting/camera, gameplay scale/4góc/crowd/telegraph, motion/evolution/3D/mobile/desktop/performance.
-B2–B9 potential: shell groups cho hướng tổ hợp/weapon evolution về sau nhưng chưa tạo assets/actions hoặc mechanics.
-Evidence plan nếu user chọn: đo native-scale cùng source/anchor trên screenshot thật, tăng contrast bằng diện/mảng nếu cần, không giả arena/comparison.
-
-## 5. Approval / implementation / handoff
-
-Approval status: AWAITING USER REVIEW.
-Approved scope/spec/image/refs/quote: NONE. Feedback soul/connection cho refinement, không final artwork approval.
-Implementation/candidate runtime: NONE. Build/typecheck/tests/deploy: NOT RUN — design-only.
-Technical: PARTIAL — files/paths/PNG/source/diff kiểm được; không runtime benchmark.
-Visual review: AWAITING USER. User playtest: NOT APPLICABLE.
-STOP: không tự winner/approve/production/Three.js/gameplay/B2.
-Changed files: card; PROMPTS/README/RESEARCH/B1-ARMOR-soul-binding-v1.png; MASTER_PLAN; CURRENT HANDOFF.
-Final status: B1 DESIGN — AWAITING USER REVIEW.
-ONE NEXT ACTION: User review soul volume và connection giữa các mảnh giáp, chọn/chỉnh mức độ hiện diện và hierarchy.
+## 7. Review and handoff
+Technical: NOT CHECKED (design-only).
+Visual review: AWAITING USER.
+User playtest: NOT APPLICABLE.
+Known gaps: no approved B1 target or runtime-scaled comparison yet. Reference source from GitHub is historical baseline.
+Final status: PAUSED BY USER.
+NEXT ACTION (exactly one): DỪNG, chờ user suy nghĩ và đưa chỉ dẫn mới.

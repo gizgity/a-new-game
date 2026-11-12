@@ -110,14 +110,14 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
-| B | Combat core | B1 revision7: visible soul + armor-binding concept PROPOSED; A/B/C REJECTED; comparisons0/3 | AWAITING USER REVIEW; B2 CLOSED |
+| B | Combat core | B1 PAUSED BY USER — exploration trong phiên đã revert về41407d5, no target/code | STOP; chờ chỉ dẫn mới |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
 | E | Polish/final | NOT STARTED | Gate D |
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**B1 Ancient Soul — DESIGN ONLY**, revision7, feedback user thiếu soul/connection. [Card](tasks/B1-PLAYER-BASE.md), [manifest](references/B1-PLAYER-BASE/README.md): soul volume trong torso, structural links vào mask/tay/eo/chân, giữ armor/pose, không external aura. PROPOSED, không target approval; links/mask intensity/native-scale còn review. Comparisons0/3, không readability PASS; không gameplay/Three.js/production/B2. **ONE NEXT ACTION: User review soul volume và connection giữa các mảnh giáp, chọn/chỉnh mức độ hiện diện và hierarchy.**
+**B1 PAUSED BY USER — 2026-11-12.** User “revert hết đi, k đúng ý t, để t suy nghĩ lại”. Hoàn tác toàn bộ exploration của phiên về41407d5, gỡ refs mới; giữ lịch sử git và Gate A/baseline approvals. [Task card](tasks/B1-PLAYER-BASE.md) baseline chỉ giữ lịch sử, không active design direction. Không tự tạo concept/implementation/Three.js/B2. **ONE NEXT ACTION: DỪNG, chờ user suy nghĩ và đưa chỉ dẫn mới.**
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
