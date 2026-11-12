@@ -25,6 +25,10 @@ User “ok, bắt đầu lại đi” cho phép tiến từ A0 roadmap sang A-H1
 
 **NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A-H1 HARNESS.md.** Không mở A1 Experience Vision hoặc B1 cho tới khi A-H1 được chốt. V2-01/02 vẫn là preview app, không phải Design Harness. Lượt này docs-only; không build/deploy/DDR.
 
+## A-H1 REVISION 2 — PROCESS-ONLY HARNESS (2026-11-12)
+
+Theo phản hồi user, đã sửa [HARNESS.md](docs/combat-v2/HARNESS.md) revision `463ce59`: **Harness chỉ khóa phương thức làm việc, boundaries, quyền approval, STOP và verify; không khóa top-down ¾, 4 hướng, art direction, palette, silhouette, HP hay VFX**. Những thứ này là baseline fallback trong Art Bible/brief cho tới khi một design mới được user duyệt thay đổi scope tương ứng; được phép đổi ý, phải ghi revision/supersedes và impact. **A-H1 PROPOSED — awaiting user review**; chưa enforce AGENTS, chưa A1 hoặc production. **NEXT ACTION: user duyệt/chỉnh A-H1 revision 2.**
+
 ## ACTIVE TASK
 **V2-02 — Preview App Playback & Autoplay (tên task lịch sử: Harness Playback & Autoplay) — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
 
