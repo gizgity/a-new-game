@@ -1,6 +1,6 @@
 # B1 — Reference manifest (A3)
 
-CONCEPT — PROPOSED — NOT PRODUCTION (SOUL refinement hiện hành). Task: B1-PLAYER-BASE; active spec revision5; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
+CONCEPT — PROPOSED — NOT PRODUCTION (armor + mask exploration hiện hành). Task: B1-PLAYER-BASE; active spec revision6; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Ba study A/B/C ở bảng trên là lịch sử REJECTED; approval “cả 3 kh�
 
 [Research có nguồn và review](RESEARCH.md). Hai SOUL studies revision3 cần sửa theo user “các tinh thể dính nhau quá, chưa đẹp”; không phải TARGET. Study mới không sửa/tiếp nối A/B/C đã REJECTED. Ảnh reference game bên thứ ba chỉ xem qua web, không lưu/dùng ImageGen input/asset.
 
-## Active refinement — spec revision5
+## Historical crystal refinement — spec revision5
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -37,6 +37,15 @@ Ba study A/B/C ở bảng trên là lịch sử REJECTED; approval “cả 3 kh�
 | B1-SOUL-REFINED | B1-PLAYER-BASE | CONCEPT | image1/spec5 | [B1-SOUL-refined-v1.png](B1-SOUL-refined-v1.png) | ImageGen edit from cohesion-v1; PROMPTS correction | 1199×1312, một neutral character; không native-scale runtime | Gaps ngắn/head nhỏ/hand-foot rõ là intent; swirl/pose vẫn cần review, không timing/collider | PROPOSED | NONE |
 
 User “gần hơn r, nhưng xem có cải thiện được j nữa k” chỉ cho refinement; không approval ảnh/spec4/spec5. Hai ảnh mới đều CONCEPT — PROPOSED — NOT PRODUCTION. Xem review trong task/research. Không tự so game-scale hoặc gọi renderer3D evidence.
+
+## Active direction — spec revision6 / armor + mask
+
+| ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1-ARMOR-STUDY | B1-PLAYER-BASE | CONCEPT | image1/spec6 | [B1-ARMOR-study-v1.png](B1-ARMOR-study-v1.png) | ImageGen original text, no image input; PROMPTS armor initial | 1024×1536, một neutral warrior trên nền study | Initial quá gần knight/helmet kín; trace input cho correction, không target | PROPOSED | NONE |
+| B1-ARMOR-MASK | B1-PLAYER-BASE | CONCEPT | image1/spec6 | [B1-ARMOR-mask-v1.png](B1-ARMOR-mask-v1.png) | ImageGen edit từ armor-study; PROMPTS correction | 1024×1536, một neutral warrior; không native-scale/runtime | Mask rời/torso hở là intent; vẫn mask nhọn/giáp tối/gap rộng, cần review, không mechanics | PROPOSED | NONE |
+
+Source direction user: “trông hiền quá ... thay vì tinh thể sẽ là những mảnh giáp ... chiến binh? vs mặt nạ?”, 2026-11-12, hội thoại không permalink. Cho exploration armor+mask, không artwork approval. Không sử dụng Q7C/Fractured Vessel/Rift Reliquary hoặc A/B/C rejected làm input. Không TARGET, không production/model3D.
 
 ## Sources / review
 
@@ -70,3 +79,7 @@ SHA256 B1-SOUL-cohesion-v1.png: `ae46e8071765fc887b4697b8cbde4dbe38d8de7785d224a
 SHA256 B1-SOUL-refined-v1.png: `5cc96f7009d54cc4ba32977eeeff3ac2092e474abd95a85703940928852eb094`.
 
 Original generated sources (giữ ngoài repo, copies nguyên ảnh): cohesion `exec-bb41a9bd-98f0-4b97-bbe0-757148bf01e3.png`; correction `exec-6526cd4a-10a0-4361-946a-5551039b3bcd.png`.
+
+SHA256 B1-ARMOR-study-v1.png: `60fd885a6cf1f8ae9189e32d8a782927bef5812ab00f628cf3091efbb2b67810`. Original: `exec-4fecb1db-89bb-4bd2-81a5-7e447e77d423.png` (copy nguyên ảnh, original giữ ngoài repo).
+
+SHA256 B1-ARMOR-mask-v1.png: `a3b727b90a944921483b9b617f9786327391070f307a932227f24d828df8ccc2`. Original: `exec-cdc5c7a9-fe3b-4c2c-b519-dba1a97921fa.png` (copy nguyên ảnh, original giữ ngoài repo).

@@ -1,4 +1,46 @@
-# B1-SOUL — Exact prompts / active spec revision5
+# B1 — Exact prompts / active spec revision6
+
+## B1-ARMOR — material + mask direction / spec revision6
+
+User đề xuất armor fragments + mask thay crystal, không approve artwork. Model/seed không cung cấp, output theo điều khoản dịch vụ; transparent_background=false. Không production/runtime/model3D.
+
+### Initial armor study
+
+ImageGen original text-to-image, no image input. Output B1-ARMOR-study-v1.png. Lệch: quá gần knight/closed helmet, ghi intermediate để trace, không target.
+
+```text
+Create a NEW original CURSEBREAK main player character concept: an ancient soul that has MASTERED its prison and assembles EMPTY ARMOR FRAGMENTS plus a MASK into a combat body. User explicitly changes the prior crystal direction to armor and mask to make the protagonist feel more dangerous. ONE single full-body protagonist, ONE neutral combat-ready standing pose, large against plain dark charcoal background, stylized 2.5D GAME concept art, high three-quarter camera looking down about40degrees, top planes of mask and shoulders visible, directed down-right. Not an action pose or illustration scene. Footer exactly 'CONCEPT — PROPOSED — NOT PRODUCTION'.
+
+Character identity: a cold composed relentless ancient duelist/executioner, mature and purposeful, restrained predatory intent. It should look like the player COMMANDS the slaughter, not a friendly guardian or a decorative floating spirit. Slight forward weight, head lowered a little to look toward an opponent, shoulders settled, one hand loosely closed at hip and the other low forward in a precise ready gesture. NO palm-up spellcasting, no hulking monster, no stooped enemy, no smile or cartoon villain. The costume is NOT a conventional medieval knight with added occult glyphs.
+
+Structure: coherent lean martial biped, adult proportions, readable head/shoulders/arms/hips/legs, moderate shoulder width, long functional forearms, solid feet. All parts are substantial EMPTY WORN ARMOR SHELLS floating in anatomical alignment, visible short DARK AIR GAPS at neck, shoulder joint, elbows, waist and knees show there is NO flesh or stone body inside. Open shell edges reveal hollow interiors. Pieces remain near enough to read one body. No dispersed orbital debris, tiny floating shards, human joints, connecting energy tubes, extra arms, cape, robe, scarf, cloth tassels or jewelry.
+
+Mask is the PRIMARY character signature: dark flattened rectangular ritual faceplate, slightly offset plane, broad severe brow with one deep SHORT horizontal dark aperture, compact blunt cut jaw, missing a small portion at one lower corner. No eyes, human face, exposed skull, teeth, horns, crown, beak, pointed white diamond or ivory mask. Its side thickness and hollow black behind it are visible; it is NOT a conventional closed knight helmet. One restrained pale steel bevel on brow/front edge carries facing, not neon eyes. No little glowing gem on mask.
+
+Body armor: angular but forged/cast CONTINUOUS shallow-curved shell plates, not crystals, not rock facets, not shattered vessel shards. Larger simple armor groups, low detail. Chest is an asymmetrical broad paired shell split by an off-center dark seam; an open lower side subtly reveals enclosed dense smoky blue-white soul substance INSIDE the cavity, never a round chest core/jewel/spiral and never a bright glowing abdomen. Most chest reads dark material, no ribcage cage or reliquary. Waist narrow and open; compact oblique pelvic shells. Shoulder on weapon-side slightly flatter/broader than opposite, never oversized fantasy pauldrons. Forearm shell edges have decisive shear-like geometry but NO actual sword, gun, axe, held weapon or attack VFX: future weapons can be evolutions of armor arrangement. Hands simple armored gauntlets, five fingers not individually detailed, no monster claws. Lower legs are hollow greave shells with broad cut toes and staggered poised grounded stance, not dangling pointed shards. A single broad asymmetrical pale-steel planar highlight across one forearm reinforces focal hierarchy.
+
+Material/palette: blackened cold iron / charcoal gunmetal exterior, restrained brushed pale steel worn edges, a few dull oxidized copper INNER cuts. No jade/teal armor, no ivory, no purple/pink neon, no gold decoration, no cyan glow coating whole body. Restrained soul energy only visible inside gaps and cavity, no aura, bloom, flames, lightning, particle cloud or energy anatomy mannequin. Make the character look powerful even if all energy light is removed. Real depth through top/side/shadow planes, subtle contact occlusion and soft shadow only. Broad quiet planes, sharp intentional shape design and slight edge wear, no muddy photo texture, no polished product render, no pixel art.
+
+Important: this is NOT Q7C, Fractured Vessel, Rift Reliquary, Press Saint, Tuning Talon, Seal Crab or any previous rejected player. Do not reproduce their mask, jade fragmented armor, chest core or silhouette. Armor + mask is a newly requested direction, not permission to clone an existing character. No props, environment, enemies, HUD, infographic, animation frames, sheet or multiple figures. Keep entire character comfortably in frame with readable negative spaces.
+```
+
+### Detached mask correction
+
+ImageGen edit, input thực B1-ARMOR-study-v1.png đã xem. Output B1-ARMOR-mask-v1.png. Tháo helmet/torso/filler; mask còn nhọn và gaps lớn hơn intent, không tự PASS.
+
+```text
+Correct the supplied original CURSEBREAK empty-armor soul warrior concept. Same ONE full-body character, one neutral combat-ready composed stance, high three-quarter downward game camera, plain charcoal background, 2.5D stylized volumetric art. Footer exactly 'CONCEPT — PROPOSED — NOT PRODUCTION'. Keep blackened cold iron / restrained steel and dark copper palette, no skin, no weapons, no aura.
+
+The first draft is too conventional a knight and too visually joined. Transform specific structures, not only decoration:
+MASK: REMOVE the entire back and roof of the helmet, REMOVE the long T-shaped knight visor. Replace with a visibly THIN detached asymmetrical ritual FACEPLATE, like a worn shallow curved forged plate hanging in space in front of a completely hollow head position. Clearly see empty background at its sides and above its top edge. Compact blunt face silhouette, wide severe slanted brow, one single short diagonal black cut across upper face instead of horizontal medieval visor. One lower corner is missing, thickness edge worn pale steel, surface dark oxidized copper at the cut. No separate eyes, teeth, skull, nose, crown, horns, beak, ivory or jade. Mask is PRIMARY individual identity, not a closed metal helmet. Lowered directed gaze through its angle, cold and dangerous.
+TORSO: DELETE the bulky all-enclosing breastplate and collar. Use THREE broad distinct floating shell fragments with dark AIR clearly between: one curved upper-left pectoral slab, one smaller offset upper-right slab, one narrow oblique lower side plate. They suggest an athletic warrior torso without fully enclosing or drawing conventional muscular armor anatomy. Leave a clear dark open waist and a narrow interior void between plates where a very restrained dense grey-blue soul presence is glimpsed, not exposed bright core, jewel, flame or light cloud. Open armor edges show hollow interiors. NO ribcage cage, chains, reliquary or ring shape around a core.
+SHOULDERS: reduce big shoulder on viewer-left, flatten the cap and extend it a little rearward for a sharp strong silhouette, keep other shoulder lower/narrower. No oversized pauldrons or spiky decoration.
+LIMBS: keep aligned hollow segmented bracers/gauntlets and greaves, but make their short joint gaps explicitly EMPTY background with no black mannequin body underneath. Delete full upper-arm tubes, retain floating shoulder cap then short gap then solid forearm shell. Delete full thigh tubes, retain small pelvic plate, short gap then floating shin/foot shell. Keep gauntlet shape restrained closed/relaxed fist, not monster claws. One forearm has one broad pale brushed-steel outer plane for game-scale value hierarchy. No sword/gun yet; future body assembly may evolve into weapons.
+STANCE: contained aggressive intent, slight forward weight, faceplate angled toward opponent down-right, both hands LOW in readiness, NOT kindly open-palmed mage gesture. Adult lean dangerous fighter, not brute, monster or bulky knight. Strong grounded asymmetric stance, keep entire character in frame.
+MATERIAL/LIGHT: less granular rusty texture than original, broad smooth dark forged surfaces with quiet directional wear. Slightly lighter midtone planes across mask/shoulder/forearm so body reads on dark arena even with NO soul glow. No mass neon, no runes pasted on ordinary armor, cloak/scarf/cloth/cape or decorative accessories. The subject is ancient will arranging dangerous empty armor fragments into an original protagonist, NOT a person wearing a suit, knight helmet, conventional RPG armor template or Q7C/Fractured Vessel. Single neutral study, no scene, UI, other characters, boards, animation or VFX.
+```
+
+## Lịch sử revision5 — crystal cohesion
 
 ## B1-SOUL — cohesion + correction / spec revision5
 
