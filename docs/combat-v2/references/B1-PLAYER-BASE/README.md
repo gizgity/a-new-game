@@ -1,6 +1,6 @@
 # B1 — Reference manifest (A3)
 
-CONCEPT — PROPOSED — NOT PRODUCTION (SOUL separated study hiện hành). Task: B1-PLAYER-BASE; active spec revision4; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
+CONCEPT — PROPOSED — NOT PRODUCTION (SOUL refinement hiện hành). Task: B1-PLAYER-BASE; active spec revision5; image revision1; 2026-11-12. Không TARGET/EVIDENCE candidate nào được approved.
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,13 +21,22 @@ Mọi ảnh concept có nhãn CONCEPT — PROPOSED — NOT PRODUCTION trong ản
 
 Ba study A/B/C ở bảng trên là lịch sử REJECTED; approval “cả 3 không đạt, concept k có chất game, giống quái hơn là nhân vật chính”, 2026-11-12, hội thoại hiện tại không permalink. Không tái dùng làm design input.
 
-## Active exploration — spec revision4
+## Before refinement — spec revision4
 
 | ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | B1-SOUL-SEPARATED | B1-PLAYER-BASE | CONCEPT | image1/spec4 | [B1-SOUL-separated-v1.png](B1-SOUL-separated-v1.png) | ImageGen original text, no image input; exact prompt in PROMPTS | 1199×1312, một neutral figure, nền study, không game-scale/runtime | Detached masses/compact soul intent; gap/pose/identity còn cần chỉnh; không suy code/3D/flight/timing | PROPOSED | NONE |
 
 [Research có nguồn và review](RESEARCH.md). Hai SOUL studies revision3 cần sửa theo user “các tinh thể dính nhau quá, chưa đẹp”; không phải TARGET. Study mới không sửa/tiếp nối A/B/C đã REJECTED. Ảnh reference game bên thứ ba chỉ xem qua web, không lưu/dùng ImageGen input/asset.
+
+## Active refinement — spec revision5
+
+| ref_id | task_id | type | revision | path | source | view_context | binding | status | approval |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1-SOUL-COHESION | B1-PLAYER-BASE | CONCEPT | image1/spec5 | [B1-SOUL-cohesion-v1.png](B1-SOUL-cohesion-v1.png) | ImageGen edit from separated-v1; PROMPTS cohesion | 1199×1312, một neutral character, same study context | Intermediate có filler/head lớn, chỉ trace/correction input; không target | PROPOSED | NONE |
+| B1-SOUL-REFINED | B1-PLAYER-BASE | CONCEPT | image1/spec5 | [B1-SOUL-refined-v1.png](B1-SOUL-refined-v1.png) | ImageGen edit from cohesion-v1; PROMPTS correction | 1199×1312, một neutral character; không native-scale runtime | Gaps ngắn/head nhỏ/hand-foot rõ là intent; swirl/pose vẫn cần review, không timing/collider | PROPOSED | NONE |
+
+User “gần hơn r, nhưng xem có cải thiện được j nữa k” chỉ cho refinement; không approval ảnh/spec4/spec5. Hai ảnh mới đều CONCEPT — PROPOSED — NOT PRODUCTION. Xem review trong task/research. Không tự so game-scale hoặc gọi renderer3D evidence.
 
 ## Sources / review
 
@@ -55,3 +64,9 @@ Desktop/grayscale/crowd/telegraph/4góc của candidate chưa verified. Không c
 
 
 Separated prototype SHA256: `61a0a488ac6a4ccd004efc3021bb2aa8bbafb17c13b64a799ab85d3754767cee`. Original: `exec-742c157e-57c8-4d56-b9cd-57ccd4eb3367.png` (copy nguyên ảnh; original giữ ngoài repo).
+
+SHA256 B1-SOUL-cohesion-v1.png: `ae46e8071765fc887b4697b8cbde4dbe38d8de7785d224a713f5ef8cca49bbe9`.
+
+SHA256 B1-SOUL-refined-v1.png: `5cc96f7009d54cc4ba32977eeeff3ac2092e474abd95a85703940928852eb094`.
+
+Original generated sources (giữ ngoài repo, copies nguyên ảnh): cohesion `exec-bb41a9bd-98f0-4b97-bbe0-757148bf01e3.png`; correction `exec-6526cd4a-10a0-4361-946a-5551039b3bcd.png`.

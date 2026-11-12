@@ -1,4 +1,47 @@
-# B1-SOUL — Exact prompts / active spec revision4
+# B1-SOUL — Exact prompts / active spec revision5
+
+## B1-SOUL — cohesion + correction / spec revision5
+
+Hai edits ImageGen; transparent_background=false; model/seed không cung cấp, theo điều khoản dịch vụ. Mọi ảnh CONCEPT — PROPOSED — NOT PRODUCTION; không runtime/production/model3D.
+
+### Cohesion study
+
+Input thực: B1-SOUL-separated-v1.png, đã xem. Output B1-SOUL-cohesion-v1.png. Kết quả trung gian có upper-arm/thigh filler và đầu lớn hơn intent; ghi lại để trace input của correction, không approved target.
+
+```text
+Refine the supplied CURSEBREAK ancient soul crystal protagonist concept, do NOT start over or turn it into a connected stone golem. Keep the slate-blue quartz, confined blue-white soul energy, detached crystal body, calm intelligence, no face, no conventional weapons, no aura. Produce ONE single full-body character, ONE neutral ready stance, plain charcoal ground, high three-quarter game-view looking down, see top planes. This is CONCEPT art, not production or runtime.
+
+The reference has three concrete design problems: pieces drift too far apart, head and facing are weak, all body parts resemble interchangeable pointed shards. Solve all three through gestalt and functional shape hierarchy:
+
+1. Cohesion: arrange the detached parts much closer together around ONE continuous implied upright S line. Short consistent dark gaps separate ALL joints visibly; gaps approximately one-quarter the adjacent crystal width, not whole missing limb lengths. NO touching or fused parts, no energy tubes, no anatomical rock upper arms/thighs to fill holes. Soul's will binds through spatial alignment alone. Keep negative spaces visible but make the parts read instantly as one intentional protagonist.
+2. Directed identity: replace the vertical floating diamond atop the reference with a LOW compact oblique arrowhead crystal, angled forward/down-right, a deliberately cut front bevel and darker rear plane clearly show facing. No face, eyes, mouth, ivory mask, helmet or horns. This head is a restrained modest mass near shoulders, not a crown or shard drifting above the character.
+3. Body hierarchy: the central compact prison is a non-round asymmetrical faceted rhomboid volume containing compressed pale-blue soul energy, visually bounded and slightly deep, not a chest gem embedded in armor and not a swirling round orb. Two swept modest shoulder crystals form a purposeful taper toward a narrower waist/pelvic arrangement. Replace the big crescent smile pelvis with a simple compact oblique downward chevron crystal; no tiny extra diamond under it. Avoid barrel chest, giant pauldrons and heroic muscular anatomy. Crystal silhouette elegant and mature, not knight.
+4. Functional distinctions: two forearm/palm forms are broader and shorter than the reference's spear shards, less needle sharp; each has a clear palm-like flattened plane with a subtle fork, no human fingers. One hand rests slightly forward/open with confident precision, the other lower beside body. This is neutral, not attacking, not casting a spell. Lower leg/foot crystals are thicker and shorter with clear angled flat foot ends directed down-right, not hanging daggers. Support stance staggered by a small amount, stable and self-possessed. Small asymmetry conveys character; no perfect mirrored generic crystal robot.
+5. Material: broad quiet deep smoky blue-gray crystal planes, mostly opaque with small selectively translucent edges. Bright mineral accents LIMITED to head front edge and hand edge, not all surfaces gold; most warm reference rim highlights subdued. Soul light stays inside central prison. Distinguish top/side/shadow planes for stylized 2.5D game volume. Do not overtexture the stone, no metal, rune ornament or glass product render.
+Character should feel like an ancient master calmly commanding its own assembled body, a person with agency worth controlling, not floating debris, an enemy, a pet or a relic object. No cloak/scarf, energy anatomy mannequin, aura, particle swarm, environment, HUD, infographic, multiple poses or comparison board. Clear full-body framing, no crop. Footer exactly 'CONCEPT — PROPOSED — NOT PRODUCTION'.
+```
+
+### Correction study
+
+Input thực: B1-SOUL-cohesion-v1.png, đã xem. Output B1-SOUL-refined-v1.png. Đã bỏ filler và thu đầu; vẫn còn swirl nhẹ, bàn tay nhọn; xem review, không visual PASS.
+
+```text
+Precisely refine the ATTACHED latest CURSEBREAK concept. ONE character, ONE same neutral poised stance, same camera/framing/charcoal background, slate-blue 2.5D crystal material. This is a design correction pass, retain its improved coherent silhouette, purposeful rightward/down-right facing, asymmetrical hand gesture and short flat foot ends. Keep footer 'CONCEPT — PROPOSED — NOT PRODUCTION'. No other text/boards.
+
+Remove the armor mannequin drift. Make exactly these visible changes:
+- REDUCE the separate head crystal to about HALF its current visual area; make a compact low oblique forward-facing wedge rather than big diamond hovering above the torso. Keep its front bevel showing facing. No eyes, face, mask, helmet.
+- DELETE BOTH upper-arm small filler crystals between shoulders and forearms. Each forearm/hand floats just below its shoulder with a visible short EMPTY dark gap. Do not move forearms far outward. No upper arms, tethers, light connections or new filler shards.
+- DELETE BOTH thigh/hip-side filler crystals between pelvis and the lower legs. Position the two EXISTING lower-leg/foot masses closer beneath the pelvis with SHORT clear EMPTY gaps, preserving distinct feet and stable stance. No thighs, no human knee anatomy, no new parts.
+- Narrow the huge shoulder on image left by about25percent, remove its double spike notch and make one broad calm swept crystal plane. Shoulders should suggest an elegant controlled presence, not fantasy pauldrons.
+- The central SOUL PRISON must stop looking like a heavy framed chest plate with a generic blue spiral. Keep a COMPACT volumetric asymmetrical crystal-like ENERGY enclosure between detached limbs, shrink it modestly, soften/remove the thick dark bevel rim. Inside show a dense quiet irregular pearl-white fold of light, an ancient contained consciousness; NO round spiral/vortex, eye, rune, emblem, anatomy or little chest jewel. It IS the central living presence, not an armored torso containing a core. Some dark empty waist remains above compact pelvis.
+- Preserve the clear separation of ALL masses, use spatial alignment for unity. No crystal touching at joints, no energy tubes, no connection silhouettes, no glow anatomy.
+- Keep hand shapes broad but simple: relaxed flat open palm plane with one understated split, NOT claws/monster fingers and not a casting spell. Reduce pointiness on both hands.
+- Soften some overly regular faceting; few broad readable smoky translucent mineral surfaces, mostly opaque. Reserved warm highlight only front head/hand, no gold all over, no aura. Adult dignified protagonist, not robot/knight/golem/enemy.
+
+The result should have fewer parts than the input, more deliberately shaped masses, a more compact calm head, readable front direction and a poised collected intelligent personality. Single full body, neutral, unarmed, no effects, cloak, scarf, ornament, scene, UI or animation. Do not redesign the whole character or return to the previously long pillar/crystal golem.
+```
+
+## Lịch sử revision4
 
 ## B1-SOUL — separated visual prototype v1 / spec revision4
 

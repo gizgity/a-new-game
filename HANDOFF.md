@@ -9,18 +9,16 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1 SOUL / SEPARATED VISUAL PROTOTYPE (2026-11-12)
+## CURRENT — B1 SOUL / COHESION REFINEMENT (2026-11-12)
 
-User: “các tinh thể dính nhau quá, chưa đẹp, có thể tham khảo các game có cùng phong cách thiết kế để ra đc prototype”. B1 revision3 NEEDS REVISION; A/B/C vẫn REJECTED. Hướng soul đã làm chủ/crystal assembly giữ; gameplay redesign để sau, chưa Three.js implementation.
+User “gần hơn r, nhưng xem có cải thiện được j nữa k” cho refinement hướng separated soul/crystal, không visual approval. [B1 spec5](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompts/review đã lưu. Spec4 là before/input được phép phát triển, A/B/C vẫn REJECTED, không tái dùng.
 
-[B1 revision4](docs/combat-v2/tasks/B1-PLAYER-BASE.md), [research](docs/combat-v2/references/B1-PLAYER-BASE/RESEARCH.md), [manifest/ảnh](docs/combat-v2/references/B1-PLAYER-BASE/README.md): nghiên cứu Xerath/LoL, Knack, Rayman để tách bài học energy/material, assembly và pose/negative space. Không phải cùng toàn bộ art direction; external images chỉ research, không repo/InputGen/production. Một visual prototype mới B1-SOUL-separated-v1.png, PROPOSED / AWAITING USER REVIEW; original ImageGen, không executable3D/model/runtime screenshot.
+Hai edits: B1-SOUL-cohesion-v1 intermediate đọc stance rõ nhưng thêm filler bắp tay/đùi/head lớn; agent tự correction → B1-SOUL-refined-v1 bỏ filler, head nhỏ hơn, gap ngắn, palm/feet rõ hướng, pelvis gọn. Tất cả PROPOSED / AWAITING USER REVIEW, chưa TARGET. Soul còn gần swirl/palm hơi claw, góc còn đứng; không quality/readability PASS. Hai ảnh concept tĩnh, không executable/model3D/production.
 
-Observed: gaps thật lớn, bỏ anatomy dính/trụ dài, energy compact và material ít noise. Gaps có thể quá rộng/mất unity, shoulder/head focus yếu, chưa chứng minh protagonist hoặc đẹp; không tự PASS. Camera/gameplay scale/mobile/desktop/crowd/telegraph/grayscale/performance chưa verified, comparison hợp lệ vẫn0/3. Không tái dùng montage sai scale.
+Validation: PNG/path/hash/prompts/metadata/diff; chỉ docs/design references. Native-scale comparisons vẫn0/3, mobile/desktop/crowd/telegraph/grayscale/motion/performance chưa checked. Không gameplay/Three.js/code/animation/B2/build/deploy/Bibles/Harness/DDR. Gate A/baseline approvals giữ nguyên.
 
-Validation: PNG/path/prompts/metadata/diff; chỉ docs/design references; không build/deploy/code/production/Bibles/Harness/DDR/B2. Gate A/baseline approvals giữ nguyên. Chưa approve ảnh/spec/engine.
-
-**FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW**, full acceptance còn thiếu game-scale comparison.
-**ONE NEXT ACTION: User đánh giá visual prototype tách khối để chọn/chỉnh mức độ khoảng hở, silhouette và phong thái.**
+**FINAL STATUS: B1 DESIGN — AWAITING USER REVIEW.**
+**ONE NEXT ACTION: User review refinement spec5, đặc biệt cohesion/hướng nhìn/phong thái; chọn/chỉnh, chưa production.**
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 

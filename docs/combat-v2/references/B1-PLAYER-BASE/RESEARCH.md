@@ -22,3 +22,9 @@ Observed: phần lớn cụm tách rõ; không trụ dài/khớp đá liền; pa
 Risks: khoảng hở có thể quá lớn và phá unity; vai mảnh, hướng/head focus chưa mạnh; hình vẫn có thể giống một construct/enemy. Cần user đánh giá vẻ đẹp/protagonist, không tự PASS.
 Unverified: native gameplay scale, crowd/telegraphs, grayscale, motion/body reassembly/mobile/desktop/performance. Không có comparison runtime hợp lệ mới.
 
+
+## Refinement — spec revision5
+
+User thấy spec4 gần hơn, yêu cầu agent tự cải thiện thiếu sót. Không đổi game references hay hướng soul/crystal. Cải thiện có chủ đích: gap ngắn để unity, head compact có hướng, palm/foot distinct khỏi shards lặp, pelvis gọn và bớt frame ngực.
+
+Lượt cohesion cải thiện stance nhưng thêm filler bắp tay/đùi và head lớn — đã tự phát hiện và edit correction. Lưu intermediate để trace input, không approved target. Correction bỏ filler, giảm head, giữ gap ngắn và rõ feet. Soul vẫn có vệt gần swirl/palm hơi claw, góc chưa overhead đủ; không chấm quality/readability PASS. Native game scale/mobile/desktop/crowd/telegraph chưa checked. Xem exact prompts và metadata trong manifest.
