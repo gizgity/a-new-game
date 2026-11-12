@@ -33,6 +33,12 @@ Theo phản hồi user, đã sửa [HARNESS.md](docs/combat-v2/HARNESS.md) revis
 
 User “ok, làm tiếp đi” sau A-H1 Revision 2 cho phép chốt **A-H1 process-only contract**, không chốt art/gameplay. [HARNESS.md](docs/combat-v2/HARNESS.md) đã ghi A-H1 APPROVED ở commit `aa4f1e9`; **Design Harness tổng thể chưa hoàn chỉnh** (A-H2/H3/H4, A2/A3 còn thiếu; chưa nối AGENTS). Đã tạo **A1 Experience Vision — PROPOSED** tại [EXPERIENCE_VISION.md](docs/combat-v2/EXPERIENCE_VISION.md), commit `f0ba7bd`; [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) cập nhật `da80eae`. Đây là outcome/anti-goal và mốc quan sát đầu/giữa/cuối run, không khóa art style, góc nhìn, camera, damage hoặc animation; không sửa production, balance, preview, DDR. **NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A1; chưa mở A2 hoặc B1.** Docs-only, không build/deploy.
 
+## COMBAT V2 — CURRENT: A2 VISUAL LANGUAGE (2026-11-12)
+
+User chấp nhận A1 Experience Vision: “phần này thì được r á”; tiếp đó chỉ đạo làm ngay A2. Đã tạo [DESIGN_BIBLE.md](docs/combat-v2/DESIGN_BIBLE.md) **PROPOSED Revision 1**, commit `90ba5e6`; cập nhật [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) commit `3c04854` với lịch DOC → REFERENCE → APPROVAL → CODE → VERIFY → ACCEPTANCE. **Harness A-H1 approved; harness tổng thể chưa enforce.** Các lựa chọn art style/top-down ¾/palette/camera đều là baseline có thể thay, không phải luật cố định. Docs-only, không sửa production/code/assets/DDR, không build/deploy.
+
+**NEXT ACTION DUY NHẤT: user review/chỉnh/duyệt A2 DESIGN_BIBLE.md.** Sau đó A3 References Protocol → A-H2 template → A-H3 enforcement → A-H4 dry-run → thiết kế & duyệt B1 → CODE B1 → nghiệm thu. Không mở A3/B1 trước approval.
+
 ## ACTIVE TASK
 **V2-02 — Preview App Playback & Autoplay (tên task lịch sử: Harness Playback & Autoplay) — HOÀN TẤT — DEPLOYED, CHỜ USER REVIEW**, user giao ngày 2026-11-11, baseline main `fc38224` / V2-01. Goal/acceptance: Bắt đầu → hai preview tự chiến đấu bằng simulation thật, tự chọn Draft/Mutation/Curse đến Boss hoặc kết thúc; playback riêng 0.25×/0.5×/1×/Pause/Step 1 fixed tick (1/60s), Combat/Boss/Restart, mặc định autoplay, chuyển manual khi cần, memory-only. Không redesign, gameplay/balance/art/HUD/input production hoặc dependency; commit/push main/Pages rồi dừng V2-02.
 
