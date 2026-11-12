@@ -1,6 +1,6 @@
 # A3 — Reference & Evidence Protocol (Combat V2)
 
-> **PROPOSED v1 · 2026-11-12 · chờ user duyệt.** Đây là quy định QUẢN LÝ reference, không khóa camera, style, màu sắc, pose hay gameplay. `HARNESS.md` là workflow; `DESIGN_BIBLE.md` là creative direction có thể đổi. Preview app chỉ là công cụ quan sát.
+> **APPROVED v1 · 2026-11-12.** User “ok, tiếp đi” sau khi được đề nghị duyệt A3; approval chỉ dành cho protocol, không phải concept/asset/gameplay. Đây là quy định QUẢN LÝ reference, không khóa camera, style, màu sắc, pose hay gameplay. `HARNESS.md` là workflow; `DESIGN_BIBLE.md` là creative direction có thể đổi. Preview app chỉ là công cụ quan sát.
 
 ## 1. Một reference phải chứng minh điều gì?
 
@@ -84,4 +84,4 @@ Không tự tạo sprite “theo cảm giác”, không biến hình minh họa 
 
 A3 hoàn thành ở mức DOC khi protocol này giải thích được: loại ảnh, version, approval, binding, lưu trữ và evidence; **chưa có refs B1 thật** vì chưa bắt đầu B1. Thử nghiệm việc tuân thủ theo A-H4 với task minh họa, không build/deploy hoặc tạo artwork trong A3.
 
-**A3 status: PROPOSED, awaiting user review.** Sau user duyệt, NEXT ACTION: **A-H2 — Task Card Template**. Chưa sửa production.
+**A3 status: APPROVED v1.** Đã tạo A-H2 [TASK_CARD_TEMPLATE.md](TASK_CARD_TEMPLATE.md) ở trạng thái PROPOSED, đang chờ user duyệt. Chưa sửa production.
