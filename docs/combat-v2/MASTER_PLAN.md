@@ -105,9 +105,11 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A0 | MASTER_PLAN | APPROVED TO PROCEED (2026-11-12) | Đã mở A-H1 |
 | A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
 | A1 | Experience vision | USER ACCEPTED — 2026-11-12, “phần này thì được r á” | Đã mở A2 |
-| A-H2/H3/H4 | Card template / enforcement / dry run | NOT STARTED | Hoàn thiện trong Phase A |
+| A-H2 | Task card template | PROPOSED — `TASK_CARD_TEMPLATE.md`, commit `b1c82aa` | **AWAIT USER REVIEW** |
+| A-H3 | AGENTS enforcement | NOT STARTED | A-H2 |
+| A-H4 | Dry run compliance | NOT STARTED | A-H3 |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
-| A3 | Reference protocol | PROPOSED — `REFERENCE_PROTOCOL.md`, commit `51c3933` | **AWAIT USER REVIEW** |
+| A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
 | B | Combat core | NOT STARTED | Gate A |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
@@ -115,11 +117,11 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/chỉnh/duyệt A3 — [`REFERENCE_PROTOCOL.md`](REFERENCE_PROTOCOL.md).** User duyệt A2 qua “ok tiếp đi” ngày 2026-11-12; A3 đã viết bản PROPOSED, chưa mở A-H2 trước approval. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/chỉnh/duyệt A-H2 — [`TASK_CARD_TEMPLATE.md`](TASK_CARD_TEMPLATE.md).** User duyệt A3 qua “ok, tiếp đi” ngày 2026-11-12; A-H2 đã tạo PROPOSED, A-H3 chưa mở trước approval. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
-1. **DOC (hiện tại):** A2 Design Bible (PROPOSED) → A3 references protocol (DOC) → A-H2 task card template (DOC) → A-H3 AGENTS enforcement (DOC) → A-H4 dry-run compliance (VERIFY). **Gate A: user duyệt quy trình và design direction cấp cao.**
+1. **DOC (hiện tại):** A2 Design Bible (APPROVED) → A3 references protocol (APPROVED) → A-H2 task card template (PROPOSED) → A-H3 AGENTS enforcement (DOC) → A-H4 dry-run compliance (VERIFY). **Gate A: user duyệt quy trình và design direction cấp cao.**
 2. **DESIGN/ART đầu tiên:** B1 Player Base spec + before/after references/keyframes ở tỷ lệ chơi thật; user duyệt đúng revision.
 3. **CODE đầu tiên:** chỉ B1 Player Base được duyệt; typecheck/build + focused regression.
 4. **REVIEW đầu tiên:** preview app hiển thị baseline revision cũ và candidate mới; desktop/mobile; user ACCEPT hoặc yêu cầu chỉnh.
