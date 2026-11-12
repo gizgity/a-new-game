@@ -9,6 +9,10 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
+## CURRENT — COMBAT V2 A-H2 APPROVED (2026-11-12)
+
+User “uh chốt h2” xác nhận A-H2 Task Card Template v1. [TASK_CARD_TEMPLATE.md](docs/combat-v2/TASK_CARD_TEMPLATE.md) APPROVED commit `d2d2b4a`. [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) đồng bộ A-H2 APPROVED / A-H3 linked / A-H4 NOT STARTED, commit `c7ccbc2`. **NEXT ACTION DUY NHẤT: A-H4 dry run compliance (chỉ docs/verify, không production art hoặc code).** Gate A chưa hoàn tất, B1 chưa mở. Đây là trạng thái ưu tiên hơn các NEXT ACTION lịch sử bên dưới.
+
 ## CURRENT — COMBAT V2 DOCUMENT AUDIT / A-H2 REVIEW (2026-11-12)
 
 **Ưu tiên mục này hơn mọi NEXT ACTION lịch sử bên dưới.** Theo user yêu cầu sửa lỗi sau audit và rà lại một lượt:
