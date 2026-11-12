@@ -106,8 +106,8 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H1 | Design Harness contract | APPROVED — revision 2, 2026-11-12; ghi lại tại `HARNESS.md` | Đã mở A1 |
 | A1 | Experience vision | USER ACCEPTED — 2026-11-12, “phần này thì được r á” | Đã mở A2 |
 | A-H2/H3/H4 | Card template / enforcement / dry run | NOT STARTED | Hoàn thiện trong Phase A |
-| A2 | Visual language | PROPOSED — `DESIGN_BIBLE.md`, commit `90ba5e6` | **AWAIT USER REVIEW** |
-| A3 | Reference protocol | NOT STARTED | A2 |
+| A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
+| A3 | Reference protocol | PROPOSED — `REFERENCE_PROTOCOL.md`, commit `51c3933` | **AWAIT USER REVIEW** |
 | B | Combat core | NOT STARTED | Gate A |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
@@ -115,7 +115,7 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**User review/chỉnh/duyệt A2 — [`DESIGN_BIBLE.md`](DESIGN_BIBLE.md).** User chấp nhận A1 (“phần này thì được r á”), yêu cầu làm ngay A2 ngày 2026-11-12. A2 đã tạo bản PROPOSED, chưa được duyệt, không mở A3 trước user review. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
+**User review/chỉnh/duyệt A3 — [`REFERENCE_PROTOCOL.md`](REFERENCE_PROTOCOL.md).** User duyệt A2 qua “ok tiếp đi” ngày 2026-11-12; A3 đã viết bản PROPOSED, chưa mở A-H2 trước approval. Chưa làm B1 Player. Mọi sửa roadmap có revision/date/nguồn, không thay đổi âm thầm. Chỉ có tài liệu roadmap mới được commit ở lượt hiện tại; không build/deploy hoặc sửa production.
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
