@@ -9,11 +9,15 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — GATE A APPROVED; B1 PLAYER BASE DESIGN OPEN (2026-11-12)
+## CURRENT — B1-RESET DESIGN / BLOCKED COMPARISONS (2026-11-12)
 
-User “ok, tiếp theo” sau khi được đề nghị **chốt Gate A → bắt đầu B1 thiết kế Player Base bằng hình ảnh**. Xem như duyệt Gate A để mở **B1 DESIGN ONLY**, không phải duyệt B1 production/code. A-H4 dry-run PASS tài liệu tại [DRY_RUN_REPORT.md](docs/combat-v2/DRY_RUN_REPORT.md); quy trình Harness liên kết AGENTS, giữ baseline art có thể thay. Đã tạo [B1 design card](docs/combat-v2/tasks/B1-PLAYER-BASE.md) (commit `ad1bdb1`), chưa có target ref hoặc user visual approval. [MASTER_PLAN.md](docs/combat-v2/MASTER_PLAN.md) cập nhật Gate A/B1 (commit `d7ef01d`). Concept do ImageGen tạo trong chat ngày 2026-11-12 nhưng **lệch baseline** (forest/anime hero, đưa cả animation trong bảng), chỉ là exploratory image **NOT APPROVED, NOT REPO-BACKED**, không được xem là target hay sản xuất theo hình đó. Không sửa game assets/code, chưa build/deploy.
+User yêu cầu “B1-RESET — Redesign Player Base V2 From Zero”: bỏ mọi hướng Player cũ, chỉ design. Gate A approval trên main41407d5 giữ nguyên. Đã thay [B1 card](docs/combat-v2/tasks/B1-PLAYER-BASE.md) bằng revision2: A Press Saint (không đầu/khối vai ngang/hai chân ngắn), B Tuning Talon (cao cong/đầu U/chân dài), C Seal Crab (phi humanoid/vỏ ngang/bốn chân). [Manifest + 3 character studies](docs/combat-v2/references/B1-PLAYER-BASE/README.md), exact prompts/nguồn/rights/hash đã lưu; mọi candidate **PROPOSED / AWAITING USER REVIEW**, target/approval NONE.
 
-**NEXT ACTION DUY NHẤT: thay concept B1 không đúng direction bằng concept bám đúng runtime/Art Bible hoặc hướng mới do user chọn, tại đúng tỷ lệ gameplay; trình user duyệt đúng image/spec trước production.**
+**FINAL STATUS: BLOCKED — B1 DESIGN.** Có 3 character studies, nhưng **0/3 gameplay-scale comparisons hợp lệ**. Screenshot renderer Q7C390/1440 thật có sẵn và đã xem; ba phép edit ImageGen tái vẽ HUD/đổi panel scale nên bị loại, không commit ảnh sai. Thiếu composite bảo toàn screenshot/identity/scale, không thiếu runtime screenshot. Readability mobile/desktop/crowd/telegraph/grayscale chưa verified; không PASS từ hình minh họa. Ảnh A/C quá công nghiệp, B view còn đứng và mảnh; xem review intent/observed/unverified trong card.
+
+Validation: kiểm PNG thật/path/hash/manifest, ba cấu trúc khác nhau, diff chỉ docs/design references trên41407d5. Không sửa Bibles/Harness/DDR/game code/production assets; không build/deploy, không B2/implementation. Q7C và các approvals trước giữ nguyên. Checkout ban đầu785ec7c đã được fast-forward bảo toàn bốn remote commits trước khi chốt deliverable.
+
+**ONE NEXT ACTION: User xem và chọn/chỉnh một phương án.** Không tự winner/approve/production; comparisons thiếu vẫn là gate chưa đạt.
 
 ## LỊCH SỬ — A-H4 DRY RUN (2026-11-12)
 

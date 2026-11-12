@@ -110,14 +110,14 @@ Không scaffold hàng loạt docs trống. Tại thời điểm có task cụ th
 | A-H4 | Dry run compliance | PASS — dry run tài liệu, `DRY_RUN_REPORT.md`; chưa user acceptance | Gate A READY FOR USER REVIEW |
 | A2 | Visual language | APPROVED — revision 1, user “ok tiếp đi” 2026-11-12 | Đã mở A3 |
 | A3 | Reference protocol | APPROVED v1 — user “ok, tiếp đi”, 2026-11-12 | Đã mở A-H2 |
-| B | Combat core | B1 DESIGN OPEN — `tasks/B1-PLAYER-BASE.md`, no approved target/code | USER VISUAL APPROVAL NEEDED |
+| B | Combat core | B1-RESET revision2: 3 candidates PROPOSED; BLOCKED comparisons (0/3 valid), no target/code | AWAITING USER REVIEW; B2 CLOSED |
 | C | Evolution | NOT STARTED | Gate B |
 | D | Enemies/Boss | NOT STARTED | Gate tương ứng |
 | E | Polish/final | NOT STARTED | Gate D |
 
 ## 7. Việc kế tiếp (DUY NHẤT)
 
-**B1 Player Base — DESIGN ONLY**: [tasks/B1-PLAYER-BASE.md](tasks/B1-PLAYER-BASE.md). User đã cho tiếp sau A-H4 PASS và đề nghị chốt Gate A → mở B1; ghi Gate A approved cho thiết kế, không duyệt visual target hay implementation. Next action: **user review concept Player Base B1**, ghi đúng ảnh/spec revision được duyệt rồi mới giao Codex code riêng. Không sửa production trước approval.
+**B1-RESET — DESIGN ONLY**, user giao creative reset 2026-11-12, thay rationale B1 cũ; không thay Gate A approval. [Card revision2](tasks/B1-PLAYER-BASE.md), [manifest/3 studies](references/B1-PLAYER-BASE/README.md): A Press Saint / B Tuning Talon / C Seal Crab, tất cả PROPOSED. **B1 DESIGN BLOCKED:** 0/3 gameplay comparisons hợp lệ vì ImageGen tái vẽ screenshot/đổi scale; có screenshot nguồn thật, không fake arena. Không runtime readability PASS, không target approval, không code/production/B2. **ONE NEXT ACTION: User xem và chọn/chỉnh một phương án.**
 
 ## 7a. Bản đồ EXECUTION (DOC / ART / CODE / REVIEW)
 
