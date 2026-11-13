@@ -1,0 +1,26 @@
+{
+  "revision": "78bc558782f45b957f8663202b69326182ad93cb",
+  "sourceSha256BeforeAndAfter": "b2e2aab3d431ae55062b0f1043cd9ff64c0ca4e11d08c63a81bddc9939151de9",
+  "productionSourceUnchanged": true,
+  "damage": {
+    "sweep": 32,
+    "slam": 36,
+    "projectile": 14
+  },
+  "tempo": {
+    "enragedWindup": 0.8,
+    "enragedRecovery": 0.48,
+    "enragedCooldown": 0.65
+  },
+  "phase": {
+    "speedMultiplier": 1.05,
+    "followupGap": 0.45,
+    "followupWindup": 0.8,
+    "comboRecovery": 1.05
+  },
+  "moderateDamage": {
+    "sweep": 38,
+    "slam": 40,
+    "projectile": 16
+  }
+}

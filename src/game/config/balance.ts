@@ -50,9 +50,10 @@ export const ENEMY_ATTACK = {
   volatile: { windup: 0.7, recovery: 0, cooldown: 1.5, range: 110, arc: Math.PI * 2 },
   bulwark: { windup: 0.65, recovery: 0.75, cooldown: 1.5, range: 100, arc: 1.7 },
 } as const;
-export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.62, recovery: 0.32,
-  enragedRecovery: 0.32, cooldown: 0.55, enragedCooldown: 0.44, range: 230, arc: 1.7, slamRadius: 110, leapFlight: 0.28, chaseSpeed: 300, maxLeap: 560, projectileSpeed: 430 } as const;
-export const BOSS_DAMAGE = { sweep: 46, slam: 50, projectile: 18 } as const;
+// BOSS-EASE-01 V1: more reaction time in phase two, with phase-one timing preserved.
+export const BOSS_ATTACK = { windup: 0.62, enragedWindup: 0.8, recovery: 0.32,
+  enragedRecovery: 0.48, cooldown: 0.55, enragedCooldown: 0.65, range: 230, arc: 1.7, slamRadius: 110, leapFlight: 0.28, chaseSpeed: 300, maxLeap: 560, projectileSpeed: 430 } as const;
+export const BOSS_DAMAGE = { sweep: 32, slam: 36, projectile: 14 } as const;
 
 // Relay delay uses simulation time; damage/radii retain the M3 tuning.
 export const CHAIN = { relayDelay: 4 / 60, damagePerStack: 12, radius: 105, specialistRadius: 142 } as const;
@@ -80,5 +81,5 @@ export const BUILD = {
   healBudget: 8, healWindow: 10, echoDamage: 20, echoRadius: 80, echoCap: 6, hasteDuration: 3, hasteMultiplier: 1.15,
 } as const;
 
-// Q8C: only chase speed and cooldown scale; damage, reach, shots and windup stay fixed.
-export const BOSS_PHASE = { arrival: 2, transform: 1.4, speedMultiplier: 1.15, followupGap: 0.25, followupWindup: 0.62, comboRecovery: 0.75 } as const;
+// Preserve the Q8C transition and combo; BOSS-EASE-01 leaves more room to evade/punish.
+export const BOSS_PHASE = { arrival: 2, transform: 1.4, speedMultiplier: 1.05, followupGap: 0.45, followupWindup: 0.8, comboRecovery: 1.05 } as const;

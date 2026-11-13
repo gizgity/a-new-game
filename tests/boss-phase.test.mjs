@@ -36,14 +36,21 @@ test('threshold exactly 50%, one1.4s transformation, cancels attack, no heal, fr
  b.hp=b.maxHp/2-1;step(w,2);assert.equal(b.transform,0);
 });
 test('phase2 slam follows with locked sweep; full telegraph and punish recovery, no extra projectiles',()=>{
- const {w,b}=setup();Object.assign(b,{enraged:true,hp:700,action:2});w.step(idle,dt);w.player.y=250;step(w,38);assert.equal(b.followup,true);
- for(let i=0;i<20&&b.attackAction!==0;i++)w.step(idle,dt);assert.equal(b.attackAction,0);assert.ok(b.windup>.5);const angle=b.angle;w.player.x-=100;step(w,10);assert.equal(b.angle,angle);step(w,30);assert.ok(b.recovery>.6);assert.equal(w.projectiles.length,0);
+ const {w,b}=setup();Object.assign(b,{enraged:true,hp:700,action:2});w.step(idle,dt);w.player.y=250;
+ step(w,Math.ceil(BOSS_ATTACK.enragedWindup/dt));assert.equal(b.followup,true);
+ assert.equal(b.recovery,BOSS_PHASE.followupGap);
+ for(let i=0;i<40&&b.attackAction!==0;i++)w.step(idle,dt);
+ assert.equal(b.attackAction,0);assert.equal(b.windupDuration,BOSS_PHASE.followupWindup);
+ assert.ok(b.windup>BOSS_PHASE.followupWindup-dt*2);
+ const angle=b.angle;w.player.x-=100;step(w,10);assert.equal(b.angle,angle);
+ for(let i=0;i<60&&b.comboFinish;i++)w.step(idle,dt);
+ assert.equal(b.recovery,BOSS_PHASE.comboRecovery);assert.equal(w.projectiles.length,0);
  const pos=[b.x,b.y];step(w,20);assert.deepEqual([b.x,b.y],pos);
 });
 test('followup sector geometry agrees with Perfect Dodge and outside arc is safe',()=>{
- for(const outside of [false,true]){const {w,b}=setup();Object.assign(b,{enraged:true,hp:700,attackAction:0,angle:Math.PI,windup:.1,windupDuration:.62,comboFinish:true});w.player.y=outside?800:500;
+ for(const outside of [false,true]){const {w,b}=setup();Object.assign(b,{enraged:true,hp:700,attackAction:0,angle:Math.PI,windup:.1,windupDuration:BOSS_PHASE.followupWindup,comboFinish:true});w.player.y=outside?800:500;
  assert.equal(w.isImminentEnemyThreat(b),!outside);w.step({...idle,dash:!outside,dy:1},dt);step(w,8);assert.equal(w.hp,100);assert.equal(w.perfectDodges,outside?0:1);}
- assert.equal(BOSS_ATTACK.windup,BOSS_ATTACK.enragedWindup);assert.equal(BOSS_ATTACK.recovery,BOSS_ATTACK.enragedRecovery);assert.equal(BOSS_PHASE.speedMultiplier,1.15);
+ assert.ok(BOSS_ATTACK.enragedWindup>BOSS_ATTACK.windup);assert.ok(BOSS_ATTACK.enragedRecovery>BOSS_ATTACK.recovery);
 });
 
 test('warning reset mid-arrival, deadline and defeat cancel cue without spawning Boss',()=>{
@@ -53,11 +60,26 @@ test('warning reset mid-arrival, deadline and defeat cancel cue without spawning
  assert.equal(r.bossWarning,0);assert.equal(w.enemies.some(e=>e.kind==='boss'),false);
  }
 });
-test('Enraged changes chase speed and cooldown only, hit flash fades during transform',()=>{
+test('Enraged uses the eased chase speed, hit flash fades during transform',()=>{
  const distances=[];
  for(const enraged of [false,true]){const {w,b}=setup();b.cooldown=1;b.enraged=enraged;const x=b.x;w.step(idle,dt);distances.push(x-b.x);}
- assert.ok(Math.abs(distances[1]/distances[0]-1.15)<1e-8);
+ assert.ok(Math.abs(distances[1]/distances[0]-BOSS_PHASE.speedMultiplier)<1e-8);
  const {w,b}=setup();b.hp=b.maxHp/2;b.flash=.08;step(w,8);assert.ok(b.transform>0);assert.equal(b.flash,0);
+});
+
+test('phase2 slam and followup leave room for error without extending player invulnerability',()=>{
+ const {w,b}=setup();Object.assign(b,{x:800,y:500,enraged:true,hp:1200,windup:dt/2,attackAction:2,
+  targetX:800,targetY:500,leapFromX:800,leapFromY:500});
+ const hits=[];let tick=0;const hurt=w.hurt.bind(w);
+ w.hurt=(...args)=>{const hp=w.hp;hurt(...args);if(w.hp<hp)hits.push({tick,hp:w.hp});};
+ for(;tick<180&&hits.length<2;tick++){
+  // Keep this geometry probe in both hit areas despite the normal knockback.
+  w.player.x=b.x;w.player.y=b.y;w.step(idle,dt);
+ }
+ assert.equal(hits.length,2);assert.equal(hits[0].hp,64);assert.equal(hits[1].hp,32);
+ assert.ok((hits[1].tick-hits[0].tick)*dt>=1.25);
+ assert.ok((hits[1].tick-hits[0].tick)*dt<1.32);
+ assert.equal(w.invulnerable,.65);
 });
 
 test('Boss shortcut starts at1150 kills/3:40, skips drafts, preserves threshold/warning and normal reset',()=>{

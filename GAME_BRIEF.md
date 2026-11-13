@@ -576,6 +576,10 @@ User giao tuần tự Q8A → Q8B → Q8C → Q8D; mỗi checkpoint focused test
 - Ưu tiên Light/Heavy Hit, Gun, Dash, Perfect Dodge, Detonate, Player Hurt.
 - Giới hạn âm chồng trong Chain Reaction; nhạc nền có thể bổ sung sau.
 
+## Boss balance hiện hành — BOSS-EASE-01 V1
+
+User duyệt “ok triển đi” ngày2026-11-13 sau [proposal và simulation](docs/boss-balance/PROPOSAL.md). Chỉ supersede tuning Boss: damage sweep/slam/projectile32/36/14 cả hai phase; phase2 windup0.80s, recovery0.48s trong cooldown0.65s, chase×1.05; slam→gap0.45s→locked sweep0.80s→recovery1.05s. Giữ phase1 timing0.62/0.32/0.55, HP2400, threshold50%, transform1.4s/freeze/noheal, 3đòn/15projectiles, geometry, spawn/deadline/build/player/progression. Các số Boss Q8C khác phía trên là lịch sử được supersede trong phạm vi này. Implementation và user playtest acceptance theo [bàn giao](docs/boss-balance/IMPLEMENTATION.md); chưa tự nghiệm thu từ bot/build/deploy.
+
 ## i18n
 - Dictionary `vi` và `en`, một hàm `t(key)` đơn giản; mặc định `vi`, không cần package ngoài.
 - Toàn bộ HUD, Menu, Settings, Draft, Victory/Defeat, tutorial text qua translation keys.

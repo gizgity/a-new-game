@@ -9,7 +9,19 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — B1 REVERTED / PAUSED BY USER (2026-11-12)
+## CURRENT — BOSS-EASE-01 V1 IMPLEMENTED (2026-11-13)
+
+User **“ok triển đi”** duyệt V1 sau [proposal +720fixtures/15run](docs/boss-balance/PROPOSAL.md). Cho phép implementation/production trong scope Boss hiện tại, không V2/B1. [Bàn giao/validation](docs/boss-balance/IMPLEMENTATION.md). Tích hợp trên remote46c45bb, giữ nguyên B1 REVERTED / PAUSED BY USER.
+
+- Config production đúng candidate: damage32/36/14 cả2phase; phase2 windup.8/recovery.48/cooldown.65/chase×1.05/followup gap.45/windup.8/combo recovery1.05. Giữ HP2400/threshold50%/transform1.4s/geometry15shots/player/build/spawn/deadline/art/audio/progression. Chỉ production file `src/game/config/balance.ts`; sửa focused tests/GAME_BRIEF/docs tương ứng, không DDR.
+- PASS npmtest33files +typecheck/build. Production measurements144fixtures/3runs/combo probe khớp JSON candidate đã duyệt hoàn toàn, seed808 thắng242.70s/12HP. Không suy human winrate. Experiment runner pin git baseline78bc558, không lấy V1 làm baseline lần sau.
+- Chromium390×844/1440×1000 PASS native touchDash/keyboardmovement, phase1.62/phase2.8/gap.45/followup.8/aimlock/transform, renderer vi/en/nooverflow/0pageerror; dist smoke cả2viewport clock/input/boot PASS. Evidence/screenshot trong docs/boss-balance/evidence. Fixture cấp Boss/positions/HP và step/render có kiểm soát; chưa humanfeel/device/iOS/Safari/FPS hoặc fullrunbrowser. Giữ rủi ro quá dễ build mạnh đã nêu trong proposal.
+- Đang commit/push main và theo dõi Pages; chưa ghi deploy SUCCESS. Sau deploy cung cấp URL/version Boss trial và game thường. Bản duyệt implementation không phải user playtest acceptance.
+- Cách thử sau deploy: `?playtest=boss` bắt đầu3:40/1150kills/build cấp sẵn/không lưu; thêm50kills hoặc chờ4:00 để Boss xuất hiện, đánh đến50%HP. Mobilejoystick/Lướt, desktopWASD/Space: né slam rồi sweep, tận dụng recovery; mong đợi báo đòn/khoảng phản công rõ và damage thấp hơn. Thử thêm run thường để kiểm tài nguyên thực; phản hồi đòn/build/HP/thiết bị nếu quá khó/dễ.
+
+**ONE NEXT ACTION: Push bản V1 đã kiểm, theo dõi Pages tới kết thúc và bàn giao link/version cho user playtest.**
+
+## PAUSED — B1 REVERTED / PAUSED BY USER (2026-11-12)
 
 User: “revert hết đi, k đúng ý t, để t suy nghĩ lại”, hội thoại hiện tại, không permalink. Đã hoàn tác toàn bộ sáu commit exploration B1 của phiên (e298978,8c9a76c,aa531cc,bff03d8,788a941,78bc558) về baseline41407d5; gỡ toàn bộ concept/research/prompts mới khỏi cây hiện hành. Giữ lịch sử git và các thay đổi/approval đã có trước phiên, gồm Gate A cho design. Không có artwork/spec nào của phiên được approved.
 

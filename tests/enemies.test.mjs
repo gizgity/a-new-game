@@ -52,7 +52,7 @@ test('Boss keeps locked active pattern and target through stationary recovery; p
     assert.ok(e.active > 0); assert.ok(e.recovery > 0);
     step(w, 0.1);
     assert.deepEqual([e.x, e.y, e.angle, e.targetX, e.targetY], [action === 2 ? targetX : x, action === 2 ? targetY : y, angle, targetX, targetY]);
-    step(w, BOSS_ATTACK.enragedCooldown); assert.equal(e.windupDuration, BOSS_ATTACK.enragedWindup);
+    step(w, BOSS_ATTACK.cooldown); assert.equal(e.windupDuration, BOSS_ATTACK.windup);
   }
 });
 

@@ -1,0 +1,16 @@
+[
+  {
+    "viewport": "1440x1000",
+    "before": "3:40 / 5:00",
+    "after": "3:41 / 5:00",
+    "errors": [],
+    "scope": "Production dist Boss preset boot, native input, advancing run clock, no overflow."
+  },
+  {
+    "viewport": "390x844",
+    "before": "3:40 / 5:00",
+    "after": "3:41 / 5:00",
+    "errors": [],
+    "scope": "Production dist Boss preset boot, native input, advancing run clock, no overflow."
+  }
+]
