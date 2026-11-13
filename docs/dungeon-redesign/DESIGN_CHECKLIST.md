@@ -1,6 +1,6 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 15 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 25 · 2026-11-14.
 Trạng thái: BRAINSTORM / CHECKLIST, chưa spec production hoặc quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
@@ -15,6 +15,16 @@ Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồn
 - **Q09 đã chốt 2026-11-14:** mọi node trên tree hiển thị đặc điểm dungeon/nguy hiểm tương đối, buff/debuff đầy đủ (giá trị/hiệu lực/cộng dồn), nhóm thưởng chính và Boss nếu node đã xác định Boss; chi tiết layout/bầy/kết quả thưởng cụ thể khám phá trong dungeon. Catalog/công thức đánh giá nguy hiểm chưa chốt.
 - **Q10 đã chốt 2026-11-14:** hạ Boss nấc 9 là thắng/kết thúc hành trình; tổng kết/nhận thưởng hoàn thành, có thể bắt đầu tree random mới với build reset, giữ unlock/progression vĩnh viễn đã nhận. Loại/giá trị thưởng còn D11; không nối tự động sang tree khác với nguyên build.
 - **C03 mới nhất 2026-11-14:** user đồng ý hướng Q12 ở mức tổng thể (“cũng đc”), muốn rework luôn skill vì chỉ chém/bắn còn đơn giản; tham khảo PoE với các loại cơ bản trước, reward có thể unlock skill tấn công/hỗ trợ. Đây là mở scope thiết kế, chưa duyệt skill catalog/runtime/artwork. User yêu cầu nhánh riêng; đã tạo `codex/dungeon-skill-rework` từ main `63f4f3b88826eb556664bf240e8be538e8f654e6`, main ref giữ nguyên. Chi tiết C03/Q13 bên dưới.
+- **Q13/C04 2026-11-14:** user “y, đồng thời kèm chế độ tự ra đòn” chốt active skill + support gắn skill tương thích và yêu cầu thêm chế độ tự ra đòn. Chưa chốt phạm vi tự động, roster/số ô/aim/cost/input. Tự ra đòn là scope mới do user giao, không được bác vì baseline input cũ; chưa suy thành autoplay di chuyển/Dash/heal/chọn build hoặc tự dùng mọi skill.
+- **Q14 đã chốt 2026-11-14:** user “y 1 skill chính và 2 skill phụ manual”: một skill tấn công chính được chọn cho auto + hai skill phụ dùng tay. Support gắn skill theo trigger, có bật/tắt auto ở cả hai nền tảng theo phương án đã hỏi. Dash/bình máu có chiếm hai ô phụ không chưa chốt; roster/cost/target/lifecycle còn mở.
+- **Q15 đã chốt 2026-11-14:** user “y riêng”: Dash là thao tác né manual cố định, nút riêng, không chiếm hai ô skill phụ. Bình máu, layout và thay đổi thông số/biến thể Dash chưa chốt.
+- **Q16 đã chốt 2026-11-14:** user “y”: bình máu cơ bản manual có nút riêng, không chiếm hai ô skill phụ; mọi build có nguồn hồi phục nền. Bộ điều khiển: một main auto + hai skill phụ manual + Dash + bình máu. Charge/cách nạp/lượng hồi/Boss interaction và HUD chưa chốt.
+- **Q17 đã chốt 2026-11-14:** user “y”: pool main nền có bốn kiểu để chọn một: melee quét cung, projectile, nova quanh người, channel tia theo hướng. Tên/nguyên tố/thông số/art và tương thích support chưa chốt; không đồng nghĩa mở hết đầu game.
+- **Q18 đã chốt 2026-11-14:** user “y”: pool bốn vai trò skill phụ manual để chọn hai theo build: burst/AoE, khống chế, phòng thủ, triệu hồi trụ. Trụ đặt bằng tay rồi tự bắn ngắn hạn; chưa timing/cap/cost/art hoặc mở hết đầu game.
+- **Q19 đã chốt 2026-11-14:** user “y”: main tối đa ba support, mỗi skill phụ tối đa hai, tổng trần bảy ô. Chưa cấp đầy đầu game, rule trùng/cách nhận/compatibility/tradeoff và Dash/bình chưa chốt nâng cấp/support riêng.
+- **Q20 đã chốt pool, cooldown còn mở 2026-11-14:** user “y, nhưng mà lưu ý chưa có quyết định về skill có hồi chiêu”: đồng ý chín support nền, riêng support Hồi chiêu chỉ là loại có điều kiện nếu có skill thực sự dùng cooldown. Không tự gán cooldown cho bất kỳ skill nào để hợp thức hóa support. Main/manual/mana/resource/charge/cooldown phải được hỏi rõ.
+- **Q21 đã chốt 2026-11-14:** user “y”: hai skill phụ manual mỗi skill có cooldown riêng, không chung cooldown giữa hai ô. Chưa số giây/start/cancel/charge/uptime cap; main/mana/Dash/bình không được chốt cooldown qua Q21.
+- **Q22 đã chốt 2026-11-14:** user “y”: main dùng attack/cast cadence, nova theo nhịp/channel duy trì, không thêm cooldown kỹ năng riêng như hai phụ. Vẫn có timing/điều kiện thực tế; mana/cost/di chuyển/priority chưa chốt. Hồi chiêu không tự áp main.
 - User “đồng ý” sau đề xuất kết hợp tree + chuyển map liên tục, build/buff giữ trong chuỗi rồi reset khi chuỗi kết thúc, giữ unlock/progression sang lượt mới. Ghi nhận hướng tổng thể, không suy đã duyệt các luật/số cụ thể.
 - Bình máu nạp từ combat, nhận nâng cấp không ngắt từng elite, tiến độ clear trước Boss, reward sau Boss là hướng từ đề xuất trước; điều kiện/ngoại lệ/số cụ thể cần chốt trong các mục dưới.
 
@@ -28,16 +38,16 @@ Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồn
 | D04 | Bố cục map và điều hướng | Quy mô/density/độ dài mục tiêu dù không timer; random layout hay cả biome/địa hình; đường chính/nhánh cụt/đường vòng; minimap/fog/chỉ hướng Boss; độ rộng đường và việc đi xuyên/vượt vật cản. |
 | D05 | Bầy quái và rarity | Vai trò white/blue/amber; blue là thủ lĩnh đơn hay cả nhóm magic; bầy nào có thủ lĩnh; kích cỡ và phối vai trò, kỹ năng elite; phạm vi phát hiện/truy đuổi/kéo nhập bầy; respawn/summon và giới hạn active cùng lúc. |
 | D06 | Nhận và phát triển Mutation/Curse | C02: bàn lại build cùng reward cho toàn tree trước khi chốt timing giữ thưởng. Vai trò Sigil/Branch/Mutation/Curse và buff Boss cần tách; 4M/2C chỉ là baseline cũ, không tự khóa proposal mới. Blue/amber vẫn nguồn Mutation/Curse theo ý user; cadence/pool/slot/upgrade/replace/Curse risk/late build chưa chốt. |
-| D07 | Hồi máu | Bình máu/hồi trực tiếp; charge, cách nạp, tốc độ hồi, giới hạn dùng, nút touch/desktop; tài nguyên trong Boss không có adds; hồi sau Boss; tương tác với build heal/anti-heal hiện hành và giới hạn farm. |
+| D07 | Hồi máu | Q16: bình máu nền manual có nút riêng ngoài hai ô phụ. Còn charge/cách nạp/lượng-tốc độ hồi/giới hạn dùng, input cụ thể; tài nguyên trong Boss không adds; hồi sau Boss; tương tác build heal/anti-heal và giới hạn farm. |
 | D08 | Điều kiện Boss/clear map | Đi đến cuối là được đánh hay cần tiến độ clear; quái nào tính tiến độ; tránh tìm white cuối và chạy thẳng bỏ cả map; Boss chết có chuyển ngay không, xử lý quái sống/loot/nâng cấp chưa nhận trước khi rời map. |
 | D09 | Danh sách Boss và sự đa dạng | Giữ Chain Warden bao lâu, đổi pattern/modifier theo node hay thêm Boss; mốc Boss mạnh; số lượng nội dung cho bản đầu và phần để sau, chưa tự cấp quyền artwork/content mới. |
 | D10 | Difficulty và power curve | Độ khó tăng theo độ sâu/node/build thế nào; phần đến từ mật độ/phối quái/skill và phần từ HP/damage; giữ white clear nhanh; giới hạn tốc độ/chain/hồi máu/VFX và các tổ hợp không thể vượt qua. Không thay luật theo thiết bị. |
 | D11 | Phần thưởng và progression | C02: phải xác định thưởng gì/cấu trúc build trước timing/bảo toàn. Q11 tạm gác, chưa duyệt thưởng vĩnh viễn sau mỗi dungeon. Còn reward trong map/Boss/meta, tính chắc chắn/chọn/random, death/settlement, replayability/hết pool, currency/item có cần không. Q12 hỏi hướng power/meta trước. |
 | D12 | Hệ thống cũ | Lập mapping giữ/đổi/tạm ngừng cho Sigil/Branch, Legacy/ticket/reward, Anomaly, Ascension, challenge/Codex/history/cosmetic và tutorial/audio theo timer. Run/Victory/progression trigger cũ tính trên từng dungeon hay toàn chuỗi. Không tự xóa approval/dữ liệu cũ. |
-| D13 | Combat, camera và UI trên hai nền tảng | Giữ bộ đòn/input hiện tại đến đâu; target/auto aim qua tường, projectile/collision ở hành lang, offscreen attacks, camera và HUD/minimap; thao tác bình máu/chọn node/pending rewards; portrait/landscape/desktop, vi/en. |
+| D13 | Combat, camera và UI trên hai nền tảng | C04 user yêu cầu chế độ tự ra đòn; phạm vi/mục tiêu/bật-tắt/manual override cần chốt cùng D16. Bộ đòn/input, target/aim qua tường, projectile/collision ở hành lang, offscreen attacks, camera/HUD/minimap; bình máu/node/reward và vi/en. Không tự khác luật combat theo thiết bị. |
 | D14 | Lưu và tiếp tục hành trình | Q04–05: giữ tree/node, restart đầu node bằng checkpoint nhân vật; bỏ nâng cấp/thưởng tạm node dở, giữ thành quả node trước. Q06: giữ dungeon node đã chọn (layout/bầy/Boss/modifier), reset tiến độ clear. Còn random offer/reward khi restart, reload/crash/đóng app, pause trong phiên, migration save cũ và tránh nhận trùng thưởng. |
 | D15 | Phạm vi bản đầu và cổng nghiệm thu | Map/biome/enemy/Boss nào tái sử dụng hoặc làm mới; cần concept/mockup/approved refs cho phần visual nào; chốt mục tiêu density/readability/performance trên mobile/desktop; thứ tự task nhỏ, scenario nghiệm thu chuỗi map→Boss→reward→node→map/death/save. Không code trước spec/ref/approval đúng scope. |
-| D16 | Skill rework — user mở ở C03 | Skill chủ động/hỗ trợ cơ bản; danh sách/slot/equip/aim/cost/cooldown, có giữ combo/chém/bắn/Dash cố định không; support tương thích/tradeoff/cap; quan hệ Mutation/Curse/Sigil/Branch; unlock lâu dài và nhận/sửa build trong hành trình; không tự thêm inventory/crafting/passive tree hoặc nhiều nút active. Làm trên nhánh rework riêng. |
+| D16 | Skill rework — user mở ở C03 | Q13–22: active+support, main auto/hai phụ manual/Dash+bình riêng; bốn main/bốn vai trò phụ, support cap3/2/2, chín support nền. Hai phụ cooldown riêng, main cadence không thêm cooldown kỹ năng. Còn mana/resource/compatibility/trùng/tradeoff/proc cap, nhận/mở slot/equip/aim, mapping hệ cũ và unlock/build trong lượt. Làm nhánh riêng, không tự thêm inventory/crafting/passive tree/nhiều nút. |
 
 Mỗi mục chỉ được chuyển sang đã chốt khi có nội dung và bằng chứng user tương ứng. Checklist không ghi DDR, không thay GAME_BRIEF/Art Bible/roadmap hoặc mở production. Các luật cần rõ trước code; HP/damage/drop rate và các thông số khác cần baseline thử có phạm vi + tiêu chí kiểm, không tự coi số chưa playtest là balance accepted.
 
@@ -229,11 +239,139 @@ User: “hỏi từng câu 1, có recommend trước (m đi tất cả các câu
 
 ### Q13 — D16.1: Có dùng cấu trúc skill chủ động + support gắn vào skill không?
 
-- Trạng thái: **CHỜ USER**, chưa có kết quả.
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý VÀ BỔ SUNG C04**, design discussion only.
 - Recommend: **hai lớp: skill chủ động tạo hành động; support gắn vào skill tương thích để thay đổi hành vi**. Ví dụ cùng projectile có thể thành nhiều tia hoặc chain; cùng AoE có thể mở rộng vùng hoặc tạo lần nổ lặp. Skill/support có thể là nội dung mở khóa lâu dài, cách nhận/equip trong lượt còn chốt sau.
 - Lý do: tăng đa dạng cách chơi từ bộ skill nền nhỏ, tạo danh tính cụ thể cho phần thưởng unlock; giữ khả năng mở rộng mà không cần nhiều nút active hoặc sao chép toàn hệ PoE.
 - Ranh giới: chỉ chốt architecture/ý nghĩa support, chưa duyệt toàn bộ sáu nhóm ví dụ C03, số slot/support, cost/mana/cooldown, hay giữ/bỏ Mutation/Curse/Sigil/Branch. Không tự sản xuất asset/code/framework.
-- Câu trả lời user: CHƯA CÓ.
-- Nội dung đã chốt: CHƯA CÓ cho Q13.
+- Câu trả lời user: **“y, đồng thời kèm chế độ tự ra đòn”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q13.
+- Nội dung đã chốt: **hai lớp active skill tạo hành động + support gắn skill tương thích biến đổi hành vi; có thêm chế độ tự ra đòn**. Chưa chốt cụ thể skill nào tự dùng hoặc mặc định bật/tắt; không suy toàn bộ sáu nhóm minh họa/roster/slot/resource đã approved.
 
-NEXT ACTION: chờ user chốt Q13 (active skill + support gắn vào skill); tiếp tục một câu/lượt trên nhánh `codex/dungeon-skill-rework`. Q11 timing còn tạm gác tới khi rõ build/reward.
+### C04 — Chế độ tự ra đòn do user bổ sung (2026-11-14)
+
+- Nguồn: câu trả lời Q13 phía trên. Đây là yêu cầu mới trong rework trên nhánh riêng, chưa production approval.
+- Baseline GAME_BRIEF mobile-first/desktop-equivalent hiện không tự quyết thời điểm ra đòn/resource, chém/bắn giữ lặp và Heavy/Charged giữ–thả. User mới cho phép đề xuất chế độ tự ra đòn, supersede đúng phạm vi sẽ chốt; không giữ baseline cũ để cấm feature mới, không tự đổi toàn input hoặc chiến thuật còn lại.
+- Phân biệt tự ra đòn của người chơi với `harnessAutoplay.ts` dùng preview/debug: chưa dùng bot di chuyển/chọn draft để thay chế độ này hoặc coi autoplay là human acceptance.
+- Cần chốt phạm vi trước: skill nào được tự dùng, ai chọn skill, bật/tắt/manual override, target/range/line-of-sight, channel/cost/cooldown, pause/draft/blur/cancel/resume. Các decision này có thể tách câu; không tự thêm mana/timer/tài nguyên giả.
+- Chế độ áp dụng theo cùng contract gameplay cho touch và keyboard/mouse; layout/input theo thiết bị có thể khác, không tự thêm damage/tốc độ/cooldown/AI advantage cho riêng thiết bị nào.
+
+### Q14 — D16.2 / D13.1: Chế độ tự ra đòn tự dùng những skill nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý VÀ CHỐT THÊM SỐ SKILL PHỤ**, design discussion only.
+- Recommend: **tự dùng một skill tấn công chính do người chơi chỉ định**, khi có mục tiêu hợp lệ và skill đủ điều kiện; support gắn skill đó hoạt động theo trigger thật. Chế độ bật/tắt được trên cả mobile/desktop. Các skill dùng theo thời điểm chiến thuật như burst/AoE phụ, di chuyển, phòng thủ và bình máu vẫn do người chơi dùng; di chuyển/chọn build/node vẫn thủ công.
+- Lý do: giảm thao tác lặp khi clear nhiều bầy, cho phép tập trung di chuyển/né, vẫn giữ quyền quyết định dùng đòn quan trọng và tiêu tài nguyên chiến thuật. Ví dụ di chuyển giữa bầy trong khi projectile + chain tự bắn, người chơi chủ động dùng AoE/guard/Dash khi cần.
+- Ranh giới: chưa chốt số skill mang theo hoặc liệt kê skill auto-eligible; một vai trò tấn công chính không đồng nghĩa chốt một slot tổng. Không tăng tốc/damage, bỏ cooldown/cost hoặc tự tạo resource cho auto. Targeting/manual aim override/đang hold khi toggle, mặc định bật/tắt và lifecycle còn hỏi riêng; không tự duyệt UI/art.
+- Câu trả lời user: **“y 1 skill chính và 2 skill phụ manual”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q14.
+- Nội dung đã chốt: **một skill tấn công chính do người chơi chọn cho chế độ auto + hai skill phụ dùng tay**. Giữ bật/tắt auto trên mobile/desktop, trigger support/cost/cooldown hợp lệ theo phương án đã hỏi; không tự tăng tốc/damage hoặc auto di chuyển/chọn build/node. Chưa xác định Dash/bình máu có nằm trong hai ô phụ không; không suy thêm slot từ Q14.
+
+### Q15 — D16.3: Dash có chiếm một trong hai ô skill phụ không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **Dash là thao tác né cố định, có nút riêng và không chiếm hai ô skill phụ**. Bộ điều khiển khi đó có một main auto + hai skill phụ manual + Dash riêng. Dash vẫn người chơi chủ động dùng, không tự né.
+- Lý do: né đòn là nền tảng chung để mọi build xử lý telegraph/Boss, hai ô phụ vẫn dành cho lựa chọn chiến thuật theo build. Giữ khả năng né cơ bản đồng đều giữa các lựa chọn skill và cả touch/keyboard–mouse.
+- Ranh giới: đây là đề xuất thêm Dash ngoài ba ô vừa chốt, chưa user duyệt; không tự implement hoặc tăng số nút khác. Chưa chốt bình máu/input layout/roster các skill phụ, biến thể/support cho Dash hay thay timing/charge/i-frame. Nền Dash hiện hành là fallback, không tự khóa vĩnh viễn.
+- Câu trả lời user: **“y riêng”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q15.
+- Nội dung đã chốt: **Dash là thao tác né cố định có nút riêng, không chiếm hai ô skill phụ, vẫn manual**. Bộ điều khiển gồm một main auto + hai skill phụ manual + Dash riêng. Không tự duyệt thay charge/timing/i-frame, variant/support Dash hoặc HUD layout.
+
+### Q16 — D07.1 / D16.4: Bình máu có là thao tác riêng ngoài hai ô phụ không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **bình máu cơ bản là thao tác manual có nút riêng, không chiếm hai ô skill phụ**. Mọi build có quyền dùng cơ chế hồi phục cơ bản này; hai ô phụ vẫn dành cho lựa chọn build, gồm skill phòng thủ/hồi phục bổ sung nếu catalog sau này có.
+- Lý do: dungeon dài và nhiều bầy cần nguồn hồi phục nền cho mọi hướng build, không buộc dành một trong hai ô phụ cho heal. Người chơi vẫn quyết định thời điểm tiêu bình, giữ vai trò quản lý tài nguyên đã đề xuất ở Q14.
+- Ranh giới: chỉ hỏi vai trò/control slot; chưa chốt số charge, lượng/tốc độ hồi, cách nạp, boss không adds, hồi giữa node, nâng cấp bình hoặc anti-heal interaction. Không có hồi vô hạn/đầy máu hay bình giả từ việc chốt có nút riêng; thông số và giới hạn phải chốt sau. Chưa approved UI/layout.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q16.
+- Nội dung đã chốt: **bình máu cơ bản dùng tay, có nút riêng, không chiếm hai ô skill phụ; mọi build có nguồn hồi phục nền này**. Bộ điều khiển gồm một main auto + hai skill phụ manual + Dash + bình máu. Không tự duyệt charge/lượng hồi/cách nạp/Boss interaction hoặc HUD layout.
+
+### Q17 — D16.5: Bộ skill tấn công chính cơ bản gồm những kiểu nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **bốn kiểu main skill nền để chọn một mang theo**:
+
+| Kiểu | Ví dụ tên tạm | Hành vi/khác biệt mong muốn |
+| --- | --- | --- |
+| Melee quét cung | Quét kiếm | Đánh gần theo cung, chọn vị trí áp sát/quét bầy |
+| Projectile | Đạn năng lượng | Phóng đạn có hướng, lợi thế đường bắn và tương tác xuyên/chain/nhiều tia nếu support hợp lệ |
+| Nova quanh người | Sóng xung kích | Phát đợt sát thương vùng quanh nhân vật, dùng khoảng cách/timing để xử lý bầy bao vây |
+| Channel theo hướng | Tia năng lượng | Duy trì tia theo hướng mục tiêu; khác nhịp đạn rời, cần chốt tài nguyên/movement/interrupt riêng |
+
+- Lý do: phân biệt cách đánh/vị trí/nhịp thật, đủ nền cho support và reward unlock đa dạng; nova/channel mở rộng ngoài chém/bắn. Đây là pool bốn lựa chọn, không thêm bốn ô/nút main hoặc bảo đảm tất cả có sẵn đầu game.
+- Ranh giới: chốt số/kiểu main nền để thiết kế tiếp, chưa nguyên tố/tên chính thức/art/animation/hitbox/damage/cost/range/nhịp hoặc tương thích support cuối. Không tự lấy chém combo cũ/Heavy/Charged/Surge làm mechanic đã được giữ hoặc bỏ; cần mapping sau. Hai skill phụ manual/roster vẫn bàn riêng, không dùng Q17 để duyệt C03 toàn bộ sáu nhóm.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q17.
+- Nội dung đã chốt: **pool bốn kiểu main skill nền: melee quét cung, projectile, nova quanh người, channel tia theo hướng; mỗi hành trình trang bị một main**. Chốt hành vi cấp nhóm để thiết kế tiếp, không tự approved tên/nguyên tố/timing/cost/hitbox/art hoặc cấp cả pool đầu game. Cơ chế cũ và support compatibility còn mapping riêng.
+
+### Q18 — D16.6: Bộ skill phụ manual cơ bản gồm những vai trò nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **pool bốn vai trò skill phụ, tự chọn hai theo build**:
+
+| Vai trò | Ví dụ tên tạm | Tác dụng mong muốn |
+| --- | --- | --- |
+| Burst/AoE | Vụ nổ | Chủ động gây đợt sát thương mạnh tại điểm chọn khi có cơ hội/bầy tụ lại |
+| Khống chế | Vùng làm chậm | Tạo vùng kiểm soát, giữ khoảng cách hoặc gom điều kiện cho đòn tiếp |
+| Phòng thủ | Khiên tạm | Chủ động che chắn trong một khoảng nguy hiểm; tách với Dash và bình máu nền |
+| Triệu hồi trụ | Trụ công kích | Người chơi đặt trụ, trụ tự bắn trong thời gian ngắn; khác nhịp tấn công/positioning của main |
+
+- Lý do: hai ô phụ tạo lựa chọn về burst/control/sống sót/thiết lập vị trí, mỗi unlock có vai trò dễ nhận biết; trụ đem lại kiểu triệu hồi cơ bản mà chưa cần roster pet di chuyển hoặc nhiều lớp AI. Tự chọn hai theo build, không ép một offensive/một defensive ở Q18.
+- Ranh giới: trụ tự đánh sau khi **manual cast** không có nghĩa tự cast skill phụ, không thay Q14 một main auto. Thời gian/cap trụ, targeting/collision, khống chế Elite/Boss và tradeoff/cooldown/cost đều phải chốt riêng; không auto stun/slow-lock Boss. Chưa chốt tên/nguyên tố/roster biến thể/support slot/art/aim UI, không cấp cả pool đầu game. Không tự tạo assets hoặc code.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q18.
+- Nội dung đã chốt: **pool bốn vai trò skill phụ manual: burst/AoE điểm chọn, vùng khống chế, khiên tạm, triệu hồi trụ; chọn hai theo build**. Trụ cần manual cast, sau đó tự bắn ngắn hạn. Chưa tên/nguyên tố/thông số/cap/CC Boss/support/art hoặc mở hết pool đầu game; không thêm slot hay auto cast skill phụ.
+
+### Q19 — D16.7: Mỗi skill được gắn tối đa bao nhiêu support?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **main tối đa 3 support, mỗi skill phụ tối đa 2 support**. Trần bộ mang theo là ba active skill và tổng bảy ô support tương thích, ngoài Dash/bình máu cơ bản theo Q15–16.
+- Lý do: main auto là nền clear bầy, có ba lớp biến đổi để tạo bản sắc build; hai skill phụ vẫn có đủ tùy biến cho vai trò chiến thuật. Giữ trần liên kết để còn quản lý combo/độ dễ đọc/hiệu năng trong cảnh đông, không sao chép số link của PoE.
+- Ranh giới: đây là trần thiết kế, không đồng nghĩa có đủ ô/support ngay đầu hành trình hoặc cấp miễn phí. Chưa catalog/support lấy từ đâu/mở slot lúc nào/level/reroll/replace; rule trùng support trong một skill hoặc giữa các skill, compatibility/tradeoff và proc cap đều hỏi riêng. Không tự cho Dash/bình thêm ô support hoặc cấm nâng cấp riêng của chúng; phạm vi đó chưa chốt. Không approved HUD/art/runtime.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q19.
+- Nội dung đã chốt: **trần support main3/phụ2/phụ2, tổng bảy ô trên ba skill mang theo**. Chưa chốt có đủ ô ngay đầu game/cấp support miễn phí, nguồn nhận, trùng support, compatibility/tradeoff hoặc proc cap; Dash/bình không tự có thêm ô từ Q19.
+
+### Q20 — D16.8: Pool support cơ bản gồm những loại nào?
+
+- Trạng thái: **ĐÃ CHỐT POOL — USER LƯU Ý COOLDOWN CHƯA CHỐT**, design discussion only.
+- Recommend: **chín loại support nền** có lựa chọn cho damage, control, guard và trụ:
+
+| Support — tên tạm | Vai trò mong muốn |
+| --- | --- |
+| Đa đạn | Thêm projectile trong mỗi lần ra đòn của skill phù hợp |
+| Xuyên | Projectile tiếp tục đi qua mục tiêu |
+| Chain | Đòn/projectile/tia phù hợp chuyển sang mục tiêu tiếp theo |
+| Mở rộng | Mở rộng vùng ảnh hưởng của skill vùng phù hợp |
+| Lặp | Thêm một lần lặp hiệu ứng cho skill phù hợp |
+| Kéo dài | Tăng thời gian tồn tại của vùng/khiên/trụ hoặc channel nếu hợp lệ |
+| Tăng nhịp | Tăng nhịp ra đòn/thi triển; không tự đồng nhất với giảm cooldown |
+| Hồi chiêu | Giảm thời gian hồi của skill thực sự có cooldown |
+| Cường hóa | Tăng hiệu lực như sát thương/độ bền khiên, có đánh đổi cần chốt |
+
+- Lý do: main có nhiều hướng clear/single-target/nhịp, skill phụ guard vẫn có lựa chọn giữa kéo dài/hồi chiêu/cường hóa thay vì hai ô nhưng chỉ hai support tương thích. Tách attack/cast cadence và cooldown để không tạo timer giả cho skill không có cooldown. Đây là pool cơ bản, không phải chín support tự có/có hiệu lực cùng lúc.
+- Ranh giới: tên/nhóm đề xuất, chưa compatibility matrix/tradeoff/damage/number/duration/caps, source unlock/equip hoặc VFX/art. Chain không tự hỗ trợ tất cả hit/beam; Lặp không tự nhân shield/resource/charge hay tạo echo đệ quy; duration/cooldown không cho shield uptime/CC Boss vô hạn. Các rule này cần chốt theo skill/trigger thật, không dùng Q20 duyệt mechanic cụ thể hoặc bỏ cost.
+- Câu trả lời user: **“y, nhưng mà lưu ý chưa có quyết định về skill có hồi chiêu”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q20.
+- Nội dung đã chốt: **chín loại support nền như bảng Q20**, không tự chốt từng skill có cooldown. **Hồi chiêu là support có điều kiện**, chỉ áp khi luật skill thật sự có cooldown được user duyệt; nếu cuối cùng không dùng cooldown phải bàn lại vai trò support này, không tự tạo timer. Mana/resource/cadence/cooldown/charge vẫn cần decision riêng.
+
+### Q21 — D16.9: Hai skill phụ manual có dùng cooldown riêng không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **mỗi skill phụ manual có cooldown riêng**, không dùng chung một cooldown giữa hai ô. Dùng một skill không tự khóa skill còn lại; giá trị/thời điểm bắt đầu hồi/cancel còn bàn.
+- Lý do: burst/control/guard/trụ có thời điểm sử dụng chiến thuật, cooldown riêng tạo nhịp lựa chọn mà vẫn có thể phối hai skill khi cần; support Hồi chiêu có ứng dụng hợp lệ nếu phương án này được duyệt.
+- Ranh giới: chỉ hỏi hai skill phụ, chưa gán cooldown cho main/Dash/bình hoặc chốt mana/tài nguyên chung. Nhịp đánh/cast time/channel tick không tự đồng nghĩa cooldown. Không tự chốt số giây, charge, timer giả, cap uptime guard/CC/trụ, cooldown start/cancel/reset qua node hoặc UI; các phần này cần thiết kế tiếp. Không suy Q20 đã approve Q21.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q21.
+- Nội dung đã chốt: **hai skill phụ manual có cooldown riêng, không dùng chung một cooldown giữa hai ô**. Có thể phối cả hai theo điều kiện cast hợp lệ. Chưa giá trị/start/cancel/charge/mana hoặc cooldown của main/Dash/bình; support Hồi chiêu có cơ sở sử dụng ở các skill có cooldown thật, compatibility/giá trị vẫn chốt riêng.
+
+### Q22 — D16.10: Main có cooldown kỹ năng riêng hay dùng nhịp ra đòn liên tục?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **main ra đòn/thi triển theo nhịp của skill, không có thêm cooldown kỹ năng riêng như hai skill phụ**. Melee/projectile lặp theo tốc độ đòn/cast; nova phát theo nhịp; channel duy trì tia theo luật sẽ chốt. Auto chỉ thực hiện khi có target hợp lệ và đủ điều kiện thực tế.
+- Lý do: main là nguồn clear bầy đều, hai phụ là quyết định chiến thuật theo thời điểm; giữ trải nghiệm auto không ngắt bởi một vòng chờ cooldown kỹ năng bổ sung. Tăng nhịp có vai trò riêng, không tự dùng support Hồi chiêu thay nhịp attack/cast.
+- Ranh giới: không có cooldown kỹ năng riêng không đồng nghĩa đánh mỗi tick hoặc bỏ windup/active/recovery/timing limit. Chưa tốc độ/range/số hit/channel tick, di chuyển khi đánh, manual override/priority/cancel hoặc mana/tài nguyên. Không tự gán Hồi chiêu cho main hoặc thay Dash/bình; thông số phải chốt sau.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q22.
+- Nội dung đã chốt: **main hoạt động liên tục theo nhịp attack/cast (melee/projectile lặp, nova theo nhịp, channel duy trì), không thêm cooldown kỹ năng riêng như hai phụ**. Giữ timing/điều kiện target hợp lệ, không đánh mỗi tick hoặc bỏ resource chưa chốt. Thông số/cost/movement/override/priority còn mở; không tự áp Hồi chiêu vào main.
+
+### Q23 — D16.11: Có dùng mana/tài nguyên chung để thi triển ba skill không?
+
+- Trạng thái: **CHỜ USER**, chưa có kết quả.
+- Recommend: **bộ skill cơ bản không dùng mana hoặc thanh năng lượng chung**. Main bị giới hạn bằng cadence/timing; hai phụ bằng cooldown riêng; Dash và bình máu giữ cơ chế riêng sẽ chốt. Không tiêu một resource chung để dùng ba skill này.
+- Lý do: auto main cần duy trì clear nhiều bầy, còn quyết định chiến thuật đến từ vị trí, chọn build/support và thời điểm hai phụ/Dash/bình. Tránh cần thêm vòng nạp mana chỉ để duy trì skill nền, giữ bộ cơ bản dễ đọc trên cả hai nền tảng.
+- Tradeoff: không có trục đầu tư mana/reservation/sustain mana như một hướng build. Depth phải đến từ hành vi skill/support và đánh đổi thực; không viện mana chưa tồn tại để cân bằng support Cường hóa/Đa đạn/Lặp. Các tradeoff đó cần thiết kế riêng.
+- Ranh giới: chỉ hỏi resource chung cho ba active skill; chưa chốt Dash/bình/charge, trạng thái/proc/tài nguyên riêng của Mutation/Curse/Sigil/Branch hoặc xóa hệ cũ. Không tự thêm energy/heat/stamina thay tên mana, không đồng nghĩa free cast phụ qua cooldown hoặc vô hạn proc. Không tạo resource/timer giả, chưa HUD/cost values/runtime.
+- Câu trả lời user: CHƯA CÓ.
+- Nội dung đã chốt: CHƯA CÓ cho Q23.
+
+NEXT ACTION: chờ user chốt Q23 (có mana/resource chung không), tiếp tục một câu/lượt trên `codex/dungeon-skill-rework`; rồi compatibility/trùng/tradeoff/equip/build/reward. Q11 timing vẫn tạm gác.
