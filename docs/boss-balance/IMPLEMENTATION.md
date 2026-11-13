@@ -19,7 +19,9 @@ Test Boss phase bỏ giả định timing hai phase bằng nhau, kiểm combo d�
 
 ## Deploy và cách thử
 
-Đang chuẩn bị commit/push main và theo dõi GitHub Pages; chưa ghi SUCCESS trước khi workflow kết thúc. Cập nhật SHA/link sau deploy.
+Đã commit/push main **b0c37605a731b57c4ddcbe8a11fe0ef5a8aa0c9f**. [Pages43335714506](https://github.com/gizgity/a-new-game/actions/runs/43335714506) **completed/SUCCESS**, job131591239279, đúng head SHA. Xác nhận qua GitHub connector; curl live bị proxy CONNECT403, chưa xác minh liveHTTP/hash. Commit bàn giao sau chỉ Markdown, không redeploy.
+
+[Chơi game](https://gizgity.github.io/a-new-game/?v=b0c3760) · [Thử Boss](https://gizgity.github.io/a-new-game/?playtest=boss&v=b0c3760). **AWAITING USER PLAYTEST FEEDBACK**, chưa tự accepted.
 
 Sau deploy, mở `?playtest=boss` (3:40/1150kills, counter/sustain build cấp sẵn, không lưu progression), thêm50kills hoặc chờ4:00 để warning2s và Boss xuất hiện. Đánh đến nửa HP để vào phase2:
 
