@@ -1,13 +1,15 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 25 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 38 · 2026-11-14.
+
+Đọc nhanh sau compact: [RESUME.md](RESUME.md). Log Q01–Q35/C01–C05 bên dưới được giữ nguyên; câu tiếp theo Q36 **chưa hỏi/chưa chốt**. User yêu cầu compact và giữ các câu hỏi ngày 2026-11-14; chỉ cập nhật kết quả Q35 trong lượt checkpoint này.
 Trạng thái: BRAINSTORM / CHECKLIST, chưa spec production hoặc quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
 ## Hướng đã thống nhất trong brainstorm
 
 - Dungeon random liền mạch, camera theo nhân vật, cảm giác clear endgame map ARPG/PoE; nhiều bầy đông, white/blue/amber và Boss cuối map.
-- Không còn deadline clear map; Mutation/Curse đến từ clear blue/amber; cần cơ chế hồi máu.
+- Không còn deadline clear map; blue/amber đóng góp mốc draft build Q30/Q31 (thay hướng nhận Mutation/Curse trực tiếp ban đầu); cần cơ chế hồi máu.
 - Dungeon nối thành hành trình, chọn node tiếp sau Boss; node có buff/debuff cộng dồn, clear dungeon nhận phần thưởng/nâng cấp để đi tiếp.
 - **Làm rõ mới nhất 2026-11-14 (C01):** tree có các nấc tiến tới Boss cuối mạnh nhất; mỗi nấc có thể có 2–3 node, chỉ chọn một và disable các node còn lại cùng nấc. Không suy quyền quay lại node đã clear/chọn nhánh khác cùng nấc. Số nấc được chốt tiếp ở Q07, kết quả final ở Q10. Phần endless không đích của Q01 là hướng lịch sử được làm rõ/thay thế trong scope tree này; không ép giữ endless.
 - **Q07 đã chốt 2026-11-14:** 9 nấc tổng; nấc 1–8 chọn một trong 2–3 dungeon/nấc, nấc 9 một dungeon Boss cuối mạnh nhất. Đi qua 9 node được chọn. Nhịp đầu/giữa/cuối theo các chặng 1–3/4–6/7–9; không tự thêm biome/Boss/content.
@@ -25,6 +27,14 @@ Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồn
 - **Q20 đã chốt pool, cooldown còn mở 2026-11-14:** user “y, nhưng mà lưu ý chưa có quyết định về skill có hồi chiêu”: đồng ý chín support nền, riêng support Hồi chiêu chỉ là loại có điều kiện nếu có skill thực sự dùng cooldown. Không tự gán cooldown cho bất kỳ skill nào để hợp thức hóa support. Main/manual/mana/resource/charge/cooldown phải được hỏi rõ.
 - **Q21 đã chốt 2026-11-14:** user “y”: hai skill phụ manual mỗi skill có cooldown riêng, không chung cooldown giữa hai ô. Chưa số giây/start/cancel/charge/uptime cap; main/mana/Dash/bình không được chốt cooldown qua Q21.
 - **Q22 đã chốt 2026-11-14:** user “y”: main dùng attack/cast cadence, nova theo nhịp/channel duy trì, không thêm cooldown kỹ năng riêng như hai phụ. Vẫn có timing/điều kiện thực tế; mana/cost/di chuyển/priority chưa chốt. Hồi chiêu không tự áp main.
+- **Q23 đã chốt 2026-11-14:** user “y k dùng mana”: bộ ba skill không dùng mana/thanh năng lượng chung; main cadence, hai phụ cooldown riêng. Không thay mana bằng tên resource chung khác hoặc dùng mana giả làm tradeoff support; Dash/bình và cơ chế riêng của hệ cũ chưa được chốt lại qua Q23.
+- **Q24 đã chốt 2026-11-14:** user “y”: mỗi loại support tối đa một lần trong cùng skill; có thể cùng loại trên skill khác nếu tương thích. Chưa chốt một bản dùng chung hay cần nhiều bản, cách nhận/drop/upgrade/equip.
+- **Q25/C05 2026-11-14:** user “y. các bản dư có thể đc phân giải thành nguyên liệu để nâng cấp skill”: mỗi bản support chỉ gắn một skill, muốn cùng loại ở hai skill cần hai bản; bổ sung phân giải bản dư → nguyên liệu nâng cấp skill. Chưa lifetime của nguyên liệu/level, loại skill được nâng, mức nâng/giá/chuyển skill/manual hay auto phân giải. Đây là resource upgrade do user nêu, không phải mana dùng để cast.
+- **Q26 đã chốt 2026-11-14:** user “y” rồi hỏi “btw còn bao nhiêu câu nữa”: nguyên liệu phân giải/cấp skill giữ qua các node trong hành trình, reset khi chết/thắng/chủ động kết thúc; unlock lâu dài giữ. Nghỉ/restart vẫn theo checkpoint đầu node Q04–Q06. Cần báo phần còn lại, không suy yêu cầu dừng hoặc tự duyệt các mục chưa bàn.
+- **Q27 đã chốt 2026-11-14:** user “y”: nguyên liệu nâng ba active cấp1–5 trong hành trình, tăng hiệu lực chính theo skill, chi phí tăng dần; support bản đầu không level riêng. Chưa bảng price/yield/multipliers hoặc refund/kế thừa khi đổi skill.
+- **Q28 user sửa 2026-11-14:** user “y, và nhận random”: bộ đầu một main cấp1 + một phụ cấp1 + một support tương thích cho main, ô phụ2 còn trống; mở sẵn ô support3/2/2. Bộ đầu **được cấp ngẫu nhiên**, thay phương án tự chọn từ catalog của agent. Roll trong catalog đã mở, support phải hợp lệ cho main; không suy random tất cả thưởng trong run hoặc user chốt draft3chọn1 ở bộ đầu.
+- **Q29 đã chốt 2026-11-14:** user “3”: mốc thưởng build quan trọng trong hành trình random tối đa ba lựa chọn hợp lệ/lấy một; ưu tiên có hướng dùng được với build nếu pool cho phép, pool nhỏ hiện số thật. Bộ đầu vẫn cấp random trực tiếp theo Q28. Nguồn/tần suất/danh mục/flow draft chưa chốt.
+- **Q30 đã chốt 2026-11-14:** user “y”: dungeon1–8 có một mốc draft từ tiến độ clear blue/amber (amber đóng góp nhiều hơn) và một mốc sau Boss; Boss đầu bảo đảm lựa chọn lấp ô phụ2 nếu còn trống. Final nấc9 có mốc trong map, sau Boss cuối chỉ thưởng hoàn thành. Chưa threshold/pool/flow/cách xử lý hệ Mutation-Curse hoặc charge bình.
 - User “đồng ý” sau đề xuất kết hợp tree + chuyển map liên tục, build/buff giữ trong chuỗi rồi reset khi chuỗi kết thúc, giữ unlock/progression sang lượt mới. Ghi nhận hướng tổng thể, không suy đã duyệt các luật/số cụ thể.
 - Bình máu nạp từ combat, nhận nâng cấp không ngắt từng elite, tiến độ clear trước Boss, reward sau Boss là hướng từ đề xuất trước; điều kiện/ngoại lệ/số cụ thể cần chốt trong các mục dưới.
 
@@ -37,17 +47,17 @@ Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồn
 | D03 | Buff/debuff cộng dồn | Tác động lên người chơi, quái hay map; hiệu lực từ map nào và kéo dài tới đâu; cộng cùng loại ra sao, giới hạn và tổ hợp bị cấm; phân biệt với Curse của build; có gỡ/thay modifier không. |
 | D04 | Bố cục map và điều hướng | Quy mô/density/độ dài mục tiêu dù không timer; random layout hay cả biome/địa hình; đường chính/nhánh cụt/đường vòng; minimap/fog/chỉ hướng Boss; độ rộng đường và việc đi xuyên/vượt vật cản. |
 | D05 | Bầy quái và rarity | Vai trò white/blue/amber; blue là thủ lĩnh đơn hay cả nhóm magic; bầy nào có thủ lĩnh; kích cỡ và phối vai trò, kỹ năng elite; phạm vi phát hiện/truy đuổi/kéo nhập bầy; respawn/summon và giới hạn active cùng lúc. |
-| D06 | Nhận và phát triển Mutation/Curse | C02: bàn lại build cùng reward cho toàn tree trước khi chốt timing giữ thưởng. Vai trò Sigil/Branch/Mutation/Curse và buff Boss cần tách; 4M/2C chỉ là baseline cũ, không tự khóa proposal mới. Blue/amber vẫn nguồn Mutation/Curse theo ý user; cadence/pool/slot/upgrade/replace/Curse risk/late build chưa chốt. |
+| D06 | Mutation/Curse — baseline được Q31 supersede | Q31 chốt bản rework đầu bỏ slot/draft M/C riêng, thay nguồn M/C blue/amber ban đầu bằng mốc reward build Q30. Core mới skill/support/level/node tradeoffs. Không tự chuyển cả pool/effect cũ hoặc giữ thêm4M2C ngầm; lịch sử approval/runtime cũ giữ nguyên, mapping hiệu ứng nếu cần phải duyệt riêng. |
 | D07 | Hồi máu | Q16: bình máu nền manual có nút riêng ngoài hai ô phụ. Còn charge/cách nạp/lượng-tốc độ hồi/giới hạn dùng, input cụ thể; tài nguyên trong Boss không adds; hồi sau Boss; tương tác build heal/anti-heal và giới hạn farm. |
 | D08 | Điều kiện Boss/clear map | Đi đến cuối là được đánh hay cần tiến độ clear; quái nào tính tiến độ; tránh tìm white cuối và chạy thẳng bỏ cả map; Boss chết có chuyển ngay không, xử lý quái sống/loot/nâng cấp chưa nhận trước khi rời map. |
 | D09 | Danh sách Boss và sự đa dạng | Giữ Chain Warden bao lâu, đổi pattern/modifier theo node hay thêm Boss; mốc Boss mạnh; số lượng nội dung cho bản đầu và phần để sau, chưa tự cấp quyền artwork/content mới. |
 | D10 | Difficulty và power curve | Độ khó tăng theo độ sâu/node/build thế nào; phần đến từ mật độ/phối quái/skill và phần từ HP/damage; giữ white clear nhanh; giới hạn tốc độ/chain/hồi máu/VFX và các tổ hợp không thể vượt qua. Không thay luật theo thiết bị. |
-| D11 | Phần thưởng và progression | C02: phải xác định thưởng gì/cấu trúc build trước timing/bảo toàn. Q11 tạm gác, chưa duyệt thưởng vĩnh viễn sau mỗi dungeon. Còn reward trong map/Boss/meta, tính chắc chắn/chọn/random, death/settlement, replayability/hết pool, currency/item có cần không. Q12 hỏi hướng power/meta trước. |
-| D12 | Hệ thống cũ | Lập mapping giữ/đổi/tạm ngừng cho Sigil/Branch, Legacy/ticket/reward, Anomaly, Ascension, challenge/Codex/history/cosmetic và tutorial/audio theo timer. Run/Victory/progression trigger cũ tính trên từng dungeon hay toàn chuỗi. Không tự xóa approval/dữ liệu cũ. |
+| D11 | Phần thưởng và progression | C02: xác định build/loại thưởng trước settlement; Q11 tạm gác, chưa reward vĩnh viễn mỗi dungeon. Q12/C03: hướng unlock skill/support lâu dài. Q25–26: support dư phân giải thành nguyên liệu nâng skill, nguyên liệu/cấp chỉ trong hành trình. Còn model nâng/nguồn/cadence/reward Boss/meta/độ sâu/hết pool/settlement, không tự mở currency khác. |
+| D12 | Hệ thống cũ | Q31 bỏ slot M/C riêng; Q32 bỏ lớp Sigil/Branch riêng; Q33 gộp Anomaly vào node; Q34 giữ model Ascension0–4, clear toàn tree mở mức kế, không gate6Sigil/port nguyên Seal cũ. Còn tuning/tier modifier/Legacy economy/ticket, challenge/Codex/history/cosmetic/tutorial/audio, trigger/migration/bảo toàn dữ liệu. Không tự xóa approval cũ. |
 | D13 | Combat, camera và UI trên hai nền tảng | C04 user yêu cầu chế độ tự ra đòn; phạm vi/mục tiêu/bật-tắt/manual override cần chốt cùng D16. Bộ đòn/input, target/aim qua tường, projectile/collision ở hành lang, offscreen attacks, camera/HUD/minimap; bình máu/node/reward và vi/en. Không tự khác luật combat theo thiết bị. |
 | D14 | Lưu và tiếp tục hành trình | Q04–05: giữ tree/node, restart đầu node bằng checkpoint nhân vật; bỏ nâng cấp/thưởng tạm node dở, giữ thành quả node trước. Q06: giữ dungeon node đã chọn (layout/bầy/Boss/modifier), reset tiến độ clear. Còn random offer/reward khi restart, reload/crash/đóng app, pause trong phiên, migration save cũ và tránh nhận trùng thưởng. |
 | D15 | Phạm vi bản đầu và cổng nghiệm thu | Map/biome/enemy/Boss nào tái sử dụng hoặc làm mới; cần concept/mockup/approved refs cho phần visual nào; chốt mục tiêu density/readability/performance trên mobile/desktop; thứ tự task nhỏ, scenario nghiệm thu chuỗi map→Boss→reward→node→map/death/save. Không code trước spec/ref/approval đúng scope. |
-| D16 | Skill rework — user mở ở C03 | Q13–22: active+support, main auto/hai phụ manual/Dash+bình riêng; bốn main/bốn vai trò phụ, support cap3/2/2, chín support nền. Hai phụ cooldown riêng, main cadence không thêm cooldown kỹ năng. Còn mana/resource/compatibility/trùng/tradeoff/proc cap, nhận/mở slot/equip/aim, mapping hệ cũ và unlock/build trong lượt. Làm nhánh riêng, không tự thêm inventory/crafting/passive tree/nhiều nút. |
+| D16 | Skill rework — user mở ở C03 | Q13–23: active+support, main auto/hai phụ manual/Dash+bình riêng; bốn main/bốn vai trò phụ, support cap3/2/2, chín support nền. Hai phụ cooldown riêng, main cadence không thêm cooldown kỹ năng; không mana/resource chung. Còn compatibility/trùng/tradeoff/proc cap, nhận/mở slot/equip/aim, mapping hệ cũ và unlock/build trong lượt. Làm nhánh riêng, không tự thêm inventory/crafting/passive tree/nhiều nút. |
 
 Mỗi mục chỉ được chuyển sang đã chốt khi có nội dung và bằng chứng user tương ứng. Checklist không ghi DDR, không thay GAME_BRIEF/Art Bible/roadmap hoặc mở production. Các luật cần rõ trước code; HP/damage/drop rate và các thông số khác cần baseline thử có phạm vi + tiêu chí kiểm, không tự coi số chưa playtest là balance accepted.
 
@@ -366,12 +376,156 @@ User: “hỏi từng câu 1, có recommend trước (m đi tất cả các câu
 
 ### Q23 — D16.11: Có dùng mana/tài nguyên chung để thi triển ba skill không?
 
-- Trạng thái: **CHỜ USER**, chưa có kết quả.
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
 - Recommend: **bộ skill cơ bản không dùng mana hoặc thanh năng lượng chung**. Main bị giới hạn bằng cadence/timing; hai phụ bằng cooldown riêng; Dash và bình máu giữ cơ chế riêng sẽ chốt. Không tiêu một resource chung để dùng ba skill này.
 - Lý do: auto main cần duy trì clear nhiều bầy, còn quyết định chiến thuật đến từ vị trí, chọn build/support và thời điểm hai phụ/Dash/bình. Tránh cần thêm vòng nạp mana chỉ để duy trì skill nền, giữ bộ cơ bản dễ đọc trên cả hai nền tảng.
 - Tradeoff: không có trục đầu tư mana/reservation/sustain mana như một hướng build. Depth phải đến từ hành vi skill/support và đánh đổi thực; không viện mana chưa tồn tại để cân bằng support Cường hóa/Đa đạn/Lặp. Các tradeoff đó cần thiết kế riêng.
 - Ranh giới: chỉ hỏi resource chung cho ba active skill; chưa chốt Dash/bình/charge, trạng thái/proc/tài nguyên riêng của Mutation/Curse/Sigil/Branch hoặc xóa hệ cũ. Không tự thêm energy/heat/stamina thay tên mana, không đồng nghĩa free cast phụ qua cooldown hoặc vô hạn proc. Không tạo resource/timer giả, chưa HUD/cost values/runtime.
-- Câu trả lời user: CHƯA CÓ.
-- Nội dung đã chốt: CHƯA CÓ cho Q23.
+- Câu trả lời user: **“y k dùng mana”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q23.
+- Nội dung đã chốt: **bộ ba skill không dùng mana/thanh năng lượng chung**; main theo cadence, hai phụ theo cooldown riêng. Không đổi tên thành heat/stamina hoặc tự đưa mana cost vào tradeoff support. Dash/bình, trạng thái/proc/cơ chế riêng của hệ cũ chưa chốt lại qua Q23; không có quyền xóa chúng hoặc bỏ điều kiện skill khác.
 
-NEXT ACTION: chờ user chốt Q23 (có mana/resource chung không), tiếp tục một câu/lượt trên `codex/dungeon-skill-rework`; rồi compatibility/trùng/tradeoff/equip/build/reward. Q11 timing vẫn tạm gác.
+### Q24 — D16.12: Có được gắn support trùng loại không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **mỗi loại support xuất hiện tối đa một lần trong cùng một skill; được dùng cùng loại trên các skill khác nhau nếu tương thích**. Ví dụ hai skill phụ đều có thể gắn Hồi chiêu, nhưng một skill không được gắn hai Hồi chiêu.
+- Lý do: ba/hai ô khuyến khích phối các hành vi khác nhau, tránh cách tối ưu chỉ dồn cùng modifier vào một skill. Cho phép lặp giữa các skill giúp lựa chọn hai skill phụ không tranh độc quyền một support phù hợp.
+- Ranh giới: chỉ rule trang bị/tương thích về trùng loại, chưa quyết định một bản support dùng chung nhiều skill hay phải nhận nhiều bản riêng trong hành trình, inventory/ownership/drop/level/upgrade/refund. Compatibility/cap và tradeoff vẫn cần thiết kế; không coi lặp giữa skill là cho proc liên hoàn vô hạn hoặc giảm cooldown dưới giới hạn an toàn. Không tự cấp support miễn phí.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q24.
+- Nội dung đã chốt: **không gắn trùng cùng loại trong một skill; được gắn cùng loại ở các skill khác nhau nếu tương thích**. Chỉ rule trang bị, chưa quyết định dùng chung một bản hay cần nhận nhiều bản, sở hữu/drop/upgrade/refund hoặc equip timing.
+
+### Q25 — D16.13: Một bản support có được dùng chung nhiều skill không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý VÀ BỔ SUNG C05**, design discussion only.
+- Recommend: **trong hành trình, mỗi bản support nhận được chỉ gắn vào một skill tại một thời điểm**. Muốn cùng loại trên hai skill cần hai bản riêng; không trái Q24 vì mỗi skill vẫn tối đa một bản cùng loại.
+- Lý do: mỗi phần thưởng support tạo lựa chọn ưu tiên skill nào, nhận bản trùng vẫn có công dụng để hoàn thiện skill khác. Giữ quá trình xây build trong hành trình thay vì một lần nhận là cả ba skill đều dùng được loại đó.
+- Ví dụ: nhận một bản Hồi chiêu có thể gắn cho khiên hoặc burst; muốn hai skill cùng dùng cần bản Hồi chiêu thứ hai. Chưa quyết định thời điểm được tháo/chuyển, cấp support đầu hành trình, nguồn nhận/drop hoặc xử lý bản thừa.
+- Ranh giới: unlock catalog lâu dài và bản nhận trong hành trình là hai khái niệm cần phân biệt; nguồn/cách cấp và vai trò chính xác của unlock hỏi riêng, không tự chốt RNG-only hoặc bắt đầu không có support. Chỉ hỏi ownership/equip của một bản, không tự thêm inventory phức tạp, rarity, trade/crafting, currency hoặc hệ level. Không dùng Q25 để duyệt compatibility/tradeoff/proc cap.
+- Câu trả lời user: **“y. các bản dư có thể đc phân giải thành nguyên liệu để nâng cấp skill”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q25.
+- Nội dung đã chốt: **mỗi bản support trong hành trình chỉ gắn một skill tại một thời điểm; cần hai bản để hai skill dùng cùng loại**. Bổ sung **bản dư có thể phân giải thành nguyên liệu nâng cấp skill**. Chưa chốt lifetime/target/cost/cap/level/đổi skill hoặc tự phân giải.
+
+### C05 — Phân giải support dư thành nguyên liệu nâng skill (2026-11-14)
+
+- Nguồn: user bổ sung ngay Q25, nguyên văn phía trên. Đây là hướng mới được user nêu cho economy build, không tự bác vì scope cũ từng không thêm currency; chỉ resource nâng cấp này, không quyền mở shop/crafting/trade/rarity/framework.
+- Phân biệt resource để nâng cấp với mana/tài nguyên dùng để thi triển: Q23 không mana vẫn hiệu lực. User chưa nói resource giữ qua hành trình hay chỉ trong lượt, chưa xác định skill chủ động/support hay cả hai được nâng.
+- Cần bàn lifetime nguyên liệu và upgrade trước; rồi target nâng/cấp/tác dụng/chi phí/scale, thời điểm nâng/phân giải/đổi skill/refund và nguồn nhận/sink bản dư. Chưa gán thông số hoặc tự nhận auto-salvage.
+- Khi đặc tả save phải đối chiếu Q04–Q06: restart node dở khôi phục checkpoint đầu node, không giữ nguyên liệu/upgrade tạm trong node bị làm lại hoặc nhân support/nguyên liệu bằng nghỉ. Không đổi death Q02 hoặc tự áp settlement meta Q11.
+
+### Q26 — D16.14 / D11.3: Nguyên liệu phân giải và cấp skill giữ trong lượt hay vĩnh viễn?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **nguyên liệu phân giải và nâng cấp skill thuộc hành trình hiện tại**: giữ khi đi từ node này sang node sau; khi hành trình kết thúc do chết/thắng/chủ động kết thúc thì nguyên liệu chưa dùng và cấp nâng được reset cùng build. Unlock skill/support lâu dài vẫn giữ theo hướng đã đồng ý.
+- Lý do: bản dư trở thành nguồn tăng sức mạnh cho build đang chơi, có ích trong các node sau; giữ việc xây lại build mỗi hành trình và meta mở thêm cách chơi, không vô tình biến thành tích lũy level skill vĩnh viễn.
+- Ranh giới: chỉ lifetime, chưa số loại nguyên liệu/yield/chi phí/cap/cấp/cách nâng/target active hay support hoặc reward unlock. Save/nghỉ không kết thúc hành trình, theo checkpoint Q04–Q06; không đồng nghĩa nguyên liệu node dở được giữ khi restart. Không tự xóa progression cũ hoặc thay runtime/save.
+- Câu trả lời user: **“y”** và **“btw còn bao nhiêu câu nữa”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q26.
+- Nội dung đã chốt: **nguyên liệu phân giải và cấp nâng skill chỉ tồn tại trong hành trình, giữ qua node, reset khi chết/thắng/chủ động kết thúc; unlock lâu dài giữ**. Save/nghỉ không phải kết thúc; restart node dở vẫn khôi phục checkpoint đầu node, không giữ upgrade/nguyên liệu tạm của phần bị làm lại. Target/model nâng/cap/yield/cost còn mở.
+
+## Rà phần còn lại sau Q26 — ước lượng 24 câu thiết kế lớn
+
+User hỏi số câu còn lại, không yêu cầu dừng brainstorm. Agent đã chia một số câu quá nhỏ; tiếp tục **một quyết định/lượt**, gom chi tiết cùng một cơ chế để không hỏi từng thông số. Không gom các thay đổi độc lập thành một câu để lấy approval hàng loạt. Ước lượng dưới đây bao gồm Q27 và lượt quay lại Q11, không phải cam kết số câu bất biến; user mở scope/sửa hướng có thể làm phát sinh câu. Chưa tính review visual/spec chi tiết/playtest trước production.
+
+| Nhóm | Số câu lớn dự kiến | Nội dung cần bao phủ |
+| --- | ---: | --- |
+| Skill/build/input | 8 | Model nâng cấp; compatibility/tradeoff/proc cap; build/slot ban đầu; nguồn/cadence nhận trong lượt; đổi skill/support/phân giải/refund; mapping Mutation/Curse/Sigil/Branch/Anomaly/Ascension; auto target/manual override; di chuyển/cast/priority/cancel |
+| Reward lâu dài | 3 | Unlock cụ thể/cách chọn hoặc roll/pool đầu; settlement/giữ-mất/depth rewards quay lại Q11; mục tiêu khi hết unlock và thưởng final |
+| Tree/modifier/difficulty | 3 | Rule đường nối/chốt lựa chọn/không ngõ cụt; modifier catalog/cộng dồn/giới hạn/Curse relation; đường cong khó/power/readability caps |
+| Dungeon/quái/Boss | 5 | Map layout/biome/quy mô/minimap; rarity/thành phần bầy; aggro/leash/respawn/kéo bầy; tiến độ clear/mở Boss/chuyển node/loot pending; roster/pattern/variety Boss và final |
+| Hồi phục | 2 | Model bình máu/charge/nạp/Boss không adds; hồi giữa node và tương tác sustain/anti-heal |
+| Save/flow/phạm vi | 3 | Crash/reload/migration/checkpoint integrity; bỏ dở/result/menu/tutorial/audio flow theo loop mới; scope content/art refs/mobile-desktop performance và acceptance bản đầu |
+| **Tổng** | **24** | Đủ luật lớn để làm spec; tham số tuning, mockup và nghiệm thu vẫn phải duyệt đúng scope sau đó |
+
+Các bảng spec chi tiết (compatibility/cap/giá nâng...) sẽ được đề xuất để user review theo cơ chế, không hỏi từng ô/số riêng và cũng không tự đánh dấu approved khi chưa duyệt. Checklist D01–D16 vẫn là đối chiếu coverage, không bỏ phần chưa bàn để rút ngắn số câu.
+
+### Q27 — D16.15: Model nâng cấp bằng nguyên liệu áp dụng thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **nguyên liệu nâng ba skill chủ động, mỗi skill từ cấp 1 tới tối đa cấp 5 trong hành trình; support bản đầu không có level riêng**. Nâng tăng hiệu lực chính phù hợp của skill (ví dụ sát thương/độ bền khiên), còn support định hình cách hoạt động. Chi phí tăng dần theo cấp, trị số/hiệu lực cụ thể/cap tương tác cần spec tiếp, không tự cấp đủ nguyên liệu để max cả ba.
+- Lý do: support dư luôn có nơi đầu tư cho build hiện tại, tạo lựa chọn ưu tiên main hoặc hai phụ; một trục level active giữ việc quản lý đơn giản khi đã có ba skill và bảy ô support. Không thêm cấp/rarity/crafting độc lập cho từng bản support ở bộ đầu.
+- Ranh giới: hỏi một model upgrade (đối tượng/cap/nguyên tắc), chưa stat multipliers/price/yield, level mapping theo skill, Boss CC/shield uptime/trụ caps, refund hoặc kế thừa cấp khi đổi skill. Không tự tăng mọi chỉ số hay cho active lên cấp mở thêm skill/nút; không nâng vĩnh viễn trái Q26. Đây chỉ proposal chưa approved.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q27.
+- Nội dung đã chốt: **nâng ba active bằng nguyên liệu, cấp1–5, tăng hiệu lực chính theo skill, chi phí tăng dần; support bản đầu không level riêng**. Không tự chốt price/yield/multipliers/cap tương tác hoặc refund/kế thừa khi đổi skill. Level/nguyên liệu chỉ trong hành trình theo Q26.
+
+Tiến độ mốc ước lượng sau Q26: đã chốt Q27 (1/24); còn khoảng **23 quyết định lớn**, gồm Q28 dưới đây. Đây là ước lượng coverage, không tự bỏ các mục khác.
+
+### Q28 — D16.16: Build khởi đầu mỗi hành trình có những gì?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý BỘ ĐẦU VÀ ĐỔI SANG NHẬN RANDOM**, design discussion only.
+- Recommend ban đầu của agent: **trước khi vào node đầu, chọn một main cấp1 + một skill phụ cấp1 + một bản support tương thích cho main, từ catalog đã mở**. User đổi phần tự chọn thành cấp ngẫu nhiên. Ô skill phụ thứ hai để trống, nhận trong hành trình; mọi ô support theo trần3/2/2 đã có sẵn từ đầu, kiếm support để lấp chứ không thêm khóa ô. Cách nhận thêm trong node/Boss chốt ở model nguồn/cadence tiếp theo.
+- Lý do: vào dungeon đã có phong cách đánh và một thao tác chiến thuật; có một thay đổi main từ support để nhận ra build ngay. Còn chỗ trống/tài nguyên/cấp để tăng sức mạnh xuyên 9 dungeon. Tránh hai lớp khóa là vừa phải nhận support vừa chờ mở ô.
+- Ranh giới: hỏi model khởi đầu, không cấp toàn bộ catalog đầu game hoặc bắt đầu max build. Cần starter catalog hợp lệ cho profile mới, danh tính/số starter unlock chốt cùng progression; không để thiếu main/phụ/support hợp lệ. Chưa source/drop/RNG/trọng số/đảm bảo thời điểm skill phụ thứ hai, nguyên liệu giá nâng, mapping hệ cũ, HP/bình start, UI/aim/input hoặc debug grants. Không bắt mọi skill được tự equip miễn phí trong lượt chỉ vì đã unlock.
+- Câu trả lời user: **“y, và nhận random”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q28.
+- Nội dung đã chốt: **bộ đầu nhận ngẫu nhiên một main cấp1 + một phụ cấp1 + một support tương thích cho main từ catalog đã mở; ô phụ2 nhận thêm trong hành trình; ô support3/2/2 mở sẵn**. Không tự cho chọn từ toàn bộ thư viện hoặc draft3chọn1 ở bộ đầu; không tự mở cả catalog/profile mới. Starter pool cụ thể còn chốt; random phải lọc tương thích và không thiếu slot nền. Rest/restart cùng node giữ checkpoint Q04–Q06, không tự reroll bộ đầu qua reload.
+
+### Q29 — D16.17 / D11.4: Nhận thưởng build trong hành trình có được chọn không?
+
+- Trạng thái: **ĐÃ CHỐT — USER CHỌN PHƯƠNG ÁN BA LỰA CHỌN**, design discussion only.
+- Recommend: **ở mốc nhận thưởng build quan trọng trong hành trình, roll ngẫu nhiên tối đa ba lựa chọn hợp lệ để lấy một**, thay vì tự cấp luôn một kết quả duy nhất. Ưu tiên có ít nhất một lựa chọn dùng được với build đang có, vẫn có lựa chọn mở hướng khác nếu pool cho phép. Pool nhỏ hiển thị số thật, không tạo bản trùng/offer giả để đủ ba.
+- Lý do: bộ khởi đầu đã random theo Q28; các mốc sau cho quyết định xây/chuyên hóa hoặc đổi hướng xuyên 9 dungeon, giữ randomness và quyền chủ động của người chơi. Không ép mọi lượt cùng một bộ từ thư viện.
+- Ranh giới: **đây là thưởng trong hành trình**, không hỏi lại hoặc đổi random bộ đầu Q28. Chưa nguồn/cadence/mốc theo blue/amber/Boss, danh mục phần thưởng/cách bảo đảm phụ2 hoặc unlock lâu dài. Chỉ các mốc build quan trọng dùng draft; không suy bật bảng mỗi con quái/nhặt vật liệu nhỏ, không dừng clear liên tục. Queue/thời điểm mở bảng/auto-pause sẽ chốt theo flow; không tự chọn thay user. Không dùng Q29 để quyết định giữ/bỏ Mutation/Curse hoặc nguồn reward của chúng.
+- Câu trả lời user: **“3”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q29 có hai phương án draft3chọn1 hoặc cấp random trực tiếp.
+- Nội dung đã chốt: **thưởng build ở các mốc quan trọng trong hành trình random tối đa ba lựa chọn/lấy một**, ưu tiên ít nhất một hướng hợp build khi pool cho phép; pool nhỏ hiện đúng số hợp lệ. Không thay bộ đầu Q28 random trực tiếp; chưa chốt nguồn/cadence/pool/flow mở bảng hoặc settlement.
+
+Tiến độ ước lượng sau Q26: Q27–Q28 đã chốt (2/24), còn khoảng22 quyết định lớn gồmQ29, chưa tính review spec/visual/playtest. Không dùng ước lượng để bỏ coverage.
+
+### Q30 — D16.18 / D11.5: Nguồn và nhịp thưởng build mỗi dungeon thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **dungeon nấc1–8 có hai mốc draft build lớn**: một mốc trong dungeon từ tiến độ clear các bầy blue/amber (amber đóng góp nhiều hơn), và một mốc sau khi hạ Boss để chuẩn bị dungeon kế. White không tự bật draft. Tiến độ phục vụ mốc thưởng này, không thêm currency để cast hoặc tự đồng nhất với thanh mở Boss.
+- Bảo đảm đầu run: **thưởng Boss dungeon đầu bảo đảm có lựa chọn lấp ô phụ2 nếu ô đó còn trống**. Offer lấy từ skill hợp lệ/chưa mang nếu pool cho phép, hiển thị số thật; khi chốt starter/unlock pool phải bảo đảm đủ khả năng lấp bộ cơ bản. Không tự roll ba lựa chọn trùng/khóa để giả đủ số.
+- Final nấc9: mốc trong dungeon vẫn có thể tăng build trước final; **sau Boss cuối chỉ nhận thưởng hoàn thành**, không cấp draft tạm chỉ có tác dụng ở dungeon kế khi hành trình đã kết thúc Q10. Nguồn/danh tính thưởng hoàn thành/meta còn D11/Q11.
+- Lý do: bầy đặc biệt có giá trị, mỗi dungeon có tiến bộ để thử build, nhưng nhiều bầy không tạo hàng loạt popup hoặc max build quá sớm. Xuyên tám dungeon đầu có16 mốc chọn lớn để lấp/đổi/phân giải/đầu tư level theo các rule đang thiết kế; không tự bảo đảm max ba active.
+- Ranh giới: đề xuất model nguồn/cadence reward build mới, **không tự giữ/bỏ/thay nguồn Mutation/Curse cũ** hoặc tạo một luồng draft phụ chồng thêm cho chúng. Pool skill/support/trait cần đối chiếu mapping hệ cũ ở câu tiếp; nếu thay scope phải ghi rõ. Chưa threshold/số bầy, vật liệu yield, nguồn charge bình, loot nhỏ, queue/pause/an toàn mở bảng, hoặc Boss unlock threshold. Không tự đổi nguyên tắc3chọn1 Q29, không suy thưởng vĩnh viễn sau mỗi Boss Q11.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q30.
+- Nội dung đã chốt: **hai mốc draft lớn/dungeon1–8: tiến độ clear bầy blue/amber (amber nhiều hơn) và sau Boss; Boss dungeon đầu bảo đảm lựa chọn lấp phụ2 nếu trống. Nấc9 có mốc trong map, sau final chỉ thưởng hoàn thành**. Giữ3chọn1 Q29. Chưa threshold/pool/flow/yield/charge bình/settlement hoặc tự thay Mutation/Curse.
+
+### Q31 — D06.2 / D12.1: Mutation/Curse có còn là hệ slot riêng trong rework không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **bản rework đầu không giữ hai hệ slot Mutation/Curse riêng**, tập trung core build vào active skill + support + level; phần lợi ích/rủi ro được định hình thêm bởi node buff/debuff đã thống nhất. Ý tưởng hiệu ứng cũ phù hợp có thể được đề xuất thành skill/support/modifier sau, từng nội dung cần thiết kế/duyệt riêng, không tự bê nguyên cả pool12/8.
+- Lý do: đã có ba skill/bảy support/cấp nâng và modifier cộng dồn trên tree; thêm một tầng4M/2C cũ dễ trùng vai trò và làm khó đọc nguyên nhân mạnh/yếu của build. Giữ chiều sâu ở tương tác skill/support và quyết định tuyến node, giới hạn phạm vi bộ cơ bản trước.
+- **Phạm vi supersede đã được user đồng ý qua Q31:** thay yêu cầu brainstorm ban đầu “Mutation/Curse xuất hiện khi clear quái xanh/vàng” bằng reward build mới tại mốc blue/amber Q30, không thêm draft/slot M/C riêng trong rework này. Approval thiết kế cụ thể này dựa câu trả lời Q31, không suy từ việc user cho làm lại skill hoặc tests/deploy.
+- Ranh giới: chỉ vai trò hai hệ Mutation/Curse trong bản rework; **chưa quyết định Sigil/Branch/Anomaly/Ascension** hoặc xóa/migrate unlock/save cũ. Giữ lịch sử approval và production/main hiện tại; không sửa GAME_BRIEF/DDR/Art Bible, không code/assets/deploy. Nếu user muốn giữ M/C riêng phải bàn contract/nguồn/cap/tương tác thay vì tự cấm hoặc tự chọn số slot mới.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q31.
+- Nội dung đã chốt: **bản rework đầu không giữ slot Mutation/Curse riêng; dùng skill/support/level và node buff/debuff làm core build; blue/amber đóng góp reward build Q30 thay cho M/C ban đầu**. Ý tưởng effect cũ chỉ được đề xuất chuyển từng nội dung phù hợp và cần approval riêng. Chưa Sigil/Branch/Anomaly/Ascension/migration; không thay production hoặc xóa registry/approval cũ.
+
+### Q32 — D12.2: Sigil/Branch có còn là lớp build riêng không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **bản rework đầu không giữ Sigil/Branch như một lớp chọn/roll/trang bị riêng**. Nguyên tố, khi có, là đặc tính của skill/support cụ thể; hướng chuyên hóa được xây bằng tổ hợp skill/support và nâng cấp, không thêm một bộ Core+Branch độc lập cho toàn nhân vật.
+- Lý do: bộ đầu đã random main/phụ/support theo Q28, progression lâu dài đang hướng mở thêm lựa chọn skill/support. Một lớp roll Sigil/Branch riêng nữa chồng hướng build/proc; thống nhất danh tính và nguồn unlock giúp người chơi đọc rõ đang nhận/đổi gì.
+- Phạm vi supersede **đã được user duyệt qua Q32**: trong rework đầu không dùng cơ chế đầu run chọn1/2Legacy offer và gắn1Sigil+1Branch theo contract cũ. Không suy mất toàn bộ combat nguyên tố, không bắt buộc chuyển đủ6Core/12Branch thành hàng loạt biến thể skill hoặc một skill tree mới. Ví dụ skill lửa là minh họa, không tự tạo skill/effect mới hay migration reward.
+- Ranh giới: chỉ vai trò Sigil/Branch trong rework; **Anomaly/Ascension và progression/save cũ chưa chốt**. Giữ lịch sử DD-0001/0002/Q9 approvals/runtime/main, chỉ ghi notes rework; không sửa DDR/Art Bible/source/assets/deploy. Catalog nguyên tố/tag/hiệu ứng và cách xử lý unlock đã sở hữu cần spec/approval riêng.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q32.
+- Nội dung đã chốt: **bản rework đầu không giữ Sigil/Branch làm lớp chọn/roll/trang bị riêng; nguyên tố khi có thuộc skill/support cụ thể, chuyên hóa từ tổ hợp build/nâng cấp**. Không tự chuyển cả6/12 thành roster mới, không xóa combat nguyên tố hoặc unlock/save/approval cũ. Anomaly/Ascension/migration còn mở.
+
+### Q33 — D12.3 / D03.1: Anomaly có chuyển thành đặc tính của node không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **gộp vai trò Anomaly vào các modifier/đặc tính dungeon được báo trước trên node của tree**, chọn thông qua tuyến đường Q08–Q09. Không giữ một lượt chọn Anomaly riêng giữa dungeon theo mốc2:15 cũ.
+- Lý do: quyết định nguy cơ/phần thưởng đã nằm trên tree, nên môi trường bất thường cũng thuộc thông tin dùng để chọn tuyến. Giảm một màn chọn độc lập giữa combat và làm node có bản sắc gameplay rõ.
+- Phạm vi supersede đã được user duyệt qua Q33: thay cơ chế run2+ ở135s chọn1/2Anomaly độc lập trong rework đầu. Chưa bắt buộc đưa nguyên cả6Anomaly/giá trị/proc/VFX cũ vào map mới; mỗi modifier dùng lại phải hợp luật skill/world/counterplay và được duyệt đúng scope.
+- Ranh giới: **không tự đổi yêu cầu node buff/debuff cộng dồn của user**. Lifetime/cách cộng dồn/cap/compatibility của từng modifier (kể cả hazard môi trường) còn phải chốt D03, không tự cho mọi hazard cùng tồn tại hoặc tự làm chúng hết hiệu lực sau map. Chưa reward unlock Anomaly cũ/migration/Ascension/catalog hoặc art; giữ production và lịch sử approval.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q33.
+- Nội dung đã chốt: **vai trò Anomaly chuyển thành modifier/đặc tính node được xem trước trên tree/chọn qua tuyến; không giữ lượt chọn Anomaly độc lập giữa trận theo timer cũ**. Chưa catalog/cộng dồn/lifetime/hazard cap/giá trị hoặc chuyển cả6Anomaly/VFX vào map mới. Các yêu cầu cộng dồn node vẫn hiệu lực, phải chốt D03; migration/Ascension chưa duyệt.
+
+### Q34 — D12.4 / D10.1: Có giữ Ascension làm cấp khó cho các hành trình sau không?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **giữ ý tưởng Ascension với năm mức0–4**, chọn trước khi bắt đầu hành trình. Ban đầu mở mức0; hoàn thành toàn tree9nấc ở mức cao nhất đang mở thì mở thêm mức kế (tối đa4). Có thể chơi lại mức đã mở, không bắt đi tiếp cấp cao.
+- Lý do: có mục tiêu sau khi đã quen tree/hoàn thành unlock, dùng build khác để chinh phục cùng cấu trúc9nấc; độ khó không cần kéo dài hành trình hoặc thêm main slot. Mức khó là contract chung hai nền tảng, không chia luật touch/desktop.
+- Phạm vi supersede đã được user duyệt qua Q34: không dùng gate đủ6Sigil đã bị Q32 thay; không bê nguyên Seal/Pulse/Hunter/Fracture/Echo, trigger theo135s hoặc Static Riposte cũ khi skill/world nền đã đổi. Chỉ giữ model progression cấp khó; phải thiết kế modifier/tuning mới phù hợp core và có counterplay, baseline normal cần playable.
+- Ranh giới: chưa quyết định modifier/HP/damage/pack/giá trị từng mức, multiplier thưởng/achievement hoặc migration cao nhất từ save cũ; không tự cấp level cũ/mở thêm content/Boss/art. Không tự triển khai bốn cấp tăng khó từ approval concept này, vẫn cần spec/task/gate đúng scope. Reward cấp cao thuộc model meta cần chốt tiếp; không tự thay luật/cap/i-frame theo thiết bị.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q34.
+- Nội dung đã chốt: **Ascension năm mức0–4, đầu mở0; chọn mức đã mở trước hành trình, thắng toàn tree9nấc ở mức cao nhất đang mở thì mở mức kế tới4; vẫn chơi lại mức thấp hơn được**. Mỗi lượt vẫn tree9/build reset. Chưa tier modifiers/giá trị/reward/migration/UI/spec; không dùng lại gate6Sigil hoặc tự port Seal cũ.
+
+### Q35 — D03.2: Modifier node được nhận và cộng dồn thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend model: **mỗi node một buff + một debuff được báo trước; khi bắt đầu node đã chọn, nhận cả hai và giữ tới hết hành trình, kể cả Boss cuối**. Đây là hiệu lực của node khi vào, tách với draft/thưởng clear Boss Q30; không cấp rồi gỡ ở chuyển map.
+- Cộng dồn: **cùng loại cộng thêm giá trị tới trần quy định, không nhân lũy thừa ngầm**; các loại khác nhau kết hợp theo contract modifier/skill sẽ đề xuất. Trần/readability/proc/uptime cần xét cả cấp khó Ascension, không cho stacking xuyên các nguồn bỏ qua cap.
+- Ràng buộc thiết kế: các lựa chọn/gói modifier phải có counterplay; không sinh debuff triệt tiêu hoàn toàn main hoặc tắt quyền Dash/bình cơ bản khiến build không thể chơi. Hazard phải nằm trong budget/telegraph rõ; không tự cho mọi hazard cũ cùng spam vì đã có nhiều node.
+- Lý do: mỗi bước chọn đường có lợi ích và rủi ro thực, hậu quả theo người chơi tới final; có thể tính được mức tăng và giữ đủ khả năng đọc/né khi đông quái. Bám yêu cầu cộng dồn ban đầu, không tự đổi lifetime Anomaly thành chỉ một map.
+- Ranh giới: chưa catalog buff/debuff/giá trị/cap cụ thể/định lượng compatibility hoặc nhân quả từng hazard; phải có bảng spec/ref/approval trước implementation. Không tự đổi Q30 reward counts, main no-mana/cadence, slot3/2/2, hoặc mở thêm permanent progression. Rule khóa node/đường nối chi tiết còn chốt riêng.
+- Câu trả lời user: **“y”** và **“btw compact context đi, chú ý giữ các câu hỏi”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q35.
+- Nội dung đã chốt: **mỗi node một buff + một debuff xem trước; nhận khi bắt đầu node, giữ tới hết hành trình/kể cả final; cùng loại cộng giá trị tới trần, không nhân lũy thừa ngầm. Modifier phải có counterplay, không triệt tiêu main hoặc tắt Dash/bình máu cơ bản.** Chưa catalog/giá trị/cap chi tiết/hazard rules/ref hoặc implementation. Request compact không duyệt các câu chưa hỏi hoặc Q11 đang tạm gác.
+
+NEXT ACTION: sau compact, đọc RESUME.md + CURRENT của HANDOFF; chuẩn bị và hỏi Q36 về thời điểm đổi/gắn skill-support, nâng/phân giải và xử lý đầu tư khi đổi. Recommend trước, một quyết định/lượt. Q36 chưa hỏi/chưa chốt; Q35 đã chốt, Q11 timing vẫn tạm gác. Không triển khai.
