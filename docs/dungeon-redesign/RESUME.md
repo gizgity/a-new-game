@@ -1,11 +1,13 @@
 # Tiếp tục sau compact — Dungeon/Skill Rework
 
-Snapshot: DUNGEON-REVIEW-01 V1 / log R71 · C08 ĐÃ CHUẨN BỊ12MỤC · 2026-11-14 · tiếng Việt.
+Snapshot: DUNGEON-PLAN-FLOW-01 / log R72 · C09 APPROVED DESIGN / PLANNING SETUP · 2026-11-14 · tiếng Việt.
 
 ## Đọc và tiếp tục
 
-- **Chỉ dẫn mới nhất C08:** user “ok chuẩn bị đi, t review”. [REVIEW_V1.md](REVIEW_V1.md) đã có đủ12proposal, tất cả Proposed;0được duyệt/12chờ review. Không tiếp tục soạn riêng R01 hoặc mở code. C07 giữ cách đếm: user muốn phần còn thiếu ở dạng câu hỏi để dễ đọc/kiểm tra. [REVIEW_QUEUE.md](REVIEW_QUEUE.md) liệt kê **12mục reviewR01–R12,0/12đã review/12còn lại**. Mỗi mục một proposal/bảng hoàn chỉnh rồi một câu chốt; không hỏi lại contract hoặc chia từng số/skill/edge case thành câu mới. “0 câu” của agent đã được đính chính;12là mục thiết kế, không số vòng visual/playtest.
-- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C08**. Q61 vẫn thu hồi, không duyệt chi tiết mới từ lời phàn nàn; exact input Proposed đưa phụ lục R01/R10.
+**Hiệu lực:** các bullet Qxx bên dưới là snapshot lúc trả lời. Baseline hiện hành nằm ở R01–R12 V1 đã duyệt tại C09; phần chi tiết từng ghi “chưa chốt/còn mở” đã được V1 thay thế trong đúng scope. Detailed planning/spec lock/targets còn thiếu được liệt kê riêng ở workflow/manifest.
+
+- **Chỉ dẫn mới nhất C09:** user “all y” duyệt12/12baseline, R12 bổ sung draft intent→detailed tasks→spec lock→implementation. [WORKFLOW](planning/WORKFLOW.md), [drafts](planning/MILESTONE_DRAFTS.md), [template](planning/TASK_TICKET_TEMPLATE.md), [SPEC_LOCK](planning/SPEC_LOCK.md) NOT_LOCKED và skill dungeon-planning đã chuẩn bị. User yêu cầu push branch/tắt máy; milestone/tasks/implementation bắt đầu trong session mới được giao. Dừng sau setup, không tự mở P0.
+- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C09**. Q61 vẫn thu hồi; input/legacy mới đã được duyệt qua R01/R10 V1 tại C09, không từ lời phàn nàn.
 - Sau Q26 agent đã hỏi **35ID mới Q27–Q61**, vượt ước lượng23–24 chưa tính làm rõ. Ước lượng/countdown cũ được giữ trong log lịch sử nhưng không còn là dự báo; lỗi chia nhỏ/tracking của agent, không quy cho user đổi scope.
 - **Q36 đã chốt**, user “y, nhưng note có thể sẽ cân bằng lại sau khi nghiệm thu”: chỉnh build tại chuẩn bị/mốc thưởng/sau Boss, cấp theo ô để skill thay vào kế thừa, chuyển support tương thích miễn phí, phân giải dư thủ công, không reset cooldown/charge/tạo effect miễn phí. Làm rõ kế thừa Q27; **có thể cân bằng lại sau nghiệm thu**, không tự tune hoặc suy experience acceptance.
 - **Q37 đã chốt**: support theo đặc tính skill, lợi ích kèm đánh đổi, cho combo mạnh nhưng chặn vòng lặp vô hạn/khóa Boss vĩnh viễn/bất tử liên tục. Chưa bảng tương thích/trị số/cap approved.
@@ -32,15 +34,15 @@ Snapshot: DUNGEON-REVIEW-01 V1 / log R71 · C08 ĐÃ CHUẨN BỊ12MỤC · 2026
 - **Q58 đã chốt:** reload/crash node dở về entry Q04–Q06; sau Boss có reward pending thì tiếp đúng offer/chỉ claim một lần, đã nhận chưa đi tiếp thì tree/build đã lưu; không reroll/dupe. Death/win/end terminal không undo. Schema/storage/migration còn mở.
 - **Q59 user chốt “làm mới hết”**: toàn bộ data/progression/settings rework mới, không import/quy đổi/migration hoặc legacy archive UI. Catalog8/Asc0/điểm0/default settings mới; không reset rework mỗi buổi. Production/main/browser save hiện tại ngoài scope phát triển nhánh riêng, không xóa ngay/làm lại repo/art từ câu này; lịch sử approvals giữ nguyên.
 - **Q60 đã chốt:** draft giữa map báo pending/người chơi mở, pause toàn gameplay/timers/HoT-CD khi chọn/chỉnh build, xử lý pending trước Boss/chuyển node. Resume chặn input cũ/click xuyên, auto theo mode; blur tựpause/trở lại bấm tiếp. Layout/mapping/pause audio còn mở.
-- **Q61 THU HỒI CÂU RIÊNG:** vai trò/target/movement/pause đã chốt Q14–Q16/Q38–Q39/Q60, không hỏi lại. Exact keys và gesture mới chưa có approval, đưa Proposed vào bảng input chung; không giữ Q61 như blocker hoặc tự hỏi Q62.
+- **Q61 THU HỒI CÂU RIÊNG:** vai trò/target/movement/pause đã chốt Q14–Q16/Q38–Q39/Q60, không hỏi lại. Chi tiết keys/gesture đã được duyệt qua R01 V1 tại C09; không phục hồi Q61 hoặc tự hỏi Q62.
 - **Q01 là lịch sử đã bị C01/Q07/Q10 thay:** hiện là tree hữu hạn 9 nấc tới final, không dùng endless không đích cũ làm lệnh.
 - Chỉ brainstorming/ghi notes. Chưa quyền implementation/asset/deploy từ các câu trả lời design. Khi lập spec/art/code V2 phải đọc đúng Master Plan/Harness/Design Bible/Reference Protocol/task card/refs và đi gate; không tự suy acceptance từ commit/build/Pages.
 
 ## Git và production
 
 - Nhánh: **`codex/dungeon-skill-rework`**, tạo theo user từ main **`63f4f3b88826eb556664bf240e8be538e8f654e6`**. Main/production không sửa trong brainstorm.
-- Đã commit notes: `30a2c20`, `d50c418`; checkpoint sau có thể xem `git log -1`. Nhánh được tạo local, chưa push remote/merge main/deploy. Không tự dispatch Pages cho nhánh này.
-- `package-lock.json` có diff **trước task** (một dòng), giữ nguyên, **không stage/commit/reset**. Chỉ stage notes do agent viết.
+- Đã commit notes: `30a2c20`, `d50c418`; checkpoint sau có thể xem `git log -1`. User đã cho push branch sau setup; kiểm remote SHA ở bàn giao/git. Không merge main/deploy. Không tự dispatch Pages cho nhánh này.
+- `package-lock.json` có diff **trước task** (một dòng), giữ nguyên, **không stage/commit/reset**. Chỉ stage docs/skill/instructions trong task.
 - `.github/workflows/pages.yml`: auto deploy push main, có manual dispatch. Không cần sửa workflow trong scope notes.
 - Production gần nhất theo baseline handoff: Boss V1 code/deploy `b0c3760`, notes main `63f4f3b`; còn user playtest riêng, không coi rework discussion là nghiệm thu nó. B1 exploration cũ vẫn PAUSED/REVERTED, không tự mở lại.
 
@@ -108,11 +110,11 @@ Snapshot: DUNGEON-REVIEW-01 V1 / log R71 · C08 ĐÃ CHUẨN BỊ12MỤC · 2026
 | Q58 | Reload/crash/reward pending? | **Đã chốt** node dở về entry; Boss clear/reward pending tiếp đúng bước-offer/claim một lần; nhận rồi về tree/build đã lưu, không reroll/dupe hoặc undo terminal. |
 | Q59 | Save/progression cũ và rework? | User chọn **làm mới hết data/progression/settings**, không migrate/import/archive; production trong thời gian nhánh riêng vẫn ngoài scope. |
 | Q60 | Draft/pause giữa map? | **Đã chốt** thưởng pending/chủ động mở/pause toàn gameplay; giải quyết trước Boss/chuyển node, chặn input cũ; blur pause/bấm tiếp mới resume. |
-| Q61 | Input/aim/cancel phụ hai nền tảng? | **Thu hồi câu hỏi riêng theo C06**; dùng Q14–Q16/Q38–Q39/Q60 đã chốt. Keys/gesture mới còn Proposed trong bảng input, không suy user approval. |
+| Q61 | Input/aim/cancel phụ hai nền tảng? | **Thu hồi câu hỏi riêng theo C06**; dùng Q14–Q16/Q38–Q39/Q60 đã chốt. Keys/gesture đã duyệt qua R01 V1 tại C09, không phải approval hồi tố Q61. |
 
-## Bản review đã chuẩn bị — chờ phản hồi
+## Baseline đã duyệt — chuyển planning ở session mới
 
-Theo user yêu cầu mới C07, bốn gói này đã chia thành **12câu review hữu hạn** tại [REVIEW_QUEUE.md](REVIEW_QUEUE.md). Bản V1 đã gắn nguồn Q đã chốt và đánh dấu Proposed cho nội dung chưa duyệt; không tự Approved hoặc mở code. Không tách bảng thành thêm câu lẻ.
+Theo user yêu cầu mới C07, bốn gói này đã chia thành **12câu review hữu hạn** tại [REVIEW_QUEUE.md](REVIEW_QUEUE.md). Bản V1 giữ snapshot lúc Proposed; C09 đã duyệt12/12 thiết kế. Không tự mở code trước planning/spec lock. Không tách bảng thành thêm câu lẻ.
 
 | Gói | Nội dung cần đưa ra để review |
 | --- | --- |
@@ -125,10 +127,14 @@ Theo user yêu cầu mới C07, bốn gói này đã chia thành **12câu review
 - Cập nhật count theo12mục đã liệt kê sau mỗi lần review; không hỏi lại những gì index đã có hoặc chia mỗi thông số thành một lượt. Nếu scope mới thật sự ngoài danh sách, nêu rõ thay đổi trước khi tăng count; không giữ countdown cũ bằng giả định.
 - Trước formal spec/art/code đọc CURRENT, Master Plan, Harness, Design Bible, Reference Protocol và đúng card. B1 cũ vẫn PAUSED/REVERTED; brainstorm approval không là production/visual/playtest approval.
 
-## Checkpoint rà soát C06
+## LỊCH SỬ — checkpoint rà soát C06
 
-Giữ đủ61ID Q01–Q61 vàC01–C08;Q61 thu hồi, danh sách còn thiếu dùngR01–R12chưa review, không tự có thêmQ62. Audit xác nhận35ID sauQ26;ước lượng23–24 và câu“0”đã được đính chính. Chỉ notes, không build/tests/deploy/DDR/art/runtime; package-lock/main giữ nguyên. Next action hiện hành: user review bản V1 theo R01–R12, ghi phản hồi đúng ID. Request compactQ35 là lịch sử, không tuyên bố compact mới.
+Giữ đủ61ID Q01–Q61 vàC01–C08;Q61 thu hồi, danh sách còn thiếu dùngR01–R12chưa review, không tự có thêmQ62. Audit xác nhận35ID sauQ26;ước lượng23–24 và câu“0”đã được đính chính. Chỉ notes, không build/tests/deploy/DDR/art/runtime; package-lock/main giữ nguyên. Next action lúc C08 là review V1, đã hoàn tất ở C09; hiện dừng sau setup, chờ session mới. Request compactQ35 là lịch sử, không tuyên bố compact mới.
 
-## Checkpoint C08 — DUNGEON-REVIEW-01 V1
+## LỊCH SỬ — checkpoint C08 / DUNGEON-REVIEW-01 V1
 
-Đủ12mục có recommend/bảng cụ thể; [task card](../combat-v2/tasks/DUNGEON-REVIEW-01.md). Proposal chưa duyệt, target visual mới chưa có, chưa đo Atlas footage/runtime/FPS. Chỉ docs; không sửa main/runtime/assets/DDR/Art Bible/package-lock hoặc deploy. NEXT ACTION: chờ user review R01–R12 và ghi kết quả; không tự chuyển sang implementation.
+Đủ12mục có recommend/bảng cụ thể; [task card](../combat-v2/tasks/DUNGEON-REVIEW-01.md). Proposal chưa duyệt, target visual mới chưa có, chưa đo Atlas footage/runtime/FPS. Chỉ docs; không sửa main/runtime/assets/DDR/Art Bible/package-lock hoặc deploy. Next action lúc đó là chờ review, đã được C09 supersede; không dùng làm lệnh hiện hành.
+
+## Hiệu lực C09 và điểm dừng hiện tại
+
+Các dòng “còn mở/chưa duyệt” trong snapshot Q ở trên mô tả thời điểm từng câu; R01–R12 V1 đã bổ sung và được duyệt tại C09 (gồm số/input/affix/moves/defaults). Chi tiết thuật toán/schema/targets/evidence còn cần planning, không hỏi lại12review baseline. Task setup hoàn tất thì dừng. **NEXT ACTION: chờ user giao planning milestone/task trong session mới; không tự implement.**

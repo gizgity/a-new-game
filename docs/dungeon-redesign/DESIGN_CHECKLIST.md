@@ -1,9 +1,9 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 71 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 72 · 2026-11-14.
 
-Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C08;Q61 thu hồi. User yêu cầu phần còn thiếu ở dạng câu hỏi để kiểm tra: [REVIEW_QUEUE.md](REVIEW_QUEUE.md) có12mụcR01–R12. [Bản V1](REVIEW_V1.md) đã chuẩn bị12/12,0/12được duyệt/12chờ review. C07 đính chính câu trả lời “0” của agent; không hỏi lại contract đã chốt hoặc tự sinh thêm quiz. Cosmetic ngoài scope, chưa implementation.
-Trạng thái: BRAINSTORM / CHECKLIST, chưa spec production hoặc quyền implementation.
+Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C09;Q61 thu hồi. User yêu cầu phần còn thiếu ở dạng câu hỏi để kiểm tra: [REVIEW_QUEUE.md](REVIEW_QUEUE.md) có12mụcR01–R12. [Bản V1](REVIEW_V1.md) đã được duyệt12/12qua “all y”, R12 amended tại C09; không còn câu review baseline chờ duyệt. C07 đính chính câu trả lời “0” của agent; không hỏi lại contract đã chốt hoặc tự sinh thêm quiz. Cosmetic ngoài scope, chưa implementation.
+Trạng thái: APPROVED DESIGN BASELINE; setup planning workflow, detailed specs NOT_LOCKED, chưa quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
 ## Hướng đã thống nhất trong brainstorm
@@ -889,3 +889,22 @@ NEXT ACTION: chuẩn bị proposal trọn R01 theo REVIEW_QUEUE và contract đ�
 - Audit docs: đủ12ID/câu review, liên kết và sáu hash ảnh baseline đúng; kiểm số economy/curve và bảo toàn lịch sử/nhánh/main/package-lock. Chưa đo footage Atlas, FPS/runtime hoặc có target artwork mới; giới hạn nêu tại R06/R11/R12. Không chạy build/tests vì chỉ Markdown.
 
 NEXT ACTION HIỆN HÀNH: user review REVIEW_V1 theo R01–R12; ghi kết quả từng ID và sửa đúng phần phản hồi. Không hỏi lại phần đã chốt hoặc triển khai trước scope được giao.
+
+
+### C09 — Duyệt12mục và bổ sung planning/spec lock (2026-11-14)
+
+- Nguồn: user, hội thoại hiện tại không permalink. Nguyên văn:
+
+> all y
+> r12, trước khi bắt đầu, thay vì chỉ nói về milestone, cần tạo file draft dạng tickets với intend của milestone đó, sau đó khi bắt đầu làm sẽ tạo ra các ticket task chi tiết cần làm j (code, art, concept, ...). chuẩn bị càng chi tiết càng tốt. đó là bước planning, sau khi xong lock specs mới được bắt đầu implement. có thể bắt đầu bước đầu tiên là tạo ra flow đó với các instruction, skill cần thiết.
+
+- Chỉ dẫn tiếp của user:
+
+> làm xong thì push lên branch r tắt máy dùm t, từng milestone/tasks/implement sẽ bắt dầu trong các session mới
+
+- **Kết quả:** R01–R11 Approved — Design V1; R12 Approved — Design V1 kèm amendment workflow. Toàn bộ12/12đã duyệt baseline,0câu review baseline còn chờ. Bản được review tại cc6f54c; số balance là baseline để thử, không user playtest acceptance. Input/legacy mapping mới được duyệt qua R01/R10; không sửa ngược approval Q61 đã thu hồi. Không DDR hoặc approval artwork chưa có.
+- **Task được mở hiện tại:** DUNGEON-PLAN-FLOW-01 chỉ setup [workflow](planning/WORKFLOW.md), [draft intent](planning/MILESTONE_DRAFTS.md), [mẫu detailed ticket](planning/TASK_TICKET_TEMPLATE.md), [manifest NOT_LOCKED](planning/SPEC_LOCK.md), skill dungeon-planning và AGENTS. Draft không kích hoạt P0–P6; detailed planning/concept/code/art production ở session mới khi được giao.
+- **Gate:** draft intent→planning/tasks chi tiết→specs/targets đủ→user khóa manifest revision cụ thể→implementation. Hoàn tất planning toàn scope rework trước implementation đầu tiên; không tự lách bằng prototype hoặc thu nhỏ lock. Approval12mục chưa khóa detailed specs chưa tồn tại.
+- **Git/kết thúc:** user cho push đúng branch codex/dungeon-skill-rework rồi shutdown cuối lượt. Không merge/main/Pages, không stage package-lock có diff trước task. Lệnh tắt máy chỉ cho lượt này, không quyền tự tắt ở session sau.
+
+NEXT ACTION HIỆN HÀNH SAU SETUP: DỪNG; chờ user giao planning milestone/task cụ thể trong session mới, không tự mở backlog.

@@ -1,5 +1,7 @@
 # Dungeon/Skill Rework — 12 câu review, đề xuất V1
 
+> **Trạng thái hiện hành (2026-11-14):12/12 mục đã được user duyệt thiết kế qua “all y”; R12 bổ sung workflow planning→spec lock.** Nội dung bên dưới giữ bản chụp đề xuất V1 tại cc6f54c, các nhãn Proposed/0-duyệt là trạng thái lúc soạn. Xem C09 trong [log](DESIGN_CHECKLIST.md) và [workflow](planning/WORKFLOW.md). Chưa khóa detailed specs, chưa artwork approval hoặc quyền implementation.
+
 Task **DUNGEON-REVIEW-01 · Revision1 · 2026-11-14 · PROPOSED — CHỜ USER REVIEW**.
 
 **Đã chuẩn bị12/12 mục; chưa có mục nào được user duyệt.** Mỗi mục là một bảng/đề xuất trọn gói, không tách thành quiz từng số. Phản hồi mẫu: `R01 đồng ý`, `R02 sửa ...`, `R03 để sau`. Có thể review từng mục; duyệt tài liệu không tự mở implementation hoặc duyệt artwork chưa tồn tại.

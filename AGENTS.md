@@ -20,6 +20,16 @@
 - Codex phải đối chiếu actual với approved target ở trạng thái và scale chơi thật; kỹ thuật PASS, user visual approval và user playtest acceptance là ba kết quả khác nhau. Preview app chỉ để quan sát, không phải Design Harness.
 - **Gate A chưa hoàn tất thì không tự implement redesign V2**. Các bước tiếp theo chỉ đọc `MASTER_PLAN.md` và mục CURRENT của `HANDOFF.md`; **không lấy lịch sử NEXT ACTION cũ làm lệnh**.
 
+## Dungeon/Skill Rework — Planning trước implementation
+
+- Áp dụng cho dungeon rework trên nhánh riêng. User ngày2026-11-14 đã duyệt R01–R12 V1, bổ sung flow R12: draft intent milestone → detailed planning/task tickets → khóa specs → implementation. Không hỏi lại baseline đã duyệt.
+- Trước planning/resume scope này, dùng `.agents/skills/dungeon-planning/SKILL.md`; đọc `docs/dungeon-redesign/planning/WORKFLOW.md`, `SPEC_LOCK.md`, draft/ticket được giao và CURRENT của HANDOFF. Giữ các bước đọc Harness/spec/ref phía trên.
+- Draft milestone phải có intent/outcome/scope/dependency/acceptance; khi mở planning milestone, tạo task tickets đủ việc code/art/concept/verify thực sự cần, có contracts/refs/evidence và coverage. Không dùng một dòng milestone làm đặc tả implementation.
+- Hoàn tất planning toàn scope rework và có user khóa đúng spec manifest revision trước implementation đầu tiên. Approval review V1 không tự là spec lock; không tự thu nhỏ scope, dùng prototype/spike hoặc art production để lách gate. Design-only/concept được giao để hoàn thiện spec vẫn theo Harness/game-art.
+- CODE/ART production/integration cần global lock còn hiệu lực, spec/target đúng revision, dependencies và scope task được giao. Thay spec sau lock phải nêu delta/impact, đánh dấu phần affected STALE và cập nhật theo approval; không tự đổi gameplay/Bible/DDR.
+- Các milestone/task/implementation bắt đầu trong session mới khi được user giao. Backlog/draft/lock không tự mở việc; hoàn thành phạm vi được giao thì dừng, không tự chuyển mốc. Ghi đúng một next action trong handoff.
+- Hướng dẫn này bổ sung workflow, không thay Harness hoặc cấp quyền merge/main/deploy. Chỉ thị mới rõ ràng của user tiếp tục ưu tiên.
+
 ## Ngôn ngữ
 - Ngôn ngữ mặc định của repository là tiếng Việt. Trao đổi, tài liệu, báo cáo, task notes và handoff dùng tiếng Việt.
 - Code identifiers (variables, functions, classes, filenames) dùng tiếng Anh theo chuẩn lập trình.

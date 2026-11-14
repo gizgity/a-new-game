@@ -1,9 +1,9 @@
 # DUNGEON-REVIEW-01 — Bản review thiết kế dungeon/skill hợp nhất
 
-Status: PROPOSED — AWAITING USER DESIGN REVIEW
+Status: APPROVED DESIGN V1 — R12 AMENDED C09
 Kind: DESIGN
 Revision: 1
-Owner approval: NONE — user chỉ giao chuẩn bị proposal
+Owner approval: user “all y” ngày2026-11-14, R12 amended tại C09
 Last updated: 2026-11-14
 Related phase: Dungeon/Skill Rework; previous task: DUNGEON-BRAINSTORM-01
 Source request: User “ok chuẩn bị đi, t review”,2026-11-14, hội thoại hiện tại không permalink.
@@ -19,7 +19,7 @@ Dependency: contract Q01–Q60 và các supersede mới nhất; Q61 thu hồi; q
 
 ## 2. Design choices — CHƯA tự khóa
 Baseline fallback: production main63f4f3b/runtime b0c3760; source và approved Q7C refs dùng làm BASELINE.
-Proposed change: thông số/catalog/input và phạm vi visual/phân việc trong REVIEW_V1; toàn bộ phần mới là PROPOSED.
+Proposed change lúc soạn V1: thông số/catalog/input và phạm vi visual/phân việc; hiện đã Approved Design qua C09, R12 amended. Detailed specs/visual targets chưa locked.
 Keep: hợp đồng đã chốt trong log, nhánh riêng, mobile-first+desktop-equivalent, source/history/production không đổi.
 Supersedes: NONE — proposal chưa được duyệt. Các khác biệt legacy được nêu tường minh tại R10.
 Unknown/TBD: chưa đo gameplay clip Atlas/candidate FPS; chưa có target visual dungeon/skills/Boss/HUD mới. Nêu rõ ở R06/R11/R12, không dùng con số tự đề xuất làm số PoE.
@@ -44,11 +44,11 @@ Evidence plan: REVIEW_V1 + kiểm arithmetic/diff/IDs/links/bảo toàn file; kh
 Non-goals: chứng minh FPS/cảm giác Atlas, visual target mới hoặc balance cuối.
 
 ## 5. Approval gate
-Approval status: NOT APPLICABLE (proposal tài liệu); AWAITING USER DESIGN REVIEW
-Approved scope: NONE cho proposal mới.
-Approved spec revision: NONE
+Approval status: APPROVED DESIGN BASELINE — không là global spec lock
+Approved scope: R01–R11 V1 và R12 V1 kèm planning/spec lock C09.
+Approved spec revision: review V1 tại cc6f54c; detailed implementation specs chưa khóa
 Approved refs: NONE cho rework; baseline approvals giữ phạm vi cũ.
-Approval quote/date/source: NONE — “chuẩn bị” không là duyệt nội dung.
+Approval quote/date/source: user “all y” + R12 amendment,2026-11-14, hội thoại không permalink; nguyên văn C09.
 STOP if: chuyển sang runtime/art production khi chưa đúng spec/target/card/scope được duyệt.
 
 ## 6. Implementation
@@ -62,5 +62,5 @@ Technical: PASS consistency tài liệu —12section/12câu/12queue rows;8active
 Visual review: NOT APPLICABLE cho lượt docs; target visual mới còn thiếu.
 User playtest: NOT CHECKED
 Known gaps: reference Atlas chưa đo footage; candidate numeric/visual/input/FPS chưa chạy; không artwork mới.
-Final status: PROPOSED — AWAITING USER DESIGN REVIEW
-NEXT ACTION (exactly one): user review REVIEW_V1 theo R01–R12; ghi kết quả theo từng ID, chưa triển khai.
+Final status: APPROVED DESIGN V1 — R12 AMENDED C09; không runtime/visual/playtest accepted
+NEXT ACTION (exactly one): theo CURRENT DUNGEON-PLAN-FLOW-01; dừng sau setup, chờ user giao planning trong session mới.
