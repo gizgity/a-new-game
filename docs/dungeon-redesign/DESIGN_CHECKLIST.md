@@ -1,8 +1,8 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 38 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 58 · 2026-11-14.
 
-Đọc nhanh sau compact: [RESUME.md](RESUME.md). Log Q01–Q35/C01–C05 bên dưới được giữ nguyên; câu tiếp theo Q36 **chưa hỏi/chưa chốt**. User yêu cầu compact và giữ các câu hỏi ngày 2026-11-14; chỉ cập nhật kết quả Q35 trong lượt checkpoint này.
+Đọc nhanh sau compact: [RESUME.md](RESUME.md). Giữ đầy đủ log Q01–Q52/C01–C05; Q52 đã chốt baseline và HoT4s/refresh không stack. Q53 **ĐANG HỎI/CHỜ USER** về pool Boss bản đầu. Cosmetic ngoài scope, chưa implementation.
 Trạng thái: BRAINSTORM / CHECKLIST, chưa spec production hoặc quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
@@ -528,4 +528,219 @@ Tiến độ ước lượng sau Q26: Q27–Q28 đã chốt (2/24), còn khoản
 - Câu trả lời user: **“y”** và **“btw compact context đi, chú ý giữ các câu hỏi”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q35.
 - Nội dung đã chốt: **mỗi node một buff + một debuff xem trước; nhận khi bắt đầu node, giữ tới hết hành trình/kể cả final; cùng loại cộng giá trị tới trần, không nhân lũy thừa ngầm. Modifier phải có counterplay, không triệt tiêu main hoặc tắt Dash/bình máu cơ bản.** Chưa catalog/giá trị/cap chi tiết/hazard rules/ref hoặc implementation. Request compact không duyệt các câu chưa hỏi hoặc Q11 đang tạm gác.
 
-NEXT ACTION: sau compact, đọc RESUME.md + CURRENT của HANDOFF; chuẩn bị và hỏi Q36 về thời điểm đổi/gắn skill-support, nâng/phân giải và xử lý đầu tư khi đổi. Recommend trước, một quyết định/lượt. Q36 chưa hỏi/chưa chốt; Q35 đã chốt, Q11 timing vẫn tạm gác. Không triển khai.
+### Q36 — D16.19: Đổi build và giữ phần đầu tư nâng cấp thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý KÈM LƯU Ý CÂN BẰNG SAU NGHIỆM THU**, design discussion only.
+- Recommend một model quản lý build: chỉnh skill/support, nâng cấp và phân giải support dư ở màn chuẩn bị đầu lượt, mốc chọn thưởng và sau Boss/trước node kế; không đổi giữa combat. Chỉ trang bị các bản đã nhận trong lượt, không gọi cả catalog đã unlock vào dùng miễn phí.
+- Làm rõ Q27 đã được user chốt qua Q36: **đầu tư cấp1–5 theo từng ô active**. Skill thay vào kế thừa cấp ô đó; hiệu lực tăng theo vai trò skill. Không chuyển cấp/nguyên liệu đầu tư giữa ba ô, không cộng cấp hai ô hoặc tạo nguyên liệu bằng đổi qua lại. Các phần khác Q27 giữ nguyên; không sửa/xóa log lịch sử Q27.
+- Ví dụ: ô main cấp3 đang dùng projectile; đổi sang nova đã nhận thì nova dùng cấp3 ở ô main. Không cần nâng lại từ1 hoặc thao tác refund. Mỗi ô vẫn phải nâng riêng với chi phí tăng dần Q27.
+- Support được tháo/chuyển giữa skill tương thích miễn phí trong các cửa sổ chỉnh build trên; support không tương thích khi đổi active trả về túi, không tự hủy/phân giải. Bản dư chỉ phân giải khi người chơi chọn; không đổi yield/price hoặc tự thêm phân giải active.
+- Đổi skill/support không reset cooldown, hồi charge hay tạo thêm khiên/trụ/effect. Quy tắc timer/effect chi tiết cần spec sau, không dùng việc đóng/mở màn chỉnh build làm cách nhận lợi ích miễn phí.
+- Lý do: cho thử skill mới ở giữa hành trình9node mà không mất sức mạnh đã đầu tư, vẫn có lựa chọn ưu tiên nâng ô nào và giữ/phân giải support. Các cửa sổ chỉnh build bám nhịp thưởng đã chốt, tránh thay bộ kỹ năng liên tục trong một trận.
+- Ranh giới: chưa giới hạn túi/cách thay khi đầy, xử lý bản active trùng/không muốn nhận, giá/yield, thời điểm auto-pause/queue thưởng, mapping cooldown/effect cụ thể, UI/input hoặc save implementation. Không tăng số slot, không cho chuyển loại main/phụ trái pool; restart vẫn snapshot đầu node Q04–Q06, lifetime Q26 giữ nguyên. Approval design này không là implementation hoặc experience acceptance; không runtime/art/deploy/DDR.
+- Câu trả lời user: **“y, nhưng note có thể sẽ cân bằng lại sau khi nghiệm thu”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q36.
+- Nội dung đã chốt: **chỉnh build ở chuẩn bị/mốc thưởng/sau Boss; cấp1–5 theo từng ô, skill thay vào kế thừa; support tháo/chuyển miễn phí nếu tương thích, không hợp trả túi, phân giải dư thủ công; đổi không reset cooldown/nạp charge/tạo effect miễn phí**.
+- Lưu ý user: **có thể cân bằng lại sau nghiệm thu**. Không coi model hiện tại hoặc các trị số chưa có là balance cuối cùng; ghi nhận feedback và thay đổi theo scope được giao sau này, không tự tune hoặc suy nghiệm thu hiện tại từ câu này.
+
+### Q37 — D16.20: Nguyên tắc tương thích và đánh đổi của support thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **support tương thích theo đặc tính thật của skill, mỗi support có lợi ích và đánh đổi rõ**. Không phải cả chín support đều gắn được cho mọi skill; UI giải thích phần tác động và không tương thích. Ví dụ đa đạn cần skill thực sự bắn đạn, kéo dài cần hiệu ứng có thời lượng, hồi chiêu chỉ tác động skill có cooldown thật (không tự thêm cooldown main Q22). Không mana Q23 vẫn giữ.
+- Ví dụ minh họa, chưa phải stat/card duyệt: đa đạn tăng độ phủ nhưng giảm sát thương từng viên; mở rộng vùng giúp clear nhưng có thể giảm sát thương; lặp thêm lần thi triển nhưng giảm sức mạnh mỗi lần. Tradeoff phải phù hợp từng support/skill, không dùng mana giả, không tự chọn trị số hoặc thêm cast-lock/channel timing.
+- Combo mạnh được phép, nhưng cần giới hạn theo cơ chế để không có tự kích hoạt đệ quy vô hạn, khống chế Boss vĩnh viễn hoặc bất tử liên tục từ khiên. Không dùng một trần sát thương chung để xóa lợi ích xây build. Chain/pierce/repeat và sát thương chồng lên một mục tiêu cần rule cụ thể ở spec sau.
+- Lý do: skill/support quyết định cách chơi và ưu tiên clear bầy hay đánh Boss, đồng thời giữ nguy hiểm/khả năng đọc trận khi đi qua9node với modifier cộng dồn. Không biến support thành chỉ số cộng miễn phí cho mọi build.
+- Ranh giới: chỉ model compatibility/tradeoff/giới hạn tương tác; chưa bảng tương thích từng ô, giá trị/cap/thứ tự chain-pierce/proc/uptime, thuật toán offer hay skill roster/art. Không tự cấm mọi cộng hưởng hoặc tuyên bố balance đã nghiệm thu. Q36 có thể cân bằng lại sau nghiệm thu theo lưu ý user; không runtime/DDR/deploy.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q37.
+- Nội dung đã chốt: **support tương thích theo đặc tính thật của skill, lợi ích đi kèm đánh đổi rõ; cho combo mạnh nhưng giới hạn để không có tự kích hoạt vô hạn, khóa Boss vĩnh viễn hoặc khiên tạo bất tử liên tục**. Các ví dụ không duyệt trị số/card; bảng tương thích và giới hạn cụ thể cần đề xuất/duyệt sau. Q23 không mana và Q36 lưu ý cân bằng sau nghiệm thu giữ nguyên.
+
+### Q38 — D16.21: Main auto chọn mục tiêu và nhường quyền ngắm tay thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **auto chọn quái gần nhất hợp lệ khi cần mục tiêu mới, giữ ổn định mục tiêu hiện tại đến khi chết/ra khỏi tầm/bị khuất**. Hợp lệ là nằm trong vùng nhìn thấy của camera, đúng tầm skill và không bị tường cản đường ngắm; không tự di chuyển/đuổi quái. Không tự ưu tiên blue/amber/Boss thay quyết định chiến thuật của người chơi.
+- **Ngắm tay luôn được ưu tiên trong lúc giữ thao tác ngắm**: desktop hướng chuột, mobile giữ-kéo hướng ngắm; thả thao tác trở về auto nếu auto đang bật. Chỉ nhường điều khiển hướng/mục tiêu, không tăng tầm, bẻ đạn xuyên tường hoặc bỏ qua cadence/cooldown. Nút/vùng ngắm/gesture/cancel cụ thể chưa chốt tại câu này.
+- Skill không cần hướng như nova quanh người vẫn dùng vùng tác dụng thật; không ép quay theo mục tiêu hoặc tự chuyển tâm nova ra xa nhân vật. Timing di chuyển/thi triển/channel, cast priority, auto-off firing và input lifecycle cần hỏi tiếp.
+- Lý do: giữ nhịp clear bầy ít thao tác, tránh aim giật qua lại, người chơi vẫn chủ động tập trung thủ lĩnh hoặc đe dọa cần xử lý. Hai nền tảng chung rule targeting, khác cách đưa ý định ngắm vào game.
+- Ranh giới: chưa tầm/số giây giữ target/hysteresis/aim assist strength, tốc độ xoay, UI/chọn target chính xác khi chồng quái, đạn va chạm/pierce/chain, auto-cast skill phụ hoặc auto Dash/bình. Không duyệt input/layout/art implementation; không đổi Q14 hai phụ manual. Các ví dụ cần mockup/playtest hai nền tảng trước acceptance.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q38.
+- Nội dung đã chốt: **main auto chọn quái gần nhất hợp lệ trong camera/tầm/không tường khi cần mục tiêu mới; giữ ổn định đến khi chết/ra tầm/bị khuất. Giữ ngắm tay ưu tiên theo chuột hoặc giữ-kéo trên mobile; thả về auto nếu bật. Không tự di chuyển/ưu tiên thủ lĩnh hoặc Boss. Nova theo vùng quanh người**. Chưa timing di chuyển/channel, gesture/layout/cancel cụ thể hoặc implementation.
+
+### Q39 — D16.22: Vừa đi vừa đánh và ngắt đòn được tổ chức thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **melee/projectile/nova được vừa di chuyển vừa đánh, không mặc định đứng khựng mỗi nhịp**. Channel tia cũng cho di chuyển nhưng chậm hơn khi đang channel, tạo đánh đổi vị trí; tốc độ giảm và timing cụ thể chưa duyệt. Chung luật trên mobile/desktop.
+- **Dash ưu tiên ngắt hành động đang thi triển khi Dash sẵn sàng và nhân vật có quyền hành động; skill phụ manual tạm ngắt main**, main không ngắt thao tác manual. Kết thúc Dash/skill phụ thì main trở lại nếu auto bật và có mục tiêu hợp lệ, hoặc đang giữ đánh khi auto tắt. Không tự cast skill phụ/Dash.
+- **Tắt auto thì giữ thao tác đánh để main ra đòn theo nhịp hoặc channel; thả thì dừng yêu cầu thi triển tiếp**. Không tạo sát thương khi chỉ ngắm mà không ra lệnh đánh trong chế độ manual. Input mapping/hold-release/cancel/fresh-press, nhấn phụ một lần và gesture cụ thể còn phải đặc tả; không cấp permission triển khai UI.
+- **Ngắt không hoàn cooldown, nhân đôi hit/proc hoặc tạo nhịp đánh sớm miễn phí**: phần hiệu ứng đã phát và tài nguyên đã tiêu không được hoàn lại chỉ vì ngắt; phần chưa phát không tự nổ sau Dash. Điểm commit/cooldown bắt đầu/hủy windup và effect đã tồn tại cần bảng timing riêng. Không kéo thêm cooldown riêng cho main trái Q22.
+- Lý do: clear đông quái vẫn di chuyển/né linh hoạt, Dash và quyết định manual được phản hồi rõ, channel có đánh đổi khác với ba kiểu main còn lại. Giữ cadence/cooldown thật, không để animation auto giữ chân hoặc bỏ lệnh người chơi.
+- Ranh giới: chưa định lượng slow channel/cast lock/cancel windows/input buffer/hit timing/skill phụ có cast time hay không, Dash i-frame/charge, thao tác bình, thao tác khi pause/blur/UI/fresh press hoặc tuning. Không đổi support compatibility Q37, targeting Q38 hoặc cho mọi skill miễn nhiễm/ngắt stun. Chưa spec/art/code/experience approval.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q39.
+- Nội dung đã chốt: **melee/projectile/nova vừa đi vừa đánh; channel tia di chuyển chậm hơn khi thi triển. Dash sẵn sàng ưu tiên ngắt, phụ manual ngắt main; main trở lại theo auto khi có mục tiêu hoặc giữ đánh manual. Auto-off giữ đánh/thả dừng. Ngắt không hoàn cooldown/tài nguyên hoặc tạo hit/nhịp miễn phí, phần chưa phát bị hủy khi ngắt**. Chưa thông số/timing/input mapping cụ thể; đây là design approval, không playtest acceptance.
+
+### Q40 — D11.6 / D16.23: Catalog ban đầu và cách mở khóa skill/support lâu dài thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend một model progression: **profile mới mở8 mục cơ bản** gồm2main (melee/projectile),2phụ (burst/AoE và khiên),4support (mở rộng vùng/tăng nhịp/cường hóa/hồi chiêu). Đây là catalog được phép roll, không cấp cả8vào build đầu. Bộ đầu vẫn random1main+1phụ+1support hợp main Q28; đủ2phụ khác nhau để lấp phụ2 ở Boss đầu Q30.
+- Chín mục còn lại trong pool nền4main/4phụ/9support được mở dần: nova/channel tia; vùng khống chế/trụ; đa đạn/xuyên/chain/lặp/kéo dài. Không thêm roster/biến thể ngoài các archetype đã chốt. Support phải lọc theo tương thích Q37, hồi chiêu không vào main để tạo offer giả.
+- **Dùng một loại điểm mở khóa vĩnh viễn để người chơi chủ động chọn mục muốn mở**, không roll trùng unlock. Điểm này tách với nguyên liệu phân giải/nâng ô trong lượt Q26; không dùng để tăng HP/damage vĩnh viễn, không biến unlock thành bản skill/support dùng miễn phí trong lượt hiện tại. Mục đã mở bổ sung vào pool random bộ đầu và pool thưởng build của **hành trình sau**.
+- Lý do: có bộ dễ hiểu và luôn hợp lệ cho lượt đầu, nhưng còn các kiểu chơi khác để hướng tới; chọn unlock cụ thể cho mục tiêu lâu dài trong khi bộ đầu/thưởng build vẫn có randomness. Phân biệt rõ meta mở lựa chọn với level1–5 tạm trong lượt.
+- Ranh giới: chưa nguồn/mức điểm/giá unlock/mốc nhận và giữ khi chết hoặc dừng/final bonus (quay lại Q11 ở câu sau), tốc độ hoàn catalog, phần thưởng khi đã mở hết, pool weighting, migration save cũ, UI/art hoặc skill card cụ thể. Không suy thưởng permanent mỗi Boss từ Q11 đang tạm gác. Đây là design approval, không implementation hoặc experience acceptance.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q40.
+- Nội dung đã chốt: **catalog mở sẵn8mục** (melee/projectile; burst-AoE/khiên; mở rộng vùng/tăng nhịp/cường hóa/hồi chiêu), **điểm mở khóa vĩnh viễn riêng để chọn mở9mục còn lại**, không roll trùng hoặc tăng stat vĩnh viễn. Unlock bổ sung pool từ hành trình sau, không cấp bản dùng miễn phí trong lượt hiện tại; bộ đầu vẫn random Q28. Nguồn/giá/settlement/final bonus chưa chốt.
+
+### Q41 — D11.7 / quay lại Q11: Điểm mở khóa được nhận và giữ khi nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only. Q11 gốc giữ nguyên log tạm gác để bảo toàn lịch sử; vấn đề settlement được chốt mới qua Q41 này.
+- Recommend: **hoàn tất mỗi dungeon bằng hạ Boss thì chốt ngay điểm mở khóa lâu dài**, giữ100% số đã chốt dù chết ở node sau hoặc chủ động kết thúc sau Boss. Phần node chưa clear không cấp điểm meta; white/blue/amber vẫn phục vụ build/resource trong lượt theo nguồn đã chốt, không tự thêm điểm meta từng kill.
+- **Điểm mỗi Boss tăng theo nấc, Boss cuối có thưởng hoàn thành thêm**. Mục tiêu tạo động lực đi sâu/thắng cả tree; chưa giá trị/công thức hoặc tuyên bố đã cân bằng điểm theo thời gian/rủi ro. Thưởng từ Ascension và khi hết catalog cần câu sau/spec riêng.
+- **Một node chỉ thưởng một lần trong cùng hành trình**; nghỉ/restart không reroll/nhân điểm đã chốt. Khi đặc tả save phải ghi nhận clear/reward/checkpoint nhất quán với Q04–Q06; không dùng restart node làm đường nhận lại cùng phần thưởng. Không chốt thuật toán journal/transaction tại brainstorm.
+- Chết hoặc dừng không có khoản bonus riêng, không mất điểm meta đã có. Build/cấp ô/nguyên liệu nâng tạm vẫn reset khi kết thúc Q02/Q03/Q10/Q26; save/nghỉ không kết thúc và theo checkpoint đầu node. Điểm meta không thay reward draft Q30, không cho dùng điểm meta thành stat hoặc hồi sinh.
+- Lý do: mỗi dungeon clear đều tạo tiến bộ lâu dài, thất bại muộn không xóa công sức; mức điểm theo độ sâu và thưởng final giữ mục tiêu tiếp tục. Không áp economy cũ một unlock mới mỗi Boss vào catalog9mục còn khóa.
+- Ranh giới: chưa số điểm/giá unlock/tốc độ hoàn catalog/điểm khi lỗi-crash hoặc death đồng thời Boss/Ascension multiplier/thưởng khi hết unlock, lựa chọn node cụ thể hoặc save migration. Chỉ model nguồn và giữ-mất, không tự accepted balance/art/code/deploy.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q41.
+- Nội dung đã chốt: **clear dungeon bằng hạ Boss chốt ngay điểm mở khóa, giữ100% khi chết hoặc chủ động kết thúc; dungeon chưa clear không cho thêm điểm. Điểm mỗi Boss tăng theo nấc, final có thưởng hoàn thành thêm; mỗi node chỉ thưởng một lần/hành trình, nghỉ/restart không nhân điểm**. Không đổi reset build/nguyên liệu tạm; chưa trị số/giá/tốc độ tích lũy/Ascension multiplier hoặc thưởng khi hết catalog. Q41 giải quyết câu settlement Q11, không backfill approval vào log Q11 gốc.
+
+### Q42 — D11.8: Sau khi mở hết skill/support, mục tiêu và phần thưởng chơi lại là gì?
+
+- Trạng thái: **ĐÃ CHỐT — USER THU SCOPE VỀ ASCENSION; COSMETIC NGOÀI SCOPE**, design discussion only. Các dòng recommend ban đầu bên dưới giữ làm lịch sử, không là nội dung được duyệt trọn gói.
+- Recommend ban đầu (user không duyệt toàn bộ): **chuyển mục tiêu lâu dài sang chinh phục Ascension, thử các main/build khác và sưu tầm cosmetic**. Giữ Ascension0–4 Q34, ghi nhận thắng theo từng kiểu main/Ascension và lịch sử hành trình; không dùng thời gian clear làm điều kiện bắt buộc.
+- **Cùng điểm mở khóa Q40 được dùng mở cosmetic như huy hiệu/trail trong Collection**, không thêm currency mới hoặc roll trùng. Người chơi được ưu tiên skill/support hay cosmetic; không buộc mở cosmetic trước hoặc khóa power sau cosmetic. Cosmetic không tăng HP/damage/slot hoặc thay luật chiến đấu. Đây là mở rộng công dụng điểm đang đề xuất, chưa được user chốt.
+- Mốc chinh phục có **huy hiệu thành tích trực tiếp**, ví dụ lần đầu thắng final/mức Ascension hoặc thắng với kiểu main mới; không bán huy hiệu thành tích bằng điểm. Các ví dụ/nhóm mục tiêu là hướng, chưa catalog/mốc/số lượng hay reward table được duyệt.
+- Lý do: sau catalog nền17mục vẫn có đích thử build và chinh phục độ khó, điểm Boss còn nơi dùng mà không kéo sức mạnh vĩnh viễn tăng vô hạn. Một bộ cosmetic hữu hạn vẫn có thể hoàn tất; không hứa phần thưởng vô tận hoặc content tương lai tự sinh.
+- Ranh giới: chưa cosmetic catalog/giá/nguồn artwork/tiêu chí thành tích/vòng đời điểm khi hết cả cosmetic/Ascension reward multiplier, migration challenge/history/trail cũ, UI hoặc art production. Tận dụng hướng Collection/History/Challenges/Trails đã có, không tự xóa approval/save cũ hoặc coi asset cũ hợp mọi tình huống mới. Artwork mới cần skill/game-art/reference/visual gate riêng. Không daily/season/shop tiền thật/power progression mới từ câu này.
+- Câu trả lời user: **“scope ở ascension trước đi, đã có art đâu mà làm cosmetic”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q42.
+- Nội dung hiện hành: **trước mắt mục tiêu chơi lại giới hạn ở Ascension0–4 Q34**. Không mở scope tạo cosmetic, badge/trail, đổi điểm lấy cosmetic hoặc mở rộng Collection/Challenge theo proposal trên. User chỉ rõ chưa có art cho cosmetic của rework; không tự lấy art/save/approval bản cũ làm quyền đưa cosmetic vào scope này.
+- Điểm sau khi mở hết catalog: **chưa chốt công dụng tiếp theo**, không tự đổi sang tiền cosmetic hoặc bù stat vĩnh viễn. Q40–Q41 về unlock/nguồn/giữ điểm vẫn hiệu lực; chưa đặt cap/xóa/đổi/ngừng phát điểm mới. Không tự cấp phần thưởng thành tích theo từng main từ Q42 bị thu scope.
+
+### Q43 — D10.2: Ascension tăng độ khó bằng những gì trong scope đầu?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **Ascension0 là baseline;1–4 tăng dần HP/sát thương quái ở mức vừa phải và tỷ lệ bầy blue/amber**. Dùng pool quái/Boss đã có trong bộ rework sẽ duyệt; chưa thêm họ quái, đòn riêng hoặc art riêng cho từng Ascension. Tỷ lệ blue/amber và số liệu phải thiết kế cùng ecology/density/map/power curve sau, không tự cho thêm special pack vượt budget.
+- **Giữ tree9nấc, mật độ tổng trong budget và cùng quy tắc combat hai nền tảng**. Đổi thành phần bầy tạo áp lực ưu tiên mục tiêu, không chỉ tăng HP thành đánh lâu; chưa bảo đảm tỷ lệ/giá trị đã cân bằng. Mốc draft vẫn Q30, nhiều blue/amber không tự thêm lượt thưởng lớn hoặc số node.
+- **Không cắt thời gian báo đòn/cửa né theo cấp Ascension**; timing chuẩn của từng đòn sẽ chốt trong design quái/Boss mới, không khóa lại timing production cũ. Không giảm i-frame/Dash/bình hoặc thêm debuff vô hiệu hóa build để tăng khó. Node buff/debuff vẫn Q35, chưa tăng số modifier theo Ascension.
+- Lý do: có lộ trình thử build khó hơn mà giới hạn thêm content/art/AI độc lập, giữ khả năng đọc và né trong map đông quái. Tập trung tuning vài trục có thể so sánh thay vì mỗi cấp một hệ mới.
+- Ranh giới: chưa bảng multiplier/tỷ lệ pack/budget/Boss scaling/Ascension reward multiplier/giá unlock, không cam kết balance hoặc device performance trước kiểm. Chỉ approval model thiết kế; không triển khai hoặc tạo art/cosmetic từ câu này.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q43.
+- Nội dung đã chốt: **Ascension0 baseline;1–4 tăng vừa HP/damage và tỷ lệ bầy blue/amber. Giữ tree9nấc, mật độ tổng trong budget, hai mốc thưởng build/dungeon theo Q30, thời gian báo đòn/cửa né chung giữa các cấp. Chưa thêm roster/đòn/art riêng theo Ascension**. Chưa trị số/tỷ lệ/multiplier thưởng hoặc nghiệm thu balance; Q42 không cosmetic giữ nguyên.
+
+### Q44 — D02.1: Đường nối tree và thời điểm khóa lựa chọn hoạt động thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **chọn tự do một trong2–3node nấc1; từ đó mỗi node có1–2đường đi tới nấc kế tiếp**, không nối toàn bộ node thành chọn tự do. Nhánh có thể tách/nhập lại; có đoạn chỉ một lối, có đoạn chọn hai, không bảo đảm mỗi bước luôn hai lựa chọn. Ngoại lệ cuối: mọi node nấc8 nối tới một node final nấc9.
+- **Không ngõ cụt:** mỗi node có đường tới final; mọi node hiển thị được sinh trên ít nhất một tuyến hợp lệ từ nấc1. Toàn tree/đường nối/thông tin node xem trước Q08–Q09 và cố định suốt hành trình, không reroll khi clear/nghỉ/reload. Chưa thuật toán/tham số tạo cây cụ thể.
+- **Xem trước node không khóa đường; bắt đầu dungeon đã chọn mới chốt**, khóa các node khác cùng nấc theo Q08 và nhận buff/debuff theo Q35. Không quay lại/chuyển node khi đang làm lại node; restart vẫn Q04–Q06. Tính khả năng tới node tương lai theo đường còn hợp lệ, không tùy tiện khóa node nhập nhánh vẫn tới được.
+- Lý do: quyết định sớm thực sự ảnh hưởng lựa chọn về sau, người chơi nhìn cả cây để lập tuyến, nhưng không bị kẹt trước Boss cuối. Gói topology/commit này làm rõ contract tree đã chốt, không đổi thành hub chọn lại dungeon.
+- Ranh giới: chưa thuật toán random/budget mức khó/cách phân bố buff-debuff/catalog/cap hoặc UI/layout/art tree. Không thêm node sự kiện/shop/nghỉ, không bỏ Boss từng node hoặc tăng số nấc. Chưa code/spec production/experience approval.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q44.
+- Nội dung đã chốt: **nấc1 chọn bất kỳ node; mỗi node1–2đường sang nấc kế, có tách/nhập/đoạn một lối; mọi node nấc8 về final9. Không ngõ cụt, mọi node nằm trên tuyến hợp lệ, tree cố định/xem toàn bộ. Preview không khóa, bắt đầu dungeon mới chốt/khóa các node khác cùng nấc/nhận modifier**. Chưa thuật toán/phân bố modifier/layout UI; không đổi9nấc hoặc mở node shop/event/nghỉ.
+
+### Q45 — D01.1: Bố cục bên trong mỗi dungeon nên có dạng nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **một tuyến chính uốn khúc từ điểm vào tới khu Boss, xen các khoảng rộng để giao chiến và một số nhánh phụ ngắn/vòng nối lại**. World liền mạch/camera theo nhân vật giữ yêu cầu gốc; không chuyển màn sau mỗi bầy hoặc phòng, không mê cung nhiều ngõ cụt dài. Random làm đổi hình tuyến/vị trí khoảng giao chiến và bầy, chưa chốt thuật toán sinh map/asset.
+- Nhánh phụ dành cho **bầy/thủ lĩnh đánh thêm**, không bắt người chơi mò hết nhánh phụ mới tới Boss. Điều kiện mở Boss/thanh clear/đánh bao nhiêu vẫn cần câu riêng; không tự cho chạy thẳng bỏ mọi bầy hoặc bắt100%kill từ quyết định layout này. Không thêm chest/shop/event hoặc draft vượt Q30.
+- **Đường đi và khoảng giao chiến đủ rộng để di chuyển/né, đọc telegraph khi đông quái** trên cả mobile/desktop; khu Boss ở cuối tuyến có không gian né phù hợp. Chưa số màn hình/diện tích/số khu/số bầy, corridor width/camera zoom/collider hoặc khóa cửa khu Boss.
+- **Minimap khám phá dần**, hiện phần đã đi qua và đánh dấu Boss khi tìm thấy, không lộ toàn layout ngay từ tree. Đây là hướng chức năng, chưa duyệt bố cục/art HUD; scope visual cần reference/mockup/approval sau. Không thay Q09 thông tin node công khai.
+- Lý do: có cảm giác tiến sâu và clear liên tục, vẫn có khám phá/lựa chọn kéo thêm bầy, giảm đoạn chạy trống hoặc mò lối quay đầu. Tách topology trong dungeon với tree giữa dungeon đã chốt Q44.
+- Ranh giới: chưa biome/art direction/số theme, map size/pacing/route generation/bầy ecology/aggro/respawn/Boss unlock/loot/sustain hoặc UI/input. Không suy khả năng chạy mượt/device readability từ proposal; không production spec/art/code/deploy.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q45.
+- Nội dung đã chốt: **tuyến chính uốn khúc tới khu Boss, xen đường đi/khoảng rộng giao chiến và nhánh phụ ngắn/vòng nối có thêm bầy/thủ lĩnh; không buộc mò nhánh phụ tới Boss. Dungeon liền mạch/camera theo người, minimap khám phá dần/đánh dấu Boss khi tìm thấy; random hình tuyến/vị trí khu giao chiến/bầy**. Chưa điều kiện mở Boss/size/biome/art/generation hoặc HUD layout approved.
+
+### Q46 — D05.1 / D09.1: Clear tới mức nào thì được đánh Boss?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **mở Boss theo tiến độ hạ quái, không theo thời gian hoặc100%clear**. White có đóng góp; blue/amber đóng góp nhiều hơn theo độ nguy hiểm. Mốc khởi điểm để tuning khoảng75%tổng giá trị quái của map, không phải75%đơn vị quái nếu trọng số khác nhau. Ngưỡng/trọng số cuối cần bảng cân bằng và playtest, chưa approved balance.
+- **Tuyến chính luôn có đủ quái/bầy đặc biệt để đạt mốc mở Boss và mốc draft trong map Q30 nếu clear đầy đủ tuyến chính**; nhánh phụ là lựa chọn thêm, không bắt quay đầu mò quái lẻ hoặc tìm một thủ lĩnh bắt buộc giấu trong nhánh. Phải ràng buộc map generation/pack budget ở spec để bảo đảm điều này ở mọi Ascension, không chỉ kỳ vọng ngẫu nhiên.
+- **Đủ tiến độ thì khu Boss cuối tuyến được mở; người chơi chủ động vào bắt đầu trận**. Boss không tự xuất hiện cạnh nhân vật ngay lúc đầy thanh, không tự teleport người chơi đang clear bầy. Được chọn tiếp tục khám phá trước khi vào Boss; chưa rule rời khu Boss khi đã bắt đầu hoặc xử lý bầy còn đuổi.
+- Thanh mở Boss **tách với mốc draft blue/amber Q30**, không cộng thêm draft hoặc thay điều kiện reward elite bằng white. Áp dụng mỗi dungeon gồm nấc9; chỉ hạ Boss mới clear node/nhận điểm meta Q41, đầy thanh chưa clear.
+- Lý do: cần thực sự đánh bầy để tiến tới Boss, nhưng tránh100%cleanup/đợi timer; người chơi biết rõ đích và chủ động chuẩn bị trước trận cuối map.
+- Ranh giới: chưa tỉ trọng white/blue/amber/ngưỡng cuối, UI thanh, khóa cửa/exit Boss, bầy chase vào Boss, rewards/loot pending/transition sau Boss, respawn hoặc kỹ thuật spawn. Không mở artwork/code/acceptance từ proposal.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q46.
+- Nội dung đã chốt: **hạ quái tích tiến độ có trọng số để mở khu Boss, white có góp/blue-amber góp hơn; mốc khởi điểm tuning khoảng75%tổng giá trị quái, không timer/100%cleanup. Tuyến chính đủ mốc mở Boss và draft elite nếu clear đầy đủ; nhánh phụ tùy chọn. Đủ thanh mở khu Boss cuối tuyến, người chơi chủ động vào/không tự spawn hoặc teleport; thanh Boss tách mốc draft Q30**. Ngưỡng/trọng số cuối/khóa cửa/bầy đuổi vào Boss chưa chốt; không coi75%là balance đã nghiệm thu.
+
+### Q47 — D04.1: White/blue/amber và thành phần mỗi bầy khác nhau thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý VÀ BỔ SUNG BIẾN THỂ HIẾM BLUE + AMBER**, design discussion only; xem câu trả lời phần làm rõ bên dưới.
+- Recommend ban đầu: **mỗi bầy là một nhóm đông quái nhỏ + một đầu đàn lớn**, bám yêu cầu gốc không spawn lần lượt3con. Độ hiếm của bầy xác định bởi đầu đàn; lính đi kèm phần lớn white, không biến toàn bộ lính thành elite khi bầy blue/amber. Bổ sung của user bên dưới mở thêm khả năng lính blue, không dùng câu recommend cũ để bác yêu cầu này. Cách/quy mô spawn thực tế và số lượng cần câu aggro/performance/density tiếp, chưa chốt count.
+- **Bầy white:** lính white + đầu đàn white lớn/khỏe hơn, không affix đặc biệt; chiếm đa số để tạo nhịp clear. **Bầy blue:** lính white + một đầu đàn blue có1đặc tính chiến đấu rõ. **Bầy amber:** lính white + một đầu đàn amber có2đặc tính tương thích, là điểm giao chiến nguy hiểm hơn, chưa phải Boss. Boss riêng cuối dungeon giữ Q46.
+- **Độ hiếm tách với loại hành vi**: có bầy thiên cận chiến, bầy thiên bắn xa hoặc hỗn hợp có vai trò chủ đạo. Tránh mỗi bầy cùng lúc có mọi loại nguy hiểm; affix blue/amber phải đọc được và có counterplay, không chỉ nhân HP. Chưa roster/affix cụ thể hoặc bản art lớn/màu nào được duyệt.
+- Lý do: đông lính tạo cảm giác quét bầy, đầu đàn là mục tiêu để tập trung skill phụ; blue/amber thay nhịp và đóng góp reward Q30/Boss-progress Q46 rõ. Ascension Q43 tăng tỷ lệ loại bầy, không tự biến mọi mob thành thủ lĩnh.
+- Ranh giới: chưa số quái/bầy/tổng bầy/tỷ lệ white-blue-amber/HP-size-damage/affix catalog/dấu hiệu visual, chết đầu đàn ảnh hưởng lính thế nào/nguồn material-flask, spawn placement/aggro/leash/respawn. Đầu đàn lớn là gameplay direction, không approval concept/production art hoặc runtime. Không thêm draft riêng mỗi thủ lĩnh.
+- Câu trả lời user: **“y, hiếm hơn thì quái blue và đầu đơn amber”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q47. Hiểu “đầu đơn” theo ngữ cảnh là đầu đàn, giữ nguyên quote.
+- Ghi nhận ban đầu: user đồng ý hướng bầy/quái đầu đàn và **bổ sung bầy hiếm hơn gồm lính blue + đầu đàn amber**. Lúc đó chưa rõ biến thể bổ sung hay thay toàn bộ amber nên hỏi làm rõ, không tự chọn. Affix của lính blue/đầu đàn chết ảnh hưởng lính/giá trị reward cụ thể chưa được quyết định qua bổ sung.
+- **Recommend phần làm rõ:** **giữ ba cấu trúc ban đầu và thêm biến thể hiếm hơn: lính blue + đầu đàn amber**. Vẫn chỉ3cấp rarity white/blue/amber, không tạo rarity thứ4. Lý do: có đỉnh nguy hiểm bất ngờ trong map, không biến mọi lần gặp đầu đàn amber thành cả bầy elite. Chưa tỉ lệ/count/stats/affix hoặc art.
+- Câu trả lời phần làm rõ: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, sau recommend giữ amber thường/thêm biến thể hiếm. Ghi nhận theo quy ước user dùng “y” để đồng ý recommend; không chọn phương án thay mọi bầy amber.
+- Nội dung hiện hành: **white+đầu đàn white; white+đầu đàn blue; white+đầu đàn amber; hiếm hơn có blue+đầu đàn amber**. Vẫn3rarity; blue đầu đàn1đặc tính/amber đầu đàn2đặc tính tương thích theo model gốc. Chưa áp máy móc1affix độc lập cho từng lính blue, chưa count/tỉ lệ/roster/art hoặc reward per mob.
+
+### Q48 — D04.2 / D05.2: Bầy xuất hiện, phát hiện và truy đuổi người chơi thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **các bầy được bố trí sẵn trong dungeon random, gặp là cả bầy**, không đẻ nối tiếp3con hoặc sinh thêm sau lưng tại vùng vừa clear. Đây là logical placement, không bắt engine render/update toàn map cùng lúc; restart node vẫn Q04–Q06, không reroll.
+- **Lại gần trong vùng phát hiện hoặc đánh trúng một thành viên thì đánh động cả bầy**; tường chặn phát hiện trực tiếp. Bầy khác chỉ tham chiến khi cũng bị phát hiện/đánh động cục bộ, không lan aggro vô hạn tới toàn map. Chi tiết bán kính/line-of-sight/độ trễ/chia sẻ cảnh giác cần spec AI.
+- **Cho kéo nhiều bầy để đánh chung**, đổi lấy rủi ro bị vây/đạn/nguy hiểm nhiều hướng; không bắt clear xong một bầy mới được đánh bầy sau. Chưa count/concurrency cap hoặc thuật toán AI/performance; không âm thầm xóa/đóng băng địch đang trong giao chiến để giữ FPS.
+- **Truy đuổi trong phạm vi hợp lý; bỏ quá xa thì quay về khu ban đầu**, không đuổi xuyên cả dungeon. **Quái đã chết không respawn trong cùng lần chơi node; đầu đàn chết thì lính còn sống vẫn chiến đấu**, không tự biến mất hoặc được cấp lại để farm. HP khi mất aggro/quay về và invulnerability trong reset chưa chốt, không tự cho heal full hoặc bất tử.
+- Lý do: giữ cảm giác clear một thế giới có bầy thật, cho chủ động kéo bầy và thoát khi nguy hiểm, vùng đã clear có giá trị; không biến combat thành waves khóa phòng hoặc truy đuổi toàn map.
+- Ranh giới: chưa aggro/leash distance/HP reset/pathfinding/body collision/damage contact, density/pack budget/bầy elite affix, Boss gate/địch đuổi vào Boss, loot/flask charge từ kills hoặc device FPS. Leash thường không tự áp Boss, chưa production spec/art/code/experience approval.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q48.
+- Nội dung đã chốt: **bầy bố trí sẵn trong dungeon random/gặp cả bầy, không spawn nối3con hoặc đẻ sau lưng vùng đã clear. Gần hoặc đánh trúng đánh động cả bầy, tường chắn phát hiện trực tiếp/aggro cục bộ; được kéo nhiều bầy. Quá xa thì quay về, không đuổi cả map; quái chết không respawn trong lần chơi node, đầu đàn chết lính còn sống vẫn đánh**. Chưa số lượng/khoảng cách/HP khi quay về/Boss leash hoặc performance đã nghiệm thu.
+
+### Q49 — D07.1: Bình máu dùng và nạp lại trong dungeon/Boss thế nào?
+
+- Trạng thái: **USER ĐÃ CHỐT MODEL CHARGE THAY LƯỢT RỜI VÀ THÊM QUÁI CẤP THẤP TRONG BOSS**, design discussion only. Recommend gốc bên dưới giữ làm lịch sử; không duyệt trọn gói3lượt/35%/nạp trực tiếp50%.
+- Recommend gốc (đã bị user sửa): **bình máu manual riêng Q16 có tối đa3lượt dùng; mỗi lần hồi ngay35%HP tối đa, không vượt đầy máu**. Bắt đầu hành trình có đủ3lượt, không tiêu lượt khi HP đang đầy. Đây không là balance được user nghiệm thu; hồi giữa node hỏi riêng sau nhịp adds.
+- **Hạ quái tích tiến độ để nạp lại lượt bình**, white góp ít/blue-amber nhiều hơn; đủ ngưỡng nhận1lượt tới cap3. Không tự hồi HP hoặc nạp bình nhờ đứng chờ. Đây là resource recovery, không phải mana mới cho skill và không thêm draft Q30. Chưa ngưỡng/trọng số/overflow ở cap hoặc source kill từ effect/phụ/trụ cụ thể.
+- **Boss lần đầu xuống50%HP cho thêm1lượt bình, tối đa cap**, chỉ trigger một lần trong trận, không farm bằng reset/heal Boss. Có đường bổ sung hồi phục khi Boss không có adds, không buộc tạo thêm lính chỉ để nạp bình. Chi tiết checkpoint/reset event phải theo Q04–Q06, chưa tự thêm heal người chơi tại50% hoặc auto-use.
+- Lý do: bình là quyền quyết định khi nào hồi, clear bầy giúp phục hồi để tiếp tục đi map, Boss có nguồn nạp hữu hạn và dự đoán được. Không khuyến khích chạy trốn đứng chờ vô hạn khi thời gian clear không quan trọng.
+- Ranh giới: chưa reuse cooldown/action priority/cast animation/i-frame/cancel/HP threshold/vi-en/HUD, ngưỡng refill/overflow/Ascension-sustain tuning hoặc node anti-heal modifiers. Không tự giữ hệ hồi máu cũ thành nguồn cộng thêm, cũng chưa duyệt hút máu/regen hoặc xóa source cũ trong production; cần mapping theo scope. Hồi sau Boss/giữa node hỏi tiếp, không tự heal full từ Q49. Không art/code/experience approval.
+- Câu trả lời user: **“làm giống bình POE đi, có charge, xài bình thì tiêu 1 phần charge, đủ số charge là xài, k cần phải đầy bình. đầy charge thì xài đc 2,5 lần đi, thêm 1 ít quái cấp thấp trong boss để có thể charge đc bình”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q49.
+- Nội dung đã chốt/thay recommend: **charge tích liên tục; mỗi lần dùng trừ một lượng cố định; đủ chi phí một lần thì dùng ngay, không cần đầy bình. Sức chứa bằng2,5lần chi phí một lần dùng. Hạ quái nạp charge, Boss có một ít quái cấp thấp để cung cấp charge**. Vẫn bình manual riêng Q16, không thêm mana cho skill. Ví dụ chuẩn hóa **max100/cost40** chỉ minh họa tỷ lệ: dùng2lần từ đầy còn20, thêm20đủ dùng lần3; không coi đây là số lấy từ PoE hoặc charge-per-kill đã duyệt.
+- Phạm vi supersede: bỏ model3lượt rời và thay nguồn bổ sung trong Boss bằng quái cấp thấp, **không giữ thêm cấp trực tiếp một lượt khi Boss50%HP**. Đây là ngoại lệ có chủ đích cho adds trong trận Boss, không biến map thường thành respawn waves trái Q48. Lượng/nhịp hồi HP (35%ngay chưa approved), charge mỗi loại quái, dung lượng tuyệt đối/chi phí, số/nhịp adds, khởi đầu/hồi giữa node/overflow/cooldown còn cần chốt. Không tự mở toàn hệ flask affix/rarity/equipment của PoE.
+
+### Q50 — D07.2 / D09.2: Quái cấp thấp trong Boss xuất hiện theo nhịp nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only; câu hồi sau Boss/giữa node dời sau vì user bổ sung adds vào Q49.
+- Recommend đã được user đồng ý: **ba đợt white nhỏ theo mốc Boss lần đầu xuống75%/50%/25%HP**, không spawn vô hạn theo thời gian. Mỗi đợt có vài con dễ dọn; target tuning charge tổng mỗi đợt khoảng nửa chi phí dùng bình, tức ba đợt cộng khoảng1,5lần dùng. Số con/charge-per-white phải nhất quán với quái white ngoài map, không tự cho charge-per-kill khác trong Boss; count/trọng số cuối chưa duyệt hoặc nghiệm thu balance.
+- **Boss vẫn có thể nhận sát thương, không bắt dọn sạch lính hoặc chuyển sang pha bất tử**. Adds gây áp lực nhẹ và là lựa chọn để lấy charge; vị trí xuất hiện có báo trước/không chồng người chơi, cần budget để không che telegraph chính. Cách phối hợp moves/spawn cụ thể theo Boss chưa chốt.
+- **Mỗi mốc chỉ gọi một đợt, không lặp bằng heal/reset/giữ Boss sống; adds chỉ cung cấp charge**, không thêm meta points/draft/material riêng. Đợt adds không cần đầu đàn, là nhóm phụ của Boss chứ không phải bầy map Q47. Kill/reset accounting và tình huống skip nhiều mốc bằng burst cần spec, không tự dồn cả ba đợt tức thì.
+- Lý do: lấy lại charge bằng hành động chiến đấu theo yêu cầu user, lượng hồi phục hữu hạn và tiến triển theo trận, không khuyến khích giữ Boss sống để farm vô hạn. Không tự hồi HP hoặc cấp charge trực tiếp khi qua mốc.
+- Ranh giới: chưa white roster/count/stats/charge-per-kill/spawn timing/telegraph art/queue khi skip phase/địch còn lại sau Boss chết/khóa cửa Boss, heal amount/duration/giữa node. Chưa dùng lại artwork cũ vào runtime hoặc thêm Boss patterns từ proposal; vẫn cần design/art gate và playtest.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q50.
+- Nội dung đã chốt: **ba đợt white nhỏ ở75/50/25%HP Boss lần đầu; mỗi đợt target charge khoảng0,5lần dùng bình. Boss vẫn nhận damage, không bắt dọn lính; mỗi mốc một đợt hữu hạn, lính chỉ cung cấp charge/không thêm draft hoặc meta points**. Count/stats/charge value cuối/skip nhiều mốc/spawn art/địch còn sau Boss chết còn cần spec; không suy experience acceptance từ design approval.
+
+### Q51 — D07.3: Sau Boss và khi sang dungeon kế, nhân vật được hồi phục thế nào?
+
+- Trạng thái: **ĐÃ CHỐT — USER ĐỒNG Ý**, design discussion only.
+- Recommend: **mỗi dungeon là một chặng tiêu hao riêng; hạ Boss thành công khi nhân vật còn sống thì hồi đầy HP và charge bình để chuẩn bị dungeon kế**. Bắt đầu hành trình cũng đầyHP/charge. Không cấp heal/refill miễn phí lúc tới cửa Boss trong cùng dungeon, vẫn phải quản lý bình Q49–Q50 suốt map/trận Boss.
+- **Skill phụ và Dash sẵn sàng khi vào dungeon kế**, không phải đứng chờ cooldown ở tree. Dọn hiệu ứng combat ngắn hạn (đạn/nguy hiểm, trụ/khiên/tác động tạm) trước chặng mới; không carry một đòn/trụ/khiên từ node trước sang để nhận lợi ích miễn phí.
+- **Build/cấp từng ô/nguyên liệu nâng và buff-debuff node cộng dồn giữ nguyên**. Hồi phục không gỡ debuff node Q35; áp dụng giới hạn HP/charge hiện hành theo modifier, chi tiết thứ tự nhận modifier và snapshot phải được spec nhất quán Q04–Q06. Chết không được hồi sinh từ rule hồi sau Boss; edge case chết/Boss chết cùng lúc chưa chốt.
+- Lý do: thắng một dungeon cho cảm giác chuẩn bị sẵn để đi tiếp, tránh xuống dốc tài nguyên qua9node; khó tăng nhờ build-check/modifier/tree/Ascension chứ không ép kéo theo vài HP và bình cạn từ map trước. Rủi ro và tiêu hao vẫn có ý nghĩa trong từng dungeon.
+- Ranh giới: chưa hồi bao nhiêu/mất bao lâu mỗi lần dùng bình (35%instant Q49 gốc chưa approved), charge-per-kill/reuse cooldown, xử lý quái còn lại/reward pending/transition chính xác, anti-heal modifiers cụ thể hoặc stat multipliers. Không sửa reset build khi chết/thắng/kết thúc hoặc tự mở node nghỉ/shops. Chỉ design approval, chưa runtime/art/experience approval.
+- Câu trả lời user: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q51.
+- Nội dung đã chốt: **start hành trình và sau Boss thành công đầyHP/charge; khi vào node mới phụ/Dash sẵn sàng, dọn combat effects tạm, giữ build/cấp ô/nguyên liệu và modifier node cộng dồn. Không refill miễn phí trước Boss trong cùng map, không revive người đã chết**. Chưa transition/death đồng thời Boss/anti-heal và heal-per-use chi tiết.
+
+### Q52 — D07.4: Baseline lượng hồi và charge của bình để playtest là gì?
+
+- Trạng thái: **ĐÃ CHỐT — USER BỔ SUNG HOT VÀ ĐỒNG Ý PHẦN LÀM RÕ/BASELINE**, design discussion only; không balance/experience acceptance.
+- Recommend baseline gốc: **max100charge, cost40/lần, hồi ngay35%HP tối đa/lần**. Giữ tỷ lệ2,5lần Q49;100/40 từ ví dụ được đề xuất thành baseline cụ thể, chưa balance nghiệm thu. Phần chỉ hồi ngay/không HoT của recommend đã bị user bổ sung20%hồi dần bên dưới; không lấy nội dung cũ bác HoT. Chưa thêm affix/rarity/equipment cho bình.
+- **Hạ white +4charge, blue +8, amber +20** tới cap100; charge vượt cap không cất thành bình dự trữ. Kill từ skill/phụ/trụ của nhân vật đều tính; mỗi quái chết thật chỉ tính một lần. Trọng số này cho charge, không tự dùng làm trọng số mở Boss/draft Q30/Q46. Chưa thêm nạp theo thời gian/đòn đánh hoặc source vô hạn.
+- **Bấm một lần dùng một lần; không tiêu charge khi HP đầy; khoảng dùng lại0,5s** để tránh một thao tác vô tình uống nhiều lần. Đây là reuse state thật cần HUD/input theo contract, không giả resource/timer. Priority khi đang Dash/channel/cast và input lifecycle cụ thể vẫn phải spec.
+- Kiểm tính nhất quán proposal: **10white nạp đủ1lần; đợt5white trong Boss cấp20charge=nửa lần dùng** theo target Q50. Count5là baseline đề xuất cho các đợt white, không suy mọi Boss đã có roster/art hoặc pattern được duyệt. Hồi giữa node Q51 giữ nguyên.
+- Lý do: hồi tức thì dễ đọc khi combat đông, tiêu charge rõ và nạp lại theo clear bầy; các số cùng một đơn vị kiểm được, không dùng thêm thanh tiến độ đổi thành lượt rời. Cần playtest với burst damage/map density/Ascension và tuning sau nghiệm thu khi user giao, không coi số cuối cùng.
+- Ranh giới: chưa anti-heal modifiers/heal-effectiveness/cap tương tác/kill reward override, trắng đầu đàn có bonus hay không (baseline theo rarity)/UI-art/action priority/cooldown hitstop/pause và device feel. Chưa production spec/code/assets/deploy hoặc user playtest acceptance.
+- Câu trả lời user: **“35% hồi ngay thêm 20% dần dần trong 3-5s tiếp theo”**, ngày 2026-11-14, hội thoại hiện tại không permalink, trực tiếp sau Q52.
+- User chốt phần hồi ban đầu: **35%HP tối đa ngay +20%HP tối đa hồi dần trong3–5s tiếp theo**, tổng tiềm năng55%HP/lần nếu hồi trọn/không overheal. Các chi tiết4s/refresh và bộ số đã được hỏi làm rõ riêng bên dưới, không suy từ câu bổ sung đầu tiên.
+- **Recommend phần làm rõ:** lấy **4s** làm baseline trong khoảng user giao, HoT **5%maxHP/s**, **không cộng dồn tốc độ hồi**. Uống tiếp vẫn hồi35%ngay, **thay phần HoT còn lại bằng một đợt20%/4s mới** (phần chưa hồi cũ mất, không cộng thời lượng hoặc xếp hàng); ăn đòn không hủy HoT, đầyHP thì kết thúc/không dự trữ hồi. Lý do: phần tức thì cứu nguy, hồi dần khuyến khích né giữ nhịp thay vì uống liên tiếp để chồng regen. Giữ bộ thông số charge đã đề xuất Q52 để user chốt cùng.
+- Câu trả lời phần làm rõ: **“y”**, ngày 2026-11-14, hội thoại hiện tại không permalink, sau recommend4s/refresh không stack và giữ bộ số Q52.
+- Nội dung hiện hành đã chốt: **max100/cost40charge;35%HP ngay+20%trong4s; uống lại thay HoT cũ/không stack hoặc queue, hit không hủy/đầyHP kết thúc. Kill white4/blue8/amber20charge tới cap, overflow bỏ; bấm một lần/0,5s reuse/đầyHP không tiêu. Baseline5white mỗi đợt adds=20charge/nửa lần dùng Q50**. Các số là baseline để thử/tuning, chưa balance nghiệm thu; đầy bình2,5lần Q49 và hồi giữa node Q51 giữ nguyên. Modifier/action priority/timing pause/skip mốc Boss còn cần spec.
+
+### Q53 — D09.3: Bản rework đầu cần bao nhiêu Boss và vai trò gì?
+
+- Trạng thái: **ĐANG HỎI — CHỜ USER**, design discussion only.
+- Recommend phạm vi gameplay: **3Boss thường cho các dungeon nấc1–8 +1Boss cuối riêng ở nấc9**. Ba vai trò thường: **áp sát**, **bắn xa**, **kiểm soát vùng**; mỗi Boss khoảng2–3đòn chủ đạo có báo hiệu/cửa phản công. Đây là archetype, chưa tên/đòn/trị số/ngoại hình hoặc asset reuse được duyệt.
+- Phân bố Boss cố định trên tree sinh đầu hành trình/xem trước Q09, tránh gặp cùng Boss ở hai node liên tiếp trên tuyến hợp lệ. Tái sử dụng pool3Boss qua nấc1–8 với scaling theo độ sâu/modifier/Ascension, không thêm Boss riêng cho từng node hoặc mỗi cấp Ascension.
+- **Boss cuối là trận riêng, có2pha**, phối hợp các kiểu né/giữ vị trí đã học, khó hơn Boss thường; không chỉ đổi màu/tăngHP đầu đàn amber. Chi tiết phase threshold/moves/combo/invulnerability chưa chốt, không tự lấy old Chain Warden timing làm contract mới.
+- Bình/ba đợt adds/hồi sau Boss giữ Q49–Q52; **adds75/50/25%không đồng nghĩa các mốc đổi pha Boss**, không dùng approval pool để đổi cadence hồi phục. Final thắng vẫn kết thúc tree Q10, không endless auto-loop.
+- Lý do: có biến đổi về cách giao chiến xuyên8map mà giới hạn số bộ moves và nội dung phải làm, final tạo đích rõ. Scope mới chỉ gameplay direction; ngoại hình/reference/asset và đòn cụ thể phải duyệt riêng theo Harness/art gate, không quyền tạo art/triển khai từ brainstorm.
+- Ranh giới: chưa danh tính/Boss type-asset mapping/provenance/phase timing/HP-damage/arena geometry/fight-lock/clear transition/death đồng thời Boss hoặc counterplay spec. Giữ production/approval cũ, không hứa4bộ artwork đã sẵn hoặc mở cosmetic. Chưa runtime/experience acceptance.
+- Câu trả lời user: **CHƯA CÓ**.
+
+NEXT ACTION: đợi user đồng ý/từ chối/bổ sung Q53 về pool Boss bản đầu; ghi kết quả trước câu tiếp. Cosmetic ngoài scope, không triển khai.
