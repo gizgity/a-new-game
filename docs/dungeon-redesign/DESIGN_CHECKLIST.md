@@ -1,8 +1,8 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 69 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 71 · 2026-11-14.
 
-Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C06. **Q61 THU HỒI KHỎI HÀNG CHỜ; không tự hỏi Q62.** Sau phản hồi user về hỏi lặp/quá ước lượng, rà lại coverage và chuyển phần còn thiếu sang một bản review tổng hợp, không tiếp tục quiz thông số. Xem C06 cuối file. Cosmetic ngoài scope, chưa implementation.
+Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C08;Q61 thu hồi. User yêu cầu phần còn thiếu ở dạng câu hỏi để kiểm tra: [REVIEW_QUEUE.md](REVIEW_QUEUE.md) có12mụcR01–R12. [Bản V1](REVIEW_V1.md) đã chuẩn bị12/12,0/12được duyệt/12chờ review. C07 đính chính câu trả lời “0” của agent; không hỏi lại contract đã chốt hoặc tự sinh thêm quiz. Cosmetic ngoài scope, chưa implementation.
 Trạng thái: BRAINSTORM / CHECKLIST, chưa spec production hoặc quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
@@ -870,4 +870,22 @@ Tiến độ ước lượng sau Q26: Q27–Q28 đã chốt (2/24), còn khoản
 - Cosmetics/đổi điểm dư/legacy archive/migration đã ngoài scope hoặc tạm để sau Q42/Q59; không giữ chúng như blocker buộc user trả lời để bắt đầu đặc tả core. Mật độ Atlas/catalog mod cần research/reference và actual tuning, không hỏi lại định hướng PoE của user.
 - Trước khi soạn formal spec/art/code V2 phải đọc CURRENT, Master Plan, Harness, Design Bible, Reference Protocol và card phù hợp. Audit này chỉ notes, không production spec/artwork/code/build/deploy hoặc Goal complete.
 
-NEXT ACTION: chuẩn bị một bản review hợp nhất từ contract đã chốt và các gói còn phải đặc tả; không tự hỏi Q62/không yêu cầu trả lời Q61. Đọc đúng Harness trước formal spec, không code/art/deploy. Giữ toàn bộ lịch sử câu hỏi và phản hồi.
+### C07 — Phần còn thiếu được trình bày thành danh sách câu review hữu hạn (2026-11-14)
+
+- Nguồn user: **“còn thiếu bao nhiu, t muốn làm dạng câu hỏi để dễ đọc và kiểm tra hơn”**, ngày2026-11-14, hội thoại hiện tại không permalink. Trước đó agent trả lời “0 câu hỏi brainstorm lẻ nữa” nhưng vẫn còn các bảng/reference chưa đặc tả; **câu “0” không phản ánh đầy đủ công việc review còn lại và được đính chính**.
+- Cách tiếp tục hiện hành thay phần hình thức của C06: **trình bày phần thiếu thành12câu reviewR01–R12** tại [REVIEW_QUEUE.md](REVIEW_QUEUE.md), cùng một danh sách để user kiểm tra, mỗi câu có một proposal/bảng hoàn chỉnh trước khi hỏi chốt. Đây là cách chia bốn gói tài liệu sau audit, không12quyết định hệ thống mới và không approval nội dung proposal.
+- **Đã review0/12, còn12/12** tại checkpoint này. Không tách8skill/chín support/từng giá/từng edge case thành thêm câu. Không hỏi lại vai trò input/model bình/save/tree hoặc định hướng Atlas đã chốt; exact input còn Proposed đưa phụ lục R01/R10, không phục hồi Q61 làm câu riêng.
+- Giữ nguyên audit C06/61ID lịch sử và mọi đáp án; nếu có scope mới thật ngoài12mục phải nêu thay đổi/lý do trước khi đổi danh sách/count. Con số12 là số mục review, không số vòng sửa artwork/playtest, không tự đánh dấu Goal complete hoặc cấp quyền code.
+- Review queue mới chỉ inventory phần thiếu, chưa formal production spec hoặc artwork; phải đọc đúng Harness trước khi soạn proposal/spec tương ứng. Không tự thêm hệ/currency/cosmetic/migration để lấp khoảng chưa hỏi.
+
+NEXT ACTION: chuẩn bị proposal trọn R01 theo REVIEW_QUEUE và contract đã chốt, đọc đủ Harness trước formal spec; trình một câu review kèm recommend rồi cập nhật số còn lại. Không hỏi lại Q61, không code/art/deploy. Giữ đầy đủ lịch sử.
+
+
+### C08 — Chuẩn bị trọn bộ proposal để user review (2026-11-14)
+
+- User: **“ok chuẩn bị đi, t review”**, hội thoại hiện tại, không permalink. Scope lượt này: một bản review hợp nhất đủ R01–R12; không triển khai/runtime/art/DDR/deploy. Cách chuẩn bị từng R01 của C07 được thay bằng chuẩn bị cả bộ; nội dung đã chốt không đổi.
+- [REVIEW_V1.md](REVIEW_V1.md), task DUNGEON-REVIEW-01 revision1, có12 câu review kèm recommend/bảng:8active/9support, economy/meta,22node mods, map/AI/Boss/power curve, flow/visual/milestones. Toàn bộ chi tiết mới **PROPOSED**, không suy user approval từ việc giao chuẩn bị.
+- Đã chuẩn bị12/12; **được duyệt0/12, chờ review12/12**. Q61 vẫn thu hồi; không thêm Q62. Phần input/legacy thay đổi cụ thể đánh dấu mới, không lẫn với contract đã chốt.
+- Audit docs: đủ12ID/câu review, liên kết và sáu hash ảnh baseline đúng; kiểm số economy/curve và bảo toàn lịch sử/nhánh/main/package-lock. Chưa đo footage Atlas, FPS/runtime hoặc có target artwork mới; giới hạn nêu tại R06/R11/R12. Không chạy build/tests vì chỉ Markdown.
+
+NEXT ACTION HIỆN HÀNH: user review REVIEW_V1 theo R01–R12; ghi kết quả từng ID và sửa đúng phần phản hồi. Không hỏi lại phần đã chốt hoặc triển khai trước scope được giao.

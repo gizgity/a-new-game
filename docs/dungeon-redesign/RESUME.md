@@ -1,11 +1,11 @@
 # Tiếp tục sau compact — Dungeon/Skill Rework
 
-Snapshot: DUNGEON-BRAINSTORM-01 R69 · C06 RÀ SOÁT HỎI LẶP · 2026-11-14 · tiếng Việt.
+Snapshot: DUNGEON-REVIEW-01 V1 / log R71 · C08 ĐÃ CHUẨN BỊ12MỤC · 2026-11-14 · tiếng Việt.
 
 ## Đọc và tiếp tục
 
-- **Chỉ dẫn mới nhất C06:** user phản đối hỏi lặp và vượt ước lượng. **Q61 thu hồi khỏi hàng chờ; không tự hỏi Q62.** Chuẩn bị một bản review hợp nhất: đã chốt / proposal chưa duyệt / baseline tuning cần thử. Chỉ hỏi clarification thật sự mới sau khi đối chiếu log, không biến từng số/edge case thành quiz.
-- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C06**. Q61 giữ lịch sử nhưng không cần user trả lời lại; lời phàn nàn không duyệt các chi tiết key/gesture mới.
+- **Chỉ dẫn mới nhất C08:** user “ok chuẩn bị đi, t review”. [REVIEW_V1.md](REVIEW_V1.md) đã có đủ12proposal, tất cả Proposed;0được duyệt/12chờ review. Không tiếp tục soạn riêng R01 hoặc mở code. C07 giữ cách đếm: user muốn phần còn thiếu ở dạng câu hỏi để dễ đọc/kiểm tra. [REVIEW_QUEUE.md](REVIEW_QUEUE.md) liệt kê **12mục reviewR01–R12,0/12đã review/12còn lại**. Mỗi mục một proposal/bảng hoàn chỉnh rồi một câu chốt; không hỏi lại contract hoặc chia từng số/skill/edge case thành câu mới. “0 câu” của agent đã được đính chính;12là mục thiết kế, không số vòng visual/playtest.
+- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C08**. Q61 vẫn thu hồi, không duyệt chi tiết mới từ lời phàn nàn; exact input Proposed đưa phụ lục R01/R10.
 - Sau Q26 agent đã hỏi **35ID mới Q27–Q61**, vượt ước lượng23–24 chưa tính làm rõ. Ước lượng/countdown cũ được giữ trong log lịch sử nhưng không còn là dự báo; lỗi chia nhỏ/tracking của agent, không quy cho user đổi scope.
 - **Q36 đã chốt**, user “y, nhưng note có thể sẽ cân bằng lại sau khi nghiệm thu”: chỉnh build tại chuẩn bị/mốc thưởng/sau Boss, cấp theo ô để skill thay vào kế thừa, chuyển support tương thích miễn phí, phân giải dư thủ công, không reset cooldown/charge/tạo effect miễn phí. Làm rõ kế thừa Q27; **có thể cân bằng lại sau nghiệm thu**, không tự tune hoặc suy experience acceptance.
 - **Q37 đã chốt**: support theo đặc tính skill, lợi ích kèm đánh đổi, cho combo mạnh nhưng chặn vòng lặp vô hạn/khóa Boss vĩnh viễn/bất tử liên tục. Chưa bảng tương thích/trị số/cap approved.
@@ -110,9 +110,9 @@ Snapshot: DUNGEON-BRAINSTORM-01 R69 · C06 RÀ SOÁT HỎI LẶP · 2026-11-14 �
 | Q60 | Draft/pause giữa map? | **Đã chốt** thưởng pending/chủ động mở/pause toàn gameplay; giải quyết trước Boss/chuyển node, chặn input cũ; blur pause/bấm tiếp mới resume. |
 | Q61 | Input/aim/cancel phụ hai nền tảng? | **Thu hồi câu hỏi riêng theo C06**; dùng Q14–Q16/Q38–Q39/Q60 đã chốt. Keys/gesture mới còn Proposed trong bảng input, không suy user approval. |
 
-## Phần agent phải chuẩn bị — một bản review hợp nhất
+## Bản review đã chuẩn bị — chờ phản hồi
 
-Đây là các gói tài liệu cần làm cụ thể, **không phải bốn câu hỏi/loạt quiz mới**. Bản review phải gắn nguồn Q đã chốt và đánh dấu Proposed cho nội dung chưa duyệt; không tự Approved hoặc mở code.
+Theo user yêu cầu mới C07, bốn gói này đã chia thành **12câu review hữu hạn** tại [REVIEW_QUEUE.md](REVIEW_QUEUE.md). Bản V1 đã gắn nguồn Q đã chốt và đánh dấu Proposed cho nội dung chưa duyệt; không tự Approved hoặc mở code. Không tách bảng thành thêm câu lẻ.
 
 | Gói | Nội dung cần đưa ra để review |
 | --- | --- |
@@ -122,9 +122,13 @@ Snapshot: DUNGEON-BRAINSTORM-01 R69 · C06 RÀ SOÁT HỎI LẶP · 2026-11-14 �
 | Flow/visual/phân việc | Bảng UI-state/save/input edge cases, tutorial/audio thích nghi, reference/mockup/task cards và acceptance touch/desktop theo Harness |
 
 - Cosmetics/điểm dư thành cosmetic/legacy archive/migration đã ngoài scope hoặc để sau Q42/Q59; không dùng như câu hỏi/blocker bắt buộc cho core. Không tự thêm armor/crit/gear/currency hay hệ mới chỉ vì chưa từng hỏi.
-- Chỉ còn clarification thật sự mới khi bản review phát hiện mâu thuẫn/khoảng trống không có trong log; phải nêu nguồn và proposal cụ thể. Không hỏi lại những gì index đã có hoặc chia mỗi thông số thành một lượt.
+- Cập nhật count theo12mục đã liệt kê sau mỗi lần review; không hỏi lại những gì index đã có hoặc chia mỗi thông số thành một lượt. Nếu scope mới thật sự ngoài danh sách, nêu rõ thay đổi trước khi tăng count; không giữ countdown cũ bằng giả định.
 - Trước formal spec/art/code đọc CURRENT, Master Plan, Harness, Design Bible, Reference Protocol và đúng card. B1 cũ vẫn PAUSED/REVERTED; brainstorm approval không là production/visual/playtest approval.
 
 ## Checkpoint rà soát C06
 
-Giữ đủ61ID Q01–Q61 vàC01–C06; Q61 thu hồi, không tự có Q62. Audit xác nhận35ID sauQ26; ước lượng23–24 cũ sai và đã ngừng dùng. Giữ nguyên toàn bộ câu trả lời Q01–Q60, goals/lịch sử HANDOFF và package-lock/main; chỉ sửa notes/index/coverage/trạng thái Q61. Markdown-only, không build/tests/deploy/DDR/art/runtime. Request compact ởQ35 là lịch sử, không tuyên bố đã chạy compact mới.
+Giữ đủ61ID Q01–Q61 vàC01–C08;Q61 thu hồi, danh sách còn thiếu dùngR01–R12chưa review, không tự có thêmQ62. Audit xác nhận35ID sauQ26;ước lượng23–24 và câu“0”đã được đính chính. Chỉ notes, không build/tests/deploy/DDR/art/runtime; package-lock/main giữ nguyên. Next action hiện hành: user review bản V1 theo R01–R12, ghi phản hồi đúng ID. Request compactQ35 là lịch sử, không tuyên bố compact mới.
+
+## Checkpoint C08 — DUNGEON-REVIEW-01 V1
+
+Đủ12mục có recommend/bảng cụ thể; [task card](../combat-v2/tasks/DUNGEON-REVIEW-01.md). Proposal chưa duyệt, target visual mới chưa có, chưa đo Atlas footage/runtime/FPS. Chỉ docs; không sửa main/runtime/assets/DDR/Art Bible/package-lock hoặc deploy. NEXT ACTION: chờ user review R01–R12 và ghi kết quả; không tự chuyển sang implementation.

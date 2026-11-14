@@ -9,14 +9,15 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 ## IMPROVEMENT GOAL
 Đưa prototype từ functional demo thành một action roguelike vertical slice có combat feel thỏa mãn, Fractured Geometry art và các cơ chế tương tác thực sự có chiều sâu.
 
-## CURRENT — DUNGEON-BRAINSTORM-01 R69 / C06 RÀ SOÁT HỎI LẶP (2026-11-14)
+## CURRENT — DUNGEON-REVIEW-01 V1 / LOG R71 / C08 CHỜ REVIEW (2026-11-14)
 
-**Goal hiện tại:** chốt thiết kế dungeon/skill/build/reward trước implementation; sau phản hồi user về hỏi lặp, chuyển từ chuỗi quiz sang một bản review hợp nhất. Goal chưa hoàn thành, chưa mở code.
+**Goal hiện tại:** chốt thiết kế dungeon/skill/build/reward trước implementation; user muốn phần còn thiếu ở dạng câu hỏi dễ đọc/kiểm tra, không lặp phần đã chốt. Goal tổng thể chưa hoàn thành. Task chuẩn bị tài liệu đã xong: user “ok chuẩn bị đi, t review”; bản V1 đủ12/12proposal,0/12được duyệt,12chờ review. Chưa mở code.
 
-- **Đọc nhanh:** [RESUME.md](docs/dungeon-redesign/RESUME.md). Nguồn đầy đủ: [DESIGN_CHECKLIST.md](docs/dungeon-redesign/DESIGN_CHECKLIST.md) R69, giữ đủQ01–Q61/C01–C06. CoverageD01–D16 và phần còn mở đã rà lại, không dùng checklist cũ để hỏi lại.
+- **Đọc nhanh:** [RESUME.md](docs/dungeon-redesign/RESUME.md), [REVIEW_QUEUE.md](docs/dungeon-redesign/REVIEW_QUEUE.md). Nguồn đầy đủ: [DESIGN_CHECKLIST.md](docs/dungeon-redesign/DESIGN_CHECKLIST.md) R71, giữ đủQ01–Q61/C01–C08. Không dùng checklist cũ để hỏi lại.
 - **C06:** user “ủa, phần này t chốt từ mấy chục câu trước r mà… hỏi đi hỏi lại là sao” (nguyên văn ởQ61). Có61ID, sauQ26 đã hỏi35ID mới, vượt ước lượng23–24 chưa tính làm rõ. Lỗi chia nhỏ/tracking của agent; không quy cho user đổi scope hoặc tiếp tục dùng countdown cũ.
 - **Q61 THU HỒI KHỎI HÀNG CHỜ; không tự hỏi Q62.** Vai trò skill/auto/phụ/Dash/bình/target/di chuyển/pause đã chốt Q14–Q16/Q38–Q39/Q60. Keys/gesture mới củaQ61 vẫn Proposed trong bảng input, không suy approval từ lời phàn nàn. Giữ đầy đủ câu hỏi/recommend/câu trả lời lịch sử.
-- **Cách tiếp tục:** agent chuẩn bị một bản review hợp nhất với4gói: skill-support/input; economy-balance/catalog-cap modifier; map-quái-Boss/referenceAtlas; flow-visual/task cards/acceptance. Đây là công việc chuẩn bị tài liệu, không bốn quiz mới. Tách rõ contract đã chốt/Proposed/tuning; chỉ hỏi khoảng trống thật sự chưa có trong log.
+- **C07 cách đếm:** user “còn thiếu bao nhiu, t muốn làm dạng câu hỏi để dễ đọc và kiểm tra hơn”. Đính chính câu“0”của agent: có **12mục reviewR01–R12**,0/12đã review/12còn lại; bốn gói còn thiếu được chia thành danh sách câu hỏi rõ. Mỗi mục một proposal/bảng đầy đủ+recommend rồi một câu review, không chia từng ô/skill/thông số thành thêm câu. Count là mục thiết kế, không số vòng sửa/visual/playtest; nếu scope mới ngoài danh sách phải nêu rõ trước khi cập nhật.
+- **C08 delivery:** [REVIEW_V1.md](docs/dungeon-redesign/REVIEW_V1.md) + [task card](docs/combat-v2/tasks/DUNGEON-REVIEW-01.md): đủ8active/9support và bảng R01–R12; chi tiết mới Proposed, không tự supersede contract. R06 chưa có footage Atlas định lượng; R11 chưa có target visual mới; R12 chưa đo runtime/FPS/device. Không artwork mới.
 - **Core giữ nguyên:** tree9/đường nối riêng/xem toàn cây; main auto+2phụ manual/Dash-bình riêng;4main/4phụ/9support/slot3-2-2/khôngmana; cấp1–5theo ô Q36; túi/build/draft/meta Q27–Q30/Q40–Q41/Q57; lưu entry node/reward pending Q04–Q06/Q58;3Boss thường+1final2pha/flowQ53–Q54; pauseQ60.
 - **Supersede phải nhớ:** Q01 endless→tree9/final; Q11 settlement đượcQ41giải quyết; Q35số1buff+1debuff→Q56random cap theo chặng1–2/3–4/5–6/7–9→1/2/3/4, lifetime tới final/cộngcap/counterplay giữ; Q55quota density chưa duyệt, theo referenceAtlas; Q59data-settings rework mới/không migration.
 - **Bình đã chốt Q49–Q52:**100charge/cost40;35%HPngay+20%/4s, refresh thay HoT cũ/không stack/hit không hủy/fullHP kết thúc;white4-blue8-amber20charge/reuse0,5s;adds5white tại75/50/25%Boss/start-sauBoss hồi đầy. Baseline tuning, không nghiệm thu balance. Q36 có lưu ý có thể cân bằng lại sau nghiệm thu, không tự tune.
@@ -25,7 +26,8 @@ Thiết lập nền tảng agent/handoff, chuẩn hóa game specification và tr
 - **Scope/gates:** chỉ notes, khôngruntime/art/assets/DDR/ArtBible/roadmap/build/tests/deploy. Trước formal spec/art/code V2 phải đọc MasterPlan/Harness/DesignBible/ReferenceProtocol và đúng card/ref; brainstorm không cấp production/visual/playtest approval. Production Boss V1 còn playtest riêng, xem mục dưới.
 - **Validation checkpoint:** kiểm đủ61ID liên tục trong log/index, hashQ01–Q60 bảo toàn so trước audit; goals/lịch sửHANDOFF/main/package-lock giữ nguyên. Kiểmdiff/consistency Markdown, không build/tests.
 
-**ONE NEXT ACTION: Chuẩn bị một bản review hợp nhất từ log đã chốt và4gói cần đặc tả, đọc đúng Harness trước formal spec; không hỏi Q61/Q62 tự động, không code/art/deploy.**
+**ONE NEXT ACTION: User review REVIEW_V1 theo R01–R12; ghi kết quả theo ID và sửa đúng phản hồi. Không hỏi lại Q61, không tự triển khai code/art/deploy.**
+
 ## THEO DÕI RIÊNG — BOSS-EASE-01 V1 DEPLOYED (2026-11-13)
 
 User **“ok triển đi”** duyệt V1 sau [proposal +720fixtures/15run](docs/boss-balance/PROPOSAL.md). Cho phép implementation/production trong scope Boss hiện tại, không V2/B1. [Bàn giao/validation](docs/boss-balance/IMPLEMENTATION.md). Tích hợp trên remote46c45bb, giữ nguyên B1 REVERTED / PAUSED BY USER.
