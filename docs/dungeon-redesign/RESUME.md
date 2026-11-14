@@ -1,16 +1,17 @@
 # Tiếp tục sau compact — Dungeon/Skill Rework
 
-Snapshot: DUNGEON-BRAINSTORM-01 R58 · 2026-11-14 · tiếng Việt.
+Snapshot: DUNGEON-BRAINSTORM-01 R69 · C06 RÀ SOÁT HỎI LẶP · 2026-11-14 · tiếng Việt.
 
 ## Đọc và tiếp tục
 
-- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi, recommend, câu trả lời user, phạm vi supersede và giới hạn nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **Q01–Q52/C01–C05 được giữ đầy đủ; Q53 đang hỏi**.
-- User muốn **hỏi từng câu một, recommend trước dựa trên toàn bộ design**; user đồng ý/từ chối/bổ sung thì ghi kết quả trước câu tiếp. Gom chi tiết cùng cơ chế, không hỏi từng con số hoặc gộp các quyết định độc lập để lấy approval hàng loạt.
+- **Chỉ dẫn mới nhất C06:** user phản đối hỏi lặp và vượt ước lượng. **Q61 thu hồi khỏi hàng chờ; không tự hỏi Q62.** Chuẩn bị một bản review hợp nhất: đã chốt / proposal chưa duyệt / baseline tuning cần thử. Chỉ hỏi clarification thật sự mới sau khi đối chiếu log, không biến từng số/edge case thành quiz.
+- Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C06**. Q61 giữ lịch sử nhưng không cần user trả lời lại; lời phàn nàn không duyệt các chi tiết key/gesture mới.
+- Sau Q26 agent đã hỏi **35ID mới Q27–Q61**, vượt ước lượng23–24 chưa tính làm rõ. Ước lượng/countdown cũ được giữ trong log lịch sử nhưng không còn là dự báo; lỗi chia nhỏ/tracking của agent, không quy cho user đổi scope.
 - **Q36 đã chốt**, user “y, nhưng note có thể sẽ cân bằng lại sau khi nghiệm thu”: chỉnh build tại chuẩn bị/mốc thưởng/sau Boss, cấp theo ô để skill thay vào kế thừa, chuyển support tương thích miễn phí, phân giải dư thủ công, không reset cooldown/charge/tạo effect miễn phí. Làm rõ kế thừa Q27; **có thể cân bằng lại sau nghiệm thu**, không tự tune hoặc suy experience acceptance.
 - **Q37 đã chốt**: support theo đặc tính skill, lợi ích kèm đánh đổi, cho combo mạnh nhưng chặn vòng lặp vô hạn/khóa Boss vĩnh viễn/bất tử liên tục. Chưa bảng tương thích/trị số/cap approved.
 - **Q38 đã chốt**: main auto lấy quái gần nhất hợp lệ khi cần target mới, giữ target ổn định; ngắm tay ưu tiên lúc giữ, thả về auto nếu bật. Trong tầm/camera/không tường, không tự di chuyển/ưu tiên elite; nova theo vùng thật. Gesture/input/channel còn mở.
 - **Q39 đã chốt**: vừa đi vừa đánh, channel đi chậm hơn; Dash ngắt hành động khi được phép, phụ manual ngắt main; main trở lại sau đó khi auto hoặc giữ đánh manual. Auto-off giữ để đánh/thả dừng. Ngắt không hoàn tài nguyên/cooldown hoặc tạo hit/nhịp miễn phí. Chưa số/timing/input mapping approved.
-- **Q40 đã chốt:** catalog đầu8mục (melee/projectile; burst/khiên; area/nhịp/cường hóa/hồi chiêu), dùng điểm meta riêng chủ động mở9mục còn lại; unlock bổ sung pool từ hành trình sau, không stat vĩnh viễn. Bộ đầu vẫn random3mục Q28. Nguồn/settlement/giá điểm còn mở.
+- **Q40 đã chốt:** catalog đầu8mục (melee/projectile; burst/khiên; area/nhịp/cường hóa/hồi chiêu), dùng điểm meta riêng chủ động mở9mục còn lại; unlock bổ sung pool từ hành trình sau, không stat vĩnh viễn. Bộ đầu vẫn random3mục Q28; nguồn/settlement đã chốt Q41, chỉ giá/trị số còn cần đặc tả.
 - **Q41 đã chốt, giải quyết Q11:** hạ Boss clear node chốt điểm meta ngay/giữ100% dù chết hoặc dừng; node chưa clear không điểm; nấc sâu nhiều hơn/final bonus; mỗi node chỉ thưởng một lần/hành trình, không nhân bằng restart. Trị số/giá chưa chốt. Q11 gốc giữ nguyên log tạm gác lịch sử, không hỏi lại settlement.
 - **Q42 user thu scope về Ascension0–4 trước**, “scope ở ascension trước đi, đã có art đâu mà làm cosmetic”. **Cosmetic/badge/trail/đổi điểm/mở rộng Collection-Challenge ngoài scope**, không duyệt trọn proposal cũ. Điểm dư sau full catalog chưa chốt công dụng, không tự đổi/ngừng phát/xóa hoặc thêm sink; Q40–Q41 giữ nguyên.
 - **Q43 đã chốt:** Ascension1–4 tăng vừa HP/damage và tỷ lệ blue/amber trên baseline0, tree9/budget tổng/timing báo đòn/cửa né giữ chung; không roster/art/đòn riêng theo cấp hoặc thêm draft/modifier. Multiplier/tỷ lệ/budget cụ thể còn mở.
@@ -23,7 +24,15 @@ Snapshot: DUNGEON-BRAINSTORM-01 R58 · 2026-11-14 · tiếng Việt.
 - **Q50 đã chốt:**3đợt white nhỏ tại Boss75/50/25%lần đầu, mỗi đợt target charge~0,5lần dùng/nhất quán white ngoài map, không spawn vô hạn; Boss vẫn nhận damage/không bắt dọn lính, mỗi mốc một lần/adds chỉ charge. Count/stats/art/skip nhiều mốc còn mở.
 - **Q51 đã chốt:** start đầyHP/charge, sau Boss thành công hồi đầy để đi tiếp; phụ/Dash sẵn sàng node mới, dọn effect combat tạm, giữ build/cấp/nguyên liệu/modifier node. Không refill miễn phí trước Boss/không revive. Transition chi tiết còn mở.
 - **Q52 đã chốt baseline/làm rõ:**100/40charge;35%HP ngay+20%trong4s/5%maxHP/s, uống lại thay HoT cũ/phần chưa hồi cũ mất/không stack hoặc queue; hit không hủy/fullHP kết thúc. Kill white4/blue8/amber20charge, overflow bỏ/đầyHP không tiêu/bấm1lần/reuse0,5s;5white/add-wave=20charge. Baseline để thử/tuning, không balance nghiệm thu.
-- **Q53 ĐANG HỎI/CHỜ USER:**3Boss thường áp sát/bắn xa/kiểm soát vùng (2–3đòn) cho nấc1–8/tránh lặp liên tiếp,1final riêng2pha tại9; pool cố định/xem trước/scaling theo độ sâu-Ascension, không Boss mỗi node/cấp. Ngoại hình/đòn/assets duyệt riêng, chưa approved.
+- **Q53 đã chốt:**3Boss thường áp sát/bắn xa/kiểm soát vùng (2–3đòn) cho nấc1–8/tránh lặp liên tiếp,1final riêng2pha tại9; pool cố định/xem trước/scaling theo độ sâu-Ascension. Ngoại hình/đòn/assets/phase threshold còn cần duyệt riêng.
+- **Q54 đã chốt:** vào Boss khóa trận/quái-đạn ngoài không vào/không ra farm charge; thắng khi còn sống kết thúc combat/dọn threats để nhận thưởng an toàn.1–8 chốt meta/hồi/draft pending+Boss/chỉnh build/chọn tree/xác nhận node rồi chuyển;9 tổng kết. Save/reward queue/death đồng thời cần spec riêng.
+- **Q55 USER ĐỔI HƯỚNG:** “dựa theo cảm giác và triển khai số bầy như của POE giai đoạn đi atlas”. Lấy Atlas mapping làm reference mật độ/nhịp clear, làm việc với giả định PoE1; count/spacing/rarity cần gameplay reference đại diện+actual tuning chung hai nền tảng. **Bộ số10–16/12–24bầy/60-30-10%/max1blue+amber-map CHƯA APPROVED**; không gán là count chuẩn PoE. Research GGG Atlas/PoEDB Maps có pack count/size/rarity modifiers, không đo footage/count hoặc duyệt target cụ thể. Không tự mở code từ chữ “triển khai” trong brainstorm.
+- **Q56 đã chốt model/cap chặng:**1–2cap1/3–4cap2/5–6cap3/7–9cap4, roll1..cap không bắt đầy/range-tổ hợp hợp sức mạnh chặng/cap tổng effect. Random/tham khảoPoE thay1+1Q35/không pool6+6; tree cố định/xem trước/nhận khi vào node/giữ tới final/cộngcap/counterplay. Catalog/giá trị/cap effect/probability còn cần duyệt, không tự copy mana/reflect/loot/hazard/art.
+- **Q57 đã chốt:** túi build không cap ô, active mỗi skill1bản/draft không trùng owned/hai phụ khác active; support nhiều bản/giữ dư hoặc salvage thủ công, không hiệu lực khi chưa gắn. Giữ qua node/reset cuối lượt/checkpoint node dở, timing đổi Q36. UI/yield/pool weighting còn mở.
+- **Q58 đã chốt:** reload/crash node dở về entry Q04–Q06; sau Boss có reward pending thì tiếp đúng offer/chỉ claim một lần, đã nhận chưa đi tiếp thì tree/build đã lưu; không reroll/dupe. Death/win/end terminal không undo. Schema/storage/migration còn mở.
+- **Q59 user chốt “làm mới hết”**: toàn bộ data/progression/settings rework mới, không import/quy đổi/migration hoặc legacy archive UI. Catalog8/Asc0/điểm0/default settings mới; không reset rework mỗi buổi. Production/main/browser save hiện tại ngoài scope phát triển nhánh riêng, không xóa ngay/làm lại repo/art từ câu này; lịch sử approvals giữ nguyên.
+- **Q60 đã chốt:** draft giữa map báo pending/người chơi mở, pause toàn gameplay/timers/HoT-CD khi chọn/chỉnh build, xử lý pending trước Boss/chuyển node. Resume chặn input cũ/click xuyên, auto theo mode; blur tựpause/trở lại bấm tiếp. Layout/mapping/pause audio còn mở.
+- **Q61 THU HỒI CÂU RIÊNG:** vai trò/target/movement/pause đã chốt Q14–Q16/Q38–Q39/Q60, không hỏi lại. Exact keys và gesture mới chưa có approval, đưa Proposed vào bảng input chung; không giữ Q61 như blocker hoặc tự hỏi Q62.
 - **Q01 là lịch sử đã bị C01/Q07/Q10 thay:** hiện là tree hữu hạn 9 nấc tới final, không dùng endless không đích cũ làm lệnh.
 - Chỉ brainstorming/ghi notes. Chưa quyền implementation/asset/deploy từ các câu trả lời design. Khi lập spec/art/code V2 phải đọc đúng Master Plan/Harness/Design Bible/Reference Protocol/task card/refs và đi gate; không tự suy acceptance từ commit/build/Pages.
 
@@ -65,7 +74,7 @@ Snapshot: DUNGEON-BRAINSTORM-01 R58 · 2026-11-14 · tiếng Việt.
 | Q24 | Trùng support loại? | Cùng skill tối đa1/loại; giữa skill khác được trùng nếu tương thích. |
 | Q25 | Một bản support dùng chung? | **Một bản chỉ gắn một skill**; cần hai bản cho hai skill. User thêm **phân giải bản dư → nguyên liệu nâng skill**. |
 | Q26 | Nguyên liệu/cấp nâng giữ vĩnh viễn? | Chỉ trong lượt, giữ qua node, reset khi chết/thắng/kết thúc chủ động; nghỉ/restart theo checkpoint đầu node. |
-| Q27 | Model nâng cấp? | Ba active **cấp1–5**, tăng hiệu lực chính theo skill, chi phí tăng dần; support bản đầu **không level riêng**. Chưa price/yield/multipliers/refund. |
+| Q27 | Model nâng cấp? | **Cấp1–5/tăng hiệu lực chính/chi phí tăng dần**, support không level riêng. **Q36 đã làm rõ cấp theo ô active, skill thay vào kế thừa**; chỉ price/yield/multipliers còn cần spec. |
 | Q28 | Bộ khởi đầu? | User sửa thành **nhận random**: mainLv1 + phụLv1 + 1 bản support hợp main; phụ2 trống, ô support3/2/2 mở sẵn. Từ catalog đã mở; starter pool chưa chốt. |
 | Q29 | Thưởng trong lượt random trực tiếp hay chọn? | **Random tối đa3/lấy1** ở mốc quan trọng; pool nhỏ hiện số thật, ưu tiên có hướng hợp build nếu pool cho phép. Khác bộ đầu random trực tiếp. |
 | Q30 | Nguồn/cadence draft mỗi map? | Node1–8: **1 mốc từ tiến độ clear blue/amber + 1 sau Boss** (amber đóng góp hơn). Boss đầu bảo đảm lựa chọn lấp phụ2 nếu trống. Node9 có mốc trong map, sau final chỉ thưởng hoàn thành. |
@@ -73,7 +82,7 @@ Snapshot: DUNGEON-BRAINSTORM-01 R58 · 2026-11-14 · tiếng Việt.
 | Q32 | Giữ lớp Sigil/Branch riêng? | **Không trong rework đầu**; nguyên tố nếu có thuộc skill/support, không roll Legacy offer/Core+Branch độc lập. Không tự port cả6/12 hoặc xóa save/approval cũ. |
 | Q33 | Anomaly ở đâu? | Gộp thành **modifier/đặc tính node**, xem trước/chọn tuyến; bỏ lượt chọn giữa trận ở135s. Không tự port cả6/VFX. |
 | Q34 | Ascension? | **0–4**, đầu mở0, chọn trước lượt; thắng cả tree ở mức cao nhất mở mức kế, vẫn chọn thấp hơn. Bỏ gate6Sigil/không port Seal cũ; tuning/reward/migration chưa chốt. |
-| Q35 | Node buff/debuff nhận/cộng thế nào? | **1 buff + 1 debuff/node**, nhận khi bắt đầu node, giữ hết lượt/final; cùng loại cộng tới cap, không nhân lũy thừa ngầm; có counterplay, không khóa main/Dash/bình. **Đã user “y” 2026-11-14.** |
+| Q35 | Node buff/debuff nhận/cộng thế nào? | Nhận khi bắt đầu node/giữ tới final/cộngcap/counterplay đã chốt. **Phần1buff+1debuff cố định đã bị Q56 thay bằng random có cap**, giữ log approval lịch sử. |
 | Q36 | Đổi build và giữ đầu tư thế nào? | **Đã chốt** chỉnh ở chuẩn bị/mốc thưởng/sau Boss, cấp theo ô, chuyển support tương thích miễn phí, phân giải thủ công; đổi không reset cooldown/charge/tạo effect miễn phí. **Có thể cân bằng lại sau nghiệm thu**. |
 | Q37 | Support tương thích/đánh đổi thế nào? | **Đã chốt** theo đặc tính skill, lợi ích kèm đánh đổi, cho combo mạnh nhưng chặn vô hạn/khóa Boss vĩnh viễn/bất tử liên tục. Bảng/trị số/cap chưa chốt. |
 | Q38 | Auto target/ngắm tay thế nào? | **Đã chốt** gần nhất hợp lệ/giữ ổn định, trong tầm/camera/không tường; giữ ngắm tay ưu tiên/thả về auto nếu bật; không tự di chuyển/chọn elite thay người chơi. |
@@ -91,30 +100,31 @@ Snapshot: DUNGEON-BRAINSTORM-01 R58 · 2026-11-14 · tiếng Việt.
 | Q50 | Nhịp adds Boss để nạp bình? | **Đã chốt**3đợt white75/50/25%HP, mỗi đợt~0,5lần dùng charge, hữu hạn/không bắt dọn/Boss không bất tử, chỉ charge. Count/trị số cuối còn mở. |
 | Q51 | Hồi sau Boss/giữa node? | **Đã chốt** start/sau Boss thành công đầyHP-charge, node mới phụ/Dash sẵn sàng/dọn combat effect tạm, giữ build/modifier; không refill trước Boss/revive. |
 | Q52 | Baseline heal/charge bình? | **Đã chốt**100/40charge,35%ngay+20%/4s/refresh không stack/hit không hủy/fullHP kết thúc; kill4/8/20charge/reuse0,5s/5white-add-wave. Baseline tuning, không nghiệm thu balance. |
-| Q53 | Pool Boss bản đầu? | **ĐANG HỎI/CHỜ USER**:3Boss thường áp sát/bắn xa/kiểm soát vùng cho1–8,1final2pha ở9; tránh lặp liên tiếp, ngoại hình/moves/assets duyệt riêng. |
+| Q53 | Pool Boss bản đầu? | **Đã chốt**3Boss thường áp sát/bắn xa/kiểm soát vùng cho1–8,1final2pha ở9; tránh lặp liên tiếp, ngoại hình/moves/assets duyệt riêng. |
+| Q54 | Khóa trận Boss/clear/transition? | **Đã chốt** khóa khu Boss/cách ly địch ngoài; thắng dọn threats/chốt meta-hồi-draft-build-tree/xác nhận rồi chuyển; final tổng kết. |
+| Q55 | Quy mô/mật độ map? | User chọn **cảm giác/mật độ Atlas PoE**, count/spacing/rarity theo reference+actual tuning. Bộ quota10–16/12–24/60-30-10/max1variant chưa approved. |
+| Q56 | Pool modifier node đầu? | **Đã chốt** random/tham khảoPoE,1–2/3–4/5–6/7–9→cap1/2/3/4/roll1..cap/range-tổ hợp hợp chặng/cap tổng effect, thay1+1Q35. Catalog/trị số chưa duyệt. |
+| Q57 | Túi build/bản trùng? | **Đã chốt** túi không cap ô, mỗi active1bản/không draft owned/hai phụ khác skill; support nhiều bản/giữ hoặc salvage thủ công; giữ qua node/reset cuối lượt. |
+| Q58 | Reload/crash/reward pending? | **Đã chốt** node dở về entry; Boss clear/reward pending tiếp đúng bước-offer/claim một lần; nhận rồi về tree/build đã lưu, không reroll/dupe hoặc undo terminal. |
+| Q59 | Save/progression cũ và rework? | User chọn **làm mới hết data/progression/settings**, không migrate/import/archive; production trong thời gian nhánh riêng vẫn ngoài scope. |
+| Q60 | Draft/pause giữa map? | **Đã chốt** thưởng pending/chủ động mở/pause toàn gameplay; giải quyết trước Boss/chuyển node, chặn input cũ; blur pause/bấm tiếp mới resume. |
+| Q61 | Input/aim/cancel phụ hai nền tảng? | **Thu hồi câu hỏi riêng theo C06**; dùng Q14–Q16/Q38–Q39/Q60 đã chốt. Keys/gesture mới còn Proposed trong bảng input, không suy user approval. |
 
-## Phần còn mở — không được tự chốt
+## Phần agent phải chuẩn bị — một bản review hợp nhất
 
-- Q36 đã chốt model; timer/effect chống lạm dụng đổi skill và thông số còn cần spec. User lưu ý có thể cân bằng lại sau nghiệm thu, không tự tune.
-- Q37 đã chốt model compatibility/tradeoff/giới hạn tương tác support; chưa bảng chi tiết approved.
-- Q38 đã chốt main auto target và quyền ưu tiên ngắm tay; gesture/layout cụ thể còn mở.
-- Q39 đã chốt model di chuyển/thi triển/ngắt/main manual. Chưa timing/input mapping/cast/channel cụ thể approved.
-- Q40/Q41 đã chốt catalog đầu/điểm meta/chọn unlock/nguồn/settlement; Q11 được giải quyết qua Q41. Giá/trị số còn cần spec.
-- Q42 đã thu scope mục tiêu chơi lại về Ascension, không cosmetic/thành tích mới. Công dụng điểm sau full catalog chưa chốt; không tự tạo sink.
-- Q43 đã chốt model khó Ascension; chưa thông số/tỷ lệ/pack budget/reward multiplier.
-- Q44 đã chốt topology/commit tree; chưa thuật toán/layout/phân bố modifier approved.
-- Q45/Q46 đã chốt layout/minimap/Boss-progress/chủ động vào; size/biome/art/generation/threshold cuối còn mở.
-- Q47/Q48 đã chốt composition/spawn/aggro/leash/respawn; số lượng/roster/affix lính blue/HP reset/distance còn mở.
-- Q49–Q52 đã chốt charge liên tục/2,5lần/nhịp adds Boss/start-hồi giữa node/reset combat effects-cooldowns và baseline heal35%ngay+20%/4s/refresh/charge-per-kill/reuse/count adds. Còn modifier/priority/pause tuning. Q53 đang chờ pool Boss, chưa moves/assets/clear transition.
-- Compatibility/support tradeoffs/proc caps, cap shield/CC/trụ/cadence/hazard, giá nâng/yield/level mapping. Không có mana để làm tradeoff. Thông số cần bảng spec user review, không tự accepted.
-- Auto target/line-of-sight/manual override, vừa đi vừa đánh/channel, cast priority/cancel/hold-release/pause/blur; UI/vi-en và mobile/desktop contract.
-- Catalog/nguồn/chọn unlock/settlement/final bonus đã có model Q40–Q41; giá/nhịp mở/hết unlock/thưởng Ascension/migration còn chi tiết. Reward build tạm không đồng nghĩa permanent reward.
-- Tree đường nối/sinh tuyến/khóa lựa chọn chi tiết; modifier catalog/cap/tương thích; difficulty curve/Ascension modifiers và reward.
-- Map quy mô/biome/layout/minimap; white/blue/amber roles/pack composition/density/aggro/leash/respawn; tiến độ mở Boss/chuyển node/loot pending; Boss roster/pattern/final.
-- Bình máu charge/nạp/lượng hồi/Boss không adds; hồi giữa node/sustain/anti-heal. Save crash/reload/journal/migration và flow/tutorial/audio/history/cosmetic cũ.
-- Scope content/approved art references/performance/device/acceptance bản đầu. Giữ skill game-art/Harness gates khi sang visual; B1 cũ không tự mở.
-- Sau Q26 từng báo **ước lượng24 quyết định lớn**, không số cam kết khi scope đổi/chi tiết cần tách. Không bỏ coverage để ép đủ số. Chưa tính duyệt spec/visual/playtest, **không có quyền code chỉ vì gần hết câu hỏi**.
+Đây là các gói tài liệu cần làm cụ thể, **không phải bốn câu hỏi/loạt quiz mới**. Bản review phải gắn nguồn Q đã chốt và đánh dấu Proposed cho nội dung chưa duyệt; không tự Approved hoặc mở code.
 
-## Checkpoint compact
+| Gói | Nội dung cần đưa ra để review |
+| --- | --- |
+| Skill/support và điều khiển | Skill cards/compatibility/tradeoff/proc caps, timing/targeting/input matrix; kế thừa Q13–Q29/Q36–Q39/Q57/Q60, không hỏi lại vai trò/mana/CD/aim |
+| Economy/balance/modifier | Yield/chi phí nâng/giá unlock/điểm theo nấc, đường cong khó; catalog-range-cap effect theo PoE/chặng Q56. Rule nguồn/giữ-mất đã chốt, số baseline chưa là balance nghiệm thu |
+| Map/quái/Boss/reference | Reference Atlas đại diện/định lượng density, roster/affix/Boss moves-phase/geometry; quota cũ Q55 không approved, chưa đo footage/FPS hoặc duyệt artwork |
+| Flow/visual/phân việc | Bảng UI-state/save/input edge cases, tutorial/audio thích nghi, reference/mockup/task cards và acceptance touch/desktop theo Harness |
 
-Q35 ghi nhận từ user “y” + “btw compact context đi, chú ý giữ các câu hỏi”. Lưu bản ngắn này, rút CURRENT của HANDOFF để đọc nhanh; log đầy đủ không cắt/xóa Q01–Q34, chỉ ghi kết quả Q35. Chỉ Markdown, kiểm diff/đủ câu hỏi và links, không build/test/deploy/DDR/art/runtime. Không tuyên bố công cụ đã kích hoạt compact nếu chưa có kết quả thực tế từ app.
+- Cosmetics/điểm dư thành cosmetic/legacy archive/migration đã ngoài scope hoặc để sau Q42/Q59; không dùng như câu hỏi/blocker bắt buộc cho core. Không tự thêm armor/crit/gear/currency hay hệ mới chỉ vì chưa từng hỏi.
+- Chỉ còn clarification thật sự mới khi bản review phát hiện mâu thuẫn/khoảng trống không có trong log; phải nêu nguồn và proposal cụ thể. Không hỏi lại những gì index đã có hoặc chia mỗi thông số thành một lượt.
+- Trước formal spec/art/code đọc CURRENT, Master Plan, Harness, Design Bible, Reference Protocol và đúng card. B1 cũ vẫn PAUSED/REVERTED; brainstorm approval không là production/visual/playtest approval.
+
+## Checkpoint rà soát C06
+
+Giữ đủ61ID Q01–Q61 vàC01–C06; Q61 thu hồi, không tự có Q62. Audit xác nhận35ID sauQ26; ước lượng23–24 cũ sai và đã ngừng dùng. Giữ nguyên toàn bộ câu trả lời Q01–Q60, goals/lịch sử HANDOFF và package-lock/main; chỉ sửa notes/index/coverage/trạng thái Q61. Markdown-only, không build/tests/deploy/DDR/art/runtime. Request compact ởQ35 là lịch sử, không tuyên bố đã chạy compact mới.
