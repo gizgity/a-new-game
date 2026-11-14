@@ -50,7 +50,7 @@ Runtime/assets: NONE.
 Build/typecheck/game tests: NOT RUN — docs-only.
 Skill format/links/scope: PASS static checks (hai YAML fields hợp lệ, name/path/description đúng; không thiếu local links; không scaffold TODO). `quick_validate.py` chính thức NOT RUN: Python/py launcher của máy không khởi chạy được. Không cài dependency chỉ để kiểm Markdown; format kiểm bằng Node và đọc đối chiếu validator, không gọi đó là kết quả chạy Python.
 Protected audit:61/61 question blocks không đổi so cc6f54c; goals/history HANDOFF, package-lock, DDR/Bible/Harness/A-H2 hashes giữ nguyên. Review V1 bỏ banner mới khớp đúng hash bản cc6f54c. Main không đổi. Không runtime/assets/dependency mới.
-Commit/push: thực hiện sau audit; kiểm remote head khớp local commit, kết quả xem bàn giao. Không force/main/deploy.
+Commit/push:3f3e807 commit setup + toàn bộ các checkpoint notes trước đã push thành công tạo origin/codex/dungeon-skill-rework. Note xác nhận này là docs-only, push tiếp rồi kiểm remote head khớp local; SHA cuối xem git/bàn giao. Không force/main/deploy.
 Shutdown: chỉ sau push thành công, theo chỉ dẫn user một lần; không force đóng app chưa lưu.
 
 ### Walkthrough quy trình trên tài liệu (không phải runtime hoặc independent agent test)
