@@ -1,7 +1,7 @@
 # DUNGEON-PLAN-FLOW-02 — Milestone flow và next có chẩn đoán sửa
 
 Kind: IMPLEMENT (repository tooling/process, không runtime game)
-Status: TOOLING COMPLETE — pending branch delivery
+Status: DELIVERED — tooling/process, không milestone execution
 Revision: 1 · 2026-11-15
 Source: user sửa flow thành implement từng milestone, yêu cầu script cho `$dungeon-planning next`, sau đó yêu cầu suggest prompt sửa gap và push branch/tắt máy. Nguyên văn tại C10 trong DESIGN_CHECKLIST.
 Docs read: CURRENT/handoff skill, dungeon-planning/skill-creator, Harness/Master Plan/Design Bible/Reference Protocol/A-H2, flow/index/lock/P0/P1/S1/task headers và P1 DAG liên quan.
@@ -24,7 +24,7 @@ Visual refs: N/A cho tooling; không tạo artwork.
 - [x] AC2 Next/status phân biệt; script read-only, next chọn đúng một bước; thiếu/sai có reasons/path/repair prompt, không trình premature review.
 - [x] AC3 Không nhảy CODE/ART khi lock/ref/hash/approval/deps thiếu; không nhảy milestone vì technical-only completion; xử lý cycle/path ngoài repo/status sai.
 - [x] AC4 Có tests meaningful và real-repo dry-run; old plans/specs/tickets/log questions/protected files giữ nguyên hoặc lịch sử rõ; không game build/tests.
-- [ ] AC5 Push đúng branch được user yêu cầu, remote SHA verified trước shutdown; không force/main/Pages.
+- [x] AC5 Push đúng branch được user yêu cầu;8b271b5 remote đã verified, main63f4f3b không đổi; note bàn giao cuối push tiếp rồi đối chiếu SHA trước shutdown, không force/main/Pages.
 
 ## 4. Implementation / checks
 Files: flow/index/template/progress format, PROGRESS.json, next.mjs/next.test.mjs, skill/AGENTS, C10/RESUME/HANDOFF/card.
@@ -32,7 +32,7 @@ Focused tests: PASS27cases bằng Node built-in test; command `node --test docs/
 Runtime/game typecheck/build: NOT RUN — tooling only, không code game.
 Protected audit PASS:61question blocks/goals/lịch sử HANDOFF/DDR/Bible/Harness/Review/package-lock không đổi; P0/P1/S1/17tickets/report/inventory bytes giữ nguyên; hai archives khớp bytes trước sửa.35Markdown/351local links không thiếu, skill frontmatter static PASS, diff whitespace PASS cho thay đổi mới. Full staged check có15blank-EOF warnings từ ticket P1 đã có trước (bytes/hash giữ nguyên); không sửa hồ sơ approved chỉ để xóa whitespace. Validator Python chính thức NOT RUN do launcher cũ không khả dụng; không coi Node audit là đã chạy validator đó.
 Real dry-run: next/status trên repo trả DR-P1 / repair_planning, canExecute true, issue C10-P1-FLOW có path/fix/doneWhen/suggestedPrompt. Dry-run không execute action; không lock/approval/milestone acceptance mới. Script không tự kiểm chất lượng ảnh/nội dung thiết kế: skill phải đọc artifact thật và ghi gap nếu phát hiện.
-Push: pending sau commit; kiểm SHA remote trước shutdown theo yêu cầu user. Bao gồm hồ sơ planning trước task để remote đủ artifacts, không stage package-lock có sẵn.
+Push:8b271b5 thành công lên codex/dungeon-skill-rework, remote head verified; note bàn giao sau chỉ cập nhật docs, SHA cuối xem git/bàn giao trước shutdown. Bao gồm hồ sơ planning trước task để remote đủ artifacts, không stage package-lock có sẵn.
 Known gap thật: P1 đang NEEDS_REPAIR do legacy global gates/consumer prerequisites; script phải đề xuất repair_planning, không tự chạy task đó trong session sửa tool.
 
 ## 5. Handoff
