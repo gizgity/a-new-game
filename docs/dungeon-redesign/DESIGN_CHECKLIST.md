@@ -1,8 +1,8 @@
 # Dungeon redesign — checklist trước implementation
 
-Task: DUNGEON-BRAINSTORM-01 · Revision 72 · 2026-11-14.
+Task: DUNGEON-BRAINSTORM-01 · Revision 73 · 2026-11-14.
 
-Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C09;Q61 thu hồi. User yêu cầu phần còn thiếu ở dạng câu hỏi để kiểm tra: [REVIEW_QUEUE.md](REVIEW_QUEUE.md) có12mụcR01–R12. [Bản V1](REVIEW_V1.md) đã được duyệt12/12qua “all y”, R12 amended tại C09; không còn câu review baseline chờ duyệt. C07 đính chính câu trả lời “0” của agent; không hỏi lại contract đã chốt hoặc tự sinh thêm quiz. Cosmetic ngoài scope, chưa implementation.
+Đọc nhanh: [RESUME.md](RESUME.md). Giữ đầy đủ Q01–Q61/C01–C10;Q61 thu hồi. User yêu cầu phần còn thiếu ở dạng câu hỏi để kiểm tra: [REVIEW_QUEUE.md](REVIEW_QUEUE.md) có12mụcR01–R12. [Bản V1](REVIEW_V1.md) đã được duyệt12/12qua “all y”, R12 amended tại C09; không còn câu review baseline chờ duyệt. C07 đính chính câu trả lời “0” của agent; không hỏi lại contract đã chốt hoặc tự sinh thêm quiz. Cosmetic ngoài scope, chưa implementation.
 Trạng thái: APPROVED DESIGN BASELINE; setup planning workflow, detailed specs NOT_LOCKED, chưa quyền implementation.
 Nguồn: hội thoại hiện tại, không permalink. User yêu cầu “đồng ý, list các vấn đề còn tồn đọng để clear hết trước khi bắt đầu”.
 
@@ -908,3 +908,23 @@ NEXT ACTION HIỆN HÀNH: user review REVIEW_V1 theo R01–R12; ghi kết quả 
 - **Git/kết thúc:** user cho push đúng branch codex/dungeon-skill-rework rồi shutdown cuối lượt. Không merge/main/Pages, không stage package-lock có diff trước task. Lệnh tắt máy chỉ cho lượt này, không quyền tự tắt ở session sau.
 
 NEXT ACTION HIỆN HÀNH SAU SETUP: DỪNG; chờ user giao planning milestone/task cụ thể trong session mới, không tự mở backlog.
+
+
+### C10 — Làm rõ flow từng milestone và lệnh next có prompt sửa (2026-11-15)
+
+Nguồn: user, hội thoại hiện tại không permalink. Nguyên văn:
+
+> đổi flow 1 xíu, m hiểu sai ý r, implement từng milestone, k phải plan hết toàn bộ milestone r mới làm 1 lần, xong milestone nào thì bắt đầu làm cái đó. skill nên có script để tự check tiến độ đang tới đâu và bắt đầu bước kế tiếp. xài như thế này "$dungeon-planning next"
+
+> đồng thời lúc check nếu thiếu/sai ở đâu thì suggest prompt để sửa chỗ đó. k phải chỉ dừng chờ review là xong trong khi m đã bik nó thiếu và k thể đạt review được
+
+> làm xong thì push lên branch r tắt máy dùm t luôn
+
+- Agent đã hiểu sai ý planning trước đó thành global lock. Hiệu lực sửa: **planning→khóa specs→implement→nghiệm thu từng milestone**; không chờ detailed planning P2–P6 để implement P1. P0 giữ vai trò điều phối/coverage, không global implementation gate. Không đổi gameplay/balance/các approval R01–R12/P0/P1 đã có.
+- User next là giao agent tự kiểm và thực hiện một bước hợp lệ; status chỉ kiểm. Không hỏi lại ID/assignment routine. Script read-only chọn action từ PROGRESS/tickets/artifacts/deps/hash/approval; agent đọc nội dung thật và làm action, rồi dừng sau một bước. Chỉ lần next sau mới mở bước/milestone tiếp; user spec/visual/playtest approval vẫn giữ riêng.
+- Khi biết thiếu/sai: nêu path/ticket, việc sửa, điều kiện đạt và suggestedPrompt; next làm bước sửa trong khả năng/scope, không trình review bản thiếu hoặc chỉ dừng chờ review. Nếu cần input/decision/tool thật thì chỉ rõ blocker và prompt tiếp tục, không giả evidence.
+- [WORKFLOW rev2](planning/WORKFLOW.md), [lock index theo milestone](planning/SPEC_LOCK.md), [progress format](planning/PROGRESS_FORMAT.md), [selector](planning/next.mjs) và skill/AGENTS thay global flow. Bản WORKFLOW/global lock audit cũ lưu nguyên bytes ở *_R1_HISTORY.md; hồ sơ P0/P1/S1/17tickets và audit report/inventory giữ nguyên cho tới task migration.
+- Initial progress nhận P1 đang dở, ghi gap C10-P1-FLOW cụ thể. Dry-run chỉ kiểm tool, **không thực hiện** action repair_planning được đề xuất trong session sửa workflow. Không gán lock/target/milestone acceptance mới.
+- Task DUNGEON-PLAN-FLOW-02: tools/process+tests+docs, user cho push branch rồi shutdown một lần. Giữ diff package-lock trước task, không runtime/assets/main/Pages/DDR/Bible.
+
+NEXT ACTION SAU BÀN GIAO: user gọi $dungeon-planning next trong session mới; agent chạy selector và thực hiện đúng một bước sửa/planning được chọn, không quay lại global-lock packet làm gate.

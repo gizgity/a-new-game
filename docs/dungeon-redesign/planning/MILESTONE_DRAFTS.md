@@ -1,8 +1,12 @@
 # Draft intent tickets — Dungeon Rework
 
-Revision1 · 2026-11-14 · nguồn: R12 V1 được user duyệt kèm flow planning.
+> **C10 / WORKFLOW rev2 (2026-11-15) ưu tiên:** thực hiện từng milestone P1→P2→P3→P4→P5→P6 qua plan→lock→implement→accept. P0 điều phối; global-lock/đợi P2–P6 trong snapshot bên dưới không còn là gate. Approval và intent cũ giữ nguyên; current progress xem [PROGRESS.json](PROGRESS.json), gọi dungeon-planning next để chọn một bước, thiếu/sai phải có prompt sửa.
 
-**Tất cả là DRAFT, chưa milestone nào được kích hoạt.** File ghi intent trước; detailed task tickets chỉ tạo khi user mở planning milestone trong session mới, theo [WORKFLOW](WORKFLOW.md). Thứ tự dưới là dependency dự kiến của implementation, không phải quyền code lần lượt ngay sau khi planning từng mốc. Global spec lock phải xong trước implementation đầu tiên.
+Revision5 · 2026-11-15 · chỉ cập nhật tiến độ audit toàn rework; intent R12 và approvals P0/P1 giữ nguyên.
+
+**DR-P0/P1 PLANNING; P2–P6 còn DRAFT, chưa kích hoạt.** [Plan P0 rev1](DR-P0_PLAN.md) đã được user “y” duyệt ngày2026-11-15 (planning only); chưa hoàn tất toàn P0/lock. User mở planning DR-P1 riêng ngày2026-11-15: [plan/S1 rev2](DR-P1_PLAN.md) APPROVED — PLANNING ONLY qua user “y”,2026-11-15,15tickets có thật nhưng chỉ PLAN-01 được giao audit/docs. File này giữ intent; detailed task tickets chỉ tạo khi user mở đúng planning milestone, theo [WORKFLOW](WORKFLOW.md). Thứ tự dưới là dependency dự kiến của implementation; thứ tự **planning** tại plan P0 §6. Không tự code sau planning từng mốc; global spec lock phải xong trước implementation đầu tiên.
+
+**Audit hiện tại:** user giao rà soát toàn rework/spec-lock review. [Report rev1](DR-P0_CLOSURE.md), [inventory rev1](DR-P0_LOCK_INVENTORY.md), [packet rev1](SPEC_LOCK.md) có thật; DR-P0-VERIFY-01 rev2 audit xong/closure BLOCKED, L01–L08 OPEN, lock rev0 NOT_LOCKED.14child P1 rev3 chỉ sửa metadata approval, chưa execution/approval mới. Audit không mở detailed planning P2–P6 hoặc child SPEC/CONCEPT.
 
 ## DR-P0 — Chốt hồ sơ và coverage planning
 
@@ -12,7 +16,8 @@ Revision1 · 2026-11-14 · nguồn: R12 V1 được user duyệt kèm flow plann
 - **Planning cần làm:** audit các gap R06/R11/R12; xác định nơi giữ từng spec; lập coverage matrix và thứ tự planning P1–P6. Không tự tạo số balancing mới.
 - **Dependencies:** setup workflow; review V1 + C09. P0 chỉ hoàn tất khi các đầu vào planning từ P1–P6 đủ lock, không phải chỉ duyệt12câu là xong P0.
 - **Acceptance:** không requirement mồ côi; không blocking TBD trong scope khóa; user khóa đúng revision manifest.
-- **Còn thiếu:** detailed plans, Atlas comparison, visual targets, device acceptance plan. **Status: DRAFT.**
+- **Đã chuẩn bị:** [coverage/deps/thứ tự planning rev1](DR-P0_PLAN.md), [PLAN-01](tickets/DR-P0-PLAN-01.md) ACCEPTED — USER PLAN APPROVAL; [VERIFY-01 rev2](tickets/DR-P0-VERIFY-01.md) đã được giao audit toàn rework, report/inventory/packet rev1 chờ review; closure BLOCKED vì thiếu inputs.
+- **Còn thiếu:** detailed P2–P6/specs/targets, closure P1 (Atlas/targets/consumer contracts), device acceptance plan và user lock. **Status: PLANNING**, chưa SPEC_READY/LOCKED; P0 rev1 đã được duyệt planning. P1 đã mở riêng; audit closure P0 hiện đã giao, chưa đủ inputs để đóng.
 
 ## DR-P1 — Dungeon world và camera
 
@@ -21,8 +26,9 @@ Revision1 · 2026-11-14 · nguồn: R12 V1 được user duyệt kèm flow plann
 - **Planning cần tách:** world/seed/route contract; collision/navigation; camera two-platform; minimap/fog; biome concept→source→render; scenario entry/biên/4góc. Audit source để quyết định module thực sự cần, không scaffold engine.
 - **IN/OUT:** R06/R11 phần world; chưa tree progression/đủ skill/đủ Boss.
 - **Dependencies:** baseline đã duyệt; concept/mockup đúng scale. Implementation phụ thuộc global lock, không bắt đầu trong session planning.
-- **Acceptance:** route đủ kill/elite weights, không đòi vét nhánh, không mắc collider; camera/HUD đúng target touch–desktop.
-- **Còn thiếu:** thuật toán/contract cụ thể, reference mapping Atlas, environment/camera target. **Status: DRAFT.**
+- **Acceptance:** world core P1 theo S1§11: fixture seed/query/route budgets+annotated feasibility, không ép vét nhánh/kẹt collider; camera/minimap ngoài playRect đọc được320px và đủ matrix R12, visual/user world approval riêng. Combat/full-save/full-run chuyển P2–P6, không dùng PARTIAL để miễn core; release ba biến thể kiến trúc/random đường vẫn cần spec/targets trước global lock.
+- **Đã chuẩn bị:** [plan rev2](DR-P1_PLAN.md), [S1 world spec rev2](specs/DR-P1_WORLD.md),15tickets PLAN/SPEC/CONCEPT/ART/CODE/VERIFY, source/assets audit, coverage/deps/gaps. **Status: PLANNING — hồ sơ rev2 APPROVED PLANNING ONLY**, chỉ PLAN-01 được giao; child execution NONE.
+- **Còn thiếu:** Atlas sample/comparison,3target approved, K-E placement/envelopes và contracts/closure K-B/K-X/K-U, closure S1/global lock. Không SPEC_READY/READY hoặc tự thực hiện ticket.
 
 ## DR-P2 — Một map combat hoàn chỉnh
 
@@ -74,4 +80,4 @@ Revision1 · 2026-11-14 · nguồn: R12 V1 được user duyệt kèm flow plann
 - **Acceptance:** R12 input/FPS/readability được đo đúng context; vi/en; flow/reload đúng; phần chưa kiểm ghi NOT CHECKED, user acceptance có nguồn thực.
 - **Còn thiếu:** device plan, audio/UI targets và detailed evidence checklist. **Status: DRAFT.**
 
-Các mục “còn thiếu” là đầu vào cho planning, không mời agent tự làm tiếp trong session này. Không task con nào đã được giao từ file draft.
+Các mục “còn thiếu” là đầu vào planning, không tự mở việc. Assignment hiện tại chỉ audit toàn rework theo DR-P0-VERIFY-01; audit packet rev1 chờ user review, L01–L08 chưa đóng. P2–P6 detailed planning/child SPEC/CONCEPT/ART/CODE/VERIFY và implementation cần đúng session assignment. **ONE NEXT ACTION: User review audit packet rev1 và findings L01–L08; dừng, chưa implementation.**

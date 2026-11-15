@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "source": "C10 — user đổi flow theo từng milestone,2026-11-15; next chọn một bước. P0 là điều phối, không global implementation gate.",
+  "milestones": [
+    {
+      "id": "DR-P1",
+      "plan": "docs/dungeon-redesign/planning/DR-P1_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P1_LOCK.json",
+      "requiredSpecs": [
+        "docs/dungeon-redesign/planning/specs/DR-P1_WORLD.md"
+      ],
+      "requiredTargets": [
+        "ENV-T01",
+        "CAMERA-T01",
+        "MINIMAP-T01"
+      ],
+      "planningAudit": {
+        "status": "NEEDS_REPAIR",
+        "outputs": [],
+        "issues": [
+          {
+            "id": "C10-P1-FLOW",
+            "file": "docs/dungeon-redesign/planning/DR-P1_PLAN.md",
+            "detail": "P1/S1 và child tickets còn global-lock/future-milestone prerequisites từ flow cũ; chưa reconcile scope world P1 và registry",
+            "fix": "Tạo revision cập nhật quy trình P1/S1/tickets: thay global gate bằng lock P1; chốt interface tối thiểu world cần ngay trong P1, giữ gap Atlas/feasibility/targets thành task design cụ thể; tách kiểm tích hợp ở milestone sau. Đối chiếu thứ tự/dependencies PROGRESS.json với plan thật và lập readiness audit. Giữ approval rev2 làm lịch sử; không tự giảm density, bỏ core AC, duyệt target hay implement.",
+            "doneWhen": "P1 có plan/tasks/coverage/dependencies nhất quán theo C10, mọi gap có việc sửa và output cụ thể, không chờ P2–P6 planning hoàn tất; planningAudit chỉ PASS khi đối chiếu artifact thật"
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "id": "DR-P1-PLAN-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-PLAN-01.md",
+          "dependsOn": [],
+          "completion": {
+            "technical": "PASS",
+            "outputs": [
+              {
+                "path": "docs/dungeon-redesign/planning/DR-P1_PLAN.md",
+                "sha256": "81ceecb8afae9ec4befda6106315d8aa752da5a635a6aef31a17a8610dde3563",
+                "normalization": "lf"
+              },
+              {
+                "path": "docs/dungeon-redesign/planning/specs/DR-P1_WORLD.md",
+                "sha256": "2d58e8e1e0f40520d8877d3eb70e104aad5ae89f5c25b51daaa28285a5569740",
+                "normalization": "lf"
+              }
+            ],
+            "approval": {
+              "quote": "y",
+              "date": "2026-11-15",
+              "source": "Approval record trong DR-P1_PLAN.md rev2, hội thoại session planning không permalink; chỉ planning"
+            }
+          }
+        },
+        {
+          "id": "DR-P1-SPEC-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-SPEC-01.md",
+          "dependsOn": [
+            "DR-P1-PLAN-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CONCEPT-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CONCEPT-01.md",
+          "dependsOn": [
+            "DR-P1-PLAN-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CONCEPT-02",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CONCEPT-02.md",
+          "dependsOn": [
+            "DR-P1-PLAN-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CONCEPT-03",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CONCEPT-03.md",
+          "dependsOn": [
+            "DR-P1-CONCEPT-02"
+          ]
+        },
+        {
+          "id": "DR-P1-ART-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-ART-01.md",
+          "dependsOn": [
+            "DR-P1-CONCEPT-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-01.md",
+          "dependsOn": [
+            "DR-P1-SPEC-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-02",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-02.md",
+          "dependsOn": [
+            "DR-P1-CODE-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-03",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-03.md",
+          "dependsOn": [
+            "DR-P1-CODE-01",
+            "DR-P1-CONCEPT-02"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-04",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-04.md",
+          "dependsOn": [
+            "DR-P1-CODE-01",
+            "DR-P1-CODE-02"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-05",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-05.md",
+          "dependsOn": [
+            "DR-P1-CODE-03",
+            "DR-P1-CODE-04",
+            "DR-P1-CONCEPT-03"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-06",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-06.md",
+          "dependsOn": [
+            "DR-P1-CODE-01",
+            "DR-P1-CODE-02",
+            "DR-P1-CODE-03",
+            "DR-P1-ART-01"
+          ]
+        },
+        {
+          "id": "DR-P1-CODE-07",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-CODE-07.md",
+          "dependsOn": [
+            "DR-P1-CODE-01",
+            "DR-P1-CODE-02",
+            "DR-P1-CODE-03",
+            "DR-P1-CODE-04",
+            "DR-P1-CODE-05",
+            "DR-P1-CODE-06"
+          ]
+        },
+        {
+          "id": "DR-P1-VERIFY-01",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-VERIFY-01.md",
+          "dependsOn": [
+            "DR-P1-CODE-07"
+          ]
+        },
+        {
+          "id": "DR-P1-VERIFY-02",
+          "file": "docs/dungeon-redesign/planning/tickets/DR-P1-VERIFY-02.md",
+          "dependsOn": [
+            "DR-P1-CODE-07",
+            "DR-P1-VERIFY-01",
+            "DR-P1-ART-01"
+          ]
+        }
+      ],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    },
+    {
+      "id": "DR-P2",
+      "plan": "docs/dungeon-redesign/planning/DR-P2_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P2_LOCK.json",
+      "requiredSpecs": [],
+      "requiredTargets": [],
+      "planningAudit": {
+        "status": "NOT_RUN",
+        "issues": [],
+        "outputs": []
+      },
+      "tasks": [],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    },
+    {
+      "id": "DR-P3",
+      "plan": "docs/dungeon-redesign/planning/DR-P3_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P3_LOCK.json",
+      "requiredSpecs": [],
+      "requiredTargets": [],
+      "planningAudit": {
+        "status": "NOT_RUN",
+        "issues": [],
+        "outputs": []
+      },
+      "tasks": [],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    },
+    {
+      "id": "DR-P4",
+      "plan": "docs/dungeon-redesign/planning/DR-P4_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P4_LOCK.json",
+      "requiredSpecs": [],
+      "requiredTargets": [],
+      "planningAudit": {
+        "status": "NOT_RUN",
+        "issues": [],
+        "outputs": []
+      },
+      "tasks": [],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    },
+    {
+      "id": "DR-P5",
+      "plan": "docs/dungeon-redesign/planning/DR-P5_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P5_LOCK.json",
+      "requiredSpecs": [],
+      "requiredTargets": [],
+      "planningAudit": {
+        "status": "NOT_RUN",
+        "issues": [],
+        "outputs": []
+      },
+      "tasks": [],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    },
+    {
+      "id": "DR-P6",
+      "plan": "docs/dungeon-redesign/planning/DR-P6_PLAN.md",
+      "lock": "docs/dungeon-redesign/planning/locks/DR-P6_LOCK.json",
+      "requiredSpecs": [],
+      "requiredTargets": [],
+      "planningAudit": {
+        "status": "NOT_RUN",
+        "issues": [],
+        "outputs": []
+      },
+      "tasks": [],
+      "review": {
+        "ready": false,
+        "outputs": [],
+        "issues": []
+      },
+      "acceptance": null
+    }
+  ]
+}

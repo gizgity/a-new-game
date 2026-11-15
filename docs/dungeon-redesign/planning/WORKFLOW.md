@@ -1,73 +1,66 @@
-# Dungeon Rework — Planning → Spec Lock → Implementation
+# Dungeon Rework — Flow theo từng milestone
 
-Revision: 1 · 2026-11-14 · Task: DUNGEON-PLAN-FLOW-01.
+Revision: 2 · 2026-11-15 · DUNGEON-PLAN-FLOW-02 · nguồn C10 trong DESIGN_CHECKLIST.
 
-Áp dụng cho dungeon/skill rework trên `codex/dungeon-skill-rework`. Đây là hướng dẫn thực thi yêu cầu mới của user tại C09 trong [log](../DESIGN_CHECKLIST.md), bổ sung R12 đã duyệt. Không thay Design Harness, Art Bible hoặc quy tắc DDR.
+**Hiệu lực mới:** plan milestone → hoàn thiện spec/concept → user khóa spec milestone → implement từng ticket → nghiệm thu milestone → milestone kế. Không cần planning xong toàn rework mới được implement P1. P0 là hồ sơ điều phối/coverage, không là global implementation gate.
 
-## Trạng thái và quyền hiện tại
+Bản rev1 có cả progress audit trước thay đổi được giữ nguyên ở [WORKFLOW_R1_HISTORY.md](WORKFLOW_R1_HISTORY.md); audit lock global cũ ở [SPEC_LOCK_R1_HISTORY.md](SPEC_LOCK_R1_HISTORY.md). Những yêu cầu global lock/chờ P2–P6 trong hồ sơ cũ được C10 supersede **về quy trình**, không xóa approval hay đổi gameplay/spec đã duyệt. Plans/specs/tickets P0/P1 giữ bytes hiện có cho tới task migration cụ thể; không tự xem chúng đã đạt lock P1.
 
-- R01–R11 được duyệt thiết kế V1; R12 được duyệt **kèm flow planning mới**. Nguồn: user “all y” và đoạn bổ sung R12, ngày2026-11-14, hội thoại hiện tại không permalink.
-- Approval đó chốt baseline thiết kế để lập kế hoạch. Chưa có detailed tickets/spec lock/visual target mới, chưa cho phép bắt đầu implementation.
-- Session này chỉ dựng workflow, instructions, skill, templates và các draft intent. User yêu cầu các milestone/task/implementation bắt đầu trong **session mới**. Không tự kích hoạt milestone khi resume chỉ để hoàn thành backlog.
-- Bộ [draft milestone](MILESTONE_DRAFTS.md) chưa phải task đã mở. [SPEC_LOCK.md](SPEC_LOCK.md) hiện `NOT_LOCKED`.
+## 1. Cách dùng
 
-## 1. Hai cấp ticket, một nguồn spec
+Trong session mới ở branch codex/dungeon-skill-rework, gọi **$dungeon-planning next**. Skill chạy [next.mjs](next.mjs) để đọc [PROGRESS.json](PROGRESS.json), chọn một bước hợp lệ và thực hiện bước đó. User không phải nhớ ID đang tới đâu hoặc tự viết prompt dài mỗi lần.
 
-**Milestone draft** mô tả *vì sao cần mốc này và kết quả người chơi cần nhận được*. Có intent, scope/anti-scope, dependency, output cần chuẩn bị, acceptance và câu chưa giải quyết. Không giả rằng một nhãn “P3 Build” đủ chỉ dẫn cho agent viết code.
+Lệnh kiểm tra thuần đọc:
 
-**Task ticket chi tiết** mô tả *một thay đổi cụ thể cần làm để đạt intent*. Khi một milestone được mở để planning trong session mới, lập các ticket con cần thiết theo [mẫu](TASK_TICKET_TEMPLATE.md). Phân loại PLAN/SPEC/CONCEPT/ART/CODE/VERIFY theo công việc thật, không tạo đủ sáu loại cho mọi thay đổi. Mỗi ticket chỉ một outcome; cùng milestone không phải lý do gộp nhiều outcome độc lập.
+~~~text
+node docs/dungeon-redesign/planning/next.mjs status
+node docs/dungeon-redesign/planning/next.mjs next --json
+~~~
 
-Spec giữ ở một nơi có revision, ticket dẫn đúng mục thay vì copy số liệu sang nhiều bảng. [Review V1](../REVIEW_V1.md) là baseline đã duyệt, không phải đầy đủ chi tiết implementation. Nếu phát hiện thiếu dữ kiện hoặc mâu thuẫn khi planning, đề xuất cách giải quyết kèm impact; không hỏi lại quyết định đã có, không tự đổi thiết kế để làm cho tiện.
+Script chỉ phân tích và trả action/reasons/suggestedPrompt; không tự sửa file, gọi shell/LLM, tạo approval hoặc thực thi code game. **Skill/agent thực hiện action** khi user gọi next. Chạy CLI để test trong task sửa workflow không tự mở ticket được selector đề xuất.
 
-## 2. Flow bắt buộc
+Mỗi lần next = một bước/task, không chạy xuyên nhiều ticket/milestone. Nếu đang có task IN_PROGRESS hợp lệ thì ưu tiên tiếp tục. Sau hoàn tất, cập nhật progress/handoff và dừng; lần next sau mới chọn bước tiếp. Khi milestone đã có user acceptance thật, lần next tiếp theo tự chọn planning milestone sau: P1→P2→P3→P4→P5→P6. Chỉ thị user mới rõ phạm vi tiếp tục ưu tiên.
 
-| Bước | Làm gì / artifact | Điều kiện qua bước |
+## 2. Flow và điều kiện
+
+| Giai đoạn | Bước tự chọn khi next | Điều kiện / output |
 | --- | --- | --- |
-| F0 · Setup | Workflow, skill/instructions, mẫu ticket và draft intent | Tài liệu/link/gate nhất quán; không thực hiện milestone gameplay |
-| F1 · Mở planning milestone | User giao milestone cụ thể trong session mới; đọc intent/dependencies và nguồn đã duyệt | Ghi milestone ID, phạm vi session, outcome planning; chưa CODE/ART production |
-| F2 · Phân rã chi tiết | Audit code/assets liên quan, tạo ticket con có việc cần làm, output, deps, AC, refs, risk và verify | Coverage đủ scope; không ticket rỗng, không dependency vòng, có thứ tự thực thi |
-| F3 · Hoàn thiện specs/targets | Thực hiện task SPEC/CONCEPT được giao; nêu schema/state/timing/geometry/input/UI/art/audio cụ thể theo nhu cầu | Hết TBD chặn implementation; concept/mockup phù hợp được user duyệt đúng scope/revision |
-| F4 · Review và khóa specs | Tổng hợp manifest [SPEC_LOCK](SPEC_LOCK.md), đối chiếu mọi milestone thuộc scope phát hành | User xác nhận khóa đúng lock revision sau khi xem artifact cụ thể; không tự khóa từ commit hoặc “all y” cũ |
-| F5 · Implementation | Session mới mở ticket cụ thể đã sẵn sàng; dùng task card Harness | Lock còn hiệu lực, dependency đúng, approved refs có thật, ticket được giao; một thay đổi/prompt |
-| F6 · Verify/accept | Tests/build phù hợp, actual-vs-target, user visual/playtest; cập nhật handoff | Technical/visual/playtest tách kết quả; dừng checkpoint được giao |
+| Chưa có plan | plan_milestone | Đọc draft intent, audit source, tạo plan/spec/tickets/coverage/deps của **milestone hiện tại** |
+| Plan sai/thiếu | repair_planning | Nêu gap, path và điều kiện đóng; sửa phần độc lập đã rõ, không trình review giả |
+| SPEC/CONCEPT chưa làm | execute_task | Làm một task design-only có dependency đủ, theo game-art nếu artwork; chưa production |
+| Task BLOCKED/PARTIAL hoặc review thiếu evidence | repair_task | Đóng blocker cụ thể, sửa/bổ sung artifact thật và kiểm lại |
+| Plan/design hoàn tất | audit_planning → prepare_lock | Chốt scope, contracts tối thiểu, coverage, targets và exact revisions/hashes của milestone |
+| Lock thiếu/sai/stale | repair_lock | Bổ sung/cập nhật artifact và delta trước khi xin review; không tự ghi approval |
+| Lock đủ để review | request_lock_approval | Trình revision/path cụ thể cho user khóa **milestone này** |
+| Lock valid + task ready | execute_task | Một ART/CODE/VERIFY đúng dependency và A-H2, không tự mở sibling |
+| Runtime/task review chưa đủ | repair_task hoặc prepare_milestone_review | Có actual-vs-target/technical evidence/hướng dẫn playtest trước khi xin duyệt |
+| Đủ package | request_task_review / request_milestone_acceptance | Xin đúng quyết định còn thiếu, dẫn artifact thực; next không tự là approval |
+| Milestone được nghiệm thu | plan_milestone của mốc sau | Không nhảy mốc chỉ vì build PASS hoặc trạng thái đã gõ ACCEPTED |
 
-**Gate toàn rework:** hoàn thành planning và khóa specs cho toàn scope release đã thống nhất trước implementation đầu tiên. Không tự thu nhỏ lock còn một subsystem để code sớm; thay scope phải do user chỉ dẫn rõ. Có thể làm các task design-only được giao để hoàn thiện spec/target trước lock; không tạo asset production hoặc sửa runtime dưới nhãn “prototype”, “spike” hay “concept”.
+Nếu next trả request_* nhưng agent đọc artifact thấy còn thiếu/sai, phải ghi issues và chuyển thành repair_* kèm prompt sửa, không dừng với câu “chờ review” chung chung. Script kiểm cấu trúc/file/hash/deps; nội dung thiết kế, chất lượng ảnh và đúng scope approval vẫn phải do agent đối chiếu thật. Không coi metadata PASS là evidence visual/gameplay.
 
-Nếu cần minh họa world mới khi renderer chưa có: concept ghép trên baseline runtime thật, có annotation geometry/camera mới, ghi rõ phần giả lập và phần chưa kiểm. Không coi composite là renderer dungeon đã chạy; không sửa production để lách gate. Artifact chưa chứng minh đủ target thì vẫn chưa qua F3/F4.
+## 3. Ticket và dependency
 
-## 3. Planning phải chi tiết đến đâu?
+Giữ hai cấp: [milestone intent](MILESTONE_DRAFTS.md) giải thích outcome; [task ticket](TASK_TICKET_TEMPLATE.md) mô tả một thay đổi đủ chi tiết để session mới làm đúng. Kind PLAN/SPEC/CONCEPT/ART/CODE/VERIFY, chỉ tạo loại cần thực tế. Audit source trước ghi path/API; contracts/state/input/cancel/pause/save/error/geometry/refs/AC/verify cần rõ theo scope.
 
-Ticket phải đủ để một session mới làm đúng mà không đoán thiết kế. Chọn các mục thực sự liên quan:
+P1 có thể hoàn tất world và dùng interface/fixture đã khóa để thể hiện ranh giới combat/save tương lai. Fixture phải ghi injected/composite, không giả là hệ combat/full-save đã chạy. Không bắt full planning/implementation P2–P6 làm prerequisite cho P1; cũng không bỏ core world AC, giảm mật độ hoặc bịa feasibility để né dependency. Khi hợp đồng tối thiểu cần quyết định mới, chuẩn bị proposal cụ thể ngay trong planning milestone hiện tại.
 
-- **CODE:** current behavior và call site/file đã audit, state/data contracts, thuật toán/thứ tự sự kiện, input/output, thông số từ spec, lifecycle/pause/save/error, integration boundary; acceptance và focused tests có expected result. Paths chưa audit ghi `UNVERIFIED`, không bịa filename như thể đã tồn tại. Không khóa class/API giả định khi chưa đọc source.
-- **CONCEPT:** đối tượng/states cần minh họa, baseline refs thật, scale/camera/viewport, before→candidate, must-match/flexible/must-not-infer, ảnh/mockup phải bàn giao, consistency checks và câu cần user duyệt. Concept là output thiết kế, không runtime asset.
-- **ART production:** approved concept/target IDs+revision, danh sách source cần tạo riêng, state/pose/size/pivot/alpha/format, prompt+inputs/provenance, export và cách kiểm; không crop concept làm sprite. Ticket này có thể được lên kế hoạch trước lock, chưa được thực hiện trước gate.
-- **UI/input:** màn/state chuyển tiếp, vi/en keys, layout/safe area/touch target, giữ-thả/cancel/fresh-press, keyboard/mouse, resize/blur; không chỉ ghi “làm HUD”.
-- **VERIFY:** scenario/seed/build/version, bước vào tình huống, thao tác và expected result, platform/viewport/device thực, evidence phải lưu và coverage chưa kiểm. Không tạo comprehensive QA framework.
-- **SPEC/PLAN:** vấn đề cần giải, nguồn đã chốt, artifact cần hoàn thiện, dependency và điều kiện đủ rõ để lock. Có thể đánh dấu NOT APPLICABLE kèm lý do ngắn cho mục không liên quan.
+Tách spec dependency (contract cần rõ) khỏi task/artifact dependency (output phải có). Không để concept chờ renderer cần chính concept ấy; không để user playtest tương lai thành gate vòng chặn code đầu tiên. Mọi requirement milestone có owner/ticket/spec/evidence, phần tích hợp ở mốc sau giữ rõ owner và điều kiện kiểm lại.
 
-Ngoài chi tiết từng ticket, milestone cần **coverage matrix**: từng requirement Rxx/AC → ticket(s) + spec mục + evidence cần có. Không để việc quan trọng chỉ nằm trong prose hoặc “sẽ bổ sung lúc code”. Ticket VERIFIED/ACCEPTED trước đó chỉ được dùng làm dependency khi evidence đúng revision/scope.
+## 4. Lock từng milestone
 
-## 4. Trạng thái và mở task
+[SPEC_LOCK.md](SPEC_LOCK.md) là index hiện hành. Mỗi milestone có manifest riêng khi đủ artifacts, không tạo hàng loạt lock rỗng. CODE/ART production/integration chỉ sau user lock revision của milestone và approved target đúng scope. Review R01–R12 là baseline thiết kế, không thay lock/visual approval chi tiết.
 
-Milestone: `DRAFT → PLANNING → SPEC_READY → LOCKED → IN_PROGRESS → NEEDS_REVIEW → ACCEPTED`. `DRAFT` được tạo trước để giữ intent; không là lệnh bắt đầu. User mở planning không tự mở implementation.
+Đổi spec/ref sau lock: delta→impact→đánh dấu affected lock STALE→review/khóa lại đúng phần đổi. Giữ lịch sử approval và assets cũ, không tự sửa Bible/DDR. Thay đổi milestone sau làm ảnh hưởng mốc đã nghiệm thu thì ghi regression/revalidation cần chạy; không giả approval cũ phủ mọi thay đổi mới.
 
-Task: `DRAFT → PLANNED → SPEC_READY → READY → IN_PROGRESS → NEEDS_REVIEW → ACCEPTED`; có thể `BLOCKED / DEFERRED / SUPERSEDED` với lý do. Task SPEC/CONCEPT được giao có thể vào IN_PROGRESS trước global lock để tạo artifact thiết kế; task CODE/ART production/integration chỉ READY sau lock. Ticket “cần làm” không đồng nghĩa “đã được giao làm”.
+## 5. Progress và prompt sửa
 
-Một execution session chỉ mở task được user giao và dùng card từ [A-H2](../../combat-v2/TASK_CARD_TEMPLATE.md). Planning ticket có thể điền sẵn nội dung dự kiến cho card; **không tạo card với `APPROVED FOR IMPLEMENTATION` khi chỉ có design approval**. Ghi session scope ở CURRENT; khi xong dừng, không tự chạy sibling ticket hay milestone kế tiếp. User có thể giao một nhóm cụ thể, vẫn thực hiện tuần tự từng thay đổi độc lập và giữ gate từng task.
+[PROGRESS_FORMAT.md](PROGRESS_FORMAT.md) định nghĩa ledger và bằng chứng. PROGRESS.json giữ thứ tự/path/dependency/readiness/completion records; trạng thái task đọc trực tiếp header ticket, không lưu bản status thứ hai. Specs/tickets vẫn giữ nội dung chuyên môn; handoff là snapshot, không là database/router.
 
-## 5. Spec lock và đổi thiết kế
+Mỗi chẩn đoán phải có **vấn đề → file/ticket → việc sửa → điều kiện đạt → suggestedPrompt**. Prompt không chỉ nói “review lại”. Nếu có cách sửa an toàn trong scope next thì agent làm một bước sửa, không bắt user dán lại prompt. Nếu cần input thật/approval/tool còn thiếu, nêu rõ lý do và đưa prompt tiếp tục cụ thể; không chế ảnh/số đo/approval cho đủ trạng thái.
 
-Lock manifest bắt buộc có: lock ID/revision, scope phát hành, danh sách milestone/ticket, exact spec/ref revisions + path và hash/commit, source user approval, dependency/coverage audit, unresolved items, điều kiện mở implementation. Với visual task, TARGET phải tồn tại/mở được/approved, không chỉ có mô tả “sẽ tạo art”.
+Kết thúc bước: sửa header status thật, ghi output/proof/checks/issues vào progress, chạy selector **status** để đối chiếu, cập nhật handoff một next action. Không tự chạy action thứ hai. Approval người dùng chỉ ghi khi có quote/date/source đúng artifact/revision.
 
-User khóa một revision cụ thể **sau khi** manifest và artifact đầy đủ. Agent chỉ ghi `LOCKED` bằng bằng chứng đó; không nâng trạng thái từ việc hoàn thành checklist kỹ thuật. Approval R01–R12 là input F2/F3, không tự là F4.
+## 6. Ranh giới còn giữ
 
-Khi đổi ý sau lock: tạo revision/proposal mới, nêu delta, phần supersede, dependency/tasks chịu ảnh hưởng; đánh dấu phần lock liên quan STALE và dừng task phụ thuộc. Giữ lock/approval cũ làm lịch sử. Chỉ tiếp tục sau khi thay đổi được user duyệt và manifest cập nhật/khóa lại đúng scope; không khóa lại toàn bộ phần không đổi một cách máy móc. Không ghi DDR nếu user chưa gọi `$design-decision`; không sửa Art Bible để hợp thức hóa output lệch.
-
-## 6. Handoff giữa session
-
-CURRENT chỉ rõ task/milestone, planning hay implementation, lock revision/trạng thái, nguồn approval, artifacts đã có/còn thiếu, validation, branch/remote và **một next action**. Giữ đầy đủ Q01–Q61/Cxx và lịch sử approval, không thay bằng tóm tắt mất câu hỏi.
-
-Trong session mới: đọc CURRENT → workflow → draft/ticket được giao → lock/spec/ref liên quan → source đúng scope; nạp skill [dungeon-planning](../../../.agents/skills/dungeon-planning/SKILL.md), handoff, và game-art khi có artwork. Nếu chưa được giao mốc/task mới thì giữ trạng thái dừng. Không dùng NEXT ACTION lịch sử hoặc backlog làm quyền tự làm tiếp.
-
-Branch/main/deploy theo scope đã giao: giữ production, không force push, không stage `package-lock.json` có diff trước task. Lượt setup được user cho push branch và tắt máy; không mở PR/merge/main/Pages. Các session sau không suy quyền tắt máy từ lệnh một lần này.
+Design Harness/A-H2/Reference Protocol, game-art và mobile-first+desktop-equivalent giữ hiệu lực. Auto-next cấp quyền **chọn/thực hiện một bước** trong workflow, không tự duyệt visual/spec/playtest, đổi gameplay/balance ngoài baseline, merge/main/deploy hoặc tắt máy. Các lệnh push/shutdown là authorization riêng cho session user giao, không mặc định cho mọi next.

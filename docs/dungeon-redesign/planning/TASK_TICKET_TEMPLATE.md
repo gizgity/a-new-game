@@ -13,7 +13,7 @@ Status: DRAFT
 Revision: 1
 Session assignment: NONE hoặc quote/ngày/scope user đã giao
 Source: Rxx + mục spec/revision + nguồn approval
-Lock binding: NOT_LOCKED hoặc LOCK-ID/revision
+Lock binding: NOT_LOCKED hoặc DR-Pn_LOCK/revision (chỉ milestone này, không global lock)
 Execution card: NONE hoặc path thật
 
 ## Intent và scope
@@ -64,8 +64,8 @@ Coverage chưa kiểm / giới hạn:
 Blocking TBD / cách giải / dependency chịu ảnh hưởng:
 Spec ready audit:
 Approved spec/ref revisions + quote/ngày/source:
-Global lock status:
-Execution authorized: NO hoặc quote/scope user giao trong session execution
+Milestone lock status:
+Execution authorized: NO hoặc user gọi dungeon-planning next / scope user giao rõ, vẫn giữ gate lock/ref
 STOP nếu:
 
 ## Kết quả khi execution thực sự diễn ra
@@ -80,3 +80,5 @@ Coverage matrix của milestone đặt ở detailed plan thực tế khi lập:
 | --- | --- | --- | --- | --- |
 
 Không điền giả path/ref/approval để hết ô trống. Blocking TBD hợp lệ trong DRAFT/PLANNING; không hợp lệ khi agent trình lock hoặc mở task CODE/ART production.
+
+Workflow rev2/C10: đăng ký ticket và dependencies vào [PROGRESS.json](PROGRESS.json), status chỉ giữ trong header ticket. Theo [PROGRESS_FORMAT](PROGRESS_FORMAT.md), bổ sung outputs/hash/checks/approval thật khi có kết quả. Nếu task BLOCKED/PARTIAL hoặc package chưa đủ review, ghi issues và prompt sửa cụ thể, không chỉ dừng chờ review. Next cho phép thực hiện một bước hợp lệ; không tự cấp visual/spec/playtest approval.

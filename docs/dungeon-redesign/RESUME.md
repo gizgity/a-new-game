@@ -1,12 +1,23 @@
 # Tiếp tục sau compact — Dungeon/Skill Rework
 
-Snapshot: DUNGEON-PLAN-FLOW-01 / log R72 · C09 APPROVED DESIGN / PLANNING SETUP · 2026-11-14 · tiếng Việt.
+## CURRENT C10 — DUNGEON-PLAN-FLOW-02 (2026-11-15)
+
+**Ưu tiên hơn mọi snapshot bên dưới.** User làm rõ implement từng milestone; global planning/lock là agent hiểu sai. [WORKFLOW rev2](planning/WORKFLOW.md), [SPEC_LOCK milestone index](planning/SPEC_LOCK.md), [PROGRESS.json](planning/PROGRESS.json) và skill dungeon-planning next là nguồn điều khiển hiện hành. User next cho agent tự chọn/làm một bước, không phải chỉ in lời đề nghị. Status chỉ kiểm. Nếu đã biết thiếu/sai phải đưa path, prompt sửa và điều kiện đạt, ưu tiên repair; không chờ review bản thiếu.
+
+P0/P1/S1/17tickets và audit đã có giữ nguyên; archived flow/lock global ở *_R1_HISTORY.md. Initial selector ở DR-P1 / repair_planning do P1 còn legacy global prerequisites. Session này chỉ sửa tool, không thực hiện migration/child task; không tự lock hoặc nghiệm thu. User cho push branch/shutdown cuối lượt, không main/Pages hoặc stage package-lock có trước. **NEXT ACTION: session mới gọi $dungeon-planning next để làm một bước được script chọn.**
+
+---
+
+## SNAPSHOT TRƯỚC C10 — giữ lịch sử, không là lệnh tiếp tục
+
+Snapshot: DR-P0-VERIFY-01 rev2 / audit packet rev1 · log R72/C09 APPROVED DESIGN · 2026-11-15 · tiếng Việt.
 
 ## Đọc và tiếp tục
 
 **Hiệu lực:** các bullet Qxx bên dưới là snapshot lúc trả lời. Baseline hiện hành nằm ở R01–R12 V1 đã duyệt tại C09; phần chi tiết từng ghi “chưa chốt/còn mở” đã được V1 thay thế trong đúng scope. Detailed planning/spec lock/targets còn thiếu được liệt kê riêng ở workflow/manifest.
 
-- **Chỉ dẫn mới nhất C09:** user “all y” duyệt12/12baseline, R12 bổ sung draft intent→detailed tasks→spec lock→implementation. [WORKFLOW](planning/WORKFLOW.md), [drafts](planning/MILESTONE_DRAFTS.md), [template](planning/TASK_TICKET_TEMPLATE.md), [SPEC_LOCK](planning/SPEC_LOCK.md) NOT_LOCKED và skill dungeon-planning đã chuẩn bị. User yêu cầu push branch/tắt máy; milestone/tasks/implementation bắt đầu trong session mới được giao. Dừng sau setup, không tự mở P0.
+- **Chỉ dẫn hiện tại2026-11-15:** user giao audit toàn rework/coverage/dependencies/specs/approved targets, chuẩn bị spec-lock review, chưa implement. [DR-P0_CLOSURE rev1](planning/DR-P0_CLOSURE.md), [inventory rev1](planning/DR-P0_LOCK_INVENTORY.md), [SPEC_LOCK audit packet rev1](planning/SPEC_LOCK.md) đã có; ticket DR-P0-VERIFY-01 rev2 audit xong/closure BLOCKED L01–L08. P0 plan rev1 và P1 plan/S1 rev2 APPROVED — PLANNING ONLY qua user “y”,2026-11-15 giữ nguyên bytes;14child P1 rev3 chỉ sửa metadata approval, không đổi scope/deps/AC, child execution NONE. P2–P6 vẫn DRAFT, không tự mở planning mới.
+- **Baseline/flow:** C09 “all y” duyệt R01–R12, R12 amended; [WORKFLOW](planning/WORKFLOW.md), [drafts](planning/MILESTONE_DRAFTS.md), [template](planning/TASK_TICKET_TEMPLATE.md) giữ flow. Lock DR-LOCK-01 rev0 NOT_LOCKED, audit packet rev1 khác lock revision1. Blockers: P2–P6 detailed specs/tickets, P1 release random-route/K-E feasibility/Atlas, targets, Boss-mod legality, save transactions, HUD/audio/device protocol; exact coverage/owners tại report. Không đề nghị user khóa bản thiếu hoặc coi review packet là lock.
 - Đọc CURRENT của `HANDOFF.md` và file này trước. Toàn bộ câu hỏi/recommend/câu trả lời/supersede nằm trong [DESIGN_CHECKLIST.md](DESIGN_CHECKLIST.md), **giữ đầy đủ Q01–Q61/C01–C09**. Q61 vẫn thu hồi; input/legacy mới đã được duyệt qua R01/R10 V1 tại C09, không từ lời phàn nàn.
 - Sau Q26 agent đã hỏi **35ID mới Q27–Q61**, vượt ước lượng23–24 chưa tính làm rõ. Ước lượng/countdown cũ được giữ trong log lịch sử nhưng không còn là dự báo; lỗi chia nhỏ/tracking của agent, không quy cho user đổi scope.
 - **Q36 đã chốt**, user “y, nhưng note có thể sẽ cân bằng lại sau khi nghiệm thu”: chỉnh build tại chuẩn bị/mốc thưởng/sau Boss, cấp theo ô để skill thay vào kế thừa, chuyển support tương thích miễn phí, phân giải dư thủ công, không reset cooldown/charge/tạo effect miễn phí. Làm rõ kế thừa Q27; **có thể cân bằng lại sau nghiệm thu**, không tự tune hoặc suy experience acceptance.
@@ -137,4 +148,4 @@ Giữ đủ61ID Q01–Q61 vàC01–C08;Q61 thu hồi, danh sách còn thiếu d�
 
 ## Hiệu lực C09 và điểm dừng hiện tại
 
-Các dòng “còn mở/chưa duyệt” trong snapshot Q ở trên mô tả thời điểm từng câu; R01–R12 V1 đã bổ sung và được duyệt tại C09 (gồm số/input/affix/moves/defaults). Chi tiết thuật toán/schema/targets/evidence còn cần planning, không hỏi lại12review baseline. Task setup hoàn tất thì dừng. **NEXT ACTION: chờ user giao planning milestone/task trong session mới; không tự implement.**
+Các dòng “còn mở/chưa duyệt” trong snapshot Q ở trên mô tả thời điểm từng câu; R01–R12 V1 đã được C09 duyệt, không hỏi lại. P0 plan rev1/P1 plan+S1 rev2 approved planning giữ nguyên; audit toàn rework đã giao và hoàn tất report, closure BLOCKED vì missing artifacts L01–L08. **ONE NEXT ACTION: User review audit packet rev1 tại SPEC_LOCK và findings L01–L08; dừng chờ giao planning/design-only đóng gap, chưa implementation.**
